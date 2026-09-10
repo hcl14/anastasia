@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>All lesions — 3D, 19.06.2026</title>
+<style>
+html,body{margin:0;height:100%;background:#050508;color:#e8e8e8;font:14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;overflow:hidden}
+#c{position:absolute;inset:0;width:100%;height:100%;display:block}
+#panel{position:absolute;left:12px;top:12px;background:rgba(10,12,20,.86);border:1px solid #2a2f45;border-radius:8px;padding:8px 10px;max-width:270px;font-size:13px;max-height:calc(100% - 24px);overflow:auto}
+#panel.collapsed>*:not(#toggle){display:none}
+#toggle{background:#1d2b4f;color:#fff;border:1px solid #3a4a7a;border-radius:5px;padding:3px 8px;cursor:pointer;font-size:12px;margin:0 0 4px 0}
+#tools{position:absolute;right:12px;top:12px;display:flex;gap:6px}#tools button{margin:0}
+#panel h1{font-size:14px;margin:0 0 6px;font-weight:600}
+label{display:flex;align-items:center;gap:8px;margin:4px 0;cursor:pointer}
+.sw{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid #666}
+input[type=range]{width:110px}
+button{background:#1d2b4f;color:#fff;border:1px solid #3a4a7a;border-radius:5px;padding:4px 9px;margin:6px 6px 0 0;cursor:pointer}
+#hint{position:absolute;right:12px;bottom:10px;color:#9aa;font-size:12px}
+#load{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#9ab}
+</style></head><body>
+<canvas id="c"></canvas>
+<div id="load">loading meshes…</div>
+<div id="panel"><button id="toggle">☰ layers &amp; controls</button><h1>PET-CT 19.06.2026 — all lesions</h1>
+<div id="layers"></div>
+<div style="margin-top:6px"><label>liver / skeleton opacity <input id="lop" type="range" min="0" max="1" step="0.02" value="0.14"></label>
+<label>mass opacity <input id="mop" type="range" min="0" max="1" step="0.02" value="0.3"></label></div>
+<button id="rot">pause rotation</button><button id="reset">fit whole liver</button><button id="zoom">zoom to liver lesion</button>
+<div style="margin-top:6px;color:#9aa;font-size:12px">Orientation: anterior view on load, patient left on the right of the screen. Drag to rotate, wheel to zoom, right-drag to pan.</div></div>
+<div id="tools"><button id="fit">fit</button><button id="fs">fullscreen</button></div>
+<div id="hint">Organ and bone shapes are automatic segmentations; the uterine outline is approximate. Colours: green = liver mass, cyan = left-lobe lesion, yellow = FDG-active tumour, orange = gastric mass, violet = uterine masses, pink = femoral heads.</div>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {PLYLoader} from 'three/addons/loaders/PLYLoader.js';
+const LAYERS=[
+ ['skeleton','skeleton (ghost)',0xd8d2c4,0.16,true],
+ ['liver','liver (ghost)',0xf3d6c8,0.12,true],
+ ['stomach','stomach (ghost)',0xe9c7e9,0.18,true],
+ ['kidneys','kidneys (ghost)',0xc9b8a8,0.15,true],
+ ['spleen','spleen (ghost)',0xc9a0a0,0.15,true],
+ ['bladder','bladder (ghost)',0xfff2b0,0.18,true],
+ ['mass','right-lobe liver mass 15 × 10 cm (cystic residue, active rim)',0x7fb069,0.35,true],
+ ['tree','portal vein + branches',0x3a8dff,1.0,false],
+ ['lesion','left-lobe liver lesion (CT)',0x00e5ff,0.4,true],
+ ['focus','FDG-active tumour, left lobe',0xffd400,1.0,false],
+ ['gastric','gastric-wall mass ~3 × 4 cm (calcified, minimal uptake) — automatic candidate',0xff7f50,0.9,false],
+ ['uterus','uterine masses — approximate outline (includes adjacent bowel)',0xc77dff,0.6,true],
+ ['femoral_heads','femoral heads (right: 31 mm lucency reported by LISOD, not confirmed on our read or by the Israeli reading)',0xffb3b3,0.35,true]];
+const META={"skeleton": {"center": [-21.148912798000623, 120.48553423950476, -1200.604874000192], "faces": 93357, "kb": 2261}, "liver": {"center": [-2.5266419341973005, 136.87451189709853, -1222.4067235848192], "faces": 113900, "kb": 2780}, "stomach": {"center": [-74.414321397644, 141.53962208480777, -1228.4629214029576], "faces": 21860, "kb": 534}, "bladder": {"center": [0.708430024814124, 140.00896325719384, -1500.353150911623], "faces": 4388, "kb": 107}, "kidneys": {"center": [-3.4268802138826047, 110.20949302873629, -1274.0749124905192], "faces": 26304, "kb": 642}, "spleen": {"center": [-86.401106339293, 81.20470364550643, -1193.573870473665], "faces": 4584, "kb": 112}, "mass": {"center": [62.2623530633952, 145.4360258920181, -1223.0851672790996], "faces": 46456, "kb": 1134}, "lesion": {"center": [-56.261463527771056, 172.36820242195654, -1202.5068849159948], "faces": 16292, "kb": 398}, "focus": {"center": [-50.48235871386498, 175.86338046527345, -1210.4530957928828], "faces": 13932, "kb": 340}, "tree": {"center": [-30.4644609164026, 165.20406189177166, -1237.5866556361661], "faces": 20680, "kb": 505}, "gastric": {"center": [-80.19885930280309, 133.90270784796172, -1219.25346426349], "faces": 9376, "kb": 229}, "uterus": {"center": [9.410310759198495, 110.38598370510422, -1461.8722091603327], "faces": 78368, "kb": 1913}, "femoral_heads": {"center": [-0.009264827361917582, 121.43745058623449, -1513.8304412960247], "faces": 45512, "kb": 1110}, "bounds": [-195.27188555085792, 152.97405995485667, 19.379790550066307, 221.5912779289432, -1611.4963584242978, -789.7133895760861]};
+const canvas=document.getElementById('c');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});renderer.setPixelRatio(Math.min(2,devicePixelRatio));renderer.setClearColor(0x050508);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(35,1,1,5000);camera.up.set(0,0,1);
+const controls=new OrbitControls(camera,canvas);controls.autoRotate=true;controls.autoRotateSpeed=1.2;controls.enableDamping=true;
+scene.add(new THREE.HemisphereLight(0xffffff,0x334455,0.9));
+const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(200,400,300);scene.add(key);
+const fill=new THREE.DirectionalLight(0xffffff,0.5);fill.position.set(-300,-200,100);scene.add(fill);
+const C=new THREE.Vector3(...META.skeleton.center), CL=new THREE.Vector3(...META.lesion.center), CT=new THREE.Vector3(...META.focus.center);
+
+const meshes={};const loader=new PLYLoader();const panel=document.getElementById('layers');
+let pending=LAYERS.length;
+for(const [k,label,col,op,trans] of LAYERS){
+  loader.load('assets/meshes_all/'+k+'.ply',g=>{
+    g.computeVertexNormals();
+    const m=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:col,transparent:trans,opacity:op,depthWrite:!trans,roughness:0.55,metalness:0.0,side:THREE.DoubleSide}));
+    m.renderOrder=trans?(k==='liver'?3:2):1;meshes[k]=m;scene.add(m);
+    if(--pending===0){document.getElementById('load').remove();computeBounds();}
+  });
+  const lab=document.createElement('label');lab.innerHTML=`<input type="checkbox" checked data-k="${k}"><span class="sw" style="background:#${col.toString(16).padStart(6,'0')}"></span>${label}`;panel.appendChild(lab);
+}
+panel.addEventListener('change',e=>{const k=e.target.dataset.k;if(meshes[k])meshes[k].visible=e.target.checked;});
+document.getElementById('lop').oninput=e=>{for(const k of ['liver','skeleton','stomach','kidneys','spleen','bladder'])if(meshes[k])meshes[k].material.opacity=+e.target.value};
+document.getElementById('mop').oninput=e=>{if(meshes.mass)meshes.mass.material.opacity=+e.target.value};
+document.getElementById('rot').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.target.textContent=controls.autoRotate?'pause rotation':'rotate'};
+let sceneRadius=450, lesionRadius=45;
+function fitDist(radius){const a=camera.aspect;const vfov=camera.fov*Math.PI/180;const hfov=2*Math.atan(Math.tan(vfov/2)*a);const f=Math.min(vfov,hfov);return radius/Math.sin(f/2)*1.08;}
+let curTarget=C, curRadius=sceneRadius;
+function view(target,radius){curTarget=target;curRadius=radius;const d=fitDist(radius);const dir=new THREE.Vector3().subVectors(camera.position,controls.target);if(dir.length()<1e-3)dir.set(0,1,0.12);dir.normalize();controls.target.copy(target);camera.position.copy(target).addScaledVector(dir,d);camera.lookAt(target);}
+function frontView(target,radius){curTarget=target;curRadius=radius;const d=fitDist(radius);controls.target.copy(target);camera.position.set(target.x,target.y+d,target.z+d*0.12);camera.lookAt(target);}
+document.getElementById('reset').onclick=()=>frontView(C,sceneRadius);
+document.getElementById('zoom').onclick=()=>frontView(CL,lesionRadius);
+document.getElementById('fit').onclick=()=>view(curTarget,curRadius);
+document.getElementById('fs').onclick=()=>{const el=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(el.requestFullscreen)el.requestFullscreen();};
+const panelEl=document.getElementById('panel');
+document.getElementById('toggle').onclick=()=>panelEl.classList.toggle('collapsed');
+if(window.self!==window.top||innerWidth<760)panelEl.classList.add('collapsed');
+function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();view(curTarget,curRadius);}
+addEventListener('resize',resize);resize();frontView(C,sceneRadius);
+function computeBounds(){const box=new THREE.Box3();for(const k in meshes)box.expandByObject(meshes[k]);if(box.isEmpty())return;const sph=box.getBoundingSphere(new THREE.Sphere());sceneRadius=sph.radius;C.copy(sph.center);if(meshes.lesion){const b2=new THREE.Box3().expandByObject(meshes.lesion);if(meshes.focus)b2.expandByObject(meshes.focus);lesionRadius=b2.getBoundingSphere(new THREE.Sphere()).radius*1.6;}frontView(C,sceneRadius);}
+window.dbg={camera,controls,meshes,get C(){return C},get r(){return sceneRadius}};
+renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
+</script></body></html>
