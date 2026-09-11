@@ -13,7 +13,7 @@ label{display:flex;align-items:center;gap:8px;margin:4px 0;cursor:pointer}
 .sw{width:14px;height:14px;border-radius:3px;display:inline-block;border:1px solid #666}
 input[type=range]{width:110px}
 button{background:#1d2b4f;color:#fff;border:1px solid #3a4a7a;border-radius:5px;padding:4px 9px;margin:6px 6px 0 0;cursor:pointer}
-#hint{position:absolute;right:12px;bottom:10px;color:#9aa;font-size:12px}
+#hint{position:absolute;right:12px;bottom:10px;color:#9aa;font-size:12px;max-width:50%;text-align:right}#legend{position:absolute;left:12px;bottom:10px;background:rgba(10,12,20,.78);border:1px solid #2a2f45;border-radius:6px;padding:5px 8px;font-size:11px;line-height:1.35;color:#dfe6f3;max-width:46%;pointer-events:none}#legend .sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle;border:1px solid #666}#legend span.it{display:inline-block;margin-right:10px;white-space:nowrap}
 #load{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:#9ab}
 </style></head><body>
 <canvas id="c"></canvas>
@@ -24,6 +24,7 @@ button{background:#1d2b4f;color:#fff;border:1px solid #3a4a7a;border-radius:5px;
 <label>mass opacity <input id="mop" type="range" min="0" max="1" step="0.02" value="0.3"></label></div>
 <button id="rot">pause rotation</button><button id="reset">fit whole liver</button><button id="zoom">zoom to lesion</button>
 <div style="margin-top:6px;color:#9aa;font-size:12px">Orientation: anterior view on load, patient left on the right of the screen. Drag to rotate, wheel to zoom, right-drag to pan.</div></div>
+<div id="legend"></div>
 <div id="tools"><button id="fit">fit</button><button id="fs">fullscreen</button></div>
 <div id="hint">Dotted orange line = assumed course of the left bile duct (not seen on CT). Red sphere = contact between the lesion and the left portal branch.</div>
 <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
@@ -39,6 +40,7 @@ const LAYERS=[
  ['focus','FDG-active tumour',0xffd400,1.0,false],
  ['duct','possible bile duct course (dotted)',0xffb070,1.0,false]];
 const META={"contact": [-34.802734375, 164.037109375, -1200.0], "center": [-56.10021001286931, 171.94830090176413, -1199.6200262452826], "liver_center": [-2.525059341900544, 137.01161404958833, -1223.5101413061802]};
+document.getElementById('legend').innerHTML='<b>Colours</b><br>'+LAYERS.filter(l=>!/ghost/.test(l[1])).map(([k,label,col])=>`<span class="it"><span class="sw" style="background:#${col.toString(16).padStart(6,'0')}"></span>${label.replace(/ — .*$/,'').replace(/ \(.*$/,'')}</span>`).join(' ');
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});renderer.setPixelRatio(Math.min(2,devicePixelRatio));renderer.setClearColor(0x050508);
 const scene=new THREE.Scene();
