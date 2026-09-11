@@ -14,6 +14,7 @@ button.on{background:#3a5aa8}
 <canvas id="c"></canvas>
 <div id="load">loading meshes…</div>
 <div id="panel"><b>Traced masses on the five PET-CTs</b><div><button id="bg" class="on">gastric-wall GIST</button><button id="bu">uterine masses</button><button id="rot">pause rotation</button></div>
+<label style="display:flex;gap:6px;align-items:center;margin-top:6px"><input id="gh" type="checkbox" checked> ghost organs (stomach, pancreas, spleen, liver edge / bladder, pelvis, colon) — clipped to a box around the mass</label>
 <div style="margin-top:6px;color:#9aa;font-size:12px">Each date's traced mass is centred on its own spot, same scale for all dates; anterior view on load. Drag to rotate, wheel to zoom, right-drag to pan. Bar = 5 cm.</div></div>
 <div id="tools"><button id="fit">fit</button><button id="fs">fullscreen</button></div>
 <div id="hint">Orange = gastric-wall mass, violet = uterine masses. Outlines traced slice by slice and checked visually; 2023–2024 volumes are upper bounds where adjacent tissue had the same density.</div>
@@ -26,21 +27,21 @@ const META={"gastric_apr2023": {"faces": 60000, "kb": 1465, "bounds": [-39.76443
  "gastric": {
   "apr2023": {
    "date": "11 Apr 2023",
-   "vol_ml": 252.31837171936036,
+   "vol_ml": 35.57274658203125,
    "bbox_mm": [
-    79.26953125,
-    79.26953125,
-    65.0
+    40.0703125,
+    54.0078125,
+    36.0
    ],
-   "max_diam_mm": 79.7990342313603,
-   "hu_mean": 92.84468841552734,
-   "uptake_ratio": 7.34375,
+   "max_diam_mm": 54.3230154307837,
+   "hu_mean": 74.69091033935547,
+   "uptake_ratio": 5.48046875,
    "calibrated": false,
-   "n_slices": 65,
+   "n_slices": 36,
    "centroid_RAS": [
-    -69.92134966898709,
-    -74.97040793100285,
-    494.4646277979436
+    -71.51898947445608,
+    -86.39160914502455,
+    392.2392704778157
    ]
   },
   "aug2023": {
@@ -217,7 +218,7 @@ const META={"gastric_apr2023": {"faces": 60000, "kb": 1465, "bounds": [-39.76443
    ]
   }
  }
-};
+};const GM={"ghosts": {"gastric": {"apr2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "aug2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "jun2026": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "mar2024": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "may2025": ["kidney_left", "liver", "pancreas", "spleen", "stomach"]}, "uterus": {"apr2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "aug2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "jun2026": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "mar2024": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "may2025": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"]}}, "colors": {"stomach": "#e9c7e9", "pancreas": "#f2d59b", "spleen": "#c9a0a0", "liver": "#f3d6c8", "kidney_left": "#c9b8a8", "urinary_bladder": "#fff2b0", "hip_left": "#d8d2c4", "hip_right": "#d8d2c4", "sacrum": "#d8d2c4", "femur_left": "#d8d2c4", "femur_right": "#d8d2c4", "colon": "#d9c7a8"}, "opacity": {"stomach": 0.28, "pancreas": 0.35, "spleen": 0.22, "liver": 0.1, "kidney_left": 0.18, "urinary_bladder": 0.28, "hip_left": 0.16, "hip_right": 0.16, "sacrum": 0.16, "femur_left": 0.16, "femur_right": 0.16, "colon": 0.1}, "box": {"gastric": 80, "uterus": 105}};
 const LB=['apr2023','aug2023','mar2024','may2025','jun2026'];
 const COL={gastric:0xff7f50,uterus:0xc77dff};
 const canvas=document.getElementById('c');
@@ -229,14 +230,16 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x334455,0.9));
 const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(200,400,300);scene.add(key);
 const fill=new THREE.DirectionalLight(0xffffff,0.5);fill.position.set(-300,-200,100);scene.add(fill);
 function label(text,x,y,z,size){const cv=document.createElement('canvas');cv.width=512;cv.height=128;const g=cv.getContext('2d');g.fillStyle='#fff';g.font='500 40px -apple-system,Helvetica,Arial';g.textAlign='center';const lines=text.split('\n');lines.forEach((l,i)=>g.fillText(l,256,48+i*46));const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthTest:false}));sp.scale.set(size,size/4,1);sp.position.set(x,y,z);return sp;}
-const groups={};const loader=new PLYLoader();let pending=10;
+const groups={};const loader=new PLYLoader();let pending=10;const ghostMeshes=[];
+for(const tg of ['gastric','uterus'])for(const lb of LB)pending+=((GM.ghosts[tg]||{})[lb]||[]).length;
 for(const tg of ['gastric','uterus']){
   const grp=new THREE.Group();groups[tg]=grp;scene.add(grp);
   let span=0;for(const lb of LB){const b=META[tg+'_'+lb].bounds;span=Math.max(span,b[1]-b[0],b[3]-b[2],b[5]-b[4]);}
-  const step=span*1.25;grp.userData.radius=step*2.6;
+  const hb=(GM.box||{})[tg]||0;const hasG=Object.keys(GM.ghosts[tg]||{}).length>0;const step=hasG?Math.max(span*1.25,hb*2.1):span*1.25;grp.userData.radius=step*2.6;const zl=hasG?hb*0.95:span*0.75;
   LB.forEach((lb,i)=>{const x=(i-2)*step;
     loader.load('assets/meshes_masses/'+tg+'_'+lb+'.ply',g=>{g.computeVertexNormals();const m=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:COL[tg],roughness:0.55,metalness:0,side:THREE.DoubleSide}));m.position.set(-x,0,0);grp.add(m);if(--pending===0){document.getElementById('load').remove();}});
-    const d=DYN[tg][lb];grp.add(label(d.date+'\n'+Math.round(d.max_diam_mm)+' mm, '+Math.round(d.vol_ml)+' mL',-x,0,span*0.75,step*0.9));
+    const d=DYN[tg][lb];grp.add(label(d.date+'\n'+Math.round(d.max_diam_mm)+' mm, '+Math.round(d.vol_ml)+' mL',-x,0,zl,step*0.9));
+    for(const organ of ((GM.ghosts[tg]||{})[lb]||[])){loader.load('assets/meshes_masses/ghost_'+tg+'_'+lb+'_'+organ+'.ply',g=>{g.computeVertexNormals();const gm=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:new THREE.Color(GM.colors[organ]),transparent:true,opacity:GM.opacity[organ],depthWrite:false,roughness:0.6,side:THREE.DoubleSide}));gm.renderOrder=2;gm.position.set(-x,0,0);grp.add(gm);ghostMeshes.push(gm);if(--pending===0){document.getElementById('load').remove();}});}
   });
   // 5 cm bar
   const bar=new THREE.Mesh(new THREE.BoxGeometry(50,2,2),new THREE.MeshBasicMaterial({color:0xffffff}));bar.position.set(2*step-span*0.4,0,-span*0.7);grp.add(bar);
@@ -249,6 +252,7 @@ function sel(tg){cur=tg;groups.gastric.visible=tg==='gastric';groups.uterus.visi
 document.getElementById('bg').onclick=()=>sel('gastric');document.getElementById('bu').onclick=()=>sel('uterus');
 document.getElementById('rot').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.target.textContent=controls.autoRotate?'pause rotation':'rotate'};
 document.getElementById('fit').onclick=fit;
+document.getElementById('gh').onchange=e=>{for(const g of ghostMeshes)g.visible=e.target.checked;};
 document.getElementById('fs').onclick=()=>{const el=document.documentElement;if(document.fullscreenElement)document.exitFullscreen();else if(el.requestFullscreen)el.requestFullscreen();};
 function resize(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();fit();}
 addEventListener('resize',resize);resize();front();
