@@ -13,11 +13,11 @@ button.on{background:#3a5aa8}
 </style></head><body>
 <canvas id="c"></canvas>
 <div id="load">loading meshes…</div>
-<div id="panel"><b>Traced masses on the five PET-CTs</b><div><button id="bg" class="on">gastric-wall GIST</button><button id="bu">uterine masses</button><button id="rot">pause rotation</button></div>
+<div id="panel"><b>Traced masses on the five PET-CTs</b><div><button id="bg" class="on">gastric-wall GIST</button><button id="bu">uterus with fibroids</button><button id="bo">right ovarian endometrioma</button><button id="rot">pause rotation</button></div>
 <label style="display:flex;gap:6px;align-items:center;margin-top:6px"><input id="gh" type="checkbox" checked> ghost organs (stomach, pancreas, spleen, liver edge / bladder, pelvis, colon) — clipped to a box around the mass</label>
 <div style="margin-top:6px;color:#9aa;font-size:12px">Each date's traced mass is centred on its own spot, same scale for all dates; anterior view on load. Drag to rotate, wheel to zoom, right-drag to pan. Bar = 5 cm.</div></div>
 <div id="tools"><button id="fit">fit</button><button id="fs">fullscreen</button></div>
-<div id="hint">Orange = gastric-wall mass, violet = uterine masses. Outlines traced slice by slice and checked visually; 2023–2024 volumes are upper bounds where adjacent tissue had the same density.</div>
+<div id="hint">Orange = gastric-wall mass, violet = uterus with fibroids, teal = right ovarian endometrioma (separable from the uterus on the 2023–2024 studies only). Outlines traced slice by slice and checked visually; 2023–2024 volumes are upper bounds where adjacent tissue had the same density.</div>
 <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
 <script type="module">
 import * as THREE from 'three';
@@ -65,21 +65,21 @@ const META={"gastric_apr2023": {"faces": 60000, "kb": 1465, "bounds": [-39.76443
   },
   "mar2024": {
    "date": "14 Mar 2024",
-   "vol_ml": 18.782769668579103,
+   "vol_ml": 34.85450863647461,
    "bbox_mm": [
+    42.9375,
     47.41015625,
-    51.8828125,
-    22.0
+    39.0
    ],
-   "max_diam_mm": 53.85791325280148,
-   "hu_mean": 44.15566635131836,
-   "uptake_ratio": 1.2333984375,
+   "max_diam_mm": 48.667761664069005,
+   "hu_mean": 44.942718505859375,
+   "uptake_ratio": 1.30078125,
    "calibrated": false,
-   "n_slices": 22,
+   "n_slices": 39,
    "centroid_RAS": [
-    -63.0929776698228,
-    -89.51997973735783,
-    463.8491032249819
+    -62.200562414625324,
+    -88.43513506775449,
+    454.45339547270305
    ]
   },
   "may2025": {
@@ -124,59 +124,59 @@ const META={"gastric_apr2023": {"faces": 60000, "kb": 1465, "bounds": [-39.76443
  "uterus": {
   "apr2023": {
    "date": "11 Apr 2023",
-   "vol_ml": 177.65733813476564,
+   "vol_ml": 106.9504338684082,
    "bbox_mm": [
     96.69140625,
     108.015625,
     52.0
    ],
-   "max_diam_mm": 95.8203125,
-   "hu_mean": 62.215606689453125,
+   "max_diam_mm": 109.86837189594831,
+   "hu_mean": 72.88334655761719,
    "uptake_ratio": 1.84375,
    "calibrated": false,
    "n_slices": 52,
    "centroid_RAS": [
-    9.618080023934567,
-    -114.75512328259009,
-    233.35062017358027
+    4.024190337079432,
+    -109.45438850472874,
+    228.41896896683838
    ]
   },
   "aug2023": {
    "date": "17 Aug 2023",
-   "vol_ml": 189.33408575057985,
+   "vol_ml": 98.91938552856445,
    "bbox_mm": [
     96.865234375,
-    106.640625,
+    99.53125,
     46.0
    ],
-   "max_diam_mm": 108.11159965959726,
-   "hu_mean": 58.765621185302734,
-   "uptake_ratio": 1.4638671875,
+   "max_diam_mm": 100.82412257305765,
+   "hu_mean": 75.74751281738281,
+   "uptake_ratio": 1.455078125,
    "calibrated": false,
    "n_slices": 46,
    "centroid_RAS": [
-    12.528278083849159,
-    -103.94107058782737,
-    308.59653253692494
+    3.8919906094817804,
+    -88.58809742023337,
+    306.9996646867216
    ]
   },
   "mar2024": {
    "date": "14 Mar 2024",
-   "vol_ml": 148.2824967956543,
+   "vol_ml": 99.80721939086914,
    "bbox_mm": [
     105.5546875,
     104.66015625,
     43.0
    ],
    "max_diam_mm": 98.42283078323223,
-   "hu_mean": 64.74254608154297,
+   "hu_mean": 74.5152359008789,
    "uptake_ratio": 1.294921875,
    "calibrated": false,
    "n_slices": 43,
    "centroid_RAS": [
-    7.497949255639213,
-    -121.45091936316169,
-    248.4829313043009
+    1.6142369706064983,
+    -116.06429403135772,
+    245.25450172372325
    ]
   },
   "may2025": {
@@ -217,10 +217,69 @@ const META={"gastric_apr2023": {"faces": 60000, "kb": 1465, "bounds": [-39.76443
     -1457.9321543310905
    ]
   }
+ },
+ "ovary": {
+  "apr2023": {
+   "date": "11 Apr 2023",
+   "vol_ml": 63.712246032714845,
+   "bbox_mm": [
+    67.9453125,
+    82.75390625,
+    52.0
+   ],
+   "max_diam_mm": 82.20190071451573,
+   "hu_mean": 44.825138092041016,
+   "uptake_ratio": 1.2900390625,
+   "calibrated": false,
+   "n_slices": 52,
+   "centroid_RAS": [
+    18.096369891411797,
+    -123.6247954852675,
+    241.51020675527607
+   ]
+  },
+  "aug2023": {
+   "date": "17 Aug 2023",
+   "vol_ml": 83.6648120880127,
+   "bbox_mm": [
+    68.427734375,
+    89.755859375,
+    46.0
+   ],
+   "max_diam_mm": 83.67212632085418,
+   "hu_mean": 39.176025390625,
+   "uptake_ratio": 1.4638671875,
+   "calibrated": false,
+   "n_slices": 46,
+   "centroid_RAS": [
+    22.041377710850497,
+    -121.78955852443008,
+    310.1690390787238
+   ]
+  },
+  "mar2024": {
+   "date": "14 Mar 2024",
+   "vol_ml": 43.99423492431641,
+   "bbox_mm": [
+    60.828125,
+    79.61328125,
+    43.0
+   ],
+   "max_diam_mm": 80.40835870971765,
+   "hu_mean": 43.243980407714844,
+   "uptake_ratio": 1.1875,
+   "calibrated": false,
+   "n_slices": 43,
+   "centroid_RAS": [
+    19.879386964578032,
+    -133.52148345136868,
+    255.49879956347763
+   ]
+  }
  }
-};const GM={"ghosts": {"gastric": {"apr2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "aug2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "jun2026": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "mar2024": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "may2025": ["kidney_left", "liver", "pancreas", "spleen", "stomach"]}, "uterus": {"apr2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "aug2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "jun2026": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "mar2024": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "may2025": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"]}}, "colors": {"stomach": "#e9c7e9", "pancreas": "#f2d59b", "spleen": "#c9a0a0", "liver": "#f3d6c8", "kidney_left": "#c9b8a8", "urinary_bladder": "#fff2b0", "hip_left": "#d8d2c4", "hip_right": "#d8d2c4", "sacrum": "#d8d2c4", "femur_left": "#d8d2c4", "femur_right": "#d8d2c4", "colon": "#d9c7a8"}, "opacity": {"stomach": 0.28, "pancreas": 0.35, "spleen": 0.22, "liver": 0.1, "kidney_left": 0.18, "urinary_bladder": 0.28, "hip_left": 0.16, "hip_right": 0.16, "sacrum": 0.16, "femur_left": 0.16, "femur_right": 0.16, "colon": 0.1}, "box": {"gastric": 80, "uterus": 105}};
+};const GM={"ghosts": {"gastric": {"apr2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "aug2023": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "jun2026": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "mar2024": ["kidney_left", "liver", "pancreas", "spleen", "stomach"], "may2025": ["kidney_left", "liver", "pancreas", "spleen", "stomach"]}, "ovary": {"apr2023": ["colon", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "aug2023": ["colon", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "mar2024": ["colon", "hip_left", "hip_right", "sacrum", "urinary_bladder"]}, "uterus": {"apr2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "aug2023": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "jun2026": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "mar2024": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"], "may2025": ["colon", "femur_left", "femur_right", "hip_left", "hip_right", "sacrum", "urinary_bladder"]}}, "colors": {"urinary_bladder": "#fff2b0", "hip_left": "#d8d2c4", "hip_right": "#d8d2c4", "sacrum": "#d8d2c4", "colon": "#d9c7a8", "stomach": "#e9c7e9", "pancreas": "#f2d59b", "spleen": "#c9a0a0", "liver": "#f3d6c8", "kidney_left": "#c9b8a8", "femur_left": "#d8d2c4", "femur_right": "#d8d2c4"}, "opacity": {"urinary_bladder": 0.28, "hip_left": 0.16, "hip_right": 0.16, "sacrum": 0.16, "colon": 0.1, "stomach": 0.28, "pancreas": 0.35, "spleen": 0.22, "liver": 0.1, "kidney_left": 0.18, "femur_left": 0.16, "femur_right": 0.16}, "box": {"gastric": 80, "uterus": 105, "ovary": 90}};
 const LB=['apr2023','aug2023','mar2024','may2025','jun2026'];
-const COL={gastric:0xff7f50,uterus:0xc77dff};
+const COL={gastric:0xff7f50,uterus:0xc77dff,ovary:0x2ec4b6};const TG=['gastric','uterus','ovary'];
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true});renderer.setPixelRatio(Math.min(2,devicePixelRatio));renderer.setClearColor(0x050508);
 const scene=new THREE.Scene();
@@ -230,13 +289,14 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x334455,0.9));
 const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(200,400,300);scene.add(key);
 const fill=new THREE.DirectionalLight(0xffffff,0.5);fill.position.set(-300,-200,100);scene.add(fill);
 function label(text,x,y,z,size){const cv=document.createElement('canvas');cv.width=512;cv.height=128;const g=cv.getContext('2d');g.fillStyle='#fff';g.font='500 40px -apple-system,Helvetica,Arial';g.textAlign='center';const lines=text.split('\n');lines.forEach((l,i)=>g.fillText(l,256,48+i*46));const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthTest:false}));sp.scale.set(size,size/4,1);sp.position.set(x,y,z);return sp;}
-const groups={};const loader=new PLYLoader();let pending=10;const ghostMeshes=[];
-for(const tg of ['gastric','uterus'])for(const lb of LB)pending+=((GM.ghosts[tg]||{})[lb]||[]).length;
-for(const tg of ['gastric','uterus']){
+const groups={};const loader=new PLYLoader();let pending=0;const ghostMeshes=[];
+for(const tg of TG)for(const lb of LB){if(!(DYN[tg]||{})[lb])continue;pending+=1+((GM.ghosts[tg]||{})[lb]||[]).length;}
+for(const tg of TG){
   const grp=new THREE.Group();groups[tg]=grp;scene.add(grp);
-  let span=0;for(const lb of LB){const b=META[tg+'_'+lb].bounds;span=Math.max(span,b[1]-b[0],b[3]-b[2],b[5]-b[4]);}
+  let span=0;for(const lb of LB){const mm=META[tg+'_'+lb];if(!mm)continue;const b=mm.bounds;span=Math.max(span,b[1]-b[0],b[3]-b[2],b[5]-b[4]);}
   const hb=(GM.box||{})[tg]||0;const hasG=Object.keys(GM.ghosts[tg]||{}).length>0;const step=hasG?Math.max(span*1.25,hb*2.1):span*1.25;grp.userData.radius=step*2.6;const zl=hasG?hb*0.95:span*0.75;
   LB.forEach((lb,i)=>{const x=(i-2)*step;
+    if(!(DYN[tg]||{})[lb]){grp.add(label(({apr2023:'11 Apr 2023',aug2023:'17 Aug 2023',mar2024:'14 Mar 2024',may2025:'13 May 2025',jun2026:'19 Jun 2026'})[lb]+'\nnot separable',-x,0,zl,step*0.9));return;}
     loader.load('assets/meshes_masses/'+tg+'_'+lb+'.ply',g=>{g.computeVertexNormals();const m=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:COL[tg],roughness:0.55,metalness:0,side:THREE.DoubleSide}));m.position.set(-x,0,0);grp.add(m);if(--pending===0){document.getElementById('load').remove();}});
     const d=DYN[tg][lb];grp.add(label(d.date+'\n'+Math.round(d.max_diam_mm)+' mm, '+Math.round(d.vol_ml)+' mL',-x,0,zl,step*0.9));
     for(const organ of ((GM.ghosts[tg]||{})[lb]||[])){loader.load('assets/meshes_masses/ghost_'+tg+'_'+lb+'_'+organ+'.ply',g=>{g.computeVertexNormals();const gm=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:new THREE.Color(GM.colors[organ]),transparent:true,opacity:GM.opacity[organ],depthWrite:false,roughness:0.6,side:THREE.DoubleSide}));gm.renderOrder=2;gm.position.set(-x,0,0);grp.add(gm);ghostMeshes.push(gm);if(--pending===0){document.getElementById('load').remove();}});}
@@ -244,12 +304,12 @@ for(const tg of ['gastric','uterus']){
   // 5 cm bar
   const bar=new THREE.Mesh(new THREE.BoxGeometry(50,2,2),new THREE.MeshBasicMaterial({color:0xffffff}));bar.position.set(2*step-span*0.4,0,-span*0.7);grp.add(bar);
 }
-groups.uterus.visible=false;let cur='gastric';
+groups.uterus.visible=false;groups.ovary.visible=false;let cur='gastric';
 function fitDist(r){const a=camera.aspect;const vf=camera.fov*Math.PI/180;const hf=2*Math.atan(Math.tan(vf/2)*a);return r/Math.sin(Math.min(vf,hf)/2)*1.05;}
 function front(){const r=groups[cur].userData.radius;const d=fitDist(r);controls.target.set(0,0,0);camera.position.set(0,d,d*0.1);camera.lookAt(0,0,0);}
 function fit(){const r=groups[cur].userData.radius;const d=fitDist(r);const dir=new THREE.Vector3().subVectors(camera.position,controls.target).normalize();controls.target.set(0,0,0);camera.position.copy(dir.multiplyScalar(d));camera.lookAt(0,0,0);}
-function sel(tg){cur=tg;groups.gastric.visible=tg==='gastric';groups.uterus.visible=tg==='uterus';document.getElementById('bg').classList.toggle('on',tg==='gastric');document.getElementById('bu').classList.toggle('on',tg==='uterus');front();}
-document.getElementById('bg').onclick=()=>sel('gastric');document.getElementById('bu').onclick=()=>sel('uterus');
+function sel(tg){cur=tg;for(const t of TG)groups[t].visible=(t===tg);for(const [id,t] of [['bg','gastric'],['bu','uterus'],['bo','ovary']])document.getElementById(id).classList.toggle('on',t===tg);front();}
+document.getElementById('bg').onclick=()=>sel('gastric');document.getElementById('bu').onclick=()=>sel('uterus');document.getElementById('bo').onclick=()=>sel('ovary');
 document.getElementById('rot').onclick=e=>{controls.autoRotate=!controls.autoRotate;e.target.textContent=controls.autoRotate?'pause rotation':'rotate'};
 document.getElementById('fit').onclick=fit;
 document.getElementById('gh').onchange=e=>{for(const g of ghostMeshes)g.visible=e.target.checked;};
