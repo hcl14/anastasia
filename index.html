@@ -27,13 +27,55 @@ footer{color:var(--muted);font-size:13px;padding:30px 24px;text-align:center}
 </style></head>
 <body><header><h1>Anastasia Zherlitsyna — timeline</h1><p>Metastatic GIST (initially diagnosed as uterine leiomyosarcoma), Kyiv, Ukraine · records 2022–2026 · page built 11 Sep 2026</p></header>
 
-<main><nav class="toc card">
+<main><style>
+@media (min-width:1300px){
+ nav.toc{position:fixed;left:14px;top:14px;width:250px;max-height:calc(100vh - 28px);overflow:auto;margin:0;z-index:20;font-size:13.5px;padding:12px 10px}
+ nav.toc ul{columns:1!important;padding-left:0;list-style:none}
+ nav.toc li{margin:1px 0}
+ main{margin-left:max(284px,calc((100vw - 1100px)/2))!important}
+}
+nav.toc li a{display:block;padding:3px 8px;border-left:3px solid transparent;border-radius:0 4px 4px 0;text-decoration:none}
+nav.toc li a:hover{background:#f2f5f9}
+nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600}
+</style>
+<script>
+(function(){
+  function init(){
+    var nav=document.querySelector('nav.toc'); if(!nav) return;
+    var header=document.querySelector('header');
+    var links=[].slice.call(nav.querySelectorAll('a[href^="#"]'));
+    var items=links.map(function(a){return {a:a,el:document.getElementById(a.getAttribute('href').slice(1))};}).filter(function(x){return x.el;});
+    items.sort(function(p,q){return p.el.compareDocumentPosition(q.el)&Node.DOCUMENT_POSITION_FOLLOWING?-1:1;});
+    var wide=window.matchMedia('(min-width:1300px)'), ticking=false, current=null;
+    function update(){
+      ticking=false;
+      if(wide.matches){nav.style.top=Math.max(14,header.getBoundingClientRect().bottom+14)+'px';nav.style.maxHeight='calc(100vh - '+(parseFloat(nav.style.top)+14)+'px)';}
+      else{nav.style.top='';nav.style.maxHeight='';}
+      var act=null;
+      for(var i=0;i<items.length;i++){ if(items[i].el.getBoundingClientRect().top<=150) act=items[i]; }
+      if((window.innerHeight+window.scrollY)>=document.body.scrollHeight-4 && items.length) act=act||items[items.length-1];
+      if(act!==current){
+        links.forEach(function(a){a.classList.remove('active');});
+        if(act){act.a.classList.add('active');
+          if(wide.matches){var r=act.a.getBoundingClientRect(),nr=nav.getBoundingClientRect(); if(r.top<nr.top+30||r.bottom>nr.bottom-30) nav.scrollTop+=r.top-nr.top-nr.height/2;}}
+        current=act;
+      }
+    }
+    function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+    window.addEventListener('scroll',onScroll,{passive:true}); window.addEventListener('resize',onScroll);
+    if(wide.addEventListener) wide.addEventListener('change',onScroll);
+    update();
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
+<nav class="toc card">
 <b>Contents</b>
 <ul style="columns:2">
 <li><a href="#diagnosis">Formulated diagnosis</a></li>
 <li><a href="#situation">Current situation</a></li>
 <li><a href="#questions">Questions for the tumour board</a></li>
-<li><a href="#timeline">Timeline 2022–2026</a></li>
+<li><a href="#timeline">Timeline and treatment chart</a></li>
 <li><a href="#imagingtime">Imaging over time (reports)</a></li>
 <li><a href="#discs">Imaging discs on Drive</a></li>
 <li><a href="#pres">PRES episode (Jan 2023)</a></li>
@@ -118,7 +160,153 @@ footer{color:var(--muted);font-size:13px;padding:30px 24px;text-align:center}
 <p style="margin:6px 0 0"><b>Question:</b> is any of these a candidate for her — the ADC trial, checkpoint inhibitor + regorafenib, an intratumoral or cell-therapy trial — and under what conditions?</p></li>
 </ol></div>
 
-<h3 id="timeline">Timeline</h3><p class="meta">Where a study had several readings, the authoritative one is in bold and superseded readings are in grey.</p><div class="tablewrap"><table><tr><th>Period</th><th>Event / treatment</th><th>Key finding</th><th>Response</th><th>Sources</th></tr><tr><td>Aug 2022</td><td>Presentation; liver-metastasis core biopsy 29.08.2022 (NCI); tumour board 31.08.2022</td><td>Read as <b>uterine leiomyosarcoma</b> T2NxM1 with liver and peritoneal metastases; no IHC (too little material). CT already listed GIST in the differential</td><td>Baseline</td><td><a href="reports/Biopsy_of_metastasis_in_the_liver_docx.html">biopsy</a><sup class="ref"><a href="documents.html#d3">[3]</a></sup> · <a href="reports/Tumour_board_31_08_2022_docx.html">tumour board</a><sup class="ref"><a href="documents.html#d4">[4]</a></sup> · <a href="reports/CT_23_08_docx.html">CT 23.08</a><sup class="ref"><a href="documents.html#d1">[1]</a></sup> · <a href="reports/MRI_25_08_docx.html">MRI 25.08</a><sup class="ref"><a href="documents.html#d2">[2]</a></sup></td></tr><tr><td>Sep 2022 – Jan 2023</td><td>Gemcitabine + docetaxel + bevacizumab, 4 cycles (NCI Ukraine, then Innovacia)</td><td>Pelvic deposits gone, uterine mass stable; liver lesions enlarged (MRI 14.10.2022, CT 01.12.2022)</td><td><b>Progression in the liver</b></td><td><a href="reports/MRI_14_10_docx.html">MRI 14.10</a><sup class="ref"><a href="documents.html#d5">[5]</a></sup> · <a href="reports/CT_01_12_docx.html">CT 01.12</a><sup class="ref"><a href="documents.html#d7">[7]</a></sup> · <a href="docs/CT_04_01_2023_pdf.pdf">CT 04.01.2023</a><sup class="ref"><a href="documents.html#d13">[13]</a></sup></td></tr><tr><td>Dec 2022</td><td>German second CT reading (RNI Neu-Isenburg); Oncomine Comprehensive Assay Plus on the Aug 2022 block; germline panel</td><td><b>KIT exon 11 Q556_V559&gt;H, VAF 42.5 %</b>; subclonal KIF5B-MET fusion; TMB low, MSS; germline BRCA1/2, CHEK2, PALB2 negative</td><td>Basis for a TKI</td><td><a href="docs/22OM011_pdf.pdf">Oncomine</a><sup class="ref"><a href="documents.html#d11">[11]</a></sup> · <a href="docs/22B104_pdf.pdf">germline panel</a><sup class="ref"><a href="documents.html#d12">[12]</a></sup> · <a href="reports/Genetic_commentary_docx.html">geneticist commentary</a><sup class="ref"><a href="documents.html#d18">[18]</a></sup> · <a href="reports/RNI_NeuIsenburg_CT_second_reading_Dec2022_EN_translation_docx.html">German reading</a><sup class="ref"><a href="documents.html#d10">[10]</a></sup></td></tr><tr><td>05 – 12.01.2023</td><td>Pazopanib 800 mg/day</td><td>Stopped on day 8 for headache, confusion, loss of consciousness</td><td>Discontinued</td><td><span class="meta">—</span></td></tr><tr><td>13 – 25.01.2023</td><td>Hospitalisation (Oberig); brain MRI 13.01 and 20.01.2023; pulse steroids; repeat liver biopsy 24.01.2023</td><td><b>PRES</b> with <b>left occipital haemorrhage</b> and multifocal vasoconstriction; BP 150–160 mm Hg; biopsy again read as leiomyosarcoma metastasis</td><td>Resolved; CT 09.02.2023 showed <b>12 % liver regression</b></td><td><a href="reports/MRI_brain_13_01_2023_docx.html">MRI 13.01</a><sup class="ref"><a href="documents.html#d15">[15]</a></sup> · <a href="reports/MRI_BRAIN_20_01_2023_docx.html">MRI 20.01</a><sup class="ref"><a href="documents.html#d19">[19]</a></sup> · <a href="reports/Discharge_summary_25_01_2023_docx.html">discharge summary</a><sup class="ref"><a href="documents.html#d22">[22]</a></sup> · <a href="reports/CT_scan_09_02_2023_docx.html">CT 09.02</a><sup class="ref"><a href="documents.html#d29">[29]</a></sup></td></tr><tr><td>Feb – Mar 2023</td><td>Trabectedin 2 mg, 3 cycles (Innovacia); PET-CT 11.04.2023 with Israeli revision 19.04.2023</td><td><b>Israeli revision: liver and paragastric masses larger and metabolically active; activity mismatch raises a gastric GIST primary</b>. <span class="meta">Primary LISOD read: same findings, no diagnostic comment.</span></td><td><b>Progression</b>; diagnosis questioned</td><td><a href="reports/Radiological_study_Lisod_11_04_23_docx.html">PET-CT 11.04.2023</a><sup class="ref"><a href="documents.html#d37">[37]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_PET_CT_revision_19_04_2023_docx.html">Israeli revision 19.04.2023</a><sup class="ref"><a href="documents.html#d38">[38]</a></sup></td></tr><tr><td>Apr 2023</td><td>EUS-FNA of the paragastric mass 21.04.2023; liver core biopsy 25.04.2023 (LISOD)</td><td>Pathology: <b>GIST of the stomach, DOG-1 and CD117 positive</b>, desmin negative; GIST metastasis in the liver</td><td><b>Diagnosis revised</b></td><td><a href="reports/Zherlitsyna_EUS_FNA_Lisod_21_04_2023_docx.html">EUS-FNA</a><sup class="ref"><a href="documents.html#d40">[40]</a></sup> · <a href="reports/Pathohistological_study_21_04_2023_docx.html">pathology</a><sup class="ref"><a href="documents.html#d41">[41]</a></sup></td></tr><tr><td>03.05.2023</td><td><b>Imatinib 400 mg/day started</b> in hospital under supervision (PRES risk); 04.05.2023 re-assessment of the Aug 2022 slide</td><td>Aug 2022 block re-tested: CD117 and DOG-1 positive — the 2022 leiomyosarcoma reading is revised</td><td>Treatment started</td><td><a href="reports/CONCLUSION_oncology_conference_03_05_2023_docx.html">oncology conference 03.05.2023</a><sup class="ref"><a href="documents.html#d43">[43]</a></sup></td></tr><tr><td>04.06.2023</td><td>Israeli pathology revision of all three 2023 samples (Prime Pathology / Manor); Dr. Tahover consultation 07.06.2023</td><td><b>GIST confirmed in all three samples</b>; DOG1, CD34, c-kit positive, SDH-B deficit flagged as unusual</td><td>Diagnosis settled</td><td><a href="reports/ZHERLITSYNA_ANASTASIIA_PATHOLOGY_REPORT_04_06_2023_docx.html">pathology revision</a><sup class="ref"><a href="documents.html#d49">[49]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_Dr_Tahover_report_07_06_2023_docx.html">Dr. Tahover</a><sup class="ref"><a href="documents.html#d51">[51]</a></sup></td></tr><tr><td>17.08.2023</td><td>PET-CT</td><td>Liver lesions lost their active solid peripheral components; dominant mass 190 → 160 mm, gastric mass 58 → 44 mm, almost fluid</td><td><b>Marked metabolic response</b></td><td><a href="reports/Lisod_PET_CT_17_08_2023_docx.html">PET-CT 17.08.2023</a><sup class="ref"><a href="documents.html#d59">[59]</a></sup></td></tr><tr><td>14.03.2024</td><td>PET-CT; Israeli revision 25.03.2024; Dr. Tahover 27.03.2024</td><td><b>Dominant mass 160 → 150 mm; no active components, no new lesions</b> (both readings agree)</td><td><b>Stable</b>; continue imatinib</td><td><a href="reports/Lisod_PET_CT_14_03_2024_docx.html">PET-CT</a><sup class="ref"><a href="documents.html#d60">[60]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_PET_CT_revision_25_03_2024_docx.html">Israeli revision</a><sup class="ref"><a href="documents.html#d61">[61]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_Dr_Tahover_Report_27_03_2024_docx.html">Dr. Tahover</a><sup class="ref"><a href="documents.html#d62">[62]</a></sup></td></tr><tr><td>13.05.2025</td><td>PET-CT (Feofaniya); LISOD re-read 19.05.2025; consultations 19.03 and 21.05.2025</td><td><b>LISOD re-read: cystic, inactive residues, dominant lesion 150 → 135 mm; new 11 mm mural nodule without focal FDG increase, follow-up advised</b>. <span class="meta">Primary read: "PET negative".</span></td><td><b>Stable</b>; continue imatinib</td><td><a href="docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf">PET-CT</a><sup class="ref"><a href="documents.html#d67">[67]</a></sup> · <a href="docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf">LISOD re-read</a><sup class="ref"><a href="documents.html#d68">[68]</a></sup> · <a href="docs/2025_2026_imaging_330040_19_03_2025_13_57_32_pdf.pdf">consultation 19.03</a><sup class="ref"><a href="documents.html#d66">[66]</a></sup></td></tr><tr><td>19.06.2026 (read 19.06, 08.07, 08.09)</td><td>PET-CT (Feofaniya) with three readings: primary report 19.06; LISOD retrospective re-read 08.07.2026; Israeli expert reading 08.09.2026 (Dr. Kulikova)</td><td><b>Expert reading (authoritative): metabolic progression — left-lobe lesion 42 × 36 mm with increased uptake, right-lobe mass ~15 × 10 cm with increased peripheral uptake, gastric lesion unchanged, portal vein patent, no bone lesions.</b> LISOD re-read: new enhancing, FDG-active mural nodules (left-lobe SUVmax 3.2 vs liver 2.0); 31 mm femoral-head lucency (not confirmed by the expert reading). <span class="meta">Primary report: read as stable (144 × 104 × 141 mm, left-lobe 45 × 36 mm) — superseded.</span></td><td><b>Progression</b> on imatinib after 3 years</td><td><a href="reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html">expert reading 08.09</a><sup class="ref"><a href="documents.html#d77">[77]</a></sup> · <a href="reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html">LISOD re-read 08.07</a><sup class="ref"><a href="documents.html#d71">[71]</a></sup> · <a href="reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html">primary report 19.06</a><sup class="ref"><a href="documents.html#d70">[70]</a></sup></td></tr><tr><td>30.07.2026</td><td>LISOD oncologist (Dr. Yermakov); baseline echocardiogram before sunitinib</td><td>Return of mural components on imatinib; echocardiogram normal, <b>EF 67 %</b></td><td><b>Sunitinib 50 mg 4/2 prescribed — not started</b></td><td><a href="reports/2026_new_Oncologist_conclusion_30July2026_EN_translation_docx.html">oncologist 30.07</a><sup class="ref"><a href="documents.html#d72">[72]</a></sup> · <a href="reports/2026_new_Heart_ultrasound_30July2026_EN_translation_docx.html">echocardiogram</a><sup class="ref"><a href="documents.html#d73">[73]</a></sup></td></tr><tr><td>07.08.2026</td><td>Clinic TARGET oncologist (Dr. Kolachko)</td><td>Disease-history summary confirming progression; recommends PD-L1, MSI, NTRK, BRAF status</td><td>Second opinion</td><td><a href="reports/2026_new_Oncologist_conclusion_TARGET_clinic_07Aug2026_EN_translation_docx.html">conclusion</a><sup class="ref"><a href="documents.html#d74">[74]</a></sup></td></tr><tr><td>20.08.2026</td><td>FoundationOne Liquid CDx (blood)</td><td>ctDNA fraction <b>32 %</b>; exon 11 Q556_V559&gt;H <b>17.0 %</b>, exon 13 <b>V654A 8.8 %</b>, exon 18 <b>A829P 4.0 %</b>; imatinib, sunitinib, avapritinib <b>resistant</b>; regorafenib NCCN 1</td><td><b>Polyclonal KIT resistance</b> explained</td><td><a href="docs/2026_new_FoundationOne_Liquid_CDx_20Aug2026_pdf.pdf">FoundationOne report</a><sup class="ref"><a href="documents.html#d75">[75]</a></sup></td></tr><tr><td>08.09.2026</td><td>LISOD oncologist conclusion (Dr. Yermakov) after the FoundationOne result</td><td>Formulated diagnosis updated with the <b>KIT exon 11, 13 and 18 mutations</b>; recommendation: sunitinib 50 mg days 1–28 + 2 weeks off, and — new, on the basis of FoundationOne — <b>regorafenib 160 mg days 1–21 q28 as an option</b>; oncologist review with PET-CT or contrast CT after 3–4 cycles</td><td><b>Sunitinib re-confirmed, regorafenib added — neither started</b></td><td><a href="reports/2026_new_Oncologist_conclusion_LISOD_08_09_2026_EN_translation_docx.html">LISOD conclusion 08.09</a><sup class="ref"><a href="documents.html#d76">[76]</a></sup> · <a href="reports/2026_new_Oncologist_conclusion_LISOD_08_09_2026_EN_translation_docx.html">Ukrainian original</a><sup class="ref"><a href="documents.html#d76">[76]</a></sup></td></tr><tr><td>10–11.09.2026</td><td>Interventional-radiology opinion, Dr. O. Korshak (Shalimov Centre of Surgery and Transplantology, Kyiv), messenger consultation; histotripsy discussed</td><td>RFA/MWA <b>contraindicated</b>: contact with the <b>left portal branch</b> and the <b>left bile duct</b>; TARE not done in Ukraine; histotripsy judged new, very expensive and unproven for GIST and for lesions of this size — ask HistoSonics</td><td>TACE / TARE / SBRT / IRE / resection / histotripsy <b>under discussion</b></td><td><a href="https://www.fusfoundation.org/posts/histotripsy-for-liver-tumors-earns-regulatory-approval-in-europe/" target="_blank">histotripsy EU approval</a></td></tr></table></div>
+<h3 id="timeline">Timeline</h3><style>
+#tlchart{position:relative;background:#fff;border:1px solid var(--rule);border-radius:10px;padding:12px 14px 8px;margin:12px 0 16px}
+#tlchart .bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px;color:#445;margin-bottom:6px}
+#tlchart .bar b{color:#1d1d1f;font-size:14px;margin-right:6px}
+#tlchart .lg{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+#tlchart .lg i{display:inline-block;width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
+#tlchart button{font:inherit;font-size:12.5px;border:1px solid #c9d3de;background:#f5f8fb;border-radius:6px;padding:3px 9px;cursor:pointer;margin-left:auto}
+#tlchart .scroll{overflow-x:auto}
+#tlchart svg{display:block;min-width:860px;width:100%;height:auto;font-family:inherit}
+#tlchart .mk{cursor:pointer}
+#tlchart .mk:hover .shape,#tlchart .mk:focus .shape{stroke:#111;stroke-width:2}
+#tltip{position:absolute;pointer-events:none;background:#14213d;color:#fff;font-size:13px;line-height:1.4;padding:7px 10px;border-radius:7px;max-width:320px;box-shadow:0 4px 14px rgba(0,0,0,.25);opacity:0;transition:opacity .1s;z-index:30}
+#tltip .d{color:#aebbd3;font-size:12px}
+#tlchart .note{font-size:12.5px;color:var(--muted);margin:4px 2px 0}
+tr.flash td{animation:tlflash 2.2s ease-out}
+@keyframes tlflash{0%,35%{background:#ffe58a}100%{background:inherit}}
+</style>
+<div id="tlchart">
+<div class="bar"><b>Disease course and anticancer treatment</b>
+<span class="lg"><i style="background:#d64541"></i>progression</span>
+<span class="lg"><i style="background:#2e9e5b"></i>response</span>
+<span class="lg"><i style="background:#9aa5b1"></i>stable</span>
+<span class="lg"><i style="background:#4a78c2"></i>baseline</span>
+<span class="lg"><i style="background:#8e5cc4;border-radius:2px;transform:rotate(45deg);width:9px;height:9px"></i>pathology / genomics</span>
+<span class="lg"><i style="background:#e0a020;border-radius:2px"></i>adverse event / consultation</span>
+<button id="tlscale" type="button">show true time scale</button></div>
+<div class="scroll"><svg id="tlsvg" viewBox="0 0 1000 330" role="img" aria-label="Timeline chart of events and treatments 2022–2026"></svg></div>
+<p class="note">Hover or tap a marker for details; click to jump to the row in the table below. The quiet imatinib period (mid-2023 to mid-2026) is compressed by default so the dense 2022–2023 and 2026 periods stay readable.</p>
+<div id="tltip"></div>
+</div>
+<script>
+(function(){
+var TODAY='2026-09-13';
+var EV=[
+ {d:'2022-08-23',l:0,k:'base',t:'CT 23.08 and MRI 25.08.2022',s:'Baseline: bilobar liver masses, paragastric mass 51 × 46 mm, pelvic masses',r:0},
+ {d:'2022-08-29',l:1,k:'path',t:'Liver biopsy 29.08, tumour board 31.08.2022',s:'Read as uterine leiomyosarcoma T2NxM1 (no IHC)',r:0},
+ {d:'2022-10-14',l:0,k:'prog',t:'MRI 14.10.2022',s:'Liver lesions enlarged on chemotherapy',r:1},
+ {d:'2022-12-01',l:0,k:'prog',t:'CT 01.12.2022',s:'Progression in the liver',r:1},
+ {d:'2022-12-15',l:1,k:'path',t:'Oncomine + germline panel, Dec 2022',s:'KIT exon 11 Q556_V559>H (VAF 42.5 %); germline negative',r:2},
+ {d:'2023-01-13',l:2,k:'ae',t:'PRES with left occipital haemorrhage',s:'After pazopanib; hospitalised 13–25.01.2023, resolved',r:4},
+ {d:'2023-01-24',l:1,k:'path',t:'Repeat liver biopsy 24.01.2023',s:'Again read as leiomyosarcoma',r:4},
+ {d:'2023-02-09',l:0,k:'resp',t:'CT 09.02.2023',s:'12 % liver regression',r:4},
+ {d:'2023-04-11',l:0,k:'prog',t:'PET-CT 11.04.2023 (Israeli revision 19.04)',s:'Progression on trabectedin; gastric GIST primary suspected',r:5},
+ {d:'2023-04-23',l:1,k:'path',t:'EUS-FNA 21.04 and liver biopsy 25.04.2023',s:'GIST of the stomach, DOG-1 and CD117 positive — diagnosis revised',r:6},
+ {d:'2023-06-04',l:1,k:'path',t:'Israeli pathology revision 04.06.2023',s:'GIST confirmed in all three samples',r:8},
+ {d:'2023-08-17',l:0,k:'resp',t:'PET-CT 17.08.2023',s:'Marked metabolic response on imatinib',r:9},
+ {d:'2024-03-14',l:0,k:'stable',t:'PET-CT 14.03.2024',s:'Stable, no active components',r:10},
+ {d:'2025-05-13',l:0,k:'stable',t:'PET-CT 13.05.2025',s:'Stable, cystic inactive residues',r:11},
+ {d:'2026-06-19',l:0,k:'prog',t:'PET-CT 19.06.2026 (expert reading 08.09)',s:'Metabolic progression: left-lobe focus 42 × 36 mm, active wall of the right-lobe mass',r:12},
+ {d:'2026-07-30',l:2,k:'cons',t:'LISOD oncologist 30.07.2026',s:'Sunitinib 50 mg 4/2 prescribed — not started',r:13},
+ {d:'2026-08-07',l:2,k:'cons',t:'TARGET clinic 07.08.2026',s:'Second opinion: progression confirmed',r:14},
+ {d:'2026-08-20',l:1,k:'path',t:'FoundationOne Liquid CDx 20.08.2026',s:'KIT exon 13 V654A (8.8 %) and exon 18 A829P (4.0 %); ctDNA 32 %',r:15},
+ {d:'2026-09-08',l:2,k:'cons',t:'LISOD oncologist 08.09.2026',s:'Regorafenib 160 mg d1–21 added as an option — neither started',r:16},
+ {d:'2026-09-10',l:2,k:'cons',t:'Interventional radiology 10.09.2026 (Dr O. Korshak)',s:'Thermal ablation contraindicated: contact with left portal branch and bile duct',r:17}
+];
+var RX=[
+ {a:'2022-09-28',b:'2022-12-31',row:0,c:'#8e6cc4',name:'Gem + doc + bev',dose:'4 cycles',t:'Gemcitabine + docetaxel + bevacizumab',s:'4 cycles, 28.09.2022 – Dec 2022 (end date approximate); doses not given in the records. Progression in the liver.',r:1},
+ {a:'2023-01-05',b:'2023-01-12',row:0,c:'#d64541',name:'Pazopanib',dose:'800 mg/day',t:'Pazopanib 800 mg/day',s:'05–12.01.2023, stopped on day 8: PRES with haemorrhage. Not to be re-started.',r:3,lab:1},
+ {a:'2023-02-15',b:'2023-04-12',row:0,c:'#e08a2c',name:'Trabectedin',dose:'2 mg × 3',t:'Trabectedin (Yondelis) 2 mg, 20 % dose reduction',s:'3 cycles: ~15.02, 02.03, 23.03.2023. Progression on PET-CT 11.04.2023.',r:5,cyc:['2023-02-15','2023-03-02','2023-03-23']},
+ {a:'2023-05-03',b:TODAY,row:0,c:'#2e8b57',name:'Imatinib',dose:'400 mg/day',t:'Imatinib 400 mg/day',s:'Since 03.05.2023, continuing. Response 08/2023, stable to 05/2025, progression 06/2026.',r:7,inside:1},
+ {a:'2026-07-30',b:TODAY,row:1,c:'#d64541',name:'Sunitinib / regorafenib',dose:'prescribed, not started',t:'Sunitinib 50 mg 4/2 (30.07 and 08.09.2026); regorafenib 160 mg d1–21 as an option (08.09.2026)',s:'Prescribed, NOT started as of 13.09.2026.',r:16,dash:1}
+];
+var COL={base:'#4a78c2',prog:'#d64541',resp:'#2e9e5b',stable:'#9aa5b1',path:'#8e5cc4',ae:'#d64541',cons:'#e0a020'};
+var LANES=['Imaging','Pathology / genomics','Events / consultations'];
+var X0=150,X1=985, compressed=true;
+var T=function(s){return Date.parse(s+'T00:00:00Z');};
+var S0=T('2022-08-01'),S1=T('2023-07-01'),S2=T('2026-05-15'),S3=T('2026-09-30');
+function fx(d){var t=T(d),u;
+  if(!compressed) u=(t-S0)/(S3-S0);
+  else if(t<=S1) u=0.47*(t-S0)/(S1-S0);
+  else if(t<=S2) u=0.47+0.25*(t-S1)/(S2-S1);
+  else u=0.72+0.28*(t-S2)/(S3-S2);
+  return X0+u*(X1-X0);}
+var svg=document.getElementById('tlsvg'), tip=document.getElementById('tltip'), box=document.getElementById('tlchart');
+var NS='http://www.w3.org/2000/svg';
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+function txt(x,y,s,a,p){var e=el('text',Object.assign({x:x,y:y,'font-size':12,fill:'#34424f'},a||{}),p);e.textContent=s;return e;}
+function fmt(d){var p=d.split('-');return p[2]+'.'+p[1]+'.'+p[0];}
+function showTip(ev,title,date,body){
+  tip.innerHTML='<div class="d">'+date+'</div><b>'+title+'</b><br>'+body;
+  var br=box.getBoundingClientRect(),x=ev.clientX-br.left+14,y=ev.clientY-br.top+14;
+  tip.style.opacity=1; var w=tip.offsetWidth; if(x+w>br.width-6)x=Math.max(6,ev.clientX-br.left-w-14);
+  tip.style.left=x+'px';tip.style.top=y+'px';}
+function hideTip(){tip.style.opacity=0;}
+function jump(r){var row=document.getElementById('tl-'+r);if(!row)return;row.scrollIntoView({behavior:'smooth',block:'center'});row.classList.remove('flash');void row.offsetWidth;row.classList.add('flash');}
+function bind(g,title,date,body,r){
+  g.setAttribute('class','mk');g.setAttribute('tabindex','0');
+  g.addEventListener('mousemove',function(e){showTip(e,title,date,body);});
+  g.addEventListener('mouseleave',hideTip);
+  g.addEventListener('click',function(e){showTip(e,title,date,body);jump(r);});
+  g.addEventListener('keydown',function(e){if(e.key==='Enter')jump(r);});}
+function draw(){
+  while(svg.firstChild)svg.removeChild(svg.firstChild);
+  var laneY=[42,84,126], rxY=[206,236], axisY=270;
+  if(compressed){
+    var a=fx('2023-07-01'),b=fx('2026-05-15');
+    el('rect',{x:a,y:18,width:b-a,height:axisY-18,fill:'#f3f1ea'});
+    txt((a+b)/2,axisY+46,'time compressed (stable on imatinib)',{'text-anchor':'middle','font-size':11,fill:'#8a8577','font-style':'italic'});
+  }
+  // lanes
+  LANES.forEach(function(n,i){el('line',{x1:X0,x2:X1,y1:laneY[i],y2:laneY[i],stroke:'#e4e2dc'});txt(X0-10,laneY[i]+4,n,{'text-anchor':'end'});});
+  txt(8,172,'Anticancer drugs',{'font-weight':600,'font-size':12.5,fill:'#1d1d1f'});
+  el('line',{x1:8,x2:X1,y1:180,y2:180,stroke:'#d5d9df'});
+  txt(X0-10,rxY[0]+4,'given',{'text-anchor':'end'}); txt(X0-10,rxY[1]+4,'prescribed only',{'text-anchor':'end'});
+  // axis
+  el('line',{x1:X0,x2:X1,y1:axisY,y2:axisY,stroke:'#6b7785'});
+  var ticks=compressed?['2022-09-01','2022-11-01','2023-01-01','2023-03-01','2023-05-01','2024-01-01','2025-01-01','2026-06-01','2026-07-01','2026-08-01','2026-09-01']
+                      :['2022-09-01','2023-01-01','2023-07-01','2024-01-01','2024-07-01','2025-01-01','2025-07-01','2026-01-01','2026-07-01'];
+  var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  ticks.forEach(function(d){var x=fx(d),p=d.split('-');el('line',{x1:x,x2:x,y1:axisY,y2:axisY+5,stroke:'#6b7785'});el('line',{x1:x,x2:x,y1:18,y2:axisY,stroke:'#eef0f3'});
+    txt(x,axisY+18,(p[1]==='01'?p[0]:M[+p[1]-1]),{'text-anchor':'middle','font-size':11,'font-weight':p[1]==='01'?600:400});
+    if(p[1]!=='01'&&(d===ticks[0]||(compressed&&d==='2026-06-01')))txt(x,axisY+31,p[0],{'text-anchor':'middle','font-size':10.5,fill:'#6b7785'});});
+  // today
+  var xt=fx(TODAY); el('line',{x1:xt,x2:xt,y1:14,y2:axisY,stroke:'#14213d','stroke-dasharray':'3 3'}); txt(xt,11,'13.09.2026',{'text-anchor':'end','font-size':10.5,fill:'#14213d'});
+  // drugs
+  RX.forEach(function(q){
+    var xa=fx(q.a),xb=Math.max(fx(q.b),xa+4),y=rxY[q.row],g=el('g',{});
+    el('rect',{class:'shape',x:xa,y:y-9,width:xb-xa,height:18,rx:4,fill:q.dash?'#fff':q.c,'fill-opacity':q.dash?1:0.9,stroke:q.c,'stroke-width':q.dash?2:1,'stroke-dasharray':q.dash?'5 3':''},g);
+    (q.cyc||[]).forEach(function(c){el('line',{x1:fx(c),x2:fx(c),y1:y-9,y2:y+9,stroke:'#fff','stroke-width':2},g);});
+    var label=q.name+' · '+q.dose;
+    if(q.inside){txt(xa+10,y+4,label,{fill:'#fff','font-weight':600},g);}
+    else if(q.dash){txt(xa-6,y+4,label,{'text-anchor':'end',fill:q.c,'font-weight':600},g);}
+    else{txt(xa,q.lab?y+24:y-14,label,{fill:q.c,'font-weight':600,'font-size':11.5},g);}
+    bind(g,q.t,fmt(q.a)+' – '+(q.b===TODAY?'ongoing':fmt(q.b)),q.s,q.r);
+  });
+  // events with collision nudging per lane
+  var last=[-99,-99,-99],off=[0,0,0];
+  EV.forEach(function(e){
+    var x=fx(e.d),y=laneY[e.l];
+    if(x-last[e.l]<11){off[e.l]=off[e.l]?0:-13;}else off[e.l]=0;
+    last[e.l]=x; y+=off[e.l];
+    var g=el('g',{}),c=COL[e.k];
+    if(e.l===0) el('circle',{class:'shape',cx:x,cy:y,r:7,fill:c,stroke:'#fff','stroke-width':1.5},g);
+    else if(e.l===1) el('rect',{class:'shape',x:x-6,y:y-6,width:12,height:12,fill:c,stroke:'#fff','stroke-width':1.5,transform:'rotate(45 '+x+' '+y+')'},g);
+    else el('rect',{class:'shape',x:x-6.5,y:y-6.5,width:13,height:13,rx:3,fill:c,stroke:'#fff','stroke-width':1.5},g);
+    if(e.k==='ae') txt(x,y+4,'!',{'text-anchor':'middle',fill:'#fff','font-weight':700,'font-size':11,'pointer-events':'none'},g);
+    el('line',{x1:x,x2:x,y1:y+8,y2:laneY[e.l]+14,stroke:'transparent'},g);
+    bind(g,e.t,e.d.length?fmt(e.d):'',e.s,e.r);
+  });
+}
+document.getElementById('tlscale').addEventListener('click',function(){compressed=!compressed;this.textContent=compressed?'show true time scale':'compress stable period';hideTip();draw();});
+document.addEventListener('scroll',hideTip,{passive:true});
+draw();
+})();
+</script>
+
+<p class="meta">Where a study had several readings, the authoritative one is in bold and superseded readings are in grey.</p><div class="tablewrap"><table><tr><th>Period</th><th>Event / treatment</th><th>Key finding</th><th>Response</th><th>Sources</th></tr><tr id="tl-0"><td>Aug 2022</td><td>Presentation; liver-metastasis core biopsy 29.08.2022 (NCI); tumour board 31.08.2022</td><td>Read as <b>uterine leiomyosarcoma</b> T2NxM1 with liver and peritoneal metastases; no IHC (too little material). CT already listed GIST in the differential</td><td>Baseline</td><td><a href="reports/Biopsy_of_metastasis_in_the_liver_docx.html">biopsy</a><sup class="ref"><a href="documents.html#d3">[3]</a></sup> · <a href="reports/Tumour_board_31_08_2022_docx.html">tumour board</a><sup class="ref"><a href="documents.html#d4">[4]</a></sup> · <a href="reports/CT_23_08_docx.html">CT 23.08</a><sup class="ref"><a href="documents.html#d1">[1]</a></sup> · <a href="reports/MRI_25_08_docx.html">MRI 25.08</a><sup class="ref"><a href="documents.html#d2">[2]</a></sup></td></tr><tr id="tl-1"><td>Sep 2022 – Jan 2023</td><td>Gemcitabine + docetaxel + bevacizumab, 4 cycles (NCI Ukraine, then Innovacia)</td><td>Pelvic deposits gone, uterine mass stable; liver lesions enlarged (MRI 14.10.2022, CT 01.12.2022)</td><td><b>Progression in the liver</b></td><td><a href="reports/MRI_14_10_docx.html">MRI 14.10</a><sup class="ref"><a href="documents.html#d5">[5]</a></sup> · <a href="reports/CT_01_12_docx.html">CT 01.12</a><sup class="ref"><a href="documents.html#d7">[7]</a></sup> · <a href="docs/CT_04_01_2023_pdf.pdf">CT 04.01.2023</a><sup class="ref"><a href="documents.html#d13">[13]</a></sup></td></tr><tr id="tl-2"><td>Dec 2022</td><td>German second CT reading (RNI Neu-Isenburg); Oncomine Comprehensive Assay Plus on the Aug 2022 block; germline panel</td><td><b>KIT exon 11 Q556_V559&gt;H, VAF 42.5 %</b>; subclonal KIF5B-MET fusion; TMB low, MSS; germline BRCA1/2, CHEK2, PALB2 negative</td><td>Basis for a TKI</td><td><a href="docs/22OM011_pdf.pdf">Oncomine</a><sup class="ref"><a href="documents.html#d11">[11]</a></sup> · <a href="docs/22B104_pdf.pdf">germline panel</a><sup class="ref"><a href="documents.html#d12">[12]</a></sup> · <a href="reports/Genetic_commentary_docx.html">geneticist commentary</a><sup class="ref"><a href="documents.html#d18">[18]</a></sup> · <a href="reports/RNI_NeuIsenburg_CT_second_reading_Dec2022_EN_translation_docx.html">German reading</a><sup class="ref"><a href="documents.html#d10">[10]</a></sup></td></tr><tr id="tl-3"><td>05 – 12.01.2023</td><td>Pazopanib 800 mg/day</td><td>Stopped on day 8 for headache, confusion, loss of consciousness</td><td>Discontinued</td><td><span class="meta">—</span></td></tr><tr id="tl-4"><td>13 – 25.01.2023</td><td>Hospitalisation (Oberig); brain MRI 13.01 and 20.01.2023; pulse steroids; repeat liver biopsy 24.01.2023</td><td><b>PRES</b> with <b>left occipital haemorrhage</b> and multifocal vasoconstriction; BP 150–160 mm Hg; biopsy again read as leiomyosarcoma metastasis</td><td>Resolved; CT 09.02.2023 showed <b>12 % liver regression</b></td><td><a href="reports/MRI_brain_13_01_2023_docx.html">MRI 13.01</a><sup class="ref"><a href="documents.html#d15">[15]</a></sup> · <a href="reports/MRI_BRAIN_20_01_2023_docx.html">MRI 20.01</a><sup class="ref"><a href="documents.html#d19">[19]</a></sup> · <a href="reports/Discharge_summary_25_01_2023_docx.html">discharge summary</a><sup class="ref"><a href="documents.html#d22">[22]</a></sup> · <a href="reports/CT_scan_09_02_2023_docx.html">CT 09.02</a><sup class="ref"><a href="documents.html#d29">[29]</a></sup></td></tr><tr id="tl-5"><td>Feb – Mar 2023</td><td>Trabectedin 2 mg, 3 cycles (Innovacia); PET-CT 11.04.2023 with Israeli revision 19.04.2023</td><td><b>Israeli revision: liver and paragastric masses larger and metabolically active; activity mismatch raises a gastric GIST primary</b>. <span class="meta">Primary LISOD read: same findings, no diagnostic comment.</span></td><td><b>Progression</b>; diagnosis questioned</td><td><a href="reports/Radiological_study_Lisod_11_04_23_docx.html">PET-CT 11.04.2023</a><sup class="ref"><a href="documents.html#d37">[37]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_PET_CT_revision_19_04_2023_docx.html">Israeli revision 19.04.2023</a><sup class="ref"><a href="documents.html#d38">[38]</a></sup></td></tr><tr id="tl-6"><td>Apr 2023</td><td>EUS-FNA of the paragastric mass 21.04.2023; liver core biopsy 25.04.2023 (LISOD)</td><td>Pathology: <b>GIST of the stomach, DOG-1 and CD117 positive</b>, desmin negative; GIST metastasis in the liver</td><td><b>Diagnosis revised</b></td><td><a href="reports/Zherlitsyna_EUS_FNA_Lisod_21_04_2023_docx.html">EUS-FNA</a><sup class="ref"><a href="documents.html#d40">[40]</a></sup> · <a href="reports/Pathohistological_study_21_04_2023_docx.html">pathology</a><sup class="ref"><a href="documents.html#d41">[41]</a></sup></td></tr><tr id="tl-7"><td>03.05.2023</td><td><b>Imatinib 400 mg/day started</b> in hospital under supervision (PRES risk); 04.05.2023 re-assessment of the Aug 2022 slide</td><td>Aug 2022 block re-tested: CD117 and DOG-1 positive — the 2022 leiomyosarcoma reading is revised</td><td>Treatment started</td><td><a href="reports/CONCLUSION_oncology_conference_03_05_2023_docx.html">oncology conference 03.05.2023</a><sup class="ref"><a href="documents.html#d43">[43]</a></sup></td></tr><tr id="tl-8"><td>04.06.2023</td><td>Israeli pathology revision of all three 2023 samples (Prime Pathology / Manor); Dr. Tahover consultation 07.06.2023</td><td><b>GIST confirmed in all three samples</b>; DOG1, CD34, c-kit positive, SDH-B deficit flagged as unusual</td><td>Diagnosis settled</td><td><a href="reports/ZHERLITSYNA_ANASTASIIA_PATHOLOGY_REPORT_04_06_2023_docx.html">pathology revision</a><sup class="ref"><a href="documents.html#d49">[49]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_Dr_Tahover_report_07_06_2023_docx.html">Dr. Tahover</a><sup class="ref"><a href="documents.html#d51">[51]</a></sup></td></tr><tr id="tl-9"><td>17.08.2023</td><td>PET-CT</td><td>Liver lesions lost their active solid peripheral components; dominant mass 190 → 160 mm, gastric mass 58 → 44 mm, almost fluid</td><td><b>Marked metabolic response</b></td><td><a href="reports/Lisod_PET_CT_17_08_2023_docx.html">PET-CT 17.08.2023</a><sup class="ref"><a href="documents.html#d59">[59]</a></sup></td></tr><tr id="tl-10"><td>14.03.2024</td><td>PET-CT; Israeli revision 25.03.2024; Dr. Tahover 27.03.2024</td><td><b>Dominant mass 160 → 150 mm; no active components, no new lesions</b> (both readings agree)</td><td><b>Stable</b>; continue imatinib</td><td><a href="reports/Lisod_PET_CT_14_03_2024_docx.html">PET-CT</a><sup class="ref"><a href="documents.html#d60">[60]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_PET_CT_revision_25_03_2024_docx.html">Israeli revision</a><sup class="ref"><a href="documents.html#d61">[61]</a></sup> · <a href="reports/Zherlitsyna_Anastasia_Dr_Tahover_Report_27_03_2024_docx.html">Dr. Tahover</a><sup class="ref"><a href="documents.html#d62">[62]</a></sup></td></tr><tr id="tl-11"><td>13.05.2025</td><td>PET-CT (Feofaniya); LISOD re-read 19.05.2025; consultations 19.03 and 21.05.2025</td><td><b>LISOD re-read: cystic, inactive residues, dominant lesion 150 → 135 mm; new 11 mm mural nodule without focal FDG increase, follow-up advised</b>. <span class="meta">Primary read: "PET negative".</span></td><td><b>Stable</b>; continue imatinib</td><td><a href="docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf">PET-CT</a><sup class="ref"><a href="documents.html#d67">[67]</a></sup> · <a href="docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf">LISOD re-read</a><sup class="ref"><a href="documents.html#d68">[68]</a></sup> · <a href="docs/2025_2026_imaging_330040_19_03_2025_13_57_32_pdf.pdf">consultation 19.03</a><sup class="ref"><a href="documents.html#d66">[66]</a></sup></td></tr><tr id="tl-12"><td>19.06.2026 (read 19.06, 08.07, 08.09)</td><td>PET-CT (Feofaniya) with three readings: primary report 19.06; LISOD retrospective re-read 08.07.2026; Israeli expert reading 08.09.2026 (Dr. Kulikova)</td><td><b>Expert reading (authoritative): metabolic progression — left-lobe lesion 42 × 36 mm with increased uptake, right-lobe mass ~15 × 10 cm with increased peripheral uptake, gastric lesion unchanged, portal vein patent, no bone lesions.</b> LISOD re-read: new enhancing, FDG-active mural nodules (left-lobe SUVmax 3.2 vs liver 2.0); 31 mm femoral-head lucency (not confirmed by the expert reading). <span class="meta">Primary report: read as stable (144 × 104 × 141 mm, left-lobe 45 × 36 mm) — superseded.</span></td><td><b>Progression</b> on imatinib after 3 years</td><td><a href="reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html">expert reading 08.09</a><sup class="ref"><a href="documents.html#d77">[77]</a></sup> · <a href="reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html">LISOD re-read 08.07</a><sup class="ref"><a href="documents.html#d71">[71]</a></sup> · <a href="reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html">primary report 19.06</a><sup class="ref"><a href="documents.html#d70">[70]</a></sup></td></tr><tr id="tl-13"><td>30.07.2026</td><td>LISOD oncologist (Dr. Yermakov); baseline echocardiogram before sunitinib</td><td>Return of mural components on imatinib; echocardiogram normal, <b>EF 67 %</b></td><td><b>Sunitinib 50 mg 4/2 prescribed — not started</b></td><td><a href="reports/2026_new_Oncologist_conclusion_30July2026_EN_translation_docx.html">oncologist 30.07</a><sup class="ref"><a href="documents.html#d72">[72]</a></sup> · <a href="reports/2026_new_Heart_ultrasound_30July2026_EN_translation_docx.html">echocardiogram</a><sup class="ref"><a href="documents.html#d73">[73]</a></sup></td></tr><tr id="tl-14"><td>07.08.2026</td><td>Clinic TARGET oncologist (Dr. Kolachko)</td><td>Disease-history summary confirming progression; recommends PD-L1, MSI, NTRK, BRAF status</td><td>Second opinion</td><td><a href="reports/2026_new_Oncologist_conclusion_TARGET_clinic_07Aug2026_EN_translation_docx.html">conclusion</a><sup class="ref"><a href="documents.html#d74">[74]</a></sup></td></tr><tr id="tl-15"><td>20.08.2026</td><td>FoundationOne Liquid CDx (blood)</td><td>ctDNA fraction <b>32 %</b>; exon 11 Q556_V559&gt;H <b>17.0 %</b>, exon 13 <b>V654A 8.8 %</b>, exon 18 <b>A829P 4.0 %</b>; imatinib, sunitinib, avapritinib <b>resistant</b>; regorafenib NCCN 1</td><td><b>Polyclonal KIT resistance</b> explained</td><td><a href="docs/2026_new_FoundationOne_Liquid_CDx_20Aug2026_pdf.pdf">FoundationOne report</a><sup class="ref"><a href="documents.html#d75">[75]</a></sup></td></tr><tr id="tl-16"><td>08.09.2026</td><td>LISOD oncologist conclusion (Dr. Yermakov) after the FoundationOne result</td><td>Formulated diagnosis updated with the <b>KIT exon 11, 13 and 18 mutations</b>; recommendation: sunitinib 50 mg days 1–28 + 2 weeks off, and — new, on the basis of FoundationOne — <b>regorafenib 160 mg days 1–21 q28 as an option</b>; oncologist review with PET-CT or contrast CT after 3–4 cycles</td><td><b>Sunitinib re-confirmed, regorafenib added — neither started</b></td><td><a href="reports/2026_new_Oncologist_conclusion_LISOD_08_09_2026_EN_translation_docx.html">LISOD conclusion 08.09</a><sup class="ref"><a href="documents.html#d76">[76]</a></sup> · <a href="reports/2026_new_Oncologist_conclusion_LISOD_08_09_2026_EN_translation_docx.html">Ukrainian original</a><sup class="ref"><a href="documents.html#d76">[76]</a></sup></td></tr><tr id="tl-17"><td>10–11.09.2026</td><td>Interventional-radiology opinion, Dr. O. Korshak (Shalimov Centre of Surgery and Transplantology, Kyiv), messenger consultation; histotripsy discussed</td><td>RFA/MWA <b>contraindicated</b>: contact with the <b>left portal branch</b> and the <b>left bile duct</b>; TARE not done in Ukraine; histotripsy judged new, very expensive and unproven for GIST and for lesions of this size — ask HistoSonics</td><td>TACE / TARE / SBRT / IRE / resection / histotripsy <b>under discussion</b></td><td><a href="https://www.fusfoundation.org/posts/histotripsy-for-liver-tumors-earns-regulatory-approval-in-europe/" target="_blank">histotripsy EU approval</a></td></tr></table></div>
 <h2 id="imagingtime">Imaging over time (from the written reports)</h2>
 <p>Compiled from the radiology reports (as summarised in the OpenEvidence review of 05.09.2026, cross-checked against the reports). Findings are report text, not independent DICOM measurements; different readers, planes and lesion labels limit direct comparison.</p>
 <div class="card key"><b>The critical 2026 change is the return of enhancing, FDG-active tissue inside residual liver masses, not a large increase in their size.</b> The reports do not establish that the inactive 2025 mural nodule and every 2026 active nodule are the same focus.</div>
