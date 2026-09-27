@@ -26,7 +26,7 @@ button{background:#1d2b4f;color:#fff;border:1px solid #3a4a7a;border-radius:5px;
 <div style="margin-top:6px;color:#9aa;font-size:12px">Orientation: anterior view on load, patient left on the right of the screen. Drag to rotate, wheel to zoom, right-drag to pan.</div></div>
 <div id="legend"></div>
 <div id="tools"><button id="fit">fit</button><button id="fs">fullscreen</button></div>
-<div id="hint">Yellow = FDG-active tissue (SUV ≥ 3.24 = liver mean + 2 SD). Low-dose non-contrast CT: vessels and bile ducts are not visible on this study. Pelvic layers are off by default (layer list).</div>
+<div id="hint">Yellow = FDG-active tissue (SUV ≥ 3.24 = liver mean + 2 SD). Low-dose non-contrast CT: vessels and bile ducts are not visible on this study. Pelvic layers are off by default (layer list). Blue = portal vein and branches, orange dots = assumed course of the left bile duct, red sphere = lesion / left portal branch contact: taken from the 19.06.2026 contrast CT and registered onto this non-contrast study (fit about 2–5 mm near the lesion).</div>
 <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
 <script type="module">
 import * as THREE from 'three';
@@ -39,6 +39,8 @@ const LAYERS=[
  ['fdg_left','FDG-active tissue, left lobe (36 mL)',0xffd400,1.0,false,1],
  ['fdg_s8','FDG-active focus, segment S8 (4 mL)',0xffd400,1.0,false,1],
  ['fdg_other','FDG-active wall of the right-lobe mass (10 mL)',0xffd400,1.0,false,1],
+ ['portal_tree_jun','portal vein + branches (from the 19.06 contrast CT, registered)',0x3a8dff,1.0,false,1],
+ ['duct_jun','possible bile duct course (dotted, assumed)',0xffb070,1.0,false,1],
  ['gastric','gastric-wall lesion (36 mL)',0xff7f50,0.9,false,1],
  ['stomach','stomach (ghosted, automatic)',0x9fb4c8,0.12,true,1],
  ['esophagus','oesophagus (ghosted, automatic)',0x9fb4c8,0.25,true,0],
@@ -57,10 +59,10 @@ scene.add(new THREE.HemisphereLight(0xffffff,0x334455,0.9));
 const key=new THREE.DirectionalLight(0xffffff,1.1);key.position.set(200,400,300);scene.add(key);
 const fill=new THREE.DirectionalLight(0xffffff,0.5);fill.position.set(-300,-200,100);scene.add(fill);
 const C=new THREE.Vector3(...META.liver_center), CL=new THREE.Vector3(...META.center);
-const meshes={};const loader=new PLYLoader();const panel=document.getElementById('layers');
+const meshes={};const CTS=new THREE.Mesh(new THREE.SphereGeometry(3,24,24),new THREE.MeshStandardMaterial({color:0xff3030}));CTS.position.set(...[-31.38845897613067, 39.15571379569596, -267.5948933339106]);scene.add(CTS);const loader=new PLYLoader();const panel=document.getElementById('layers');
 let pending=LAYERS.length;
 for(const [k,label,col,op,trans,on] of LAYERS){
-  loader.load('assets/meshes_sep/'+k+'.ply?v=202609272205',g=>{
+  loader.load('assets/meshes_sep/'+k+'.ply?v=202609272302',g=>{
     g.computeVertexNormals();
     const m=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:col,transparent:trans,opacity:op,depthWrite:!trans,roughness:0.55,metalness:0.0,side:THREE.DoubleSide}));
     m.renderOrder=trans?(k==='liver'?3:2):1;meshes[k]=m;m.visible=!!on;scene.add(m);
