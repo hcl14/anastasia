@@ -40,7 +40,7 @@ const LAYERS=[
  ['focus','FDG-active tumour, left lobe',0xffd400,1.0,false],
  ['rim','FDG-active wall of the right-lobe mass',0xffd400,1.0,false],
  ['duct','possible bile duct course (dotted)',0xffb070,1.0,false]];
-const META={"contact": [-34.802734375, 164.037109375, -1200.0], "center": [-56.10021001286931, 171.94830090176413, -1199.6200262452826], "liver_center": [-2.525059341900544, 137.01161404958833, -1223.5101413061802]};
+const META={"contact": [-34.802734375, 164.037109375, -1200.0], "center": [-56.76598198021396, 172.3635624726689, -1201.990724208177], "liver_center": [-2.5212405966511753, 136.79869314400383, -1221.6111220483226]};
 document.getElementById('legend').innerHTML='<b>Colours</b><br>'+LAYERS.filter(l=>!/ghost/.test(l[1])).map(([k,label,col])=>`<span class="it"><span class="sw" style="background:#${col.toString(16).padStart(6,'0')}"></span>${label.replace(/ — .*$/,'').replace(/ \(.*$/,'')}</span>`).join(' ');
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});renderer.setPixelRatio(Math.min(2,devicePixelRatio));renderer.setClearColor(0x050508);
