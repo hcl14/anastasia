@@ -38,6 +38,7 @@ a.hosted{font-size:12px;color:#4a5a7a;margin-left:3px;white-space:nowrap}
 nav.toc li a{display:block;padding:3px 8px;border-left:3px solid transparent;border-radius:0 4px 4px 0;text-decoration:none}
 nav.toc li a:hover{background:#f2f5f9}
 nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600}
+#render-sep2026,#render-jun2026{scroll-margin-top:60px}
 </style>
 <script>
 (function(){
@@ -74,6 +75,7 @@ nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600
   function openFor(id){var el=id&&document.getElementById(id); if(!el) return; for(var n=el;n;n=n.parentElement){ if(n.tagName==='DETAILS') n.open=true; } el.scrollIntoView(); }
   document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('nav.toc a[href^="#"]'); if(a) setTimeout(function(){openFor(a.getAttribute('href').slice(1));},0);});
   window.addEventListener('hashchange',function(){openFor(location.hash.slice(1));});
+  window.addEventListener('load',function(){if(/^#render-/.test(location.hash)){var go=function(){openFor(location.hash.slice(1));};go();setTimeout(go,600);setTimeout(go,1800);}});
   if(location.hash) window.addEventListener('load',function(){openFor(location.hash.slice(1));});
 })();
 </script>
@@ -94,7 +96,9 @@ nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600
 <li><a href="#biopsies">Biopsies and pathology</a></li>
 <li><a href="#pres">PRES episode (Jan 2023)</a></li>
 <li><a href="#imaging-sep">Imaging analysis of the 23.09.2026 PET-CT</a></li>
+<li><a href="#render-sep2026">&nbsp;&nbsp;↳ 3D render, 23.09.2026</a></li>
 <li><a href="#imaging">Imaging analysis of the 19.06.2026 PET-CT</a></li>
+<li><a href="#render-jun2026">&nbsp;&nbsp;↳ 3D render, 19.06.2026</a></li>
 <li><a href="#otherlesions">Gastric-wall GIST and pelvic masses over time</a></li>
 <li><a href="#guidelines">Guideline basis for local treatment</a></li>
 <li><a href="#evidence">Evidence review (OpenEvidence)</a></li>
@@ -408,7 +412,7 @@ draw();
 <figure><img src="img/sep_pelvis_slices.png?v=87e652b2" alt="Pelvic slices"><figcaption>Figure S12. Pelvis: anterior uterine lesion (magenta), upper-margin node (cyan), uterus/pelvic complex (green). The right ovarian endometrioma cannot be separated on this non-contrast study. The panel-title SUVmax comes from bladder urine.</figcaption></figure></details>
 <details><summary>How exactly the 3D models match the slice segmentation (check)</summary><p>Every 3D model is built directly from the reviewed slice masks, without pre-smoothing. Slices are interpolated linearly in the craniocaudal direction, the surface is placed half-way between an in-mask and an out-of-mask voxel, and only light volume-preserving smoothing is applied. Each model was checked by converting it back into voxels and comparing it with its mask. Agreement (Dice, 1 = identical) is <b>0.98–0.998</b>, volumes agree within <b>0.5 %</b>, and 95 % of each surface lies within about <b>1 mm</b> of the voxel boundary (one voxel = 1.37 mm in-plane). The June 2026 models and the models in the gastric/uterine series were rebuilt the same way on 27.09.2026. An earlier smoothing step had displaced those surfaces by up to about 2 mm; the slice figures and all measurements were never affected.</p><figure><img src="img/sep_mesh_vs_slices.png?v=d594a4c7" loading="lazy" alt="mesh vs slices"><figcaption>Figure S13. Cyan = mask outline on the slice; red dashed = cross-section of the published 3D model at the same level (five levels per structure).</figcaption></figure></details>
 <details><summary>Portal vein and bile-duct course transferred from the June contrast CT (registration check)</summary><p>The 23.09.2026 CT was done without iodine contrast, so the portal vein and its branches cannot be traced on it. They were traced on the 19.06.2026 contrast CT and transferred onto this study. The June liver, right-lobe mass and left-lobe lesion surfaces were aligned to the September ones (affine fit, then a local rigid refinement around the lesion). After alignment the June lesion surface lies on average <b>2.4 mm</b> from the September lesion surface, and the liver surface within 60 mm of the lesion <b>5.3 mm</b> from it. The transferred vessels are therefore approximate to a few millimetres, and they show the June anatomy. The bile duct is not visible on either study: its course is assumed from the portal branch it accompanies.</p><figure><img src="img/sep_registration_check.png?v=7063d46e" loading="lazy" alt="registration check"><figcaption>Figure S14. Registration check on the 23.09.2026 CT: September lesion (cyan), September FDG-active tissue (yellow), June lesion transferred (magenta dashed), June portal vein transferred (blue).</figcaption></figure></details>
-<div class="card"><b>Interactive 3D model, 23.09.2026</b>: liver, right-lobe mass, left-lobe lesion, FDG-active tissue, the gastric lesion, and the portal vein and assumed duct course transferred from the June contrast CT. The pelvic layers are in the layer list, off by default. <a href="viewer_sep.html" target="_blank">Open full screen</a>.
+<div class="card" id="render-sep2026"><b>Interactive 3D model, 23.09.2026</b> <a href="#render-sep2026" title="Link to this render">#</a>: liver, right-lobe mass, left-lobe lesion, FDG-active tissue, the gastric lesion, and the portal vein and assumed duct course transferred from the June contrast CT. The pelvic layers are in the layer list, off by default. <a href="viewer_sep.html" target="_blank">Open full screen</a>.
 <div style="resize:vertical;overflow:hidden;height:560px;min-height:300px;border:1px solid #2a2f45;border-radius:8px;background:#050508"><iframe src="viewer_sep.html?v=202609272302" style="width:100%;height:100%;border:0;display:block" loading="lazy" title="3D liver scene 23.09.2026"></iframe></div></div>
 
 <h2 id="imaging">Imaging analysis of the 19.06.2026 PET-CT (10.09.2026)</h2><p class="meta">Materials on Google Drive: <a href="https://drive.google.com/drive/folders/1Gy7vVcr2O_GmigXhx4qQ0yQxkUSwZXNg" target="_blank">analysis folder</a> · <a href="assets/Zherlitsyna_Liver_Imaging_Report_2026-09-27.pdf" target="_blank">imaging report PDF (updated 27.09.2026)</a> · <a href="assets/Zherlitsyna_Liver_Imaging_Report_2026-09-10.pdf" target="_blank">previous version (10.09.2026)</a> · <a href="assets/v2_scene.glb" target="_blank">3D model GLB</a> · <a href="https://drive.google.com/drive/folders/1GLr6paw7LEI_fFs5x93oVRZjIjuNlBWb" target="_blank">DICOM disc of 19.06.2026</a></p>
@@ -432,7 +436,7 @@ draw();
 
 <h3>3D reconstruction</h3>
 <figure><img src="img/v2_zoom_oblique.png?v=d9a0d24d" alt="3D close-up"><figcaption>Figure 6. Close-up, left anterior oblique: the FDG-active part wraps the left portal branch.</figcaption></figure>
-<div class="card"><b>Interactive 3D model</b> — drag to rotate, wheel to zoom; layers can be switched off and the liver/mass opacity adjusted. <a href="viewer.html" target="_blank">Open full screen</a> · <a href="assets/v2_scene.glb">download GLB</a>.
+<div class="card" id="render-jun2026"><b>Interactive 3D model, 19.06.2026</b> <a href="#render-jun2026" title="Link to this render">#</a> — drag to rotate, wheel to zoom; layers can be switched off and the liver/mass opacity adjusted. <a href="viewer.html" target="_blank">Open full screen</a> · <a href="assets/v2_scene.glb">download GLB</a>.
 <div style="resize:vertical;overflow:hidden;height:560px;min-height:300px;border:1px solid #2a2f45;border-radius:8px;background:#050508"><iframe src="viewer.html?v=202609272302" style="width:100%;height:100%;border:0;display:block" loading="lazy" title="3D liver scene"></iframe></div><p class="meta">Drag the lower-right corner to resize the viewer, or use the fullscreen button inside it. The "☰ layers &amp; controls" button opens the layer list.</p></div>
 <details><summary>Slice-by-slice verification montages behind the 3D shapes</summary>
 <figure><img src="img/verify_lesion_all.png?v=04f68af6" alt="lesion every slice"><figcaption>Every 2 mm slice through the lesion.</figcaption></figure>
