@@ -1,0 +1,5516 @@
+{
+ "version": 1,
+ "dates": [
+  {
+   "key": "may2025",
+   "label": "May 2025",
+   "scan": "2025-05-13",
+   "ct": "portal-venous CT 0.82x0.82x2.00 mm, 512x512x487",
+   "spacing_mm": [
+    0.8184,
+    0.8184,
+    2.0
+   ],
+   "shape": [
+    512,
+    512,
+    487
+   ]
+  },
+  {
+   "key": "jun2026",
+   "label": "June 2026",
+   "scan": "2026-06-19",
+   "ct": "portal-venous CT 0.76x0.76x2.00 mm, 512x512x412",
+   "spacing_mm": [
+    0.7617,
+    0.7617,
+    2.0
+   ],
+   "shape": [
+    512,
+    512,
+    412
+   ]
+  },
+  {
+   "key": "sep2026",
+   "label": "Sep 2026",
+   "scan": "2026-09-23",
+   "ct": "non-contrast low-dose CT 1.37x1.37x3.27 mm, 512x512x263",
+   "spacing_mm": [
+    1.3672,
+    1.3672,
+    3.27
+   ],
+   "shape": [
+    512,
+    512,
+    263
+   ]
+  }
+ ],
+ "registration": {
+  "default": "skeleton",
+  "modes": {
+   "skeleton": {
+    "label": "Spine-anchored",
+    "note": "Rigid fit of the vertebrae T10-L4 (method A1) mapping each date into the Sep 2026 frame. The spine lines up (residual = mean spine landmark error); the liver does NOT: the patient breathed differently on each date (right liver dome 69 / 89 / 78 mm above T12 on May / June / Sep), so the liver is off by ~11 mm (May) and ~12 mm (June) in this mode.",
+    "matrix": {
+     "may2025": [
+      0.99663068,
+      0.04787292,
+      0.06659937,
+      75.18464867,
+      -0.04345806,
+      0.99685758,
+      -0.06622959,
+      -198.15997735,
+      -0.06956069,
+      0.06311216,
+      0.99557931,
+      909.44508836,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "jun2026": [
+      0.99857239,
+      -0.0251399,
+      0.04712924,
+      63.13859221,
+      0.02555833,
+      0.9996389,
+      -0.00829675,
+      -135.19201693,
+      -0.04690365,
+      0.00948945,
+      0.99885434,
+      937.0024794,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "sep2026": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "residual_mm": {
+     "may2025": 2.98,
+     "jun2026": 1.75
+    },
+    "residual_detail": {
+     "may2025": {
+      "method": "A1",
+      "spine_mean_mm": 2.98,
+      "thoracic_cage_mean_mm": 11.17,
+      "liver_mean_mm": 10.77,
+      "liver_independent_mean_mm": 11.21,
+      "all_mean_mm": 9.09
+     },
+     "jun2026": {
+      "method": "A1",
+      "spine_mean_mm": 1.75,
+      "thoracic_cage_mean_mm": 4.18,
+      "liver_mean_mm": 11.67,
+      "liver_independent_mean_mm": 9.36,
+      "all_mean_mm": 8.22
+     }
+    },
+    "residual_definition": "mean spine landmark TRE (mm)"
+   },
+   "liver": {
+    "label": "Liver-anchored",
+    "note": "Rigid fit anchored on the liver (method B1: liver dome + lesion centroids) mapping each date into the Sep 2026 frame. The liver lines up better (residual = mean liver landmark error, 4 landmarks, three of them lesion centroids confounded by growth); the spine is then off by ~16 mm (May) and ~9 mm (June). Use for lesion position comparison, never for volumes.",
+    "matrix": {
+     "may2025": [
+      0.99838682,
+      -0.04826754,
+      0.02989973,
+      43.43135146,
+      0.04646468,
+      0.99721658,
+      0.05831054,
+      -55.00378083,
+      -0.03263101,
+      -0.0568272,
+      0.99785063,
+      933.3764706,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "jun2026": [
+      0.99780468,
+      -0.05202947,
+      0.04097255,
+      59.2761017,
+      0.05318353,
+      0.9982033,
+      -0.02759859,
+      -159.58024534,
+      -0.03946299,
+      0.02971707,
+      0.99877904,
+      926.13831063,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "sep2026": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ]
+    },
+    "residual_mm": {
+     "may2025": 8.49,
+     "jun2026": 6.04
+    },
+    "residual_detail": {
+     "may2025": {
+      "method": "B1",
+      "spine_mean_mm": 16.5,
+      "thoracic_cage_mean_mm": 16.24,
+      "liver_mean_mm": 8.49,
+      "liver_independent_mean_mm": 9.27,
+      "all_mean_mm": 14.34
+     },
+     "jun2026": {
+      "method": "B1",
+      "spine_mean_mm": 9.4,
+      "thoracic_cage_mean_mm": 6.73,
+      "liver_mean_mm": 6.04,
+      "liver_independent_mean_mm": 3.79,
+      "all_mean_mm": 9.76
+     }
+    },
+    "residual_definition": "mean liver landmark TRE (mm)"
+   }
+  },
+  "source": "registration.json (recommended: anatomical=A1, liver=B1); matrices map each date's RAS mm into the sep2026 RAS mm frame, row-major 4x4",
+  "caveats": [
+   "Respiratory state differs between the dates (relative to T12: right liver dome +69 mm May, +89 mm June, +78 mm Sep; spleen tip and left kidney follow the same pattern). No single rigid/affine transform aligns both skeleton and liver: skeleton-anchored transforms leave ~10-12 mm liver error, liver-anchored ones leave ~8-11 mm spine error.",
+   "Liver-anchored accuracy evidence is thin: 4 liver landmarks per pair (dome z-only, S8 dome-lesion centroid, left-lesion centroid, dominant-mass centroid). Three are lesion centroids and therefore confounded by growth; on Sep (non-contrast, 3.27 mm slices) the S8 lesion boundary is faint and its centroid is uncertain by ~5 mm.",
+   "C, C_affine_only and Cr were fitted on the dominant-mass and left-lesion surfaces, so their rmass_center/llesion_center TRE is not independent (listed as circular).",
+   "Affine variants change size: B2 (may) singular values 1.067/1.008/0.954 (det 1.026), C/C_affine_only (jun) det 0.926. Do not use affine-mapped meshes for volume/growth numbers; measure volumes natively per date.",
+   "The skeleton landmarks (endplates, spinous tip) lie on the vertebrae whose TS-seed surfaces A1-A3 were fitted to; they are placed from CT intensity/visual checks, not from the seeds, but they are not fully independent of A.",
+   "Landmark localisation uncertainty: ~1-2 mm (endplates, contrast studies), ~2-3 mm in z on Sep (3.27 mm step, 3.75 mm thick slices), ~3-5 mm for organ poles/tips and lesion centroids.",
+   "jun2026 PET (suv_on_ct.nii.gz) is ~2 cm off its own venous CT in the liver (see studies/jun2026/meta.json); these matrices map the CT frame. Use suv_on_ct_liverreg for June liver SUV before applying them."
+  ]
+ },
+ "layers": [
+  {
+   "id": "liver",
+   "name": "Liver",
+   "group": "Organ",
+   "color": "#c9a99a",
+   "opacity": 0.25,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/liver.ply",
+     "volume_mL": 2627.59,
+     "verify": {
+      "dice": 0.9979,
+      "p95_mm": 0.42,
+      "mean_mm": 0.17,
+      "max_mm": 0.93,
+      "mesh_mL": 2635.99,
+      "slice_dice_min_ge20vox": 0.954,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 399998,
+      "max_faces": 400000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/liver.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/liver.ply",
+     "volume_mL": 2837.48,
+     "verify": {
+      "dice": 0.9977,
+      "p95_mm": 0.42,
+      "mean_mm": 0.18,
+      "max_mm": 0.91,
+      "mesh_mL": 2846.92,
+      "slice_dice_min_ge20vox": 0.978,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 399998,
+      "max_faces": 400000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/liver.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/liver.ply",
+     "volume_mL": 2743.95,
+     "verify": {
+      "dice": 0.9984,
+      "p95_mm": 0.58,
+      "mean_mm": 0.23,
+      "max_mm": 1.44,
+      "mesh_mL": 2749.99,
+      "slice_dice_min_ge20vox": 0.993,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 229722,
+      "max_faces": 400000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/liver.npy"
+      ],
+      "reviewed": true
+     }
+    }
+   }
+  },
+  {
+   "id": "gallbladder",
+   "name": "Gallbladder",
+   "group": "Organ",
+   "color": "#7fae4e",
+   "opacity": 0.6,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/gallbladder.ply",
+     "volume_mL": 7.96,
+     "verify": {
+      "dice": 0.9971,
+      "p95_mm": 0.32,
+      "mean_mm": 0.13,
+      "max_mm": 0.64,
+      "mesh_mL": 7.97,
+      "slice_dice_min_ge20vox": 0.971,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 13196,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/gallbladder.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/gallbladder.ply",
+     "volume_mL": 3.0,
+     "verify": {
+      "dice": 0.9873,
+      "p95_mm": 0.31,
+      "mean_mm": 0.11,
+      "max_mm": 0.6,
+      "mesh_mL": 3.01,
+      "slice_dice_min_ge20vox": 0.977,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 16488,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/gallbladder.npy"
+      ],
+      "reviewed": true
+     }
+    }
+   },
+   "not_visible": {
+    "sep2026": "NOT VISIBLE: sep2026 consensus r1 (2026-10-08T22:02:24): I17: not identified by either team nor by the chief (no fluid-density oval under the liver: collapsed or not visible) - unverified exclusion."
+   }
+  },
+  {
+   "id": "active",
+   "name": "FDG-active tissue",
+   "group": "Internal structure",
+   "color": "#ff3d00",
+   "opacity": 0.85,
+   "default_visible": true,
+   "per_date": {
+    "jun2026": {
+     "mesh": "meshes/jun2026/active.ply",
+     "volume_mL": 29.59,
+     "verify": {
+      "dice": 0.9913,
+      "p95_mm": 0.36,
+      "mean_mm": 0.15,
+      "max_mm": 0.86,
+      "mesh_mL": 29.56,
+      "slice_dice_min_ge20vox": 0.951,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 45820,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/active.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "threshold-supported (SUV >= 2.12); 5.47 mL of it is PET-defined only (outside the CT lesions)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/active.ply",
+     "volume_mL": 111.45,
+     "verify": {
+      "dice": 0.9904,
+      "p95_mm": 0.56,
+      "mean_mm": 0.22,
+      "max_mm": 1.38,
+      "mesh_mL": 111.27,
+      "slice_dice_min_ge20vox": 0.943,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 58522,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/active.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "SUV >= 2.54 (background + 2 SD); 18.5 mL of it is PET-defined only (outside the CT lesions)"
+    }
+   },
+   "not_visible": {
+    "may2025": "EMPTY mask (consensus: consensus/may2025/masks/active.npy)"
+   }
+  },
+  {
+   "id": "active_pet_only",
+   "name": "FDG-active tissue outside the CT lesions (PET-defined only)",
+   "group": "Internal structure",
+   "color": "#ffc046",
+   "opacity": 0.7,
+   "default_visible": true,
+   "per_date": {
+    "jun2026": {
+     "mesh": "meshes/jun2026/active_pet_only.ply",
+     "volume_mL": 5.47,
+     "verify": {
+      "dice": 0.9896,
+      "p95_mm": 0.33,
+      "mean_mm": 0.13,
+      "max_mm": 0.81,
+      "mesh_mL": 5.44,
+      "slice_dice_min_ge20vox": 0.875,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 20572,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/jun2026/masks/active.npy"
+      ],
+      "reviewed": true,
+      "limitation": "display layer = active minus rmass, llesion and lesions_other (no mask file); the PET defines its extent, the CT shows no boundary"
+     },
+     "confidence": "PET-defined only (no CT boundary; PET-CT frame +-4 mm)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/active_pet_only.ply",
+     "volume_mL": 18.53,
+     "verify": {
+      "dice": 0.9894,
+      "p95_mm": 0.5,
+      "mean_mm": 0.19,
+      "max_mm": 1.0,
+      "mesh_mL": 18.31,
+      "slice_dice_min_ge20vox": 0.906,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 22832,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/active.npy"
+      ],
+      "reviewed": true,
+      "limitation": "display layer = active minus rmass, llesion and lesions_other (no mask file); the PET defines its extent, the CT shows no boundary"
+     },
+     "confidence": "PET-defined only (isodense on CT, no CT boundary)"
+    }
+   },
+   "not_visible": {
+    "may2025": "no FDG-active tissue on this date (active mask empty or absent)"
+   }
+  },
+  {
+   "id": "cores",
+   "name": "Necrotic / cystic cores",
+   "group": "Internal structure",
+   "color": "#f5d76e",
+   "opacity": 0.55,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": null,
+     "volume_mL": 1202.67,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/cores.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "jun2026": {
+     "mesh": null,
+     "volume_mL": 1137.72,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/cores.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "sep2026": {
+     "mesh": null,
+     "volume_mL": 1110.95,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/cores.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    }
+   }
+  },
+  {
+   "id": "walls",
+   "name": "Enhancing walls / solid tissue",
+   "group": "Internal structure",
+   "color": "#a1887f",
+   "opacity": 0.5,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": null,
+     "volume_mL": 93.83,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/walls.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "jun2026": {
+     "mesh": null,
+     "volume_mL": 226.47,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/walls.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "sep2026": {
+     "mesh": null,
+     "volume_mL": 226.41,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/walls.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    }
+   }
+  },
+  {
+   "id": "nodules",
+   "name": "Mural nodules",
+   "group": "Internal structure",
+   "color": "#d500f9",
+   "opacity": 0.95,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": null,
+     "volume_mL": 1.46,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/nodules.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "sep2026": {
+     "mesh": null,
+     "volume_mL": 3.59,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/nodules.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion",
+     "confidence": "PET-defined only (iso-50 % SUV contour, non-contrast CT; 0.32 mL lies inside rmass, C06)"
+    }
+   },
+   "not_visible": {
+    "jun2026": "NOT VISIBLE: jun2026 consensus r1 (E06, decision B): no discrete enhancing mural nodule >= 5 mm on the venous phase. Nodules NOTVISIBLE (B) with the explicit statement: A's N1 (1.2 mL wedge at the dome lesion's anterior-inferior corner) measures 86 / 57 / 54 HU on venous / arterial / non-contrast vs parenchyma 88 / 54 / 53 (R9) - identical to liver in all three phases, enhances like liver, cold on PET (1.5): trapped/compressed ..."
+   }
+  },
+  {
+   "id": "calcifications",
+   "name": "Calcifications / hyperdense foci",
+   "group": "Internal structure",
+   "color": "#ffffff",
+   "opacity": 1.0,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": null,
+     "volume_mL": 0.47,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/calcifications.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "jun2026": {
+     "mesh": null,
+     "volume_mL": 0.18,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/calcifications.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    },
+    "sep2026": {
+     "mesh": null,
+     "volume_mL": 0.37,
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/calcifications.npy"
+      ],
+      "reviewed": true
+     },
+     "shown_as": "per-lesion part meshes (lesions[].parts); every voxel lies inside a lesion"
+    }
+   }
+  },
+  {
+   "id": "portal",
+   "name": "Portal vein",
+   "group": "Vessels",
+   "color": "#3f6fd8",
+   "opacity": 0.9,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/portal.ply",
+     "volume_mL": 18.26,
+     "verify": {
+      "dice": 0.998,
+      "p95_mm": 0.33,
+      "mean_mm": 0.13,
+      "max_mm": 0.74,
+      "mesh_mL": 18.27,
+      "slice_dice_min_ge20vox": 0.994,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 30300,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/portal.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/portal.ply",
+     "volume_mL": 36.28,
+     "verify": {
+      "dice": 0.9838,
+      "p95_mm": 0.34,
+      "mean_mm": 0.13,
+      "max_mm": 0.89,
+      "mesh_mL": 36.24,
+      "slice_dice_min_ge20vox": 0.933,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 112634,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/portal.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/portal.ply",
+     "volume_mL": 12.38,
+     "verify": {
+      "dice": 0.9938,
+      "p95_mm": 0.55,
+      "mean_mm": 0.22,
+      "max_mm": 1.18,
+      "mesh_mL": 12.36,
+      "slice_dice_min_ge20vox": 0.975,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 7476,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/portal_registered.npy"
+      ],
+      "reviewed": true,
+      "flag": "REGISTERED from another date, not observed on this study (consensus)",
+      "registered": true,
+      "notvisible_native": "sep2026 consensus r1 (2026-10-08T22:02:24): I17: not visible on the non-contrast sep2026 CT (both teams); the portal vein is provided by registration later. B's portal_registered.npy is copied as a REGISTRATION PRODUCT, not a Sep observation."
+     },
+     "note": "registered from another date (supplementary), not observed on this study",
+     "confidence": "registered from another date; not observed on this CT"
+    }
+   }
+  },
+  {
+   "id": "hepatic_veins",
+   "name": "Hepatic veins",
+   "group": "Vessels",
+   "color": "#26c6da",
+   "opacity": 0.9,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/hepatic_veins.ply",
+     "volume_mL": 24.79,
+     "verify": {
+      "dice": 0.9954,
+      "p95_mm": 0.34,
+      "mean_mm": 0.13,
+      "max_mm": 0.89,
+      "mesh_mL": 24.83,
+      "slice_dice_min_ge20vox": 0.982,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 50608,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/hepatic_veins.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "incomplete: lower MHV/RHV branches not traced (May challenge r2-C01)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/hepatic_veins.ply",
+     "volume_mL": 22.67,
+     "verify": {
+      "dice": 0.9909,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.87,
+      "mesh_mL": 22.73,
+      "slice_dice_min_ge20vox": 0.954,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 67526,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/hepatic_veins.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "low confidence (veins not opacified in this phase). Left hepatic vein vs left lesion: touches; encirclement not established"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/hepatic_veins.ply",
+     "volume_mL": 22.16,
+     "verify": {
+      "dice": 0.9882,
+      "p95_mm": 0.56,
+      "mean_mm": 0.22,
+      "max_mm": 1.46,
+      "mesh_mL": 22.25,
+      "slice_dice_min_ge20vox": 0.97,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 17874,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/hepatic_veins.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "low confidence (non-contrast CT; proximal channels only; 1.67 mL lies outside liver and IVC, C03)"
+    }
+   }
+  },
+  {
+   "id": "ivc",
+   "name": "Inferior vena cava",
+   "group": "Vessels",
+   "color": "#1f3f99",
+   "opacity": 0.8,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/ivc.ply",
+     "volume_mL": 70.58,
+     "verify": {
+      "dice": 0.9944,
+      "p95_mm": 0.31,
+      "mean_mm": 0.13,
+      "max_mm": 0.77,
+      "mesh_mL": 70.64,
+      "slice_dice_min_ge20vox": 0.983,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 73868,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/ivc.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/ivc.ply",
+     "volume_mL": 35.31,
+     "verify": {
+      "dice": 0.9956,
+      "p95_mm": 0.29,
+      "mean_mm": 0.12,
+      "max_mm": 0.85,
+      "mesh_mL": 35.31,
+      "slice_dice_min_ge20vox": 0.983,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 46480,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/ivc.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "width not visible at z200-218 (7.7 mL there)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/ivc.ply",
+     "volume_mL": 68.21,
+     "verify": {
+      "dice": 0.9972,
+      "p95_mm": 0.47,
+      "mean_mm": 0.18,
+      "max_mm": 1.18,
+      "mesh_mL": 68.24,
+      "slice_dice_min_ge20vox": 0.979,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 27998,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/ivc.npy"
+      ],
+      "reviewed": true
+     }
+    }
+   }
+  },
+  {
+   "id": "hepatic_artery",
+   "name": "Hepatic artery",
+   "group": "Vessels",
+   "color": "#e53935",
+   "opacity": 0.95,
+   "default_visible": true,
+   "per_date": {},
+   "not_visible": {
+    "may2025": "NOT VISIBLE: hepatic_artery not attempted on may2025: no arterial phase on the disc (hepatic artery not separable); no dilated bile ducts seen; see report.md Consensus r1 (I17): A's NOTVISIBLE text accepted by the chief. Hepatic artery/GDA candidates (238,327,236) and (203,280,237), >=150 HU, not separable from enhanced mucosa/veins on this portal-venous phase; segment on the June arterial series. Consensus r2 (I19): NOTVISIBLE ...",
+    "jun2026": "NOT AVAILABLE: no consensus/jun2026/masks/hepatic_artery.npy",
+    "sep2026": "NOT VISIBLE: sep2026 consensus r1 (2026-10-08T22:02:24): I17: not visible (non-contrast, no arterial phase)."
+   }
+  },
+  {
+   "id": "bile_ducts",
+   "name": "Bile ducts",
+   "group": "Vessels",
+   "color": "#c0ca33",
+   "opacity": 0.9,
+   "default_visible": true,
+   "per_date": {},
+   "not_visible": {
+    "may2025": "NOT VISIBLE: bile_ducts not attempted on may2025: no arterial phase on the disc (hepatic artery not separable); no dilated bile ducts seen; see report.md Consensus r1 (I17): A's NOTVISIBLE text accepted by the chief. No dilated ducts; no duct visible near L1. Consensus r2 (I19): NOTVISIBLE accepted unchanged. Late-venous phase (aorta 111 HU < portal 128 < hepatic veins 144-147 HU): no dilated ducts near L1.",
+    "jun2026": "NOT AVAILABLE: no consensus/jun2026/masks/bile_ducts.npy",
+    "sep2026": "NOT VISIBLE: sep2026 consensus r1 (2026-10-08T22:02:24): I17: not visible on the non-contrast CT (both teams)."
+   }
+  },
+  {
+   "id": "contact_left_portal",
+   "name": "Left lesion / left portal contact patch",
+   "group": "Vessels",
+   "color": "#ffd600",
+   "opacity": 1.0,
+   "default_visible": true,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/contact_left_portal.ply",
+     "volume_mL": 0.34,
+     "verify": {
+      "dice": 1.0,
+      "p95_mm": 0.21,
+      "mean_mm": 0.08,
+      "max_mm": 0.42,
+      "mesh_mL": 0.34,
+      "slice_dice_min_ge20vox": 1.0,
+      "passed": true,
+      "taubin_iter": 10,
+      "faces": 3308,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/contact_left_portal.npy"
+      ],
+      "reviewed": true
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/contact_left_portal.ply",
+     "volume_mL": 0.25,
+     "verify": {
+      "dice": 1.0,
+      "p95_mm": 0.24,
+      "mean_mm": 0.09,
+      "max_mm": 0.35,
+      "mesh_mL": 0.25,
+      "slice_dice_min_ge20vox": 1.0,
+      "passed": true,
+      "taubin_iter": 10,
+      "faces": 4664,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/contact_left_portal.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "contact patch <= 1 mm; portal vein patent, no encasement"
+    }
+   },
+   "not_visible": {
+    "sep2026": "NOT VISIBLE: sep2026 consensus r1 (2026-10-08T22:02:24): I06/I17: left-lesion contact with the left portal branch cannot be judged on the non-contrast CT; check on the June contrast study."
+   }
+  },
+  {
+   "id": "seg1",
+   "name": "Segment I",
+   "group": "Couinaud segments",
+   "color": "#8dd3c7",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg1.ply",
+     "volume_mL": 83.98,
+     "verify": {
+      "dice": 0.9969,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.76,
+      "mesh_mL": 84.12,
+      "slice_dice_min_ge20vox": 0.983,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 83442,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg1.ply",
+     "volume_mL": 90.41,
+     "verify": {
+      "dice": 0.9956,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.79,
+      "mesh_mL": 90.57,
+      "slice_dice_min_ge20vox": 0.857,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 93060,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg1.ply",
+     "volume_mL": 35.86,
+     "verify": {
+      "dice": 0.9869,
+      "p95_mm": 0.54,
+      "mean_mm": 0.22,
+      "max_mm": 1.4,
+      "mesh_mL": 35.79,
+      "slice_dice_min_ge20vox": 0.964,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 25548,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg2",
+   "name": "Segment II",
+   "group": "Couinaud segments",
+   "color": "#ffffb3",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg2.ply",
+     "volume_mL": 177.15,
+     "verify": {
+      "dice": 0.9975,
+      "p95_mm": 0.41,
+      "mean_mm": 0.16,
+      "max_mm": 0.84,
+      "mesh_mL": 177.47,
+      "slice_dice_min_ge20vox": 0.95,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 115054,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg2.ply",
+     "volume_mL": 378.95,
+     "verify": {
+      "dice": 0.9981,
+      "p95_mm": 0.37,
+      "mean_mm": 0.14,
+      "max_mm": 0.8,
+      "mesh_mL": 379.79,
+      "slice_dice_min_ge20vox": 0.963,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg2.ply",
+     "volume_mL": 410.65,
+     "verify": {
+      "dice": 0.9975,
+      "p95_mm": 0.59,
+      "mean_mm": 0.23,
+      "max_mm": 1.3,
+      "mesh_mL": 411.35,
+      "slice_dice_min_ge20vox": 0.966,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 70074,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg3",
+   "name": "Segment III",
+   "group": "Couinaud segments",
+   "color": "#bebada",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg3.ply",
+     "volume_mL": 290.64,
+     "verify": {
+      "dice": 0.9989,
+      "p95_mm": 0.39,
+      "mean_mm": 0.16,
+      "max_mm": 0.91,
+      "mesh_mL": 291.1,
+      "slice_dice_min_ge20vox": 0.962,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg3.ply",
+     "volume_mL": 182.8,
+     "verify": {
+      "dice": 0.998,
+      "p95_mm": 0.34,
+      "mean_mm": 0.13,
+      "max_mm": 0.79,
+      "mesh_mL": 183.06,
+      "slice_dice_min_ge20vox": 0.931,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg3.ply",
+     "volume_mL": 210.23,
+     "verify": {
+      "dice": 0.9961,
+      "p95_mm": 0.6,
+      "mean_mm": 0.24,
+      "max_mm": 1.3,
+      "mesh_mL": 210.57,
+      "slice_dice_min_ge20vox": 0.93,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 46972,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg4",
+   "name": "Segment IV",
+   "group": "Couinaud segments",
+   "color": "#fb8072",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg4.ply",
+     "volume_mL": 268.58,
+     "verify": {
+      "dice": 0.9988,
+      "p95_mm": 0.3,
+      "mean_mm": 0.12,
+      "max_mm": 0.76,
+      "mesh_mL": 268.97,
+      "slice_dice_min_ge20vox": 0.944,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 119998,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg4.ply",
+     "volume_mL": 252.98,
+     "verify": {
+      "dice": 0.9984,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.88,
+      "mesh_mL": 253.39,
+      "slice_dice_min_ge20vox": 0.954,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg4.ply",
+     "volume_mL": 135.84,
+     "verify": {
+      "dice": 0.9956,
+      "p95_mm": 0.52,
+      "mean_mm": 0.2,
+      "max_mm": 1.19,
+      "mesh_mL": 136.0,
+      "slice_dice_min_ge20vox": 0.99,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 40536,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg5",
+   "name": "Segment V",
+   "group": "Couinaud segments",
+   "color": "#80b1d3",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg5.ply",
+     "volume_mL": 504.8,
+     "verify": {
+      "dice": 0.9981,
+      "p95_mm": 0.35,
+      "mean_mm": 0.14,
+      "max_mm": 0.87,
+      "mesh_mL": 505.99,
+      "slice_dice_min_ge20vox": 0.946,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg5.ply",
+     "volume_mL": 515.43,
+     "verify": {
+      "dice": 0.9979,
+      "p95_mm": 0.35,
+      "mean_mm": 0.14,
+      "max_mm": 0.91,
+      "mesh_mL": 516.62,
+      "slice_dice_min_ge20vox": 0.949,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg5.ply",
+     "volume_mL": 425.16,
+     "verify": {
+      "dice": 0.997,
+      "p95_mm": 0.54,
+      "mean_mm": 0.21,
+      "max_mm": 1.29,
+      "mesh_mL": 425.76,
+      "slice_dice_min_ge20vox": 0.962,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 79100,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg6",
+   "name": "Segment VI",
+   "group": "Couinaud segments",
+   "color": "#fdb462",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg6.ply",
+     "volume_mL": 493.49,
+     "verify": {
+      "dice": 0.9981,
+      "p95_mm": 0.37,
+      "mean_mm": 0.14,
+      "max_mm": 0.91,
+      "mesh_mL": 494.61,
+      "slice_dice_min_ge20vox": 0.968,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg6.ply",
+     "volume_mL": 620.74,
+     "verify": {
+      "dice": 0.9978,
+      "p95_mm": 0.38,
+      "mean_mm": 0.15,
+      "max_mm": 0.85,
+      "mesh_mL": 622.36,
+      "slice_dice_min_ge20vox": 0.851,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg6.ply",
+     "volume_mL": 378.55,
+     "verify": {
+      "dice": 0.9976,
+      "p95_mm": 0.58,
+      "mean_mm": 0.22,
+      "max_mm": 1.32,
+      "mesh_mL": 379.02,
+      "slice_dice_min_ge20vox": 0.923,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 67024,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg7",
+   "name": "Segment VII",
+   "group": "Couinaud segments",
+   "color": "#b3de69",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg7.ply",
+     "volume_mL": 412.77,
+     "verify": {
+      "dice": 0.9985,
+      "p95_mm": 0.36,
+      "mean_mm": 0.14,
+      "max_mm": 0.85,
+      "mesh_mL": 413.54,
+      "slice_dice_min_ge20vox": 0.894,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg7.ply",
+     "volume_mL": 477.99,
+     "verify": {
+      "dice": 0.9977,
+      "p95_mm": 0.37,
+      "mean_mm": 0.14,
+      "max_mm": 0.83,
+      "mesh_mL": 479.18,
+      "slice_dice_min_ge20vox": 0.93,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg7.ply",
+     "volume_mL": 831.71,
+     "verify": {
+      "dice": 0.9985,
+      "p95_mm": 0.55,
+      "mean_mm": 0.22,
+      "max_mm": 1.4,
+      "mesh_mL": 832.97,
+      "slice_dice_min_ge20vox": 0.955,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 98968,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "seg8",
+   "name": "Segment VIII",
+   "group": "Couinaud segments",
+   "color": "#fccde5",
+   "opacity": 0.35,
+   "default_visible": false,
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/seg8.ply",
+     "volume_mL": 396.18,
+     "verify": {
+      "dice": 0.9986,
+      "p95_mm": 0.35,
+      "mean_mm": 0.13,
+      "max_mm": 0.91,
+      "mesh_mL": 396.88,
+      "slice_dice_min_ge20vox": 0.97,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)"
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/seg8.ply",
+     "volume_mL": 318.19,
+     "verify": {
+      "dice": 0.9975,
+      "p95_mm": 0.36,
+      "mean_mm": 0.14,
+      "max_mm": 0.76,
+      "mesh_mL": 318.89,
+      "slice_dice_min_ge20vox": 0.875,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 120000,
+      "max_faces": 120000,
+      "decimated": true
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/seg8.ply",
+     "volume_mL": 315.94,
+     "verify": {
+      "dice": 0.9968,
+      "p95_mm": 0.54,
+      "mean_mm": 0.21,
+      "max_mm": 1.26,
+      "mesh_mL": 316.38,
+      "slice_dice_min_ge20vox": 0.94,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 66998,
+      "max_faces": 120000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true
+     },
+     "confidence": "inferred (automatic; not vessel-guided)"
+    }
+   }
+  },
+  {
+   "id": "uncertain",
+   "name": "Uncertain band (arbitration)",
+   "group": "Uncertainty",
+   "color": "#ff00ff",
+   "opacity": 0.3,
+   "default_visible": false,
+   "per_date": {},
+   "not_visible": {
+    "may2025": "NOT AVAILABLE: no consensus/may2025/masks/uncertain.npy",
+    "jun2026": "NOT AVAILABLE: no consensus/jun2026/masks/uncertain.npy",
+    "sep2026": "NOT AVAILABLE: no consensus/sep2026/masks/uncertain.npy"
+   }
+  },
+  {
+   "id": "active_inferred",
+   "name": "FDG activity, inferred only (moved out of active)",
+   "group": "Uncertainty",
+   "color": "#ffab91",
+   "opacity": 0.8,
+   "default_visible": false,
+   "per_date": {
+    "jun2026": {
+     "mesh": "meshes/jun2026/active_inferred.ply",
+     "volume_mL": 1.0,
+     "verify": {
+      "dice": 0.9872,
+      "p95_mm": 0.32,
+      "mean_mm": 0.13,
+      "max_mm": 0.62,
+      "mesh_mL": 1.0,
+      "slice_dice_min_ge20vox": 0.967,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 5168,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus-uncertain (post-fix)",
+      "files": [
+       "consensus/jun2026/uncertain/active_P3_inferred.npy"
+      ],
+      "reviewed": true,
+      "limitation": "jun2026 challenge C02: P3 right-mass medial-superior wall patch (1.00 mL) placed by an 8 mm snap rule, 0.93 mL below SUV 2.12; moved out of active into uncertain/ (original kept in consensus/jun2026/masks_pre_postfix/)"
+     },
+     "confidence": "inferred (8 mm snap rule; not threshold-supported, C02)"
+    }
+   },
+   "not_visible": {
+    "may2025": "none on this date",
+    "sep2026": "none on this date"
+   }
+  }
+ ],
+ "lesions": [
+  {
+   "id": "R1",
+   "name": "Dominant right-lobe mass",
+   "segment": "V-VIII",
+   "color": "#4caf50",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_R1.ply",
+     "volume_mL": 1205.45,
+     "long_axis_mm": 145.0,
+     "perp_axis_mm": 119.8,
+     "cc_extent_mm": 140.0,
+     "centroid_ras": [
+      64.93,
+      148.92,
+      -1233.83
+     ],
+     "mean_hu": 21.4,
+     "suv_max": 2.67,
+     "suv_mean": 0.79,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 3.02,
+     "core_mL": 1122.22,
+     "wall_mL": 83.24,
+     "nodules_mL": 1.46,
+     "calcifications_mL": 0.47,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       145.0,
+       119.8,
+       140.0
+      ],
+      "center_ras": [
+       65.15,
+       145.54,
+       -1239.0
+      ],
+      "axes_ras": [
+       [
+        0.6545,
+        -0.75606,
+        0.0
+       ],
+       [
+        0.75606,
+        0.6545,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 231,
+      "z_range": [
+       192,
+       261
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        142.8,
+        117.0,
+        138.0
+       ],
+       "center_ras": [
+        65.61,
+        145.9,
+        -1240.0
+       ],
+       "axes_ras": [
+        [
+         0.64748,
+         -0.76208,
+         0.0
+        ],
+        [
+         0.76208,
+         0.64748,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 230,
+       "z_range": [
+        192,
+        260
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        145.0,
+        118.9,
+        140.0
+       ],
+       "center_ras": [
+        64.82,
+        145.25,
+        -1239.0
+       ],
+       "axes_ras": [
+        [
+         0.6545,
+         -0.75606,
+         0.0
+        ],
+        [
+         0.75606,
+         0.6545,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 231,
+       "z_range": [
+        192,
+        261
+       ]
+      },
+      "nodules": {
+       "model_mm": [
+        21.7,
+        9.7,
+        14.0
+       ],
+       "center_ras": [
+        83.55,
+        205.05,
+        -1228.0
+       ],
+       "axes_ras": [
+        [
+         0.94089,
+         -0.33872,
+         0.0
+        ],
+        [
+         0.33872,
+         0.94089,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 231,
+       "z_range": [
+        229,
+        235
+       ]
+      },
+      "calcifications": {
+       "model_mm": [
+        21.8,
+        3.3,
+        84.0
+       ],
+       "center_ras": [
+        17.09,
+        144.26,
+        -1243.0
+       ],
+       "axes_ras": [
+        [
+         0.56334,
+         -0.82623,
+         0.0
+        ],
+        [
+         0.82623,
+         0.56334,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 238,
+       "z_range": [
+        204,
+        245
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.998,
+      "p95_mm": 0.37,
+      "mean_mm": 0.15,
+      "max_mm": 0.91,
+      "mesh_mL": 1209.08,
+      "slice_dice_min_ge20vox": 0.941,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 331110,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 1",
+     "segment_hint": {
+      "segment": "VI",
+      "fraction": 0.39,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_R1.ply",
+     "volume_mL": 1258.38,
+     "long_axis_mm": 147.1,
+     "perp_axis_mm": 111.5,
+     "cc_extent_mm": 148.0,
+     "centroid_ras": [
+      65.61,
+      147.1,
+      -1235.84
+     ],
+     "mean_hu": 25.0,
+     "suv_max": 3.34,
+     "suv_mean": 0.75,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 3.98,
+     "core_mL": 1071.62,
+     "wall_mL": 186.58,
+     "nodules_mL": null,
+     "calcifications_mL": 0.18,
+     "active_mL": 1.38,
+     "active_within_5mm_mL": 1.38,
+     "radiological": {
+      "model_mm": [
+       147.1,
+       111.5,
+       148.0
+      ],
+      "center_ras": [
+       67.84,
+       143.33,
+       -1243.0
+      ],
+      "axes_ras": [
+       [
+        0.38829,
+        -0.92154,
+        0.0
+       ],
+       [
+        0.92154,
+        0.38829,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 190,
+      "z_range": [
+       146,
+       219
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        142.4,
+        109.2,
+        144.0
+       ],
+       "center_ras": [
+        67.81,
+        143.23,
+        -1241.0
+       ],
+       "axes_ras": [
+        [
+         0.42786,
+         -0.90385,
+         0.0
+        ],
+        [
+         0.90385,
+         0.42786,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 190,
+       "z_range": [
+        148,
+        219
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        147.1,
+        111.5,
+        148.0
+       ],
+       "center_ras": [
+        67.84,
+        143.33,
+        -1243.0
+       ],
+       "axes_ras": [
+        [
+         0.38829,
+         -0.92154,
+         0.0
+        ],
+        [
+         0.92154,
+         0.38829,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 190,
+       "z_range": [
+        146,
+        219
+       ]
+      },
+      "calcifications": {
+       "model_mm": [
+        21.6,
+        3.0,
+        20.0
+       ],
+       "center_ras": [
+        19.52,
+        147.05,
+        -1217.0
+       ],
+       "axes_ras": [
+        [
+         0.53,
+         -0.848,
+         0.0
+        ],
+        [
+         0.848,
+         0.53,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 192,
+       "z_range": [
+        191,
+        200
+       ]
+      },
+      "active": {
+       "model_mm": [
+        23.9,
+        6.2,
+        40.0
+       ],
+       "center_ras": [
+        87.27,
+        194.25,
+        -1199.0
+       ],
+       "axes_ras": [
+        [
+         0.79616,
+         -0.60508,
+         0.0
+        ],
+        [
+         0.60508,
+         0.79616,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 198,
+       "z_range": [
+        195,
+        214
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9984,
+      "p95_mm": 0.36,
+      "mean_mm": 0.15,
+      "max_mm": 0.82,
+      "mesh_mL": 1261.84,
+      "slice_dice_min_ge20vox": 0.987,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 344490,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 1",
+     "segment_hint": {
+      "segment": "VI",
+      "fraction": 0.46,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/lesion_R1.ply",
+     "volume_mL": 1202.45,
+     "long_axis_mm": 149.7,
+     "perp_axis_mm": 119.4,
+     "cc_extent_mm": 153.7,
+     "centroid_ras": [
+      63.61,
+      28.07,
+      -305.91
+     ],
+     "mean_hu": 23.4,
+     "suv_max": 6.02,
+     "suv_mean": 0.99,
+     "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+     "suv_max_within_5mm": 6.02,
+     "core_mL": 1049.88,
+     "wall_mL": 152.56,
+     "nodules_mL": 0.32,
+     "calcifications_mL": 0.37,
+     "active_mL": 38.92,
+     "active_within_5mm_mL": 39.45,
+     "radiological": {
+      "model_mm": [
+       149.7,
+       119.4,
+       153.7
+      ],
+      "center_ras": [
+       59.18,
+       23.73,
+       -305.11
+      ],
+      "axes_ras": [
+       [
+        0.77639,
+        -0.63025,
+        0.0
+       ],
+       [
+        0.63025,
+        0.77639,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 116,
+      "z_range": [
+       96,
+       142
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        146.2,
+        115.2,
+        143.9
+       ],
+       "center_ras": [
+        59.65,
+        23.61,
+        -310.01
+       ],
+       "axes_ras": [
+        [
+         0.74792,
+         -0.66378,
+         0.0
+        ],
+        [
+         0.66378,
+         0.74792,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 117,
+       "z_range": [
+        96,
+        139
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        149.7,
+        119.4,
+        153.7
+       ],
+       "center_ras": [
+        59.18,
+        23.73,
+        -305.11
+       ],
+       "axes_ras": [
+        [
+         0.77639,
+         -0.63025,
+         0.0
+        ],
+        [
+         0.63025,
+         0.77639,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 116,
+       "z_range": [
+        96,
+        142
+       ]
+      },
+      "nodules": {
+       "model_mm": [
+        12.6,
+        8.2,
+        6.5
+       ],
+       "center_ras": [
+        74.09,
+        47.64,
+        -241.34
+       ],
+       "axes_ras": [
+        [
+         0.21693,
+         0.97619,
+         0.0
+        ],
+        [
+         -0.97619,
+         0.21693,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 139,
+       "z_range": [
+        138,
+        139
+       ]
+      },
+      "calcifications": {
+       "model_mm": [
+        20.3,
+        3.7,
+        65.4
+       ],
+       "center_ras": [
+        13.53,
+        23.74,
+        -323.09
+       ],
+       "axes_ras": [
+        [
+         0.67267,
+         -0.73994,
+         0.0
+        ],
+        [
+         0.73994,
+         0.67267,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 119,
+       "z_range": [
+        104,
+        123
+       ]
+      },
+      "active": {
+       "model_mm": [
+        122.4,
+        62.0,
+        143.9
+       ],
+       "center_ras": [
+        51.25,
+        24.03,
+        -306.74
+       ],
+       "axes_ras": [
+        [
+         0.23464,
+         0.97208,
+         0.0
+        ],
+        [
+         -0.97208,
+         0.23464,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 118,
+       "z_range": [
+        97,
+        140
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9992,
+      "p95_mm": 0.54,
+      "mean_mm": 0.22,
+      "max_mm": 1.24,
+      "mesh_mL": 1203.99,
+      "slice_dice_min_ge20vox": 0.993,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 111276,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 1",
+     "segment_hint": {
+      "segment": "VI",
+      "fraction": 0.31,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_R1_cores.ply",
+     "walls": "meshes/may2025/lesion_R1_walls.ply",
+     "nodules": "meshes/may2025/lesion_R1_nodules.ply",
+     "calcifications": "meshes/may2025/lesion_R1_calcifications.ply"
+    },
+    "jun2026": {
+     "active": "meshes/jun2026/lesion_R1_active.ply",
+     "cores": "meshes/jun2026/lesion_R1_cores.ply",
+     "walls": "meshes/jun2026/lesion_R1_walls.ply",
+     "calcifications": "meshes/jun2026/lesion_R1_calcifications.ply"
+    },
+    "sep2026": {
+     "active": "meshes/sep2026/lesion_R1_active.ply",
+     "cores": "meshes/sep2026/lesion_R1_cores.ply",
+     "walls": "meshes/sep2026/lesion_R1_walls.ply",
+     "nodules": "meshes/sep2026/lesion_R1_nodules.ply",
+     "calcifications": "meshes/sep2026/lesion_R1_calcifications.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/R1_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 12.32,
+     "min_mm": -10.86,
+     "mean_mm": 0.98,
+     "mean_abs_mm": 2.66,
+     "p95_abs_mm": 7.36,
+     "frac_grown_gt2mm": 0.348,
+     "frac_retracted_gt2mm": 0.152,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 4.2,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "may2025__sep2026": {
+     "mesh": "meshes/growth/R1_may2025__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 19.08,
+     "min_mm": -14.55,
+     "mean_mm": 0.33,
+     "mean_abs_mm": 3.52,
+     "p95_abs_mm": 11.31,
+     "frac_grown_gt2mm": 0.283,
+     "frac_retracted_gt2mm": 0.273,
+     "scale_mm": 15.0,
+     "surface_centroid_shift_mm": 6.1,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "jun2026__sep2026": {
+     "mesh": "meshes/growth/R1_jun2026__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 11.5,
+     "min_mm": -16.81,
+     "mean_mm": -0.62,
+     "mean_abs_mm": 3.16,
+     "p95_abs_mm": 9.52,
+     "frac_grown_gt2mm": 0.239,
+     "frac_retracted_gt2mm": 0.303,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 4.4,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 1,
+     "label_name": "lesion 1"
+    },
+    "jun2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 1,
+     "label_name": "lesion 1"
+    },
+    "sep2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 1,
+     "label_name": "lesion 1"
+    }
+   }
+  },
+  {
+   "id": "L1",
+   "name": "Left-lobe (S2/3) lesion",
+   "segment": "II/III",
+   "color": "#ff9800",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_L1.ply",
+     "volume_mL": 21.38,
+     "long_axis_mm": 45.2,
+     "perp_axis_mm": 33.3,
+     "cc_extent_mm": 38.0,
+     "centroid_ras": [
+      -49.67,
+      173.38,
+      -1190.74
+     ],
+     "mean_hu": 40.7,
+     "suv_max": 2.48,
+     "suv_mean": 1.94,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.51,
+     "core_mL": 21.38,
+     "wall_mL": 0.0,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       45.2,
+       33.3,
+       38.0
+      ],
+      "center_ras": [
+       -49.82,
+       173.89,
+       -1192.0
+      ],
+      "axes_ras": [
+       [
+        0.57952,
+        -0.81496,
+        0.0
+       ],
+       [
+        0.81496,
+        0.57952,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 251,
+      "z_range": [
+       241,
+       259
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        45.2,
+        33.3,
+        38.0
+       ],
+       "center_ras": [
+        -49.82,
+        173.89,
+        -1192.0
+       ],
+       "axes_ras": [
+        [
+         0.57952,
+         -0.81496,
+         0.0
+        ],
+        [
+         0.81496,
+         0.57952,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 251,
+       "z_range": [
+        241,
+        259
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.995,
+      "p95_mm": 0.36,
+      "mean_mm": 0.14,
+      "max_mm": 0.8,
+      "mesh_mL": 21.42,
+      "slice_dice_min_ge20vox": 0.963,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 25018,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 2",
+     "segment_hint": {
+      "segment": "III",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_L1.ply",
+     "volume_mL": 33.43,
+     "long_axis_mm": 51.2,
+     "perp_axis_mm": 34.5,
+     "cc_extent_mm": 42.0,
+     "centroid_ras": [
+      -53.52,
+      173.11,
+      -1201.35
+     ],
+     "mean_hu": 52.3,
+     "suv_max": 3.24,
+     "suv_mean": 2.23,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 3.24,
+     "core_mL": 21.53,
+     "wall_mL": 11.9,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 22.73,
+     "active_within_5mm_mL": 26.64,
+     "radiological": {
+      "model_mm": [
+       51.2,
+       34.5,
+       42.0
+      ],
+      "center_ras": [
+       -51.73,
+       170.51,
+       -1202.0
+      ],
+      "axes_ras": [
+       [
+        0.50572,
+        -0.8627,
+        0.0
+       ],
+       [
+        0.8627,
+        0.50572,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 200,
+      "z_range": [
+       193,
+       213
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        47.3,
+        31.1,
+        38.0
+       ],
+       "center_ras": [
+        -51.82,
+        171.12,
+        -1202.0
+       ],
+       "axes_ras": [
+        [
+         0.54725,
+         -0.83697,
+         0.0
+        ],
+        [
+         0.83697,
+         0.54725,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 200,
+       "z_range": [
+        194,
+        212
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        51.2,
+        34.5,
+        42.0
+       ],
+       "center_ras": [
+        -51.73,
+        170.51,
+        -1202.0
+       ],
+       "axes_ras": [
+        [
+         0.50572,
+         -0.8627,
+         0.0
+        ],
+        [
+         0.8627,
+         0.50572,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 200,
+       "z_range": [
+        193,
+        213
+       ]
+      },
+      "active": {
+       "model_mm": [
+        52.8,
+        34.1,
+        40.0
+       ],
+       "center_ras": [
+        -48.21,
+        172.95,
+        -1197.0
+       ],
+       "axes_ras": [
+        [
+         0.44721,
+         -0.89443,
+         0.0
+        ],
+        [
+         0.89443,
+         0.44721,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 204,
+       "z_range": [
+        196,
+        215
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9987,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.69,
+      "mesh_mL": 33.47,
+      "slice_dice_min_ge20vox": 0.964,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 31786,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 2",
+     "segment_hint": {
+      "segment": "II",
+      "fraction": 0.77,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/lesion_L1.ply",
+     "volume_mL": 54.1,
+     "long_axis_mm": 48.9,
+     "perp_axis_mm": 39.1,
+     "cc_extent_mm": 58.9,
+     "centroid_ras": [
+      -51.03,
+      47.69,
+      -271.14
+     ],
+     "mean_hu": 37.2,
+     "suv_max": 6.39,
+     "suv_mean": 3.26,
+     "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+     "suv_max_within_5mm": 6.43,
+     "core_mL": 4.2,
+     "wall_mL": 49.9,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": 42.8,
+     "active_within_5mm_mL": 56.48,
+     "radiological": {
+      "model_mm": [
+       48.9,
+       39.1,
+       58.9
+      ],
+      "center_ras": [
+       -48.26,
+       50.45,
+       -270.77
+      ],
+      "axes_ras": [
+       [
+        0.89443,
+        -0.44721,
+        0.0
+       ],
+       [
+        0.44721,
+        0.89443,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 126,
+      "z_range": [
+       121,
+       138
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        33.1,
+        14.6,
+        32.7
+       ],
+       "center_ras": [
+        -59.98,
+        59.27,
+        -280.58
+       ],
+       "axes_ras": [
+        [
+         0.49614,
+         0.86824,
+         0.0
+        ],
+        [
+         -0.86824,
+         0.49614,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 127,
+       "z_range": [
+        122,
+        131
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        48.9,
+        39.1,
+        58.9
+       ],
+       "center_ras": [
+        -48.26,
+        50.45,
+        -270.77
+       ],
+       "axes_ras": [
+        [
+         0.89443,
+         -0.44721,
+         0.0
+        ],
+        [
+         0.44721,
+         0.89443,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 126,
+       "z_range": [
+        121,
+        138
+       ]
+      },
+      "active": {
+       "model_mm": [
+        52.3,
+        40.4,
+        65.4
+       ],
+       "center_ras": [
+        -49.39,
+        48.85,
+        -270.77
+       ],
+       "axes_ras": [
+        [
+         0.33964,
+         -0.94055,
+         0.0
+        ],
+        [
+         0.94055,
+         0.33964,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 129,
+       "z_range": [
+        120,
+        139
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9968,
+      "p95_mm": 0.52,
+      "mean_mm": 0.2,
+      "max_mm": 1.09,
+      "mesh_mL": 54.1,
+      "slice_dice_min_ge20vox": 0.976,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 15138,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 2",
+     "segment_hint": {
+      "segment": "II",
+      "fraction": 0.75,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_L1_cores.ply"
+    },
+    "jun2026": {
+     "active": "meshes/jun2026/lesion_L1_active.ply",
+     "cores": "meshes/jun2026/lesion_L1_cores.ply",
+     "walls": "meshes/jun2026/lesion_L1_walls.ply"
+    },
+    "sep2026": {
+     "active": "meshes/sep2026/lesion_L1_active.ply",
+     "cores": "meshes/sep2026/lesion_L1_cores.ply",
+     "walls": "meshes/sep2026/lesion_L1_walls.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/L1_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 7.75,
+     "min_mm": -4.4,
+     "mean_mm": 2.71,
+     "mean_abs_mm": 3.18,
+     "p95_abs_mm": 6.35,
+     "frac_grown_gt2mm": 0.631,
+     "frac_retracted_gt2mm": 0.053,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 4.6,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "may2025__sep2026": {
+     "mesh": "meshes/growth/L1_may2025__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 24.15,
+     "min_mm": -4.95,
+     "mean_mm": 7.59,
+     "mean_abs_mm": 8.05,
+     "p95_abs_mm": 19.92,
+     "frac_grown_gt2mm": 0.746,
+     "frac_retracted_gt2mm": 0.054,
+     "scale_mm": 20.0,
+     "surface_centroid_shift_mm": 7.5,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "jun2026__sep2026": {
+     "mesh": "meshes/growth/L1_jun2026__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 19.96,
+     "min_mm": -8.55,
+     "mean_mm": 4.78,
+     "mean_abs_mm": 5.89,
+     "p95_abs_mm": 15.98,
+     "frac_grown_gt2mm": 0.612,
+     "frac_retracted_gt2mm": 0.1,
+     "scale_mm": 20.0,
+     "surface_centroid_shift_mm": 5.4,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 2,
+     "label_name": "lesion 2"
+    },
+    "jun2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 2,
+     "label_name": "lesion 2"
+    },
+    "sep2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 2,
+     "label_name": "lesion 2"
+    }
+   }
+  },
+  {
+   "id": "S8",
+   "name": "S7/8 subcapsular dome lesion (holds the Sep S8 active focus)",
+   "segment": "VII/VIII",
+   "color": "#e91e63",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_S8.ply",
+     "volume_mL": 67.98,
+     "long_axis_mm": 67.7,
+     "perp_axis_mm": 39.7,
+     "cc_extent_mm": 50.0,
+     "centroid_ras": [
+      84.19,
+      164.33,
+      -1158.44
+     ],
+     "mean_hu": 33.2,
+     "suv_max": 2.06,
+     "suv_mean": 1.07,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.24,
+     "core_mL": 58.63,
+     "wall_mL": 9.35,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       67.7,
+       39.7,
+       50.0
+      ],
+      "center_ras": [
+       82.34,
+       161.52,
+       -1156.0
+      ],
+      "axes_ras": [
+       [
+        0.53217,
+        -0.84664,
+        0.0
+       ],
+       [
+        0.84664,
+        0.53217,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 270,
+      "z_range": [
+       256,
+       280
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        66.8,
+        38.6,
+        50.0
+       ],
+       "center_ras": [
+        82.62,
+        161.17,
+        -1156.0
+       ],
+       "axes_ras": [
+        [
+         0.5145,
+         -0.85749,
+         0.0
+        ],
+        [
+         0.85749,
+         0.5145,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 270,
+       "z_range": [
+        256,
+        280
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        67.2,
+        37.3,
+        48.0
+       ],
+       "center_ras": [
+        81.07,
+        160.98,
+        -1157.0
+       ],
+       "axes_ras": [
+        [
+         0.52342,
+         -0.85208,
+         0.0
+        ],
+        [
+         0.85208,
+         0.52342,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 270,
+       "z_range": [
+        256,
+        279
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9976,
+      "p95_mm": 0.36,
+      "mean_mm": 0.14,
+      "max_mm": 0.77,
+      "mesh_mL": 68.15,
+      "slice_dice_min_ge20vox": 0.99,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 51822,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 3",
+     "segment_hint": {
+      "segment": "VIII",
+      "fraction": 0.82,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_S8.ply",
+     "volume_mL": 70.75,
+     "long_axis_mm": 66.1,
+     "perp_axis_mm": 42.4,
+     "cc_extent_mm": 50.0,
+     "centroid_ras": [
+      85.58,
+      159.22,
+      -1155.32
+     ],
+     "mean_hu": 36.3,
+     "suv_max": 2.38,
+     "suv_mean": 1.27,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.38,
+     "core_mL": 44.21,
+     "wall_mL": 26.53,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       66.1,
+       42.4,
+       50.0
+      ],
+      "center_ras": [
+       82.35,
+       155.2,
+       -1154.0
+      ],
+      "axes_ras": [
+       [
+        0.35743,
+        -0.93394,
+        0.0
+       ],
+       [
+        0.93394,
+        0.35743,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 229,
+      "z_range": [
+       215,
+       239
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        63.8,
+        37.8,
+        46.0
+       ],
+       "center_ras": [
+        85.07,
+        156.7,
+        -1154.0
+       ],
+       "axes_ras": [
+        [
+         0.58462,
+         -0.81131,
+         0.0
+        ],
+        [
+         0.81131,
+         0.58462,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 229,
+       "z_range": [
+        216,
+        238
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        66.1,
+        42.4,
+        50.0
+       ],
+       "center_ras": [
+        82.35,
+        155.2,
+        -1154.0
+       ],
+       "axes_ras": [
+        [
+         0.35743,
+         -0.93394,
+         0.0
+        ],
+        [
+         0.93394,
+         0.35743,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 229,
+       "z_range": [
+        215,
+        239
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9992,
+      "p95_mm": 0.32,
+      "mean_mm": 0.12,
+      "max_mm": 0.76,
+      "mesh_mL": 70.8,
+      "slice_dice_min_ge20vox": 0.986,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 53054,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 3",
+     "segment_hint": {
+      "segment": "VII",
+      "fraction": 0.57,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/lesion_S8.ply",
+     "volume_mL": 78.85,
+     "long_axis_mm": 70.2,
+     "perp_axis_mm": 46.9,
+     "cc_extent_mm": 45.8,
+     "centroid_ras": [
+      85.04,
+      34.51,
+      -225.61
+     ],
+     "mean_hu": 27.1,
+     "suv_max": 6.75,
+     "suv_mean": 1.96,
+     "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+     "suv_max_within_5mm": 6.75,
+     "core_mL": 56.06,
+     "wall_mL": 22.79,
+     "nodules_mL": 3.27,
+     "calcifications_mL": 0.0,
+     "active_mL": 10.8,
+     "active_within_5mm_mL": 10.82,
+     "radiological": {
+      "model_mm": [
+       70.2,
+       46.9,
+       45.8
+      ],
+      "center_ras": [
+       84.09,
+       30.97,
+       -224.99
+      ],
+      "axes_ras": [
+       [
+        0.54567,
+        -0.838,
+        0.0
+       ],
+       [
+        0.838,
+        0.54567,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 144,
+      "z_range": [
+       137,
+       150
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        67.5,
+        49.7,
+        45.8
+       ],
+       "center_ras": [
+        83.41,
+        29.96,
+        -224.99
+       ],
+       "axes_ras": [
+        [
+         0.3644,
+         -0.93124,
+         0.0
+        ],
+        [
+         0.93124,
+         0.3644,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 144,
+       "z_range": [
+        137,
+        150
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        70.2,
+        39.7,
+        45.8
+       ],
+       "center_ras": [
+        81.07,
+        29.01,
+        -224.99
+       ],
+       "axes_ras": [
+        [
+         0.54567,
+         -0.838,
+         0.0
+        ],
+        [
+         0.838,
+         0.54567,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 144,
+       "z_range": [
+        137,
+        150
+       ]
+      },
+      "nodules": {
+       "model_mm": [
+        23.5,
+        15.1,
+        22.9
+       ],
+       "center_ras": [
+        75.43,
+        47.49,
+        -229.9
+       ],
+       "axes_ras": [
+        [
+         0.58124,
+         0.81373,
+         0.0
+        ],
+        [
+         -0.81373,
+         0.58124,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 142,
+       "z_range": [
+        139,
+        145
+       ]
+      },
+      "active": {
+       "model_mm": [
+        66.3,
+        26.4,
+        42.5
+       ],
+       "center_ras": [
+        83.09,
+        29.14,
+        -226.63
+       ],
+       "axes_ras": [
+        [
+         0.37139,
+         -0.92848,
+         0.0
+        ],
+        [
+         0.92848,
+         0.37139,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 142,
+       "z_range": [
+        137,
+        149
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9989,
+      "p95_mm": 0.52,
+      "mean_mm": 0.19,
+      "max_mm": 1.11,
+      "mesh_mL": 78.93,
+      "slice_dice_min_ge20vox": 0.995,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 18724,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 3",
+     "segment_hint": {
+      "segment": "VII",
+      "fraction": 0.99,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_S8_cores.ply",
+     "walls": "meshes/may2025/lesion_S8_walls.ply"
+    },
+    "jun2026": {
+     "cores": "meshes/jun2026/lesion_S8_cores.ply",
+     "walls": "meshes/jun2026/lesion_S8_walls.ply"
+    },
+    "sep2026": {
+     "active": "meshes/sep2026/lesion_S8_active.ply",
+     "cores": "meshes/sep2026/lesion_S8_cores.ply",
+     "walls": "meshes/sep2026/lesion_S8_walls.ply",
+     "nodules": "meshes/sep2026/lesion_S8_nodules.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/S8_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 14.97,
+     "min_mm": -14.05,
+     "mean_mm": 2.7,
+     "mean_abs_mm": 5.96,
+     "p95_abs_mm": 12.07,
+     "frac_grown_gt2mm": 0.617,
+     "frac_retracted_gt2mm": 0.23,
+     "scale_mm": 15.0,
+     "surface_centroid_shift_mm": 13.2,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "may2025__sep2026": {
+     "mesh": "meshes/growth/S8_may2025__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 18.0,
+     "min_mm": -11.58,
+     "mean_mm": 3.62,
+     "mean_abs_mm": 6.65,
+     "p95_abs_mm": 13.5,
+     "frac_grown_gt2mm": 0.634,
+     "frac_retracted_gt2mm": 0.225,
+     "scale_mm": 15.0,
+     "surface_centroid_shift_mm": 13.7,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "jun2026__sep2026": {
+     "mesh": "meshes/growth/S8_jun2026__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 8.2,
+     "min_mm": -5.24,
+     "mean_mm": 1.27,
+     "mean_abs_mm": 2.51,
+     "p95_abs_mm": 6.8,
+     "frac_grown_gt2mm": 0.356,
+     "frac_retracted_gt2mm": 0.096,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 3.9,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 3,
+     "label_name": "lesion 3"
+    },
+    "jun2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 3,
+     "label_name": "lesion 3"
+    },
+    "sep2026": {
+     "method": "consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)",
+     "confidence": "high",
+     "label": 3,
+     "label_name": "lesion 3"
+    }
+   }
+  },
+  {
+   "id": "K",
+   "name": "Small focus K / M1, anterior S4b-S5 (low confidence)",
+   "segment": "IVb/V",
+   "color": "#cddc39",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_K.ply",
+     "volume_mL": 0.09,
+     "long_axis_mm": 6.9,
+     "perp_axis_mm": 5.2,
+     "cc_extent_mm": 6.0,
+     "centroid_ras": [
+      16.56,
+      198.73,
+      -1205.53
+     ],
+     "mean_hu": 28.5,
+     "suv_max": 2.01,
+     "suv_mean": 1.75,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.09,
+     "core_mL": 0.03,
+     "wall_mL": 0.06,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       6.9,
+       5.2,
+       6.0
+      ],
+      "center_ras": [
+       16.52,
+       198.77,
+       -1206.0
+      ],
+      "axes_ras": [
+       [
+        0.70711,
+        0.70711,
+        0.0
+       ],
+       [
+        -0.70711,
+        0.70711,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 243,
+      "z_range": [
+       242,
+       244
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        4.1,
+        3.6,
+        4.0
+       ],
+       "center_ras": [
+        16.83,
+        198.84,
+        -1205.0
+       ],
+       "axes_ras": [
+        [
+         0.8,
+         0.6,
+         0.0
+        ],
+        [
+         -0.6,
+         0.8,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 243,
+       "z_range": [
+        243,
+        244
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        6.9,
+        5.2,
+        6.0
+       ],
+       "center_ras": [
+        16.52,
+        198.77,
+        -1206.0
+       ],
+       "axes_ras": [
+        [
+         0.70711,
+         0.70711,
+         0.0
+        ],
+        [
+         -0.70711,
+         0.70711,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 243,
+       "z_range": [
+        242,
+        244
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9926,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.45,
+      "mesh_mL": 0.09,
+      "slice_dice_min_ge20vox": 0.983,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 488,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 6",
+     "confidence": "low confidence",
+     "segment_hint": {
+      "segment": "V",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_K.ply",
+     "volume_mL": 0.12,
+     "long_axis_mm": 6.1,
+     "perp_axis_mm": 5.5,
+     "cc_extent_mm": 8.0,
+     "centroid_ras": [
+      21.61,
+      200.48,
+      -1210.58
+     ],
+     "mean_hu": 28.7,
+     "suv_max": 1.4,
+     "suv_mean": 1.26,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 1.69,
+     "core_mL": 0.04,
+     "wall_mL": 0.08,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       6.1,
+       5.5,
+       8.0
+      ],
+      "center_ras": [
+       21.59,
+       200.37,
+       -1211.0
+      ],
+      "axes_ras": [
+       [
+        0.49614,
+        0.86824,
+        0.0
+       ],
+       [
+        -0.86824,
+        0.49614,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 198,
+      "z_range": [
+       197,
+       200
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        4.9,
+        3.7,
+        4.0
+       ],
+       "center_ras": [
+        21.92,
+        199.97,
+        -1211.0
+       ],
+       "axes_ras": [
+        [
+         0.78087,
+         0.6247,
+         0.0
+        ],
+        [
+         -0.6247,
+         0.78087,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 198,
+       "z_range": [
+        198,
+        199
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        6.1,
+        5.2,
+        8.0
+       ],
+       "center_ras": [
+        21.47,
+        200.44,
+        -1211.0
+       ],
+       "axes_ras": [
+        [
+         0.49614,
+         0.86824,
+         0.0
+        ],
+        [
+         -0.86824,
+         0.49614,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 198,
+       "z_range": [
+        197,
+        200
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9952,
+      "p95_mm": 0.28,
+      "mean_mm": 0.12,
+      "max_mm": 0.49,
+      "mesh_mL": 0.12,
+      "slice_dice_min_ge20vox": 0.979,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 700,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 6",
+     "segment_hint": {
+      "segment": "V",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_K_cores.ply",
+     "walls": "meshes/may2025/lesion_K_walls.ply"
+    },
+    "jun2026": {
+     "cores": "meshes/jun2026/lesion_K_cores.ply",
+     "walls": "meshes/jun2026/lesion_K_walls.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/K_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 7.44,
+     "min_mm": 1.83,
+     "mean_mm": 4.89,
+     "mean_abs_mm": 4.89,
+     "p95_abs_mm": 7.1,
+     "frac_grown_gt2mm": 0.983,
+     "frac_retracted_gt2mm": 0.0,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 7.5,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus label 6 (focus K); May note: \"uncertain match: June S4b 0.4 cm\"",
+     "confidence": "uncertain",
+     "label": 6,
+     "label_name": "lesion 6"
+    },
+    "jun2026": {
+     "method": "consensus label 6 (M1 small S5 focus), same numbering as May",
+     "confidence": "uncertain",
+     "label": 6,
+     "label_name": "lesion 6"
+    }
+   }
+  },
+  {
+   "id": "N",
+   "name": "Small focus N / A1, S4a/S8 (low confidence)",
+   "segment": "IVa/VIII",
+   "color": "#795548",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_N.ply",
+     "volume_mL": 0.06,
+     "long_axis_mm": 5.5,
+     "perp_axis_mm": 4.8,
+     "cc_extent_mm": 6.0,
+     "centroid_ras": [
+      10.68,
+      185.99,
+      -1181.02
+     ],
+     "mean_hu": 49.1,
+     "suv_max": 2.22,
+     "suv_mean": 2.09,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.41,
+     "core_mL": 0.0,
+     "wall_mL": 0.06,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       5.5,
+       4.8,
+       6.0
+      ],
+      "center_ras": [
+       10.92,
+       186.04,
+       -1182.0
+      ],
+      "axes_ras": [
+       [
+        0.89443,
+        0.44721,
+        0.0
+       ],
+       [
+        -0.44721,
+        0.89443,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 256,
+      "z_range": [
+       254,
+       256
+      ]
+     },
+     "parts_radiological": {
+      "walls": {
+       "model_mm": [
+        5.5,
+        4.8,
+        6.0
+       ],
+       "center_ras": [
+        10.92,
+        186.04,
+        -1182.0
+       ],
+       "axes_ras": [
+        [
+         0.89443,
+         0.44721,
+         0.0
+        ],
+        [
+         -0.44721,
+         0.89443,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 256,
+       "z_range": [
+        254,
+        256
+       ]
+      }
+     },
+     "verify": {
+      "dice": 1.0,
+      "p95_mm": 0.3,
+      "mean_mm": 0.12,
+      "max_mm": 0.61,
+      "mesh_mL": 0.06,
+      "slice_dice_min_ge20vox": 1.0,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 364,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 7",
+     "confidence": "low confidence",
+     "segment_hint": {
+      "segment": "VIII",
+      "fraction": 0.71,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_N.ply",
+     "volume_mL": 0.15,
+     "long_axis_mm": 7.8,
+     "perp_axis_mm": 7.5,
+     "cc_extent_mm": 8.0,
+     "centroid_ras": [
+      12.5,
+      187.77,
+      -1186.68
+     ],
+     "mean_hu": 67.2,
+     "suv_max": 1.67,
+     "suv_mean": 1.59,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 1.85,
+     "core_mL": 0.0,
+     "wall_mL": 0.15,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       7.8,
+       7.5,
+       8.0
+      ],
+      "center_ras": [
+       12.35,
+       187.78,
+       -1187.0
+      ],
+      "axes_ras": [
+       [
+        0.87416,
+        0.48564,
+        0.0
+       ],
+       [
+        -0.48564,
+        0.87416,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 211,
+      "z_range": [
+       209,
+       212
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        2.2,
+        1.1,
+        2.0
+       ],
+       "center_ras": [
+        12.04,
+        188.03,
+        -1186.0
+       ],
+       "axes_ras": [
+        [
+         0.70711,
+         0.70711,
+         0.0
+        ],
+        [
+         -0.70711,
+         0.70711,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 211,
+       "z_range": [
+        211,
+        211
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        7.8,
+        7.5,
+        8.0
+       ],
+       "center_ras": [
+        12.35,
+        187.78,
+        -1187.0
+       ],
+       "axes_ras": [
+        [
+         0.87416,
+         0.48564,
+         0.0
+        ],
+        [
+         -0.48564,
+         0.87416,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 211,
+       "z_range": [
+        209,
+        212
+       ]
+      }
+     },
+     "verify": {
+      "dice": 1.0,
+      "p95_mm": 0.3,
+      "mean_mm": 0.12,
+      "max_mm": 0.54,
+      "mesh_mL": 0.15,
+      "slice_dice_min_ge20vox": 1.0,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 796,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 7",
+     "segment_hint": {
+      "segment": "VIII",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "walls": "meshes/may2025/lesion_N_walls.ply"
+    },
+    "jun2026": {
+     "cores": "meshes/jun2026/lesion_N_cores.ply",
+     "walls": "meshes/jun2026/lesion_N_walls.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/N_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 5.35,
+     "min_mm": -1.41,
+     "mean_mm": 2.67,
+     "mean_abs_mm": 2.76,
+     "p95_abs_mm": 4.92,
+     "frac_grown_gt2mm": 0.672,
+     "frac_retracted_gt2mm": 0.0,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 4.1,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus label 7 (focus N); May note: \"uncertain match: June S5/8 0.6 or S4a/7 0.6 cm\"",
+     "confidence": "uncertain",
+     "label": 7,
+     "label_name": "lesion 7"
+    },
+    "jun2026": {
+     "method": "consensus label 7 (A1 small S4a/8 focus, report Sg4a/7 0.6 cm), same numbering as May",
+     "confidence": "uncertain",
+     "label": 7,
+     "label_name": "lesion 7"
+    }
+   }
+  },
+  {
+   "id": "P7",
+   "name": "Posterior perimural focus at the right-mass wall (PET-defined, indeterminate)",
+   "segment": "VII (inferred map)",
+   "color": "#ff5252",
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/lesion_P7.ply",
+     "volume_mL": 0.4,
+     "long_axis_mm": 11.0,
+     "perp_axis_mm": 10.5,
+     "cc_extent_mm": 6.5,
+     "centroid_ras": [
+      46.88,
+      -39.56,
+      -303.65
+     ],
+     "mean_hu": 58.8,
+     "suv_max": 4.17,
+     "suv_mean": 3.1,
+     "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+     "suv_max_within_5mm": 4.17,
+     "core_mL": 0.0,
+     "wall_mL": 0.4,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.4,
+     "active_within_5mm_mL": 0.4,
+     "radiological": {
+      "model_mm": [
+       11.0,
+       10.5,
+       6.5
+      ],
+      "center_ras": [
+       46.58,
+       -39.31,
+       -303.47
+      ],
+      "axes_ras": [
+       [
+        0.49614,
+        0.86824,
+        0.0
+       ],
+       [
+        -0.86824,
+        0.49614,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 119,
+      "z_range": [
+       119,
+       120
+      ]
+     },
+     "parts_radiological": {
+      "walls": {
+       "model_mm": [
+        11.0,
+        10.5,
+        6.5
+       ],
+       "center_ras": [
+        46.58,
+        -39.31,
+        -303.47
+       ],
+       "axes_ras": [
+        [
+         0.49614,
+         0.86824,
+         0.0
+        ],
+        [
+         -0.86824,
+         0.49614,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 119,
+       "z_range": [
+        119,
+        120
+       ]
+      },
+      "active": {
+       "model_mm": [
+        11.0,
+        10.5,
+        6.5
+       ],
+       "center_ras": [
+        46.58,
+        -39.31,
+        -303.47
+       ],
+       "axes_ras": [
+        [
+         0.49614,
+         0.86824,
+         0.0
+        ],
+        [
+         -0.86824,
+         0.49614,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 119,
+       "z_range": [
+        119,
+        120
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9848,
+      "p95_mm": 0.48,
+      "mean_mm": 0.19,
+      "max_mm": 0.67,
+      "mesh_mL": 0.41,
+      "slice_dice_min_ge20vox": 0.967,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 456,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 5",
+     "confidence": "PET-defined only (indeterminate perimural activity, touches rmass; C05)",
+     "segment_hint": {
+      "segment": "VII",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "sep2026": {
+     "active": "meshes/sep2026/lesion_P7_active.ply",
+     "walls": "meshes/sep2026/lesion_P7_walls.ply"
+    }
+   },
+   "growth": {},
+   "match": {
+    "sep2026": {
+     "method": "Sep consensus label 5; possibly the June S7 1.0 cm satellite, unproven (Sep challenge C05); new provisional ID",
+     "confidence": "single date",
+     "label": 5,
+     "label_name": "lesion 5"
+    }
+   }
+  },
+  {
+   "id": "S1",
+   "name": "S1 caudate lesion",
+   "segment": "I",
+   "color": "#9c27b0",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_S1.ply",
+     "volume_mL": 0.87,
+     "long_axis_mm": 13.6,
+     "perp_axis_mm": 11.6,
+     "cc_extent_mm": 10.0,
+     "centroid_ras": [
+      -16.14,
+      136.53,
+      -1174.03
+     ],
+     "mean_hu": 59.2,
+     "suv_max": 2.0,
+     "suv_mean": 1.78,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.21,
+     "core_mL": 0.03,
+     "wall_mL": 0.84,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       13.6,
+       11.6,
+       10.0
+      ],
+      "center_ras": [
+       -16.23,
+       136.49,
+       -1174.0
+      ],
+      "axes_ras": [
+       [
+        0.54076,
+        -0.84118,
+        0.0
+       ],
+       [
+        0.84118,
+        0.54076,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 258,
+      "z_range": [
+       257,
+       261
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        7.5,
+        5.7,
+        6.0
+       ],
+       "center_ras": [
+        -17.06,
+        137.8,
+        -1174.0
+       ],
+       "axes_ras": [
+        [
+         0.75926,
+         0.65079,
+         0.0
+        ],
+        [
+         -0.65079,
+         0.75926,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 258,
+       "z_range": [
+        258,
+        260
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        13.6,
+        11.6,
+        10.0
+       ],
+       "center_ras": [
+        -16.23,
+        136.49,
+        -1174.0
+       ],
+       "axes_ras": [
+        [
+         0.54076,
+         -0.84118,
+         0.0
+        ],
+        [
+         0.84118,
+         0.54076,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 258,
+       "z_range": [
+        257,
+        261
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9992,
+      "p95_mm": 0.31,
+      "mean_mm": 0.12,
+      "max_mm": 0.54,
+      "mesh_mL": 0.88,
+      "slice_dice_min_ge20vox": 0.995,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 2184,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 5",
+     "segment_hint": {
+      "segment": "I",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_S1.ply",
+     "volume_mL": 0.84,
+     "long_axis_mm": 15.0,
+     "perp_axis_mm": 11.8,
+     "cc_extent_mm": 12.0,
+     "centroid_ras": [
+      -20.21,
+      136.64,
+      -1186.62
+     ],
+     "mean_hu": 57.3,
+     "suv_max": 1.75,
+     "suv_mean": 1.47,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 1.92,
+     "core_mL": 0.01,
+     "wall_mL": 0.83,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       15.0,
+       11.8,
+       12.0
+      ],
+      "center_ras": [
+       -20.57,
+       136.85,
+       -1187.0
+      ],
+      "axes_ras": [
+       [
+        0.40614,
+        0.91381,
+        0.0
+       ],
+       [
+        -0.91381,
+        0.40614,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 210,
+      "z_range": [
+       208,
+       213
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        7.8,
+        3.0,
+        4.0
+       ],
+       "center_ras": [
+        -17.63,
+        137.9,
+        -1187.0
+       ],
+       "axes_ras": [
+        [
+         0.19612,
+         0.98058,
+         0.0
+        ],
+        [
+         -0.98058,
+         0.19612,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 210,
+       "z_range": [
+        210,
+        211
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        15.0,
+        11.8,
+        12.0
+       ],
+       "center_ras": [
+        -20.57,
+        136.85,
+        -1187.0
+       ],
+       "axes_ras": [
+        [
+         0.40614,
+         0.91381,
+         0.0
+        ],
+        [
+         -0.91381,
+         0.40614,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 210,
+       "z_range": [
+        208,
+        213
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.989,
+      "p95_mm": 0.34,
+      "mean_mm": 0.14,
+      "max_mm": 0.65,
+      "mesh_mL": 0.85,
+      "slice_dice_min_ge20vox": 0.978,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 2688,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 5",
+     "segment_hint": {
+      "segment": "I",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "sep2026": {
+     "mesh": "meshes/sep2026/lesion_S1.ply",
+     "volume_mL": 1.56,
+     "long_axis_mm": 17.8,
+     "perp_axis_mm": 12.7,
+     "cc_extent_mm": 16.3,
+     "centroid_ras": [
+      -14.3,
+      14.74,
+      -253.46
+     ],
+     "mean_hu": 33.7,
+     "suv_max": 2.59,
+     "suv_mean": 2.03,
+     "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+     "suv_max_within_5mm": 2.99,
+     "core_mL": 0.8,
+     "wall_mL": 0.76,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       17.8,
+       12.7,
+       16.3
+      ],
+      "center_ras": [
+       -14.01,
+       14.5,
+       -252.79
+      ],
+      "axes_ras": [
+       [
+        0.38462,
+        0.92308,
+        0.0
+       ],
+       [
+        -0.92308,
+        0.38462,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 134,
+      "z_range": [
+       133,
+       137
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        13.7,
+        10.7,
+        13.1
+       ],
+       "center_ras": [
+        -14.03,
+        15.48,
+        -254.42
+       ],
+       "axes_ras": [
+        [
+         0.6,
+         0.8,
+         0.0
+        ],
+        [
+         -0.8,
+         0.6,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 134,
+       "z_range": [
+        133,
+        136
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        17.8,
+        12.7,
+        16.3
+       ],
+       "center_ras": [
+        -14.01,
+        14.5,
+        -252.79
+       ],
+       "axes_ras": [
+        [
+         0.38462,
+         0.92308,
+         0.0
+        ],
+        [
+         -0.92308,
+         0.38462,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 134,
+       "z_range": [
+        133,
+        137
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9882,
+      "p95_mm": 0.46,
+      "mean_mm": 0.19,
+      "max_mm": 0.8,
+      "mesh_mL": 1.55,
+      "slice_dice_min_ge20vox": 0.977,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 1372,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/sep2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 4",
+     "segment_hint": {
+      "segment": "I",
+      "fraction": 0.52,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_S1_cores.ply",
+     "walls": "meshes/may2025/lesion_S1_walls.ply"
+    },
+    "jun2026": {
+     "cores": "meshes/jun2026/lesion_S1_cores.ply",
+     "walls": "meshes/jun2026/lesion_S1_walls.ply"
+    },
+    "sep2026": {
+     "cores": "meshes/sep2026/lesion_S1_cores.ply",
+     "walls": "meshes/sep2026/lesion_S1_walls.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/S1_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 10.03,
+     "min_mm": -1.75,
+     "mean_mm": 5.23,
+     "mean_abs_mm": 5.3,
+     "p95_abs_mm": 9.34,
+     "frac_grown_gt2mm": 0.817,
+     "frac_retracted_gt2mm": 0.0,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 9.7,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "may2025__sep2026": {
+     "mesh": "meshes/growth/S1_may2025__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 11.56,
+     "min_mm": -4.37,
+     "mean_mm": 4.54,
+     "mean_abs_mm": 5.12,
+     "p95_abs_mm": 10.6,
+     "frac_grown_gt2mm": 0.68,
+     "frac_retracted_gt2mm": 0.062,
+     "scale_mm": 15.0,
+     "surface_centroid_shift_mm": 8.5,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    },
+    "jun2026__sep2026": {
+     "mesh": "meshes/growth/S1_jun2026__sep2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 8.17,
+     "min_mm": -4.05,
+     "mean_mm": 3.09,
+     "mean_abs_mm": 3.84,
+     "p95_abs_mm": 7.52,
+     "frac_grown_gt2mm": 0.647,
+     "frac_retracted_gt2mm": 0.087,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 6.4,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus label 5 = \"June S1 1.3 cm (present already on May)\"",
+     "confidence": "probable",
+     "label": 5,
+     "label_name": "lesion 5"
+    },
+    "jun2026": {
+     "method": "consensus label 5 (C1 caudate lesion)",
+     "confidence": "probable",
+     "label": 5,
+     "label_name": "lesion 5"
+    },
+    "sep2026": {
+     "method": "Sep consensus label 4 (caudate focus) -> June S1: probable, not definite (Sep challenge C09; May r2-C04)",
+     "confidence": "provisional",
+     "label": 4,
+     "label_name": "lesion 4"
+    }
+   }
+  },
+  {
+   "id": "S7sat",
+   "name": "S7 posterior satellite (~1 cm)",
+   "segment": "VII (June: S6 by inherited segments)",
+   "color": "#00bcd4",
+   "per_date": {
+    "may2025": {
+     "mesh": "meshes/may2025/lesion_S7sat.ply",
+     "volume_mL": 0.65,
+     "long_axis_mm": 12.9,
+     "perp_axis_mm": 11.1,
+     "cc_extent_mm": 12.0,
+     "centroid_ras": [
+      57.81,
+      82.45,
+      -1206.98
+     ],
+     "mean_hu": 31.6,
+     "suv_max": 1.82,
+     "suv_mean": 1.52,
+     "suv_file": "studies/may2025/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 2.11,
+     "core_mL": 0.38,
+     "wall_mL": 0.27,
+     "nodules_mL": 0.0,
+     "calcifications_mL": 0.0,
+     "active_mL": null,
+     "radiological": {
+      "model_mm": [
+       12.9,
+       11.1,
+       12.0
+      ],
+      "center_ras": [
+       57.86,
+       82.63,
+       -1207.0
+      ],
+      "axes_ras": [
+       [
+        0.56921,
+        -0.82219,
+        0.0
+       ],
+       [
+        0.82219,
+        0.56921,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 243,
+      "z_range": [
+       240,
+       245
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        11.7,
+        9.3,
+        10.0
+       ],
+       "center_ras": [
+        57.62,
+        82.82,
+        -1208.0
+       ],
+       "axes_ras": [
+        [
+         0.41906,
+         -0.90796,
+         0.0
+        ],
+        [
+         0.90796,
+         0.41906,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 243,
+       "z_range": [
+        240,
+        244
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        12.9,
+        11.1,
+        12.0
+       ],
+       "center_ras": [
+        57.86,
+        82.63,
+        -1207.0
+       ],
+       "axes_ras": [
+        [
+         0.56921,
+         -0.82219,
+         0.0
+        ],
+        [
+         0.82219,
+         0.56921,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 243,
+       "z_range": [
+        240,
+        245
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9877,
+      "p95_mm": 0.35,
+      "mean_mm": 0.13,
+      "max_mm": 0.84,
+      "mesh_mL": 0.66,
+      "slice_dice_min_ge20vox": 0.929,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 2176,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/may2025/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 4",
+     "segment_hint": {
+      "segment": "VII",
+      "fraction": 0.96,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "jun2026": {
+     "mesh": "meshes/jun2026/lesion_S7sat.ply",
+     "volume_mL": 0.69,
+     "long_axis_mm": 13.3,
+     "perp_axis_mm": 11.4,
+     "cc_extent_mm": 10.0,
+     "centroid_ras": [
+      51.17,
+      80.8,
+      -1211.28
+     ],
+     "mean_hu": 27.4,
+     "suv_max": 1.2,
+     "suv_mean": 0.93,
+     "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+     "suv_max_within_5mm": 1.64,
+     "core_mL": 0.29,
+     "wall_mL": 0.4,
+     "nodules_mL": null,
+     "calcifications_mL": 0.0,
+     "active_mL": 0.0,
+     "active_within_5mm_mL": 0.0,
+     "radiological": {
+      "model_mm": [
+       13.3,
+       11.4,
+       10.0
+      ],
+      "center_ras": [
+       50.99,
+       80.84,
+       -1212.0
+      ],
+      "axes_ras": [
+       [
+        0.5145,
+        -0.85749,
+        0.0
+       ],
+       [
+        0.85749,
+        0.5145,
+        0.0
+       ],
+       [
+        0.0,
+        0.0,
+        1.0
+       ]
+      ],
+      "max_slice": 198,
+      "z_range": [
+       196,
+       200
+      ]
+     },
+     "parts_radiological": {
+      "cores": {
+       "model_mm": [
+        10.8,
+        9.5,
+        6.0
+       ],
+       "center_ras": [
+        51.24,
+        80.21,
+        -1212.0
+       ],
+       "axes_ras": [
+        [
+         0.77396,
+         -0.63324,
+         0.0
+        ],
+        [
+         0.63324,
+         0.77396,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 198,
+       "z_range": [
+        197,
+        199
+       ]
+      },
+      "walls": {
+       "model_mm": [
+        13.3,
+        11.4,
+        10.0
+       ],
+       "center_ras": [
+        50.99,
+        80.84,
+        -1212.0
+       ],
+       "axes_ras": [
+        [
+         0.5145,
+         -0.85749,
+         0.0
+        ],
+        [
+         0.85749,
+         0.5145,
+         0.0
+        ],
+        [
+         0.0,
+         0.0,
+         1.0
+        ]
+       ],
+       "max_slice": 198,
+       "z_range": [
+        196,
+        200
+       ]
+      }
+     },
+     "verify": {
+      "dice": 0.9966,
+      "p95_mm": 0.29,
+      "mean_mm": 0.11,
+      "max_mm": 0.52,
+      "mesh_mL": 0.69,
+      "slice_dice_min_ge20vox": 0.994,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 2144,
+      "max_faces": 4000000,
+      "decimated": false
+     },
+     "source": {
+      "kind": "consensus",
+      "files": [
+       "consensus/jun2026/masks/lesion_ids.npy"
+      ],
+      "reviewed": true
+     },
+     "label_name": "lesion 4",
+     "segment_hint": {
+      "segment": "VI",
+      "fraction": 1.0,
+      "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    }
+   },
+   "parts": {
+    "may2025": {
+     "cores": "meshes/may2025/lesion_S7sat_cores.ply",
+     "walls": "meshes/may2025/lesion_S7sat_walls.ply"
+    },
+    "jun2026": {
+     "cores": "meshes/jun2026/lesion_S7sat_cores.ply",
+     "walls": "meshes/jun2026/lesion_S7sat_walls.ply"
+    }
+   },
+   "growth": {
+    "may2025__jun2026": {
+     "mesh": "meshes/growth/S7sat_may2025__jun2026.ply",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "max_mm": 8.27,
+     "min_mm": -2.67,
+     "mean_mm": 3.64,
+     "mean_abs_mm": 3.89,
+     "p95_abs_mm": 7.6,
+     "frac_grown_gt2mm": 0.719,
+     "frac_retracted_gt2mm": 0.016,
+     "scale_mm": 10.0,
+     "surface_centroid_shift_mm": 7.6,
+     "frame": "mesh vertices in the LATER date's own RAS frame"
+    }
+   },
+   "match": {
+    "may2025": {
+     "method": "consensus label 4 = \"June S7 1.0 cm\" (cross_date_id_policy)",
+     "confidence": "probable",
+     "label": 4,
+     "label_name": "lesion 4"
+    },
+    "jun2026": {
+     "method": "consensus label 4 (R3 S6/7 posterior satellite), same numbering as May",
+     "confidence": "probable",
+     "label": 4,
+     "label_name": "lesion 4"
+    }
+   }
+  }
+ ],
+ "reports": "report_claims.json",
+ "ct_slices": null,
+ "notes": [
+  "Consensus masks (consensus/<date>/masks, one review round each; May two). Unresolved challenge points are shown as confidence labels on the layers and lesions (per_date.confidence), not fixed: segments are inferred (automatic, not vessel-guided) on June and Sep and partly inferred on May; hepatic veins are low confidence on June and Sep and incomplete on May.",
+  "June left hepatic vein vs the left lesion: they touch; encirclement is not established either way (June challenge C01).",
+  "June active: the 1.0 mL P3 patch on the right-mass medial-superior wall (8 mm snap rule, mostly below SUV 2.12; challenge C02) was moved out of the active mask into consensus/jun2026/uncertain/ and is shown only as the Uncertainty layer \"FDG activity, inferred only\".",
+  "FDG-active tissue outside the CT lesion masks is shown as its own layer \"PET-defined only\" (June 5.5 mL, Sep 18.5 mL): the PET defines its extent, the CT shows no boundary.",
+  "Lesion IDs follow the consensus lesion_ids numbering across dates (R1, L1, S8 dome, S7sat, S1 caudate, K, N; Sep P7 is new and provisional); lesions[].match gives the confidence of each cross-date correspondence.",
+  "Meshes are exact reproductions of the slice masks: marching cubes on the native CT grid (x3 linear interpolation between slices only), light volume-preserving Taubin smoothing (normalize_coordinates), decimation only where a per-structure face cap is set (see BUILD_NOTES.md; verify.decimated); each mesh is voxelised back and compared with its mask (verify.dice, p95 surface distance in mm).",
+  "Coordinates are RAS mm of each date's own CT (x patient right, y anterior, z superior); the registration matrices map them into the Sep 2026 frame.",
+  "Spine-anchored and liver-anchored views differ because the patient breathed differently on each date (right liver dome 69 / 89 / 78 mm above T12): no single rigid matrix aligns both skeleton and liver.",
+  "Growth maps use the liver-anchored (B1) matrices so that liver-internal lesions are compared in a liver frame; the B1 residual (~6-9 mm) is of the same order as real growth, so read growth maps for patterns (one-sided vs uniform), and use the per-date volumes for size change.",
+  "Volumes, sizes, HU and SUV are measured natively on each date (no registration). SUV: May/June use suv_on_ct_liverreg (liver-aligned PET), Sep suv_on_ct; PET edges blur ~6 mm; our Sep SUVs may be ~11 % above the report (net vs gross dose).",
+  "Sizes are measured the radiologists' way: maximal axial diameter (edge-to-edge on the best axial slice), perpendicular width on that slice, craniocaudal extent."
+ ],
+ "generated": "2026-10-09T01:58:33",
+ "source": "consensus",
+ "build": {
+  "status": "done",
+  "tool": "tools/build_viewer_data.py",
+  "recipe": "meshes.py-v1:pad2,zup-auto,mc0.5,taubin30/20/10,pb0.1,norm,xycrop-equiv",
+  "finished": "2026-10-09T01:58:33"
+ }
+}

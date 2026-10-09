@@ -1,0 +1,5564 @@
+{
+ "version": 1,
+ "generated": "2026-10-08T16:42:00+00:00",
+ "generated_by": "report-claims engineer (viewer/report_sources/build_report_claims.py)",
+ "hierarchy": {
+  "1": "Israeli revision (Dr. Kulikova, 08.09.2026, reading the 19.06.2026 study)",
+  "2": "LISOD rereads (Dr. Novikov, 19.05.2025 and 08.07.2026)",
+  "3": "primary reports (Feofaniya 13.05.2025 and 19.06.2026; KMKOC 23.09.2026, the only reading of that date)",
+  "4": "surgeon, verbal (Dr Fedorov 18.09.2026; hypotheses, not readings)"
+ },
+ "conventions": {
+  "size_mm": "[axial_max, axial_perp, craniocaudal]; numbers as reported, converted to mm; two-axis sizes without a stated plane are placed as the first two",
+  "quote_orig": "verbatim from the original-language document; only line breaks are joined with single spaces",
+  "lesion_ids": {
+   "R1": "dominant right-lobe mass",
+   "L1": "left-lobe S2/3 lesion",
+   "S8": "superior S8 (subcapsular Sg7/8 dome) lesion bearing the mural nodule / active focus",
+   "S7sat": "Sg7 satellite 1.0 cm",
+   "S5-8": "Sg5/8 border 0.6 cm",
+   "S4a-7": "Sg4a/7 border 0.6 cm",
+   "S1": "Sg1 (caudate) 1.3 cm",
+   "S4b": "Sg4b 0.4 cm",
+   "liver": "organ-level statement"
+  },
+  "date_keys_outside_model": {
+   "mar2024": "PET/CT 14.03.2024, comparator of the May 2025 LISOD reread"
+  }
+ },
+ "claims": [
+  {
+   "id": "may_A_ref_suv",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Референтні значення: медіастинальний пул - SUVmax 1,57; пул печінки - SUVmax 2,37.",
+   "quote_en": "Reference values: mediastinal blood pool SUVmax 1.57; liver pool SUVmax 2.37.",
+   "highlight": [
+    "SUVmax 2,37",
+    "SUVmax 2.37"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": null,
+    "reference": 2.37,
+    "reference_kind": "liver pool SUVmax (mediastinal pool 1.57)"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "topic": "reference_suv",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_A_no_comparator",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Не надано Dicom дані попередніх ПЕТ для порівняння.",
+   "quote_en": "No DICOM data of previous PET studies were provided for comparison.",
+   "highlight": [
+    "Не надано Dicom дані попередніх ПЕТ",
+    "No DICOM data of previous PET studies"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "This reader had no prior images; its sizes are stand-alone measurements, not a comparison.",
+   "topic": "comparison",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_A_s8_size",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Кістозні формації в печінці - найбільша в SVIII / SIV до 6,2х4,0см",
+   "quote_en": "Cystic formations in the liver - the largest in SVIII / SIV up to 6.2 x 4.0 cm",
+   "highlight": [
+    "SVIII / SIV до 6,2х4,0см",
+    "6.2 x 4.0 cm"
+   ],
+   "lesion_id": "S8",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    62,
+    40,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "SVIII / SIV",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison. Mapped to S8 (the superior dome lesion) because it matches the June primary \"Sg7/8 subcapsular 6.3 x 4.3 cm\" by size; the report does not link the two. The segment pair SVIII/SIV differs from the June label Sg7/8.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S8",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "center_ras": [
+     82.34,
+     161.52,
+     -1156.0
+    ],
+    "axes_ras": [
+     [
+      0.53217,
+      -0.84664,
+      0.0
+     ],
+     [
+      0.84664,
+      0.53217,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     62,
+     40,
+     null
+    ],
+    "model_mm": [
+     67.7,
+     39.7,
+     50.0
+    ],
+    "delta_pct": [
+     9.2,
+     -0.7,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 270
+   }
+  },
+  {
+   "id": "may_A_rmass_size",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "та SV / SIV до 13,5х10см, аметаболічні, по периферії з одиничними патернами звапнення; асоційовані з перенесеним лікуванням відомого GIST.",
+   "quote_en": "and in SV / SIV up to 13.5 x 10 cm, ametabolic, with single calcification patterns along the periphery; associated with the past treatment of the known GIST.",
+   "highlight": [
+    "13,5х10см",
+    "13.5 x 10 cm",
+    "аметаболічні",
+    "ametabolic"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size",
+   "size_mm": [
+    135,
+    100,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "SV / SIV",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison. Segment label SV/SIV conflicts with the June primary label Sg5/6/7/8 for the same dominant mass. \"ametabolic\" and the calcification remark apply to both cystic formations listed in the sentence.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "center_ras": [
+     65.15,
+     145.54,
+     -1239.0
+    ],
+    "axes_ras": [
+     [
+      0.6545,
+      -0.75606,
+      0.0
+     ],
+     [
+      0.75606,
+      0.6545,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     135,
+     100,
+     null
+    ],
+    "model_mm": [
+     145.0,
+     119.8,
+     140.0
+    ],
+    "delta_pct": [
+     7.4,
+     19.8,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 231
+   }
+  },
+  {
+   "id": "may_A_calcifications",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "аметаболічні, по периферії з одиничними патернами звапнення",
+   "quote_en": "ametabolic, with single calcification patterns along the periphery",
+   "highlight": [
+    "по периферії з одиничними патернами звапнення",
+    "single calcification patterns along the periphery"
+   ],
+   "lesion_id": null,
+   "structure": "calcifications",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Applies to the liver cystic formations listed in the sentence (6.2 x 4.0 cm SVIII/SIV and 13.5 x 10 cm SV/SIV); the report does not say which one carries the calcifications.",
+   "topic": "calcification",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='calcifications'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_A_activity",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "кістозні формації в печінці активності також не виявляють - зміни відповідають стану після ПХТ лікування, наразі активної тканини чи \"свіжих\" патернів не виявлено. PET negative.",
+   "quote_en": "the cystic formations in the liver also show no activity - the changes correspond to the state after chemotherapy; at present no active tissue or \"fresh\" patterns are found. PET negative.",
+   "highlight": [
+    "активності також не виявляють",
+    "PET negative",
+    "show no activity"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": null,
+    "reference": 2.37,
+    "reference_kind": "liver pool SUVmax"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_A_cardia_formation",
+   "date_key": "may2025",
+   "reader": "Primary report (Feofaniya: Kmetiuk, Ashykhmin), 13.05.2025",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT with FDG, 13.05.2025 (All-Ukrainian Radiosurgery Centre, Feofaniya) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.html",
+    "document_ref": "[67]",
+    "drive": "https://drive.google.com/file/d/17Ukmf9RhR-LvWHFDyJLUt1zPoJWdoIpk/view",
+    "original_file": "docs/2025_2026_imaging_63ba8b0c_e12c_44e5_a199_10c26eaded6d_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Під кардіальним відділом шлунку подібна кістозна формація до 3,3х2,8см; без достовірного метаболізму.",
+   "quote_en": "Under the cardiac part of the stomach a similar cystic formation up to 3.3 x 2.8 cm; without reliable metabolism.",
+   "highlight": [
+    "3,3х2,8см",
+    "3.3 x 2.8 cm"
+   ],
+   "lesion_id": null,
+   "structure": "gastric_mass",
+   "kind": "size",
+   "size_mm": [
+    33,
+    28,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Not a liver lesion as far as the reports go: later reports (LISOD 40 -> 35 mm; June 4.3 x 3.3 x 4.4 cm; Sep 43 x 32 mm) treat it as the gastric lesser-curvature mass. Listed because it lies against the left lobe and this report names no left-lobe (S2/3) liver lesion; it must not be confused with L1.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   }
+  },
+  {
+   "id": "may_B_overall",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Відомі переважно кістозні залишки мас в печінці без істотної динаміки розмірів",
+   "quote_en": "The known predominantly cystic residual masses in the liver without significant change in size",
+   "highlight": [
+    "без істотної динаміки розмірів",
+    "without significant change in size"
+   ],
+   "lesion_id": "liver",
+   "structure": "lesions",
+   "kind": "size_change",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "mar2024",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Comparators named in the report: PET/CT 14.03.2024 and 17.08.2023 (mar2024 is outside the three model dates). Qualitative.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   }
+  },
+  {
+   "id": "may_B_rmass_change",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "домінантна в правій частці трохи зменшилася з 15 до 13,5 см",
+   "quote_en": "the dominant one in the right lobe has slightly decreased from 15 to 13.5 cm",
+   "highlight": [
+    "з 15 до 13,5 см",
+    "from 15 to 13.5 cm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size_change",
+   "size_mm": [
+    135,
+    null,
+    null
+   ],
+   "change": {
+    "from": {
+     "date_key": "mar2024",
+     "size_mm": [
+      150,
+      null,
+      null
+     ]
+    },
+    "to": {
+     "date_key": "may2025",
+     "size_mm": [
+      135,
+      null,
+      null
+     ]
+    },
+    "percent": -10.0
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Single maximum dimension, plane not stated. Comparator 14.03.2024 (outside the three model dates). Agrees with the May primary (13.5 x 10 cm).",
+   "percent_basis": "computed from the reported single maximum dimension",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no R1 mask on mar2024",
+    "center_ras": [
+     65.15,
+     145.54,
+     -1239.0
+    ],
+    "axes_ras": [
+     [
+      0.6545,
+      -0.75606,
+      0.0
+     ],
+     [
+      0.75606,
+      0.6545,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     135,
+     null,
+     null
+    ],
+    "model_mm": [
+     145.0,
+     119.8,
+     140.0
+    ],
+    "delta_pct": [
+     7.4,
+     null,
+     null
+    ],
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 231
+   }
+  },
+  {
+   "id": "may_B_activity",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Як і при попередній візуалізації не демонструють істотного підвищення активності, зокрема і периферичних компонентів",
+   "quote_en": "As on the previous imaging, they show no significant increase in activity, including the peripheral components",
+   "highlight": [
+    "не демонструють істотного підвищення активності",
+    "no significant increase in activity"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_B_nodule_s8",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "проте у вузлі в 8 сегменті новий «пристінковий» кулястий щільний вузлик розміром 11 мм, без помітного відповідного істотного осередкового підвищення активності.",
+   "quote_en": "however, in the nodule in segment 8 there is a new \"mural\" spherical dense nodule 11 mm in size, without a noticeable corresponding significant focal increase in activity.",
+   "highlight": [
+    "у вузлі в 8 сегменті",
+    "розміром 11 мм",
+    "in segment 8",
+    "11 mm"
+   ],
+   "lesion_id": "S8",
+   "structure": "nodules",
+   "kind": "size",
+   "size_mm": [
+    11,
+    null,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "S8",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Body text places the nodule in \"the nodule (lesion) in segment 8\"; the conclusion of the same report places it in \"the dominant mass\" (see may_B_nodule_conclusion). Mapped to S8 here; it may sit on the S8 dome lesion or on the superior wall of R1. Single diameter.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S8",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "center_ras": [
+     82.34,
+     161.52,
+     -1156.0
+    ],
+    "axes_ras": [
+     [
+      0.53217,
+      -0.84664,
+      0.0
+     ],
+     [
+      0.84664,
+      0.53217,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     11,
+     null,
+     null
+    ],
+    "model_mm": [
+     67.7,
+     39.7,
+     50.0
+    ],
+    "delta_pct": [
+     515.5,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 270,
+    "model_mm_is": "whole lesion (orientation only)",
+    "reason": "the nodules mask has no voxels in/near S8 on may2025; box = whole lesion for orientation"
+   }
+  },
+  {
+   "id": "may_B_no_new",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Нових окремих гіперметаболічних осередків у печінці не знайдено.",
+   "quote_en": "No new separate hypermetabolic foci were found in the liver.",
+   "highlight": [
+    "Нових окремих гіперметаболічних осередків",
+    "No new separate hypermetabolic foci"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "may_B_nodule_conclusion",
+   "date_key": "may2025",
+   "reader": "LISOD reread (Dr. Novikov), 19.05.2025",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 13.05.2025 PET-CT (LISOD, Dr. M. Novikov) - Ukrainian original",
+    "report_page": "reports/2025_2026_imaging_69963_20_05_2025_9_34_pdf.html",
+    "original_page": "orig/UKR_orig_19May2025_69963_20_05_2025_9_34_pdf.html",
+    "document_ref": "[68]",
+    "drive": "https://drive.google.com/file/d/1-7Cupz199rAs_CyXCKaXmCa-lE_UrdIR/view",
+    "original_file": "docs/2025_2026_imaging_69963_20_05_2025_9_34_pdf.pdf",
+    "translation_page": null,
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Порівняно із 03/2025, подальше невелике зменшення неактивних залишків мас печінки та шлунку, поява нового пристінкового вузлика у домінантній масі печінки, проте метаболічно неактивного (можливо і внаслідок крововиливу), доцільний подальший контроль.",
+   "quote_en": "Compared with 03/2025, further slight decrease of the inactive residual masses of the liver and stomach; appearance of a new mural nodule in the dominant liver mass, but metabolically inactive (possibly due to haemorrhage); further follow-up is advisable.",
+   "highlight": [
+    "нового пристінкового вузлика у домінантній масі печінки",
+    "new mural nodule in the dominant liver mass"
+   ],
+   "lesion_id": "R1",
+   "structure": "nodules",
+   "kind": "location",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "\"Порівняно із 03/2025\": the comparators listed in the report are 14.03.2024 and 17.08.2023; no March 2025 scan exists - almost certainly 03/2024.",
+   "notes": "Conclusion puts the 11 mm nodule in the dominant mass (R1); the body text of the same report says the segment-8 lesion (S8).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/may2025_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": null
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "may2025",
+    "center_ras": [
+     83.55,
+     205.05,
+     -1228.0
+    ],
+    "axes_ras": [
+     [
+      0.94089,
+      -0.33872,
+      0.0
+     ],
+     [
+      0.33872,
+      0.94089,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     21.7,
+     9.7,
+     14.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 231,
+    "reason": "location claim without a size; box = nodules mask inside the lesion",
+    "measured_structure": "nodules mask inside the lesion"
+   }
+  },
+  {
+   "id": "jun_A_technique",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "ПЕТ/КТ всього тіла з контрастним підсиленням",
+   "quote_en": "Whole-body PET/CT with contrast enhancement",
+   "highlight": [
+    "з контрастним підсиленням",
+    "with contrast enhancement"
+   ],
+   "lesion_id": null,
+   "structure": "technique",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Agrees with the DICOM (venous-phase series 9 and an arterial series 7). The Israeli revision states the opposite (jun_C_technique).",
+   "topic": "technique",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='technique'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_A_ref_suv",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Референтні значення: медіастинальний пул - SUVmax 1,41; пул паренхіми печінки - SUVmax 1,99.",
+   "quote_en": "Reference values: mediastinal blood pool SUVmax 1.41; liver parenchyma pool SUVmax 1.99.",
+   "highlight": [
+    "SUVmax 1,99",
+    "SUVmax 1.99"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": null,
+    "reference": 1.99,
+    "reference_kind": "liver parenchyma pool SUVmax (mediastinal pool 1.41)"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "topic": "reference_suv",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_A_liver_cc",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Печінка: вікарно збільшена, ККР правої частки до 18,7 см (13.05.2025 - ККР до 17,9 см)",
+   "quote_en": "Liver: compensatorily enlarged, craniocaudal size of the right lobe up to 18.7 cm (13.05.2025 - craniocaudal size up to 17.9 cm)",
+   "highlight": [
+    "ККР правої частки до 18,7 см",
+    "13.05.2025 - ККР до 17,9 см",
+    "up to 18.7 cm",
+    "up to 17.9 cm"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "size_change",
+   "size_mm": [
+    null,
+    null,
+    187
+   ],
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": [
+      null,
+      null,
+      179
+     ]
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": [
+      null,
+      null,
+      187
+     ]
+    },
+    "percent": 4.5
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Right-lobe craniocaudal (CC) extent of the liver, not of a lesion. Breathing differed between the dates (right dome 69 / 89 mm above T12 on May / June).",
+   "percent_basis": "computed from the reported right-lobe craniocaudal sizes",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_A_lesions_stable",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "в паренхімі наявні аметабілічні утворення, гіподенсної щільності, стабільні в розмірах",
+   "quote_en": "the parenchyma contains ametabolic lesions of hypodense density, stable in size",
+   "highlight": [
+    "аметабілічні",
+    "стабільні в розмірах",
+    "ametabolic",
+    "stable in size"
+   ],
+   "lesion_id": "liver",
+   "structure": "lesions",
+   "kind": "size_change",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": "\"аметабілічні\" is a misspelling of \"аметаболічні\" (ametabolic); harmless.",
+   "notes": "Applies to all eight lesions listed below it, including the dominant mass (May primary 13.5 x 10 cm -> June 14.4 x 10.4 cm = +7 % long axis, called stable). Its \"ametabolic\" verdict is overruled by the LISOD reread and the Israeli revision.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   }
+  },
+  {
+   "id": "jun_A_rmass_size",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Sg5/6/7/8 представлений масивним утвором до 14,4х10,4х14,1 см (ax+cor)",
+   "quote_en": "Sg5/6/7/8 is occupied by a massive lesion up to 14.4 x 10.4 x 14.1 cm (ax+cor)",
+   "highlight": [
+    "14,4х10,4х14,1 см",
+    "14.4 x 10.4 x 14.1 cm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size",
+   "size_mm": [
+    144,
+    104,
+    141
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg5/6/7/8",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "\"ax+cor\": 14.4 x 10.4 cm in the axial plane, 14.1 cm craniocaudal on the coronal view.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     144,
+     104,
+     141
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     2.2,
+     7.2,
+     5.0
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190
+   }
+  },
+  {
+   "id": "jun_A_s7sat",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Sg7 сателітний розміром до 1,0х1,0 см",
+   "quote_en": "Sg7: a satellite lesion up to 1.0 x 1.0 cm",
+   "highlight": [
+    "1,0х1,0 см",
+    "1.0 x 1.0 cm"
+   ],
+   "lesion_id": "S7sat",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    10,
+    10,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg7",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S7sat",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     50.99,
+     80.84,
+     -1212.0
+    ],
+    "axes_ras": [
+     [
+      0.5145,
+      -0.85749,
+      0.0
+     ],
+     [
+      0.85749,
+      0.5145,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     10,
+     10,
+     null
+    ],
+    "model_mm": [
+     13.3,
+     11.4,
+     10.0
+    ],
+    "delta_pct": [
+     33.0,
+     14.0,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 198
+   }
+  },
+  {
+   "id": "jun_A_s8_subcapsular",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Sg7/8 субкапсулярно розміром до 6,3х4,3 см",
+   "quote_en": "Sg7/8, subcapsular, up to 6.3 x 4.3 cm",
+   "highlight": [
+    "6,3х4,3 см",
+    "6.3 x 4.3 cm"
+   ],
+   "lesion_id": "S8",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    63,
+    43,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg7/8",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison. Mapped to S8 (the superior subcapsular dome lesion above R1, which the team masks treat as separate); the report itself does not mention a nodule in it. Probably the May \"SVIII / SIV 6.2 x 4.0 cm\" lesion.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S8",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     82.35,
+     155.2,
+     -1154.0
+    ],
+    "axes_ras": [
+     [
+      0.35743,
+      -0.93394,
+      0.0
+     ],
+     [
+      0.93394,
+      0.35743,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     63,
+     43,
+     null
+    ],
+    "model_mm": [
+     66.1,
+     42.4,
+     50.0
+    ],
+    "delta_pct": [
+     4.9,
+     -1.4,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 229
+   }
+  },
+  {
+   "id": "jun_A_s58",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "на межі Sg5/8 дрібний до 0,6х0,6 см",
+   "quote_en": "on the Sg5/8 border, a small lesion up to 0.6 x 0.6 cm",
+   "highlight": [
+    "0,6х0,6 см",
+    "0.6 x 0.6 cm"
+   ],
+   "lesion_id": "S5-8",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    6,
+    6,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg5/8",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='S5-8' / structure='lesions_other'"
+   }
+  },
+  {
+   "id": "jun_A_s4a7",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "на межі Sg4а/7 до 0,6х0,6 см",
+   "quote_en": "on the Sg4a/7 border, up to 0.6 x 0.6 cm",
+   "highlight": [
+    "Sg4а/7",
+    "0,6х0,6 см",
+    "0.6 x 0.6 cm"
+   ],
+   "lesion_id": "S4a-7",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    6,
+    6,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg4a/7",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "Segments IVa and VII do not touch; the segment label is probably wrong (perhaps IVa/VIII). Note the \"а\" in \"Sg4а\" is Cyrillic in the original.",
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "N",
+    "lesion_mapping": "claim lesion S4a-7 mapped to model lesion N: June consensus label 7 is named \"A1 small S4a/8 focus (B6, report Sg4a/7 0.6 cm)\""
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     12.35,
+     187.78,
+     -1187.0
+    ],
+    "axes_ras": [
+     [
+      0.87416,
+      0.48564,
+      0.0
+     ],
+     [
+      -0.48564,
+      0.87416,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     6,
+     6,
+     null
+    ],
+    "model_mm": [
+     7.8,
+     7.5,
+     8.0
+    ],
+    "delta_pct": [
+     30.0,
+     25.0,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 211
+   }
+  },
+  {
+   "id": "jun_A_llesion_size",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "на межі Sg2/3 утвір вздовж лівої портальної вени розміром 4,5х3,6 см",
+   "quote_en": "on the Sg2/3 border, a lesion along the left portal vein, 4.5 x 3.6 cm",
+   "highlight": [
+    "4,5х3,6 см",
+    "4.5 x 3.6 cm"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "size",
+   "size_mm": [
+    45,
+    36,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg2/3",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     45,
+     36,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     13.8,
+     -4.2,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200
+   }
+  },
+  {
+   "id": "jun_A_llesion_portal",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "на межі Sg2/3 утвір вздовж лівої портальної вени розміром 4,5х3,6 см",
+   "quote_en": "on the Sg2/3 border, a lesion along the left portal vein, 4.5 x 3.6 cm",
+   "highlight": [
+    "вздовж лівої портальної вени",
+    "along the left portal vein"
+   ],
+   "lesion_id": "L1",
+   "structure": "portal",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "Sg2/3",
+   "vessel": "left portal vein",
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "\"Along\" the vein: the report states contact/course, not encasement or narrowing.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200,
+    "reason": "vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   }
+  },
+  {
+   "id": "jun_A_s1",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Sg1 розміром до 1,3х1,3 см",
+   "quote_en": "Sg1: up to 1.3 x 1.3 cm",
+   "highlight": [
+    "1,3х1,3 см",
+    "1.3 x 1.3 cm"
+   ],
+   "lesion_id": "S1",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    13,
+    13,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg1",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -20.57,
+     136.85,
+     -1187.0
+    ],
+    "axes_ras": [
+     [
+      0.40614,
+      0.91381,
+      0.0
+     ],
+     [
+      -0.91381,
+      0.40614,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     13,
+     13,
+     null
+    ],
+    "model_mm": [
+     15.0,
+     11.8,
+     12.0
+    ],
+    "delta_pct": [
+     15.4,
+     -9.2,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 210
+   }
+  },
+  {
+   "id": "jun_A_s4b",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Sg4b дрібний до 0,4х0,4 см",
+   "quote_en": "Sg4b: a small lesion up to 0.4 x 0.4 cm",
+   "highlight": [
+    "0,4х0,4 см",
+    "0.4 x 0.4 cm"
+   ],
+   "lesion_id": "S4b",
+   "structure": "lesions_other",
+   "kind": "size",
+   "size_mm": [
+    4,
+    4,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "Sg4b",
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "K",
+    "lesion_mapping": "claim lesion S4b mapped to model lesion K: uncertain: May consensus label 6 note \"uncertain match: June S4b 0.4 cm\""
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     21.59,
+     200.37,
+     -1211.0
+    ],
+    "axes_ras": [
+     [
+      0.49614,
+      0.86824,
+      0.0
+     ],
+     [
+      -0.86824,
+      0.49614,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     4,
+     4,
+     null
+    ],
+    "model_mm": [
+     6.1,
+     5.5,
+     8.0
+    ],
+    "delta_pct": [
+     52.5,
+     37.5,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 198
+   }
+  },
+  {
+   "id": "jun_A_gallbladder",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Жовчний міхур не збільшений, стиснений прилеглою паренхімою печінки",
+   "quote_en": "The gallbladder is not enlarged, compressed by the adjacent liver parenchyma",
+   "highlight": [
+    "стиснений прилеглою паренхімою печінки",
+    "compressed by the adjacent liver parenchyma"
+   ],
+   "lesion_id": null,
+   "structure": "gallbladder",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gallbladder'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_A_gastric",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "по малій кривизні зберігається гіподенсний аметаболічний утвір, стабільними розмірами до 4,3х3,3х4,4 см (ax+sag), зі збільшенням кальцинатів в структурі.",
+   "quote_en": "along the lesser curvature a hypodense ametabolic lesion persists, of stable size up to 4.3 x 3.3 x 4.4 cm (ax+sag), with increasing calcifications in its structure.",
+   "highlight": [
+    "4,3х3,3х4,4 см",
+    "4.3 x 3.3 x 4.4 cm"
+   ],
+   "lesion_id": null,
+   "structure": "gastric_mass",
+   "kind": "size",
+   "size_mm": [
+    43,
+    33,
+    44
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Gastric lesser-curvature mass, not a liver lesion; lies against the left lobe (exclude it from liver and L1).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   }
+  },
+  {
+   "id": "jun_A_conclusion",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "У порівнянні з ПЕТ-КТ від 13.05.2026 картина відомої гастроінтестинальної стромальної пухлини (GIST) шлунка та метастатичного ураження печінки без достовірної негативної динаміки.",
+   "quote_en": "Compared with the PET-CT of 13.05.2026, the picture of the known gastrointestinal stromal tumour (GIST) of the stomach and of the metastatic liver involvement shows no reliable negative dynamics.",
+   "highlight": [
+    "без достовірної негативної динаміки",
+    "no reliable negative dynamics"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "size_change",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": "\"від 13.05.2026\" should be 13.05.2025 (the body of the report says 13.05.2025). Quote left as written.",
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_A_caveat",
+   "date_key": "jun2026",
+   "reader": "Primary report (Feofaniya: Zakrzhevska, Kmetiuk), 19.06.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body with contrast enhancement, 19.06.2026 (Feofaniya)",
+    "report_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334_pdf.html",
+    "document_ref": "[70]",
+    "drive": "https://drive.google.com/file/d/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/view",
+    "original_file": "files/15Z007fhThFHyCgIekVFmOgxNc0LJhBuR/Жерліцина_Анастасія_Станіславівна_f4b4883e_5c64_4d03_b1d1_b1cf4abb2334.pdf",
+    "translation_page": "reports/2025_2026_imaging_PET_CT_19June2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1FvaL6jAj_Qw64Z44oFnUJvXySHHqyjYw/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "відсутністю вираженої метаболічної активності не виключає наявності резидуальної пухлинної тканини",
+   "quote_en": "the absence of marked metabolic activity does not exclude the presence of residual tumour tissue",
+   "highlight": [
+    "не виключає наявності резидуальної пухлинної тканини",
+    "does not exclude the presence of residual tumour tissue"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_primary_feofaniya_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_B_sizes_stable",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Відомі осередки та маси в печінці загалом сталими розмірами",
+   "quote_en": "The known foci and masses in the liver are, on the whole, of stable size",
+   "highlight": [
+    "загалом сталими розмірами",
+    "on the whole, of stable size"
+   ],
+   "lesion_id": "liver",
+   "structure": "lesions",
+   "kind": "size_change",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Comparators named: 13.05.2025 and 14.03.2024. No measurements given.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   }
+  },
+  {
+   "id": "jun_B_mural_enhancing",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "втім пристінково в них, зокрема в найбільшій в правій частці є нові вузлоподібні елементи з помітним підсиленням",
+   "quote_en": "however, along their walls, in particular in the largest one in the right lobe, there are new nodular elements with notable enhancement",
+   "highlight": [
+    "зокрема в найбільшій в правій частці",
+    "нові вузлоподібні елементи з помітним підсиленням",
+    "new nodular elements with notable enhancement"
+   ],
+   "lesion_id": "R1",
+   "structure": "nodules",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "New enhancing mural nodules in the liver lesions, \"in particular\" in the largest (R1); the number and positions are not given.",
+   "topic": "enhancement",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190,
+    "reason": "no nodules mask on jun2026 yet; box = whole lesion for orientation",
+    "model_mm_is": "whole lesion (orientation only)"
+   }
+  },
+  {
+   "id": "jun_B_activity",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "та появою частково фокально помірно підвищеної активності, що помріно вища печінкового пулу",
+   "quote_en": "and the appearance of partly focal, moderately increased activity, moderately above the liver pool",
+   "highlight": [
+    "помірно підвищеної активності",
+    "moderately increased activity"
+   ],
+   "lesion_id": "R1",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "\"помріно\" is a typo for \"помірно\" (moderately).",
+   "notes": "Refers to the new mural elements of the liver lesions (R1 named as the main example).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 3.34,
+    "suv_max_within_5mm": 3.98,
+    "active_mL": 1.38,
+    "active_within_5mm_mL": 1.38,
+    "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     87.27,
+     194.25,
+     -1199.0
+    ],
+    "axes_ras": [
+     [
+      0.79616,
+      -0.60508,
+      0.0
+     ],
+     [
+      0.60508,
+      0.79616,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     23.9,
+     6.2,
+     40.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 198,
+    "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "jun_B_llesion_suv",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "що найкраще помітно по вузлу 42 в лівій частці з аптейком до SUVmax 3.2 (паренхіма поруч SUV 2).",
+   "quote_en": "which is best seen at nodule 42 in the left lobe, with uptake up to SUVmax 3.2 (adjacent parenchyma SUV 2).",
+   "highlight": [
+    "вузлу 42 в лівій частці",
+    "SUVmax 3.2",
+    "nodule 42 in the left lobe"
+   ],
+   "lesion_id": "L1",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": 3.2,
+    "reference": 2.0,
+    "reference_kind": "adjacent liver parenchyma SUV"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "\"по вузлу 42\": ambiguous - probably the ~42 mm left-lobe lesion (the Israeli revision gives 42 x 36 mm), possibly a series/image label.",
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 3.24,
+    "suv_max_within_5mm": 3.24,
+    "active_mL": 22.73,
+    "active_within_5mm_mL": 26.64,
+    "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -48.21,
+     172.95,
+     -1197.0
+    ],
+    "axes_ras": [
+     [
+      0.44721,
+      -0.89443,
+      0.0
+     ],
+     [
+      0.89443,
+      0.44721,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     52.8,
+     34.1,
+     40.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 204,
+    "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "jun_B_no_new",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Нових окремих схожих активних чи суспектних вузлів не знайдено.",
+   "quote_en": "No new separate similar active or suspicious nodules were found.",
+   "highlight": [
+    "Нових окремих схожих активних чи суспектних вузлів не знайдено",
+    "No new separate similar active or suspicious nodules"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_B_ducts_vessels",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Немає ознак кишкової непрохідності, асциту, гідронефрозу, розширення жовчних протоків, тромбів великих судин.",
+   "quote_en": "No signs of bowel obstruction, ascites, hydronephrosis, bile-duct dilatation or thrombi of the large vessels.",
+   "highlight": [
+    "розширення жовчних протоків",
+    "тромбів великих судин",
+    "bile-duct dilatation",
+    "thrombi of the large vessels"
+   ],
+   "lesion_id": null,
+   "structure": "portal",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": "large vessels (no thrombus); bile ducts (not dilated)",
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='portal'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_B_conclusion",
+   "date_key": "jun2026",
+   "reader": "LISOD reread (Dr. Novikov), 08.07.2026",
+   "reader_rank": 2,
+   "source": {
+    "title": "Retrospective radiology analysis of the 19.06.2026 PET-CT (LISOD, Dr. M. Novikov)",
+    "report_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "original_page": "orig/anastasia_disks_June_19_2026_PET_CT_640997_pdf.html",
+    "document_ref": "[71]",
+    "drive": "https://drive.google.com/file/d/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/view",
+    "original_file": "files/1zp4hFUJAxP7a3SCxyGxmrEGFmKDTbIOJ/Жерліцина_Анастасія_Станіславівна_Радіологічний_звіт_загальний_640997.pdf",
+    "translation_page": "reports/2025_2026_imaging_LISOD_radiology_report_08July2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1taZ7Sy14R117SCHrhsDFnNYREB3wgyIL/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "В печінкових ураженyях нові пристінкові компоненти з помірною активністю, що є підозрою щодо повернення вітальних пухлинних елементів метастазів GIST.",
+   "quote_en": "New mural components with moderate activity in the liver lesions, raising suspicion of a return of viable tumour elements of the GIST metastases.",
+   "highlight": [
+    "нові пристінкові компоненти з помірною активністю",
+    "New mural components with moderate activity"
+   ],
+   "lesion_id": "liver",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": "\"ураженyях\" contains a Latin \"y\" in the original (typing artefact).",
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_lisod_novikov_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   }
+  },
+  {
+   "id": "jun_C_technique",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Исследование выполнено после внутривенного введения радиофармпрепарата, без внутривенного и без перорального введения контрастного вещества.",
+   "quote_en": "The study was performed after intravenous injection of the radiopharmaceutical, without intravenous and without oral contrast.",
+   "highlight": [
+    "без внутривенного и без перорального введения контрастного вещества",
+    "without intravenous and without oral contrast"
+   ],
+   "lesion_id": null,
+   "structure": "technique",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "Conflicts with the DICOM and the primary report: the 19.06.2026 study has a venous-phase contrast CT (series 9). The reader may have read only the low-dose attenuation CT.",
+   "notes": null,
+   "topic": "technique",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='technique'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_C_known_lesions",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "В обеих долях печени вновь определяются известные гиподенсные образования.",
+   "quote_en": "The known hypodense lesions are again seen in both lobes of the liver.",
+   "highlight": [
+    "В обеих долях печени",
+    "in both lobes of the liver"
+   ],
+   "lesion_id": "liver",
+   "structure": "lesions",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_C_rmass_activity",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Крупное образование в правой доле печени с периферическим накоплением FDG, которое в настоящем исследовании несколько более выражено.",
+   "quote_en": "A large lesion in the right lobe of the liver with peripheral FDG uptake, which is somewhat more pronounced on the present study.",
+   "highlight": [
+    "периферическим накоплением FDG",
+    "несколько более выражено",
+    "peripheral FDG uptake",
+    "somewhat more pronounced"
+   ],
+   "lesion_id": "R1",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Peripheral (rim) uptake, increased versus 13.05.2025. No SUV given. The word \"mural nodule\" is not used.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 3.34,
+    "suv_max_within_5mm": 3.98,
+    "active_mL": 1.38,
+    "active_within_5mm_mL": 1.38,
+    "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     87.27,
+     194.25,
+     -1199.0
+    ],
+    "axes_ras": [
+     [
+      0.79616,
+      -0.60508,
+      0.0
+     ],
+     [
+      0.60508,
+      0.79616,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     23.9,
+     6.2,
+     40.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 198,
+    "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "jun_C_rmass_size",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Размер образования составляет около 15 × 10 см",
+   "quote_en": "The size of the lesion is about 15 x 10 cm",
+   "highlight": [
+    "15 × 10 см",
+    "15 x 10 cm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size",
+   "size_mm": [
+    150,
+    100,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     150,
+     100,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     -1.9,
+     11.5,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190
+   }
+  },
+  {
+   "id": "jun_C_rmass_change",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Размер образования составляет около 15 × 10 см; при предыдущем исследовании — около 11–12,5 см.",
+   "quote_en": "The size of the lesion is about 15 x 10 cm; on the previous study about 11-12.5 cm.",
+   "highlight": [
+    "15 × 10 см",
+    "около 11–12,5 см",
+    "15 x 10 cm",
+    "about 11-12.5 cm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size_change",
+   "size_mm": [
+    150,
+    100,
+    null
+   ],
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": [
+      125,
+      null,
+      null
+     ],
+     "size_range_mm": [
+      110,
+      125
+     ]
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": [
+      150,
+      100,
+      null
+     ]
+    },
+    "percent": 20.0,
+    "percent_range": [
+     20.0,
+     36.4
+    ]
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Previous study = 13.05.2025. The previous value is a range for one dimension. The May readers themselves measured 13.5 cm (primary 13.5 x 10, LISOD 13.5): the Israeli May value is 7-19 % below both May reports.",
+   "percent_basis": "long axis 150 mm vs the previous 110-125 mm range: +20 % (vs 125) to +36 % (vs 110); computed, not stated in the report",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz_from": {
+    "date_key": "may2025",
+    "center_ras": [
+     65.15,
+     145.54,
+     -1239.0
+    ],
+    "axes_ras": [
+     [
+      0.6545,
+      -0.75606,
+      0.0
+     ],
+     [
+      0.75606,
+      0.6545,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     125,
+     null,
+     null
+    ],
+    "model_mm": [
+     145.0,
+     119.8,
+     140.0
+    ],
+    "delta_pct": [
+     16.0,
+     null,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 231
+   },
+   "viz_to": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     150,
+     100,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     -1.9,
+     11.5,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190
+   },
+   "model_change_pct": 1.4,
+   "model_change_detail": {
+    "long_axis_pct": 1.4,
+    "perp_axis_pct": -6.9,
+    "cc_pct": 5.7,
+    "volume_pct": 4.4,
+    "volume_mL": [
+     1205.45,
+     1258.38
+    ]
+   },
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
+   "change_verdict": "model shows less growth"
+  },
+  {
+   "id": "jun_C_llesion_size",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Образование в левой доле печени размером около 42 × 36 мм",
+   "quote_en": "The lesion in the left lobe of the liver, about 42 x 36 mm",
+   "highlight": [
+    "42 × 36 мм",
+    "42 x 36 mm"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "size",
+   "size_mm": [
+    42,
+    36,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Plane not stated in the report; the two numbers are placed as axial long / short axis for comparison.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     42,
+     36,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     21.9,
+     -4.2,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200
+   }
+  },
+  {
+   "id": "jun_C_llesion_change",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Образование в левой доле печени размером около 42 × 36 мм — без существенного изменения размеров",
+   "quote_en": "The lesion in the left lobe of the liver, about 42 x 36 mm - without significant change in size",
+   "highlight": [
+    "без существенного изменения размеров",
+    "without significant change in size"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "size_change",
+   "size_mm": [
+    42,
+    36,
+    null
+   ],
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": [
+      42,
+      36,
+      null
+     ]
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Implies the left-lobe lesion was present on 13.05.2025 at about the same size; neither May report lists it.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz_from": {
+    "date_key": "may2025",
+    "center_ras": [
+     -49.82,
+     173.89,
+     -1192.0
+    ],
+    "axes_ras": [
+     [
+      0.57952,
+      -0.81496,
+      0.0
+     ],
+     [
+      0.81496,
+      0.57952,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     45.2,
+     33.3,
+     38.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 251,
+    "reason": "the claim gives no size"
+   },
+   "viz_to": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     42,
+     36,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     21.9,
+     -4.2,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200
+   },
+   "model_change_pct": 13.3,
+   "model_change_detail": {
+    "long_axis_pct": 13.3,
+    "perp_axis_pct": 3.6,
+    "cc_pct": 10.5,
+    "volume_pct": 56.4,
+    "volume_mL": [
+     21.38,
+     33.43
+    ]
+   },
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)"
+  },
+  {
+   "id": "jun_C_llesion_activity",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "однако интенсивность накопления FDG в настоящее время повысилась.",
+   "quote_en": "however, the intensity of FDG uptake has now increased.",
+   "highlight": [
+    "интенсивность накопления FDG в настоящее время повысилась",
+    "the intensity of FDG uptake has now increased"
+   ],
+   "lesion_id": "L1",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 3.24,
+    "suv_max_within_5mm": 3.24,
+    "active_mL": 22.73,
+    "active_within_5mm_mL": 26.64,
+    "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -48.21,
+     172.95,
+     -1197.0
+    ],
+    "axes_ras": [
+     [
+      0.44721,
+      -0.89443,
+      0.0
+     ],
+     [
+      0.89443,
+      0.44721,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     52.8,
+     34.1,
+     40.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 204,
+    "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "jun_C_ducts_portal",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Внутрипеченочные желчные протоки не расширены. Воротная вена проходима.",
+   "quote_en": "The intrahepatic bile ducts are not dilated. The portal vein is patent.",
+   "highlight": [
+    "Воротная вена проходима",
+    "The portal vein is patent"
+   ],
+   "lesion_id": null,
+   "structure": "portal",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": "portal vein (patent); intrahepatic bile ducts (not dilated)",
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='portal'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_C_gallbladder",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Желчный пузырь не увеличен.",
+   "quote_en": "The gallbladder is not enlarged.",
+   "highlight": [
+    "Желчный пузырь не увеличен",
+    "The gallbladder is not enlarged"
+   ],
+   "lesion_id": null,
+   "structure": "gallbladder",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": null,
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gallbladder'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_C_adrenal",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Правый надпочечник сдавлен печенью, объемных образований и патологического накопления FDG нет.",
+   "quote_en": "The right adrenal gland is compressed by the liver, without mass lesions and without pathological FDG uptake.",
+   "highlight": [
+    "Правый надпочечник сдавлен печенью",
+    "right adrenal gland is compressed by the liver"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Liver-contour relation: the enlarged right lobe compresses the right adrenal.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "jun_C_gastric",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Известное образование в стенке желудка с кальцификациями, без существенного изменения размеров — около 37 × 31 мм.",
+   "quote_en": "The known lesion in the gastric wall with calcifications, without significant change in size - about 37 x 31 mm.",
+   "highlight": [
+    "37 × 31 мм",
+    "37 x 31 mm"
+   ],
+   "lesion_id": null,
+   "structure": "gastric_mass",
+   "kind": "size",
+   "size_mm": [
+    37,
+    31,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Gastric mass, not a liver lesion; lies against the left lobe.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   }
+  },
+  {
+   "id": "jun_C_conclusion_activity",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "Метаболическое прогрессирование очагов в печени, особенно образования в левой доле",
+   "quote_en": "Metabolic progression of the liver foci, especially of the lesion in the left lobe",
+   "highlight": [
+    "Метаболическое прогрессирование",
+    "особенно образования в левой доле",
+    "Metabolic progression",
+    "especially of the lesion in the left lobe"
+   ],
+   "lesion_id": "L1",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Applies to the liver foci in general, the left-lobe lesion (L1) most of all.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 3.24,
+    "suv_max_within_5mm": 3.24,
+    "active_mL": 22.73,
+    "active_within_5mm_mL": 26.64,
+    "suv_file": "studies/jun2026/suv_on_ct_liverreg.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -48.21,
+     172.95,
+     -1197.0
+    ],
+    "axes_ras": [
+     [
+      0.44721,
+      -0.89443,
+      0.0
+     ],
+     [
+      0.89443,
+      0.44721,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     52.8,
+     34.1,
+     40.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 204,
+    "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "jun_C_conclusion_rmass",
+   "date_key": "jun2026",
+   "reader": "Israeli revision (Dr. Kulikova), 08.09.2026",
+   "reader_rank": 1,
+   "source": {
+    "title": "Expert opinion on the 19.06.2026 FDG PET-CT (Dr. V. Kulikova, nuclear medicine, Israel), 08.09.2026",
+    "report_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[77]",
+    "drive": "https://drive.google.com/file/d/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/view",
+    "original_file": "files/1pEe9kHfNVYrPEavHsBKgTapsc9jTSw1w/Zherlitsyna_Anastasia_-_PET_CT_revision_-_08.09.2026.docx",
+    "translation_page": "reports/2026_new_Zherlitsyna_Anastasia_PET_CT_revision_08_09_2026_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1ZmwiGkKzbwShznJlkOn2GymYGIo4gjWb/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "ru",
+   "quote_orig": "а также увеличение крупного образования в правой доле печени, при этом его метаболическая активность также несколько повысилась.",
+   "quote_en": "as well as enlargement of the large lesion in the right lobe of the liver, whose metabolic activity has also somewhat increased.",
+   "highlight": [
+    "увеличение крупного образования в правой доле",
+    "enlargement of the large lesion in the right lobe"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size_change",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "may2025",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "jun2026",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Qualitative; the body of the report gives about 15 x 10 cm vs about 11-12.5 cm (jun_C_rmass_change).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/jun2026_israeli_kulikova_ru.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz_from": {
+    "date_key": "may2025",
+    "center_ras": [
+     65.15,
+     145.54,
+     -1239.0
+    ],
+    "axes_ras": [
+     [
+      0.6545,
+      -0.75606,
+      0.0
+     ],
+     [
+      0.75606,
+      0.6545,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     145.0,
+     119.8,
+     140.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 231,
+    "reason": "the claim gives no size"
+   },
+   "viz_to": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190,
+    "reason": "the claim gives no size"
+   },
+   "model_change_pct": 1.4,
+   "model_change_detail": {
+    "long_axis_pct": 1.4,
+    "perp_axis_pct": -6.9,
+    "cc_pct": 5.7,
+    "volume_pct": 4.4,
+    "volume_mL": [
+     1205.45,
+     1258.38
+    ]
+   },
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)"
+  },
+  {
+   "id": "fed_llesion_between_veins",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "Найбільшу проблему становить метастаз саме в лівій долі печінки, між судинами, між лівою печінковою веною і лівою ворітною веною.",
+   "quote_en": "The biggest problem is the metastasis in the left lobe of the liver, between the vessels - between the left hepatic vein and the left portal vein.",
+   "highlight": [
+    "між лівою печінковою веною і лівою ворітною веною",
+    "between the left hepatic vein and the left portal vein"
+   ],
+   "lesion_id": "L1",
+   "structure": "hepatic_veins",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": "left hepatic vein and left portal vein",
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #009.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200,
+    "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   },
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+  },
+  {
+   "id": "fed_llesion_lhv",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "Ні, вона не має живлячої судини, вона огортає частково ліву печінкову вену.",
+   "quote_en": "No, it has no feeding vessel; it partly encircles the left hepatic vein.",
+   "highlight": [
+    "огортає частково ліву печінкову вену",
+    "partly encircles the left hepatic vein"
+   ],
+   "lesion_id": "L1",
+   "structure": "hepatic_veins",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": "left hepatic vein",
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #059. Only this reader mentions the left hepatic vein.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200,
+    "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   },
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+  },
+  {
+   "id": "fed_llesion_lpv",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "І інтимно прилягає до вени портальної лівої латеральної секції, другого та третього сегменту.",
+   "quote_en": "And it lies intimately against the portal vein of the left lateral section, segments 2 and 3.",
+   "highlight": [
+    "інтимно прилягає до вени портальної лівої латеральної секції",
+    "lies intimately against the portal vein of the left lateral section"
+   ],
+   "lesion_id": "L1",
+   "structure": "portal",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "S2/3",
+   "vessel": "left portal vein (left lateral section, S2/S3 branches)",
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #060.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200,
+    "reason": "vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   }
+  },
+  {
+   "id": "fed_llesion_s3_branches",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "ліву печінкову вену і гілки третього сегменту. Опція тоді є видалення всього третього сегменту",
+   "quote_en": "...the left hepatic vein and the segment III branches. Then there is the option of removing the whole of segment III",
+   "highlight": [
+    "ліву печінкову вену і гілки третього сегменту",
+    "the left hepatic vein and the segment III branches"
+   ],
+   "lesion_id": "L1",
+   "structure": "hepatic_veins",
+   "kind": "vessel_relation",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "S3",
+   "vessel": "left hepatic vein; segment III branches",
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #021; the start of the sentence (growth of the process into these veins) was lost in the recording.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -51.73,
+     170.51,
+     -1202.0
+    ],
+    "axes_ras": [
+     [
+      0.50572,
+      -0.8627,
+      0.0
+     ],
+     [
+      0.8627,
+      0.50572,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     51.2,
+     34.5,
+     42.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 200,
+    "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   },
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+  },
+  {
+   "id": "fed_s1_not_left",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "метастаз з сегелієвої долі, яка описується вашим радіологом як в лівій долі, але насправді це перший сегмент",
+   "quote_en": "the metastasis in the Spiegel lobe - which your radiologist describes as being in the left lobe, but it is in fact segment I",
+   "highlight": [
+    "але насправді це перший сегмент",
+    "it is in fact segment I"
+   ],
+   "lesion_id": "S1",
+   "structure": "lesions_other",
+   "kind": "location",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "S1 (caudate / Spiegel lobe)",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "\"сегелієвої\" is a speech-recognition rendering of \"спігелієвої\" (Spiegel lobe).",
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #013. Which radiologist and which lesion he means is not stated: the June primary lists Sg1 1.3 x 1.3 cm separately from the Sg2/3 lesion. Asked whether it is the mural component of the large mass, he answered \"Ну мабуть, що так\" (\"well, probably yes\", #017).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     -20.57,
+     136.85,
+     -1187.0
+    ],
+    "axes_ras": [
+     [
+      0.40614,
+      0.91381,
+      0.0
+     ],
+     [
+      -0.91381,
+      0.40614,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     null,
+     null,
+     null
+    ],
+    "model_mm": [
+     15.0,
+     11.8,
+     12.0
+    ],
+    "delta_pct": [
+     null,
+     null,
+     null
+    ],
+    "verdict": "not comparable",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 210,
+    "reason": "location claim: no size to compare; box = whole lesion for orientation"
+   }
+  },
+  {
+   "id": "fed_dark_on_ct",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "Тобто ця пухлина не гіпервоскулярна. Вона темна на КТ.",
+   "quote_en": "This tumour is not hypervascular. It is dark on CT.",
+   "highlight": [
+    "не гіпервоскулярна",
+    "Вона темна на КТ",
+    "not hypervascular",
+    "dark on CT"
+   ],
+   "lesion_id": null,
+   "structure": "lesions",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "\"гіпервоскулярна\" is the transcript spelling of \"гіперваскулярна\".",
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #056; said about embolisation in general (which lesion is not specified).",
+   "topic": "enhancement",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='lesions'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "fed_rmass_volume",
+   "date_key": "jun2026",
+   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader_rank": 4,
+   "source": {
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "original_page": null,
+    "document_ref": null,
+    "drive": null,
+    "summary_page": "fedorov-2026-09-18.html",
+    "original_file": null,
+    "local_original": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt (automatic speech transcript of the call, Ukrainian; not hosted)",
+    "translation_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
+    "drive_translation": null,
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": null
+   },
+   "lang": "uk",
+   "quote_orig": "Вона 13... і вона займáв права долю.",
+   "quote_en": "It's 13... and it occupies the right lobe.",
+   "highlight": [
+    "Вона 13...",
+    "It's 13..."
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size",
+   "size_mm": [
+    130,
+    null,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": "Unfinished utterance; the unit is not said (13 cm assumed); \"займáв\" is a garbled transcript word.",
+   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #031 (radiointervention discussion).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     130,
+     null,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     13.2,
+     null,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190
+   }
+  },
+  {
+   "id": "sep_K_ref_suv",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "Медіастінальний пул SUVmax= 1,6.",
+   "quote_en": "Mediastinal blood pool SUVmax = 1.6.",
+   "highlight": [
+    "SUVmax= 1,6",
+    "SUVmax = 1.6"
+   ],
+   "lesion_id": "liver",
+   "structure": "liver",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": null,
+    "reference": null,
+    "reference_kind": "no liver reference given; mediastinal pool SUVmax 1.6"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "No liver reference value in this report. Injected activity 260 MBq per report (the DICOM header net dose is 230.5 MBq).",
+   "topic": "reference_suv",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "sep_K_known_lesions",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "В печінці зберігаються раніше відомі множинні аметаболічні утвори",
+   "quote_en": "In the liver, the previously known multiple ametabolic lesions persist",
+   "highlight": [
+    "раніше відомі множинні аметаболічні утвори",
+    "previously known multiple ametabolic lesions"
+   ],
+   "lesion_id": "liver",
+   "structure": "lesions",
+   "kind": "other",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Low-dose CT without contrast; the individual small lesions are not listed.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'; organ / vessel / location claims are not size-compared"
+   }
+  },
+  {
+   "id": "sep_K_rmass_size",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "найбільший розміром 98x148мм в правій частці",
+   "quote_en": "the largest 98 x 148 mm in the right lobe",
+   "highlight": [
+    "98x148мм",
+    "98 x 148 mm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size",
+   "size_mm": [
+    148,
+    98,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Short axis written first; plane not stated; placed as axial long / short axis. Non-contrast low-dose CT.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "center_ras": [
+     59.18,
+     23.73,
+     -305.11
+    ],
+    "axes_ras": [
+     [
+      0.77639,
+      -0.63025,
+      0.0
+     ],
+     [
+      0.63025,
+      0.77639,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     148,
+     98,
+     null
+    ],
+    "model_mm": [
+     149.7,
+     119.4,
+     153.7
+    ],
+    "delta_pct": [
+     1.1,
+     21.8,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 116
+   }
+  },
+  {
+   "id": "sep_K_rmass_change",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "найбільший розміром 98x148мм в правій частці - раніше 14,4x10,4мм",
+   "quote_en": "the largest 98 x 148 mm in the right lobe - previously 14.4 x 10.4 mm",
+   "highlight": [
+    "98x148мм",
+    "раніше 14,4x10,4мм",
+    "98 x 148 mm",
+    "previously 14.4 x 10.4 mm"
+   ],
+   "lesion_id": "R1",
+   "structure": "rmass",
+   "kind": "size_change",
+   "size_mm": [
+    148,
+    98,
+    null
+   ],
+   "change": {
+    "from": {
+     "date_key": "jun2026",
+     "size_mm": [
+      144,
+      104,
+      null
+     ]
+    },
+    "to": {
+     "date_key": "sep2026",
+     "size_mm": [
+      148,
+      98,
+      null
+     ]
+    },
+    "percent": 2.8
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": "\"раніше 14,4x10,4мм\" must be centimetres (the June primary gives 14.4 x 10.4 x 14.1 cm); the error is in the scanned original. Converted as 144 x 104 mm.",
+   "notes": "The \"previously\" value is the June primary report, not the Israeli revision (15 x 10 cm). No size change is claimed.",
+   "percent_basis": "computed from the reported long axes (144 -> 148 mm); short axis 104 -> 98 mm (-5.8 %)",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "R1",
+    "lesion_mapping": null
+   },
+   "viz_from": {
+    "date_key": "jun2026",
+    "center_ras": [
+     67.84,
+     143.33,
+     -1243.0
+    ],
+    "axes_ras": [
+     [
+      0.38829,
+      -0.92154,
+      0.0
+     ],
+     [
+      0.92154,
+      0.38829,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     144,
+     104,
+     null
+    ],
+    "model_mm": [
+     147.1,
+     111.5,
+     148.0
+    ],
+    "delta_pct": [
+     2.2,
+     7.2,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 190
+   },
+   "viz_to": {
+    "date_key": "sep2026",
+    "center_ras": [
+     59.18,
+     23.73,
+     -305.11
+    ],
+    "axes_ras": [
+     [
+      0.77639,
+      -0.63025,
+      0.0
+     ],
+     [
+      0.63025,
+      0.77639,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     148,
+     98,
+     null
+    ],
+    "model_mm": [
+     149.7,
+     119.4,
+     153.7
+    ],
+    "delta_pct": [
+     1.1,
+     21.8,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 116
+   },
+   "model_change_pct": 1.8,
+   "model_change_detail": {
+    "long_axis_pct": 1.8,
+    "perp_axis_pct": 7.1,
+    "cc_pct": 3.9,
+    "volume_pct": -4.4,
+    "volume_mL": [
+     1258.38,
+     1202.45
+    ]
+   },
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
+   "change_verdict": "agrees (within 15 percentage points)"
+  },
+  {
+   "id": "sep_K_activity",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "з проростом метаболічної активності по контуру та в структурі деяких, високої інтенсивності SUVmax= до 4,9",
+   "quote_en": "with ingrowth of metabolic activity along the contour and within the structure of some of them, of high intensity, SUVmax up to 4.9",
+   "highlight": [
+    "по контуру та в структурі деяких",
+    "SUVmax= до 4,9",
+    "along the contour and within the structure of some",
+    "SUVmax up to 4.9"
+   ],
+   "lesion_id": "liver",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": null,
+   "suv": {
+    "max": 4.9,
+    "reference": null,
+    "reference_kind": "no liver reference given (mediastinum 1.6)"
+   },
+   "segment": null,
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "The SUVmax 4.9 is not attributed to a lesion. The scanned original reads \"деяких, високої інтенсивності\" (of high intensity); the hosted transcription/translation read \"деяких з них, інтенсивності\" (no \"high\").",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   }
+  },
+  {
+   "id": "sep_K_llesion_active",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "метаболічним розміром в лівій частці до 35x54мм(зливного характеру)",
+   "quote_en": "with a metabolic size in the left lobe up to 35 x 54 mm (confluent)",
+   "highlight": [
+    "35x54мм",
+    "зливного характеру",
+    "35 x 54 mm",
+    "confluent"
+   ],
+   "lesion_id": "L1",
+   "structure": "active",
+   "kind": "size",
+   "size_mm": [
+    54,
+    35,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Metabolic extent of the FDG-active area, \"confluent\"; no CT size of the left lesion is given. Plane not stated. The 54 mm active extent is longer than the June CT size of L1 (42-45 mm).",
+   "size_kind": "metabolic (FDG-active extent), not CT lesion size",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 6.39,
+    "suv_max_within_5mm": 6.43,
+    "active_mL": 42.8,
+    "active_within_5mm_mL": 56.48,
+    "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "center_ras": [
+     -49.39,
+     48.85,
+     -270.77
+    ],
+    "axes_ras": [
+     [
+      0.33964,
+      -0.94055,
+      0.0
+     ],
+     [
+      0.94055,
+      0.33964,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     54,
+     35,
+     null
+    ],
+    "model_mm": [
+     52.3,
+     40.4,
+     65.4
+    ],
+    "delta_pct": [
+     -3.1,
+     15.4,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 129,
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "sep_K_s8_active",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "та до 15x24мм в структурі аметаболічної ділянки в S8.",
+   "quote_en": "and up to 15 x 24 mm within the structure of the ametabolic area in S8.",
+   "highlight": [
+    "15x24мм",
+    "аметаболічної ділянки в S8",
+    "15 x 24 mm",
+    "ametabolic area in S8"
+   ],
+   "lesion_id": "S8",
+   "structure": "active",
+   "kind": "size",
+   "size_mm": [
+    24,
+    15,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": "S8",
+   "vessel": null,
+   "confidence": "ambiguous",
+   "typo_note": null,
+   "notes": "Active area inside an otherwise ametabolic S8 area. Mapped to S8; it could also be the superior wall of R1. The report does not call it new and does not link it to the May 11 mm nodule or the June mural elements.",
+   "size_kind": "metabolic (FDG-active extent), not CT lesion size",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "S8",
+    "lesion_mapping": null
+   },
+   "model_suv": {
+    "suv_max": 6.75,
+    "suv_max_within_5mm": 6.75,
+    "active_mL": 10.8,
+    "active_within_5mm_mL": 10.82,
+    "suv_file": "studies/sep2026/suv_on_ct.nii.gz",
+    "note": "SUVbw from studies/<key>/suv_on_ct(_liverreg); our Sep SUVs may be ~11 % above the report (dose), see AGENT_BRIEF"
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "center_ras": [
+     83.09,
+     29.14,
+     -226.63
+    ],
+    "axes_ras": [
+     [
+      0.37139,
+      -0.92848,
+      0.0
+     ],
+     [
+      0.92848,
+      0.37139,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     24,
+     15,
+     null
+    ],
+    "model_mm": [
+     66.3,
+     26.4,
+     42.5
+    ],
+    "delta_pct": [
+     176.2,
+     76.0,
+     null
+    ],
+    "verdict": "model larger",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 142,
+    "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   }
+  },
+  {
+   "id": "sep_K_gastric",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 2
+   },
+   "lang": "uk",
+   "quote_orig": "По малій кривизні зберігається FDG- негативне утворення, щільно до хвоста підшлункової залози, з ознаками звапнення, розміром 43x32мм(раніше - 4,3х3,3см).",
+   "quote_en": "Along the lesser curvature an FDG-negative lesion persists, closely apposed to the tail of the pancreas, with signs of calcification, measuring 43 x 32 mm (previously 4.3 x 3.3 cm).",
+   "highlight": [
+    "43x32мм",
+    "43 x 32 mm"
+   ],
+   "lesion_id": null,
+   "structure": "gastric_mass",
+   "kind": "size",
+   "size_mm": [
+    43,
+    32,
+    null
+   ],
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Gastric mass, not a liver lesion; lies next to the left lobe (exclude from liver, L1 and active).",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": false
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   }
+  },
+  {
+   "id": "sep_K_conclusion",
+   "date_key": "sep2026",
+   "reader": "KMKOC primary report (Dr. Kholodna), 23.09.2026",
+   "reader_rank": 3,
+   "source": {
+    "title": "PET-CT whole body, low-dose CT without contrast, 23.09.2026 (Kyiv City Clinical Oncology Centre, KMKOC)",
+    "report_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "original_page": null,
+    "document_ref": "[187]",
+    "drive": "https://drive.google.com/file/d/1c1rdkJAYC8yCclZSkgkuey28KZBr90hx/view",
+    "original_file": "docs/PET-CT_2026-09-23_KMKOC_conclusion_original_UKR.pdf",
+    "transcription_file": "files/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/Заключення_ПЕТ-КТ_2026-09-23_UKR.docx",
+    "drive_transcription": "https://drive.google.com/file/d/16mV_oTjqjV8NexQEq13h0SDUWBPW7hqO/view",
+    "translation_page": "reports/2026_new_PET_CT_23Sep2026_KMKOC_EN_translation_docx.html",
+    "drive_translation": "https://drive.google.com/file/d/1dT7-TInWm_OQHP7e2sD-n3tfDWjNuUsM/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 3
+   },
+   "lang": "uk",
+   "quote_orig": "ПЕТ/КТ-ознаки приросту метаболічної активності в множинних вогнищах ураження паренхіми печінки в порівнянні з ПЕТ/КТ від 19.06.2026р., що характерно для прогресії основного захворювання.",
+   "quote_en": "PET/CT signs of an increase in metabolic activity in multiple foci of liver-parenchyma involvement compared with the PET/CT of 19.06.2026, which is characteristic of progression of the underlying disease.",
+   "highlight": [
+    "приросту метаболічної активності",
+    "прогресії основного захворювання",
+    "increase in metabolic activity",
+    "progression of the underlying disease"
+   ],
+   "lesion_id": "liver",
+   "structure": "active",
+   "kind": "activity",
+   "size_mm": null,
+   "change": {
+    "from": {
+     "date_key": "jun2026",
+     "size_mm": null
+    },
+    "to": {
+     "date_key": "sep2026",
+     "size_mm": null
+    },
+    "percent": null
+   },
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Metabolic progression versus June; no size progression is claimed.",
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/sep2026_kmkoc_scan_transcription_uk.txt",
+    "quote_en_equals_hosted_translation": true
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": null,
+    "lesion_mapping": null
+   },
+   "viz": {
+    "date_key": "sep2026",
+    "verdict": "not comparable",
+    "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   }
+  }
+ ],
+ "contradictions": [
+  {
+   "id": "c1",
+   "topic": "Right mass (R1) size change May 2025 -> June 2026",
+   "claims": [
+    "may_A_rmass_size",
+    "may_B_rmass_change",
+    "jun_A_rmass_size",
+    "jun_A_lesions_stable",
+    "jun_B_sizes_stable",
+    "jun_C_rmass_change",
+    "jun_C_conclusion_rmass"
+   ],
+   "summary": "June primary: 14.4 x 10.4 x 14.1 cm, lesions \"stable in size\" - against the May primary 13.5 x 10 cm that is +7 % on the long axis. LISOD June: \"on the whole stable\", no numbers. Israeli revision (rank 1): about 15 x 10 cm, previously about 11-12.5 cm (+20 to +36 %), called \"enlargement\". Both May readers measured 13.5 cm themselves, so the Israeli May value is 7-19 % below the May reports; against 13.5 cm the Israeli June value is +11 %.",
+   "model_verdict": "R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; mar2024: no R1 mask; change may2025->jun2026: long axis +1 %, volume +4 %. Per-claim verdicts: may_A_rmass_size: model larger; may_B_rmass_change: not comparable; jun_A_lesions_stable: not comparable; jun_A_rmass_size: agrees (<=15 %); jun_B_sizes_stable: not comparable; jun_C_rmass_change: model shows less growth; jun_C_conclusion_rmass: not comparable",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c2",
+   "topic": "Left-lobe lesion (L1) on May 2025: present? size?",
+   "claims": [
+    "may_A_s8_size",
+    "may_A_rmass_size",
+    "may_A_cardia_formation",
+    "may_B_overall",
+    "jun_A_llesion_size",
+    "jun_C_llesion_size",
+    "jun_C_llesion_change"
+   ],
+   "summary": "Neither May report lists a left-lobe (S2/3) liver lesion: the primary lists only SVIII/SIV 6.2 x 4.0 cm and SV/SIV 13.5 x 10 cm (plus a 3.3 x 2.8 cm cystic formation under the gastric cardia, taken to be the gastric mass); LISOD speaks only of \"known masses ... no significant size change\". The Israeli revision (rank 1) says the 42 x 36 mm left-lobe lesion shows \"no significant change in size\" since 13.05.2025, i.e. it existed then at about that size. June primary: 4.5 x 3.6 cm.",
+   "model_verdict": "L1: May 2025: 45 x 33 x 38 mm, 21.4 mL; June 2026: 51 x 34 x 42 mm, 33.4 mL; mar2024: no L1 mask; change may2025->jun2026: long axis +13 %, volume +56 % | R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; mar2024: no R1 mask; change may2025->jun2026: long axis +1 %, volume +4 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; mar2024: no S8 mask; change may2025->jun2026: long axis -2 %, volume +4 %. Per-claim verdicts: may_A_s8_size: agrees (<=15 %); may_A_rmass_size: model larger; may_A_cardia_formation: not comparable; may_B_overall: not comparable; jun_A_llesion_size: agrees (<=15 %); jun_C_llesion_size: model larger; jun_C_llesion_change: model larger",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c3",
+   "topic": "May 2025 11 mm mural nodule: which lesion carries it (S8 lesion or dominant mass)?",
+   "claims": [
+    "may_B_nodule_s8",
+    "may_B_nodule_conclusion",
+    "jun_B_mural_enhancing",
+    "sep_K_s8_active",
+    "fed_s1_not_left"
+   ],
+   "summary": "LISOD May body text: new 11 mm mural nodule \"in the nodule in segment 8\"; the conclusion of the same report: \"in the dominant liver mass\". June LISOD: new enhancing mural elements \"in particular in the largest\" (R1). Sep KMKOC: active 15 x 24 mm \"within the ametabolic area in S8\". No report states these are the same focus. The surgeon (verbal) agreed with \"probably yes\" that a lesion he places in segment I is \"the mural component of the large mass\".",
+   "model_verdict": "R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; Sep 2026: 150 x 119 x 154 mm, 1202.5 mL; change may2025->sep2026: long axis +3 %, volume -0 % | S1: May 2025: 14 x 12 x 10 mm, 0.9 mL; June 2026: 15 x 12 x 12 mm, 0.8 mL; Sep 2026: 18 x 13 x 16 mm, 1.6 mL; change may2025->sep2026: long axis +31 %, volume +79 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; Sep 2026: 70 x 47 x 46 mm, 78.8 mL; change may2025->sep2026: long axis +4 %, volume +16 %. Per-claim verdicts: may_B_nodule_s8: not comparable; may_B_nodule_conclusion: not comparable; jun_B_mural_enhancing: not comparable; fed_s1_not_left: not comparable; sep_K_s8_active: model larger",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c4",
+   "topic": "Right mass (R1) on Sep 2026 vs June 2026",
+   "claims": [
+    "sep_K_rmass_size",
+    "sep_K_rmass_change",
+    "jun_A_rmass_size",
+    "jun_C_rmass_size"
+   ],
+   "summary": "KMKOC: 98 x 148 mm, \"previously 14.4 x 10.4 mm\" (unit typo: cm; it compares with the June primary, not the Israeli revision). Long axis 148 vs 144 mm (+3 %) primary / 150 mm (-1 %) Israeli; short axis 98 vs 104 (-6 %) / 100 mm (-2 %): no size change claimed, the progression is metabolic. Sep CT is low-dose without contrast.",
+   "model_verdict": "R1: June 2026: 147 x 112 x 148 mm, 1258.4 mL; Sep 2026: 150 x 119 x 154 mm, 1202.5 mL; change jun2026->sep2026: long axis +2 %, volume -4 %. Per-claim verdicts: jun_A_rmass_size: agrees (<=15 %); jun_C_rmass_size: agrees (<=15 %); sep_K_rmass_size: model larger; sep_K_rmass_change: agrees (within 15 percentage points)",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c5",
+   "topic": "June 2026 activity of the liver lesions: ametabolic vs active",
+   "claims": [
+    "jun_A_lesions_stable",
+    "jun_A_caveat",
+    "jun_B_activity",
+    "jun_B_llesion_suv",
+    "jun_B_conclusion",
+    "jun_C_rmass_activity",
+    "jun_C_llesion_activity",
+    "jun_C_conclusion_activity"
+   ],
+   "summary": "June primary: all lesions \"ametabolic\" (with the caveat that this does not exclude residual tumour). LISOD: new mural components with moderate activity, left lesion SUVmax 3.2 vs adjacent parenchyma 2. Israeli (rank 1): metabolic progression, especially the left-lobe lesion; R1 peripheral uptake more pronounced.",
+   "model_verdict": "L1: May 2025: 45 x 33 x 38 mm, 21.4 mL; June 2026: 51 x 34 x 42 mm, 33.4 mL; change may2025->jun2026: long axis +13 %, volume +56 % | R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; change may2025->jun2026: long axis +1 %, volume +4 %. Per-claim verdicts: jun_A_lesions_stable: not comparable; jun_A_caveat: not comparable; jun_B_activity: not comparable; jun_B_llesion_suv: not comparable; jun_B_conclusion: not comparable; jun_C_rmass_activity: not comparable; jun_C_llesion_activity: not comparable; jun_C_conclusion_activity: not comparable",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c6",
+   "topic": "Left lesion (L1): Sep metabolic extent vs June CT size",
+   "claims": [
+    "sep_K_llesion_active",
+    "jun_A_llesion_size",
+    "jun_C_llesion_size"
+   ],
+   "summary": "Sep active area up to 35 x 54 mm (\"confluent\") vs June CT size 45 x 36 (primary) / 42 x 36 mm (Israeli). Not the same kind of measurement (metabolic vs CT), but the 54 mm active extent exceeds the June CT long axis by 9-12 mm (20-29 %): either growth or activity beyond the old lesion; the report does not say which.",
+   "model_verdict": "L1: June 2026: 51 x 34 x 42 mm, 33.4 mL; Sep 2026: 49 x 39 x 59 mm, 54.1 mL; change jun2026->sep2026: long axis -4 %, volume +62 %. Per-claim verdicts: jun_A_llesion_size: agrees (<=15 %); jun_C_llesion_size: model larger; sep_K_llesion_active: model larger",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c7",
+   "topic": "Segment labels of the dominant mass and of the S8 dome lesion",
+   "claims": [
+    "may_A_rmass_size",
+    "jun_A_rmass_size",
+    "may_A_s8_size",
+    "jun_A_s8_subcapsular"
+   ],
+   "summary": "Dominant mass: \"SV / SIV\" (May primary) vs \"Sg5/6/7/8\" (June primary). Second lesion: \"SVIII / SIV\" 6.2 x 4.0 cm (May) vs \"Sg7/8 subcapsular\" 6.3 x 4.3 cm (June) - probably the same lesion with different labels; the reports do not link them.",
+   "model_verdict": "R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; change may2025->jun2026: long axis +1 %, volume +4 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; change may2025->jun2026: long axis -2 %, volume +4 %. Per-claim verdicts: may_A_s8_size: agrees (<=15 %); may_A_rmass_size: model larger; jun_A_rmass_size: agrees (<=15 %); jun_A_s8_subcapsular: agrees (<=15 %)",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c8",
+   "topic": "Segment I lesion vs \"left-lobe\" lesion (surgeon, verbal)",
+   "claims": [
+    "fed_s1_not_left",
+    "jun_A_s1",
+    "jun_A_llesion_size"
+   ],
+   "summary": "Surgeon Fedorov (verbal): a lesion \"your radiologist describes as being in the left lobe\" is really in segment I (Spiegel lobe). The June primary lists both a Sg1 1.3 x 1.3 cm lesion and a separate Sg2/3 4.5 x 3.6 cm lesion along the left portal vein; which lesion he meant is not clear.",
+   "model_verdict": "L1: June 2026: 51 x 34 x 42 mm, 33.4 mL | S1: June 2026: 15 x 12 x 12 mm, 0.8 mL. Per-claim verdicts: jun_A_llesion_size: agrees (<=15 %); jun_A_s1: model larger; fed_s1_not_left: not comparable",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c9",
+   "topic": "June 2026 CT technique: contrast or not",
+   "claims": [
+    "jun_A_technique",
+    "jun_C_technique"
+   ],
+   "summary": "June primary: whole-body PET/CT \"with contrast enhancement\" (DICOM: venous series 9, arterial series 7). Israeli revision: \"without intravenous and without oral contrast\". The Israeli reader may have read only the low-dose attenuation CT.",
+   "model_verdict": "no model lesion maps to these claims",
+   "model_source": "consensus"
+  },
+  {
+   "id": "c10",
+   "topic": "Left lesion (L1) vessel relations",
+   "claims": [
+    "jun_A_llesion_portal",
+    "jun_C_ducts_portal",
+    "fed_llesion_between_veins",
+    "fed_llesion_lhv",
+    "fed_llesion_lpv",
+    "fed_llesion_s3_branches"
+   ],
+   "summary": "June primary: along the left portal vein. Israeli: portal vein patent (no lesion relation stated). Surgeon (verbal): between the left hepatic vein and the left portal vein, partly encircling the left hepatic vein, intimately against the S2/S3 portal branch, possibly growing into the left hepatic vein and segment III branches. Only the surgeon mentions the left hepatic vein.",
+   "model_verdict": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). | L1: June 2026: 51 x 34 x 42 mm, 33.4 mL. Per-claim verdicts: jun_A_llesion_portal: not comparable; jun_C_ducts_portal: not comparable; fed_llesion_between_veins: not comparable; fed_llesion_lhv: not comparable; fed_llesion_lpv: not comparable; fed_llesion_s3_branches: not comparable",
+   "model_source": "consensus"
+  }
+ ],
+ "out_of_scope": [
+  "Superior vena cava statements (June primary: port catheter tip in the lower third of the SVC; Israeli: SVC not visualised, probably occluded, chest collaterals; LISOD: no large-vessel thrombi) are out of scope for the liver viewer and are not listed as claims.",
+  "Non-liver findings (lungs, uterus, bones, oesophagus) are omitted; the gastric lesser-curvature mass is listed (structure \"gastric_mass\") only because it lies against the left lobe."
+ ],
+ "enriched": {
+  "by": "tools/build_viewer_data.py",
+  "generated": "2026-10-09T01:58:33",
+  "source": "consensus",
+  "n_claims": 67,
+  "n_with_model": 33,
+  "tolerance_pct": 15,
+  "note": "viz boxes are in the claim date's own RAS mm frame (apply the scene registration matrix like the meshes)"
+ }
+}

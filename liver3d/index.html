@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="dark light">
+<title>Liver 3D: May 2025 / Jun 2026 / Sep 2026</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 12c3-6 14-8 23-5 2 1 2 4 0 6-4 5-9 10-15 11-5 1-10-5-8-12z' fill='%23c9a99a'/%3E%3Ccircle cx='17' cy='13' r='4' fill='%234caf50'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/viewer.css">
+</head>
+<body>
+<a class="skip" href="#side">Skip to the controls</a>
+<div id="app">
+  <aside id="side" aria-label="Viewer panels">
+    <header class="side-head">
+      <h1>Liver across three dates</h1>
+      <div class="muted small"><b>For doctors.</b> AI-assisted 3D reconstruction of three CTs (13.05.2025, 19.06.2026, 23.09.2026), not a radiology report; the written reports are authoritative. <a href="../index.html#liver3d">Back to the case summary</a></div>
+      <div id="sceneMeta" class="muted small"></div>
+      <div id="sourceBanner" class="banner" hidden></div>
+      <button id="sheetToggle" class="sheet-toggle" aria-expanded="true" aria-controls="tabpanels">Hide panel</button>
+    </header>
+    <nav class="tabs" role="tablist" aria-label="Panels">
+      <button role="tab" id="tab-layers" aria-controls="p-layers" aria-selected="true" data-tab="layers">Layers</button>
+      <button role="tab" id="tab-lesions" aria-controls="p-lesions" aria-selected="false" data-tab="lesions">Lesions</button>
+      <button role="tab" id="tab-reports" aria-controls="p-reports" aria-selected="false" data-tab="reports">Reports</button>
+      <button role="tab" id="tab-cut" aria-controls="p-cut" aria-selected="false" data-tab="cut">Cut</button>
+      <button role="tab" id="tab-about" aria-controls="p-about" aria-selected="false" data-tab="about">About</button>
+    </nav>
+    <div id="tabpanels">
+      <section role="tabpanel" id="p-layers" aria-labelledby="tab-layers"></section>
+      <section role="tabpanel" id="p-lesions" aria-labelledby="tab-lesions" hidden></section>
+      <section role="tabpanel" id="p-reports" aria-labelledby="tab-reports" hidden></section>
+      <section role="tabpanel" id="p-cut" aria-labelledby="tab-cut" hidden></section>
+      <section role="tabpanel" id="p-about" aria-labelledby="tab-about" hidden></section>
+    </div>
+  </aside>
+
+  <main id="stage" aria-label="3D view">
+    <canvas id="c" tabindex="0" aria-label="3D liver model. Drag to rotate, wheel or pinch to zoom, right-drag or two fingers to pan."></canvas>
+
+    <div id="topbar">
+      <div class="dates" role="group" aria-label="Scan date" id="dateButtons"></div>
+      <button id="play" class="icon-btn" aria-pressed="false" title="Play through the dates (space)" aria-label="Play through the dates">&#9654;</button>
+      <div class="toggles">
+        <button id="compareBtn" class="tog" aria-pressed="false" title="Overlay the previous date as a ghost outline (C)">Compare</button>
+        <span class="growth-wrap">
+          <button id="growthBtn" class="tog" aria-pressed="false" title="Colour lesion surfaces by growth (G)">Growth map</button>
+          <select id="growthPair" aria-label="Date pair for the growth map"></select>
+        </span>
+      </div>
+      <div class="reg" role="group" aria-label="Registration between dates" id="regButtons"></div>
+    </div>
+
+    <div id="regInfo" class="small"></div>
+    <div id="progress" hidden><div class="bar"><i></i></div><span></span></div>
+
+    <div id="viewtools" role="toolbar" aria-label="View">
+      <div class="presets" id="presets"></div>
+      <div class="tools2">
+        <button id="orbitBtn" aria-pressed="false" title="Orbit around the selected lesion (O)">Orbit</button>
+        <button id="shotBtn" title="Save a PNG screenshot">Screenshot</button>
+        <button id="linkBtn" title="Copy a link to this exact view">Copy link</button>
+        <button id="resetBtn" title="Reset view and layers (R)">Reset</button>
+      </div>
+    </div>
+
+    <div id="orient" aria-hidden="true"><span class="o-l"></span><span class="o-r"></span><span class="o-t"></span><span class="o-b"></span></div>
+    <div id="labels" aria-hidden="true"></div>
+    <div id="legend" aria-live="polite"></div>
+    <div id="claimbar" hidden role="region" aria-label="Report claim on the model"></div>
+    <div id="tooltip" role="tooltip" hidden></div>
+    <div id="toast" role="status" aria-live="polite" hidden></div>
+    <div id="fatal" hidden></div>
+  </main>
+</div>
+<script type="importmap">{"imports":{"three":"./vendor/three/three.module.js","three/addons/":"./vendor/three/addons/"}}</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
