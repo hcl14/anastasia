@@ -70,8 +70,14 @@ Example: `index.html?scene=data_test/scene.json` (synthetic scene), `index.html?
 * **Lesions** tab — table of volumes per date with change %, a log-scale volume chart, and for the selected lesion its per-date numbers
   (volume, long axis, core/wall/active, SUVmax, mean HU, mesh check, match confidence), Fly to / Orbit / Slice / Solo, and every report
   quote mapped to it.
-* **Hover / click** — GPU picking (1×1 id render that respects cuts and caps; translucent layers are only picked when nothing solid is
-  under the cursor). Tooltip: name, date, volume, mesh-vs-mask Dice/p95, mask source. Click a lesion to select it, double-click to fly.
+* **Hover / click** — the tooltip leads with what the object is in clinical words and where it sits ("Calcification · in the dominant
+  right-lobe mass (R1)", "Enhancing wall · of the left-lobe (S2/3) lesion (L1)", "Dominant right-lobe mass (R1)"), then date and volume,
+  then up to 3 doctors' statements about that structure on the shown date (or, marked, the nearest other date): verbatim snippets
+  (<= 160 characters, key phrase highlighted, original language) with reader rank and name, ordered by match and reader authority, from
+  `report_claims.json` `claims[].tags` (`tools/tag_report_claims.py`: the claims engineer's structure field plus Ukrainian / Russian /
+  English keywords). Without a match: "No doctor's statement about this structure on this date". The mesh-vs-mask QA line is the last,
+  small line. Mouse click on an object opens its top statement in the Reports tab and on the model; on touch a tap pins the tooltip and
+  a tap on a quote opens it. The tooltip stays inside the canvas (flips left / up near the edges).
 * **Camera** — presets A, P, Rt (right lateral), Lt (left lateral), S, I, Obl; Orbit spins around the selected lesion (O);
   Screenshot saves a PNG with a caption (date, alignment, source, the active claim's verbatim quote) and the orientation letters;
   Copy link; Reset (R). Esc closes a claim / deselects.

@@ -56,6 +56,64 @@ export class Reports {
     this.render();
   }
   byId(id) { return this.byIdMap?.get(id); }
+  /**
+   * doctors' statements about one object (hover tooltip): type = 'lesion' | part kind (calcifications, walls, cores, nodules, active) |
+   * layer type (liver, portal, hepatic_veins, ivc, gallbladder, bile_ducts, segment ...), lesionId or null. Uses claims[].tags
+   * (tools/tag_report_claims.py). Returns { list: [{c, general}], date, otherDate } with the best 1-3 claims of `date`, ordered by match
+   * then reader authority; when `date` has none, the nearest other date that has some (otherDate = true).
+   */
+  claimsFor(type, lesionId, date) {
+    const cl = (this.data?.claims || []).filter(c => c.tags);
+    const score = c => {
+      const t = c.tags, st = new Set(t.structures || []), specific = !!lesionId && t.lesions.includes(lesionId);
+      if (type === 'lesion') return specific ? 3 + (st.has('size') ? 2 : 0) + (st.has('lesion') ? 1 : 0) : -1;
+      if (lesionId) { if (!st.has(type)) return -1; return specific ? 3 : (t.general ? 1 : -1); }
+      if (type === 'liver') return t.general && (st.has('liver') || st.has('lesion')) ? 2 + (st.has('liver') ? 1 : 0) : -1;
+      return st.has(type) ? (t.general ? 2 : 1) : -1;
+    };
+    const FIELD = { lesion: ['rmass', 'llesion', 'lesions_other'] };   // the claims engineer's own structure field agrees: small bonus
+    const bonus = c => ((FIELD[type] || [type]).includes(c.structure) ? 0.5 : 0);
+    const best = d => {
+      const ranked = cl.filter(c => this.claimDates(c).has(d)).map(c => ({ c, s: score(c) })).filter(x => x.s >= 0).map(x => ({ ...x, s: x.s + bonus(x.c) }))
+        .sort((a, b) => b.s - a.s || (a.c.reader_rank ?? 9) - (b.c.reader_rank ?? 9));
+      const out = [];
+      for (const x of ranked) {   // the same sentence split into two claims: keep the better-matching one only
+        const q = x.c.quote_orig || '';
+        if (out.some(o => o.c.reader === x.c.reader && (o.c.quote_orig.includes(q) || q.includes(o.c.quote_orig)))) continue;
+        out.push(x); if (out.length === 3) break;
+      }
+      return out.map(x => ({ c: x.c, general: !!lesionId && !x.c.tags.lesions.includes(lesionId) }));
+    };
+    let list = best(date);
+    if (list.length) return { list, date, otherDate: false };
+    const ds = this.app.dates, i = ds.indexOf(date);
+    for (const d of [...ds].filter(k => k !== date).sort((a, b) => Math.abs(ds.indexOf(a) - i) - Math.abs(ds.indexOf(b) - i) || ds.indexOf(b) - ds.indexOf(a))) {
+      list = best(d); if (list.length) return { list, date: d, otherDate: true };
+    }
+    return { list: [], date, otherDate: false };
+  }
+  /** short verbatim snippet (<= max chars) of a claim around its key phrase, as highlighted HTML */
+  snippetHTML(c, max = 160) {
+    const t = String(c.quote_orig || c.quote_en || '');
+    if (t.length <= max) return highlightHTML(t, c.highlight);
+    const hl = (c.highlight || []).find(x => x && t.includes(x));
+    const at = hl ? t.indexOf(hl) : 0;
+    let a = Math.max(0, Math.min(at - Math.round((max - (hl?.length || 0)) / 2), t.length - max)), b = Math.min(t.length, a + max);
+    return (a > 0 ? '…' : '') + highlightHTML(t.slice(a, b), c.highlight) + (b < t.length ? '…' : '');
+  }
+  /** show a claim in the Reports tab (card highlighted and scrolled into view) and on the model (claim box, fly-to) */
+  async open(id) {
+    const c = this.byId(id); if (!c) return;
+    this.app.setTab('reports');
+    await this.app.claimViz.show(c);
+    // the card must be listed: claims view, its reader not filtered out, all dates / no lesion filter if still missing
+    if (this.view !== 'claims' || this.hiddenReaders.has(c.reader)) { this.view = 'claims'; this.hiddenReaders.delete(c.reader); this.render(); }
+    if (!$(`#p-reports .claim[data-id="${CSS.escape(id)}"]`)) { this.allDates = true; this.onlySel = false; this.render(); }
+    // panels re-render while the date switch settles: mark and scroll once it has
+    await new Promise(r => setTimeout(r, 250));
+    const el = $(`#p-reports .claim[data-id="${CSS.escape(id)}"]`);
+    if (el) { this.markActive(id); el.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  }
   outsideLabel(k) { const o = this.data?.conventions?.date_keys_outside_model?.[k]; return o ? `${o.replace(/,.*$/, '')} (not in the 3D model)` : null; }
   setLang(l) { this.lang = l; this.render(); }
   onDate() { this.render(); }

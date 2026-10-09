@@ -1379,21 +1379,24 @@ function screenshot() {
 // ---------------------------------------------------------------- pointer: hover tooltip, click to select
 const tip = $('#tooltip');
 let hoverT = 0, downAt = null, lastPointer = null;
-canvas.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; tip.hidden = true; if (tween) tween = null; });
+canvas.addEventListener('pointerdown', e => { downAt = [e.clientX, e.clientY]; tip.hidden = true; tip.classList.remove('pinned'); if (tween) tween = null; });
 canvas.addEventListener('pointermove', e => {
   lastPointer = e;
-  if (e.buttons || e.pointerType === 'touch') { tip.hidden = true; return; }
+  if (e.buttons || e.pointerType === 'touch') { if (!tip.classList.contains('pinned')) tip.hidden = true; return; }
   clearTimeout(hoverT); hoverT = setTimeout(() => hover(e), 70);
 });
-canvas.addEventListener('pointerleave', () => { clearTimeout(hoverT); tip.hidden = true; });
+canvas.addEventListener('pointerleave', () => { clearTimeout(hoverT); if (!tip.classList.contains('pinned')) tip.hidden = true; });
 canvas.addEventListener('pointerup', e => {
   if (!downAt) return;
   const moved = Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]); downAt = null;
   if (moved > 5) return;
   const r = canvas.getBoundingClientRect();
   const it = pickAt(e.clientX - r.left, e.clientY - r.top);
-  if (it?.lesion) selectLesion(it.lesion.id, { fly: false });
-  if (e.pointerType === 'touch' && it) showTip(it, e, r);
+  // touch: the tap shows the tooltip pinned (its quotes are tappable); mouse: a click opens the top doctor's statement in Reports
+  if (e.pointerType === 'touch') { if (it?.lesion) selectLesion(it.lesion.id, { fly: false }); if (it) showTip(it, e, r, true); return; }
+  const top = it && tipClaims(it).list[0];
+  if (top) { tip.hidden = true; reports.open(top.c.id); }
+  else if (it?.lesion) selectLesion(it.lesion.id, { fly: false });
 });
 canvas.addEventListener('dblclick', e => {
   const r = canvas.getBoundingClientRect();
@@ -1407,26 +1410,55 @@ function hover(e) {
   canvas.style.cursor = it.lesion ? 'pointer' : '';
   showTip(it, e, r);
 }
-function showTip(it, e, r) {
+// what an object IS (clinical words) and where it sits; the doctors' statements about it (report_claims.json tags)
+const PART_NOUN = { calcifications: ['Calcification', 'in'], walls: ['Enhancing wall', 'of'], cores: ['Necrotic / cystic core', 'of'], nodules: ['Mural nodule', 'in'], active: ['FDG-active tissue', 'in'] };
+const LAYER_TYPE = { active: 'active', active_pet_only: 'active', active_inferred: 'active', cores: 'cores', walls: 'walls', nodules: 'nodules', calcifications: 'calcifications',
+  liver: 'liver', portal: 'portal', hepatic_veins: 'hepatic_veins', ivc: 'ivc', gallbladder: 'gallbladder', bile_ducts: 'bile_ducts', contact_left_portal: 'portal' };
+const lcFirst = s => (s && /^[A-Z][a-z]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s || '');
+function lesionLabel(les) { return `${les.name || les.id} (${les.id})`; }
+function describe(it) {
   const c = S.ctls.get(it.ctl);
-  const lines = [];
-  let title = it.kind === 'part' ? `${c.name} — ${it.lesion.id}` : it.kind === 'lesion' || it.kind === 'growth' ? `${it.lesion.id} · ${it.lesion.name || ''}` : c.name;
-  lines.push(`${dateLabel(it.date)}${it.vol != null ? ' · ' + fmtVol(it.vol) : ''}`);
-  if (it.kind === 'growth') { lines.push(`growth map ${pairLabel(it.pair)}: max ${fmtNum(it.g.max_mm, 1)} mm, mean ${fmtNum(it.g.mean_mm, 1)} mm`); if (it.noColors) lines.push('mesh has no vertex colours'); }
-  if (it.lesion && it.kind !== 'part' && it.lesion.segment) lines.push('segment ' + it.lesion.segment);
-  const v = it.pd?.verify; if (v?.dice != null) lines.push(`mesh vs mask: Dice ${fmtNum(v.dice, 3)}${v.p95_mm != null ? `, p95 ${fmtNum(v.p95_mm, 1)} mm` : ''}`);
+  if (it.kind === 'part') {
+    const [noun, prep] = PART_NOUN[it.part] || [c.name, 'in'];
+    return { title: noun, where: `${prep} the ${lcFirst(it.lesion.name || it.lesion.id)} (${it.lesion.id})`, type: it.part, lesion: it.lesion.id };
+  }
+  if (it.kind === 'lesion' || it.kind === 'growth') return { title: lesionLabel(it.lesion), where: it.kind === 'growth' ? `growth map ${pairLabel(it.pair)}` : (it.lesion.segment ? 'segment ' + it.lesion.segment : ''), type: 'lesion', lesion: it.lesion.id };
+  if (it.ctl === 'contact_left_portal') return { title: c.name, where: '', type: 'portal', lesion: 'L1' };
+  return { title: c.name, where: /^seg\d$/.test(it.ctl) ? 'Couinaud segment of the liver' : '', type: LAYER_TYPE[it.ctl] || (/^seg\d$/.test(it.ctl) ? 'segment' : it.ctl), lesion: null };
+}
+function tipClaims(it) { const d = describe(it); return reports.claimsFor(d.type, d.lesion, it.date); }
+const dmy = k => { const s = S.dateByKey[k]?.scan; return s ? s.split('-').reverse().join('.') : dateLabel(k); };
+function showTip(it, e, r, pinned = false) {
+  const d = describe(it), lines = [];
+  lines.push(`${dateLabel(it.date)}${it.vol != null ? ' · ' + fmtVol(it.vol) : ''}${lastPickCut ? ' · cut face' : ''}`);
+  if (it.kind === 'growth') { lines.push(`max ${fmtNum(it.g.max_mm, 1)} mm, mean ${fmtNum(it.g.mean_mm, 1)} mm`); if (it.noColors) lines.push('mesh has no vertex colours'); }
   const cf = it.kind === 'part' ? confOf(it.ctl, it.date) : (it.pd?.confidence || null);
   if (cf) lines.push('confidence: ' + cf);
   if (it.pd?.registered_from) lines.push(`registered from ${dateLabel(it.pd.registered_from)}, not seen on this CT`);
+  const m = tipClaims(it);
+  let qh = '';
+  if (m.list.length) {
+    qh = `<div class="tq-h">Doctors' statements${m.otherDate ? ` <span class="muted">(none on this date; on ${esc(dmy(m.date))}:)</span>` : ''}</div>` +
+      m.list.map(({ c, general }) => `<button type="button" class="tq" data-claim="${esc(c.id)}" lang="${esc(c.lang || 'und')}"><span class="tq-q">“${reports.snippetHTML(c)}”</span>` +
+        `<span class="tq-r"><span class="rank r${Math.min(4, c.reader_rank ?? 4)}">${esc(String(c.reader_rank ?? '?'))}</span> ${esc(shortReaderName(c.reader))}${general ? ' · about the liver lesions in general' : ''} <span class="more">${pinned ? 'tap for more ›' : 'click for more ›'}</span></span></button>`).join('');
+  } else qh = `<div class="tq-none">No doctor's statement about this structure on this date</div>`;
+  const qa = [];
+  const v = it.pd?.verify; if (v?.dice != null) qa.push(`mesh vs mask: Dice ${fmtNum(v.dice, 3)}${v.p95_mm != null ? `, p95 ${fmtNum(v.p95_mm, 1)} mm` : ''}`);
   const src = it.kind === 'part' ? null : it.pd?.source;
-  if (src?.flag) lines.push('mask: ' + src.flag);
-  else if (src?.kind) lines.push('mask: ' + src.kind + (src.reviewed === false ? ' (unreviewed)' : ''));
-  if (lastPickCut) title += ' (cut face)';
-  tip.innerHTML = `<b>${esc(title)}</b>${lines.map(esc).join('<br>')}`;
+  if (src?.flag) qa.push('mask: ' + src.flag); else if (src?.kind) qa.push('mask: ' + src.kind + (src.reviewed === false ? ' (unreviewed)' : ''));
+  tip.innerHTML = `<b>${esc(d.title)}</b>${d.where ? `<div class="tw">${esc(d.where)}</div>` : ''}<div class="tl">${lines.map(esc).join('<br>')}</div>${qh}` +
+    (qa.length ? `<div class="tqa">${qa.map(esc).join(' · ')}</div>` : '');
+  tip.classList.toggle('pinned', pinned);
   tip.hidden = false;
-  const x = e.clientX - r.left + 14, y = e.clientY - r.top + 14;
-  tip.style.left = Math.min(x, r.width - tip.offsetWidth - 6) + 'px'; tip.style.top = Math.min(y, r.height - tip.offsetHeight - 6) + 'px';
+  // inside the stage: right/below the pointer when it fits, else left/above; never off-screen
+  const W = tip.offsetWidth, H = tip.offsetHeight, px = e.clientX - r.left, py = e.clientY - r.top;
+  let x = px + 14, y = py + 14;
+  if (x + W > r.width - 6) x = Math.max(6, px - 14 - W);
+  if (y + H > r.height - 6) y = Math.max(6, py - 14 - H);
+  tip.style.left = clamp(x, 6, Math.max(6, r.width - W - 6)) + 'px'; tip.style.top = clamp(y, 6, Math.max(6, r.height - H - 6)) + 'px';
 }
+function shortReaderName(rd) { rd = String(rd || ''); return rd.length > 60 ? rd.slice(0, 58) + '…' : rd; }
+tip.addEventListener('click', e => { const b = e.target.closest('[data-claim]'); if (b) { tip.hidden = true; reports.open(b.dataset.claim); } });
 
 // ---------------------------------------------------------------- keyboard
 addEventListener('keydown', e => {
@@ -1500,7 +1532,7 @@ const app = {
   },
   async ensureDate(d) { await ensureDate(d); },
   setClaimState(id) { const was = !!state.claim; state.claim = id; document.body.classList.toggle('has-claim', !!id); reports.markActive(id); writeHash(); if (was !== !!id) renderLegend(); setTimeout(applyViewShift, 0); },
-  setTab, sliceLesion, freeBand,
+  setTab, sliceLesion, freeBand, tipClaims, describe, showTip,
   fitLiver() { const s = liverSphere(); const dir = new THREE.Vector3().subVectors(camera.position, controls.target).normalize(); flyTo(s.center.clone().addScaledVector(dir, fitDist(s.radius)), s.center); },
 };
 const reports = new Reports(app, $('#p-reports'));

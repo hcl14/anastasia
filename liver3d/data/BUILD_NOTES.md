@@ -248,3 +248,17 @@ Follow-up (same day): Compare has a "Register earlier scan (align to current)" c
 spine-anchored scanner frame relative to the current date (raw shift; May -> June liver Dice 0.85, centroid offsets R1 16.0 / L1 11.3 /
 S8 20.1 mm), and the Growth map switches to `growth_sets.skeleton` (baked with the A1 pair transforms; dominated by misalignment).
 An "i" popover explains the breathing problem; a plain-language glossary sits under the alignment line and in About.
+
+## Tooltips with doctors' statements (2026-10-09)
+`tools/tag_report_claims.py` adds `claims[].tags` to `report_claims.json` (called by build_viewer_data.py after the claims step; the
+untagged file is kept as `viewer/data/old/report_claims.pre_tags.json`). The claims engineer's single `structure` field had 1 calcification
+claim and no wall / core tags; with keywords (uk/ru/en: звапн-, кальцин-, calcif-, стінк-, wall, periph-, кіст-, некроз-, вузл-, mural,
+SUV, FDG, метабол- ...) the 67 claims carry: active 26, lesion 26, size 22, liver 12, walls 9, cores 9, nodules 6, portal 6, gallbladder 4,
+hepatic veins 3, calcifications 2, bile ducts 1. Stomach / technique statements get no liver tags. may_A_calcifications (no lesion id)
+inherits R1 from the same sentence (may_A_rmass_size).
+Objects (meshes of all dates, growth maps excluded) with at least one quote in the tooltip, own date / nearest other date / none
+(lesion parts: how many have a lesion-specific quote rather than a liver-wide one):
+lesions 13 / 5 / 1 of 19 (18 lesion-specific); calcifications 1 / 2 / 0 of 3 (3 specific); nodules 1 / 2 / 0 of 3 (2 specific);
+walls 18 / 0 / 0 of 18 (3 specific); cores 17 / 0 / 0 of 17 (3 specific); FDG-active 9 / 0 / 0 of 9 (7 specific); liver 3 / 0 / 0;
+portal 2 / 3 / 0 of 5; hepatic veins 1 / 2 / 0 of 3; gallbladder 1 / 1 / 0 of 2; IVC 0 of 3; Couinaud segments 0 of 24 (no report
+statement about segments as structures).

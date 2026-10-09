@@ -134,8 +134,20 @@ input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;margin:0}
 #claimbar .actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
 body.has-claim #legend{bottom:auto;top:calc(var(--topbar-h,74px) + 34px)}
 
-#tooltip{position:absolute;z-index:7;pointer-events:none;background:var(--panel);border:1px solid var(--border-2);border-radius:6px;padding:4px 8px;font-size:12px;max-width:280px;box-shadow:var(--shadow)}
-#tooltip b{display:block}
+#tooltip{position:absolute;z-index:12;pointer-events:none;background:var(--card);border:1px solid var(--border-2);border-radius:6px;padding:5px 9px;font-size:12px;width:max-content;max-width:min(340px,calc(100% - 12px));box-shadow:var(--shadow);overflow-wrap:anywhere;line-height:1.35}
+#tooltip.pinned{pointer-events:auto}
+#tooltip b{display:block;font-size:13px}
+#tooltip .tw{color:var(--text)}
+#tooltip .tl{color:var(--muted);margin-top:1px}
+#tooltip .tq-h{margin-top:5px;font-weight:600;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+#tooltip .tq{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid var(--border-2);border-radius:0;padding:2px 0 2px 7px;margin:4px 0 0;color:var(--text);font:inherit;cursor:pointer}
+#tooltip .tq mark{background:rgba(255,214,0,.35);color:inherit;border-radius:2px}
+#tooltip .tq-r{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+#tooltip .tq-r .rank{display:inline-block;min-width:14px;text-align:center;border-radius:3px;font-size:10px}
+#tooltip .more{white-space:nowrap;opacity:.8}
+#tooltip .tq-h .muted{text-transform:none;letter-spacing:0;font-weight:400}
+#tooltip .tq-none{margin-top:5px;color:var(--muted);font-style:italic}
+#tooltip .tqa{margin-top:5px;padding-top:3px;border-top:1px solid var(--border);color:var(--muted);font-size:10.5px}
 #toast{position:absolute;left:50%;top:40%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--border-2);padding:8px 12px;border-radius:var(--radius);z-index:8;box-shadow:var(--shadow);max-width:80%}
 #fatal{position:absolute;inset:20% 10% auto;background:var(--panel);border:1px solid var(--bad);padding:16px;border-radius:var(--radius);z-index:9}
 

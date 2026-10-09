@@ -81,6 +81,18 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -133,6 +145,15 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -226,6 +247,21 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 270
+   },
+   "tags": {
+    "lesions": [
+     "S8"
+    ],
+    "general": false,
+    "structures": [
+     "cores",
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "cores"
+    ]
    }
   },
   {
@@ -321,6 +357,27 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 231
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "calcifications",
+     "cores",
+     "lesion",
+     "size",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "calcifications",
+     "cores",
+     "walls"
+    ]
    }
   },
   {
@@ -373,6 +430,26 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='calcifications'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "calcifications",
+     "cores",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "calcifications",
+     "cores",
+     "walls"
+    ],
+    "lesion_inherited_from": "may_A_rmass_size"
    }
   },
   {
@@ -429,6 +506,20 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "cores",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "cores"
+    ]
    }
   },
   {
@@ -484,6 +575,13 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -545,6 +643,19 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "cores",
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "cores"
+    ]
    }
   },
   {
@@ -658,6 +769,18 @@
     ],
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 231
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -709,6 +832,20 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "walls"
+    ]
    }
   },
   {
@@ -806,6 +943,23 @@
     "max_slice": 270,
     "model_mm_is": "whole lesion (orientation only)",
     "reason": "the nodules mask has no voxels in/near S8 on may2025; box = whole lesion for orientation"
+   },
+   "tags": {
+    "lesions": [
+     "S8"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "nodules",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "nodules",
+     "walls"
+    ]
    }
   },
   {
@@ -857,6 +1011,18 @@
     "date_key": "may2025",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -948,6 +1114,23 @@
     "max_slice": 231,
     "reason": "location claim without a size; box = nodules mask inside the lesion",
     "measured_structure": "nodules mask inside the lesion"
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "nodules",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "nodules",
+     "walls"
+    ]
    }
   },
   {
@@ -1000,6 +1183,13 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='technique'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1056,6 +1246,18 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -1132,6 +1334,15 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1195,6 +1406,21 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "cores",
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "cores"
+    ]
    }
   },
   {
@@ -1288,6 +1514,18 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 190
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1381,6 +1619,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 198
+   },
+   "tags": {
+    "lesions": [
+     "S7sat"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1474,6 +1724,18 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 229
+   },
+   "tags": {
+    "lesions": [
+     "S8"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1529,6 +1791,16 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='S5-8' / structure='lesions_other'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1623,6 +1895,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 211
+   },
+   "tags": {
+    "lesions": [
+     "N"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1716,6 +2000,21 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 200
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "portal",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "portal"
+    ]
    }
   },
   {
@@ -1806,6 +2105,19 @@
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 200,
     "reason": "vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "portal"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "portal"
+    ]
    }
   },
   {
@@ -1899,6 +2211,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 210
+   },
+   "tags": {
+    "lesions": [
+     "S1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -1992,6 +2316,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 198
+   },
+   "tags": {
+    "lesions": [
+     "K"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -2043,6 +2379,17 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gallbladder'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "gallbladder"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "gallbladder"
+    ]
    }
   },
   {
@@ -2098,6 +2445,13 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -2159,6 +2513,15 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -2210,6 +2573,18 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -2271,6 +2646,16 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -2364,6 +2749,21 @@
     "max_slice": 190,
     "reason": "no nodules mask on jun2026 yet; box = whole lesion for orientation",
     "model_mm_is": "whole lesion (orientation only)"
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "nodules",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "nodules",
+     "walls"
+    ]
    }
   },
   {
@@ -2463,6 +2863,19 @@
     "max_slice": 198,
     "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -2567,6 +2980,21 @@
     "max_slice": 204,
     "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "nodules"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "nodules"
+    ]
    }
   },
   {
@@ -2618,6 +3046,20 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver",
+     "nodules"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "nodules"
+    ]
    }
   },
   {
@@ -2671,6 +3113,18 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='portal'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "gallbladder",
+     "portal"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "gallbladder"
+    ]
    }
   },
   {
@@ -2722,6 +3176,21 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "nodules",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "nodules",
+     "walls"
+    ]
    }
   },
   {
@@ -2774,6 +3243,13 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='technique'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -2825,6 +3301,18 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "cores",
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "cores"
+    ]
    }
   },
   {
@@ -2926,6 +3414,21 @@
     "max_slice": 198,
     "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "walls"
+    ]
    }
   },
   {
@@ -3019,6 +3522,18 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 190
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -3197,7 +3712,19 @@
     ]
    },
    "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
-   "change_verdict": "model shows less growth"
+   "change_verdict": "model shows less growth",
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
   },
   {
    "id": "jun_C_llesion_size",
@@ -3290,6 +3817,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 200
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -3453,7 +3992,19 @@
      33.43
     ]
    },
-   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)"
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
   },
   {
    "id": "jun_C_llesion_activity",
@@ -3552,6 +4103,19 @@
     "max_slice": 204,
     "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "active"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -3603,6 +4167,21 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='portal'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "bile_ducts",
+     "gallbladder",
+     "portal"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "bile_ducts",
+     "gallbladder",
+     "portal"
+    ]
    }
   },
   {
@@ -3654,6 +4233,17 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gallbladder'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "gallbladder"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "gallbladder"
+    ]
    }
   },
   {
@@ -3705,6 +4295,18 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -3760,6 +4362,13 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -3861,6 +4470,19 @@
     "max_slice": 204,
     "reason": "activity claim without a size; box = FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)",
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "active"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -4017,7 +4639,22 @@
      1258.38
     ]
    },
-   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)"
+   "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
+   }
   },
   {
    "id": "fed_llesion_between_veins",
@@ -4110,7 +4747,22 @@
     "max_slice": 200,
     "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
    },
-   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band).",
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "hepatic_veins",
+     "portal"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "hepatic_veins",
+     "portal"
+    ]
+   }
   },
   {
    "id": "fed_llesion_lhv",
@@ -4203,7 +4855,20 @@
     "max_slice": 200,
     "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
    },
-   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band).",
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "hepatic_veins"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "hepatic_veins"
+    ]
+   }
   },
   {
    "id": "fed_llesion_lpv",
@@ -4295,6 +4960,19 @@
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 200,
     "reason": "vessel_relation claim: no size to compare; box = whole lesion for orientation"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "portal"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "portal"
+    ]
    }
   },
   {
@@ -4388,7 +5066,20 @@
     "max_slice": 200,
     "reason": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). vessel_relation claim: no size to compare; box = whole lesion for orientation"
    },
-   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band)."
+   "model_relation": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band).",
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "hepatic_veins"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "hepatic_veins"
+    ]
+   }
   },
   {
    "id": "fed_s1_not_left",
@@ -4480,6 +5171,17 @@
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 210,
     "reason": "location claim: no size to compare; box = whole lesion for orientation"
+   },
+   "tags": {
+    "lesions": [
+     "S1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -4536,6 +5238,15 @@
     "date_key": "jun2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='lesions'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -4631,6 +5342,18 @@
     "verdict": "agrees (<=15 %)",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 190
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -4689,6 +5412,18 @@
     "date_key": "sep2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='liver'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "liver"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -4742,6 +5477,20 @@
     "date_key": "sep2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='lesions'; organ / vessel / location claims are not size-compared"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "cores",
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "cores"
+    ]
    }
   },
   {
@@ -4837,6 +5586,18 @@
     "verdict": "model larger",
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 116
+   },
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -5009,7 +5770,19 @@
     ]
    },
    "model_change_definition": "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)",
-   "change_verdict": "agrees (within 15 percentage points)"
+   "change_verdict": "agrees (within 15 percentage points)",
+   "tags": {
+    "lesions": [
+     "R1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "size"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
   },
   {
    "id": "sep_K_activity",
@@ -5068,6 +5841,19 @@
     "date_key": "sep2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active",
+     "walls"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "walls"
+    ]
    }
   },
   {
@@ -5175,6 +5961,19 @@
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 129,
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "active"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   },
   {
@@ -5282,6 +6081,21 @@
     "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
     "max_slice": 142,
     "measured_structure": "FDG-active tissue within 5 mm of the lesion (voxels nearer another lesion excluded)"
+   },
+   "tags": {
+    "lesions": [
+     "S8"
+    ],
+    "general": false,
+    "structures": [
+     "active",
+     "cores"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active",
+     "cores"
+    ]
    }
   },
   {
@@ -5339,6 +6153,13 @@
     "date_key": "sep2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": false,
+    "structures": [],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
    }
   },
   {
@@ -5404,6 +6225,17 @@
     "date_key": "sep2026",
     "verdict": "not comparable",
     "reason": "no model lesion matched to lesion_id='liver' / structure='active'"
+   },
+   "tags": {
+    "lesions": [],
+    "general": true,
+    "structures": [
+     "active"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "active"
+    ]
    }
   }
  ],
@@ -5554,11 +6386,12 @@
  ],
  "enriched": {
   "by": "tools/build_viewer_data.py",
-  "generated": "2026-10-09T01:58:33",
+  "generated": "2026-10-09T13:33:30",
   "source": "consensus",
   "n_claims": 67,
   "n_with_model": 33,
   "tolerance_pct": 15,
   "note": "viz boxes are in the claim date's own RAS mm frame (apply the scene registration matrix like the meshes)"
- }
+ },
+ "tags_note": "claims[].tags: lesions (scene lesion IDs; aliases S4a-7 -> N, S4b -> K), general (liver-wide statement), structures (structure field + keywords), added by tools/tag_report_claims.py for the viewer tooltips"
 }
