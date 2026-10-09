@@ -76,6 +76,8 @@ input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;margin:0}
 .growth-wrap{display:flex;gap:3px;align-items:center}
 .reg{display:flex;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:4px;box-shadow:var(--shadow);align-items:center}
 .reg button{padding:6px 10px}
+.reg select{padding:5px 6px;max-width:260px}
+#legend .reg-q{color:var(--muted);margin-top:2px}
 #regInfo{position:absolute;left:10px;top:var(--topbar-h,74px);max-width:min(560px,calc(100% - 20px));background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:3px 8px;color:var(--muted);z-index:2;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #regInfo.open{white-space:normal}
 #regInfo b{color:var(--text)}
@@ -256,6 +258,7 @@ label.inline{display:flex;gap:6px;align-items:center;margin:6px 0;cursor:pointer
   .reg .lbl-long,.reg .reg-label{display:none}
   .reg .lbl-short{display:inline}
   #growthPair{max-width:84px;font-size:12px}
+  .reg select{max-width:130px;font-size:12px;padding:3px 4px}
   #regInfo{display:none}
   /* wrap instead of a hidden horizontal scroll: Copy link / Reset must stay reachable on a phone */
   #viewtools{right:6px;bottom:6px;left:6px;flex-direction:row;flex-wrap:wrap;justify-content:flex-end;align-items:flex-end;gap:4px}

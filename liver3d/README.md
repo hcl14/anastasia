@@ -39,12 +39,19 @@ Example: `index.html?scene=data_test/scene.json` (synthetic scene), `index.html?
   loaded on first use (with a progress box), kept in memory, and the other dates are prefetched in the background.
   Meshes are never decimated or resampled by the viewer.
 * **Compare** (C) — the previous date's liver and lesions as a fresnel "x-ray" outline (≈12 % base opacity, brighter at silhouettes,
-  drawn on top), placed with the current alignment.
+  drawn on top), placed with the current alignment. A mode may carry a direct earlier → later fit (`modes[m].pair_matrix["p__c"]`,
+  row-major, earlier date RAS → later date RAS); the ghost is then drawn with `matrix[c] · pair_matrix`, otherwise with `matrix[p]`.
+  The viewer also understands `pair_field["p__c"] = {json, bin}` (a displacement grid applied to the ghost vertices, trilinear), but no
+  shipped mode uses it (the non-rigid warp was rejected, see `data/BUILD_NOTES.md`).
 * **Growth map** (G) — replaces each lesion surface by `lesions[].growth[pair].mesh` (vertex colours baked by the data builder:
   signed distance of the later surface from the earlier one); the pair follows the current date (previous → current) and can be chosen
   in the drop-down; legend in mm with the builder's note.
-* **Alignment** — Spine-anchored / Liver-anchored from `scene.registration.modes`, with the note and the residual per date shown under
-  the top bar (click to expand). Sizes and volumes never depend on it.
+* **Alignment** — the "Align" selector lists `scene.registration.modes`: Spine-anchored (A1), Liver (landmark fit, B1), Liver (mask fit,
+  refined; default) and the lesion-anchored modes Lesion R1 / L1 / S8 (`modes[m].lesion`; selecting another lesion in a lesion mode
+  re-anchors on it). The line under the top bar (and the Compare legend, also on phones) shows the residual of the Compare pair after
+  alignment: liver Dice and lesion centroid offsets (`modes[m].quality["p__c"]`, from `tools/registration_refine.py`;
+  all numbers in `data/registration_quality.json`). Every structure of a date follows the same transform. Growth maps follow the mode's
+  `growth_set` (`lesions[].growth_sets[set]`; the base `lesions[].growth` is the B1 set). Sizes and volumes never depend on it.
 * **Layers** — grouped (Organ, Lesions, Internal structure, Vessels, Couinaud segments, Uncertainty, then any other group in the scene),
   each with visibility, opacity and solo; group check boxes; rows of structures without a mesh for the current date are greyed with the
   scene's `not_visible[date]` reason. When lesions carry `parts[date][kind]` meshes, those per-lesion parts replace the union layer of the

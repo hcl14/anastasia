@@ -166,3 +166,80 @@ main process during the statistics; `compute_stats` now keeps one lesion-union m
 | sep2026 | seg8 | 66,998 | 0.9968 | 0.54 | 1.68 |
 
 Total: 111 meshes, 7,983,142 faces, 199.4 MB; growth maps 15 files 19.3 MB; min Dice 0.9806
+
+## Compare-mode registration (2026-10-09, `tools/registration_refine.py`, `tools/add_registration_modes.py`)
+Problem: in Compare the ghost (earlier date) did not sit on the current structures (breathing: right dome 69 / 89 / 78 mm above T12).
+New alignment modes, all computed on the consensus masks on the native grids (SimpleITK, shrink 4/2/1 with smoothing for the optimisation;
+every number below is measured at full resolution), rigid only, nothing scaled or warped:
+- **Liver (mask fit, refined)** — new DEFAULT: rigid fit maximising the overlap of the two liver masks (MeanSquares on the masks),
+  initialised from B1; Compare May -> June uses a direct May -> June fit (`pair_matrix`), June -> Sep / May -> Sep are the per-date matrices.
+  13 perturbed starts (±8 mm, ±6°) converge to the same optimum: ~0.935 liver Dice is the rigid ceiling.
+- **Lesion R1 / L1 / S8**: rigid fit of that lesion's masks alone, initialised by the centroids + the liver rotation; translation only
+  unless a full rigid fit gains >= 0.01 Dice within 8° (only S8 June -> Sep; L1 June -> Sep wanted a 24° turn, refused).
+  The lesion grows in place; everything else follows the same transform. Selecting another lesion in a lesion mode re-anchors.
+- Spine-anchored (A1) and Liver (landmark fit, B1) are kept unchanged.
+- Growth maps follow the mode: base set = B1 (spine and B1 modes); `growth_sets.liver_refined`; `growth_sets.lesion` (R1/L1/S8 own fit,
+  small lesions with the refined liver fit). +36 MB of growth meshes.
+- **Rejected: non-rigid liver warp** (SimpleITK B-spline over the refined rigid, on the liver masks; the viewer code for a displacement grid on the
+  ghost vertices exists and was tested with this field, but no mode ships it). Liver Dice rises to ~0.97, but lesion volumes are distorted
+  beyond the 3 % limit and S8 overlap gets worse than rigid — a liver-driven warp would fake or hide growth. 4x4x4 control mesh: lesion
+  volumes -28 % .. +28 %, det J 0.19..2.9; 2x2x2 mesh numbers below.
+
+Definitions: Dice of the mapped earlier mask with the later mask (later space, integrated over the earlier voxels); surface = pooled symmetric
+boundary distance; centroid = |T(earlier centroid) - later centroid| (includes real asymmetric growth); spine TRE = 4 vertebral landmarks,
+dome z = right liver dome height error (registration.json landmarks). Lesions grow, so lesion Dice < 1 even when perfectly placed.
+Full numbers: `viewer/data/registration_quality.json`.
+
+**may2025 -> jun2026**
+
+| mode | liver Dice | liver surf mean/p95 mm | R1 Dice / centroid mm | L1 Dice / centroid mm | S8 Dice / centroid mm | spine TRE mm | dome z mm |
+|---|---|---|---|---|---|---|---|
+| Spine (A1) | 0.847 | 7.4 / 19.6 | 0.820 / 16.0 | 0.455 / 11.3 | 0.317 / 20.1 | 1.7 | 16.2 |
+| Liver landmark (B1) | 0.920 | 3.4 / 8.4 | 0.931 / 3.0 | 0.712 / 4.9 | 0.578 / 13.2 | 23.1 | 5.6 |
+| **Liver mask fit (refined, default)** | 0.935 | 3.0 / 8.0 | 0.950 / 1.1 | 0.697 / 5.5 | 0.750 / 5.9 | 16.5 | 2.4 |
+| Lesion R1 | 0.934 | 3.0 / 8.3 | 0.951 / 0.5 | 0.681 / 6.1 | 0.741 / 6.4 | 15.7 | 2.8 |
+| Lesion L1 | 0.902 | 4.1 / 10.0 | 0.909 / 6.2 | 0.777 / 0.3 | 0.556 / 10.5 | 16.4 | 5.4 |
+| Lesion S8 | 0.913 | 3.6 / 9.2 | 0.914 / 6.7 | 0.544 / 10.2 | 0.920 / 0.7 | 21.2 | 1.3 |
+
+**jun2026 -> sep2026**
+
+| mode | liver Dice | liver surf mean/p95 mm | R1 Dice / centroid mm | L1 Dice / centroid mm | S8 Dice / centroid mm | spine TRE mm | dome z mm |
+|---|---|---|---|---|---|---|---|
+| Spine (A1) | 0.883 | 5.5 / 11.0 | 0.890 / 8.6 | 0.529 / 12.4 | 0.641 / 8.1 | 1.7 | 9.7 |
+| Liver landmark (B1) | 0.934 | 2.9 / 7.6 | 0.919 / 4.3 | 0.610 / 6.4 | 0.849 / 4.3 | 9.4 | 2.5 |
+| **Liver mask fit (refined, default)** | 0.936 | 2.9 / 7.3 | 0.923 / 3.4 | 0.606 / 5.7 | 0.810 / 6.5 | 8.7 | 1.0 |
+| Lesion R1 | 0.932 | 3.0 / 7.6 | 0.927 / 1.4 | 0.586 / 7.0 | 0.808 / 6.2 | 7.2 | 2.4 |
+| Lesion L1 | 0.887 | 5.2 / 12.2 | 0.848 / 11.0 | 0.696 / 4.2 | 0.590 / 15.6 | 16.9 | 6.5 |
+| Lesion S8 | 0.898 | 4.5 / 11.4 | 0.903 / 4.5 | 0.495 / 9.3 | 0.909 / 0.2 | 19.7 | 0.9 |
+
+**may2025 -> sep2026** (not shown by Compare; for reference)
+
+| mode | liver Dice | liver surf mean/p95 mm | R1 Dice / centroid mm | L1 Dice / centroid mm | S8 Dice / centroid mm | spine TRE mm | dome z mm |
+|---|---|---|---|---|---|---|---|
+| Spine (A1) | 0.879 | 5.3 / 13.0 | 0.883 / 8.3 | 0.336 / 13.7 | 0.511 / 15.2 | 3.0 | 6.2 |
+| Liver landmark (B1) | 0.927 | 3.1 / 7.1 | 0.911 / 4.3 | 0.490 / 8.3 | 0.561 / 14.0 | 16.5 | 2.4 |
+| **Liver mask fit (refined, default)** | 0.930 | 3.0 / 6.9 | 0.917 / 3.3 | 0.496 / 8.6 | 0.652 / 10.5 | 14.2 | 0.6 |
+| Lesion R1 | 0.924 | 3.2 / 7.5 | 0.919 / 1.2 | 0.490 / 8.4 | 0.608 / 12.6 | 12.5 | 0.6 |
+| Lesion L1 | 0.867 | 6.5 / 16.4 | 0.843 / 13.8 | 0.558 / 4.8 | 0.277 / 22.7 | 10.4 | 13.4 |
+| Lesion S8 | 0.872 | 4.9 / 13.8 | 0.835 / 13.5 | 0.330 / 18.6 | 0.881 / 0.8 | 25.1 | 6.2 |
+
+Non-rigid candidate (B-spline 2x2x2 on the liver masks, NOT shipped): may2025__jun2026: liver Dice 0.9745, R1 Dice 0.9641 vol +2.2 %, L1 Dice 0.7792 vol +12.9 %, S8 Dice 0.7589 vol +24.5 %, det J 0.802..1.617; jun2026__sep2026: liver Dice 0.9683, R1 Dice 0.9055 vol -8.4 %, L1 Dice 0.693 vol -2.7 %, S8 Dice 0.5408 vol +4.2 %, det J 0.622..1.284
+
+| shown (ghost) | mode | liver | R1 | L1 | S8 |
+|---|---|---|---|---|---|
+| jun2026 (may2025) | before: skeleton | 0.84 | 0.80 | 0.53 | 0.49 |
+| jun2026 (may2025) | before: liver | 0.92 | 0.92 | 0.73 | 0.58 |
+| sep2026 (jun2026) | before: skeleton | 0.90 | 0.89 | 0.58 | 0.68 |
+| sep2026 (jun2026) | before: liver | 0.93 | 0.90 | 0.61 | 0.84 |
+| jun2026 (may2025) | after: liver_refined | 0.93 | 0.93 | 0.71 | 0.76 |
+| jun2026 (may2025) | after: lesion_R1 | 0.93 | 0.93 | 0.70 | 0.75 |
+| jun2026 (may2025) | after: lesion_L1 | 0.91 | 0.89 | 0.80 | 0.62 |
+| jun2026 (may2025) | after: lesion_S8 | 0.90 | 0.89 | 0.56 | 0.91 |
+| sep2026 (jun2026) | after: liver_refined | 0.93 | 0.90 | 0.61 | 0.78 |
+| sep2026 (jun2026) | after: lesion_R1 | 0.93 | 0.91 | 0.59 | 0.79 |
+| sep2026 (jun2026) | after: lesion_L1 | 0.87 | 0.81 | 0.67 | 0.55 |
+| sep2026 (jun2026) | after: lesion_S8 | 0.91 | 0.89 | 0.53 | 0.89 |
+
+Screen check (`tools/tests/compare_overlap.mjs`, Chromium, mean silhouette IoU of ghost vs current over anterior / right-lateral / superior
+orthographic projections; "before" = the live viewer, "after" = this build). Screenshots: `viewer/test_shots/registration/`.
+Note June -> Sep: the refined fit is slightly worse than B1 for S8 (Dice 0.81 vs 0.85) while better for liver and R1; use Lesion S8 for S8.

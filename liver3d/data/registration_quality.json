@@ -1,0 +1,737 @@
+{
+ "description": "Compare-mode registration quality per date pair (earlier -> later) and alignment mode, from the consensus masks on the native grids. dice: overlap of the mapped earlier mask with the later mask (in the later date's space, integrated over the earlier date's voxels); surf_mean_mm / surf_p95_mm: pooled symmetric boundary-to-boundary distance; centroid_offset_mm: distance between the mapped earlier centroid and the later centroid (includes real asymmetric growth for lesions); spine_mean_mm: mean TRE of 4 vertebral landmarks (registration.json); dome_z_mm: right liver dome height error. Lesions grow, so lesion Dice < 1 even when perfectly placed (e.g. L1 25 -> 54 mL bounds Dice at 0.63).",
+ "generated": "2026-10-09T12:15:28",
+ "script": "tools/registration_refine.py",
+ "pairs": [
+  "may2025__jun2026",
+  "jun2026__sep2026",
+  "may2025__sep2026"
+ ],
+ "modes": {
+  "skeleton": {
+   "label": "Spine-anchored",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.8469,
+      "surf_mean_mm": 7.41,
+      "surf_p95_mm": 19.65,
+      "centroid_offset_mm": 15.13
+     },
+     "R1": {
+      "dice": 0.8195,
+      "surf_mean_mm": 8.35,
+      "surf_p95_mm": 19.36,
+      "centroid_offset_mm": 15.99
+     },
+     "L1": {
+      "dice": 0.4553,
+      "surf_mean_mm": 5.35,
+      "surf_p95_mm": 12.72,
+      "centroid_offset_mm": 11.35
+     },
+     "S8": {
+      "dice": 0.3173,
+      "surf_mean_mm": 10.4,
+      "surf_p95_mm": 19.83,
+      "centroid_offset_mm": 20.08
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.8826,
+      "surf_mean_mm": 5.46,
+      "surf_p95_mm": 11.04,
+      "centroid_offset_mm": 9.16
+     },
+     "R1": {
+      "dice": 0.8903,
+      "surf_mean_mm": 4.61,
+      "surf_p95_mm": 14.7,
+      "centroid_offset_mm": 8.61
+     },
+     "L1": {
+      "dice": 0.5287,
+      "surf_mean_mm": 5.75,
+      "surf_p95_mm": 18.08,
+      "centroid_offset_mm": 12.38
+     },
+     "S8": {
+      "dice": 0.6408,
+      "surf_mean_mm": 5.39,
+      "surf_p95_mm": 8.66,
+      "centroid_offset_mm": 8.05
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.8795,
+      "surf_mean_mm": 5.3,
+      "surf_p95_mm": 13.02,
+      "centroid_offset_mm": 7.73
+     },
+     "R1": {
+      "dice": 0.8832,
+      "surf_mean_mm": 5.08,
+      "surf_p95_mm": 12.92,
+      "centroid_offset_mm": 8.31
+     },
+     "L1": {
+      "dice": 0.336,
+      "surf_mean_mm": 7.94,
+      "surf_p95_mm": 16.47,
+      "centroid_offset_mm": 13.67
+     },
+     "S8": {
+      "dice": 0.5107,
+      "surf_mean_mm": 7.48,
+      "surf_p95_mm": 14.25,
+      "centroid_offset_mm": 15.15
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 1.7,
+     "dome_z_mm": 16.2
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 1.7,
+     "dome_z_mm": 9.7
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 3.0,
+     "dome_z_mm": 6.2
+    }
+   }
+  },
+  "liver": {
+   "label": "Liver (landmark fit, B1)",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.9203,
+      "surf_mean_mm": 3.41,
+      "surf_p95_mm": 8.42,
+      "centroid_offset_mm": 3.31
+     },
+     "R1": {
+      "dice": 0.9311,
+      "surf_mean_mm": 2.92,
+      "surf_p95_mm": 7.54,
+      "centroid_offset_mm": 3.01
+     },
+     "L1": {
+      "dice": 0.7122,
+      "surf_mean_mm": 2.97,
+      "surf_p95_mm": 6.05,
+      "centroid_offset_mm": 4.88
+     },
+     "S8": {
+      "dice": 0.5781,
+      "surf_mean_mm": 6.16,
+      "surf_p95_mm": 11.99,
+      "centroid_offset_mm": 13.19
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.934,
+      "surf_mean_mm": 2.89,
+      "surf_p95_mm": 7.62,
+      "centroid_offset_mm": 2.49
+     },
+     "R1": {
+      "dice": 0.9192,
+      "surf_mean_mm": 3.41,
+      "surf_p95_mm": 10.43,
+      "centroid_offset_mm": 4.32
+     },
+     "L1": {
+      "dice": 0.6099,
+      "surf_mean_mm": 4.84,
+      "surf_p95_mm": 13.51,
+      "centroid_offset_mm": 6.38
+     },
+     "S8": {
+      "dice": 0.8492,
+      "surf_mean_mm": 2.03,
+      "surf_p95_mm": 5.22,
+      "centroid_offset_mm": 4.28
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.9268,
+      "surf_mean_mm": 3.06,
+      "surf_p95_mm": 7.13,
+      "centroid_offset_mm": 2.24
+     },
+     "R1": {
+      "dice": 0.9114,
+      "surf_mean_mm": 3.75,
+      "surf_p95_mm": 10.58,
+      "centroid_offset_mm": 4.32
+     },
+     "L1": {
+      "dice": 0.4905,
+      "surf_mean_mm": 5.73,
+      "surf_p95_mm": 17.79,
+      "centroid_offset_mm": 8.29
+     },
+     "S8": {
+      "dice": 0.5606,
+      "surf_mean_mm": 6.13,
+      "surf_p95_mm": 11.34,
+      "centroid_offset_mm": 14.03
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 23.1,
+     "dome_z_mm": 5.6
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 9.4,
+     "dome_z_mm": 2.5
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 16.5,
+     "dome_z_mm": 2.4
+    }
+   }
+  },
+  "liver_refined": {
+   "label": "Liver (mask fit, refined)",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.9347,
+      "surf_mean_mm": 2.99,
+      "surf_p95_mm": 7.95,
+      "centroid_offset_mm": 2.66
+     },
+     "R1": {
+      "dice": 0.9496,
+      "surf_mean_mm": 2.11,
+      "surf_p95_mm": 4.92,
+      "centroid_offset_mm": 1.13
+     },
+     "L1": {
+      "dice": 0.6966,
+      "surf_mean_mm": 3.03,
+      "surf_p95_mm": 6.76,
+      "centroid_offset_mm": 5.53
+     },
+     "S8": {
+      "dice": 0.7495,
+      "surf_mean_mm": 3.56,
+      "surf_p95_mm": 6.22,
+      "centroid_offset_mm": 5.93
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.9363,
+      "surf_mean_mm": 2.86,
+      "surf_p95_mm": 7.27,
+      "centroid_offset_mm": 0.79
+     },
+     "R1": {
+      "dice": 0.923,
+      "surf_mean_mm": 3.39,
+      "surf_p95_mm": 9.14,
+      "centroid_offset_mm": 3.41
+     },
+     "L1": {
+      "dice": 0.6064,
+      "surf_mean_mm": 4.9,
+      "surf_p95_mm": 12.85,
+      "centroid_offset_mm": 5.65
+     },
+     "S8": {
+      "dice": 0.8105,
+      "surf_mean_mm": 2.52,
+      "surf_p95_mm": 6.97,
+      "centroid_offset_mm": 6.48
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.9296,
+      "surf_mean_mm": 2.95,
+      "surf_p95_mm": 6.92,
+      "centroid_offset_mm": 1.74
+     },
+     "R1": {
+      "dice": 0.9167,
+      "surf_mean_mm": 3.48,
+      "surf_p95_mm": 9.7,
+      "centroid_offset_mm": 3.28
+     },
+     "L1": {
+      "dice": 0.4965,
+      "surf_mean_mm": 5.65,
+      "surf_p95_mm": 17.84,
+      "centroid_offset_mm": 8.63
+     },
+     "S8": {
+      "dice": 0.6517,
+      "surf_mean_mm": 4.82,
+      "surf_p95_mm": 8.77,
+      "centroid_offset_mm": 10.53
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 16.5,
+     "dome_z_mm": 2.4
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 8.7,
+     "dome_z_mm": 1.0
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 14.2,
+     "dome_z_mm": 0.6
+    }
+   }
+  },
+  "lesion_R1": {
+   "label": "Lesion R1",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.9343,
+      "surf_mean_mm": 3.05,
+      "surf_p95_mm": 8.26,
+      "centroid_offset_mm": 3.18
+     },
+     "R1": {
+      "dice": 0.9511,
+      "surf_mean_mm": 2.09,
+      "surf_p95_mm": 4.82,
+      "centroid_offset_mm": 0.49
+     },
+     "L1": {
+      "dice": 0.6813,
+      "surf_mean_mm": 3.11,
+      "surf_p95_mm": 7.33,
+      "centroid_offset_mm": 6.06
+     },
+     "S8": {
+      "dice": 0.7405,
+      "surf_mean_mm": 3.69,
+      "surf_p95_mm": 6.59,
+      "centroid_offset_mm": 6.43
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.9318,
+      "surf_mean_mm": 3.01,
+      "surf_p95_mm": 7.56,
+      "centroid_offset_mm": 2.62
+     },
+     "R1": {
+      "dice": 0.9273,
+      "surf_mean_mm": 3.15,
+      "surf_p95_mm": 8.88,
+      "centroid_offset_mm": 1.4
+     },
+     "L1": {
+      "dice": 0.586,
+      "surf_mean_mm": 4.99,
+      "surf_p95_mm": 13.8,
+      "centroid_offset_mm": 6.97
+     },
+     "S8": {
+      "dice": 0.8078,
+      "surf_mean_mm": 2.46,
+      "surf_p95_mm": 6.23,
+      "centroid_offset_mm": 6.18
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.9238,
+      "surf_mean_mm": 3.23,
+      "surf_p95_mm": 7.45,
+      "centroid_offset_mm": 2.21
+     },
+     "R1": {
+      "dice": 0.9193,
+      "surf_mean_mm": 3.41,
+      "surf_p95_mm": 9.0,
+      "centroid_offset_mm": 1.23
+     },
+     "L1": {
+      "dice": 0.4903,
+      "surf_mean_mm": 5.75,
+      "surf_p95_mm": 17.23,
+      "centroid_offset_mm": 8.45
+     },
+     "S8": {
+      "dice": 0.6078,
+      "surf_mean_mm": 5.35,
+      "surf_p95_mm": 10.16,
+      "centroid_offset_mm": 12.62
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 15.7,
+     "dome_z_mm": 2.8
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 7.2,
+     "dome_z_mm": 2.4
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 12.5,
+     "dome_z_mm": 0.6
+    }
+   },
+   "fit": {
+    "may2025__jun2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 4.71
+    },
+    "jun2026__sep2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 4.12
+    },
+    "may2025__sep2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 3.14
+    }
+   }
+  },
+  "lesion_L1": {
+   "label": "Lesion L1",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.9022,
+      "surf_mean_mm": 4.14,
+      "surf_p95_mm": 10.02,
+      "centroid_offset_mm": 4.8
+     },
+     "R1": {
+      "dice": 0.9094,
+      "surf_mean_mm": 3.59,
+      "surf_p95_mm": 7.98,
+      "centroid_offset_mm": 6.16
+     },
+     "L1": {
+      "dice": 0.7771,
+      "surf_mean_mm": 2.16,
+      "surf_p95_mm": 4.05,
+      "centroid_offset_mm": 0.27
+     },
+     "S8": {
+      "dice": 0.5558,
+      "surf_mean_mm": 6.42,
+      "surf_p95_mm": 10.46,
+      "centroid_offset_mm": 10.48
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.8875,
+      "surf_mean_mm": 5.2,
+      "surf_p95_mm": 12.18,
+      "centroid_offset_mm": 8.86
+     },
+     "R1": {
+      "dice": 0.8475,
+      "surf_mean_mm": 6.42,
+      "surf_p95_mm": 13.96,
+      "centroid_offset_mm": 11.0
+     },
+     "L1": {
+      "dice": 0.6958,
+      "surf_mean_mm": 3.83,
+      "surf_p95_mm": 11.37,
+      "centroid_offset_mm": 4.25
+     },
+     "S8": {
+      "dice": 0.5904,
+      "surf_mean_mm": 5.9,
+      "surf_p95_mm": 13.16,
+      "centroid_offset_mm": 15.57
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.8673,
+      "surf_mean_mm": 6.54,
+      "surf_p95_mm": 16.38,
+      "centroid_offset_mm": 13.1
+     },
+     "R1": {
+      "dice": 0.8428,
+      "surf_mean_mm": 7.15,
+      "surf_p95_mm": 18.36,
+      "centroid_offset_mm": 13.79
+     },
+     "L1": {
+      "dice": 0.5577,
+      "surf_mean_mm": 5.26,
+      "surf_p95_mm": 15.9,
+      "centroid_offset_mm": 4.83
+     },
+     "S8": {
+      "dice": 0.2773,
+      "surf_mean_mm": 10.9,
+      "surf_p95_mm": 20.37,
+      "centroid_offset_mm": 22.67
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 16.4,
+     "dome_z_mm": 5.4
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 16.9,
+     "dome_z_mm": 6.5
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 10.4,
+     "dome_z_mm": 13.4
+    }
+   },
+   "fit": {
+    "may2025__jun2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 3.53
+    },
+    "jun2026__sep2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 24.14
+    },
+    "may2025__sep2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 13.81
+    }
+   }
+  },
+  "lesion_S8": {
+   "label": "Lesion S8",
+   "quality": {
+    "may2025__jun2026": {
+     "liver": {
+      "dice": 0.9129,
+      "surf_mean_mm": 3.65,
+      "surf_p95_mm": 9.19,
+      "centroid_offset_mm": 7.72
+     },
+     "R1": {
+      "dice": 0.9139,
+      "surf_mean_mm": 3.22,
+      "surf_p95_mm": 7.75,
+      "centroid_offset_mm": 6.67
+     },
+     "L1": {
+      "dice": 0.5438,
+      "surf_mean_mm": 4.7,
+      "surf_p95_mm": 9.67,
+      "centroid_offset_mm": 10.17
+     },
+     "S8": {
+      "dice": 0.9199,
+      "surf_mean_mm": 1.23,
+      "surf_p95_mm": 2.87,
+      "centroid_offset_mm": 0.7
+     }
+    },
+    "jun2026__sep2026": {
+     "liver": {
+      "dice": 0.8984,
+      "surf_mean_mm": 4.46,
+      "surf_p95_mm": 11.37,
+      "centroid_offset_mm": 2.8
+     },
+     "R1": {
+      "dice": 0.903,
+      "surf_mean_mm": 3.93,
+      "surf_p95_mm": 10.04,
+      "centroid_offset_mm": 4.52
+     },
+     "L1": {
+      "dice": 0.4946,
+      "surf_mean_mm": 6.19,
+      "surf_p95_mm": 11.56,
+      "centroid_offset_mm": 9.29
+     },
+     "S8": {
+      "dice": 0.9088,
+      "surf_mean_mm": 1.47,
+      "surf_p95_mm": 2.97,
+      "centroid_offset_mm": 0.17
+     }
+    },
+    "may2025__sep2026": {
+     "liver": {
+      "dice": 0.8724,
+      "surf_mean_mm": 4.94,
+      "surf_p95_mm": 13.8,
+      "centroid_offset_mm": 11.97
+     },
+     "R1": {
+      "dice": 0.8351,
+      "surf_mean_mm": 6.14,
+      "surf_p95_mm": 17.86,
+      "centroid_offset_mm": 13.5
+     },
+     "L1": {
+      "dice": 0.3303,
+      "surf_mean_mm": 8.12,
+      "surf_p95_mm": 27.27,
+      "centroid_offset_mm": 18.65
+     },
+     "S8": {
+      "dice": 0.8811,
+      "surf_mean_mm": 1.74,
+      "surf_p95_mm": 3.59,
+      "centroid_offset_mm": 0.78
+     }
+    }
+   },
+   "landmarks": {
+    "may2025__jun2026": {
+     "spine_mean_mm": 21.2,
+     "dome_z_mm": 1.3
+    },
+    "jun2026__sep2026": {
+     "spine_mean_mm": 19.7,
+     "dome_z_mm": 0.9
+    },
+    "may2025__sep2026": {
+     "spine_mean_mm": 25.1,
+     "dome_z_mm": 6.2
+    }
+   },
+   "fit": {
+    "may2025__jun2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 3.58
+    },
+    "jun2026__sep2026": {
+     "kind": "rigid",
+     "rigid_rotation_vs_liver_deg": 6.86
+    },
+    "may2025__sep2026": {
+     "kind": "translation",
+     "rigid_rotation_vs_liver_deg": 3.97
+    }
+   }
+  }
+ },
+ "nonrigid_candidate": {
+  "may2025__jun2026": {
+   "mesh": [
+    2,
+    2,
+    2
+   ],
+   "grid_mm": 4.0,
+   "detJ_liver": {
+    "min": 0.802,
+    "p1": 0.835,
+    "p99": 1.463,
+    "max": 1.617
+   },
+   "grid_vs_exact_mm": {
+    "mean": 0.009,
+    "max": 0.035
+   },
+   "quality": {
+    "liver": {
+     "dice": 0.9745,
+     "surf_mean_mm": 1.23,
+     "surf_p95_mm": 2.74,
+     "centroid_offset_mm": 8.28,
+     "vol_change_pct": 7.93
+    },
+    "R1": {
+     "dice": 0.9641,
+     "surf_mean_mm": 1.5,
+     "surf_p95_mm": 3.34,
+     "centroid_offset_mm": 8.38,
+     "vol_change_pct": 2.25
+    },
+    "L1": {
+     "dice": 0.7792,
+     "surf_mean_mm": 2.26,
+     "surf_p95_mm": 5.11,
+     "centroid_offset_mm": 4.28,
+     "vol_change_pct": 12.9
+    },
+    "S8": {
+     "dice": 0.7589,
+     "surf_mean_mm": 3.23,
+     "surf_p95_mm": 9.84,
+     "centroid_offset_mm": 9.46,
+     "vol_change_pct": 24.51
+    }
+   }
+  },
+  "jun2026__sep2026": {
+   "mesh": [
+    2,
+    2,
+    2
+   ],
+   "grid_mm": 4.0,
+   "detJ_liver": {
+    "min": 0.622,
+    "p1": 0.667,
+    "p99": 1.215,
+    "max": 1.284
+   },
+   "grid_vs_exact_mm": {
+    "mean": 0.01,
+    "max": 0.026
+   },
+   "quality": {
+    "liver": {
+     "dice": 0.9683,
+     "surf_mean_mm": 1.69,
+     "surf_p95_mm": 3.69,
+     "centroid_offset_mm": 11.66,
+     "vol_change_pct": -3.29
+    },
+    "R1": {
+     "dice": 0.9055,
+     "surf_mean_mm": 4.22,
+     "surf_p95_mm": 13.06,
+     "centroid_offset_mm": 16.1,
+     "vol_change_pct": -8.39
+    },
+    "L1": {
+     "dice": 0.693,
+     "surf_mean_mm": 3.83,
+     "surf_p95_mm": 9.54,
+     "centroid_offset_mm": 2.51,
+     "vol_change_pct": -2.72
+    },
+    "S8": {
+     "dice": 0.5408,
+     "surf_mean_mm": 7.35,
+     "surf_p95_mm": 19.8,
+     "centroid_offset_mm": 18.46,
+     "vol_change_pct": 4.23
+    }
+   }
+  },
+  "method": "SimpleITK B-spline (control mesh bs2) on the liver masks over the refined rigid fit, MeanSquares, LBFGSB, shrink 4/2/1",
+  "shipped": false,
+  "decision": "rejected: liver Dice rises to ~0.97 but lesion volumes are distorted far beyond 3 % (S8 +24 %, L1 +13 % May->June; R1 -8 % June->Sep) and S8 overlap gets worse than the rigid modes; a liver-driven warp would fake or hide lesion growth. A finer control mesh (4x4x4) was worse (lesion volumes -28 % .. +28 %)."
+ }
+}

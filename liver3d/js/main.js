@@ -133,6 +133,83 @@ function regM(date, mode = state.reg) {
   }
   return regMatrixCache.get(key);
 }
+// Compare ghost of date p while date c is shown. A mode may carry its own direct p -> c registration:
+//   pair_matrix["p__c"]  row-major 4x4, earlier date RAS -> later date RAS (rigid), or
+//   pair_field["p__c"]   {json, bin}: displacement grid in the earlier date's RAS (x -> x + D(x), trilinear), applied to the ghost
+//                        mesh vertices (the field already contains the rigid part).
+// Without either, the ghost uses the per-date matrices (regM(p)), as before.
+const pairKey = (p, c) => `${p}__${c}`;
+function ghostField(p, c, mode = state.reg) { return regModes()[mode]?.pair_field?.[pairKey(p, c)] || null; }
+function ghostLocal(p, c, mode = state.reg) {
+  // local matrix of a ghost mesh inside dateGroup[p] (whose matrix is regM(p))
+  const pm = regModes()[mode]?.pair_matrix?.[pairKey(p, c)];
+  if (!pm && !ghostField(p, c, mode)) return new THREE.Matrix4();
+  const T = ghostField(p, c, mode) ? new THREE.Matrix4() : F.matFromRowMajor(pm);
+  return regM(p, mode).clone().invert().multiply(regM(c, mode)).multiply(T);
+}
+/** registration quality of the active mode for the pair that Compare shows (or this date -> Sep) */
+function regQuality(mode = state.reg, date = shown) {
+  const q = regModes()[mode]?.quality; if (!q || !date) return null;
+  const p = prevDate(date);
+  const pk = p ? pairKey(p, date) : (date !== S.dates[S.dates.length - 1] ? pairKey(date, S.dates[S.dates.length - 1]) : null);
+  return pk && q[pk] ? { pair: pk, q: q[pk] } : null;
+}
+function qualityText(mode = state.reg, date = shown, long = true) {
+  const r = regQuality(mode, date); if (!r) return '';
+  const q = r.q, les = ['R1', 'L1', 'S8'].filter(k => q[k]);
+  const lv = q.liver ? `liver Dice ${fmtNum(q.liver.dice, 2)}${long ? ` (surface ${fmtNum(q.liver.surf_mean_mm, 1)} mm mean)` : ''}` : '';
+  const lo = les.length ? (long ? 'lesion centroid offset ' : 'centroid offset ') + les.map(k => `${k} ${fmtNum(q[k].centroid_offset_mm, 1)}`).join(', ') + ' mm' : '';
+  return `${long ? pairLabel(r.pair) + ': ' : ''}${[lv, lo].filter(Boolean).join(' · ')}`;
+}
+// displacement grids and warped ghost geometries (cached per mode + mesh)
+const fieldCache = new Map();   // url -> Promise<{dims, origin, spacing, data}>
+const warpCache = new Map();    // mode|pair|url -> BufferGeometry | 'pending' | 'failed'
+let warpPending = 0;
+function loadField(f) {
+  const ju = resolve(f.json);
+  if (!fieldCache.has(ju)) fieldCache.set(ju, (async () => {
+    const meta = await (await fetch(ju)).json();
+    const buf = await (await fetch(resolve(f.bin))).arrayBuffer();
+    return { ...meta, data: new Float32Array(buf) };
+  })());
+  return fieldCache.get(ju);
+}
+/** add the trilinear displacement to every vertex (grid in C order [nx][ny][nz][3], float32, earlier date RAS mm) */
+function warpGeometry(g, fld) {
+  const [nx, ny, nz] = fld.dims, [ox, oy, oz] = fld.origin, [sx, sy, sz] = fld.spacing, D = fld.data;
+  const out = g.clone(); const pos = out.getAttribute('position'); const a = pos.array;
+  const idx = (i, j, k) => ((i * ny + j) * nz + k) * 3;
+  for (let v = 0; v < a.length; v += 3) {
+    let fx = (a[v] - ox) / sx, fy = (a[v + 1] - oy) / sy, fz = (a[v + 2] - oz) / sz;
+    fx = clamp(fx, 0, nx - 1.0001); fy = clamp(fy, 0, ny - 1.0001); fz = clamp(fz, 0, nz - 1.0001);
+    const i = Math.floor(fx), j = Math.floor(fy), k = Math.floor(fz), u = fx - i, w = fy - j, t = fz - k;
+    for (let c = 0; c < 3; c++) {
+      const c000 = D[idx(i, j, k) + c], c100 = D[idx(i + 1, j, k) + c], c010 = D[idx(i, j + 1, k) + c], c110 = D[idx(i + 1, j + 1, k) + c];
+      const c001 = D[idx(i, j, k + 1) + c], c101 = D[idx(i + 1, j, k + 1) + c], c011 = D[idx(i, j + 1, k + 1) + c], c111 = D[idx(i + 1, j + 1, k + 1) + c];
+      const d = ((c000 * (1 - u) + c100 * u) * (1 - w) + (c010 * (1 - u) + c110 * u) * w) * (1 - t) + ((c001 * (1 - u) + c101 * u) * (1 - w) + (c011 * (1 - u) + c111 * u) * w) * t;
+      a[v + c] += d;
+    }
+  }
+  pos.needsUpdate = true; out.computeVertexNormals(); out.computeBoundingBox(); out.computeBoundingSphere();
+  return out;
+}
+/** geometry the ghost of `it` should use in the current mode (null while a warped one is being prepared) */
+function ghostGeometry(it) {
+  const g = peek(it.url); if (!g) return null;
+  const c = shown, f = ghostField(it.date, c);
+  if (!f) return g;
+  const key = `${state.reg}|${pairKey(it.date, c)}|${it.url}`;
+  const w = warpCache.get(key);
+  if (w === 'failed') return g;
+  if (w && w !== 'pending') return w;
+  if (!w) {
+    warpCache.set(key, 'pending'); warpPending++;
+    loadField(f).then(fld => { warpCache.set(key, warpGeometry(g, fld)); })
+      .catch(e => { console.warn('displacement grid failed', e); warpCache.set(key, 'failed'); toast('Non-rigid ghost could not be loaded; showing the rigid ghost.'); })
+      .finally(() => { warpPending--; sync(); });
+  }
+  return null;
+}
 const ctlState = id => state.ctl[id] || (state.ctl[id] = { v: false, o: 1 });
 const lesionById = id => S.scene.lesions?.find(l => l.id === id);
 const partFile = p => (typeof p === 'string' ? p : p?.mesh);
@@ -186,9 +263,13 @@ function buildModel() {
         const vol = (p && typeof p === 'object' && p.volume_mL != null) ? p.volume_mL : partVol(pd, k);
         list.push({ uid: `${date}|${les.id}|${k}`, date, ctl: k, kind: 'part', part: k, lesion: les, name: `${S.ctls.get(k)?.name || k} in ${les.id}`, url: resolve(f), vol, pd });
       }
-      for (const [pair, g] of Object.entries(les.growth || {})) {
-        const [, b] = pair.split('__');
-        if (b === date && g?.mesh) list.push({ uid: `${date}|growth|${les.id}|${pair}`, date, ctl: 'les:' + les.id, kind: 'growth', lesion: les, pair, g, name: `${les.id} growth ${pairLabel(pair)}`, url: resolve(g.mesh), vol: pd?.volume_mL, pd });
+      // growth maps: the base set (lesions[].growth) and alternative sets baked with other alignments (lesions[].growth_sets[set]),
+      // chosen by the active mode's growth_set
+      for (const [set, gs] of [['', les.growth], ...Object.entries(les.growth_sets || {})]) {
+        for (const [pair, g] of Object.entries(gs || {})) {
+          const [, b] = pair.split('__');
+          if (b === date && g?.mesh) list.push({ uid: `${date}|growth|${set}|${les.id}|${pair}`, date, ctl: 'les:' + les.id, kind: 'growth', set, lesion: les, pair, g, name: `${les.id} growth ${pairLabel(pair)}`, url: resolve(g.mesh), vol: pd?.volume_mL, pd });
+        }
       }
     }
     for (const it of list) { it.pickId = pick++; it.rank = rankOf(it); }
@@ -219,7 +300,12 @@ function growthPairs() {
     return (b1 - a1) - (b2 - a2) || a1 - a2;
   });
 }
-function growthItem(lesionId, date, pair) { return S.items[date]?.find(it => it.kind === 'growth' && it.lesion.id === lesionId && it.pair === pair); }
+const growthSet = () => regModes()[state.reg]?.growth_set || '';
+/** growth map item for the active mode's set (falls back to the base set when that set has no map for this lesion/pair) */
+function growthItem(lesionId, date, pair) {
+  const c = S.items[date]?.filter(it => it.kind === 'growth' && it.lesion.id === lesionId && it.pair === pair) || [];
+  return c.find(it => it.set === growthSet()) || c.find(it => it.set === '');
+}
 function available(ctlId, date) { return S.items[date]?.some(it => it.ctl === ctlId && it.kind !== 'growth'); }
 function notVisibleReason(ctlId, date) {
   const c = S.ctls.get(ctlId);
@@ -246,7 +332,7 @@ function wants(it, date = shown) {
   const c = ctlState(it.ctl);
   if (!c.v || c.o <= 0.001) return false;
   if (state.solo && state.solo !== it.ctl) return false;
-  if (it.kind === 'growth') return state.growth && state.growthPair === it.pair;
+  if (it.kind === 'growth') return state.growth && state.growthPair === it.pair && growthItem(it.lesion.id, it.date, it.pair) === it;
   if (it.kind === 'lesion' && state.growth) {
     const g = growthItem(it.lesion.id, it.date, state.growthPair);
     if (g && !g.failed && peek(g.url)) return false;
@@ -261,7 +347,7 @@ function ghostWanted(it) {
 }
 function urlsFor(date) {
   const urls = new Set();
-  for (const it of S.items[date] || []) if (wants(it, date) || (it.kind === 'growth' && state.growth && state.growthPair === it.pair && ctlState(it.ctl).v)) urls.add(it.url);
+  for (const it of S.items[date] || []) if (wants(it, date) || (it.kind === 'growth' && state.growth && state.growthPair === it.pair && growthItem(it.lesion.id, it.date, it.pair) === it && ctlState(it.ctl).v)) urls.add(it.url);
   if (state.compare) { const p = prevDate(date); for (const it of S.items[p] || []) if ((it.kind === 'lesion' || it.ctl === 'liver') && ctlState(it.ctl).v) urls.add(it.url); }
   return [...urls];
 }
@@ -321,7 +407,15 @@ function sync() {
   for (const d of S.dates) for (const it of S.items[d]) {
     if (it.mesh) { it.mesh.visible = wants(it); applyMaterial(it); }
     if (state.compare && d === prev && ghostWanted(it)) ensureGhost(it);
-    if (it.ghost) it.ghost.visible = ghostWanted(it);
+    if (it.ghost) {
+      let vis = ghostWanted(it);
+      if (vis) {
+        const g = ghostGeometry(it);
+        if (g) { if (it.ghost.geometry !== g) it.ghost.geometry = g; it.ghost.matrix.copy(ghostLocal(it.date, shown)); it.ghost.matrixWorldNeedsUpdate = true; }
+        else vis = false;   // warped geometry still being prepared
+      }
+      it.ghost.visible = vis;
+    }
   }
   rebuildCaps();
   updateHighlights();
@@ -434,6 +528,7 @@ async function setDate(date, opts = {}) {
   await ensureDate(date);
   if (tok !== switchToken) return;
   shown = date;
+  renderRegButtons();
   computeBounds();
   updatePlanes();
   sync();
@@ -545,6 +640,11 @@ function flyToLesion(id, opts = {}) {
 // ---------------------------------------------------------------- selection
 function selectLesion(id, opts = {}) {
   state.sel = id || null;
+  // in a lesion-anchored alignment, picking another lesion re-anchors the ghost on that lesion
+  if (id && regModes()[state.reg]?.lesion && regModes()[state.reg].lesion !== id) {
+    const k = Object.keys(regModes()).find(k => regModes()[k].lesion === id);
+    if (k) setReg(k);
+  }
   if (id && opts.fly !== false) flyToLesion(id);
   if (state.orbit && id) { const s = lesionSphere(id); if (s) controls.target.copy(s.center); }
   updateHighlights();
@@ -687,16 +787,27 @@ function renderDateButtons(loading) {
 }
 function renderRegButtons() {
   const host = $('#regButtons'); host.innerHTML = '';
-  host.append(h('span.small.muted.reg-label', { style: { padding: '0 4px' } }, 'Align:'));
-  for (const [k, m] of Object.entries(regModes())) {
-    const long = m.label || k, short = long.split(/[-\s]/)[0];
-    host.append(h('button', { 'aria-pressed': String(k === state.reg), title: m.note || '', 'aria-label': long, onclick: () => setReg(k) }, h('span.lbl-long', null, long), h('span.lbl-short', null, short)));
+  host.append(h('label.small.muted.reg-label', { for: 'regSelect', style: { padding: '0 4px' } }, 'Align:'));
+  // one selector: whole-scene alignments first, then the lesion-anchored ones (scene modes with `lesion`)
+  const sel = h('select', { id: 'regSelect', 'aria-label': 'Alignment between dates', title: regModes()[state.reg]?.note || '' });
+  const groups = [['Whole liver / spine', ([, m]) => !m.lesion], ['Lesion-anchored (growth in place)', ([, m]) => !!m.lesion]];
+  for (const [gl, f] of groups) {
+    const ms = Object.entries(regModes()).filter(f); if (!ms.length) continue;
+    const og = h('optgroup', { label: gl });
+    for (const [k, m] of ms) og.append(h('option', { value: k }, (m.label || k) + (k === S.scene.registration?.default ? ' (default)' : '')));
+    sel.append(og);
   }
+  sel.value = state.reg || '';
+  sel.onchange = e => setReg(e.target.value);
+  host.append(sel);
   const m = regModes()[state.reg] || {};
+  const qt = qualityText();
   const res = Object.entries(m.residual_mm || {}).filter(([, v]) => v != null).map(([d, v]) => `${dateShort(d)} ${(+v).toFixed(1)} mm`).join(' · ');
   const ri = $('#regInfo');
-  ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>${res ? ' — residual vs Sep frame: ' + esc(res) : ''}` +
-    ` <span class="note">${esc(m.note || 'No registration note in the scene.')}</span>`;
+  ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>` +
+    (qt ? ' — after alignment, ' + esc(qt) : (res ? ' — residual vs Sep frame: ' + esc(res) : '')) +
+    ` <span class="note">${esc(m.note || 'No registration note in the scene.')}` +
+    ` ${esc(S.scene.registration?.follow_note || '')}</span>`;
   ri.title = (m.note || '') + ' — click to expand / collapse';
   ri.onclick = () => ri.classList.toggle('open');
   measureTopbar();
@@ -706,7 +817,7 @@ function setReg(k) {
   state.reg = k;
   for (const d of S.dates) { dateGroup[d].matrix.copy(regM(d)); dateGroup[d].matrixWorldNeedsUpdate = true; }
   bounds = null; computeBounds(); updatePlanes();
-  renderRegButtons(); claimViz.onRegistration(); requestRender(); writeHash();
+  renderRegButtons(); claimViz.onRegistration(); renderLegend(); ensureVisibleLoaded(); requestRender(); writeHash();
 }
 function measureTopbar() {
   const hgt = $('#topbar').getBoundingClientRect().height;
@@ -759,7 +870,7 @@ function renderLegend() {
   const host = $('#legend'); host.innerHTML = '';
   if (state.growth) {
     const pair = state.growthPair;
-    const gs = (S.scene.lesions || []).map(l => l.growth?.[pair]).filter(Boolean);
+    const gs = (S.scene.lesions || []).map(l => (growthSet() && l.growth_sets?.[growthSet()]?.[pair]) || l.growth?.[pair]).filter(Boolean);
     const scale = Math.max(...gs.map(g => +g.scale_mm || 10), 1);
     const note = gs.find(g => g.note)?.note || 'signed surface distance of the later surface from the earlier one';
     if (!pair || !pair.endsWith('__' + shown)) {
@@ -776,7 +887,8 @@ function renderLegend() {
   if (state.compare) {
     const p = prevDate(shown);
     host.append(h('div', { style: { marginTop: state.growth ? '6px' : 0 } }, h('span.ghostkey'),
-      p ? `Ghost outline = ${dateLabel(p)} (liver and lesions), placed with the ${regModes()[state.reg]?.label || state.reg} alignment` : 'Compare: no earlier date than the first scan.'));
+      p ? `Ghost outline = ${dateLabel(p)} (liver and lesions), placed with the ${regModes()[state.reg]?.label || state.reg} alignment` : 'Compare: no earlier date than the first scan.'),
+      p && qualityText() ? h('div.small', { class: 'reg-q', title: 'Residual after alignment for this date pair (registration_quality.json). Volumes are measured on each date\'s own CT and do not depend on the alignment.' }, 'Residual: ' + qualityText(state.reg, shown, false)) : null);
   }
 }
 
@@ -1037,8 +1149,10 @@ function renderAbout() {
     ver.length ? h('p', null, `Mesh-to-mask check: Dice ${fmtNum(Math.min(...ver), 3)}–${fmtNum(Math.max(...ver), 3)} over ${ver.length} meshes (hover a structure for its own numbers).`) : null,
     h('p', null, 'What is inferred or registered rather than seen:'),
     h('ul', null, ...(sc.notes || []).map(n => h('li', null, n)), ...registered.map(n => h('li', null, n)), ...nv.map(n => h('li', null, n))),
-    h('p', null, 'Why the two alignments differ: the patient breathed differently at each scan (the liver dome sits at a different height relative to the spine on each date). No single rigid transform aligns both the spine and the liver. "Spine-anchored" keeps the skeleton fixed, so the liver and its lesions shift by roughly a centimetre between dates; "Liver-anchored" fits the liver envelope, so lesions line up better but the spine does not. Volumes, sizes and growth numbers are measured on each date\'s own CT and do not depend on this choice.'),
-    ...Object.entries(regModes()).map(([k, m]) => h('p.small', null, h('b', null, (m.label || k) + ': '), m.note || '', m.residual_mm ? ' Residual: ' + Object.entries(m.residual_mm).map(([d, v]) => `${dateShort(d)} ${v} mm`).join(', ') + '.' : '')),
+    h('p', null, 'Why the alignments differ: the patient breathed differently at each scan (the liver dome sits at a different height relative to the spine on each date). No single rigid transform aligns the spine, the liver and every lesion at once. "Spine-anchored" keeps the skeleton fixed, so the liver and its lesions shift by roughly a centimetre between dates; the liver-anchored modes fit the liver, so the spine does not line up; a lesion-anchored mode superimposes one lesion on itself (so its growth is seen in place) and lets everything else drift. Whatever is chosen, every structure of a date (PET-active tissue, segments, vessels, report boxes) moves with the same transform. Volumes, sizes and growth numbers are measured on each date\'s own CT and do not depend on this choice.'),
+    ...Object.entries(regModes()).map(([k, m]) => h('p.small', null, h('b', null, (m.label || k) + ': '), m.note || '',
+      m.quality ? ' After alignment: ' + Object.keys(m.quality).filter(pk => { const [a, b] = pk.split('__'); return S.dates.indexOf(b) - S.dates.indexOf(a) === 1; }).map(pk => qualityText(k, pk.split('__')[1], true)).join('; ') + '.'
+        : (m.residual_mm ? ' Residual: ' + Object.entries(m.residual_mm).map(([d, v]) => `${dateShort(d)} ${v} mm`).join(', ') + '.' : ''))),
     h('h2', null, 'Scene'),
     h('div.kv', null, h('b', null, 'Source'), String(sc.source || '—'), h('b', null, 'Generated'), String(sc.generated || '—'), h('b', null, 'Scene file'), SCENE_URL,
       h('b', null, 'Dates'), (sc.dates || []).map(d => `${d.label} (${d.scan}${d.ct ? ', ' + d.ct : ''})`).join('; '),
@@ -1077,7 +1191,7 @@ let hashLock = false;
 function hashString() {
   const p = [];
   p.push('d=' + shown);
-  if (state.reg !== S.scene.registration?.default) p.push('r=' + state.reg);
+  if (state.reg) p.push('r=' + state.reg);
   const v = [], o = [];
   for (const c of S.ctls.values()) {
     const st = ctlState(c.id);
@@ -1324,7 +1438,7 @@ onProgress(p => {
 
 // ---------------------------------------------------------------- the app object handed to the report modules
 const app = {
-  get scene() { return S.scene; }, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
+  get scene() { return S.scene; }, setReg, get ghostPending() { return warpPending; }, ghostLocal, regQuality, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
   scene3, root, camera, controls, dateLabel, dateShort, regM, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
   setDate, selectLesion, flyToLesion, flyTo, fitDist, addLabel, requestRender, toast, writeHash, peek, ctlState, available,
   setCtls(patches) { for (const [id, p] of Object.entries(patches)) if (S.ctls.has(id)) Object.assign(ctlState(id), p); refreshLayerRows(); const done = ensureVisibleLoaded(); writeHash(); return done; },
@@ -1378,7 +1492,7 @@ async function boot() {
     const b = $('#sourceBanner'); b.hidden = false;
     b.innerHTML = `<b>source: ${esc(sc.source || 'unknown')}</b> — ${sc.source === 'placeholder' ? 'built from unreviewed / interim masks, not the reviewed consensus.' : 'not patient consensus data.'} Do not use these boundaries for decisions.`;
   }
-  document.title = 'Liver 3D: May 2025 / Jun 2026 / Sep 2026' + (sc.source !== 'consensus' ? ` (${sc.source})` : '');
+  document.title = 'Liver progression 3D' + (sc.source !== 'consensus' ? ` (${sc.source})` : '');
 
   // static UI
   renderRegButtons(); renderGrowthSelect(); renderLayersPanel(); renderCutPanel();
