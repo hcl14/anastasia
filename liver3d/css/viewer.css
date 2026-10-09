@@ -61,7 +61,7 @@ input[type=range]{accent-color:var(--accent)}
 input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;margin:0}
 
 /* top bar over the canvas */
-#topbar{position:absolute;left:10px;right:10px;top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;pointer-events:none;z-index:3}
+#topbar{position:absolute;left:10px;right:10px;top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;pointer-events:none;z-index:4}
 #topbar>*{pointer-events:auto}
 .dates{display:flex;gap:4px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:4px;box-shadow:var(--shadow)}
 .dates button{min-width:104px;padding:6px 12px;text-align:left;border-radius:6px;display:flex;flex-direction:column;gap:0}
@@ -74,6 +74,17 @@ input[type=checkbox]{accent-color:var(--accent);width:15px;height:15px;margin:0}
 .toggles{display:flex;gap:4px;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:4px;box-shadow:var(--shadow)}
 .toggles .tog{padding:6px 10px}
 .growth-wrap{display:flex;gap:3px;align-items:center}
+.regghost-wrap{position:relative;display:flex;gap:2px;align-items:center}
+.regghost{display:flex;gap:4px;align-items:center;font-size:12px;padding:0 4px;cursor:pointer;white-space:nowrap}
+.regghost .lbl-short{display:none}
+.info-btn{width:22px;height:22px;padding:0;border-radius:50%;font:italic 600 13px/20px Georgia,serif;text-align:center}
+.popover{position:absolute;top:calc(100% + 8px);left:0;z-index:20;width:min(380px,calc(100vw - 24px));background:var(--panel);color:var(--text);border:1px solid var(--border-2);border-radius:8px;padding:8px 12px;box-shadow:var(--shadow);line-height:1.4}
+.popover p{margin:4px 0}
+.glossary{margin-top:4px;white-space:normal;color:var(--text)}
+.glossary summary{cursor:pointer;color:var(--muted)}
+.glossary dl{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;margin:4px 0}
+.glossary dt{font-weight:600}
+.glossary dd{margin:0}
 .reg{display:flex;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:4px;box-shadow:var(--shadow);align-items:center}
 .reg button{padding:6px 10px}
 .reg select{padding:5px 6px;max-width:260px}
@@ -259,6 +270,9 @@ label.inline{display:flex;gap:6px;align-items:center;margin:6px 0;cursor:pointer
   .reg .lbl-short{display:inline}
   #growthPair{max-width:84px;font-size:12px}
   .reg select{max-width:130px;font-size:12px;padding:3px 4px}
+  .regghost .lbl-long{display:none}
+  .regghost .lbl-short{display:inline}
+  .popover{position:fixed;left:12px;right:12px;top:118px;width:auto;max-height:60vh;overflow:auto}
   #regInfo{display:none}
   /* wrap instead of a hidden horizontal scroll: Copy link / Reset must stay reachable on a phone */
   #viewtools{right:6px;bottom:6px;left:6px;flex-direction:row;flex-wrap:wrap;justify-content:flex-end;align-items:flex-end;gap:4px}

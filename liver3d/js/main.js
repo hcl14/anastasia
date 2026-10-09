@@ -39,7 +39,7 @@ const AXIS_INFO = {
 // ---------------------------------------------------------------- app state
 const S = { scene: null, dates: [], dateByKey: {}, ctls: new Map(), items: {}, groups: [] };
 const state = {
-  date: null, reg: null, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
+  date: null, reg: null, regGhost: true, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
   clip: { x: { on: false, pos: 0, flip: false }, y: { on: false, pos: 0, flip: false }, z: { on: false, pos: 0, flip: false } },
   caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'orig',
 };
@@ -139,8 +139,13 @@ function regM(date, mode = state.reg) {
 //                        mesh vertices (the field already contains the rigid part).
 // Without either, the ghost uses the per-date matrices (regM(p)), as before.
 const pairKey = (p, c) => `${p}__${c}`;
-function ghostField(p, c, mode = state.reg) { return regModes()[mode]?.pair_field?.[pairKey(p, c)] || null; }
+function ghostField(p, c, mode = state.reg) { return state.regGhost ? regModes()[mode]?.pair_field?.[pairKey(p, c)] || null : null; }
+// 'Register earlier scan' off: the ghost keeps the plain spine-anchored (scanner / skeleton) relation to the current date, as before
+// registration was added, so the raw breathing shift is visible; the current date stays where the Align mode puts it.
+const UNREG = 'skeleton';
+const qMode = () => (state.regGhost || !regModes()[UNREG] ? state.reg : UNREG);
 function ghostLocal(p, c, mode = state.reg) {
+  if (!state.regGhost && regModes()[UNREG]) return regM(p, mode).clone().invert().multiply(regM(c, mode)).multiply(regM(c, UNREG).clone().invert()).multiply(regM(p, UNREG));
   // local matrix of a ghost mesh inside dateGroup[p] (whose matrix is regM(p))
   const pm = regModes()[mode]?.pair_matrix?.[pairKey(p, c)];
   if (!pm && !ghostField(p, c, mode)) return new THREE.Matrix4();
@@ -300,7 +305,7 @@ function growthPairs() {
     return (b1 - a1) - (b2 - a2) || a1 - a2;
   });
 }
-const growthSet = () => regModes()[state.reg]?.growth_set || '';
+const growthSet = () => (state.regGhost ? regModes()[state.reg]?.growth_set || '' : 'skeleton');
 /** growth map item for the active mode's set (falls back to the base set when that set has no map for this lesion/pair) */
 function growthItem(lesionId, date, pair) {
   const c = S.items[date]?.filter(it => it.kind === 'growth' && it.lesion.id === lesionId && it.pair === pair) || [];
@@ -801,15 +806,16 @@ function renderRegButtons() {
   sel.onchange = e => setReg(e.target.value);
   host.append(sel);
   const m = regModes()[state.reg] || {};
-  const qt = qualityText();
+  const qt = qualityText(qMode());
   const res = Object.entries(m.residual_mm || {}).filter(([, v]) => v != null).map(([d, v]) => `${dateShort(d)} ${(+v).toFixed(1)} mm`).join(' · ');
   const ri = $('#regInfo');
-  ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>` +
-    (qt ? ' — after alignment, ' + esc(qt) : (res ? ' — residual vs Sep frame: ' + esc(res) : '')) +
+  ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>` + (state.compare && !state.regGhost ? ' · <b>ghost NOT registered</b> (spine frame)' : '') +
+    (qt ? (state.compare && !state.regGhost ? ' — without registration, ' : ' — after alignment, ') + esc(qt) : (res ? ' — residual vs Sep frame: ' + esc(res) : '')) +
     ` <span class="note">${esc(m.note || 'No registration note in the scene.')}` +
     ` ${esc(S.scene.registration?.follow_note || '')}</span>`;
   ri.title = (m.note || '') + ' — click to expand / collapse';
-  ri.onclick = () => ri.classList.toggle('open');
+  ri.append(glossary());
+  ri.onclick = e => { if (!e.target.closest('.glossary')) ri.classList.toggle('open'); };
   measureTopbar();
 }
 function setReg(k) {
@@ -837,6 +843,41 @@ async function togglePlay() {
     if (playing) playTimer = setTimeout(step, 1500);
   };
   step();
+}
+function setRegGhost(on) {
+  state.regGhost = !!on; $('#regGhost').checked = state.regGhost;
+  renderRegButtons(); renderLegend(); ensureVisibleLoaded(); requestRender(); writeHash();
+}
+/** the 'i' popover next to the Register checkbox: click / tap toggles, hover opens on devices with a mouse, Esc or an outside click closes */
+function initRegPopover() {
+  const btn = $('#regInfoBtn'), pop = $('#regPop'), wrap = btn.parentElement;
+  const set = open => { pop.hidden = !open; btn.setAttribute('aria-expanded', String(open)); };
+  let pinned = false, t = null;
+  // click / tap pins it open (or closes a pinned one); hovering the 'i' shows it until the pointer leaves the icon and the popover
+  btn.addEventListener('click', e => { e.stopPropagation(); pinned = !(pinned && !pop.hidden); set(pinned); });
+  if (matchMedia('(hover: hover)').matches) {
+    btn.addEventListener('mouseenter', () => { clearTimeout(t); set(true); });
+    for (const el of [btn, pop]) {
+      el.addEventListener('mouseenter', () => clearTimeout(t));
+      el.addEventListener('mouseleave', () => { if (!pinned) t = setTimeout(() => set(false), 250); });
+    }
+  }
+  const close = () => { pinned = false; set(false); };
+  document.addEventListener('click', e => { if (!pop.hidden && !wrap.contains(e.target)) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !pop.hidden) { close(); btn.focus(); } });
+}
+/** plain-language glossary of the alignment numbers (status line and About tab) */
+function glossary(open = false) {
+  const items = [
+    ['Dice', 'overlap of two outlines: 1.00 = identical, 0 = no overlap. About 0.9 or more is very good, 0.7–0.9 fair, below 0.5 poor. A lesion that really grew cannot reach 1.00 (L1 grew from 25 to 54 mL, so about 0.63 is the best possible).'],
+    ['Centroid offset', 'distance in mm between the centres of the same structure on the two dates, after alignment.'],
+    ['Surface distance', 'how far apart the two outline surfaces are, in mm: the mean, and the 95th percentile (the worst 5 % of places are further apart).'],
+    ['Residual', 'the mismatch that is left after alignment.'],
+    ['Consensus masks', 'outlines agreed by two independent AI teams and an adjudicator, checked against the written reports.'],
+    ['PET-defined only', 'activity seen on PET without a boundary on the CT.'],
+  ];
+  return h('details.glossary', { open: open || null }, h('summary', null, 'What do these numbers mean?'),
+    h('dl', null, ...items.flatMap(([k, v]) => [h('dt', null, k), h('dd', null, v)])));
 }
 function setCompare(on) {
   state.compare = on; $('#compareBtn').setAttribute('aria-pressed', String(on));
@@ -887,8 +928,9 @@ function renderLegend() {
   if (state.compare) {
     const p = prevDate(shown);
     host.append(h('div', { style: { marginTop: state.growth ? '6px' : 0 } }, h('span.ghostkey'),
-      p ? `Ghost outline = ${dateLabel(p)} (liver and lesions), placed with the ${regModes()[state.reg]?.label || state.reg} alignment` : 'Compare: no earlier date than the first scan.'),
-      p && qualityText() ? h('div.small', { class: 'reg-q', title: 'Residual after alignment for this date pair (registration_quality.json). Volumes are measured on each date\'s own CT and do not depend on the alignment.' }, 'Residual: ' + qualityText(state.reg, shown, false)) : null);
+      p ? (state.regGhost ? `Ghost outline = ${dateLabel(p)} (liver and lesions), placed with the ${regModes()[state.reg]?.label || state.reg} alignment`
+        : `Ghost outline = ${dateLabel(p)} (liver and lesions), NOT registered: plain spine-anchored scanner frame (raw breathing shift)`) : 'Compare: no earlier date than the first scan.'),
+      p && qualityText(qMode()) ? h('div.small', { class: 'reg-q', title: 'Residual after alignment for this date pair (registration_quality.json). Volumes are measured on each date\'s own CT and do not depend on the alignment.' }, (state.regGhost ? 'Residual: ' : 'Mismatch without registration: ') + qualityText(qMode(), shown, false)) : null);
   }
 }
 
@@ -1153,6 +1195,7 @@ function renderAbout() {
     ...Object.entries(regModes()).map(([k, m]) => h('p.small', null, h('b', null, (m.label || k) + ': '), m.note || '',
       m.quality ? ' After alignment: ' + Object.keys(m.quality).filter(pk => { const [a, b] = pk.split('__'); return S.dates.indexOf(b) - S.dates.indexOf(a) === 1; }).map(pk => qualityText(k, pk.split('__')[1], true)).join('; ') + '.'
         : (m.residual_mm ? ' Residual: ' + Object.entries(m.residual_mm).map(([d, v]) => `${dateShort(d)} ${v} mm`).join(', ') + '.' : ''))),
+    glossary(true),
     h('h2', null, 'Scene'),
     h('div.kv', null, h('b', null, 'Source'), String(sc.source || '—'), h('b', null, 'Generated'), String(sc.generated || '—'), h('b', null, 'Scene file'), SCENE_URL,
       h('b', null, 'Dates'), (sc.dates || []).map(d => `${d.label} (${d.scan}${d.ct ? ', ' + d.ct : ''})`).join('; '),
@@ -1203,6 +1246,7 @@ function hashString() {
   if (state.solo) p.push('solo=' + encodeURIComponent(state.solo));
   if (state.sel) p.push('sel=' + encodeURIComponent(state.sel));
   if (state.compare) p.push('cmp=1');
+  if (!state.regGhost) p.push('nr=1');
   if (state.growth) p.push('g=' + state.growthPair);
   const cl = AXES.filter(a => state.clip[a].on).map(a => `${a}:${(+state.clip[a].pos).toFixed(1)}:${state.clip[a].flip ? 1 : 0}`);
   if (cl.length) p.push('clip=' + cl.join(','));
@@ -1237,6 +1281,7 @@ function applyHash(hs, { camera: doCam = true } = {}) {
   state.solo = q.solo && S.ctls.has(decodeURIComponent(q.solo)) ? decodeURIComponent(q.solo) : null;
   state.sel = q.sel && lesionById(decodeURIComponent(q.sel)) ? decodeURIComponent(q.sel) : null;
   state.compare = q.cmp === '1';
+  state.regGhost = q.nr !== '1';
   state.growth = !!q.g && growthPairs().includes(q.g); state.growthPair = state.growth ? q.g : state.growthPair;
   for (const a of AXES) state.clip[a].on = false;
   if (q.clip) for (const t of q.clip.split(',')) { const [a, pos, fl] = t.split(':'); if (state.clip[a] && isFinite(+pos)) Object.assign(state.clip[a], { on: true, pos: +pos, flip: fl === '1', _fromHash: true }); }
@@ -1266,7 +1311,8 @@ function resetAll() {
   stopPlay(); claimViz.clear();
   history.replaceState(null, '', location.pathname + location.search);
   for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: c.defVisible, o: c.defOpacity });
-  Object.assign(state, { solo: null, sel: null, compare: false, growth: false, orbit: false, claim: null });
+  Object.assign(state, { solo: null, sel: null, compare: false, regGhost: true, growth: false, orbit: false, claim: null });
+  $('#regGhost').checked = true;
   controls.autoRotate = false;
   for (const a of AXES) state.clip[a].on = false, state.clip[a].flip = false;
   state.caps = true; state.capAll = false;
@@ -1500,6 +1546,8 @@ async function boot() {
   for (const p of F.PRESETS) pres.append(h('button', { title: p.label + ' view', 'aria-label': p.label + ' view', onclick: () => presetView(p.id) }, p.key));
   $('#play').onclick = togglePlay;
   $('#compareBtn').onclick = () => setCompare(!state.compare);
+  $('#regGhost').onchange = e => setRegGhost(e.target.checked);
+  initRegPopover();
   $('#growthBtn').onclick = () => setGrowth(!state.growth);
   $('#growthPair').onchange = e => setGrowth(true, e.target.value);
   $('#orbitBtn').onclick = () => setOrbit(!state.orbit);
@@ -1531,7 +1579,7 @@ async function boot() {
 function afterStateChange(cam, first) {
   for (const d of S.dates) dateGroup[d].matrix.copy(regM(d));
   renderRegButtons(); renderCutPanel(); updatePlanes();
-  $('#compareBtn').setAttribute('aria-pressed', String(state.compare));
+  $('#compareBtn').setAttribute('aria-pressed', String(state.compare)); $('#regGhost').checked = state.regGhost;
   $('#growthBtn').setAttribute('aria-pressed', String(state.growth)); $('#growthPair').value = state.growthPair || '';
   $('#orbitBtn').setAttribute('aria-pressed', String(state.orbit)); $('#orbitBtn').disabled = !state.sel;
   controls.autoRotate = state.orbit;

@@ -243,3 +243,8 @@ Non-rigid candidate (B-spline 2x2x2 on the liver masks, NOT shipped): may2025__j
 Screen check (`tools/tests/compare_overlap.mjs`, Chromium, mean silhouette IoU of ghost vs current over anterior / right-lateral / superior
 orthographic projections; "before" = the live viewer, "after" = this build). Screenshots: `viewer/test_shots/registration/`.
 Note June -> Sep: the refined fit is slightly worse than B1 for S8 (Dice 0.81 vs 0.85) while better for liver and R1; use Lesion S8 for S8.
+
+Follow-up (same day): Compare has a "Register earlier scan (align to current)" check box (default on). Off = the ghost in the plain
+spine-anchored scanner frame relative to the current date (raw shift; May -> June liver Dice 0.85, centroid offsets R1 16.0 / L1 11.3 /
+S8 20.1 mm), and the Growth map switches to `growth_sets.skeleton` (baked with the A1 pair transforms; dominated by misalignment).
+An "i" popover explains the breathing problem; a plain-language glossary sits under the alignment line and in About.

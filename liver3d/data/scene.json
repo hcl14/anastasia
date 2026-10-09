@@ -3577,6 +3577,53 @@
       "surface_centroid_shift_mm": 3.0,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/R1_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 23.17,
+      "min_mm": -14.84,
+      "mean_mm": 1.97,
+      "mean_abs_mm": 7.48,
+      "p95_abs_mm": 18.59,
+      "frac_grown_gt2mm": 0.412,
+      "frac_retracted_gt2mm": 0.425,
+      "scale_mm": 20.0,
+      "surface_centroid_shift_mm": 15.5,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "may2025__sep2026": {
+      "mesh": "meshes/growth/skeleton/R1_may2025__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 24.84,
+      "min_mm": -11.14,
+      "mean_mm": 0.61,
+      "mean_abs_mm": 4.77,
+      "p95_abs_mm": 14.15,
+      "frac_grown_gt2mm": 0.34,
+      "frac_retracted_gt2mm": 0.387,
+      "scale_mm": 15.0,
+      "surface_centroid_shift_mm": 10.0,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "jun2026__sep2026": {
+      "mesh": "meshes/growth/skeleton/R1_jun2026__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 10.95,
+      "min_mm": -20.58,
+      "mean_mm": -0.45,
+      "mean_abs_mm": 4.21,
+      "p95_abs_mm": 12.66,
+      "frac_grown_gt2mm": 0.351,
+      "frac_retracted_gt2mm": 0.297,
+      "scale_mm": 15.0,
+      "surface_centroid_shift_mm": 6.3,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
     }
    }
   },
@@ -4250,6 +4297,53 @@
       "frac_retracted_gt2mm": 0.054,
       "scale_mm": 20.0,
       "surface_centroid_shift_mm": 5.3,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/L1_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 15.36,
+      "min_mm": -7.32,
+      "mean_mm": 4.82,
+      "mean_abs_mm": 6.81,
+      "p95_abs_mm": 14.14,
+      "frac_grown_gt2mm": 0.619,
+      "frac_retracted_gt2mm": 0.214,
+      "scale_mm": 15.0,
+      "surface_centroid_shift_mm": 11.1,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "may2025__sep2026": {
+      "mesh": "meshes/growth/skeleton/L1_may2025__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 23.26,
+      "min_mm": -10.04,
+      "mean_mm": 9.07,
+      "mean_abs_mm": 9.99,
+      "p95_abs_mm": 19.04,
+      "frac_grown_gt2mm": 0.826,
+      "frac_retracted_gt2mm": 0.077,
+      "scale_mm": 20.0,
+      "surface_centroid_shift_mm": 13.2,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "jun2026__sep2026": {
+      "mesh": "meshes/growth/skeleton/L1_jun2026__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 24.83,
+      "min_mm": -7.74,
+      "mean_mm": 6.34,
+      "mean_abs_mm": 8.08,
+      "p95_abs_mm": 21.44,
+      "frac_grown_gt2mm": 0.616,
+      "frac_retracted_gt2mm": 0.173,
+      "scale_mm": 25.0,
+      "surface_centroid_shift_mm": 11.5,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
@@ -4962,6 +5056,53 @@
       "surface_centroid_shift_mm": 0.7,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/S8_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 23.22,
+      "min_mm": -15.0,
+      "mean_mm": 6.74,
+      "mean_abs_mm": 9.86,
+      "p95_abs_mm": 19.17,
+      "frac_grown_gt2mm": 0.694,
+      "frac_retracted_gt2mm": 0.205,
+      "scale_mm": 20.0,
+      "surface_centroid_shift_mm": 20.2,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "may2025__sep2026": {
+      "mesh": "meshes/growth/skeleton/S8_may2025__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 17.05,
+      "min_mm": -13.18,
+      "mean_mm": 4.22,
+      "mean_abs_mm": 7.2,
+      "p95_abs_mm": 14.57,
+      "frac_grown_gt2mm": 0.631,
+      "frac_retracted_gt2mm": 0.219,
+      "scale_mm": 15.0,
+      "surface_centroid_shift_mm": 14.8,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "jun2026__sep2026": {
+      "mesh": "meshes/growth/skeleton/S8_jun2026__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 12.38,
+      "min_mm": -9.87,
+      "mean_mm": 2.04,
+      "mean_abs_mm": 5.47,
+      "p95_abs_mm": 8.95,
+      "frac_grown_gt2mm": 0.593,
+      "frac_retracted_gt2mm": 0.289,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 8.1,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
     }
    }
   },
@@ -5352,6 +5493,23 @@
       "surface_centroid_shift_mm": 4.4,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/K_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 9.8,
+      "min_mm": 2.09,
+      "mean_mm": 6.21,
+      "mean_abs_mm": 6.21,
+      "p95_abs_mm": 9.5,
+      "frac_grown_gt2mm": 1.0,
+      "frac_retracted_gt2mm": 0.0,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 8.8,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
     }
    }
   },
@@ -5705,6 +5863,23 @@
       "frac_retracted_gt2mm": 0.0,
       "scale_mm": 10.0,
       "surface_centroid_shift_mm": 3.3,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/N_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 10.1,
+      "min_mm": 2.31,
+      "mean_mm": 6.57,
+      "mean_abs_mm": 6.57,
+      "p95_abs_mm": 9.59,
+      "frac_grown_gt2mm": 1.0,
+      "frac_retracted_gt2mm": 0.0,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 8.7,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
@@ -6525,6 +6700,53 @@
       "surface_centroid_shift_mm": 5.4,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/S1_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 9.06,
+      "min_mm": -4.94,
+      "mean_mm": 3.38,
+      "mean_abs_mm": 4.13,
+      "p95_abs_mm": 8.61,
+      "frac_grown_gt2mm": 0.643,
+      "frac_retracted_gt2mm": 0.085,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 7.7,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "may2025__sep2026": {
+      "mesh": "meshes/growth/skeleton/S1_may2025__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 7.91,
+      "min_mm": -4.01,
+      "mean_mm": 2.5,
+      "mean_abs_mm": 3.1,
+      "p95_abs_mm": 6.54,
+      "frac_grown_gt2mm": 0.58,
+      "frac_retracted_gt2mm": 0.064,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 4.7,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     },
+     "jun2026__sep2026": {
+      "mesh": "meshes/growth/skeleton/S1_jun2026__sep2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 10.53,
+      "min_mm": -4.05,
+      "mean_mm": 4.32,
+      "mean_abs_mm": 4.81,
+      "p95_abs_mm": 9.47,
+      "frac_grown_gt2mm": 0.695,
+      "frac_retracted_gt2mm": 0.049,
+      "scale_mm": 10.0,
+      "surface_centroid_shift_mm": 8.5,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
     }
    }
   },
@@ -6912,6 +7134,23 @@
       "frac_retracted_gt2mm": 0.066,
       "scale_mm": 10.0,
       "surface_centroid_shift_mm": 3.2,
+      "frame": "mesh vertices in the LATER date's own RAS frame"
+     }
+    },
+    "skeleton": {
+     "may2025__jun2026": {
+      "mesh": "meshes/growth/skeleton/S7sat_may2025__jun2026.ply",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "alignment": "none (spine-anchored scanner frame)",
+      "max_mm": 16.15,
+      "min_mm": 6.59,
+      "mean_mm": 11.9,
+      "mean_abs_mm": 11.9,
+      "p95_abs_mm": 15.64,
+      "frac_grown_gt2mm": 1.0,
+      "frac_retracted_gt2mm": 0.0,
+      "scale_mm": 20.0,
+      "surface_centroid_shift_mm": 17.4,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }

@@ -46,6 +46,11 @@ Example: `index.html?scene=data_test/scene.json` (synthetic scene), `index.html?
 * **Growth map** (G) — replaces each lesion surface by `lesions[].growth[pair].mesh` (vertex colours baked by the data builder:
   signed distance of the later surface from the earlier one); the pair follows the current date (previous → current) and can be chosen
   in the drop-down; legend in mm with the builder's note.
+* **Register earlier scan** (check box next to Compare, default on; hash `nr=1` when off) — off: the ghost keeps the plain spine-anchored
+  (A1) relation to the current date, i.e. the raw breathing shift as before registration was added, and the Growth map uses the spine-frame
+  set `growth_sets.skeleton`; the alignment line and legend then show the mismatch without registration. The "i" button next to it opens
+  an explanation (click / tap pins it, hover shows it, Esc or an outside click closes). A short glossary ("What do these numbers mean?")
+  sits under the alignment line and in the About tab.
 * **Alignment** — the "Align" selector lists `scene.registration.modes`: Spine-anchored (A1), Liver (landmark fit, B1), Liver (mask fit,
   refined; default) and the lesion-anchored modes Lesion R1 / L1 / S8 (`modes[m].lesion`; selecting another lesion in a lesion mode
   re-anchors on it). The line under the top bar (and the Compare legend, also on phones) shows the residual of the Compare pair after

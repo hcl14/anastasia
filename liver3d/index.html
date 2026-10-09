@@ -47,6 +47,19 @@
       <button id="play" class="icon-btn" aria-pressed="false" title="Play through the dates (space)" aria-label="Play through the dates">&#9654;</button>
       <div class="toggles">
         <button id="compareBtn" class="tog" aria-pressed="false" title="Overlay the previous date as a ghost outline (C)">Compare</button>
+        <span class="regghost-wrap">
+          <label class="regghost" title="When off, the earlier scan is drawn in the plain spine-anchored scanner frame, as before registration was added">
+            <input type="checkbox" id="regGhost" checked> <span class="lbl-long">Register earlier scan (align to current)</span><span class="lbl-short">Register</span></label>
+          <button id="regInfoBtn" class="info-btn" type="button" aria-label="Why the scans need aligning" aria-expanded="false" aria-controls="regPop">i</button>
+          <div id="regPop" class="popover small" role="dialog" aria-label="Why the scans need aligning" hidden>
+            <p>The ghost outline of the earlier scan does not line up with the current one because the patient breathed differently on each date:
+            the right liver dome sat 69, 89 and 78 mm above the T12 vertebra (May 2025, June 2026, Sep 2026).</p>
+            <p>A single rigid alignment cannot fit both the spine and the liver, so the viewer offers several: <b>Spine-anchored</b> (bones agree, the liver
+            shifts by centimetres), <b>Liver</b> (landmark fit or refined mask fit: the liver agrees, the spine is off by about 1–2 cm) and
+            <b>Lesion R1 / L1 / S8</b> (the chosen lesion agrees, the rest does not).</p>
+            <p>Registration is rigid only (no stretching), so lesion sizes are never altered. Untick the box to see the raw, unregistered shift.</p>
+          </div>
+        </span>
         <span class="growth-wrap">
           <button id="growthBtn" class="tog" aria-pressed="false" title="Colour lesion surfaces by growth (G)">Growth map</button>
           <select id="growthPair" aria-label="Date pair for the growth map"></select>
