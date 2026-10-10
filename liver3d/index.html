@@ -18,7 +18,8 @@
   <aside id="side" aria-label="Viewer panels">
     <header class="side-head">
       <h1>Liver across three dates</h1>
-      <div class="muted small"><b>For doctors.</b> AI-assisted 3D reconstruction of three CTs (13.05.2025, 19.06.2026, 23.09.2026), not a radiology report; the written reports are authoritative. <a href="../index.html#liver3d">Back to the case summary</a></div>
+      <div class="muted small" data-lang="en"><b>For doctors.</b> AI-assisted 3D reconstruction of three CTs (13.05.2025, 19.06.2026, 23.09.2026), not a radiology report; the written reports are authoritative. <a href="../index.html#liver3d">Back to the case summary</a></div>
+      <div class="muted small" data-lang="uk" translate="no"><b>Для лікарів.</b> 3D-реконструкція трьох КТ (13.05.2025, 19.06.2026, 23.09.2026), виконана за допомогою ШІ; це не радіологічний висновок, вирішальними є письмові висновки. <a href="../index.html#liver3d">Назад до огляду випадку</a></div>
       <div id="sceneMeta" class="muted small"></div>
       <div id="sourceBanner" class="banner" hidden></div>
       <button id="sheetToggle" class="sheet-toggle" aria-expanded="true" aria-controls="tabpanels">Hide panel</button>
@@ -51,14 +52,21 @@
           <label class="regghost" title="When off, the earlier scan is drawn in the plain spine-anchored scanner frame, as before registration was added">
             <input type="checkbox" id="regGhost" checked> <span class="lbl-long">Register earlier scan (align to current)</span><span class="lbl-short">Register</span></label>
           <button id="regInfoBtn" class="info-btn" type="button" aria-label="Why the scans need aligning" aria-expanded="false" aria-controls="regPop">i</button>
-          <div id="regPop" class="popover small" role="dialog" aria-label="Why the scans need aligning" hidden>
+          <div id="regPop" class="popover small" role="dialog" aria-label="Why the scans need aligning" hidden><div data-lang="en">
             <p>The ghost outline of the earlier scan does not line up with the current one because the patient breathed differently on each date:
             the right liver dome sat 69, 89 and 78 mm above the T12 vertebra (May 2025, June 2026, Sep 2026).</p>
             <p>A single rigid alignment cannot fit both the spine and the liver, so the viewer offers several: <b>Spine-anchored</b> (bones agree, the liver
             shifts by centimetres), <b>Liver</b> (landmark fit or refined mask fit: the liver agrees, the spine is off by about 1–2 cm) and
             <b>Lesion R1 / L1 / S8</b> (the chosen lesion agrees, the rest does not).</p>
             <p>Registration is rigid only (no stretching), so lesion sizes are never altered. Untick the box to see the raw, unregistered shift.</p>
-          </div>
+            </div><div data-lang="uk" translate="no">
+            <p>Контур ранішнього обстеження не збігається з поточним, бо пацієнтка дихала по-різному в кожну дату: купол правої частки печінки був
+            на 69, 89 і 78 mm вище хребця T12 (травень 2025, червень 2026, вересень 2026).</p>
+            <p>Одне жорстке суміщення не може водночас вирівняти хребет і печінку, тому переглядач пропонує кілька: <b>за хребтом</b> (кістки збігаються,
+            печінка зсунута на сантиметри), <b>за печінкою</b> (за орієнтирами або уточнене за масками: печінка збігається, хребет зсунутий приблизно на 1–2 см)
+            і <b>за утворенням R1 / L1 / S8</b> (збігається вибране утворення, решта — ні).</p>
+            <p>Суміщення лише жорстке (без розтягування), тож розміри утворень ніколи не змінюються. Зніміть позначку, щоб побачити справжнє зміщення без суміщення.</p>
+          </div></div>
         </span>
         <span class="growth-wrap">
           <button id="growthBtn" class="tog" aria-pressed="false" title="Colour lesion surfaces by growth (G)">Growth map</button>
@@ -66,6 +74,7 @@
         </span>
       </div>
       <div class="reg" role="group" aria-label="Registration between dates" id="regButtons"></div>
+      <div class="langsw" role="group" aria-label="Interface language" id="uiLang" translate="no"><button data-ui="en" title="English interface">EN</button><button data-ui="uk" title="Український інтерфейс">УКР</button></div>
     </div>
 
     <div id="regInfo" class="small"></div>

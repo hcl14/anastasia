@@ -7,6 +7,7 @@ import { loadGeometry, onProgress, peek, stats } from './meshload.js';
 import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js';
 import { Reports } from './reports.js';
 import { ClaimViz } from './claimviz.js';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -41,7 +42,7 @@ const S = { scene: null, dates: [], dateByKey: {}, ctls: new Map(), items: {}, g
 const state = {
   date: null, reg: null, regGhost: true, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
   clip: { x: { on: false, pos: 0, flip: false }, y: { on: false, pos: 0, flip: false }, z: { on: false, pos: 0, flip: false } },
-  caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'orig',
+  caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'en', langExplicit: false,
 };
 let shown = null;               // date whose meshes are on screen
 let defaults = null;            // snapshot of the default state (for reset and for the compact hash)
@@ -811,8 +812,8 @@ function renderRegButtons() {
   const ri = $('#regInfo');
   ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>` + (state.compare && !state.regGhost ? ' · <b>ghost NOT registered</b> (spine frame)' : '') +
     (qt ? (state.compare && !state.regGhost ? ' — without registration, ' : ' — after alignment, ') + esc(qt) : (res ? ' — residual vs Sep frame: ' + esc(res) : '')) +
-    ` <span class="note">${esc(m.note || 'No registration note in the scene.')}` +
-    ` ${esc(S.scene.registration?.follow_note || '')}</span>`;
+    ` <span class="note"><span>${esc(m.note || 'No registration note in the scene.')}</span>` +
+    ` <span>${esc(S.scene.registration?.follow_note || '')}</span></span>`;
   ri.title = (m.note || '') + ' — click to expand / collapse';
   ri.append(glossary());
   ri.onclick = e => { if (!e.target.closest('.glossary')) ri.classList.toggle('open'); };
@@ -919,7 +920,7 @@ function renderLegend() {
     } else {
       host.append(h('div', null, h('b', null, `Growth map ${pairLabel(pair)}`), ' (mm)'),
         h('div.grad'), h('div.ticks', null, h('span', null, `−${scale} retraction`), h('span', null, '0'), h('span', null, `+${scale} growth`)),
-        h('details', null, h('summary', { class: 'small' }, 'How to read the colours'), h('p', null, note + '. Colours are baked into the meshes by the data builder; values beyond ±' + scale + ' mm saturate.')));
+        h('details', null, h('summary', { class: 'small' }, 'How to read the colours'), h('p', null, h('span', null, note.replace(/ \([A-Z]\w*: refined liver fit\)$/, '')), '. ', h('span', null, T('Colours are baked into the meshes by the data builder; values beyond ±{s} mm saturate.', { s: scale })))));
       const miss = (S.scene.lesions || []).filter(l => l.per_date?.[shown] && !l.growth?.[pair]).map(l => l.id);
       if (miss.length) host.append(h('p', null, `No growth map for: ${miss.join(', ')} (plain colour).`));
     }
@@ -935,7 +936,7 @@ function renderLegend() {
 }
 
 /** first clause of a confidence label (full text in the tooltip and in the Layers panel) */
-function shortConf(t) { t = String(t); let m = t.split(/\s\(|;\s|\.\s/)[0]; if (!/\s/.test(m) && t.includes(')')) m = t.slice(0, t.indexOf(')') + 1); return m.length > 40 ? m.slice(0, 38) + '…' : m; }
+function shortConf(t) { t = tr(String(t)); let m = t.split(/\s\(|;\s|\.\s/)[0]; if (!/\s/.test(m) && t.includes(')')) m = t.slice(0, t.indexOf(')') + 1); return m.length > 40 ? m.slice(0, 38) + '…' : m; }
 /** compact table of the current date's volumes (scene source) with the confidence labels */
 let volLegendOpen = null;
 function renderVolumeLegend(host) {
@@ -1256,7 +1257,8 @@ function hashString() {
   p.push('cam=' + [c.x, c.y, c.z, t.x, t.y, t.z].map(x => x.toFixed(1)).join(','));
   if (state.tab !== 'layers') p.push('tab=' + state.tab);
   if (state.claim) p.push('claim=' + encodeURIComponent(state.claim));
-  if (state.lang !== 'orig') p.push('lang=' + state.lang);
+  if (state.langExplicit) p.push('lang=' + state.lang);
+  p.push('ui=' + uiLang());
   if (state.orbit) p.push('orbit=1');
   return '#' + p.join('&');
 }
@@ -1288,7 +1290,10 @@ function applyHash(hs, { camera: doCam = true } = {}) {
   state.caps = q.caps !== '0'; state.capAll = q.capall === '1';
   state.tab = ['layers', 'lesions', 'reports', 'cut', 'about'].includes(q.tab) ? q.tab : 'layers';
   state.claim = q.claim ? decodeURIComponent(q.claim) : null;
-  state.lang = q.lang === 'en' ? 'en' : 'orig';
+  state.langExplicit = ['orig', 'en', 'uk'].includes(q.lang);
+  if (!state.langExplicit) { try { const l = localStorage.getItem('liver3d-stmt'); if (['orig', 'en', 'uk'].includes(l)) { state.lang = l; state.langExplicit = true; } } catch (e) { } }
+  state.lang = state.langExplicit ? (q.lang || state.lang) : (uiLang() === 'uk' ? 'uk' : 'en');
+  if (q.ui && q.ui !== uiLang()) setUi(q.ui, { keepHash: true });
   state.orbit = q.orbit === '1';
   if (q.d && S.dateByKey[q.d]) state.date = q.d;
   let cam = null;
@@ -1416,9 +1421,15 @@ const LAYER_TYPE = { active: 'active', active_pet_only: 'active', active_inferre
   liver: 'liver', portal: 'portal', hepatic_veins: 'hepatic_veins', ivc: 'ivc', gallbladder: 'gallbladder', bile_ducts: 'bile_ducts', contact_left_portal: 'portal' };
 const lcFirst = s => (s && /^[A-Z][a-z]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s || '');
 function lesionLabel(les) { return `${les.name || les.id} (${les.id})`; }
+const PART_NOUN_UK = { calcifications: ['Кальцифікат', 'in'], walls: ['Контрастована стінка', 'of'], cores: ['Некротичний / кістозний вміст', 'of'], nodules: ['Пристінковий вузлик', 'in'], active: ['ПЕТ-активна тканина', 'in'] };
 function describe(it) {
   const c = S.ctls.get(it.ctl);
   if (it.kind === 'part') {
+    const ul = uiLang() === 'uk' && S.ua?.lesions?.[it.lesion.id];
+    if (ul && PART_NOUN_UK[it.part]) {   // Ukrainian needs the case forms of the lesion name (scene_ua.json loc / gen)
+      const [noun, prep] = PART_NOUN_UK[it.part];
+      return { title: noun, where: (prep === 'in' ? `у ${ul.loc}` : ul.gen) + ` (${it.lesion.id})`, type: it.part, lesion: it.lesion.id, done: true };
+    }
     const [noun, prep] = PART_NOUN[it.part] || [c.name, 'in'];
     return { title: noun, where: `${prep} the ${lcFirst(it.lesion.name || it.lesion.id)} (${it.lesion.id})`, type: it.part, lesion: it.lesion.id };
   }
@@ -1439,14 +1450,17 @@ function showTip(it, e, r, pinned = false) {
   let qh = '';
   if (m.list.length) {
     qh = `<div class="tq-h">Doctors' statements${m.otherDate ? ` <span class="muted">(none on this date; on ${esc(dmy(m.date))}:)</span>` : ''}</div>` +
-      m.list.map(({ c, general }) => `<button type="button" class="tq" data-claim="${esc(c.id)}" lang="${esc(c.lang || 'und')}"><span class="tq-q">“${reports.snippetHTML(c)}”</span>` +
-        `<span class="tq-r"><span class="rank r${Math.min(4, c.reader_rank ?? 4)}">${esc(String(c.reader_rank ?? '?'))}</span> ${esc(shortReaderName(c.reader))}${general ? ' · about the liver lesions in general' : ''} <span class="more">${pinned ? 'tap for more ›' : 'click for more ›'}</span></span></button>`).join('');
+      m.list.map(({ c, general }) => { const x = reports.stmt(c), o = reports.stmt(c, 'orig');
+        return `<button type="button" class="tq" data-claim="${esc(c.id)}"><span class="tq-q" translate="no" lang="${esc(x.lang)}">“${reports.snippetHTML(c, 160, x)}”</span>` +
+        (x.verbatim ? '' : `<span class="tq-o"><span class="tq-ol">${esc(x.lang === 'uk' ? 'український переклад - не дослівно' : 'English gloss - not verbatim')}; original (verbatim):</span> <span translate="no" lang="${esc(o.lang)}">${reports.snippetHTML(c, 110, o)}</span></span>`) +
+        `<span class="tq-r"><span class="rank r${Math.min(4, c.reader_rank ?? 4)}">${esc(String(c.reader_rank ?? '?'))}</span> <span translate="no">${esc(shortReaderName(c.reader))}</span>${general ? ' · about the liver lesions in general' : ''} <span class="more">${pinned ? 'tap for more ›' : 'click for more ›'}</span></span></button>`; }).join('');
   } else qh = `<div class="tq-none">No doctor's statement about this structure on this date</div>`;
   const qa = [];
   const v = it.pd?.verify; if (v?.dice != null) qa.push(`mesh vs mask: Dice ${fmtNum(v.dice, 3)}${v.p95_mm != null ? `, p95 ${fmtNum(v.p95_mm, 1)} mm` : ''}`);
   const src = it.kind === 'part' ? null : it.pd?.source;
   if (src?.flag) qa.push('mask: ' + src.flag); else if (src?.kind) qa.push('mask: ' + src.kind + (src.reviewed === false ? ' (unreviewed)' : ''));
-  tip.innerHTML = `<b>${esc(d.title)}</b>${d.where ? `<div class="tw">${esc(d.where)}</div>` : ''}<div class="tl">${lines.map(esc).join('<br>')}</div>${qh}` +
+  const nt = d.done ? ' translate="no"' : '';
+  tip.innerHTML = `<b${nt}>${esc(d.title)}</b>${d.where ? `<div class="tw"${nt}>${esc(d.where)}</div>` : ''}<div class="tl">${lines.map(esc).join('<br>')}</div>${qh}` +
     (qa.length ? `<div class="tqa">${qa.map(esc).join(' · ')}</div>` : '');
   tip.classList.toggle('pinned', pinned);
   tip.hidden = false;
@@ -1540,7 +1554,19 @@ const claimViz = new ClaimViz(app, $('#claimbar'));
 app.reports = reports; app.claimViz = claimViz;
 
 // ---------------------------------------------------------------- boot
+/** interface language switch (EN | УКР); the doctors' statements follow it unless their language was chosen explicitly */
+function setUi(l, opts = {}) {
+  setUiLang(l); rememberUiLang(l);
+  for (const b of $$('#uiLang button')) b.setAttribute('aria-pressed', String(b.dataset.ui === uiLang()));
+  if (!state.langExplicit) state.lang = uiLang() === 'uk' ? 'uk' : 'en';
+  reports.setLang(state.lang); claimViz.renderBar();
+  if (shown) { refreshPanels(); renderLegend(); renderRegButtons(); renderLayersPanel(); }
+  if (S.scene) document.title = uiLang() === 'uk' ? 'Печінка в 3D: три дати' : 'Liver progression 3D';
+  if (!opts.keepHash) writeHash();
+}
 async function boot() {
+  setUiLang(initialUiLang());
+  for (const b of $$('#uiLang button')) { b.setAttribute('aria-pressed', String(b.dataset.ui === uiLang())); b.onclick = () => setUi(b.dataset.ui); }
   applyTheme();
   try { const t = localStorage.getItem('liver3d-theme'); if (t && t !== 'auto') { document.documentElement.dataset.theme = t; applyTheme(); } } catch (e) { }
   let sc;
@@ -1556,6 +1582,19 @@ async function boot() {
     return;
   }
   S.scene = sc;
+  // Ukrainian strings of the scene (side file; scene.json unchanged): English scene text -> Ukrainian, for the interface translator
+  try {
+    const r = await fetch(new URL('scene_ua.json', SCENE_BASE).href, { cache: 'no-cache' });
+    if (r.ok) {
+      const u = S.ua = await r.json(), m = {};
+      for (const L of sc.layers || []) if (u.layers?.[L.id]) m[L.name] = u.layers[L.id];
+      for (const l of sc.lesions || []) { const x = u.lesions?.[l.id]; if (x?.name) m[l.name] = x.name; if (x?.segment && l.segment) m[l.segment] = x.segment; }
+      for (const [k, md] of Object.entries(sc.registration?.modes || {})) { const x = u.modes?.[k]; if (x) { if (md.label) m[md.label] = x.label; if (md.note) m[md.note] = x.note; } }
+      if (u.follow_note && sc.registration?.follow_note) m[sc.registration.follow_note] = u.follow_note;
+      Object.assign(m, u.confidence || {}, u.notes || {}, u.growth_notes || {}, u.not_visible || {});
+      addStrings(m);
+    }
+  } catch (e) { }
   if (!Array.isArray(sc.dates) || !sc.dates.length) { $('#fatal').hidden = false; $('#fatal').textContent = 'scene.json has no dates.'; return; }
   buildModel();
   for (const d of S.dates) { const g = new THREE.Group(); g.name = 'date:' + d; g.matrixAutoUpdate = false; root.add(g); dateGroup[d] = g; }
@@ -1617,7 +1656,7 @@ function afterStateChange(cam, first) {
   controls.autoRotate = state.orbit;
   setTab(state.tab);
   if (state.date !== shown) setDate(state.date, { keepPair: true }); else ensureVisibleLoaded();
-  refreshPanels(); reports.setLang(state.lang);
+  refreshPanels(); reports.setLang(state.lang); claimViz.renderBar();
   if (cam) { camera.position.set(cam[0], cam[1], cam[2]); controls.target.set(cam[3], cam[4], cam[5]); controls.update(); }
   else if (first) presetView('ant', 0);
   if (state.claim) { const id = state.claim; claimViz.showById(id, { fly: !cam }); }

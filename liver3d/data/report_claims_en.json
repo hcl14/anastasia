@@ -1,0 +1,561 @@
+{
+ "meta": {
+  "label": "English gloss - not verbatim",
+  "generated_by": "tools/i18n/build_gloss_files.py",
+  "claims": 67
+ },
+ "glosses": {
+  "may_A_ref_suv": {
+   "text": "Reference values: mediastinal blood pool SUVmax 1.57; liver pool SUVmax 2.37.",
+   "highlight": [
+    "SUVmax 2.37"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_no_comparator": {
+   "text": "No DICOM data of previous PET studies were provided for comparison.",
+   "highlight": [
+    "No DICOM data of previous PET studies"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_s8_size": {
+   "text": "Cystic formations in the liver - the largest in SVIII / SIV up to 6.2 x 4.0 cm",
+   "highlight": [
+    "6.2 x 4.0 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_rmass_size": {
+   "text": "and in SV / SIV up to 13.5 x 10 cm, ametabolic, with single calcification patterns along the periphery; associated with the past treatment of the known GIST.",
+   "highlight": [
+    "13.5 x 10 cm",
+    "ametabolic"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_calcifications": {
+   "text": "ametabolic, with single calcification patterns along the periphery",
+   "highlight": [
+    "single calcification patterns along the periphery"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_activity": {
+   "text": "the cystic formations in the liver also show no activity - the changes correspond to the state after chemotherapy; at present no active tissue or \"fresh\" patterns are found. PET negative.",
+   "highlight": [
+    "PET negative",
+    "show no activity"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_A_cardia_formation": {
+   "text": "Under the cardiac part of the stomach a similar cystic formation up to 3.3 x 2.8 cm; without reliable metabolism.",
+   "highlight": [
+    "3.3 x 2.8 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_overall": {
+   "text": "The known predominantly cystic residual masses in the liver without significant change in size",
+   "highlight": [
+    "without significant change in size"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_rmass_change": {
+   "text": "the dominant one in the right lobe has slightly decreased from 15 to 13.5 cm",
+   "highlight": [
+    "from 15 to 13.5 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_activity": {
+   "text": "As on the previous imaging, they show no significant increase in activity, including the peripheral components",
+   "highlight": [
+    "no significant increase in activity"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_nodule_s8": {
+   "text": "however, in the nodule in segment 8 there is a new \"mural\" spherical dense nodule 11 mm in size, without a noticeable corresponding significant focal increase in activity.",
+   "highlight": [
+    "in segment 8",
+    "11 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_no_new": {
+   "text": "No new separate hypermetabolic foci were found in the liver.",
+   "highlight": [
+    "No new separate hypermetabolic foci"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "may_B_nodule_conclusion": {
+   "text": "Compared with 03/2025, further slight decrease of the inactive residual masses of the liver and stomach; appearance of a new mural nodule in the dominant liver mass, but metabolically inactive (possibly due to haemorrhage); further follow-up is advisable.",
+   "highlight": [
+    "new mural nodule in the dominant liver mass"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_technique": {
+   "text": "Whole-body PET/CT with contrast enhancement",
+   "highlight": [
+    "with contrast enhancement"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_ref_suv": {
+   "text": "Reference values: mediastinal blood pool SUVmax 1.41; liver parenchyma pool SUVmax 1.99.",
+   "highlight": [
+    "SUVmax 1.99"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_liver_cc": {
+   "text": "Liver: compensatorily enlarged, craniocaudal size of the right lobe up to 18.7 cm (13.05.2025 - craniocaudal size up to 17.9 cm)",
+   "highlight": [
+    "up to 18.7 cm",
+    "up to 17.9 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_lesions_stable": {
+   "text": "the parenchyma contains ametabolic lesions of hypodense density, stable in size",
+   "highlight": [
+    "ametabolic",
+    "stable in size"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_rmass_size": {
+   "text": "Sg5/6/7/8 is occupied by a massive lesion up to 14.4 x 10.4 x 14.1 cm (ax+cor)",
+   "highlight": [
+    "14.4 x 10.4 x 14.1 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s7sat": {
+   "text": "Sg7: a satellite lesion up to 1.0 x 1.0 cm",
+   "highlight": [
+    "1.0 x 1.0 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s8_subcapsular": {
+   "text": "Sg7/8, subcapsular, up to 6.3 x 4.3 cm",
+   "highlight": [
+    "6.3 x 4.3 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s58": {
+   "text": "on the Sg5/8 border, a small lesion up to 0.6 x 0.6 cm",
+   "highlight": [
+    "0.6 x 0.6 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s4a7": {
+   "text": "on the Sg4a/7 border, up to 0.6 x 0.6 cm",
+   "highlight": [
+    "0.6 x 0.6 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_llesion_size": {
+   "text": "on the Sg2/3 border, a lesion along the left portal vein, 4.5 x 3.6 cm",
+   "highlight": [
+    "4.5 x 3.6 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_llesion_portal": {
+   "text": "on the Sg2/3 border, a lesion along the left portal vein, 4.5 x 3.6 cm",
+   "highlight": [
+    "along the left portal vein"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s1": {
+   "text": "Sg1: up to 1.3 x 1.3 cm",
+   "highlight": [
+    "1.3 x 1.3 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_s4b": {
+   "text": "Sg4b: a small lesion up to 0.4 x 0.4 cm",
+   "highlight": [
+    "0.4 x 0.4 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_gallbladder": {
+   "text": "The gallbladder is not enlarged, compressed by the adjacent liver parenchyma",
+   "highlight": [
+    "compressed by the adjacent liver parenchyma"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_gastric": {
+   "text": "along the lesser curvature a hypodense ametabolic lesion persists, of stable size up to 4.3 x 3.3 x 4.4 cm (ax+sag), with increasing calcifications in its structure.",
+   "highlight": [
+    "4.3 x 3.3 x 4.4 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_conclusion": {
+   "text": "Compared with the PET-CT of 13.05.2026, the picture of the known gastrointestinal stromal tumour (GIST) of the stomach and of the metastatic liver involvement shows no reliable negative dynamics.",
+   "highlight": [
+    "no reliable negative dynamics"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_A_caveat": {
+   "text": "the absence of marked metabolic activity does not exclude the presence of residual tumour tissue",
+   "highlight": [
+    "does not exclude the presence of residual tumour tissue"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_sizes_stable": {
+   "text": "The known foci and masses in the liver are, on the whole, of stable size",
+   "highlight": [
+    "on the whole, of stable size"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_mural_enhancing": {
+   "text": "however, along their walls, in particular in the largest one in the right lobe, there are new nodular elements with notable enhancement",
+   "highlight": [
+    "new nodular elements with notable enhancement"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_activity": {
+   "text": "and the appearance of partly focal, moderately increased activity, moderately above the liver pool",
+   "highlight": [
+    "moderately increased activity"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_llesion_suv": {
+   "text": "which is best seen at nodule 42 in the left lobe, with uptake up to SUVmax 3.2 (adjacent parenchyma SUV 2).",
+   "highlight": [
+    "SUVmax 3.2",
+    "nodule 42 in the left lobe"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_no_new": {
+   "text": "No new separate similar active or suspicious nodules were found.",
+   "highlight": [
+    "No new separate similar active or suspicious nodules"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_ducts_vessels": {
+   "text": "No signs of bowel obstruction, ascites, hydronephrosis, bile-duct dilatation or thrombi of the large vessels.",
+   "highlight": [
+    "bile-duct dilatation",
+    "thrombi of the large vessels"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_B_conclusion": {
+   "text": "New mural components with moderate activity in the liver lesions, raising suspicion of a return of viable tumour elements of the GIST metastases.",
+   "highlight": [
+    "New mural components with moderate activity"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_technique": {
+   "text": "The study was performed after intravenous injection of the radiopharmaceutical, without intravenous and without oral contrast.",
+   "highlight": [
+    "without intravenous and without oral contrast"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_known_lesions": {
+   "text": "The known hypodense lesions are again seen in both lobes of the liver.",
+   "highlight": [
+    "in both lobes of the liver"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_rmass_activity": {
+   "text": "A large lesion in the right lobe of the liver with peripheral FDG uptake, which is somewhat more pronounced on the present study.",
+   "highlight": [
+    "peripheral FDG uptake",
+    "somewhat more pronounced"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_rmass_size": {
+   "text": "The size of the lesion is about 15 x 10 cm",
+   "highlight": [
+    "15 x 10 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_rmass_change": {
+   "text": "The size of the lesion is about 15 x 10 cm; on the previous study about 11-12.5 cm.",
+   "highlight": [
+    "15 x 10 cm",
+    "about 11-12.5 cm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_llesion_size": {
+   "text": "The lesion in the left lobe of the liver, about 42 x 36 mm",
+   "highlight": [
+    "42 x 36 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_llesion_change": {
+   "text": "The lesion in the left lobe of the liver, about 42 x 36 mm - without significant change in size",
+   "highlight": [
+    "without significant change in size"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_llesion_activity": {
+   "text": "however, the intensity of FDG uptake has now increased.",
+   "highlight": [
+    "the intensity of FDG uptake has now increased"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_ducts_portal": {
+   "text": "The intrahepatic bile ducts are not dilated. The portal vein is patent.",
+   "highlight": [
+    "The portal vein is patent"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_gallbladder": {
+   "text": "The gallbladder is not enlarged.",
+   "highlight": [
+    "The gallbladder is not enlarged"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_adrenal": {
+   "text": "The right adrenal gland is compressed by the liver, without mass lesions and without pathological FDG uptake.",
+   "highlight": [
+    "right adrenal gland is compressed by the liver"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_gastric": {
+   "text": "The known lesion in the gastric wall with calcifications, without significant change in size - about 37 x 31 mm.",
+   "highlight": [
+    "37 x 31 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_conclusion_activity": {
+   "text": "Metabolic progression of the liver foci, especially of the lesion in the left lobe",
+   "highlight": [
+    "Metabolic progression",
+    "especially of the lesion in the left lobe"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "jun_C_conclusion_rmass": {
+   "text": "as well as enlargement of the large lesion in the right lobe of the liver, whose metabolic activity has also somewhat increased.",
+   "highlight": [
+    "enlargement of the large lesion in the right lobe"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_llesion_between_veins": {
+   "text": "The biggest problem is the metastasis in the left lobe of the liver, between the vessels - between the left hepatic vein and the left portal vein.",
+   "highlight": [
+    "between the left hepatic vein and the left portal vein"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_llesion_lhv": {
+   "text": "No, it has no feeding vessel; it partly encircles the left hepatic vein.",
+   "highlight": [
+    "partly encircles the left hepatic vein"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_llesion_lpv": {
+   "text": "And it lies intimately against the portal vein of the left lateral section, segments 2 and 3.",
+   "highlight": [
+    "lies intimately against the portal vein of the left lateral section"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_llesion_s3_branches": {
+   "text": "...the left hepatic vein and the segment III branches. Then there is the option of removing the whole of segment III",
+   "highlight": [
+    "the left hepatic vein and the segment III branches"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_s1_not_left": {
+   "text": "the metastasis in the Spiegel lobe - which your radiologist describes as being in the left lobe, but it is in fact segment I",
+   "highlight": [
+    "it is in fact segment I"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_dark_on_ct": {
+   "text": "This tumour is not hypervascular. It is dark on CT.",
+   "highlight": [
+    "not hypervascular",
+    "dark on CT"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "fed_rmass_volume": {
+   "text": "It's 13... and it occupies the right lobe.",
+   "highlight": [
+    "It's 13..."
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_ref_suv": {
+   "text": "Mediastinal blood pool SUVmax = 1.6.",
+   "highlight": [
+    "SUVmax = 1.6"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_known_lesions": {
+   "text": "In the liver, the previously known multiple ametabolic lesions persist",
+   "highlight": [
+    "previously known multiple ametabolic lesions"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_rmass_size": {
+   "text": "the largest 98 x 148 mm in the right lobe",
+   "highlight": [
+    "98 x 148 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_rmass_change": {
+   "text": "the largest 98 x 148 mm in the right lobe - previously 14.4 x 10.4 mm",
+   "highlight": [
+    "98 x 148 mm",
+    "previously 14.4 x 10.4 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_activity": {
+   "text": "with ingrowth of metabolic activity along the contour and within the structure of some of them, of high intensity, SUVmax up to 4.9",
+   "highlight": [
+    "along the contour and within the structure of some",
+    "SUVmax up to 4.9"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_llesion_active": {
+   "text": "with a metabolic size in the left lobe up to 35 x 54 mm (confluent)",
+   "highlight": [
+    "35 x 54 mm",
+    "confluent"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_s8_active": {
+   "text": "and up to 15 x 24 mm within the structure of the ametabolic area in S8.",
+   "highlight": [
+    "15 x 24 mm",
+    "ametabolic area in S8"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_gastric": {
+   "text": "Along the lesser curvature an FDG-negative lesion persists, closely apposed to the tail of the pancreas, with signs of calcification, measuring 43 x 32 mm (previously 4.3 x 3.3 cm).",
+   "highlight": [
+    "43 x 32 mm"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "sep_K_conclusion": {
+   "text": "PET/CT signs of an increase in metabolic activity in multiple foci of liver-parenchyma involvement compared with the PET/CT of 19.06.2026, which is characteristic of progression of the underlying disease.",
+   "highlight": [
+    "increase in metabolic activity",
+    "progression of the underlying disease"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  }
+ }
+}

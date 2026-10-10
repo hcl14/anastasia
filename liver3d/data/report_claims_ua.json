@@ -1,0 +1,375 @@
+{
+ "meta": {
+  "label": "український переклад - не дослівно",
+  "generated_by": "tools/i18n/build_gloss_files.py",
+  "claims": 67
+ },
+ "glosses": {
+  "may_A_ref_suv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_no_comparator": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_s8_size": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_rmass_size": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_calcifications": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_activity": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_A_cardia_formation": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_overall": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_rmass_change": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_activity": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_nodule_s8": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_no_new": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "may_B_nodule_conclusion": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_technique": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_ref_suv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_liver_cc": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_lesions_stable": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_rmass_size": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s7sat": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s8_subcapsular": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s58": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s4a7": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_llesion_size": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_llesion_portal": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s1": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_s4b": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_gallbladder": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_gastric": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_conclusion": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_A_caveat": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_sizes_stable": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_mural_enhancing": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_activity": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_llesion_suv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_no_new": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_ducts_vessels": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_B_conclusion": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "jun_C_technique": {
+   "text": "Дослідження виконано після внутрішньовенного введення радіофармпрепарату, без внутрішньовенного і без перорального введення контрастної речовини.",
+   "highlight": [
+    "без внутрішньовенного і без перорального введення контрастної речовини"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_known_lesions": {
+   "text": "В обох частках печінки знову визначаються відомі гіподенсні утворення.",
+   "highlight": [
+    "В обох частках печінки"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_rmass_activity": {
+   "text": "Велике утворення в правій частці печінки з периферичним накопиченням FDG, яке в цьому дослідженні дещо більш виражене.",
+   "highlight": [
+    "периферичним накопиченням FDG",
+    "дещо більш виражене"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_rmass_size": {
+   "text": "Розмір утворення становить близько 15 × 10 см",
+   "highlight": [
+    "15 × 10 см"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_rmass_change": {
+   "text": "Розмір утворення становить близько 15 × 10 см; при попередньому дослідженні — близько 11–12,5 см.",
+   "highlight": [
+    "15 × 10 см",
+    "близько 11–12,5 см"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_llesion_size": {
+   "text": "Утворення в лівій частці печінки розміром близько 42 × 36 мм",
+   "highlight": [
+    "42 × 36 мм"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_llesion_change": {
+   "text": "Утворення в лівій частці печінки розміром близько 42 × 36 мм — без суттєвої зміни розмірів",
+   "highlight": [
+    "без суттєвої зміни розмірів"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_llesion_activity": {
+   "text": "однак інтенсивність накопичення FDG наразі підвищилася.",
+   "highlight": [
+    "інтенсивність накопичення FDG наразі підвищилася"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_ducts_portal": {
+   "text": "Внутрішньопечінкові жовчні протоки не розширені. Ворітна вена прохідна.",
+   "highlight": [
+    "Ворітна вена прохідна"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_gallbladder": {
+   "text": "Жовчний міхур не збільшений.",
+   "highlight": [
+    "Жовчний міхур не збільшений"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_adrenal": {
+   "text": "Права наднирка здавлена печінкою, об'ємних утворень і патологічного накопичення FDG немає.",
+   "highlight": [
+    "Права наднирка здавлена печінкою"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_gastric": {
+   "text": "Відоме утворення в стінці шлунка з кальцифікатами, без суттєвої зміни розмірів — близько 37 × 31 мм.",
+   "highlight": [
+    "37 × 31 мм"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_conclusion_activity": {
+   "text": "Метаболічне прогресування вогнищ у печінці, особливо утворення в лівій частці",
+   "highlight": [
+    "Метаболічне прогресування",
+    "особливо утворення в лівій частці"
+   ],
+   "gloss_source": "assistant"
+  },
+  "jun_C_conclusion_rmass": {
+   "text": "а також збільшення великого утворення в правій частці печінки, при цьому його метаболічна активність також дещо підвищилася.",
+   "highlight": [
+    "збільшення великого утворення в правій частці"
+   ],
+   "gloss_source": "assistant"
+  },
+  "fed_llesion_between_veins": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_llesion_lhv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_llesion_lpv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_llesion_s3_branches": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_s1_not_left": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_dark_on_ct": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "fed_rmass_volume": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_ref_suv": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_known_lesions": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_rmass_size": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_rmass_change": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_activity": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_llesion_active": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_s8_active": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_gastric": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "sep_K_conclusion": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  }
+ }
+}

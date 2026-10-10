@@ -38,7 +38,7 @@ export function linkURL(src, path) {
 export class Reports {
   constructor(app, host) {
     this.app = app; this.host = host; this.data = null; this.file = null; this.err = null;
-    this.view = 'claims'; this.allDates = false; this.hiddenReaders = new Set(); this.onlySel = false; this.lang = 'orig';
+    this.view = 'claims'; this.allDates = false; this.hiddenReaders = new Set(); this.onlySel = false; this.lang = 'en'; this.gloss = { en: {}, uk: {} };
   }
   async load(base, name) {
     const tryFiles = [...new Set([name || 'report_claims.json', 'report_claims.json', 'report_claims_raw.json'])];
@@ -48,6 +48,10 @@ export class Reports {
         if (!r.ok) continue;
         this.data = await r.json(); this.file = f; break;
       } catch (e) { this.err = e.message; }
+    }
+    // statement glosses (side files keyed by claim id; the verbatim fields are never changed)
+    for (const [k, f] of [['en', 'report_claims_en.json'], ['uk', 'report_claims_ua.json']]) {
+      try { const r = await fetch(new URL(f, base).href, { cache: 'no-cache' }); if (r.ok) this.gloss[k] = (await r.json()).glosses || {}; } catch (e) { }
     }
     const cl = this.data?.claims || [];
     this.byIdMap = new Map(cl.map(c => [c.id, c]));
@@ -93,13 +97,13 @@ export class Reports {
     return { list: [], date, otherDate: false };
   }
   /** short verbatim snippet (<= max chars) of a claim around its key phrase, as highlighted HTML */
-  snippetHTML(c, max = 160) {
-    const t = String(c.quote_orig || c.quote_en || '');
-    if (t.length <= max) return highlightHTML(t, c.highlight);
-    const hl = (c.highlight || []).find(x => x && t.includes(x));
+  snippetHTML(c, max = 160, x = this.stmt(c)) {
+    const t = String(x.text || '');
+    if (t.length <= max) return highlightHTML(t, x.hl);
+    const hl = (x.hl || []).find(y => y && t.includes(y));
     const at = hl ? t.indexOf(hl) : 0;
     let a = Math.max(0, Math.min(at - Math.round((max - (hl?.length || 0)) / 2), t.length - max)), b = Math.min(t.length, a + max);
-    return (a > 0 ? '…' : '') + highlightHTML(t.slice(a, b), c.highlight) + (b < t.length ? '…' : '');
+    return (a > 0 ? '…' : '') + highlightHTML(t.slice(a, b), x.hl) + (b < t.length ? '…' : '');
   }
   /** show a claim in the Reports tab (card highlighted and scrolled into view) and on the model (claim box, fly-to) */
   async open(id) {
@@ -116,6 +120,27 @@ export class Reports {
   }
   outsideLabel(k) { const o = this.data?.conventions?.date_keys_outside_model?.[k]; return o ? `${o.replace(/,.*$/, '')} (not in the 3D model)` : null; }
   setLang(l) { this.lang = l; this.render(); }
+  /**
+   * the statement in the chosen language: { text, hl, lang, verbatim, label }. 'orig' = verbatim original; 'en' = English gloss
+   * (report_claims_en.json, else quote_en); 'uk' = the original when it is Ukrainian, else the Ukrainian gloss (report_claims_ua.json).
+   */
+  stmt(c, lang = this.lang) {
+    const orig = { text: c.quote_orig || '', hl: c.highlight, lang: c.lang || 'und', verbatim: true, label: 'original (verbatim)' };
+    if (lang === 'orig' || c.lang === lang) return orig;
+    const g = this.gloss[lang]?.[c.id];
+    if (lang === 'en' && (g?.text || c.quote_en)) return { text: g?.text || c.quote_en, hl: g?.highlight?.length ? g.highlight : c.highlight, lang: 'en', verbatim: false, label: 'English gloss - not verbatim', source: g?.gloss_source || 'provided' };
+    if (lang === 'uk' && g?.text) return { text: g.text, hl: g.highlight, lang: 'uk', verbatim: false, label: 'український переклад - не дослівно', source: g.gloss_source };
+    return orig;
+  }
+  /** statement blocks: the chosen language first; when that is a gloss, the verbatim original underneath (small) */
+  quoteEls(c, opts = {}) {
+    const p = this.stmt(c), out = [];
+    const block = (x, cls) => { const q = h('blockquote.q' + (cls || ''), { lang: x.lang, translate: 'no' }); q.innerHTML = opts.snippet ? this.snippetHTML(c, opts.snippet, x) : highlightHTML(x.text, x.hl); return q; };
+    if (!p.verbatim) out.push(h('div.gloss-note', { translate: 'no' }, p.label));
+    out.push(block(p));
+    if (!p.verbatim) { const o = this.stmt(c, 'orig'); out.push(h('div.gloss-note.orig', null, 'original (verbatim)'), block(o, '.orig')); }
+    return out;
+  }
   onDate() { this.render(); }
   onSelectLesion() { this.render(); }
   markActive(id) {
@@ -144,8 +169,10 @@ export class Reports {
       h('button', { 'aria-pressed': String(this.view === 'claims'), onclick: () => { this.view = 'claims'; this.render(); } }, 'Claims'),
       h('button', { 'aria-pressed': String(this.view === 'contra'), onclick: () => { this.view = 'contra'; this.render(); } }, `Disagreements (${(this.data.contradictions || []).length})`));
     const all = h('button', { 'aria-pressed': String(this.allDates), title: 'Show the claims of every date, not only the current one', onclick: () => { this.allDates = !this.allDates; this.render(); } }, 'All dates');
-    const en = h('button', { 'aria-pressed': String(this.lang === 'en'), title: 'Show the English gloss instead of the original wording', onclick: () => { this.lang = this.lang === 'en' ? 'orig' : 'en'; st.lang = this.lang; app.writeHash(); this.render(); app.claimViz.renderBar(); } }, 'English');
-    host.append(h('div.rep-controls', null, seg, all, en));
+    const setL = l => { this.lang = l; st.lang = l; st.langExplicit = true; app.writeHash(); this.render(); app.claimViz.renderBar(); };
+    const langSeg = h('div.seg.stmt-lang', { role: 'group', 'aria-label': 'Language of the doctors\' statements', title: 'Language of the doctors\' statements' },
+      ...[['orig', 'Original'], ['en', 'English'], ['uk', 'Українська']].map(([k, t]) => h('button', { 'aria-pressed': String(this.lang === k), 'data-stmt': k, onclick: () => setL(k) }, t)));
+    host.append(h('div.rep-controls', null, seg, all, langSeg));
     if (this.file !== 'report_claims.json' || !this.enriched) {
       host.append(h('p.small.muted', null, `Claims from ${this.file}${this.enriched ? '' : ' (model measurements not filled in yet: reported sizes are drawn axis-aligned at the lesion centre, without a model box)'}.`));
     }
@@ -155,7 +182,7 @@ export class Reports {
       chips.append(h('button.chip', {
         'aria-pressed': String(!this.hiddenReaders.has(r)), title: `rank ${rank}`,
         onclick: () => { this.hiddenReaders.has(r) ? this.hiddenReaders.delete(r) : this.hiddenReaders.add(r); this.render(); },
-      }, h('span', { class: 'rank r' + Math.min(4, rank) }, rank), ' ', shortReader(r)));
+      }, h('span', { class: 'rank r' + Math.min(4, rank) }, rank), ' ', h('span', { translate: 'no' }, shortReader(r))));
     }
     if (st.sel) chips.append(h('button.chip', { 'aria-pressed': String(this.onlySel), onclick: () => { this.onlySel = !this.onlySel; this.render(); } }, `only ${st.sel}`));
     host.append(chips);
@@ -173,7 +200,7 @@ export class Reports {
     const readers = [...byReader.keys()].sort((a, b) => (byReader.get(a)[0].reader_rank ?? 9) - (byReader.get(b)[0].reader_rank ?? 9) || String(a).localeCompare(String(b)));
     for (const r of readers) {
       const cs = byReader.get(r);
-      host.append(h('div.reader-h', null, h('span', { class: 'rank r' + Math.min(4, cs[0].reader_rank ?? 4) }, cs[0].reader_rank ?? '?'), r || 'Unknown reader'));
+      host.append(h('div.reader-h', null, h('span', { class: 'rank r' + Math.min(4, cs[0].reader_rank ?? 4) }, cs[0].reader_rank ?? '?'), h('span', { translate: 'no' }, r || 'Unknown reader')));
       const byLes = new Map();
       for (const c of cs) { const k = c.lesion_id || ''; if (!byLes.has(k)) byLes.set(k, []); byLes.get(k).push(c); }
       const keys = [...byLes.keys()].sort((a, b) => (a === '') - (b === '') || a.localeCompare(b));
@@ -194,11 +221,11 @@ export class Reports {
         .sort((a, b) => (a.reader_rank ?? 9) - (b.reader_rank ?? 9));
       const missing = (k.claims || []).filter(id => !this.byId(id));
       host.append(h('div.contra', null,
-        h('h3', null, k.topic || k.id),
-        k.summary ? h('div.small', null, k.summary) : null,
+        h('h3', { translate: 'no' }, k.topic || k.id),
+        k.summary ? h('div.small', { translate: 'no' }, k.summary) : null,
         h('div.sides', null, ...claims.map(c => this.card(c, { compact: true }))),
         missing.length ? h('div.small.muted', null, 'Claims not found in the file: ' + missing.join(', ')) : null,
-        h('div.model', null, h('b', null, 'Model: '), k.model_verdict ? k.model_verdict : h('span.muted', null, 'verdict not computed yet (the data builder fills this in from the consensus measurements).'))));
+        h('div.model', null, h('b', null, 'Model: '), k.model_verdict ? h('span', { translate: 'no' }, k.model_verdict) : h('span.muted', null, 'verdict not computed yet (the data builder fills this in from the consensus measurements).'))));
     }
   }
 
@@ -224,13 +251,11 @@ export class Reports {
       h('span.kind', null, KIND_LABEL[c.kind] || c.kind || 'claim'),
       les ? h('span.lchip', { style: { background: les.color } }, c.lesion_id) : (c.lesion_id ? h('span.kind', null, c.lesion_id) : null),
       h('span', null, `${app.dateLabel(c.date_key)} scan`),
-      opts.compact || opts.showDate ? h('span', null, '· ' + shortReader(c.reader)) : null,
+      opts.compact || opts.showDate ? h('span', { translate: 'no' }, '· ' + shortReader(c.reader)) : null,
       cv ? h('span', { class: 'verdict ' + cv.cls, title: cv.title }, cv.text) : null,
       vt ? h('span', { class: 'verdict ' + verdictClass(viz.verdict), title: viz.how_measured || '' }, vt) : null,
       c.confidence === 'ambiguous' ? h('span.verdict.nc', { title: 'The claims engineer marked this mapping or reading as ambiguous' }, 'ambiguous') : null);
-    const showEn = this.lang === 'en' && c.lang !== 'en' && c.quote_en;
-    const q = h('blockquote.q', { lang: showEn ? 'en' : (c.lang || 'und') });
-    q.innerHTML = highlightHTML(showEn ? c.quote_en : c.quote_orig, c.highlight);
+    const qs = this.quoteEls(c);
     const src = c.source || {};
     const links = [];
     const rp = linkURL(src, src.report_page), op = linkURL(src, src.original_page);
@@ -241,12 +266,11 @@ export class Reports {
     for (const a of links) a.addEventListener('click', e => e.stopPropagation());
     const el = h('article.claim', { 'data-id': c.id, tabindex: 0, role: 'button', 'aria-label': `Show on the model: ${c.kind} claim by ${c.reader}` },
       meta,
-      showEn ? h('div.gloss-note', null, 'English gloss — not the verbatim wording') : null,
-      q,
-      opts.compact ? null : h('div.src', null, h('span', null, c.reader || ''), src.title ? h('span', null, src.title) : null, src.document_ref ? h('span', null, 'doc ' + src.document_ref) : null, ...links),
+      ...qs,
+      opts.compact ? null : h('div.src', { translate: 'no' }, h('span', null, c.reader || ''), src.title ? h('span', null, src.title) : null, src.document_ref ? h('span', null, 'doc ' + src.document_ref) : null, ...links),
       opts.compact && links.length ? h('div.src', null, ...links) : null,
-      c.typo_note ? h('div.note', null, 'Typo note: ' + c.typo_note) : null,
-      !opts.compact && c.notes ? h('div.note.n', null, c.notes) : null);
+      c.typo_note ? h('div.note', null, h('span', null, 'Typo note'), ': ', h('span', { translate: 'no' }, c.typo_note)) : null,
+      !opts.compact && c.notes ? h('div.note.n', { translate: 'no' }, c.notes) : null);
     const go = () => { app.claimViz.show(c); };
     el.addEventListener('click', go);
     el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });

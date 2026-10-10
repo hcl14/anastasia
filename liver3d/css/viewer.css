@@ -142,6 +142,8 @@ body.has-claim #legend{bottom:auto;top:calc(var(--topbar-h,74px) + 34px)}
 #tooltip .tq-h{margin-top:5px;font-weight:600;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
 #tooltip .tq{display:block;width:100%;text-align:left;background:none;border:0;border-left:2px solid var(--border-2);border-radius:0;padding:2px 0 2px 7px;margin:4px 0 0;color:var(--text);font:inherit;cursor:pointer}
 #tooltip .tq mark{background:rgba(255,214,0,.35);color:inherit;border-radius:2px}
+#tooltip .tq-o{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+#tooltip .tq-ol{font-style:italic}
 #tooltip .tq-r{display:block;color:var(--muted);font-size:11px;margin-top:1px}
 #tooltip .tq-r .rank{display:inline-block;min-width:14px;text-align:center;border-radius:3px;font-size:10px}
 #tooltip .more{white-space:nowrap;opacity:.8}
@@ -231,6 +233,11 @@ table.les .lname{max-width:118px;white-space:normal;overflow:hidden;display:-web
 blockquote.q{margin:5px 0;padding:2px 0 2px 9px;border-left:3px solid var(--border-2);font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}
 blockquote.q mark{background:var(--mark);color:var(--mark-text);border-radius:2px;padding:0 1px}
 .gloss-note{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.04em}
+.gloss-note.orig{margin-top:4px}
+blockquote.q.orig{font-size:11.5px;opacity:.8}
+.langsw{display:flex;gap:2px;background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:4px;box-shadow:var(--shadow)}
+.langsw button{padding:4px 8px;font-size:12px;font-weight:600}
+.seg.stmt-lang button{font-size:12px}
 .claim .src{font-size:11px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px}
 .claim .src a{color:var(--accent)}
 .claim .note{font-size:11px;color:var(--warn);margin-top:3px}
@@ -299,3 +306,7 @@ label.inline{display:flex;gap:6px;align-items:center;margin:6px 0;cursor:pointer
   #orient .o-t{top:calc(var(--topbar-h,90px) + 4px)}
 }
 @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+
+html:not([lang=uk]) [data-lang=uk],html[lang=uk] [data-lang=en]{display:none}
+
+html[lang=uk] .tabs button{padding:8px 6px;font-size:13px}

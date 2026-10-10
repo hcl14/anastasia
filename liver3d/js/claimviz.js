@@ -333,13 +333,8 @@ export class ClaimViz {
     const close = h('button.cb-close', { 'aria-label': 'Close claim', title: 'Close (Esc)', onclick: () => this.clear() }, '×');
     bar.append(h('div.cb-head', null,
       h('div.small', null, h('span.kind', null, c.kind), ' ', les ? h('span.lchip', { style: { background: les.color } }, lid) : (c.lesion_id || ''), ' ',
-        h('b', null, shortReader(c.reader)), h('span.muted', null, ` · on the ${app.dateLabel(c.date_key)} scan`)), close));
-    const q = h('blockquote.q', { lang: c.lang || 'und' }); q.innerHTML = highlightHTML(c.quote_orig, c.highlight);
-    bar.append(q);
-    if (c.lang !== 'en' && c.quote_en) {
-      const g = h('blockquote.q', { lang: 'en', style: { opacity: lang === 'en' ? 1 : 0.75, fontSize: '12px' } }); g.innerHTML = highlightHTML(c.quote_en, c.highlight);
-      bar.append(h('div.gloss-note', null, 'English gloss (not verbatim)'), g);
-    }
+        h('b', { translate: 'no' }, shortReader(c.reader)), h('span.muted', null, ` · on the ${app.dateLabel(c.date_key)} scan`)), close));
+    bar.append(...app.reports.quoteEls(c));
     const cmp = h('div.cmp');
     const row = (k, v) => cmp.append(h('span.k', null, k), v instanceof Node ? v : h('span', null, v));
     const hasRep = (c.viz?.reported_mm || c.size_mm || []).some(x => x != null);
@@ -383,7 +378,7 @@ export class ClaimViz {
     if (cmp.childElementCount) bar.append(cmp);
     for (const n of this.notes) bar.append(h('div.small.muted', { style: { marginTop: '3px' } }, n));
     if (c.typo_note) bar.append(h('div.small', { style: { color: 'var(--warn)' } }, 'Typo note: ' + c.typo_note));
-    if (c.notes) bar.append(h('div.small.muted', null, c.notes));
+    if (c.notes) bar.append(h('div.small.muted', { translate: 'no' }, c.notes));
     const actions = h('div.actions');
     if (c.kind === 'size_change') {
       const ok = [c.change?.from?.date_key, c.change?.to?.date_key].every(k => app.dates.includes(k)) && lid;

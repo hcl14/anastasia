@@ -187,3 +187,16 @@ layer toggles, segments, compare ghost, growth map, both alignments, axial cut, 
 LHV claim with the C01 relation), Disagreements, no horizontal scroll. Chromium, Firefox and WebKit: 32/32, no console errors or failed requests.
 Screenshots in `test_shots/`. Fixed during the test: on phones the open claim bar (38vh) left no room for the Reports card list; the claim bar
 is now 22vh and the sheet grows while a claim is open.
+
+## Languages (2026-10-10)
+* **Doctors' statements** are shown in English by default (`data/report_claims_en.json`: the claims engineer's glosses, `gloss_source: provided`,
+  67 of 67; none had to be generated), labelled "English gloss - not verbatim", with the verbatim original underneath ("original (verbatim)").
+  Reports tab control: Original | English | Українська (hash `lang=`, localStorage `liver3d-stmt`). Ukrainian: the 53 Ukrainian originals are
+  shown verbatim; the 14 Russian ones (Israeli revision) have assistant-written Ukrainian glosses (`data/report_claims_ua.json`,
+  `gloss_source: assistant`, "український переклад - не дослівно"). Rebuild both with `tools/i18n/build_gloss_files.py`.
+* **Interface EN | УКР** (top bar; hash `ui=`, localStorage `liver3d-ui`, default from the browser language). `js/i18n.js` translates every
+  rendered text node and title / aria-label from `js/i18n_uk.js` (exact strings + patterns) and `data/scene_ua.json` (layer and lesion
+  names with case forms, confidence labels, alignment modes, notes); a MutationObserver keeps later renders translated; `window.__i18nMissing`
+  lists untranslated strings (0 after a crawl of all tabs, dates, compare, growth, claims and tooltips). Not translated on purpose
+  (`translate="no"`): verbatim quotes, reader names, claim provenance lines and the claims engineer's notes, the Disagreements summaries,
+  and the technical tails of "NOT VISIBLE: ..." reasons.
