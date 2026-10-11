@@ -208,3 +208,8 @@ embedded variant (drawer, Options menu, `?poster=<image>` shown until the first 
 Rebuild order after `build_viewer_data.py`: `build_lod.py` (cached by index) then `export_qm.py --uncap <map>`. Numbers: `data/BUILD_NOTES.md`.
 
 Publishing: run `python3 tools/stamp_version.py <viewer dir> --site-index <site index.html>` after copying the files (version stamps, see BUILD_NOTES).
+
+## Colours (2026-10-11)
+Semantic palette in `tools/palette/palette.json` (applied by `tools/palette/apply_palette.py <data dir>`, also called by
+build_viewer_data.py; it re-maps the growth-map colours inside the QM files). Hue = kind of tissue (Anatomy / Tumour / Activity /
+Internal structure / Vessels), lightness separates members of a family; CVD check: `tools/palette/report.py`. Details: BUILD_NOTES.

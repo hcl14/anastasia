@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=2ccd6fa8fb';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=2ccd6fa8fb';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=2ccd6fa8fb';
-import { Reports } from './reports.js?v=2ccd6fa8fb';
-import { ClaimViz } from './claimviz.js?v=2ccd6fa8fb';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=2ccd6fa8fb';
+import * as F from './frame.js?v=b0459575b3';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=b0459575b3';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=b0459575b3';
+import { Reports } from './reports.js?v=b0459575b3';
+import { ClaimViz } from './claimviz.js?v=b0459575b3';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=b0459575b3';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -21,14 +21,15 @@ const EMBED_DEFAULT = new Set(['liver', 'les:R1', 'les:L1', 'les:S8', 'active', 
 if (EMBED) document.body.classList.add('embed');
 const CLAIMS_URL = params.get('claims'); // optional override, relative to the page
 
-const GROUP_ORDER = ['Organ', 'Lesions', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty'];
+// semantic groups (tools/palette/palette.json): hue = kind of tissue
+const GROUP_ORDER = ['Anatomy', 'Tumour', 'Activity', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty', 'Organ', 'Lesions'];
 const PART_KINDS = ['cores', 'walls', 'nodules', 'calcifications', 'active'];
 const PART_DEF = {
-  cores: { name: 'Necrotic / cystic cores', color: '#5f7182', opacity: 1 },
-  walls: { name: 'Walls / viable rim', color: '#d4a373', opacity: 0.55 },
-  nodules: { name: 'Mural nodules', color: '#e91e63', opacity: 1 },
-  calcifications: { name: 'Calcifications', color: '#f5f5f5', opacity: 1 },
-  active: { name: 'FDG-active tissue', color: '#ffd400', opacity: 1 },
+  cores: { name: 'Necrotic / cystic cores', color: '#c3d7e4', opacity: 1 },
+  walls: { name: 'Walls / viable rim', color: '#c7a3d8', opacity: 0.55 },
+  nodules: { name: 'Mural nodules', color: '#5a9400', opacity: 1 },
+  calcifications: { name: 'Calcifications', color: '#fff8e6', opacity: 1 },
+  active: { name: 'FDG-active tissue', color: '#ffc400', opacity: 1 },
 };
 const PART_VOL = { cores: ['core_mL', 'cores_mL'], walls: ['wall_mL', 'walls_mL'], active: ['active_mL'], nodules: ['nodules_mL', 'nodule_mL'], calcifications: ['calcifications_mL', 'calcification_mL'] };
 const partVol = (pd, k) => { for (const f of PART_VOL[k] || [k + '_mL']) if (pd?.[f] != null) return pd[f]; return null; };
@@ -119,7 +120,7 @@ gl_FragColor = vec4(color, clamp(base + rim*pow(f, 3.0), 0.0, 0.85));
 }`;
 function ghostMaterial(organ) {
   return new THREE.ShaderMaterial({
-    uniforms: { color: { value: new THREE.Color('#dcd6ff') }, base: { value: organ ? 0.03 : 0.12 }, rim: { value: organ ? 0.4 : 0.8 } },
+    uniforms: { color: { value: new THREE.Color('#d6dbe3') }, base: { value: organ ? 0.03 : 0.12 }, rim: { value: organ ? 0.4 : 0.8 } },
     vertexShader: ghostVS, fragmentShader: ghostFS, transparent: true, depthWrite: false, depthTest: false,
     side: THREE.FrontSide, clipping: true, clippingPlanes: clipAll,
   });
@@ -247,7 +248,7 @@ function buildModel() {
   }
   for (const les of sc.lesions || []) {
     ctl('les:' + les.id, {
-      name: `${les.id} · ${les.name || ''}`.trim(), short: les.id, group: 'Lesions', color: les.color || '#4caf50',
+      name: `${les.id} · ${les.name || ''}`.trim(), short: les.id, group: 'Tumour', color: les.color || '#7a3aa8',
       defOpacity: les.opacity ?? LESION_DEFAULT_OPACITY, defVisible: les.default_visible ?? true, lesion: les, notVisible: les.not_visible || {}, kind: 'lesion',
     });
   }
@@ -311,7 +312,7 @@ function rankOf(it) {
   if (c.group === 'Vessels') return 30;
   if (c.group === 'Couinaud segments') return 40;
   if (it.ctl === 'liver') return 55;
-  if (c.group === 'Organ') return 50;
+  if (c.group === 'Organ' || c.group === 'Anatomy') return 50;
   return 35;
 }
 
@@ -387,7 +388,10 @@ function ensureMesh(it) {
   if (!g) return null;
   const vc = it.kind === 'growth' && !!g.getAttribute('color');
   if (it.kind === 'growth' && !vc) it.noColors = true;
-  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.92, metalness: 0, side, emissive: 0x000000 }));
+  // FDG activity glows (emissive share of its own colour, scene.palette.emissive): the brightest thing in the scene
+  const em = S.scene.palette?.emissive?.[it.kind === 'part' ? it.part : it.ctl] || 0;
+  it.baseEmissive = em ? new THREE.Color(colorOf(it)).multiplyScalar(em) : new THREE.Color(0);
+  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.92, metalness: 0, side, emissive: it.baseEmissive.clone() }));
   const front = new THREE.Mesh(g, mk(THREE.DoubleSide));
   const back = new THREE.Mesh(g, mk(THREE.BackSide));
   for (const m of [front, back]) {
@@ -541,7 +545,7 @@ function updateHighlights() {
     const on = it.mesh.visible && ((state.sel && it.lesion?.id === state.sel && it.kind !== 'part') ||
       (focus && focus.ctls.has(it.ctl) && (!focus.lesion || !it.lesion || it.lesion.id === focus.lesion)));
     it.hl = !!on; any = any || on;
-    if (!on) { it.mesh.material.emissive.setRGB(0, 0, 0); it.back.material.emissive.setRGB(0, 0, 0); }
+    if (!on) { const b0 = it.baseEmissive || new THREE.Color(0); it.mesh.material.emissive.copy(b0); it.back.material.emissive.copy(b0); }
   }
   pulseUntil = any ? Infinity : 0;
 }
@@ -1017,23 +1021,29 @@ function renderVolumeLegend(host) {
   const rows = [];
   for (const les of S.scene.lesions || []) {
     const pd = les.per_date?.[shown];
-    if (pd?.volume_mL != null && pd.mesh) rows.push({ sw: les.color, name: les.id, title: les.name, vol: pd.volume_mL, conf: pd.confidence });
+    if (pd?.volume_mL != null && pd.mesh) rows.push({ gid: les.id, sw: les.color, name: les.id, title: les.name, vol: pd.volume_mL, conf: pd.confidence });
   }
   for (const L of S.scene.layers || []) {
     const pd = L.per_date?.[shown];
     if (!(pd?.mesh || pd?.shown_as) || pd.volume_mL == null || /^seg\d$/.test(L.id)) continue;
-    rows.push({ sw: L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
+    rows.push({ gid: L.id, sw: L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
   }
   const segc = (S.scene.layers || []).find(L => /^seg\d$/.test(L.id) && L.per_date?.[shown]?.confidence)?.per_date[shown].confidence;
-  if (segc) rows.push({ sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', short: 'Segments', vol: null, conf: segc });
+  if (segc) rows.push({ gid: 'seg1', sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', short: 'Segments', vol: null, conf: segc });
   if (!rows.length) return;
+  // order by meaning (Tumour, Activity, Anatomy, Internal structure, Vessels) with a thin group label
+  const pg = S.scene.palette?.groups || {}, gOf = r => r.gid ? (Object.entries(pg).find(([, ks]) => ks.includes(r.gid))?.[0] || 'Other') : 'Other';
+  const GO = ['Tumour', 'Activity', 'Anatomy', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty', 'Other'];
+  rows.sort((a, b) => GO.indexOf(gOf(a)) - GO.indexOf(gOf(b)));
+  const rowsG = []; let lastG = null;
+  for (const r of rows) { const g = gOf(r); if (g !== lastG && Object.keys(pg).length) { rowsG.push({ group: g }); lastG = g; } rowsG.push(r); }
   // a narrow column docked on the right edge of the canvas: open by default (closed on phones), state remembered
   if (volLegendOpen === null) { let st = null; try { st = localStorage.getItem('liver3d-vols'); } catch (e) { } volLegendOpen = st ? st === '1' : !matchMedia('(max-width: 560px)').matches; }
   const src = S.scene.source === 'consensus' ? 'consensus' : (S.scene.source || '?');
   const box = $('#vols'); box.innerHTML = ''; box.hidden = false;
   const det = h('details.vols', { open: volLegendOpen && !state.claim ? true : null },   // collapsed while a claim bar is shown
     h('summary', { title: `Volumes on ${dateLabel(shown)}, measured on the ${src} masks` }, h('b', null, 'Volumes'), h('span.muted', null, ' · ' + dateShort(shown))),
-    h('table.vols', null, h('tbody', null, ...rows.map(r => h('tr', { title: (r.title || r.full || r.name) + (r.conf ? ' — ' + tr(r.conf) : '') },
+    h('table.vols', null, h('tbody', null, ...rowsG.map(r => r.group ? h('tr.gh', null, h('td', { colspan: 4 }, r.group)) : h('tr', { title: (r.title || r.full || r.name) + (r.conf ? ' — ' + tr(r.conf) : '') },
       h('td', null, h('span.sw', { style: { background: r.sw } })),
       h('td.n', null, r.short || r.name),
       h('td.v', null, r.vol != null ? fmtVol(r.vol) : ''),
@@ -1051,8 +1061,17 @@ function setCtl(id, patch, opts = {}) {
   Object.assign(ctlState(id), patch);
   if (!opts.silent) { refreshLayerRow(id); if (patch.v) ensureVisibleLoaded(); else sync(); writeHash(); }
 }
+/** colour key grouped by meaning (scene.palette.groups): hue = kind of tissue */
+function colourKey() {
+  const pg = S.scene.palette?.groups; if (!pg) return null;
+  const col = id => (S.ctls.get(id) || S.ctls.get('les:' + id))?.color;
+  const show = { Anatomy: ['liver', 'gallbladder'], Tumour: ['R1', 'L1', 'S8', 'S1', 'P7'], Activity: ['active', 'active_pet_only'], Vessels: ['portal', 'hepatic_veins', 'ivc'], 'Internal structure': ['walls', 'cores', 'nodules', 'calcifications'] };
+  return h('div.ckey', { title: 'Colour key: the hue tells the kind of tissue' }, ...Object.entries(show).map(([g, ids]) =>
+    h('span.ck', null, ...ids.map(id => col(id)).filter(Boolean).map(c => h('i', { style: { background: c } })), h('span', null, g))));
+}
 function renderLayersPanel() {
   const host = $('#p-layers'); host.innerHTML = '';
+  const ck = colourKey(); if (ck) host.append(ck);
   host.append(h('div.row-btns', null,
     h('button', { onclick: () => { for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: c.defVisible, o: c.defOpacity }); state.solo = null; refreshLayerRows(); ensureVisibleLoaded(); writeHash(); } }, 'Default layers'),
     h('button', { onclick: () => { state.solo = null; refreshLayerRows(); sync(); writeHash(); }, id: 'unsolo', hidden: true }, 'Show all (end solo)'),

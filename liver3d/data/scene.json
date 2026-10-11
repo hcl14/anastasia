@@ -1170,8 +1170,8 @@
   {
    "id": "liver",
    "name": "Liver",
-   "group": "Organ",
-   "color": "#c9a99a",
+   "group": "Anatomy",
+   "color": "#b9a596",
    "opacity": 0.25,
    "default_visible": true,
    "per_date": {
@@ -1254,8 +1254,8 @@
   {
    "id": "gallbladder",
    "name": "Gallbladder",
-   "group": "Organ",
-   "color": "#7fae4e",
+   "group": "Anatomy",
+   "color": "#8c9a3a",
    "opacity": 0.6,
    "default_visible": true,
    "per_date": {
@@ -1315,8 +1315,8 @@
   {
    "id": "active",
    "name": "FDG-active tissue",
-   "group": "Internal structure",
-   "color": "#ff3d00",
+   "group": "Activity",
+   "color": "#ffc400",
    "opacity": 0.85,
    "default_visible": true,
    "per_date": {
@@ -1378,8 +1378,8 @@
   {
    "id": "active_pet_only",
    "name": "FDG-active tissue outside the CT lesions (PET-defined only)",
-   "group": "Internal structure",
-   "color": "#ffc046",
+   "group": "Activity",
+   "color": "#ffe680",
    "opacity": 0.7,
    "default_visible": true,
    "per_date": {
@@ -1444,7 +1444,7 @@
    "id": "cores",
    "name": "Necrotic / cystic cores",
    "group": "Internal structure",
-   "color": "#f5d76e",
+   "color": "#c3d7e4",
    "opacity": 0.55,
    "default_visible": false,
    "per_date": {
@@ -1490,7 +1490,7 @@
    "id": "walls",
    "name": "Enhancing walls / solid tissue",
    "group": "Internal structure",
-   "color": "#a1887f",
+   "color": "#c7a3d8",
    "opacity": 0.5,
    "default_visible": false,
    "per_date": {
@@ -1536,7 +1536,7 @@
    "id": "nodules",
    "name": "Mural nodules",
    "group": "Internal structure",
-   "color": "#d500f9",
+   "color": "#5a9400",
    "opacity": 0.95,
    "default_visible": true,
    "per_date": {
@@ -1574,7 +1574,7 @@
    "id": "calcifications",
    "name": "Calcifications / hyperdense foci",
    "group": "Internal structure",
-   "color": "#ffffff",
+   "color": "#fff8e6",
    "opacity": 1.0,
    "default_visible": true,
    "per_date": {
@@ -1620,7 +1620,7 @@
    "id": "portal",
    "name": "Portal vein",
    "group": "Vessels",
-   "color": "#3f6fd8",
+   "color": "#3f7ae8",
    "opacity": 0.9,
    "default_visible": true,
    "per_date": {
@@ -1707,7 +1707,7 @@
    "id": "hepatic_veins",
    "name": "Hepatic veins",
    "group": "Vessels",
-   "color": "#26c6da",
+   "color": "#2aa8b5",
    "opacity": 0.9,
    "default_visible": true,
    "per_date": {
@@ -1792,7 +1792,7 @@
    "id": "ivc",
    "name": "Inferior vena cava",
    "group": "Vessels",
-   "color": "#1f3f99",
+   "color": "#16285a",
    "opacity": 0.8,
    "default_visible": true,
    "per_date": {
@@ -1875,7 +1875,7 @@
    "id": "hepatic_artery",
    "name": "Hepatic artery",
    "group": "Vessels",
-   "color": "#e53935",
+   "color": "#d63a3a",
    "opacity": 0.95,
    "default_visible": true,
    "per_date": {},
@@ -1888,8 +1888,8 @@
   {
    "id": "bile_ducts",
    "name": "Bile ducts",
-   "group": "Vessels",
-   "color": "#c0ca33",
+   "group": "Anatomy",
+   "color": "#c2cc3c",
    "opacity": 0.9,
    "default_visible": true,
    "per_date": {},
@@ -1903,7 +1903,7 @@
    "id": "contact_left_portal",
    "name": "Left lesion / left portal contact patch",
    "group": "Vessels",
-   "color": "#ffd600",
+   "color": "#a9d0ff",
    "opacity": 1.0,
    "default_visible": true,
    "per_date": {
@@ -1965,7 +1965,7 @@
    "id": "seg1",
    "name": "Segment I",
    "group": "Couinaud segments",
-   "color": "#8dd3c7",
+   "color": "#cfe8e2",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2050,7 +2050,7 @@
    "id": "seg2",
    "name": "Segment II",
    "group": "Couinaud segments",
-   "color": "#ffffb3",
+   "color": "#e9e5c4",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2136,7 +2136,7 @@
    "id": "seg3",
    "name": "Segment III",
    "group": "Couinaud segments",
-   "color": "#bebada",
+   "color": "#d9d3ea",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2223,7 +2223,7 @@
    "id": "seg4",
    "name": "Segment IV",
    "group": "Couinaud segments",
-   "color": "#fb8072",
+   "color": "#efd2cc",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2310,7 +2310,7 @@
    "id": "seg5",
    "name": "Segment V",
    "group": "Couinaud segments",
-   "color": "#80b1d3",
+   "color": "#cddbe9",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2397,7 +2397,7 @@
    "id": "seg6",
    "name": "Segment VI",
    "group": "Couinaud segments",
-   "color": "#fdb462",
+   "color": "#ecdcc7",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2484,7 +2484,7 @@
    "id": "seg7",
    "name": "Segment VII",
    "group": "Couinaud segments",
-   "color": "#b3de69",
+   "color": "#d8e8cc",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2571,7 +2571,7 @@
    "id": "seg8",
    "name": "Segment VIII",
    "group": "Couinaud segments",
-   "color": "#fccde5",
+   "color": "#ecd6e2",
    "opacity": 0.35,
    "default_visible": false,
    "per_date": {
@@ -2658,7 +2658,7 @@
    "id": "uncertain",
    "name": "Uncertain band (arbitration)",
    "group": "Uncertainty",
-   "color": "#ff00ff",
+   "color": "#9a9a9a",
    "opacity": 0.3,
    "default_visible": false,
    "per_date": {},
@@ -2671,8 +2671,8 @@
   {
    "id": "active_inferred",
    "name": "FDG activity, inferred only (moved out of active)",
-   "group": "Uncertainty",
-   "color": "#ffab91",
+   "group": "Activity",
+   "color": "#ff8c1a",
    "opacity": 0.8,
    "default_visible": false,
    "per_date": {
@@ -2714,7 +2714,7 @@
    "id": "R1",
    "name": "Dominant right-lobe mass",
    "segment": "V-VIII",
-   "color": "#4caf50",
+   "color": "#6a2f99",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_R1.ply",
@@ -3437,7 +3437,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/R1_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 12.32,
      "min_mm": -10.86,
      "mean_mm": 0.98,
@@ -3451,7 +3451,7 @@
     },
     "may2025__sep2026": {
      "mesh": "meshes/growth/R1_may2025__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 19.08,
      "min_mm": -14.55,
      "mean_mm": 0.33,
@@ -3465,7 +3465,7 @@
     },
     "jun2026__sep2026": {
      "mesh": "meshes/growth/R1_jun2026__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 11.5,
      "min_mm": -16.81,
      "mean_mm": -0.62,
@@ -3502,7 +3502,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/R1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 12.76,
       "min_mm": -7.67,
@@ -3517,7 +3517,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/R1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 16.85,
       "min_mm": -14.64,
@@ -3532,7 +3532,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/liver_refined/R1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 13.01,
       "min_mm": -15.49,
@@ -3549,7 +3549,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/R1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 11.94,
       "min_mm": -7.18,
@@ -3564,7 +3564,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/lesion/R1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 16.79,
       "min_mm": -12.62,
@@ -3579,7 +3579,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/R1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 12.6,
       "min_mm": -15.16,
@@ -3596,7 +3596,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/R1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 23.17,
       "min_mm": -14.84,
@@ -3611,7 +3611,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/R1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 24.84,
       "min_mm": -11.14,
@@ -3626,7 +3626,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/R1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 10.95,
       "min_mm": -20.58,
@@ -3646,7 +3646,7 @@
    "id": "L1",
    "name": "Left-lobe (S2/3) lesion",
    "segment": "II/III",
-   "color": "#ff9800",
+   "color": "#a8358a",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_L1.ply",
@@ -4159,7 +4159,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/L1_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 7.75,
      "min_mm": -4.4,
      "mean_mm": 2.71,
@@ -4173,7 +4173,7 @@
     },
     "may2025__sep2026": {
      "mesh": "meshes/growth/L1_may2025__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 24.15,
      "min_mm": -4.95,
      "mean_mm": 7.59,
@@ -4187,7 +4187,7 @@
     },
     "jun2026__sep2026": {
      "mesh": "meshes/growth/L1_jun2026__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 19.96,
      "min_mm": -8.55,
      "mean_mm": 4.78,
@@ -4224,7 +4224,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/L1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 8.65,
       "min_mm": -4.31,
@@ -4239,7 +4239,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/L1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 24.58,
       "min_mm": -4.78,
@@ -4254,7 +4254,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/liver_refined/L1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 19.81,
       "min_mm": -8.83,
@@ -4271,7 +4271,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/L1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 5.9,
       "min_mm": -1.58,
@@ -4286,7 +4286,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/lesion/L1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 26.79,
       "min_mm": -2.37,
@@ -4301,7 +4301,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/L1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 21.04,
       "min_mm": -4.95,
@@ -4318,7 +4318,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/L1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 15.36,
       "min_mm": -7.32,
@@ -4333,7 +4333,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/L1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 23.26,
       "min_mm": -10.04,
@@ -4348,7 +4348,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/L1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 24.83,
       "min_mm": -7.74,
@@ -4368,7 +4368,7 @@
    "id": "S8",
    "name": "S7/8 subcapsular dome lesion (holds the Sep S8 active focus)",
    "segment": "VII/VIII",
-   "color": "#e91e63",
+   "color": "#b996f2",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_S8.ply",
@@ -4916,7 +4916,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/S8_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 14.97,
      "min_mm": -14.05,
      "mean_mm": 2.7,
@@ -4930,7 +4930,7 @@
     },
     "may2025__sep2026": {
      "mesh": "meshes/growth/S8_may2025__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 18.0,
      "min_mm": -11.58,
      "mean_mm": 3.62,
@@ -4944,7 +4944,7 @@
     },
     "jun2026__sep2026": {
      "mesh": "meshes/growth/S8_jun2026__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 8.2,
      "min_mm": -5.24,
      "mean_mm": 1.27,
@@ -4981,7 +4981,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/S8_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 9.82,
       "min_mm": -7.0,
@@ -4996,7 +4996,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/S8_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 14.31,
       "min_mm": -9.61,
@@ -5011,7 +5011,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/liver_refined/S8_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 10.01,
       "min_mm": -7.29,
@@ -5028,7 +5028,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/S8_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 11.59,
       "min_mm": -2.81,
@@ -5043,7 +5043,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/lesion/S8_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 11.37,
       "min_mm": -3.77,
@@ -5058,7 +5058,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/S8_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
       "max_mm": 6.93,
       "min_mm": -4.18,
@@ -5075,7 +5075,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/S8_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 23.22,
       "min_mm": -15.0,
@@ -5090,7 +5090,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/S8_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 17.05,
       "min_mm": -13.18,
@@ -5105,7 +5105,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/S8_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 12.38,
       "min_mm": -9.87,
@@ -5125,7 +5125,7 @@
    "id": "K",
    "name": "Small focus K / M1, anterior S4b-S5 (low confidence)",
    "segment": "IVb/V",
-   "color": "#cddc39",
+   "color": "#8f82c2",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_K.ply",
@@ -5447,7 +5447,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/K_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 7.44,
      "min_mm": 1.83,
      "mean_mm": 4.89,
@@ -5478,7 +5478,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/K_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 4.91,
       "min_mm": -1.33,
@@ -5495,7 +5495,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/K_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (K: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (K: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 4.91,
       "min_mm": -1.33,
@@ -5512,7 +5512,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/K_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 9.8,
       "min_mm": 2.09,
@@ -5532,7 +5532,7 @@
    "id": "N",
    "name": "Small focus N / A1, S4a/S8 (low confidence)",
    "segment": "IVa/VIII",
-   "color": "#795548",
+   "color": "#3f2f52",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_N.ply",
@@ -5819,7 +5819,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/N_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 5.35,
      "min_mm": -1.41,
      "mean_mm": 2.67,
@@ -5850,7 +5850,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/N_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 4.19,
       "min_mm": -1.85,
@@ -5867,7 +5867,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/N_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (N: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (N: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 4.19,
       "min_mm": -1.85,
@@ -5884,7 +5884,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/N_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 10.1,
       "min_mm": 2.31,
@@ -5904,7 +5904,7 @@
    "id": "P7",
    "name": "Posterior perimural focus at the right-mass wall (PET-defined, indeterminate)",
    "segment": "VII (inferred map)",
-   "color": "#ff5252",
+   "color": "#d35bb0",
    "per_date": {
     "sep2026": {
      "mesh": "meshes/sep2026/lesion_P7.ply",
@@ -6082,7 +6082,7 @@
    "id": "S1",
    "name": "S1 caudate lesion",
    "segment": "I",
-   "color": "#9c27b0",
+   "color": "#f3d4f6",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_S1.ply",
@@ -6560,7 +6560,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/S1_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 10.03,
      "min_mm": -1.75,
      "mean_mm": 5.23,
@@ -6574,7 +6574,7 @@
     },
     "may2025__sep2026": {
      "mesh": "meshes/growth/S1_may2025__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 11.56,
      "min_mm": -4.37,
      "mean_mm": 4.54,
@@ -6588,7 +6588,7 @@
     },
     "jun2026__sep2026": {
      "mesh": "meshes/growth/S1_jun2026__sep2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 8.17,
      "min_mm": -4.05,
      "mean_mm": 3.09,
@@ -6625,7 +6625,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/S1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 7.9,
       "min_mm": -3.82,
@@ -6640,7 +6640,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/S1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 12.0,
       "min_mm": -4.76,
@@ -6655,7 +6655,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/liver_refined/S1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 7.23,
       "min_mm": -3.39,
@@ -6672,7 +6672,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/S1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 7.9,
       "min_mm": -3.82,
@@ -6687,7 +6687,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/lesion/S1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 12.0,
       "min_mm": -4.76,
@@ -6702,7 +6702,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/S1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S1: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 7.23,
       "min_mm": -3.39,
@@ -6719,7 +6719,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/S1_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 9.06,
       "min_mm": -4.94,
@@ -6734,7 +6734,7 @@
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/S1_may2025__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 7.91,
       "min_mm": -4.01,
@@ -6749,7 +6749,7 @@
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/S1_jun2026__sep2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 10.53,
       "min_mm": -4.05,
@@ -6769,7 +6769,7 @@
    "id": "S7sat",
    "name": "S7 posterior satellite (~1 cm)",
    "segment": "VII (June: S6 by inherited segments)",
-   "color": "#00bcd4",
+   "color": "#8a2c74",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_S7sat.ply",
@@ -7090,7 +7090,7 @@
    "growth": {
     "may2025__jun2026": {
      "mesh": "meshes/growth/S7sat_may2025__jun2026.ply",
-     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; red = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform red/blue on one side is likely misregistration",
+     "note": "vertex colours = signed distance (mm) of the later surface from the earlier one after mapping both into the Sep frame with the LIVER-anchored (B1) matrices; magenta = outward growth, blue = retraction, white = 0; includes the B1 registration residual (~6-9 mm liver landmark error), so uniform magenta/blue on one side is likely misregistration",
      "max_mm": 8.27,
      "min_mm": -2.67,
      "mean_mm": 3.64,
@@ -7121,7 +7121,7 @@
     "liver_refined": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/liver_refined/S7sat_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); red = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform red on one side and blue on the other is likely misregistration",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 3.78,
       "min_mm": -3.06,
@@ -7138,7 +7138,7 @@
     "lesion": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/lesion/S7sat_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); red = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S7sat: refined liver fit)",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap) (S7sat: refined liver fit)",
       "alignment": "refined liver-mask rigid fit",
       "max_mm": 3.78,
       "min_mm": -3.06,
@@ -7155,7 +7155,7 @@
     "skeleton": {
      "may2025__jun2026": {
       "mesh": "meshes/growth/skeleton/S7sat_may2025__jun2026.ply",
-      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); red = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
+      "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
       "max_mm": 16.15,
       "min_mm": 6.59,
@@ -8055,543 +8055,543 @@
   "files": {
    "meshes/growth/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/K_may2025__jun2026.ply.qm.gz",
-    "bytes": 5041,
+    "bytes": 4910,
     "ply_bytes": 18971,
     "verts": 352,
     "faces": 700,
     "max_quant_err_mm": 0.0001,
-    "sha8": "49b7abe2"
+    "sha8": "d387be88"
    },
    "meshes/growth/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 91749,
+    "bytes": 89410,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "a69dcfc0"
+    "sha8": "bbbd8a10"
    },
    "meshes/growth/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 184060,
+    "bytes": 179767,
     "ply_bytes": 842754,
     "verts": 15895,
     "faces": 31786,
     "max_quant_err_mm": 0.0004,
-    "sha8": "2c3aede6"
+    "sha8": "097edac8"
    },
    "meshes/growth/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/L1_may2025__sep2026.ply.qm.gz",
-    "bytes": 91728,
+    "bytes": 89458,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "7c349599"
+    "sha8": "e377e4e6"
    },
    "meshes/growth/N_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/N_may2025__jun2026.ply.qm.gz",
-    "bytes": 5629,
+    "bytes": 5516,
     "ply_bytes": 21515,
     "verts": 400,
     "faces": 796,
     "max_quant_err_mm": 0.0001,
-    "sha8": "347a882c"
+    "sha8": "c8a85f0b"
    },
    "meshes/growth/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 618101,
+    "bytes": 600364,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "9b297822"
+    "sha8": "f77f99db"
    },
    "meshes/growth/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1887058,
+    "bytes": 1834839,
     "ply_bytes": 9129250,
     "verts": 172241,
     "faces": 344490,
     "max_quant_err_mm": 0.0011,
-    "sha8": "a27320e5"
+    "sha8": "e6fc42d9"
    },
    "meshes/growth/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 615498,
+    "bytes": 597877,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "4a22625e"
+    "sha8": "72e4e9f6"
    },
    "meshes/growth/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/S1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 9573,
+    "bytes": 9368,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "f1c37fa8"
+    "sha8": "2c792004"
    },
    "meshes/growth/S1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/S1_may2025__jun2026.ply.qm.gz",
-    "bytes": 18227,
+    "bytes": 17805,
     "ply_bytes": 71655,
     "verts": 1346,
     "faces": 2688,
     "max_quant_err_mm": 0.0001,
-    "sha8": "028254e4"
+    "sha8": "c09b4a94"
    },
    "meshes/growth/S1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/S1_may2025__sep2026.ply.qm.gz",
-    "bytes": 9543,
+    "bytes": 9306,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "9a3d034e"
+    "sha8": "0cc17908"
    },
    "meshes/growth/S7sat_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/S7sat_may2025__jun2026.ply.qm.gz",
-    "bytes": 14044,
+    "bytes": 13727,
     "ply_bytes": 57239,
     "verts": 1074,
     "faces": 2144,
     "max_quant_err_mm": 0.0001,
-    "sha8": "4d61b6bc"
+    "sha8": "af09cc17"
    },
    "meshes/growth/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 108546,
+    "bytes": 105796,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "2688c826"
+    "sha8": "93460f41"
    },
    "meshes/growth/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 297760,
+    "bytes": 289089,
     "ply_bytes": 1406356,
     "verts": 26529,
     "faces": 53054,
     "max_quant_err_mm": 0.0005,
-    "sha8": "647bb5a9"
+    "sha8": "ac34f675"
    },
    "meshes/growth/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 110646,
+    "bytes": 107779,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "1a8bf84a"
+    "sha8": "be645c6a"
    },
    "meshes/growth/lesion/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/K_may2025__jun2026.ply.qm.gz",
-    "bytes": 5007,
+    "bytes": 4898,
     "ply_bytes": 18971,
     "verts": 352,
     "faces": 700,
     "max_quant_err_mm": 0.0001,
-    "sha8": "882f8196"
+    "sha8": "85c4a5f3"
    },
    "meshes/growth/lesion/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 91347,
+    "bytes": 89047,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "08bbd961"
+    "sha8": "5ea82f40"
    },
    "meshes/growth/lesion/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 181434,
+    "bytes": 177483,
     "ply_bytes": 842754,
     "verts": 15895,
     "faces": 31786,
     "max_quant_err_mm": 0.0004,
-    "sha8": "235b6ed4"
+    "sha8": "b0db45d6"
    },
    "meshes/growth/lesion/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_may2025__sep2026.ply.qm.gz",
-    "bytes": 90856,
+    "bytes": 88692,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "c2b2402b"
+    "sha8": "0b0d2463"
    },
    "meshes/growth/lesion/N_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/N_may2025__jun2026.ply.qm.gz",
-    "bytes": 5589,
+    "bytes": 5466,
     "ply_bytes": 21515,
     "verts": 400,
     "faces": 796,
     "max_quant_err_mm": 0.0001,
-    "sha8": "24c453be"
+    "sha8": "e243fbe7"
    },
    "meshes/growth/lesion/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 618461,
+    "bytes": 600918,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "bee0270d"
+    "sha8": "7faa3d7c"
    },
    "meshes/growth/lesion/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1868086,
+    "bytes": 1821272,
     "ply_bytes": 9129250,
     "verts": 172241,
     "faces": 344490,
     "max_quant_err_mm": 0.0011,
-    "sha8": "ace3724b"
+    "sha8": "35fcb2fd"
    },
    "meshes/growth/lesion/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 620328,
+    "bytes": 602058,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "baa5c5eb"
+    "sha8": "80e59512"
    },
    "meshes/growth/lesion/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 9537,
+    "bytes": 9325,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "44672f81"
+    "sha8": "a0bf6a13"
    },
    "meshes/growth/lesion/S1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/S1_may2025__jun2026.ply.qm.gz",
-    "bytes": 18158,
+    "bytes": 17732,
     "ply_bytes": 71655,
     "verts": 1346,
     "faces": 2688,
     "max_quant_err_mm": 0.0001,
-    "sha8": "60e958ee"
+    "sha8": "60f54ee4"
    },
    "meshes/growth/lesion/S1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S1_may2025__sep2026.ply.qm.gz",
-    "bytes": 9536,
+    "bytes": 9337,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "d864205a"
+    "sha8": "f735488a"
    },
    "meshes/growth/lesion/S7sat_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/S7sat_may2025__jun2026.ply.qm.gz",
-    "bytes": 13813,
+    "bytes": 13470,
     "ply_bytes": 57239,
     "verts": 1074,
     "faces": 2144,
     "max_quant_err_mm": 0.0001,
-    "sha8": "744764dd"
+    "sha8": "4dd21241"
    },
    "meshes/growth/lesion/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 108048,
+    "bytes": 105514,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "adb8f22b"
+    "sha8": "fbee55db"
    },
    "meshes/growth/lesion/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 291737,
+    "bytes": 284476,
     "ply_bytes": 1406356,
     "verts": 26529,
     "faces": 53054,
     "max_quant_err_mm": 0.0005,
-    "sha8": "7c307de8"
+    "sha8": "a9a1a1d2"
    },
    "meshes/growth/lesion/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 109003,
+    "bytes": 106414,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "4b32b973"
+    "sha8": "1672b6a5"
    },
    "meshes/growth/liver_refined/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/K_may2025__jun2026.ply.qm.gz",
-    "bytes": 5007,
+    "bytes": 4898,
     "ply_bytes": 18971,
     "verts": 352,
     "faces": 700,
     "max_quant_err_mm": 0.0001,
-    "sha8": "882f8196"
+    "sha8": "85c4a5f3"
    },
    "meshes/growth/liver_refined/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 91735,
+    "bytes": 89513,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "875be5d8"
+    "sha8": "3dab17a9"
    },
    "meshes/growth/liver_refined/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 183962,
+    "bytes": 179533,
     "ply_bytes": 842754,
     "verts": 15895,
     "faces": 31786,
     "max_quant_err_mm": 0.0004,
-    "sha8": "e03e2a40"
+    "sha8": "94a56de9"
    },
    "meshes/growth/liver_refined/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_may2025__sep2026.ply.qm.gz",
-    "bytes": 91434,
+    "bytes": 89165,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "217ed44b"
+    "sha8": "50a79d9f"
    },
    "meshes/growth/liver_refined/N_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/N_may2025__jun2026.ply.qm.gz",
-    "bytes": 5589,
+    "bytes": 5466,
     "ply_bytes": 21515,
     "verts": 400,
     "faces": 796,
     "max_quant_err_mm": 0.0001,
-    "sha8": "24c453be"
+    "sha8": "e243fbe7"
    },
    "meshes/growth/liver_refined/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 618885,
+    "bytes": 601015,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "b895a0bf"
+    "sha8": "b4594630"
    },
    "meshes/growth/liver_refined/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1869275,
+    "bytes": 1822258,
     "ply_bytes": 9129250,
     "verts": 172241,
     "faces": 344490,
     "max_quant_err_mm": 0.0011,
-    "sha8": "5ed9d66c"
+    "sha8": "5f605e09"
    },
    "meshes/growth/liver_refined/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 615047,
+    "bytes": 597520,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "d6f884b7"
+    "sha8": "060cd784"
    },
    "meshes/growth/liver_refined/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 9537,
+    "bytes": 9325,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "44672f81"
+    "sha8": "a0bf6a13"
    },
    "meshes/growth/liver_refined/S1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S1_may2025__jun2026.ply.qm.gz",
-    "bytes": 18158,
+    "bytes": 17732,
     "ply_bytes": 71655,
     "verts": 1346,
     "faces": 2688,
     "max_quant_err_mm": 0.0001,
-    "sha8": "60e958ee"
+    "sha8": "60f54ee4"
    },
    "meshes/growth/liver_refined/S1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S1_may2025__sep2026.ply.qm.gz",
-    "bytes": 9536,
+    "bytes": 9337,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "d864205a"
+    "sha8": "f735488a"
    },
    "meshes/growth/liver_refined/S7sat_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S7sat_may2025__jun2026.ply.qm.gz",
-    "bytes": 13813,
+    "bytes": 13470,
     "ply_bytes": 57239,
     "verts": 1074,
     "faces": 2144,
     "max_quant_err_mm": 0.0001,
-    "sha8": "744764dd"
+    "sha8": "4dd21241"
    },
    "meshes/growth/liver_refined/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 109779,
+    "bytes": 106835,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "ea173003"
+    "sha8": "8194421b"
    },
    "meshes/growth/liver_refined/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 296769,
+    "bytes": 288643,
     "ply_bytes": 1406356,
     "verts": 26529,
     "faces": 53054,
     "max_quant_err_mm": 0.0005,
-    "sha8": "76c27472"
+    "sha8": "630434ca"
    },
    "meshes/growth/liver_refined/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 110145,
+    "bytes": 107364,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "8a1428d3"
+    "sha8": "85e3e0d8"
    },
    "meshes/growth/skeleton/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/K_may2025__jun2026.ply.qm.gz",
-    "bytes": 5092,
+    "bytes": 4980,
     "ply_bytes": 18971,
     "verts": 352,
     "faces": 700,
     "max_quant_err_mm": 0.0001,
-    "sha8": "a3ad55aa"
+    "sha8": "ce3dddd6"
    },
    "meshes/growth/skeleton/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 91507,
+    "bytes": 89081,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "61e07db7"
+    "sha8": "e4398ca9"
    },
    "meshes/growth/skeleton/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 184202,
+    "bytes": 179201,
     "ply_bytes": 842754,
     "verts": 15895,
     "faces": 31786,
     "max_quant_err_mm": 0.0004,
-    "sha8": "93bbb546"
+    "sha8": "ce8889fc"
    },
    "meshes/growth/skeleton/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_may2025__sep2026.ply.qm.gz",
-    "bytes": 92013,
+    "bytes": 89785,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "1e7245e2"
+    "sha8": "5d96c809"
    },
    "meshes/growth/skeleton/N_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/N_may2025__jun2026.ply.qm.gz",
-    "bytes": 5656,
+    "bytes": 5543,
     "ply_bytes": 21515,
     "verts": 400,
     "faces": 796,
     "max_quant_err_mm": 0.0001,
-    "sha8": "f3a9bed0"
+    "sha8": "b69b1129"
    },
    "meshes/growth/skeleton/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 612027,
+    "bytes": 594680,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "55ba7860"
+    "sha8": "364b055b"
    },
    "meshes/growth/skeleton/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1855761,
+    "bytes": 1799515,
     "ply_bytes": 9129250,
     "verts": 172241,
     "faces": 344490,
     "max_quant_err_mm": 0.0011,
-    "sha8": "4cb0c7d9"
+    "sha8": "5f715dbf"
    },
    "meshes/growth/skeleton/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 613627,
+    "bytes": 596116,
     "ply_bytes": 2949240,
     "verts": 55640,
     "faces": 111276,
     "max_quant_err_mm": 0.0012,
-    "sha8": "d7cdd748"
+    "sha8": "0c455519"
    },
    "meshes/growth/skeleton/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 9624,
+    "bytes": 9420,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "6ab55736"
+    "sha8": "173f1bc4"
    },
    "meshes/growth/skeleton/S1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/S1_may2025__jun2026.ply.qm.gz",
-    "bytes": 18229,
+    "bytes": 17829,
     "ply_bytes": 71655,
     "verts": 1346,
     "faces": 2688,
     "max_quant_err_mm": 0.0001,
-    "sha8": "4a4f7d72"
+    "sha8": "0efefb86"
    },
    "meshes/growth/skeleton/S1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S1_may2025__sep2026.ply.qm.gz",
-    "bytes": 9552,
+    "bytes": 9352,
     "ply_bytes": 36780,
     "verts": 688,
     "faces": 1372,
     "max_quant_err_mm": 0.0001,
-    "sha8": "e2361ea9"
+    "sha8": "b35e1f5c"
    },
    "meshes/growth/skeleton/S7sat_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/S7sat_may2025__jun2026.ply.qm.gz",
-    "bytes": 13700,
+    "bytes": 13307,
     "ply_bytes": 57239,
     "verts": 1074,
     "faces": 2144,
     "max_quant_err_mm": 0.0001,
-    "sha8": "09d3e5d9"
+    "sha8": "3ca125a8"
    },
    "meshes/growth/skeleton/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 110486,
+    "bytes": 107919,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "788be7f8"
+    "sha8": "5a1a0f4d"
    },
    "meshes/growth/skeleton/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 295708,
+    "bytes": 287280,
     "ply_bytes": 1406356,
     "verts": 26529,
     "faces": 53054,
     "max_quant_err_mm": 0.0005,
-    "sha8": "d4b579a3"
+    "sha8": "bb88a6ee"
    },
    "meshes/growth/skeleton/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 110538,
+    "bytes": 107600,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "759577a2"
+    "sha8": "197cdd10"
    },
    "meshes/jun2026/active.ply": {
     "path": "meshes_qm/jun2026/active.ply.qm.gz",
@@ -9594,183 +9594,183 @@
    },
    "meshes_lod/growth/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 63344,
+    "bytes": 62429,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "ab0ac702"
+    "sha8": "a7a91151"
    },
    "meshes_lod/growth/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 170377,
+    "bytes": 167444,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "33e33b87"
+    "sha8": "f87de35a"
    },
    "meshes_lod/growth/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 538076,
+    "bytes": 528154,
     "ply_bytes": 1826087,
     "verts": 34446,
     "faces": 68898,
     "max_quant_err_mm": 0.0011,
-    "sha8": "9979862b"
+    "sha8": "7e3680e4"
    },
    "meshes_lod/growth/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 170127,
+    "bytes": 167038,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "5545e962"
+    "sha8": "dff61225"
    },
    "meshes_lod/growth/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 83339,
+    "bytes": 81956,
     "ply_bytes": 281589,
     "verts": 5307,
     "faces": 10610,
     "max_quant_err_mm": 0.0005,
-    "sha8": "36c3ae7a"
+    "sha8": "aac6f960"
    },
    "meshes_lod/growth/lesion/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 62762,
+    "bytes": 61668,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "f3cd0b31"
+    "sha8": "feb41236"
    },
    "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 170497,
+    "bytes": 167632,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "67ec19cf"
+    "sha8": "3b99e5a4"
    },
    "meshes_lod/growth/lesion/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 533872,
+    "bytes": 524303,
     "ply_bytes": 1826087,
     "verts": 34446,
     "faces": 68898,
     "max_quant_err_mm": 0.0011,
-    "sha8": "d80b7f40"
+    "sha8": "0d349f14"
    },
    "meshes_lod/growth/lesion/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 170194,
+    "bytes": 167618,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "8c51b022"
+    "sha8": "e212472f"
    },
    "meshes_lod/growth/lesion/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 81755,
+    "bytes": 80232,
     "ply_bytes": 281589,
     "verts": 5307,
     "faces": 10610,
     "max_quant_err_mm": 0.0005,
-    "sha8": "b894db83"
+    "sha8": "cda9cae6"
    },
    "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 63349,
+    "bytes": 62419,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "01ad2b67"
+    "sha8": "9497c674"
    },
    "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 170469,
+    "bytes": 167487,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "6d01e6ae"
+    "sha8": "8244bea5"
    },
    "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 534002,
+    "bytes": 524500,
     "ply_bytes": 1826087,
     "verts": 34446,
     "faces": 68898,
     "max_quant_err_mm": 0.0011,
-    "sha8": "8a835ce7"
+    "sha8": "0b9ee2bd"
    },
    "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 170097,
+    "bytes": 166982,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "52be55d4"
+    "sha8": "517a2347"
    },
    "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 82825,
+    "bytes": 81513,
     "ply_bytes": 281589,
     "verts": 5307,
     "faces": 10610,
     "max_quant_err_mm": 0.0005,
-    "sha8": "e7250849"
+    "sha8": "c3949254"
    },
    "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 63576,
+    "bytes": 62474,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "e8021c8d"
+    "sha8": "b74e708f"
    },
    "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 169735,
+    "bytes": 166913,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "0e11925e"
+    "sha8": "4ca95bca"
    },
    "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 534857,
+    "bytes": 524697,
     "ply_bytes": 1826087,
     "verts": 34446,
     "faces": 68898,
     "max_quant_err_mm": 0.0011,
-    "sha8": "86be792b"
+    "sha8": "749edf6f"
    },
    "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 169392,
+    "bytes": 166390,
     "ply_bytes": 590156,
     "verts": 11129,
     "faces": 22254,
     "max_quant_err_mm": 0.0012,
-    "sha8": "2120b2b9"
+    "sha8": "bd27d17d"
    },
    "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 83116,
+    "bytes": 81744,
     "ply_bytes": 281589,
     "verts": 5307,
     "faces": 10610,
     "max_quant_err_mm": 0.0005,
-    "sha8": "36812291"
+    "sha8": "fa26d848"
    },
    "meshes_lod/jun2026/hepatic_veins.ply": {
     "path": "meshes_qm/lod/jun2026/hepatic_veins.ply.qm.gz",
@@ -10431,6 +10431,149 @@
     "p95_mm": 0.33,
     "source": "builder cache feded00c9823 (same recipe, max_faces 4000000 = no decimation)"
    }
-  }
+  },
+  "growth_recolored": [
+   "meshes/growth/K_may2025__jun2026.ply",
+   "meshes/growth/L1_jun2026__sep2026.ply",
+   "meshes/growth/L1_may2025__jun2026.ply",
+   "meshes/growth/L1_may2025__sep2026.ply",
+   "meshes/growth/N_may2025__jun2026.ply",
+   "meshes/growth/R1_jun2026__sep2026.ply",
+   "meshes/growth/R1_may2025__jun2026.ply",
+   "meshes/growth/R1_may2025__sep2026.ply",
+   "meshes/growth/S1_jun2026__sep2026.ply",
+   "meshes/growth/S1_may2025__jun2026.ply",
+   "meshes/growth/S1_may2025__sep2026.ply",
+   "meshes/growth/S7sat_may2025__jun2026.ply",
+   "meshes/growth/S8_jun2026__sep2026.ply",
+   "meshes/growth/S8_may2025__jun2026.ply",
+   "meshes/growth/S8_may2025__sep2026.ply",
+   "meshes/growth/lesion/K_may2025__jun2026.ply",
+   "meshes/growth/lesion/L1_jun2026__sep2026.ply",
+   "meshes/growth/lesion/L1_may2025__jun2026.ply",
+   "meshes/growth/lesion/L1_may2025__sep2026.ply",
+   "meshes/growth/lesion/N_may2025__jun2026.ply",
+   "meshes/growth/lesion/R1_jun2026__sep2026.ply",
+   "meshes/growth/lesion/R1_may2025__jun2026.ply",
+   "meshes/growth/lesion/R1_may2025__sep2026.ply",
+   "meshes/growth/lesion/S1_jun2026__sep2026.ply",
+   "meshes/growth/lesion/S1_may2025__jun2026.ply",
+   "meshes/growth/lesion/S1_may2025__sep2026.ply",
+   "meshes/growth/lesion/S7sat_may2025__jun2026.ply",
+   "meshes/growth/lesion/S8_jun2026__sep2026.ply",
+   "meshes/growth/lesion/S8_may2025__jun2026.ply",
+   "meshes/growth/lesion/S8_may2025__sep2026.ply",
+   "meshes/growth/liver_refined/K_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/L1_jun2026__sep2026.ply",
+   "meshes/growth/liver_refined/L1_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/L1_may2025__sep2026.ply",
+   "meshes/growth/liver_refined/N_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/R1_jun2026__sep2026.ply",
+   "meshes/growth/liver_refined/R1_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/R1_may2025__sep2026.ply",
+   "meshes/growth/liver_refined/S1_jun2026__sep2026.ply",
+   "meshes/growth/liver_refined/S1_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/S1_may2025__sep2026.ply",
+   "meshes/growth/liver_refined/S7sat_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/S8_jun2026__sep2026.ply",
+   "meshes/growth/liver_refined/S8_may2025__jun2026.ply",
+   "meshes/growth/liver_refined/S8_may2025__sep2026.ply",
+   "meshes/growth/skeleton/K_may2025__jun2026.ply",
+   "meshes/growth/skeleton/L1_jun2026__sep2026.ply",
+   "meshes/growth/skeleton/L1_may2025__jun2026.ply",
+   "meshes/growth/skeleton/L1_may2025__sep2026.ply",
+   "meshes/growth/skeleton/N_may2025__jun2026.ply",
+   "meshes/growth/skeleton/R1_jun2026__sep2026.ply",
+   "meshes/growth/skeleton/R1_may2025__jun2026.ply",
+   "meshes/growth/skeleton/R1_may2025__sep2026.ply",
+   "meshes/growth/skeleton/S1_jun2026__sep2026.ply",
+   "meshes/growth/skeleton/S1_may2025__jun2026.ply",
+   "meshes/growth/skeleton/S1_may2025__sep2026.ply",
+   "meshes/growth/skeleton/S7sat_may2025__jun2026.ply",
+   "meshes/growth/skeleton/S8_jun2026__sep2026.ply",
+   "meshes/growth/skeleton/S8_may2025__jun2026.ply",
+   "meshes/growth/skeleton/S8_may2025__sep2026.ply",
+   "meshes_lod/growth/L1_may2025__jun2026.ply",
+   "meshes_lod/growth/R1_jun2026__sep2026.ply",
+   "meshes_lod/growth/R1_may2025__jun2026.ply",
+   "meshes_lod/growth/R1_may2025__sep2026.ply",
+   "meshes_lod/growth/S8_may2025__jun2026.ply",
+   "meshes_lod/growth/lesion/L1_may2025__jun2026.ply",
+   "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply",
+   "meshes_lod/growth/lesion/R1_may2025__jun2026.ply",
+   "meshes_lod/growth/lesion/R1_may2025__sep2026.ply",
+   "meshes_lod/growth/lesion/S8_may2025__jun2026.ply",
+   "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply",
+   "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply",
+   "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply",
+   "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply",
+   "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply",
+   "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply",
+   "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply",
+   "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply",
+   "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply",
+   "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply"
+  ]
+ },
+ "palette": {
+  "groups": {
+   "Anatomy": [
+    "liver",
+    "gallbladder",
+    "bile_ducts"
+   ],
+   "Tumour": [
+    "R1",
+    "L1",
+    "S8",
+    "S1",
+    "S7sat",
+    "K",
+    "N",
+    "P7"
+   ],
+   "Activity": [
+    "active",
+    "active_pet_only",
+    "active_inferred"
+   ],
+   "Vessels": [
+    "portal",
+    "hepatic_veins",
+    "ivc",
+    "hepatic_artery",
+    "contact_left_portal"
+   ],
+   "Internal structure": [
+    "walls",
+    "cores",
+    "nodules",
+    "calcifications"
+   ],
+   "Couinaud segments": [
+    "seg1",
+    "seg2",
+    "seg3",
+    "seg4",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg8"
+   ],
+   "Uncertainty": [
+    "uncertain"
+   ]
+  },
+  "emissive": {
+   "active": 0.45,
+   "active_pet_only": 0.3,
+   "active_inferred": 0.35
+  },
+  "growth_ramp": {
+   "shrink": "#1f78b4",
+   "zero": "#d9d9d9",
+   "grow": "#c2187e"
+  },
+  "about": "Semantic palette of the liver viewer (2026-10-11): hue = kind of tissue. Anatomy muted; vessels by convention (blues/teal); tumour one violet-magenta family separated by lightness; cores pale ice (fluid); FDG activity the only hot colours (yellow -> orange), emissive; calcifications ivory; nodules lime; segments soft pastels; growth map teal-blue <- grey -> magenta (never hot). Checked by tools/palette/cvd_check.py."
  }
 }

@@ -317,3 +317,18 @@ Cores / walls) and 'More layers'; default layers liver + R1 + L1 + S8 + FDG-acti
 **Zoom (2026-10-11).** Wheel: exponential, proportional to the normalised delta (a 100-px notch = 10 %, was a fixed 5 % per event), toward the point under the pointer, eased over 120 ms (folded into the next event when wheeling fast). Trackpad pinch (ctrl+wheel): own gain (5 % per 10 units, was 0.6 %). Touch: one finger orbit, two fingers pinch + pan (OrbitControls), double tap = 2x toward the tap (or reset when already close); Safari gesture events blocked inside the canvas. Distance 15 mm - 4 m; near plane = 5 % of the distance (0.5-10 mm). Embed: the wheel scrolls the page until the model is clicked or hovered for 300 ms (one-time hint); ctrl+wheel always zooms. +/- buttons in the toolbar. Input-to-camera latency: ~1-2 ms Chromium, one frame (~16 ms) WebKit, before and after; zoom-to-cursor drift 0 px.
 
 **Caching and the loading screen (2026-10-11).** index.html carries an inline loader: the progress bar is painted from the first bytes (stages: viewer code -> liver 3D -> preparing scene; real byte progress, a shimmer otherwise), it fetches `version.json` with cache "no-store" and loads the CSS/JS with `?v=<build>`; every relative ES-module import carries the same stamp, and a cached older index.html reloads itself once (markup hash). The app UI stays hidden until the first full frame. Run `python3 tools/stamp_version.py <viewer dir> [--site-index <site index.html>]` before every publish (it also stamps the main page embed iframes). Simulated with a Pages-like server (Cache-Control max-age=600): after changing CSS and JS on the server, a normal reload showed the old code and CSS with the previous index.html, and the new ones with the loader; a stale cached index.html reloaded to the new markup.
+
+## Semantic colour palette (2026-10-11; tools/palette/)
+Hue tells the kind of tissue: **Anatomy** muted (liver #b9a596, gallbladder olive, bile ducts green-yellow); **Tumour** one violet–magenta
+family separated by lightness (N #3f2f52 · R1 #6a2f99 · S7sat #8a2c74 · L1 #a8358a · K #8f82c2 · P7 #d35bb0 · S8 #b996f2 · S1 #f3d4f6;
+walls #c7a3d8 = solid tumour tissue); **Activity** the only hot colours, emissive (FDG-active #ffc400, PET-defined only #ffe680, inferred
+#ff8c1a); **cores** pale ice #c3d7e4 (fluid); calcifications ivory #fff8e6; nodules lime #5a9400; **Vessels** by convention (portal #3f7ae8,
+IVC #16285a, hepatic veins teal #2aa8b5, hepatic artery red #d63a3a if ever shown, L1–portal contact light blue); Couinaud segments soft
+pastels; the Compare ghost neutral grey-blue. **Growth maps** now blue (shrank) – grey (0) – magenta (grew), never hot; the baked colours in
+the QM files were re-mapped exactly (inverse of the old blue-white-red ramp). Layers panel has a colour key grouped by meaning; the Volumes
+column is grouped the same way.
+**CVD check** (`tools/palette/report.py`; CIEDE2000, minimum over opaque and 50 % over the liver; Machado 2009 deuteranopia/protanopia;
+see `tools/palette/report.txt`): S8 vs FDG-active 20.0 / 14.2 (normal / worse CVD) → 44.4 / 38.9; P7 vs active 10.0 / 6.7 → 45.8 / 30.5;
+L1 vs active 19.1 / 7.4 → 47.7 / 33.4; FDG-active vs every other layer: min 10.0 / 6.7 → 19.8 / 10.1 (closest: nodules). Trade-off of the
+semantic scheme: lesions of one family are closer to each other (R1–L1 8.8 / 5.5, L1–S8 15.2 / 13.1, R1–S8 16.1 / 15.3) – they sit far
+apart and carry ID chips; P7 vs hepatic veins and S1 vs cores stay low under CVD (1.9) – small structures in different places.
