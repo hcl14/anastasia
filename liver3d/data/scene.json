@@ -1461,7 +1461,7 @@
    "name": "Necrotic / cystic cores",
    "group": "Internal structure",
    "color": "#c3d7e4",
-   "opacity": 0.5,
+   "opacity": 0.4,
    "default_visible": true,
    "per_date": {
     "may2025": {
@@ -2880,7 +2880,7 @@
    "id": "R1",
    "name": "Dominant right-lobe mass",
    "segment": "V-VIII",
-   "color": "#6a2f99",
+   "color": "#5f22ad",
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/lesion_R1.ply",
@@ -3813,7 +3813,7 @@
      }
     }
    },
-   "opacity": 0.45,
+   "opacity": 0.55,
    "default_visible": true
   },
   {
@@ -7950,7 +7950,10 @@
    "bile_ducts",
    "gallbladder",
    "contact_left_portal"
-  ]
+  ],
+  "dark": {
+   "R1": "#7f3fd4"
+  }
  },
  "lod": {
   "note": "Low-detail PREVIEW meshes (quadric decimation to ~20 % of the faces, display only; the full meshes stay the reference). Used by the embedded viewer and while the camera moves; \"High detail\" loads the full meshes. Error per file vs the full mesh: p95 / max surface distance (mm) and Dice of both meshes voxelised.",

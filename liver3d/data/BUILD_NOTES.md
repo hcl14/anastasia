@@ -376,3 +376,5 @@ grey #a39a8c, 0.25) and lesion **GF – Gastric wall formation (mass)** (tumour 
 (GF centroid offset June -> Sep 18 mm in the liver alignment), so its growth maps mostly show misalignment. The four report statements about
 the gastric mass (May A, June A, Israeli revision, Sep) are now tagged to GF and the stomach layer (they were kept off the liver objects);
 all four size statements agree with the model within 15 %.
+
+**R1 visibility (2026-10-11).** R1 #5f22ad (darker, more saturated; contrast 7.7:1 against the light stage, 3.8:1 against the liver colour) and #7f3fd4 in the dark theme (3.5:1 against the black stage; a dark violet cannot reach 3:1 against both black and the liver); R1 shell opacity 0.55. The main cause of the "lost" mass was a bug: the depth pre-pass added against blinking also ran for walls and cores, whose outer surface coincides with the lesion surface, and hid the lesion shell whenever walls were shown (all-layers default); the pre-pass is now limited to vessels. CIEDE2000 R1 vs L1 / S8 / S1 / walls / liver (normal, worse CVD; min over opaque and over-liver): see tools/palette/report.txt.

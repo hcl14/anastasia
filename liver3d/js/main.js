@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=41bde41b27';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=41bde41b27';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=41bde41b27';
-import { Reports } from './reports.js?v=41bde41b27';
-import { ClaimViz } from './claimviz.js?v=41bde41b27';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=41bde41b27';
+import * as F from './frame.js?v=ad916b99d2';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=ad916b99d2';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=ad916b99d2';
+import { Reports } from './reports.js?v=ad916b99d2';
+import { ClaimViz } from './claimviz.js?v=ad916b99d2';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=ad916b99d2';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -377,6 +377,15 @@ function urlsFor(date) {
   return [...urls];
 }
 
+/** dark theme: a few colours have a lighter variant (scene.palette.dark), e.g. R1, so a dark mass does not sink into a black scene */
+const isDark = () => document.documentElement.dataset.theme === 'dark' || (document.documentElement.dataset.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+function themeColor(id, c) { const dk = S.scene?.palette?.dark || {}; const k = id?.startsWith('les:') ? id.slice(4) : id; return isDark() && dk[k] ? dk[k] : c; }
+function recolorTheme() {
+  for (const c of S.ctls.values()) { if (c.baseColor == null) c.baseColor = c.color; c.color = themeColor(c.id, c.baseColor); }
+  for (const d of S.dates) for (const it of S.items[d] || []) if (it.mesh && it.kind !== 'growth') { const col = new THREE.Color(colorOf(it)); it.mesh.material.color.copy(col); it.back.material.color.copy(col); }
+  if (shown) { refreshPanels(); renderLegend(); }
+  requestRender();
+}
 function colorOf(it) {
   if (it.kind === 'lesion' || it.kind === 'growth') return S.ctls.get(it.ctl).color;
   return S.ctls.get(it.ctl).color;
@@ -440,7 +449,9 @@ function applyMaterial(it) {
   // nearest surface of the mesh is blended. Without it, overlapping branches of the same mesh are blended in triangle order and the
   // triangles at the silhouettes flip between front- and back-facing as the camera turns: the 'blinking veins'. Lesion shells and the
   // liver keep their two-pass look (structures inside them must stay visible).
-  const wantPre = tr && it.kind !== 'lesion' && it.kind !== 'growth' && it.ctl !== 'liver' && !/^seg\d$/.test(it.ctl);
+  // only for vessels: a pre-pass on walls / cores wrote depth exactly on the lesion surface (the wall's outer surface IS the lesion
+  // surface) and, with the lesion's depth bias, hid the lesion shell (R1 'lost' when all layers are on)
+  const wantPre = tr && S.ctls.get(it.ctl)?.group === 'Vessels';
   if (wantPre && !it.pre) {
     const pm = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true, side: THREE.FrontSide, clippingPlanes: clipAll });
     it.pre = new THREE.Mesh(it.mesh.geometry, pm); it.pre.matrixAutoUpdate = false; it.pre.userData.prepassOf = it;
@@ -1341,6 +1352,7 @@ function themeRow() {
 function applyTheme() {
   const bg = getComputedStyle(document.documentElement).getPropertyValue('--stage').trim() || '#050508';
   renderer.setClearColor(new THREE.Color(bg), 1); requestRender();
+  if (S.scene) recolorTheme();
 }
 
 // ---------------------------------------------------------------- tabs, panels
@@ -1856,7 +1868,8 @@ async function boot() {
     }
   } catch (e) { }
   if (!Array.isArray(sc.dates) || !sc.dates.length) { $('#fatal').hidden = false; $('#fatal').textContent = 'scene.json has no dates.'; return; }
-  buildModel();
+  buildModel(); recolorTheme();
+  matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', recolorTheme);
   for (const d of S.dates) { const g = new THREE.Group(); g.name = 'date:' + d; g.matrixAutoUpdate = false; root.add(g); dateGroup[d] = g; }
   state.reg = regModes()[sc.registration?.default] ? sc.registration.default : Object.keys(regModes())[0] || null;
   state.date = S.dates[S.dates.length - 1];
