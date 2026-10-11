@@ -64,7 +64,7 @@ const camera = new THREE.PerspectiveCamera(30, 1, 10, 6000);   // near 10 mm: 10
 camera.position.set(0, 0, 900);
 scene3.add(camera);
 const controls = new OrbitControls(camera, canvas);
-controls.minDistance = 40; controls.enableDamping = true; controls.dampingFactor = 0.14; controls.screenSpacePanning = true;
+controls.minDistance = 15; controls.maxDistance = 4000; controls.enableDamping = true; controls.dampingFactor = 0.14; controls.screenSpacePanning = true;
 controls.autoRotateSpeed = 1.6; controls.zoomSpeed = 1.1;
 scene3.add(new THREE.HemisphereLight(0xffffff, 0x3a4255, 0.85));
 const headLight = new THREE.DirectionalLight(0xffffff, 1.25); headLight.position.set(0.35, 0.6, 1); camera.add(headLight);
@@ -1635,10 +1635,87 @@ function resize() {
 }
 new ResizeObserver(resize).observe(stage);
 controls.addEventListener('change', () => { requestRender(); writeHashSoon(); });
-controls.addEventListener('start', () => { tween = null; moving = true; if (state.smooth && !anyCut()) { lowMotion = true; sync(); } });
+// ---------------------------------------------------------------- zoom: wheel / trackpad pinch / buttons / double tap
+// Exponential zoom proportional to the (normalised) wheel delta, toward the point under the pointer, eased over ~120 ms.
+// OrbitControls keeps rotate, pan and the two-finger touch pinch; its own wheel zoom (fixed 5 % per event, toward the centre only) is bypassed.
+const ZOOM = { k: 0.00105, kPinch: 0.005, ms: 120 };   // a 100-px wheel notch = 10 % (was a fixed 5 % per event); trackpad pinch (ctrl+wheel) gets its own gain
+let zoomAnim = null, wheelArmed = !EMBED, armT = null, hintShown = false;
+function wheelDelta(e) { const m = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? (canvas.clientHeight || 800) : 1; return e.deltaY * m; }
+/** world point under client (x, y) on the plane through the orbit centre facing the camera */
+function anchorAt(cx, cy) {
+  const r = canvas.getBoundingClientRect();
+  const ndc = new THREE.Vector2(((cx - r.left) / r.width) * 2 - 1, -((cy - r.top) / r.height) * 2 + 1);
+  const ray = new THREE.Raycaster(); ray.setFromCamera(ndc, camera);
+  const n = new THREE.Vector3(); camera.getWorldDirection(n);
+  const plane = new THREE.Plane().setFromNormalAndCoplanarPoint(n, controls.target);
+  return ray.ray.intersectPlane(plane, new THREE.Vector3()) || controls.target.clone();
+}
+/** zoom by factor s (< 1 = in) toward world point P, eased */
+function zoomBy(s, P) {
+  const d = camera.position.distanceTo(controls.target);
+  s = clamp(s, controls.minDistance / d, controls.maxDistance / d);
+  if (Math.abs(s - 1) < 1e-4) return;
+  tween = null;
+  const now = performance.now();
+  if (zoomAnim) {   // fold the unfinished part of the running zoom into this one (no lag behind fast wheel streams)
+    const k = clamp((now - zoomAnim.t0) / ZOOM.ms, 0, 1), done = Math.pow(zoomAnim.s, ease(k));
+    s *= zoomAnim.s / done;
+  }
+  // t0 one frame back: the camera moves in this very event, the frame is drawn in the next animation frame (no added latency)
+  zoomAnim = { t0: now - 16, s, P: P.clone(), c0: camera.position.clone(), g0: controls.target.clone() };
+  moving = true; if (state.smooth && state.renderMs > 33 && !anyCut()) lowMotion = true;
+  stepZoom(now); settle();
+}
+function stepZoom(now) {
+  if (!zoomAnim) return false;
+  const a = zoomAnim, k = clamp((now - a.t0) / ZOOM.ms, 0, 1), f = Math.pow(a.s, ease(k));
+  camera.position.copy(a.P).addScaledVector(a.c0.clone().sub(a.P), f);
+  controls.target.copy(a.P).addScaledVector(a.g0.clone().sub(a.P), f);
+  adjustNear();
+  if (k >= 1) zoomAnim = null;
+  requestRender(); writeHashSoon();
+  return true;
+}
+/** near plane follows the distance: close-ups to ~15 mm without clipping, the whole body at the far end */
+function adjustNear() {
+  const d = camera.position.distanceTo(controls.target);
+  const near = clamp(d * 0.05, 0.5, 10), far = Math.max(6000, d * 6);
+  if (Math.abs(camera.near - near) > 1e-3 || camera.far !== far) { camera.near = near; camera.far = far; camera.updateProjectionMatrix(); applyViewShift(); }
+}
+function zoomHint() {
+  if (hintShown) return; hintShown = true;
+  toast(T(EMBED ? 'Click the model (or hold the pointer on it) to zoom with the wheel; Ctrl + wheel always zooms.' : 'Zoom: wheel or pinch, toward the pointer.'), 2600);
+}
+stage.addEventListener('wheel', e => {
+  if (e.target !== canvas) return;
+  // in the embed the wheel scrolls the page until the model is clicked or hovered for 300 ms; pinch (ctrl+wheel) always zooms
+  if (!wheelArmed && !e.ctrlKey && !e.metaKey) { zoomHint(); return; }
+  e.preventDefault(); e.stopPropagation();
+  const dy = wheelDelta(e);
+  zoomBy(Math.exp(dy * (e.ctrlKey ? ZOOM.kPinch : ZOOM.k)), anchorAt(e.clientX, e.clientY));
+}, { capture: true, passive: false });
+canvas.addEventListener('pointerenter', () => { if (EMBED && !wheelArmed) armT = setTimeout(() => { wheelArmed = true; }, 300); });
+canvas.addEventListener('pointerleave', () => { clearTimeout(armT); if (EMBED) wheelArmed = false; });
+canvas.addEventListener('pointerdown', () => { wheelArmed = true; });
+// Safari trackpad / iOS: no page zoom inside the canvas
+for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
+// touch: double tap zooms 2x toward the tapped point; a double tap after zooming far in resets the view
+let lastTap = 0, lastTapXY = null;
+canvas.addEventListener('pointerup', e => {
+  if (e.pointerType !== 'touch') return;
+  const now = performance.now();
+  if (now - lastTap < 300 && lastTapXY && Math.hypot(e.clientX - lastTapXY[0], e.clientY - lastTapXY[1]) < 30) {
+    const d = camera.position.distanceTo(controls.target);
+    if (d < 120) presetView('ant'); else zoomBy(0.5, anchorAt(e.clientX, e.clientY));
+    lastTap = 0; return;
+  }
+  lastTap = now; lastTapXY = [e.clientX, e.clientY];
+});
+controls.enableZoom = true;   // two-finger touch pinch (OrbitControls); the wheel never reaches it (captured above)
+controls.addEventListener('start', () => { tween = null; zoomAnim = null; moving = true; if (state.smooth && !anyCut()) { lowMotion = true; sync(); } });
 let moving = false;
 const settle = debounce(() => { moving = false; if (lowMotion) { lowMotion = false; sync(); } }, 120);
-controls.addEventListener('change', () => { if (moving) settle(); });
+controls.addEventListener('change', () => { adjustNear(); if (moving) settle(); });
 controls.addEventListener('end', () => settle());
 let lastT = performance.now();
 renderer.setAnimationLoop(t => {
@@ -1649,6 +1726,7 @@ renderer.setAnimationLoop(t => {
     if (k >= 1) { tween = null; writeHashSoon(); }
     needsRender = true;
   }
+  if (zoomAnim) stepZoom(performance.now());
   const moved = controls.update();
   if (pulseUntil > t) { pulse(t); needsRender = true; }
   if (claimViz.tick(dt)) needsRender = true;
@@ -1763,6 +1841,8 @@ async function boot() {
   renderRegButtons(); renderGrowthSelect(); renderLayersPanel(); renderCutPanel();
   const pres = $('#presets');
   for (const p of F.PRESETS) pres.append(h('button', { title: p.label + ' view', 'aria-label': p.label + ' view', onclick: () => presetView(p.id) }, p.key));
+  pres.prepend(h('button.zb', { title: 'Zoom in', 'aria-label': 'Zoom in', onclick: () => zoomBy(1 / 1.4, controls.target) }, '+'),
+    h('button.zb', { title: 'Zoom out', 'aria-label': 'Zoom out', onclick: () => zoomBy(1.4, controls.target) }, '−'));
   $('#play').onclick = togglePlay;
   $('#compareBtn').onclick = () => setCompare(!state.compare);
   $('#regGhost').onchange = e => setRegGhost(e.target.checked);

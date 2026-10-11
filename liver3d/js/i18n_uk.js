@@ -105,7 +105,9 @@ export const UK = {
   // dates and verdicts
   'May 2025': 'травень 2025', 'June 2026': 'червень 2026', 'Sep 2026': 'вересень 2026', 'Jun 2026': 'черв. 2026', 'Sept': 'вер.',
   'agrees': 'збігається', 'model larger': 'модель більша', 'model smaller': 'модель менша',
-  'Loading meshes': 'Завантаження поверхонь', 'Active (FDG)': 'Активна (FDG)', 'Active, PET only': 'Активна, лише ПЕТ', 'Active, inferred': 'Активна, припущена', 'Cores': 'Вміст', 'Walls': 'Стінки',
+  'Loading meshes': 'Завантаження поверхонь', 'Zoom in': 'Наблизити', 'Zoom out': 'Віддалити',
+  'Click the model (or hold the pointer on it) to zoom with the wheel; Ctrl + wheel always zooms.': 'Клацніть модель (або затримайте на ній курсор), щоб масштабувати колесом; Ctrl + колесо масштабує завжди.',
+  'Zoom: wheel or pinch, toward the pointer.': 'Масштаб: колесо або щипок, у бік курсора.', 'Active (FDG)': 'Активна (FDG)', 'Active, PET only': 'Активна, лише ПЕТ', 'Active, inferred': 'Активна, припущена', 'Cores': 'Вміст', 'Walls': 'Стінки',
   'Nodules': 'Вузлики', 'Calcifications': 'Кальцифікати', 'Portal vein': 'Ворітна вена', 'Hepatic veins': 'Печінкові вени', 'L1–portal contact': 'Контакт L1 — ворітна',
   'Segments': 'Сегменти', 'Gallbladder': 'Жовчний міхур', 'Hepatic artery': 'Печінкова артерія', 'Bile ducts': 'Жовчні протоки', 'Uncertain band': 'Невизначена смуга', 'Liver': 'Печінка', 'Layers & lesions': 'Шари й утворення', 'Options': 'Параметри', 'More controls': 'Інші елементи керування', 'High detail': 'Висока деталізація', 'Smooth orbit (lower detail while moving)': 'Плавне обертання (менше деталей під час руху)', 'Loading full detail…': 'Завантаження повної деталізації…',
   'While you drag the model, draw light preview meshes and return to full detail when you let go. Off unless this device renders the full scene below about 30 frames per second.': 'Під час обертання показувати полегшені поверхні й повертати повну деталізацію, щойно ви відпустите. Вимкнено, якщо пристрій малює повну сцену швидше ніж ~30 кадрів/с.',
