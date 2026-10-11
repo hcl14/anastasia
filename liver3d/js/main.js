@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=35061122ac';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=35061122ac';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=35061122ac';
-import { Reports } from './reports.js?v=35061122ac';
-import { ClaimViz } from './claimviz.js?v=35061122ac';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=35061122ac';
+import * as F from './frame.js?v=7ba98794f8';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=7ba98794f8';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=7ba98794f8';
+import { Reports } from './reports.js?v=7ba98794f8';
+import { ClaimViz } from './claimviz.js?v=7ba98794f8';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=7ba98794f8';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -156,13 +156,50 @@ function ghostField(p, c, mode = state.reg) { return state.regGhost ? regModes()
 // registration was added, so the raw breathing shift is visible; the current date stays where the Align mode puts it.
 const UNREG = 'skeleton';
 const qMode = () => (state.regGhost || !regModes()[UNREG] ? state.reg : UNREG);
-function ghostLocal(p, c, mode = state.reg) {
+// ---- separately registered groups (scene.registration.groups: the stomach and the gastric formation GF move independently of the liver)
+const REG_GROUPS = () => S.scene.registration?.groups || {};
+function groupOf(it) {
+  if (!it) return null;
+  const id = it.lesion ? 'les:' + it.lesion.id : it.ctl;
+  for (const [g, ids] of Object.entries(REG_GROUPS())) if (ids.includes(id)) return g;
+  return null;
+}
+const groupMCache = new Map();
+/** date -> Sep matrix of a group in a mode (falls back to the mode's own matrix: e.g. Spine-anchored keeps the scanner frame) */
+function regGM(g, date, mode = state.reg) {
+  const arr = g && regModes()[mode]?.group_matrix?.[g]?.[date];
+  if (!arr) return regM(date, mode);
+  const key = mode + '|' + g + '|' + date;
+  if (!groupMCache.has(key)) groupMCache.set(key, F.matFromRowMajor(arr));
+  return groupMCache.get(key);
+}
+/** world (Sep RAS) matrix of an item: its group's matrix when it has one */
+function regMItem(it, mode = state.reg) { return regGM(groupOf(it), it.date, mode); }
+/** local matrix inside dateGroup[date] for an item of a group (identity otherwise) */
+function itemLocal(it) { const g = groupOf(it); return g && regModes()[state.reg]?.group_matrix?.[g] ? regM(it.date).clone().invert().multiply(regGM(g, it.date)) : null; }
+/** for code outside: matrix for a lesion id on a date */
+function regMFor(lesionId, date) { return regGM(groupOf(lesionId ? { lesion: { id: lesionId } } : null), date); }
+function ghostLocal(p, c, mode = state.reg, it = null) {
+  const g = groupOf(it);
+  if (g && regModes()[mode]?.group_matrix?.[g]) {   // a separately registered group: its own matrices and pair transform
+    const Wc = regGM(g, c, mode);
+    let T;
+    if (!state.regGhost && regModes()[UNREG]) T = regM(c, UNREG).clone().invert().multiply(regM(p, UNREG));
+    else { const pm = regModes()[mode]?.group_pair_matrix?.[g]?.[pairKey(p, c)]; T = pm ? F.matFromRowMajor(pm) : regGM(g, c, mode).clone().invert().multiply(regGM(g, p, mode)); }
+    return regM(p, mode).clone().invert().multiply(Wc).multiply(T);
+  }
   if (!state.regGhost && regModes()[UNREG]) return regM(p, mode).clone().invert().multiply(regM(c, mode)).multiply(regM(c, UNREG).clone().invert()).multiply(regM(p, UNREG));
   // local matrix of a ghost mesh inside dateGroup[p] (whose matrix is regM(p))
   const pm = regModes()[mode]?.pair_matrix?.[pairKey(p, c)];
   if (!pm && !ghostField(p, c, mode)) return new THREE.Matrix4();
   const T = ghostField(p, c, mode) ? new THREE.Matrix4() : F.matFromRowMajor(pm);
   return regM(p, mode).clone().invert().multiply(regM(c, mode)).multiply(T);
+}
+/** residual of the separately registered stomach group for the Compare pair */
+function groupQualityText(mode = state.reg, date = shown, long = false) {
+  const p = prevDate(date); const gq = regModes()[mode]?.group_quality; if (!gq || !p || !state.regGhost) return '';
+  const q = gq[pairKey(p, date)]; if (!q) return '';
+  return ` · ${T('stomach: own fit')}, Dice ${fmtNum(q.stomach.dice, 2)} · GF ${T('centroid offset')} ${fmtNum(q.GF.centroid_offset_mm, 1)} mm`;
 }
 /** registration quality of the active mode for the pair that Compare shows (or this date -> Sep) */
 function regQuality(mode = state.reg, date = shown) {
@@ -371,14 +408,14 @@ function wants(it, date = shown) {
 }
 function ghostWanted(it) {
   if (!state.compare || !shown || it.date !== prevDate(shown)) return false;
-  if (!(it.kind === 'lesion' || it.ctl === 'liver')) return false;
+  if (!(it.kind === 'lesion' || it.ctl === 'liver' || it.ctl === 'stomach')) return false;
   const c = ctlState(it.ctl);
   return c.v && (!state.solo || state.solo === it.ctl);
 }
 function urlsFor(date) {
   const urls = new Set();
   for (const it of S.items[date] || []) if (wants(it, date) || (it.kind === 'growth' && state.growth && state.growthPair === it.pair && growthItem(it.lesion.id, it.date, it.pair) === it && ctlState(it.ctl).v)) urls.add(it.loadUrl);
-  if (state.compare) { const p = prevDate(date); for (const it of S.items[p] || []) if ((it.kind === 'lesion' || it.ctl === 'liver') && ctlState(it.ctl).v) urls.add(it.loadUrl); }
+  if (state.compare) { const p = prevDate(date); for (const it of S.items[p] || []) if ((it.kind === 'lesion' || it.ctl === 'liver' || it.ctl === 'stomach') && ctlState(it.ctl).v) urls.add(it.loadUrl); }
   return [...urls];
 }
 
@@ -428,6 +465,12 @@ function ensureMesh(it) {
 function swapGeom(it, g) {
   it.mesh.geometry = g; it.back.geometry = g; if (it.pre) it.pre.geometry = g;
   for (const a of AXES) { const e = capPool.get(it.uid + '|' + a); if (e) { e.back.geometry = g; e.front.geometry = g; } }
+}
+/** separately registered items (stomach group) carry their own local matrix on every object that draws them */
+function placeItem(it) {
+  const L = itemLocal(it);
+  const objs = [it.mesh, it.back, it.pre, it.xray, ...AXES.flatMap(a => { const e = capPool.get(it.uid + '|' + a); return e ? [e.back, e.front] : []; })].filter(Boolean);
+  for (const o of objs) { if (L) o.matrix.copy(L); else o.matrix.identity(); o.matrixWorldNeedsUpdate = true; }
 }
 function ensureGhost(it) {
   if (it.ghost) return it.ghost;
@@ -491,13 +534,13 @@ function sync() {
   if (!shown) return;
   const prev = prevDate(shown);
   for (const d of S.dates) for (const it of S.items[d]) {
-    if (it.mesh) { const g = peek(it.url); if (g && it.mesh.geometry !== g) swapGeom(it, g); it.mesh.visible = wants(it); applyMaterial(it); }
+    if (it.mesh) { const g = peek(it.url); if (g && it.mesh.geometry !== g) swapGeom(it, g); it.mesh.visible = wants(it); applyMaterial(it); placeItem(it); }
     if (state.compare && d === prev && ghostWanted(it)) ensureGhost(it);
     if (it.ghost) {
       let vis = ghostWanted(it);
       if (vis) {
         const g = ghostGeometry(it);
-        if (g) { if (it.ghost.geometry !== g) it.ghost.geometry = g; it.ghost.matrix.copy(ghostLocal(it.date, shown)); it.ghost.matrixWorldNeedsUpdate = true; }
+        if (g) { if (it.ghost.geometry !== g) it.ghost.geometry = g; it.ghost.matrix.copy(ghostLocal(it.date, shown, state.reg, it)); it.ghost.matrixWorldNeedsUpdate = true; }
         else vis = false;   // warped geometry still being prepared
       }
       it.ghost.visible = vis;
@@ -717,10 +760,10 @@ function presetView(id, ms) {
 function lesionCenterRAS(id, date = shown) {
   const les = lesionById(id); if (!les) return null;
   const pd = les.per_date?.[date];
-  if (pd?.centroid_ras) return F.applyRas(regM(date), pd.centroid_ras);
+  if (pd?.centroid_ras) return F.applyRas(regMFor(id, date), pd.centroid_ras);
   const it = S.items[date]?.find(i => i.kind === 'lesion' && i.lesion.id === id);
   const g = it && peek(it.url);
-  if (g) { const c = g.boundingSphere.center.clone().applyMatrix4(regM(date)); return c.toArray(); }
+  if (g) { const c = g.boundingSphere.center.clone().applyMatrix4(regMFor(id, date)); return c.toArray(); }
   return null;
 }
 function lesionSphere(id, date = shown) {
@@ -908,13 +951,14 @@ function renderRegButtons() {
   sel.onchange = e => setReg(e.target.value);
   host.append(sel);
   const m = regModes()[state.reg] || {};
-  const qt = qualityText(qMode());
+  const qt = qualityText(qMode()) + groupQualityText(qMode());
   const res = Object.entries(m.residual_mm || {}).filter(([, v]) => v != null).map(([d, v]) => `${dateShort(d)} ${(+v).toFixed(1)} mm`).join(' · ');
   const ri = $('#regInfo');
   ri.innerHTML = `<b>${esc(m.label || state.reg || 'no registration')}</b>` + (state.compare && !state.regGhost ? ' · <b>ghost NOT registered</b> (spine frame)' : '') +
     (qt ? (state.compare && !state.regGhost ? ' — without registration, ' : ' — after alignment, ') + esc(qt) : (res ? ' — residual vs Sep frame: ' + esc(res) : '')) +
     ` <span class="note"><span>${esc(m.note || 'No registration note in the scene.')}</span>` +
-    ` <span>${esc(S.scene.registration?.follow_note || '')}</span></span>`;
+    ` <span>${esc(S.scene.registration?.follow_note || '')}</span>` +
+    (regModes()[state.reg]?.group_matrix ? ` <span>${esc(S.scene.registration?.group_note || '')}</span>` : '') + `</span>`;
   ri.title = (m.note || '') + ' — click to expand / collapse';
   ri.append(glossary());
   if (EMBED) {
@@ -1036,7 +1080,7 @@ function renderLegend() {
     host.append(h('div', { style: { marginTop: state.growth ? '6px' : 0 } }, h('span.ghostkey'),
       p ? (state.regGhost ? `Ghost outline = ${dateLabel(p)} (liver and lesions), placed with the ${regModes()[state.reg]?.label || state.reg} alignment`
         : `Ghost outline = ${dateLabel(p)} (liver and lesions), NOT registered: plain spine-anchored scanner frame (raw breathing shift)`) : 'Compare: no earlier date than the first scan.'),
-      p && qualityText(qMode()) ? h('div.small', { class: 'reg-q', title: 'Residual after alignment for this date pair (registration_quality.json). Volumes are measured on each date\'s own CT and do not depend on the alignment.' }, (state.regGhost ? 'Residual: ' : 'Mismatch without registration: ') + qualityText(qMode(), shown, false)) : null);
+      p && qualityText(qMode()) ? h('div.small', { class: 'reg-q', title: 'Residual after alignment for this date pair (registration_quality.json). Volumes are measured on each date\'s own CT and do not depend on the alignment.' }, (state.regGhost ? 'Residual: ' : 'Mismatch without registration: ') + qualityText(qMode(), shown, false) + groupQualityText(qMode())) : null);
   }
 }
 
@@ -1815,7 +1859,7 @@ onProgress(p => {
 // ---------------------------------------------------------------- the app object handed to the report modules
 const app = {
   get scene() { return S.scene; }, setReg, get ghostPending() { return warpPending; }, ghostLocal, regQuality, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
-  scene3, root, camera, controls, dateLabel, dateShort, regM, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
+  scene3, root, camera, controls, dateLabel, dateShort, regM, regMFor, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
   setDate, selectLesion, flyToLesion, flyTo, fitDist, addLabel, requestRender, toast, writeHash, peek, ctlState, available,
   setCtls(patches) { for (const [id, p] of Object.entries(patches)) if (S.ctls.has(id)) Object.assign(ctlState(id), p); refreshLayerRows(); const done = ensureVisibleLoaded(); writeHash(); return done; },
   loadVisible() { return ensureVisibleLoaded(); },
@@ -1878,6 +1922,7 @@ async function boot() {
       for (const l of sc.lesions || []) { const x = u.lesions?.[l.id]; if (x?.name) m[l.name] = x.name; if (x?.segment && l.segment) m[l.segment] = x.segment; }
       for (const [k, md] of Object.entries(sc.registration?.modes || {})) { const x = u.modes?.[k]; if (x) { if (md.label) m[md.label] = x.label; if (md.note) m[md.note] = x.note; } }
       if (u.follow_note && sc.registration?.follow_note) m[sc.registration.follow_note] = u.follow_note;
+      if (u.group_note && sc.registration?.group_note) m[sc.registration.group_note] = u.group_note;
       Object.assign(m, u.confidence || {}, u.notes || {}, u.growth_notes || {}, u.not_visible || {});
       addStrings(m);
     }

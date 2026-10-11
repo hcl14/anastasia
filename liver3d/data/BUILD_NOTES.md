@@ -380,3 +380,18 @@ all four size statements agree with the model within 15 %.
 **R1 visibility (2026-10-11).** R1 #5f22ad (darker, more saturated; contrast 7.7:1 against the light stage, 3.8:1 against the liver colour) and #7f3fd4 in the dark theme (3.5:1 against the black stage; a dark violet cannot reach 3:1 against both black and the liver); R1 shell opacity 0.55. The main cause of the "lost" mass was a bug: the depth pre-pass added against blinking also ran for walls and cores, whose outer surface coincides with the lesion surface, and hid the lesion shell whenever walls were shown (all-layers default); the pre-pass is now limited to vessels. CIEDE2000 R1 vs L1 / S8 / S1 / walls / liver (normal, worse CVD; min over opaque and over-liver): see tools/palette/report.txt.
 
 **Activity never hidden (2026-10-11).** FDG-active tissue (all three layers), nodules and calcifications get an X-ray pass: drawn normally and again after every translucent layer, without depth test, at 0.6 opacity in their own colour (clipping planes respected). R1 shell back to 0.38 with a fresnel rim (darker, more opaque edge) for presence. Walls are drawn 0.4 mm inward so their outer surface (= the lesion surface) no longer stacks its slice terraces on the R1 shell; the R1 walls and cores themselves stay on the v1 recipe because the smoothing ladder fails the fidelity gates for them (walls Dice 0.40-0.85, cores p95 1.0-1.4 mm). Hot pixels of the FDG-active tissue visible in the full scene (light theme): June R1 close-up 0.54 -> 0.98, June default 0.59 -> 0.99, Sep default 0.32 -> 0.96.
+
+
+## Stomach group registered separately (2026-10-11)
+The stomach and the gastric wall formation move independently of the liver (breathing, gastric filling). `registration_refine.py --stage
+stomach`: rigid fit of the stomach masks (from the liver-mask-fit pair matrix) and of the GF masks (centroid start; translation, a rotation
+only if it gains >= 0.01 Dice within 10 degrees: the fits chose translation for all three pairs). In every liver-based Align mode the
+stomach organ uses its stomach fit and GF its own fit (scene `registration.groups`, `group_matrix`, `group_pair_matrix`, `group_quality`);
+new Align mode 'Gastric formation (GF)' anchors the whole scene on GF; Spine-anchored and 'Register earlier scan' off keep the raw scanner
+frame. The status line and Compare legend show the stomach Dice and the GF centroid offset and say that stomach and liver are registered
+separately (their relative position across dates is not preserved). GF growth maps use the GF fit. Rigid: volumes unchanged.
+| pair | stomach (liver fit → stomach fit) | GF (liver fit → GF fit) |
+|---|---|---|
+| may2025 → jun2026 | stomach Dice 0.60 → 0.73, centroid 10.9 → 7.1 mm, surface 7.5 → 4.1 mm | GF Dice 0.83 → 0.85, centroid 1.1 → 1.2 mm, surface 2.0 → 1.8 mm (translation) |
+| jun2026 → sep2026 | stomach Dice 0.71 → 0.77, centroid 6.2 → 5.3 mm, surface 4.9 → 4.2 mm | GF Dice 0.24 → 0.79, centroid 19.4 → 1.3 mm, surface 8.2 → 2.2 mm (translation) |
+| may2025 → sep2026 | stomach Dice 0.61 → 0.68, centroid 6.2 → 3.8 mm, surface 8.9 → 5.5 mm | GF Dice 0.16 → 0.82, centroid 24.5 → 1.8 mm, surface 10.3 → 1.9 mm (translation) |

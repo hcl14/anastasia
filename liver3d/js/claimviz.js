@@ -1,9 +1,9 @@
 // Visualises one report claim on the model: reported size box (orange, dashed) vs the model's
 // measured extents (teal), size-change morph between dates, activity markers, segment and vessel focus.
 import * as THREE from 'three';
-import * as F from './frame.js?v=35061122ac';
-import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=35061122ac';
-import { verdictClass, verdictText, changeVerdict, linkURL, shortReader } from './reports.js?v=35061122ac';
+import * as F from './frame.js?v=7ba98794f8';
+import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=7ba98794f8';
+import { verdictClass, verdictText, changeVerdict, linkURL, shortReader } from './reports.js?v=7ba98794f8';
 
 const ORANGE = new THREE.Color('#ff9f1c'), TEAL = new THREE.Color('#2ec4b6'), SUVY = new THREE.Color('#ffe14d');
 const cyl = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true); cyl.translate(0, 0.5, 0); cyl.rotateX(Math.PI / 2); // unit tube along +Z from 0..1
@@ -140,7 +140,7 @@ export class ClaimViz {
   // ------------------------------------------------ specs in world space
   specFromViz(viz, which) {
     if (!viz?.center_ras || !viz?.axes_ras) return null;
-    const M = this.app.regM(viz.date_key);
+    const M = this.app.regMFor(this.claim ? this.lesionOf(this.claim) : null, viz.date_key);
     const c = F.rasToWorld(F.applyRas(M, viz.center_ras));
     const axes = viz.axes_ras.map(a => F.rasDirToWorld(F.applyRasDir(M, a)).normalize());
     return { center: c, axes, dims: (which === 'model' ? viz.model_mm : viz.reported_mm) || [null, null, null], date: viz.date_key };
@@ -149,7 +149,7 @@ export class ClaimViz {
     const app = this.app;
     const les = app.lesionById(lesionId), pd = les?.per_date?.[date];
     if (!pd?.centroid_ras || !dims) return null;
-    const M = app.regM(date);
+    const M = app.regMFor(lesionId, date);
     const c = F.rasToWorld(F.applyRas(M, pd.centroid_ras));
     const axes = [[1, 0, 0], [0, 1, 0], [0, 0, 1]].map(a => F.rasDirToWorld(F.applyRasDir(M, a)).normalize());
     return { center: c, axes, dims: [dims[0] ?? null, dims[1] ?? null, dims[2] ?? null], date, fallback: true };
