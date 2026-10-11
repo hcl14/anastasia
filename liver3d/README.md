@@ -206,3 +206,5 @@ Meshes load from `data/meshes_qm/` (quantized + gzip, full fidelity, no face cap
 (`tools/build_lod.py`, transient), full detail at rest. Side panel collapsed by default (`☰ Layers & lesions`); `?embed=1` for the
 embedded variant (drawer, Options menu, `?poster=<image>` shown until the first frame; posts `{liver3d:'ready'}` to the parent).
 Rebuild order after `build_viewer_data.py`: `build_lod.py` (cached by index) then `export_qm.py --uncap <map>`. Numbers: `data/BUILD_NOTES.md`.
+
+Publishing: run `python3 tools/stamp_version.py <viewer dir> --site-index <site index.html>` after copying the files (version stamps, see BUILD_NOTES).

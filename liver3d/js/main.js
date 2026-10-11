@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js';
-import { Reports } from './reports.js';
-import { ClaimViz } from './claimviz.js';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js';
+import * as F from './frame.js?v=2ccd6fa8fb';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=2ccd6fa8fb';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=2ccd6fa8fb';
+import { Reports } from './reports.js?v=2ccd6fa8fb';
+import { ClaimViz } from './claimviz.js?v=2ccd6fa8fb';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=2ccd6fa8fb';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -1741,6 +1741,12 @@ renderer.setAnimationLoop(t => {
 const progEl = $('#progress');
 let progShownAt = 0;
 onProgress(p => {
+  if (BOOT && !booted) {   // first load: the loader's bar continues ('Loading liver 3D… N %', then 'Preparing scene…')
+    progEl.hidden = true;
+    const f = p.bytesTotal ? Math.min(1, p.bytes / p.bytesTotal) : p.filesDone / Math.max(1, p.files);
+    if (p.pending) BOOT.set(f, BOOT.TX.mesh + ' ' + Math.round(f * 100) + ' %'); else BOOT.set(1, BOOT.TX.prep);
+    return;
+  }
   if (!p.pending) { progEl.hidden = true; return; }
   if (progEl.hidden) { progEl.hidden = false; progShownAt = performance.now(); }
   progEl.classList.toggle('corner', !!shown);
@@ -1787,8 +1793,8 @@ function setUi(l, opts = {}) {
   if (!opts.keepHash) writeHash();
 }
 let booted = false;
-// poster image (embed): shown under the progress bar until the first 3D frame (?poster=<url relative to the page>)
-if (params.get('poster')) { const im = h('img', { src: params.get('poster'), alt: '' }); $('#stage').prepend(h('div', { id: 'poster', 'aria-hidden': 'true' }, im)); }
+// the inline loader in index.html (window.__boot) shows the bar and the poster from the first bytes; the app drives it until its first frame
+const BOOT = window.__boot || null;
 async function boot() {
   setUiLang(initialUiLang());
   for (const b of $$('#uiLang button')) { b.setAttribute('aria-pressed', String(b.dataset.ui === uiLang())); b.onclick = () => setUi(b.dataset.ui); }
@@ -1804,7 +1810,7 @@ async function boot() {
     f.innerHTML = `<b>Could not load the scene</b> <code>${esc(SCENE_URL)}</code>: ${esc(err.message)}.<br><br>` +
       `Serve this folder over HTTP (e.g. <code>python3 -m http.server</code>) — the page cannot read files from <code>file://</code>. ` +
       `To use another scene, add <code>?scene=path/to/scene.json</code> to the URL (for the synthetic development scene: <a href="?scene=data_test/scene.json">?scene=data_test/scene.json</a>).`;
-    return;
+    BOOT?.done(); return;
   }
   S.scene = sc;
   // Ukrainian strings of the scene (side file; scene.json unchanged): English scene text -> Ukrainian, for the interface translator
@@ -1884,7 +1890,7 @@ async function boot() {
   setTimeout(() => { autoSmooth(); if (state.smooth) preloadLod(); }, 4000);
   // first full frame: fade out the poster and tell the embedding page (it loads the next embed only after this one is ready)
   requestAnimationFrame(() => requestAnimationFrame(() => {
-    const po = $('#poster'); if (po) { po.classList.add('gone'); setTimeout(() => po.remove(), 700); }
+    if (BOOT) BOOT.done(); else document.documentElement.classList.add('l3d-ready');
     try { if (window.parent !== window) window.parent.postMessage({ liver3d: 'ready', date: shown }, '*'); } catch (e) { }
   }));
 }
@@ -1908,4 +1914,4 @@ function afterStateChange(cam, first) {
 
 window.__liver = { app, S, state, renderer, scene3, camera, controls, pickAt, planes, stats };
 window.__lowMotion = on => { lowMotion = !!on && !anyCut(); sync(); };   // test hook: draw as while the camera moves
-boot().catch(err => { console.error(err); const f = $('#fatal'); f.hidden = false; f.textContent = 'Viewer error: ' + err.message; });
+boot().catch(err => { console.error(err); const f = $('#fatal'); f.hidden = false; f.textContent = 'Viewer error: ' + err.message; BOOT?.done(); });
