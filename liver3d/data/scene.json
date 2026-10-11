@@ -1507,7 +1507,7 @@
    "name": "Enhancing walls / solid tissue",
    "group": "Internal structure",
    "color": "#c7a3d8",
-   "opacity": 0.3,
+   "opacity": 0.22,
    "default_visible": true,
    "per_date": {
     "may2025": {
@@ -3813,7 +3813,7 @@
      }
     }
    },
-   "opacity": 0.55,
+   "opacity": 0.38,
    "default_visible": true
   },
   {

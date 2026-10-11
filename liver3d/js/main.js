@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=ad916b99d2';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=ad916b99d2';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=ad916b99d2';
-import { Reports } from './reports.js?v=ad916b99d2';
-import { ClaimViz } from './claimviz.js?v=ad916b99d2';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=ad916b99d2';
+import * as F from './frame.js?v=35061122ac';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=35061122ac';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=35061122ac';
+import { Reports } from './reports.js?v=35061122ac';
+import { ClaimViz } from './claimviz.js?v=35061122ac';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=35061122ac';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -95,11 +95,16 @@ const requestRender = () => { needsRender = true; };
 let pulseUntil = 0;
 
 // back faces a bit darker, so the inside of a cut or translucent shell reads as "inside"
-function shade(mat) {
+function shade(mat, opts = {}) {
   mat.onBeforeCompile = sh => {
     sh.fragmentShader = sh.fragmentShader.replace('#include <color_fragment>', '#include <color_fragment>\n\tif (!gl_FrontFacing) diffuseColor.rgb *= 0.66;');
+    // lesion shells: a darker, more opaque rim (fresnel) gives the mass presence while its interior stays see-through
+    if (opts.rim) sh.fragmentShader = sh.fragmentShader.replace('#include <opaque_fragment>',
+      'float l3dRim = pow(1.0 - abs(dot(normalize(normal), normalize(vViewPosition))), 2.0);\n\toutgoingLight *= (1.0 - 0.45 * l3dRim);\n\tdiffuseColor.a = clamp(diffuseColor.a + 0.5 * l3dRim, 0.0, 1.0);\n#include <opaque_fragment>');
+    // walls: their outer surface IS the lesion surface; drawn 0.4 mm inward so the two do not stack their slice terraces
+    if (opts.inset) sh.vertexShader = sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n\ttransformed -= normalize(objectNormal) * ' + opts.inset.toFixed(2) + ';');
   };
-  mat.customProgramCacheKey = () => 'liver-bf';
+  mat.customProgramCacheKey = () => 'liver-bf' + (opts.rim ? '-rim' : '') + (opts.inset ? '-in' : '');
   return mat;
 }
 
@@ -400,7 +405,8 @@ function ensureMesh(it) {
   // FDG activity glows (emissive share of its own colour, scene.palette.emissive): the brightest thing in the scene
   const em = S.scene.palette?.emissive?.[it.kind === 'part' ? it.part : it.ctl] || 0;
   it.baseEmissive = em ? new THREE.Color(colorOf(it)).multiplyScalar(em) : new THREE.Color(0);
-  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.62, metalness: 0, side, emissive: it.baseEmissive.clone() }));
+  const sopts = { rim: it.kind === 'lesion', inset: it.kind === 'part' && it.part === 'walls' ? 0.4 : 0 };
+  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.62, metalness: 0, side, emissive: it.baseEmissive.clone() }), sopts);
   const front = new THREE.Mesh(g, mk(THREE.DoubleSide));
   const back = new THREE.Mesh(g, mk(THREE.BackSide));
   for (const m of [front, back]) {
@@ -409,6 +415,13 @@ function ensureMesh(it) {
     dateGroup[it.date].add(m);
   }
   it.mesh = front; it.back = back;
+  // X-RAY pass for what must never be hidden by shells: FDG-active tissue, nodules, calcifications. Drawn after every translucent
+  // layer without depth test at ~0.6 opacity in its own colour, so it shows through R1 / L1 / S8, walls and the liver from any angle.
+  if (XRAY.has(it.kind === 'part' ? it.part : it.ctl)) {
+    const xm = new THREE.MeshBasicMaterial({ color: colorOf(it), transparent: true, opacity: 0.6, depthTest: false, depthWrite: false, side: THREE.FrontSide, clippingPlanes: clipAll });
+    it.xray = new THREE.Mesh(g, xm); it.xray.matrixAutoUpdate = false; it.xray.renderOrder = 290 + it.sub; it.xray.visible = false; it.xray.userData.xrayOf = it;
+    dateGroup[it.date].add(it.xray);
+  }
   return front;
 }
 /** put another level of detail of the same surface on every object drawing it (mesh, back faces, depth pre-pass, cut stencils) */
@@ -431,6 +444,7 @@ function dimmed(it) {
   return true;
 }
 const anyCut = () => AXES.some(a => state.clip[a].on);
+const XRAY = new Set(['active', 'active_pet_only', 'active_inferred', 'nodules', 'calcifications']);
 const MARKERS = new Set(['contact_left_portal', 'nodules', 'calcifications', 'active', 'active_pet_only', 'active_inferred']);
 function applyMaterial(it) {
   const o = opacityOf(it) * (dimmed(it) ? 0.28 : 1), tr = o < 0.999;
@@ -462,6 +476,7 @@ function applyMaterial(it) {
     it.pre.renderOrder = 200 + it.rank + it.sub - 1e-4;
     Object.assign(it.pre.material, { polygonOffset: bias !== 0, polygonOffsetFactor: bias, polygonOffsetUnits: bias * 2 });
   }
+  if (it.xray) { it.xray.visible = it.mesh.visible; it.xray.geometry = it.mesh.geometry; it.xray.material.opacity = 0.6 * Math.min(1, o); }
   // transparent: all back faces outer->inner, then all front faces inner->outer (no popping, nested shells read correctly)
   it.back.visible = it.mesh.visible && tr;
   // a fixed order per object (rank, then a stable per-object fraction): three.js then never re-sorts transparent meshes by their
