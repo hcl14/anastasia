@@ -6386,7 +6386,7 @@
  ],
  "enriched": {
   "by": "tools/build_viewer_data.py",
-  "generated": "2026-10-09T13:33:30",
+  "generated": "2026-10-11T13:29:31",
   "source": "consensus",
   "n_claims": 67,
   "n_with_model": 33,

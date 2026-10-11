@@ -105,7 +105,7 @@ export const UK = {
   // dates and verdicts
   'May 2025': 'травень 2025', 'June 2026': 'червень 2026', 'Sep 2026': 'вересень 2026', 'Jun 2026': 'черв. 2026', 'Sept': 'вер.',
   'agrees': 'збігається', 'model larger': 'модель більша', 'model smaller': 'модель менша',
-  'Loading meshes': 'Завантаження поверхонь', 'Anatomy': 'Анатомія', 'Tumour': 'Пухлина', 'Activity': 'Активність (ПЕТ)', 'Other': 'Інше', 'Colour key: the hue tells the kind of tissue': 'Кольорова легенда: відтінок означає тип тканини', 'Zoom in': 'Наблизити', 'Zoom out': 'Віддалити',
+  'Loading meshes': 'Завантаження поверхонь', 'Anatomy': 'Анатомія', 'Clean view': 'Чистий вигляд', 'Liver, the three main lesions, FDG-active tissue and the vessels only': 'Лише печінка, три основні утворення, ПЕТ-активна тканина та судини', 'Vessels (portal, hepatic veins, IVC)': 'Судини (ворітна, печінкові вени, НПВ)', 'Tumour': 'Пухлина', 'Activity': 'Активність (ПЕТ)', 'Other': 'Інше', 'Colour key: the hue tells the kind of tissue': 'Кольорова легенда: відтінок означає тип тканини', 'Zoom in': 'Наблизити', 'Zoom out': 'Віддалити',
   'Click the model (or hold the pointer on it) to zoom with the wheel; Ctrl + wheel always zooms.': 'Клацніть модель (або затримайте на ній курсор), щоб масштабувати колесом; Ctrl + колесо масштабує завжди.',
   'Zoom: wheel or pinch, toward the pointer.': 'Масштаб: колесо або щипок, у бік курсора.', 'Active (FDG)': 'Активна (FDG)', 'Active, PET only': 'Активна, лише ПЕТ', 'Active, inferred': 'Активна, припущена', 'Cores': 'Вміст', 'Walls': 'Стінки',
   'Nodules': 'Вузлики', 'Calcifications': 'Кальцифікати', 'Portal vein': 'Ворітна вена', 'Hepatic veins': 'Печінкові вени', 'L1–portal contact': 'Контакт L1 — ворітна',

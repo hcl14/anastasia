@@ -1172,25 +1172,26 @@
    "name": "Liver",
    "group": "Anatomy",
    "color": "#b9a596",
-   "opacity": 0.25,
+   "opacity": 0.18,
    "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/liver.ply",
      "volume_mL": 2627.59,
      "verify": {
-      "dice": 0.9979,
-      "p95_mm": 0.4,
-      "mean_mm": 0.17,
-      "max_mm": 0.93,
-      "mesh_mL": 2635.99,
-      "slice_dice_min_ge20vox": 0.954,
+      "dice": 0.9969,
+      "p95_mm": 0.5,
+      "mean_mm": 0.21,
+      "max_mm": 4.79,
+      "mesh_mL": 2616.24,
+      "slice_dice_min_ge20vox": 0.911,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 633816,
+      "taubin_iter": 20,
+      "faces": 614988,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9957
      },
      "source": {
       "kind": "consensus",
@@ -1204,18 +1205,19 @@
      "mesh": "meshes/jun2026/liver.ply",
      "volume_mL": 2837.48,
      "verify": {
-      "dice": 0.9978,
-      "p95_mm": 0.4,
-      "mean_mm": 0.18,
-      "max_mm": 0.91,
-      "mesh_mL": 2846.92,
-      "slice_dice_min_ge20vox": 0.978,
+      "dice": 0.9969,
+      "p95_mm": 0.5,
+      "mean_mm": 0.21,
+      "max_mm": 6.53,
+      "mesh_mL": 2825.67,
+      "slice_dice_min_ge20vox": 0.961,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 756642,
+      "taubin_iter": 20,
+      "faces": 724544,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9958
      },
      "source": {
       "kind": "consensus",
@@ -1229,17 +1231,19 @@
      "mesh": "meshes/sep2026/liver.ply",
      "volume_mL": 2743.95,
      "verify": {
-      "dice": 0.9984,
-      "p95_mm": 0.58,
-      "mean_mm": 0.23,
-      "max_mm": 1.44,
-      "mesh_mL": 2749.99,
-      "slice_dice_min_ge20vox": 0.993,
+      "dice": 0.9961,
+      "p95_mm": 0.8,
+      "mean_mm": 0.31,
+      "max_mm": 10.65,
+      "mesh_mL": 2729.0,
+      "slice_dice_min_ge20vox": 0.975,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 229722,
-      "max_faces": 400000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 224532,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9946
      },
      "source": {
       "kind": "consensus",
@@ -1273,7 +1277,9 @@
       "taubin_iter": 30,
       "faces": 13196,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0019
      },
      "source": {
       "kind": "consensus",
@@ -1297,7 +1303,9 @@
       "taubin_iter": 20,
       "faces": 16488,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0046
      },
      "source": {
       "kind": "consensus",
@@ -1317,7 +1325,7 @@
    "name": "FDG-active tissue",
    "group": "Activity",
    "color": "#ffc400",
-   "opacity": 0.85,
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {
     "jun2026": {
@@ -1334,7 +1342,9 @@
       "taubin_iter": 30,
       "faces": 45820,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9991
      },
      "source": {
       "kind": "consensus",
@@ -1359,7 +1369,9 @@
       "taubin_iter": 30,
       "faces": 58522,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9984
      },
      "source": {
       "kind": "consensus",
@@ -1380,7 +1392,7 @@
    "name": "FDG-active tissue outside the CT lesions (PET-defined only)",
    "group": "Activity",
    "color": "#ffe680",
-   "opacity": 0.7,
+   "opacity": 0.8,
    "default_visible": true,
    "per_date": {
     "jun2026": {
@@ -1397,7 +1409,9 @@
       "taubin_iter": 30,
       "faces": 20572,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9949
      },
      "source": {
       "kind": "derived from consensus",
@@ -1423,7 +1437,9 @@
       "taubin_iter": 20,
       "faces": 22832,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9881
      },
      "source": {
       "kind": "derived from consensus",
@@ -1445,8 +1461,8 @@
    "name": "Necrotic / cystic cores",
    "group": "Internal structure",
    "color": "#c3d7e4",
-   "opacity": 0.55,
-   "default_visible": false,
+   "opacity": 0.5,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": null,
@@ -1491,8 +1507,8 @@
    "name": "Enhancing walls / solid tissue",
    "group": "Internal structure",
    "color": "#c7a3d8",
-   "opacity": 0.5,
-   "default_visible": false,
+   "opacity": 0.3,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": null,
@@ -1537,7 +1553,7 @@
    "name": "Mural nodules",
    "group": "Internal structure",
    "color": "#5a9400",
-   "opacity": 0.95,
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {
     "may2025": {
@@ -1620,8 +1636,8 @@
    "id": "portal",
    "name": "Portal vein",
    "group": "Vessels",
-   "color": "#3f7ae8",
-   "opacity": 0.9,
+   "color": "#5a93f5",
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {
     "may2025": {
@@ -1638,7 +1654,9 @@
       "taubin_iter": 30,
       "faces": 30300,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0003
      },
      "source": {
       "kind": "consensus",
@@ -1662,7 +1680,9 @@
       "taubin_iter": 30,
       "faces": 112634,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9991
      },
      "source": {
       "kind": "consensus",
@@ -1686,7 +1706,9 @@
       "taubin_iter": 30,
       "faces": 7476,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9985
      },
      "source": {
       "kind": "consensus",
@@ -1708,7 +1730,7 @@
    "name": "Hepatic veins",
    "group": "Vessels",
    "color": "#2aa8b5",
-   "opacity": 0.9,
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {
     "may2025": {
@@ -1725,7 +1747,9 @@
       "taubin_iter": 30,
       "faces": 50608,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0017
      },
      "source": {
       "kind": "consensus",
@@ -1750,7 +1774,9 @@
       "taubin_iter": 30,
       "faces": 67526,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0026
      },
      "source": {
       "kind": "consensus",
@@ -1775,7 +1801,9 @@
       "taubin_iter": 30,
       "faces": 17874,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0039
      },
      "source": {
       "kind": "consensus",
@@ -1792,25 +1820,27 @@
    "id": "ivc",
    "name": "Inferior vena cava",
    "group": "Vessels",
-   "color": "#16285a",
-   "opacity": 0.8,
+   "color": "#3655b8",
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/ivc.ply",
      "volume_mL": 70.58,
      "verify": {
-      "dice": 0.9944,
-      "p95_mm": 0.31,
-      "mean_mm": 0.13,
-      "max_mm": 0.77,
-      "mesh_mL": 70.64,
-      "slice_dice_min_ge20vox": 0.983,
+      "dice": 0.9906,
+      "p95_mm": 0.39,
+      "mean_mm": 0.16,
+      "max_mm": 1.58,
+      "mesh_mL": 70.01,
+      "slice_dice_min_ge20vox": 0.95,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 73868,
+      "taubin_iter": 20,
+      "faces": 72836,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9919
      },
      "source": {
       "kind": "consensus",
@@ -1834,7 +1864,9 @@
       "taubin_iter": 30,
       "faces": 46480,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -1859,7 +1891,9 @@
       "taubin_iter": 30,
       "faces": 27998,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0005
      },
      "source": {
       "kind": "consensus",
@@ -1876,7 +1910,7 @@
    "name": "Hepatic artery",
    "group": "Vessels",
    "color": "#d63a3a",
-   "opacity": 0.95,
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {},
    "not_visible": {
@@ -1890,7 +1924,7 @@
    "name": "Bile ducts",
    "group": "Anatomy",
    "color": "#c2cc3c",
-   "opacity": 0.9,
+   "opacity": 1.0,
    "default_visible": true,
    "per_date": {},
    "not_visible": {
@@ -1921,7 +1955,9 @@
       "taubin_iter": 10,
       "faces": 3308,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -1945,7 +1981,9 @@
       "taubin_iter": 10,
       "faces": 4664,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -1966,24 +2004,26 @@
    "name": "Segment I",
    "group": "Couinaud segments",
    "color": "#cfe8e2",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg1.ply",
      "volume_mL": 83.98,
      "verify": {
-      "dice": 0.9969,
-      "p95_mm": 0.31,
-      "mean_mm": 0.12,
-      "max_mm": 0.76,
-      "mesh_mL": 84.12,
-      "slice_dice_min_ge20vox": 0.983,
+      "dice": 0.9912,
+      "p95_mm": 0.41,
+      "mean_mm": 0.16,
+      "max_mm": 2.57,
+      "mesh_mL": 83.26,
+      "slice_dice_min_ge20vox": 0.916,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 83442,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 80300,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9915
      },
      "source": {
       "kind": "consensus",
@@ -2007,8 +2047,10 @@
       "passed": true,
       "taubin_iter": 30,
       "faces": 93060,
-      "max_faces": 120000,
-      "decimated": false
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0017
      },
      "source": {
       "kind": "consensus",
@@ -2032,8 +2074,10 @@
       "passed": true,
       "taubin_iter": 30,
       "faces": 25548,
-      "max_faces": 120000,
-      "decimated": false
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.998
      },
      "source": {
       "kind": "consensus",
@@ -2051,24 +2095,26 @@
    "name": "Segment II",
    "group": "Couinaud segments",
    "color": "#e9e5c4",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg2.ply",
      "volume_mL": 177.15,
      "verify": {
-      "dice": 0.9975,
-      "p95_mm": 0.41,
-      "mean_mm": 0.16,
-      "max_mm": 0.84,
-      "mesh_mL": 177.47,
-      "slice_dice_min_ge20vox": 0.95,
+      "dice": 0.9948,
+      "p95_mm": 0.53,
+      "mean_mm": 0.19,
+      "max_mm": 4.49,
+      "mesh_mL": 175.98,
+      "slice_dice_min_ge20vox": 0.852,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 115054,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 111496,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9934
      },
      "source": {
       "kind": "consensus",
@@ -2083,18 +2129,19 @@
      "mesh": "meshes/jun2026/seg2.ply",
      "volume_mL": 378.95,
      "verify": {
-      "dice": 0.9981,
-      "p95_mm": 0.34,
-      "mean_mm": 0.14,
-      "max_mm": 0.8,
-      "mesh_mL": 379.79,
-      "slice_dice_min_ge20vox": 0.963,
+      "dice": 0.9957,
+      "p95_mm": 0.49,
+      "mean_mm": 0.17,
+      "max_mm": 3.38,
+      "mesh_mL": 377.04,
+      "slice_dice_min_ge20vox": 0.882,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 200936,
+      "taubin_iter": 20,
+      "faces": 193260,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S2",
+      "vol_ratio": 0.995
      },
      "source": {
       "kind": "consensus",
@@ -2109,17 +2156,19 @@
      "mesh": "meshes/sep2026/seg2.ply",
      "volume_mL": 410.65,
      "verify": {
-      "dice": 0.9975,
-      "p95_mm": 0.59,
-      "mean_mm": 0.23,
-      "max_mm": 1.3,
-      "mesh_mL": 411.35,
-      "slice_dice_min_ge20vox": 0.966,
+      "dice": 0.9929,
+      "p95_mm": 0.86,
+      "mean_mm": 0.3,
+      "max_mm": 4.79,
+      "mesh_mL": 406.92,
+      "slice_dice_min_ge20vox": 0.87,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 70074,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 67620,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9909
      },
      "source": {
       "kind": "consensus",
@@ -2137,25 +2186,26 @@
    "name": "Segment III",
    "group": "Couinaud segments",
    "color": "#d9d3ea",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg3.ply",
      "volume_mL": 290.64,
      "verify": {
-      "dice": 0.9989,
-      "p95_mm": 0.38,
-      "mean_mm": 0.16,
-      "max_mm": 0.91,
-      "mesh_mL": 291.1,
-      "slice_dice_min_ge20vox": 0.962,
+      "dice": 0.9956,
+      "p95_mm": 0.53,
+      "mean_mm": 0.2,
+      "max_mm": 4.56,
+      "mesh_mL": 288.71,
+      "slice_dice_min_ge20vox": 0.633,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 148420,
+      "taubin_iter": 20,
+      "faces": 143540,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9934
      },
      "source": {
       "kind": "consensus",
@@ -2181,7 +2231,8 @@
       "faces": 132420,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "v1",
+      "vol_ratio": 1.0015
      },
      "source": {
       "kind": "consensus",
@@ -2205,8 +2256,10 @@
       "passed": true,
       "taubin_iter": 30,
       "faces": 46972,
-      "max_faces": 120000,
-      "decimated": false
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0016
      },
      "source": {
       "kind": "consensus",
@@ -2224,25 +2277,26 @@
    "name": "Segment IV",
    "group": "Couinaud segments",
    "color": "#efd2cc",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg4.ply",
      "volume_mL": 268.58,
      "verify": {
-      "dice": 0.9988,
-      "p95_mm": 0.3,
-      "mean_mm": 0.12,
-      "max_mm": 0.76,
-      "mesh_mL": 268.97,
-      "slice_dice_min_ge20vox": 0.944,
+      "dice": 0.9949,
+      "p95_mm": 0.43,
+      "mean_mm": 0.16,
+      "max_mm": 2.2,
+      "mesh_mL": 266.87,
+      "slice_dice_min_ge20vox": 0.867,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 141986,
+      "taubin_iter": 20,
+      "faces": 137776,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9936
      },
      "source": {
       "kind": "consensus",
@@ -2257,18 +2311,19 @@
      "mesh": "meshes/jun2026/seg4.ply",
      "volume_mL": 252.98,
      "verify": {
-      "dice": 0.9984,
-      "p95_mm": 0.3,
-      "mean_mm": 0.12,
-      "max_mm": 0.88,
-      "mesh_mL": 253.39,
-      "slice_dice_min_ge20vox": 0.954,
+      "dice": 0.9935,
+      "p95_mm": 0.45,
+      "mean_mm": 0.18,
+      "max_mm": 4.77,
+      "mesh_mL": 251.42,
+      "slice_dice_min_ge20vox": 0.75,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 157258,
+      "taubin_iter": 20,
+      "faces": 150604,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9938
      },
      "source": {
       "kind": "consensus",
@@ -2292,8 +2347,10 @@
       "passed": true,
       "taubin_iter": 30,
       "faces": 40536,
-      "max_faces": 120000,
-      "decimated": false
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0012
      },
      "source": {
       "kind": "consensus",
@@ -2311,25 +2368,26 @@
    "name": "Segment V",
    "group": "Couinaud segments",
    "color": "#cddbe9",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg5.ply",
      "volume_mL": 504.8,
      "verify": {
-      "dice": 0.9982,
-      "p95_mm": 0.33,
-      "mean_mm": 0.14,
-      "max_mm": 0.87,
-      "mesh_mL": 505.99,
-      "slice_dice_min_ge20vox": 0.946,
+      "dice": 0.9945,
+      "p95_mm": 0.54,
+      "mean_mm": 0.2,
+      "max_mm": 4.41,
+      "mesh_mL": 501.84,
+      "slice_dice_min_ge20vox": 0.857,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 212238,
+      "taubin_iter": 20,
+      "faces": 200180,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9941
      },
      "source": {
       "kind": "consensus",
@@ -2344,18 +2402,19 @@
      "mesh": "meshes/jun2026/seg5.ply",
      "volume_mL": 515.43,
      "verify": {
-      "dice": 0.9981,
-      "p95_mm": 0.32,
-      "mean_mm": 0.14,
-      "max_mm": 0.91,
-      "mesh_mL": 516.62,
-      "slice_dice_min_ge20vox": 0.949,
+      "dice": 0.9955,
+      "p95_mm": 0.48,
+      "mean_mm": 0.18,
+      "max_mm": 3.88,
+      "mesh_mL": 513.25,
+      "slice_dice_min_ge20vox": 0.845,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 251098,
+      "taubin_iter": 20,
+      "faces": 235588,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S2",
+      "vol_ratio": 0.9958
      },
      "source": {
       "kind": "consensus",
@@ -2370,17 +2429,19 @@
      "mesh": "meshes/sep2026/seg5.ply",
      "volume_mL": 425.16,
      "verify": {
-      "dice": 0.997,
-      "p95_mm": 0.54,
-      "mean_mm": 0.21,
-      "max_mm": 1.29,
-      "mesh_mL": 425.76,
-      "slice_dice_min_ge20vox": 0.962,
+      "dice": 0.9905,
+      "p95_mm": 0.86,
+      "mean_mm": 0.31,
+      "max_mm": 3.22,
+      "mesh_mL": 421.42,
+      "slice_dice_min_ge20vox": 0.308,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 79100,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 75516,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9912
      },
      "source": {
       "kind": "consensus",
@@ -2398,25 +2459,26 @@
    "name": "Segment VI",
    "group": "Couinaud segments",
    "color": "#ecdcc7",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg6.ply",
      "volume_mL": 493.49,
      "verify": {
-      "dice": 0.9982,
-      "p95_mm": 0.34,
-      "mean_mm": 0.14,
-      "max_mm": 0.91,
-      "mesh_mL": 494.61,
-      "slice_dice_min_ge20vox": 0.968,
+      "dice": 0.9945,
+      "p95_mm": 0.56,
+      "mean_mm": 0.21,
+      "max_mm": 7.79,
+      "mesh_mL": 490.53,
+      "slice_dice_min_ge20vox": 0.759,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 211864,
+      "taubin_iter": 20,
+      "faces": 199704,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.994
      },
      "source": {
       "kind": "consensus",
@@ -2431,18 +2493,19 @@
      "mesh": "meshes/jun2026/seg6.ply",
      "volume_mL": 620.74,
      "verify": {
-      "dice": 0.998,
-      "p95_mm": 0.34,
-      "mean_mm": 0.15,
-      "max_mm": 0.85,
-      "mesh_mL": 622.36,
-      "slice_dice_min_ge20vox": 0.851,
+      "dice": 0.9953,
+      "p95_mm": 0.52,
+      "mean_mm": 0.19,
+      "max_mm": 3.75,
+      "mesh_mL": 617.79,
+      "slice_dice_min_ge20vox": 0.588,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 268630,
+      "taubin_iter": 20,
+      "faces": 253824,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S2",
+      "vol_ratio": 0.9953
      },
      "source": {
       "kind": "consensus",
@@ -2457,17 +2520,19 @@
      "mesh": "meshes/sep2026/seg6.ply",
      "volume_mL": 378.55,
      "verify": {
-      "dice": 0.9976,
-      "p95_mm": 0.58,
-      "mean_mm": 0.22,
-      "max_mm": 1.32,
-      "mesh_mL": 379.02,
-      "slice_dice_min_ge20vox": 0.923,
+      "dice": 0.9924,
+      "p95_mm": 0.86,
+      "mean_mm": 0.31,
+      "max_mm": 3.5,
+      "mesh_mL": 375.09,
+      "slice_dice_min_ge20vox": 0.741,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 67024,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 64112,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9908
      },
      "source": {
       "kind": "consensus",
@@ -2485,25 +2550,26 @@
    "name": "Segment VII",
    "group": "Couinaud segments",
    "color": "#d8e8cc",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg7.ply",
      "volume_mL": 412.77,
      "verify": {
-      "dice": 0.9985,
-      "p95_mm": 0.34,
-      "mean_mm": 0.14,
-      "max_mm": 0.85,
-      "mesh_mL": 413.54,
-      "slice_dice_min_ge20vox": 0.894,
+      "dice": 0.996,
+      "p95_mm": 0.52,
+      "mean_mm": 0.2,
+      "max_mm": 7.89,
+      "mesh_mL": 410.64,
+      "slice_dice_min_ge20vox": 0.0,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 169050,
+      "taubin_iter": 20,
+      "faces": 163040,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9948
      },
      "source": {
       "kind": "consensus",
@@ -2518,18 +2584,19 @@
      "mesh": "meshes/jun2026/seg7.ply",
      "volume_mL": 477.99,
      "verify": {
-      "dice": 0.9978,
-      "p95_mm": 0.34,
-      "mean_mm": 0.14,
-      "max_mm": 0.83,
-      "mesh_mL": 479.18,
-      "slice_dice_min_ge20vox": 0.93,
+      "dice": 0.995,
+      "p95_mm": 0.53,
+      "mean_mm": 0.19,
+      "max_mm": 5.77,
+      "mesh_mL": 475.91,
+      "slice_dice_min_ge20vox": 0.819,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 230424,
+      "taubin_iter": 20,
+      "faces": 217844,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S2",
+      "vol_ratio": 0.9957
      },
      "source": {
       "kind": "consensus",
@@ -2544,17 +2611,19 @@
      "mesh": "meshes/sep2026/seg7.ply",
      "volume_mL": 831.71,
      "verify": {
-      "dice": 0.9985,
-      "p95_mm": 0.55,
-      "mean_mm": 0.22,
-      "max_mm": 1.4,
-      "mesh_mL": 832.97,
-      "slice_dice_min_ge20vox": 0.955,
+      "dice": 0.9936,
+      "p95_mm": 0.91,
+      "mean_mm": 0.33,
+      "max_mm": 6.0,
+      "mesh_mL": 825.22,
+      "slice_dice_min_ge20vox": 0.842,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 98968,
-      "max_faces": 120000,
-      "decimated": false
+      "taubin_iter": 20,
+      "faces": 94724,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9922
      },
      "source": {
       "kind": "consensus",
@@ -2572,25 +2641,26 @@
    "name": "Segment VIII",
    "group": "Couinaud segments",
    "color": "#ecd6e2",
-   "opacity": 0.35,
-   "default_visible": false,
+   "opacity": 0.08,
+   "default_visible": true,
    "per_date": {
     "may2025": {
      "mesh": "meshes/may2025/seg8.ply",
      "volume_mL": 396.18,
      "verify": {
-      "dice": 0.9986,
-      "p95_mm": 0.33,
-      "mean_mm": 0.13,
-      "max_mm": 0.91,
-      "mesh_mL": 396.88,
-      "slice_dice_min_ge20vox": 0.97,
+      "dice": 0.9952,
+      "p95_mm": 0.54,
+      "mean_mm": 0.2,
+      "max_mm": 5.23,
+      "mesh_mL": 393.89,
+      "slice_dice_min_ge20vox": 0.713,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 168612,
+      "taubin_iter": 20,
+      "faces": 160704,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S3",
+      "vol_ratio": 0.9942
      },
      "source": {
       "kind": "consensus",
@@ -2605,18 +2675,19 @@
      "mesh": "meshes/jun2026/seg8.ply",
      "volume_mL": 318.19,
      "verify": {
-      "dice": 0.9976,
-      "p95_mm": 0.33,
-      "mean_mm": 0.14,
-      "max_mm": 0.76,
-      "mesh_mL": 318.89,
-      "slice_dice_min_ge20vox": 0.875,
+      "dice": 0.9945,
+      "p95_mm": 0.5,
+      "mean_mm": 0.18,
+      "max_mm": 5.59,
+      "mesh_mL": 316.27,
+      "slice_dice_min_ge20vox": 0.419,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 185870,
+      "taubin_iter": 20,
+      "faces": 174976,
       "max_faces": 4000000,
       "decimated": false,
-      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
+      "smooth": "S2",
+      "vol_ratio": 0.994
      },
      "source": {
       "kind": "consensus",
@@ -2640,8 +2711,10 @@
       "passed": true,
       "taubin_iter": 30,
       "faces": 66998,
-      "max_faces": 120000,
-      "decimated": false
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0014
      },
      "source": {
       "kind": "consensus",
@@ -2659,8 +2732,8 @@
    "name": "Uncertain band (arbitration)",
    "group": "Uncertainty",
    "color": "#9a9a9a",
-   "opacity": 0.3,
-   "default_visible": false,
+   "opacity": 0.25,
+   "default_visible": true,
    "per_date": {},
    "not_visible": {
     "may2025": "NOT AVAILABLE: no consensus/may2025/masks/uncertain.npy",
@@ -2673,8 +2746,8 @@
    "name": "FDG activity, inferred only (moved out of active)",
    "group": "Activity",
    "color": "#ff8c1a",
-   "opacity": 0.8,
-   "default_visible": false,
+   "opacity": 0.75,
+   "default_visible": true,
    "per_date": {
     "jun2026": {
      "mesh": "meshes/jun2026/active_inferred.ply",
@@ -2690,7 +2763,9 @@
       "taubin_iter": 30,
       "faces": 5168,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9931
      },
      "source": {
       "kind": "consensus-uncertain (post-fix)",
@@ -2910,17 +2985,19 @@
       }
      },
      "verify": {
-      "dice": 0.998,
-      "p95_mm": 0.37,
-      "mean_mm": 0.15,
-      "max_mm": 0.91,
-      "mesh_mL": 1209.08,
-      "slice_dice_min_ge20vox": 0.941,
+      "dice": 0.9962,
+      "p95_mm": 0.53,
+      "mean_mm": 0.21,
+      "max_mm": 7.39,
+      "mesh_mL": 1200.13,
+      "slice_dice_min_ge20vox": 0.86,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 331110,
+      "taubin_iter": 20,
+      "faces": 307708,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9956
      },
      "source": {
       "kind": "consensus",
@@ -3131,17 +3208,19 @@
       }
      },
      "verify": {
-      "dice": 0.9984,
-      "p95_mm": 0.36,
-      "mean_mm": 0.15,
-      "max_mm": 0.82,
-      "mesh_mL": 1261.84,
-      "slice_dice_min_ge20vox": 0.987,
+      "dice": 0.9973,
+      "p95_mm": 0.46,
+      "mean_mm": 0.19,
+      "max_mm": 5.53,
+      "mesh_mL": 1252.99,
+      "slice_dice_min_ge20vox": 0.947,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 344490,
+      "taubin_iter": 20,
+      "faces": 339028,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9957
      },
      "source": {
       "kind": "consensus",
@@ -3386,17 +3465,19 @@
       }
      },
      "verify": {
-      "dice": 0.9992,
-      "p95_mm": 0.54,
-      "mean_mm": 0.22,
-      "max_mm": 1.24,
-      "mesh_mL": 1203.99,
-      "slice_dice_min_ge20vox": 0.993,
+      "dice": 0.9971,
+      "p95_mm": 0.71,
+      "mean_mm": 0.28,
+      "max_mm": 3.8,
+      "mesh_mL": 1196.57,
+      "slice_dice_min_ge20vox": 0.9,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 111276,
+      "taubin_iter": 20,
+      "faces": 110728,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9951
      },
      "source": {
       "kind": "consensus",
@@ -3504,45 +3585,45 @@
       "mesh": "meshes/growth/liver_refined/R1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 12.76,
-      "min_mm": -7.67,
-      "mean_mm": 0.89,
-      "mean_abs_mm": 1.94,
-      "p95_abs_mm": 4.79,
-      "frac_grown_gt2mm": 0.299,
-      "frac_retracted_gt2mm": 0.103,
+      "max_mm": 10.46,
+      "min_mm": -6.52,
+      "mean_mm": 0.92,
+      "mean_abs_mm": 1.99,
+      "p95_abs_mm": 4.84,
+      "frac_grown_gt2mm": 0.312,
+      "frac_retracted_gt2mm": 0.108,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 2.6,
+      "surface_centroid_shift_mm": 1.6,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/R1_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 16.85,
-      "min_mm": -14.64,
-      "mean_mm": 0.22,
-      "mean_abs_mm": 3.26,
-      "p95_abs_mm": 10.43,
-      "frac_grown_gt2mm": 0.285,
-      "frac_retracted_gt2mm": 0.25,
+      "max_mm": 14.88,
+      "min_mm": -14.66,
+      "mean_mm": 0.16,
+      "mean_abs_mm": 3.29,
+      "p95_abs_mm": 10.34,
+      "frac_grown_gt2mm": 0.287,
+      "frac_retracted_gt2mm": 0.256,
       "scale_mm": 15.0,
-      "surface_centroid_shift_mm": 4.9,
+      "surface_centroid_shift_mm": 3.9,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/liver_refined/R1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 13.01,
-      "min_mm": -15.49,
-      "mean_mm": -0.64,
-      "mean_abs_mm": 3.01,
+      "max_mm": 11.89,
+      "min_mm": -15.43,
+      "mean_mm": -0.72,
+      "mean_abs_mm": 3.03,
       "p95_abs_mm": 8.72,
-      "frac_grown_gt2mm": 0.218,
-      "frac_retracted_gt2mm": 0.305,
+      "frac_grown_gt2mm": 0.215,
+      "frac_retracted_gt2mm": 0.312,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 4.6,
+      "surface_centroid_shift_mm": 4.0,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     },
@@ -3551,45 +3632,45 @@
       "mesh": "meshes/growth/lesion/R1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 11.94,
-      "min_mm": -7.18,
-      "mean_mm": 0.87,
-      "mean_abs_mm": 1.86,
-      "p95_abs_mm": 4.53,
-      "frac_grown_gt2mm": 0.293,
-      "frac_retracted_gt2mm": 0.096,
+      "max_mm": 9.74,
+      "min_mm": -5.97,
+      "mean_mm": 0.91,
+      "mean_abs_mm": 1.91,
+      "p95_abs_mm": 4.61,
+      "frac_grown_gt2mm": 0.305,
+      "frac_retracted_gt2mm": 0.1,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 2.0,
+      "surface_centroid_shift_mm": 0.7,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/lesion/R1_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 16.79,
-      "min_mm": -12.62,
-      "mean_mm": 0.18,
-      "mean_abs_mm": 3.17,
-      "p95_abs_mm": 9.75,
-      "frac_grown_gt2mm": 0.288,
-      "frac_retracted_gt2mm": 0.275,
+      "max_mm": 14.39,
+      "min_mm": -12.77,
+      "mean_mm": 0.12,
+      "mean_abs_mm": 3.21,
+      "p95_abs_mm": 9.71,
+      "frac_grown_gt2mm": 0.29,
+      "frac_retracted_gt2mm": 0.283,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 4.1,
+      "surface_centroid_shift_mm": 2.7,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/R1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 12.6,
-      "min_mm": -15.16,
-      "mean_mm": -0.7,
-      "mean_abs_mm": 2.83,
-      "p95_abs_mm": 8.32,
-      "frac_grown_gt2mm": 0.209,
-      "frac_retracted_gt2mm": 0.3,
+      "max_mm": 10.45,
+      "min_mm": -15.03,
+      "mean_mm": -0.77,
+      "mean_abs_mm": 2.85,
+      "p95_abs_mm": 8.29,
+      "frac_grown_gt2mm": 0.205,
+      "frac_retracted_gt2mm": 0.307,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 3.0,
+      "surface_centroid_shift_mm": 2.3,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     },
@@ -3598,49 +3679,51 @@
       "mesh": "meshes/growth/skeleton/R1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 23.17,
-      "min_mm": -14.84,
-      "mean_mm": 1.97,
-      "mean_abs_mm": 7.48,
-      "p95_abs_mm": 18.59,
-      "frac_grown_gt2mm": 0.412,
-      "frac_retracted_gt2mm": 0.425,
+      "max_mm": 23.04,
+      "min_mm": -14.81,
+      "mean_mm": 2.09,
+      "mean_abs_mm": 7.7,
+      "p95_abs_mm": 18.8,
+      "frac_grown_gt2mm": 0.42,
+      "frac_retracted_gt2mm": 0.426,
       "scale_mm": 20.0,
-      "surface_centroid_shift_mm": 15.5,
+      "surface_centroid_shift_mm": 15.7,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/R1_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 24.84,
-      "min_mm": -11.14,
-      "mean_mm": 0.61,
-      "mean_abs_mm": 4.77,
-      "p95_abs_mm": 14.15,
-      "frac_grown_gt2mm": 0.34,
-      "frac_retracted_gt2mm": 0.387,
+      "max_mm": 22.42,
+      "min_mm": -11.11,
+      "mean_mm": 0.55,
+      "mean_abs_mm": 4.84,
+      "p95_abs_mm": 14.09,
+      "frac_grown_gt2mm": 0.346,
+      "frac_retracted_gt2mm": 0.396,
       "scale_mm": 15.0,
-      "surface_centroid_shift_mm": 10.0,
+      "surface_centroid_shift_mm": 9.6,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/R1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 10.95,
-      "min_mm": -20.58,
-      "mean_mm": -0.45,
-      "mean_abs_mm": 4.21,
-      "p95_abs_mm": 12.66,
-      "frac_grown_gt2mm": 0.351,
-      "frac_retracted_gt2mm": 0.297,
+      "max_mm": 10.57,
+      "min_mm": -20.7,
+      "mean_mm": -0.49,
+      "mean_abs_mm": 4.28,
+      "p95_abs_mm": 13.01,
+      "frac_grown_gt2mm": 0.35,
+      "frac_retracted_gt2mm": 0.301,
       "scale_mm": 15.0,
-      "surface_centroid_shift_mm": 6.3,
+      "surface_centroid_shift_mm": 6.9,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "L1",
@@ -3750,7 +3833,9 @@
       "taubin_iter": 30,
       "faces": 25018,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.002
      },
      "source": {
       "kind": "consensus",
@@ -3927,17 +4012,19 @@
       }
      },
      "verify": {
-      "dice": 0.9987,
-      "p95_mm": 0.31,
-      "mean_mm": 0.12,
-      "max_mm": 0.69,
-      "mesh_mL": 33.47,
-      "slice_dice_min_ge20vox": 0.964,
+      "dice": 0.9954,
+      "p95_mm": 0.43,
+      "mean_mm": 0.16,
+      "max_mm": 1.33,
+      "mesh_mL": 33.23,
+      "slice_dice_min_ge20vox": 0.947,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 31786,
+      "taubin_iter": 20,
+      "faces": 31580,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9938
      },
      "source": {
       "kind": "consensus",
@@ -4124,7 +4211,9 @@
       "taubin_iter": 30,
       "faces": 15138,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -4226,15 +4315,15 @@
       "mesh": "meshes/growth/liver_refined/L1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 8.65,
-      "min_mm": -4.31,
-      "mean_mm": 2.83,
-      "mean_abs_mm": 3.42,
-      "p95_abs_mm": 7.35,
-      "frac_grown_gt2mm": 0.612,
-      "frac_retracted_gt2mm": 0.067,
+      "max_mm": 8.37,
+      "min_mm": -4.32,
+      "mean_mm": 2.75,
+      "mean_abs_mm": 3.38,
+      "p95_abs_mm": 7.24,
+      "frac_grown_gt2mm": 0.608,
+      "frac_retracted_gt2mm": 0.071,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 5.2,
+      "surface_centroid_shift_mm": 5.4,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
@@ -4256,15 +4345,15 @@
       "mesh": "meshes/growth/liver_refined/L1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 19.81,
-      "min_mm": -8.83,
-      "mean_mm": 4.69,
-      "mean_abs_mm": 5.84,
-      "p95_abs_mm": 15.25,
-      "frac_grown_gt2mm": 0.617,
-      "frac_retracted_gt2mm": 0.108,
+      "max_mm": 19.93,
+      "min_mm": -8.88,
+      "mean_mm": 4.85,
+      "mean_abs_mm": 5.98,
+      "p95_abs_mm": 15.49,
+      "frac_grown_gt2mm": 0.631,
+      "frac_retracted_gt2mm": 0.105,
       "scale_mm": 20.0,
-      "surface_centroid_shift_mm": 4.7,
+      "surface_centroid_shift_mm": 4.8,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     },
@@ -4273,15 +4362,15 @@
       "mesh": "meshes/growth/lesion/L1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 5.9,
-      "min_mm": -1.58,
-      "mean_mm": 2.37,
-      "mean_abs_mm": 2.39,
-      "p95_abs_mm": 4.37,
-      "frac_grown_gt2mm": 0.613,
+      "max_mm": 5.81,
+      "min_mm": -1.53,
+      "mean_mm": 2.26,
+      "mean_abs_mm": 2.29,
+      "p95_abs_mm": 4.16,
+      "frac_grown_gt2mm": 0.579,
       "frac_retracted_gt2mm": 0.0,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 0.6,
+      "surface_centroid_shift_mm": 0.5,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
@@ -4303,13 +4392,13 @@
       "mesh": "meshes/growth/lesion/L1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 21.04,
-      "min_mm": -4.95,
-      "mean_mm": 4.55,
-      "mean_abs_mm": 5.14,
-      "p95_abs_mm": 16.68,
-      "frac_grown_gt2mm": 0.573,
-      "frac_retracted_gt2mm": 0.054,
+      "max_mm": 21.33,
+      "min_mm": -4.88,
+      "mean_mm": 4.71,
+      "mean_abs_mm": 5.26,
+      "p95_abs_mm": 16.95,
+      "frac_grown_gt2mm": 0.583,
+      "frac_retracted_gt2mm": 0.052,
       "scale_mm": 20.0,
       "surface_centroid_shift_mm": 5.3,
       "frame": "mesh vertices in the LATER date's own RAS frame"
@@ -4320,15 +4409,15 @@
       "mesh": "meshes/growth/skeleton/L1_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 15.36,
-      "min_mm": -7.32,
-      "mean_mm": 4.82,
-      "mean_abs_mm": 6.81,
-      "p95_abs_mm": 14.14,
-      "frac_grown_gt2mm": 0.619,
-      "frac_retracted_gt2mm": 0.214,
+      "max_mm": 15.19,
+      "min_mm": -7.22,
+      "mean_mm": 4.8,
+      "mean_abs_mm": 6.79,
+      "p95_abs_mm": 14.06,
+      "frac_grown_gt2mm": 0.621,
+      "frac_retracted_gt2mm": 0.215,
       "scale_mm": 15.0,
-      "surface_centroid_shift_mm": 11.1,
+      "surface_centroid_shift_mm": 11.2,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
@@ -4350,19 +4439,21 @@
       "mesh": "meshes/growth/skeleton/L1_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 24.83,
-      "min_mm": -7.74,
-      "mean_mm": 6.34,
-      "mean_abs_mm": 8.08,
-      "p95_abs_mm": 21.44,
-      "frac_grown_gt2mm": 0.616,
-      "frac_retracted_gt2mm": 0.173,
+      "max_mm": 25.11,
+      "min_mm": -7.72,
+      "mean_mm": 6.46,
+      "mean_abs_mm": 8.22,
+      "p95_abs_mm": 21.67,
+      "frac_grown_gt2mm": 0.62,
+      "frac_retracted_gt2mm": 0.172,
       "scale_mm": 25.0,
       "surface_centroid_shift_mm": 11.5,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "S8",
@@ -4496,17 +4587,19 @@
       }
      },
      "verify": {
-      "dice": 0.9976,
-      "p95_mm": 0.36,
-      "mean_mm": 0.14,
-      "max_mm": 0.77,
-      "mesh_mL": 68.15,
-      "slice_dice_min_ge20vox": 0.99,
+      "dice": 0.992,
+      "p95_mm": 0.53,
+      "mean_mm": 0.2,
+      "max_mm": 2.2,
+      "mesh_mL": 67.42,
+      "slice_dice_min_ge20vox": 0.968,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 51822,
+      "taubin_iter": 20,
+      "faces": 49308,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9917
      },
      "source": {
       "kind": "consensus",
@@ -4649,17 +4742,19 @@
       }
      },
      "verify": {
-      "dice": 0.9992,
-      "p95_mm": 0.32,
-      "mean_mm": 0.12,
-      "max_mm": 0.76,
-      "mesh_mL": 70.8,
-      "slice_dice_min_ge20vox": 0.986,
+      "dice": 0.9962,
+      "p95_mm": 0.45,
+      "mean_mm": 0.17,
+      "max_mm": 1.5,
+      "mesh_mL": 70.22,
+      "slice_dice_min_ge20vox": 0.981,
       "passed": true,
-      "taubin_iter": 30,
-      "faces": 53054,
+      "taubin_iter": 20,
+      "faces": 53068,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9926
      },
      "source": {
       "kind": "consensus",
@@ -4880,7 +4975,9 @@
       "taubin_iter": 30,
       "faces": 18724,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0009
      },
      "source": {
       "kind": "consensus",
@@ -4983,27 +5080,27 @@
       "mesh": "meshes/growth/liver_refined/S8_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 9.82,
-      "min_mm": -7.0,
-      "mean_mm": 0.99,
-      "mean_abs_mm": 3.49,
-      "p95_abs_mm": 6.44,
-      "frac_grown_gt2mm": 0.47,
-      "frac_retracted_gt2mm": 0.284,
+      "max_mm": 9.86,
+      "min_mm": -6.83,
+      "mean_mm": 1.01,
+      "mean_abs_mm": 3.62,
+      "p95_abs_mm": 6.5,
+      "frac_grown_gt2mm": 0.48,
+      "frac_retracted_gt2mm": 0.294,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 5.8,
+      "surface_centroid_shift_mm": 6.1,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/liver_refined/S8_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 14.31,
-      "min_mm": -9.61,
-      "mean_mm": 2.61,
-      "mean_abs_mm": 5.2,
-      "p95_abs_mm": 10.1,
-      "frac_grown_gt2mm": 0.6,
+      "max_mm": 14.43,
+      "min_mm": -9.64,
+      "mean_mm": 2.76,
+      "mean_abs_mm": 5.39,
+      "p95_abs_mm": 10.49,
+      "frac_grown_gt2mm": 0.606,
       "frac_retracted_gt2mm": 0.232,
       "scale_mm": 15.0,
       "surface_centroid_shift_mm": 10.3,
@@ -5013,15 +5110,15 @@
       "mesh": "meshes/growth/liver_refined/S8_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with the REFINED liver-mask rigid fit (Liver, mask fit); magenta = outward growth, blue = retraction; includes the residual liver misalignment (lesion centroid offsets in the alignment line), so uniform magenta on one side and blue on the other is likely misregistration",
       "alignment": "refined liver-mask rigid fit",
-      "max_mm": 10.01,
-      "min_mm": -7.29,
-      "mean_mm": 1.52,
-      "mean_abs_mm": 3.09,
-      "p95_abs_mm": 8.49,
-      "frac_grown_gt2mm": 0.371,
-      "frac_retracted_gt2mm": 0.177,
+      "max_mm": 10.13,
+      "min_mm": -7.4,
+      "mean_mm": 1.63,
+      "mean_abs_mm": 3.16,
+      "p95_abs_mm": 8.65,
+      "frac_grown_gt2mm": 0.383,
+      "frac_retracted_gt2mm": 0.174,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 6.1,
+      "surface_centroid_shift_mm": 6.0,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     },
@@ -5030,12 +5127,12 @@
       "mesh": "meshes/growth/lesion/S8_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 11.59,
-      "min_mm": -2.81,
-      "mean_mm": 0.4,
-      "mean_abs_mm": 1.19,
-      "p95_abs_mm": 3.56,
-      "frac_grown_gt2mm": 0.107,
+      "max_mm": 11.51,
+      "min_mm": -2.8,
+      "mean_mm": 0.39,
+      "mean_abs_mm": 1.2,
+      "p95_abs_mm": 3.49,
+      "frac_grown_gt2mm": 0.108,
       "frac_retracted_gt2mm": 0.019,
       "scale_mm": 10.0,
       "surface_centroid_shift_mm": 0.7,
@@ -5045,30 +5142,30 @@
       "mesh": "meshes/growth/lesion/S8_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 11.37,
-      "min_mm": -3.77,
-      "mean_mm": 1.33,
-      "mean_abs_mm": 1.77,
-      "p95_abs_mm": 4.54,
-      "frac_grown_gt2mm": 0.296,
-      "frac_retracted_gt2mm": 0.034,
+      "max_mm": 11.69,
+      "min_mm": -3.99,
+      "mean_mm": 1.49,
+      "mean_abs_mm": 1.92,
+      "p95_abs_mm": 4.87,
+      "frac_grown_gt2mm": 0.332,
+      "frac_retracted_gt2mm": 0.036,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 1.1,
+      "surface_centroid_shift_mm": 1.3,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/lesion/S8_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface mapped with THIS lesion's own rigid fit (R1, L1, S8; the small lesions use the refined liver fit); magenta = outward growth, blue = retraction. The lesion fit removes the lesion's displacement, so the colours show change of shape and size; a growth that is truly one-sided is partly absorbed into the fit (rigid, maximum overlap)",
       "alignment": "lesion rigid fit",
-      "max_mm": 6.93,
-      "min_mm": -4.18,
-      "mean_mm": 1.02,
-      "mean_abs_mm": 1.4,
-      "p95_abs_mm": 3.27,
-      "frac_grown_gt2mm": 0.227,
-      "frac_retracted_gt2mm": 0.025,
+      "max_mm": 7.05,
+      "min_mm": -4.21,
+      "mean_mm": 1.14,
+      "mean_abs_mm": 1.51,
+      "p95_abs_mm": 3.44,
+      "frac_grown_gt2mm": 0.268,
+      "frac_retracted_gt2mm": 0.026,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 0.7,
+      "surface_centroid_shift_mm": 0.8,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     },
@@ -5077,49 +5174,51 @@
       "mesh": "meshes/growth/skeleton/S8_may2025__jun2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 23.22,
-      "min_mm": -15.0,
-      "mean_mm": 6.74,
-      "mean_abs_mm": 9.86,
-      "p95_abs_mm": 19.17,
-      "frac_grown_gt2mm": 0.694,
+      "max_mm": 22.94,
+      "min_mm": -15.07,
+      "mean_mm": 6.85,
+      "mean_abs_mm": 10.02,
+      "p95_abs_mm": 19.35,
+      "frac_grown_gt2mm": 0.698,
       "frac_retracted_gt2mm": 0.205,
       "scale_mm": 20.0,
-      "surface_centroid_shift_mm": 20.2,
+      "surface_centroid_shift_mm": 20.1,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "may2025__sep2026": {
       "mesh": "meshes/growth/skeleton/S8_may2025__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 17.05,
-      "min_mm": -13.18,
-      "mean_mm": 4.22,
-      "mean_abs_mm": 7.2,
-      "p95_abs_mm": 14.57,
-      "frac_grown_gt2mm": 0.631,
-      "frac_retracted_gt2mm": 0.219,
+      "max_mm": 17.29,
+      "min_mm": -13.31,
+      "mean_mm": 4.37,
+      "mean_abs_mm": 7.37,
+      "p95_abs_mm": 14.89,
+      "frac_grown_gt2mm": 0.636,
+      "frac_retracted_gt2mm": 0.218,
       "scale_mm": 15.0,
-      "surface_centroid_shift_mm": 14.8,
+      "surface_centroid_shift_mm": 14.5,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      },
      "jun2026__sep2026": {
       "mesh": "meshes/growth/skeleton/S8_jun2026__sep2026.ply",
       "note": "vertex colours = signed distance (mm) of the later surface from the earlier one, the earlier surface placed WITHOUT registration (plain spine-anchored scanner frame, A1); magenta = outward growth, blue = retraction; dominated by the breathing shift of the liver (cm), so this map mostly shows misalignment, not growth",
       "alignment": "none (spine-anchored scanner frame)",
-      "max_mm": 12.38,
-      "min_mm": -9.87,
-      "mean_mm": 2.04,
-      "mean_abs_mm": 5.47,
-      "p95_abs_mm": 8.95,
-      "frac_grown_gt2mm": 0.593,
-      "frac_retracted_gt2mm": 0.289,
+      "max_mm": 12.59,
+      "min_mm": -9.98,
+      "mean_mm": 2.2,
+      "mean_abs_mm": 5.61,
+      "p95_abs_mm": 9.14,
+      "frac_grown_gt2mm": 0.6,
+      "frac_retracted_gt2mm": 0.286,
       "scale_mm": 10.0,
-      "surface_centroid_shift_mm": 8.1,
+      "surface_centroid_shift_mm": 8.2,
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "K",
@@ -5263,7 +5362,9 @@
       "taubin_iter": 30,
       "faces": 488,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9853
      },
      "source": {
       "kind": "consensus",
@@ -5417,7 +5518,9 @@
       "taubin_iter": 30,
       "faces": 700,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0096
      },
      "source": {
       "kind": "consensus",
@@ -5526,7 +5629,9 @@
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "N",
@@ -5636,7 +5741,9 @@
       "taubin_iter": 30,
       "faces": 364,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -5790,7 +5897,9 @@
       "taubin_iter": 30,
       "faces": 796,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -5898,7 +6007,9 @@
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "P7",
@@ -6043,7 +6154,9 @@
       "taubin_iter": 30,
       "faces": 456,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0308
      },
      "source": {
       "kind": "consensus",
@@ -6076,7 +6189,9 @@
      "label_name": "lesion 5"
     }
    },
-   "growth_sets": {}
+   "growth_sets": {},
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "S1",
@@ -6220,7 +6335,9 @@
       "taubin_iter": 30,
       "faces": 2184,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0015
      },
      "source": {
       "kind": "consensus",
@@ -6373,7 +6490,9 @@
       "taubin_iter": 30,
       "faces": 2688,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0028
      },
      "source": {
       "kind": "consensus",
@@ -6526,7 +6645,9 @@
       "taubin_iter": 20,
       "faces": 1372,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9922
      },
      "source": {
       "kind": "consensus",
@@ -6763,7 +6884,9 @@
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   },
   {
    "id": "S7sat",
@@ -6907,7 +7030,9 @@
       "taubin_iter": 30,
       "faces": 2176,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0041
      },
      "source": {
       "kind": "consensus",
@@ -7060,7 +7185,9 @@
       "taubin_iter": 30,
       "faces": 2144,
       "max_faces": 4000000,
-      "decimated": false
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 1.0
      },
      "source": {
       "kind": "consensus",
@@ -7169,7 +7296,9 @@
       "frame": "mesh vertices in the LATER date's own RAS frame"
      }
     }
-   }
+   },
+   "opacity": 0.45,
+   "default_visible": true
   }
  ],
  "reports": "report_claims.json",
@@ -7188,16 +7317,91 @@
   "Sizes are measured the radiologists' way: maximal axial diameter (edge-to-edge on the best axial slice), perpendicular width on that slice, craniocaudal extent.",
   "Alignment modes: Spine-anchored (A1) and Liver (landmark fit, B1) from registration.json; Liver (mask fit, refined) = rigid fit of the consensus liver masks (default); Lesion R1 / L1 / S8 = rigid fit of that lesion's masks (growth in place). Residuals per date pair in registration_quality.json and in the alignment line. A non-rigid liver warp was tried and not shipped (see BUILD_NOTES)."
  ],
- "generated": "2026-10-09T01:58:33",
+ "generated": "2026-10-11T13:29:31",
  "source": "consensus",
  "build": {
   "status": "done",
   "tool": "tools/build_viewer_data.py",
-  "recipe": "meshes.py-v1:pad2,zup-auto,mc0.5,taubin30/20/10,pb0.1,norm,xycrop-equiv",
-  "finished": "2026-10-09T01:58:33"
+  "recipe": "v2-smooth:zup-auto,gauss-ladder(xy0.9/z1.1 vox t20 | xy0.75/z0.9 t20 | v1),mc0.5,pb0.1,norm,crop",
+  "finished": "2026-10-11T13:29:31"
+ },
+ "palette": {
+  "groups": {
+   "Anatomy": [
+    "liver",
+    "gallbladder",
+    "bile_ducts"
+   ],
+   "Tumour": [
+    "R1",
+    "L1",
+    "S8",
+    "S1",
+    "S7sat",
+    "K",
+    "N",
+    "P7"
+   ],
+   "Activity": [
+    "active",
+    "active_pet_only",
+    "active_inferred"
+   ],
+   "Vessels": [
+    "portal",
+    "hepatic_veins",
+    "ivc",
+    "hepatic_artery",
+    "contact_left_portal"
+   ],
+   "Internal structure": [
+    "walls",
+    "cores",
+    "nodules",
+    "calcifications"
+   ],
+   "Couinaud segments": [
+    "seg1",
+    "seg2",
+    "seg3",
+    "seg4",
+    "seg5",
+    "seg6",
+    "seg7",
+    "seg8"
+   ],
+   "Uncertainty": [
+    "uncertain"
+   ]
+  },
+  "emissive": {
+   "active": 0.45,
+   "active_pet_only": 0.3,
+   "active_inferred": 0.35
+  },
+  "growth_ramp": {
+   "shrink": "#1f78b4",
+   "zero": "#d9d9d9",
+   "grow": "#c2187e"
+  },
+  "about": "Semantic palette of the liver viewer (2026-10-11): hue = kind of tissue. Anatomy muted; vessels by convention (blues/teal); tumour one violet-magenta family separated by lightness; cores pale ice (fluid); FDG activity the only hot colours (yellow -> orange), emissive; calcifications ivory; nodules lime; segments soft pastels; growth map teal-blue <- grey -> magenta (never hot). Checked by tools/palette/cvd_check.py.",
+  "clean_view": [
+   "liver",
+   "les:R1",
+   "les:L1",
+   "les:S8",
+   "active",
+   "active_pet_only",
+   "portal",
+   "hepatic_veins",
+   "ivc",
+   "bile_ducts",
+   "gallbladder",
+   "contact_left_portal"
+  ]
  },
  "lod": {
-  "note": "Low-detail PREVIEW meshes (quadric decimation to ~20 % of the faces, display only; the full meshes stay the reference). Used by the embedded viewer and while the camera moves in the full viewer; \"High detail\" loads the full meshes. Per file: p95 / max surface distance (mm) and Dice of both meshes voxelised (1-2 mm grid; for thin shells such as walls the grid Dice understates agreement, p95 is the meaningful number). Max distances of 2-10 mm come from isolated single-voxel islands (14-50 vertices, < 0.01 mL) that the decimation drops; the main surfaces stay within 0.2 mm (p95). FDG-active tissue, nodules and calcifications are never decimated.",
+  "note": "Low-detail PREVIEW meshes (quadric decimation to ~20 % of the faces, display only; the full meshes stay the reference). Used by the embedded viewer and while the camera moves; \"High detail\" loads the full meshes. Error per file vs the full mesh: p95 / max surface distance (mm) and Dice of both meshes voxelised.",
   "ratio": 0.2,
   "min_faces": 20000,
   "script": "tools/build_lod.py",
@@ -7260,165 +7464,165 @@
    "meshes/growth/lesion/L1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/lesion/L1_may2025__jun2026.ply",
     "faces": 8000,
-    "full_faces": 31786,
+    "full_faces": 31580,
     "mb": 0.21,
     "full_mb": 0.84,
-    "p95_mm": 0.04,
-    "max_mm": 0.09,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
     "dice": 0.9992,
     "dice_grid_mm": 1.0
    },
    "meshes/growth/lesion/R1_jun2026__sep2026.ply": {
     "path": "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/lesion/R1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/lesion/R1_may2025__jun2026.ply",
-    "faces": 68898,
-    "full_faces": 344490,
-    "mb": 1.83,
-    "full_mb": 9.13,
-    "p95_mm": 0.03,
-    "max_mm": 0.7,
-    "dice": 0.9998,
+    "faces": 67804,
+    "full_faces": 339028,
+    "mb": 1.8,
+    "full_mb": 8.98,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9999,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/lesion/R1_may2025__sep2026.ply": {
     "path": "meshes_lod/growth/lesion/R1_may2025__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/lesion/S8_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/lesion/S8_may2025__jun2026.ply",
-    "faces": 10610,
-    "full_faces": 53054,
+    "faces": 10612,
+    "full_faces": 53068,
     "mb": 0.28,
     "full_mb": 1.41,
-    "p95_mm": 0.03,
-    "max_mm": 0.2,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
     "dice": 0.9995,
     "dice_grid_mm": 1.0
    },
    "meshes/growth/liver_refined/L1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply",
     "faces": 8000,
-    "full_faces": 31786,
+    "full_faces": 31580,
     "mb": 0.21,
     "full_mb": 0.84,
-    "p95_mm": 0.04,
-    "max_mm": 0.09,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
     "dice": 0.9992,
     "dice_grid_mm": 1.0
    },
    "meshes/growth/liver_refined/R1_jun2026__sep2026.ply": {
     "path": "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/liver_refined/R1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply",
-    "faces": 68898,
-    "full_faces": 344490,
-    "mb": 1.83,
-    "full_mb": 9.13,
-    "p95_mm": 0.03,
-    "max_mm": 0.7,
-    "dice": 0.9998,
+    "faces": 67804,
+    "full_faces": 339028,
+    "mb": 1.8,
+    "full_mb": 8.98,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9999,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/liver_refined/R1_may2025__sep2026.ply": {
     "path": "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/liver_refined/S8_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply",
-    "faces": 10610,
-    "full_faces": 53054,
+    "faces": 10612,
+    "full_faces": 53068,
     "mb": 0.28,
     "full_mb": 1.41,
-    "p95_mm": 0.03,
-    "max_mm": 0.2,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
     "dice": 0.9995,
     "dice_grid_mm": 1.0
    },
    "meshes/growth/skeleton/L1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply",
     "faces": 8000,
-    "full_faces": 31786,
+    "full_faces": 31580,
     "mb": 0.21,
     "full_mb": 0.84,
-    "p95_mm": 0.04,
-    "max_mm": 0.09,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
     "dice": 0.9992,
     "dice_grid_mm": 1.0
    },
    "meshes/growth/skeleton/R1_jun2026__sep2026.ply": {
     "path": "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/skeleton/R1_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply",
-    "faces": 68898,
-    "full_faces": 344490,
-    "mb": 1.83,
-    "full_mb": 9.13,
-    "p95_mm": 0.03,
-    "max_mm": 0.7,
-    "dice": 0.9998,
+    "faces": 67804,
+    "full_faces": 339028,
+    "mb": 1.8,
+    "full_mb": 8.98,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9999,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/skeleton/R1_may2025__sep2026.ply": {
     "path": "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply",
-    "faces": 22254,
-    "full_faces": 111276,
+    "faces": 22144,
+    "full_faces": 110728,
     "mb": 0.59,
-    "full_mb": 2.95,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "full_mb": 2.93,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/growth/skeleton/S8_may2025__jun2026.ply": {
     "path": "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply",
-    "faces": 10610,
-    "full_faces": 53054,
+    "faces": 10612,
+    "full_faces": 53068,
     "mb": 0.28,
     "full_mb": 1.41,
-    "p95_mm": 0.03,
-    "max_mm": 0.2,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
     "dice": 0.9995,
     "dice_grid_mm": 1.0
    },
@@ -7447,11 +7651,11 @@
    "meshes/jun2026/lesion_L1.ply": {
     "path": "meshes_lod/jun2026/lesion_L1.ply",
     "faces": 8000,
-    "full_faces": 31786,
+    "full_faces": 31580,
     "mb": 0.2,
-    "full_mb": 0.8,
-    "p95_mm": 0.04,
-    "max_mm": 0.09,
+    "full_mb": 0.79,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
     "dice": 0.9992,
     "dice_grid_mm": 1.0
    },
@@ -7479,45 +7683,45 @@
    },
    "meshes/jun2026/lesion_R1.ply": {
     "path": "meshes_lod/jun2026/lesion_R1.ply",
-    "faces": 68898,
-    "full_faces": 344490,
-    "mb": 1.72,
-    "full_mb": 8.61,
-    "p95_mm": 0.03,
-    "max_mm": 0.7,
-    "dice": 0.9998,
+    "faces": 67804,
+    "full_faces": 339028,
+    "mb": 1.7,
+    "full_mb": 8.48,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9999,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/lesion_R1_cores.ply": {
     "path": "meshes_lod/jun2026/lesion_R1_cores.ply",
-    "faces": 80000,
-    "full_faces": 400000,
-    "mb": 1.99,
-    "full_mb": 9.99,
-    "p95_mm": 0.15,
-    "max_mm": 3.22,
-    "dice": 0.5212,
+    "faces": 119706,
+    "full_faces": 598536,
+    "mb": 2.98,
+    "full_mb": 14.95,
+    "p95_mm": 0.1,
+    "max_mm": 3.21,
+    "dice": 0.969,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/lesion_R1_walls.ply": {
     "path": "meshes_lod/jun2026/lesion_R1_walls.ply",
-    "faces": 120000,
-    "full_faces": 600000,
-    "mb": 2.96,
-    "full_mb": 14.94,
-    "p95_mm": 0.15,
-    "max_mm": 2.87,
-    "dice": 0.5724,
+    "faces": 189602,
+    "full_faces": 948018,
+    "mb": 4.69,
+    "full_mb": 23.64,
+    "p95_mm": 0.09,
+    "max_mm": 2.37,
+    "dice": 0.744,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/lesion_S8.ply": {
     "path": "meshes_lod/jun2026/lesion_S8.ply",
-    "faces": 10610,
-    "full_faces": 53054,
+    "faces": 10612,
+    "full_faces": 53068,
     "mb": 0.27,
     "full_mb": 1.33,
-    "p95_mm": 0.03,
-    "max_mm": 0.2,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
     "dice": 0.9995,
     "dice_grid_mm": 1.0
    },
@@ -7545,13 +7749,13 @@
    },
    "meshes/jun2026/liver.ply": {
     "path": "meshes_lod/jun2026/liver.ply",
-    "faces": 79999,
-    "full_faces": 399998,
-    "mb": 2.0,
-    "full_mb": 10.0,
-    "p95_mm": 0.07,
-    "max_mm": 3.6,
-    "dice": 0.9954,
+    "faces": 144908,
+    "full_faces": 724544,
+    "mb": 3.62,
+    "full_mb": 18.11,
+    "p95_mm": 0.02,
+    "max_mm": 0.06,
+    "dice": 0.9998,
     "dice_grid_mm": 3.0
    },
    "meshes/jun2026/portal.ply": {
@@ -7578,79 +7782,79 @@
    },
    "meshes/jun2026/seg2.ply": {
     "path": "meshes_lod/jun2026/seg2.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.08,
-    "max_mm": 0.7,
-    "dice": 0.9978,
+    "faces": 38652,
+    "full_faces": 193260,
+    "mb": 0.97,
+    "full_mb": 4.83,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9996,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg3.ply": {
     "path": "meshes_lod/jun2026/seg3.ply",
-    "faces": 23999,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
+    "faces": 26483,
+    "full_faces": 132420,
+    "mb": 0.66,
+    "full_mb": 3.31,
     "p95_mm": 0.05,
-    "max_mm": 1.06,
-    "dice": 0.9987,
+    "max_mm": 0.65,
+    "dice": 0.9991,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg4.ply": {
     "path": "meshes_lod/jun2026/seg4.ply",
-    "faces": 23999,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.05,
-    "max_mm": 3.75,
-    "dice": 0.9946,
+    "faces": 30120,
+    "full_faces": 150604,
+    "mb": 0.75,
+    "full_mb": 3.77,
+    "p95_mm": 0.02,
+    "max_mm": 0.06,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg5.ply": {
     "path": "meshes_lod/jun2026/seg5.ply",
-    "faces": 23999,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.09,
-    "max_mm": 3.05,
-    "dice": 0.9922,
+    "faces": 47116,
+    "full_faces": 235588,
+    "mb": 1.18,
+    "full_mb": 5.89,
+    "p95_mm": 0.03,
+    "max_mm": 1.46,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg6.ply": {
     "path": "meshes_lod/jun2026/seg6.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.1,
-    "max_mm": 1.43,
-    "dice": 0.9944,
+    "faces": 50763,
+    "full_faces": 253824,
+    "mb": 1.27,
+    "full_mb": 6.35,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9996,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg7.ply": {
     "path": "meshes_lod/jun2026/seg7.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.09,
-    "max_mm": 0.9,
-    "dice": 0.9963,
+    "faces": 43568,
+    "full_faces": 217844,
+    "mb": 1.09,
+    "full_mb": 5.45,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9995,
     "dice_grid_mm": 2.0
    },
    "meshes/jun2026/seg8.ply": {
     "path": "meshes_lod/jun2026/seg8.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.08,
-    "max_mm": 1.52,
-    "dice": 0.9918,
+    "faces": 34994,
+    "full_faces": 174976,
+    "mb": 0.88,
+    "full_mb": 4.37,
+    "p95_mm": 0.04,
+    "max_mm": 0.12,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/hepatic_veins.ply": {
@@ -7666,13 +7870,13 @@
    },
    "meshes/may2025/ivc.ply": {
     "path": "meshes_lod/may2025/ivc.ply",
-    "faces": 14772,
-    "full_faces": 73868,
-    "mb": 0.37,
-    "full_mb": 1.85,
-    "p95_mm": 0.04,
-    "max_mm": 0.25,
-    "dice": 0.9989,
+    "faces": 14566,
+    "full_faces": 72836,
+    "mb": 0.36,
+    "full_mb": 1.82,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9993,
     "dice_grid_mm": 1.0
    },
    "meshes/may2025/lesion_L1.ply": {
@@ -7699,13 +7903,13 @@
    },
    "meshes/may2025/lesion_R1.ply": {
     "path": "meshes_lod/may2025/lesion_R1.ply",
-    "faces": 66222,
-    "full_faces": 331110,
-    "mb": 1.65,
-    "full_mb": 8.28,
-    "p95_mm": 0.06,
-    "max_mm": 1.14,
-    "dice": 0.9995,
+    "faces": 61540,
+    "full_faces": 307708,
+    "mb": 1.54,
+    "full_mb": 7.69,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9996,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/lesion_R1_cores.ply": {
@@ -7732,13 +7936,13 @@
    },
    "meshes/may2025/lesion_S8.ply": {
     "path": "meshes_lod/may2025/lesion_S8.ply",
-    "faces": 10364,
-    "full_faces": 51822,
-    "mb": 0.26,
-    "full_mb": 1.3,
-    "p95_mm": 0.06,
-    "max_mm": 0.92,
-    "dice": 0.9991,
+    "faces": 9860,
+    "full_faces": 49308,
+    "mb": 0.25,
+    "full_mb": 1.23,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9989,
     "dice_grid_mm": 1.0
    },
    "meshes/may2025/lesion_S8_cores.ply": {
@@ -7765,13 +7969,13 @@
    },
    "meshes/may2025/liver.ply": {
     "path": "meshes_lod/may2025/liver.ply",
-    "faces": 79998,
-    "full_faces": 399998,
-    "mb": 2.0,
-    "full_mb": 10.0,
-    "p95_mm": 0.06,
-    "max_mm": 0.7,
-    "dice": 0.9918,
+    "faces": 122996,
+    "full_faces": 614988,
+    "mb": 3.08,
+    "full_mb": 15.38,
+    "p95_mm": 0.02,
+    "max_mm": 0.05,
+    "dice": 0.9998,
     "dice_grid_mm": 3.0
    },
    "meshes/may2025/portal.ply": {
@@ -7787,91 +7991,90 @@
    },
    "meshes/may2025/seg1.ply": {
     "path": "meshes_lod/may2025/seg1.ply",
-    "faces": 16687,
-    "full_faces": 83442,
-    "mb": 0.42,
-    "full_mb": 2.09,
-    "p95_mm": 0.04,
-    "max_mm": 0.21,
-    "dice": 0.9966,
+    "faces": 16060,
+    "full_faces": 80300,
+    "mb": 0.4,
+    "full_mb": 2.01,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9993,
     "dice_grid_mm": 1.0
    },
    "meshes/may2025/seg2.ply": {
     "path": "meshes_lod/may2025/seg2.ply",
-    "faces": 23010,
-    "full_faces": 115054,
-    "mb": 0.58,
-    "full_mb": 2.88,
-    "p95_mm": 0.04,
-    "max_mm": 0.75,
-    "dice": 0.9991,
+    "faces": 22298,
+    "full_faces": 111496,
+    "mb": 0.56,
+    "full_mb": 2.79,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9994,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg3.ply": {
     "path": "meshes_lod/may2025/seg3.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.04,
-    "max_mm": 1.35,
-    "dice": 0.9954,
+    "faces": 28707,
+    "full_faces": 143540,
+    "mb": 0.72,
+    "full_mb": 3.59,
+    "p95_mm": 0.02,
+    "max_mm": 0.72,
+    "dice": 0.9838,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg4.ply": {
     "path": "meshes_lod/may2025/seg4.ply",
-    "faces": 23998,
-    "full_faces": 119998,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.04,
-    "max_mm": 0.85,
-    "dice": 0.9996,
+    "faces": 27554,
+    "full_faces": 137776,
+    "mb": 0.69,
+    "full_mb": 3.44,
+    "p95_mm": 0.02,
+    "max_mm": 0.06,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg5.ply": {
     "path": "meshes_lod/may2025/seg5.ply",
-    "faces": 23999,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.08,
-    "max_mm": 1.09,
-    "dice": 0.9963,
+    "faces": 40036,
+    "full_faces": 200180,
+    "mb": 1.0,
+    "full_mb": 5.0,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg6.ply": {
     "path": "meshes_lod/may2025/seg6.ply",
-    "faces": 42000,
-    "full_faces": 120000,
-    "mb": 1.05,
-    "full_mb": 3.0,
-    "p95_mm": 0.05,
-    "max_mm": 2.66,
-    "dice": 0.9926,
-    "dice_grid_mm": 2.0,
-    "ratio": 0.35
+    "faces": 39940,
+    "full_faces": 199704,
+    "mb": 1.0,
+    "full_mb": 4.99,
+    "p95_mm": 0.03,
+    "max_mm": 0.07,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg7.ply": {
     "path": "meshes_lod/may2025/seg7.ply",
-    "faces": 23999,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.06,
-    "max_mm": 1.51,
-    "dice": 0.9971,
+    "faces": 32608,
+    "full_faces": 163040,
+    "mb": 0.82,
+    "full_mb": 4.08,
+    "p95_mm": 0.03,
+    "max_mm": 0.06,
+    "dice": 0.9996,
     "dice_grid_mm": 2.0
    },
    "meshes/may2025/seg8.ply": {
     "path": "meshes_lod/may2025/seg8.ply",
-    "faces": 24000,
-    "full_faces": 120000,
-    "mb": 0.6,
-    "full_mb": 3.0,
-    "p95_mm": 0.06,
-    "max_mm": 3.19,
-    "dice": 0.9935,
+    "faces": 32140,
+    "full_faces": 160704,
+    "mb": 0.8,
+    "full_mb": 4.02,
+    "p95_mm": 0.03,
+    "max_mm": 0.08,
+    "dice": 0.9996,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/ivc.ply": {
@@ -7887,13 +8090,13 @@
    },
    "meshes/sep2026/lesion_R1.ply": {
     "path": "meshes_lod/sep2026/lesion_R1.ply",
-    "faces": 22254,
-    "full_faces": 111276,
-    "mb": 0.56,
-    "full_mb": 2.78,
-    "p95_mm": 0.05,
-    "max_mm": 0.19,
-    "dice": 0.9996,
+    "faces": 22144,
+    "full_faces": 110728,
+    "mb": 0.55,
+    "full_mb": 2.77,
+    "p95_mm": 0.03,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/lesion_R1_cores.ply": {
@@ -7942,13 +8145,13 @@
    },
    "meshes/sep2026/liver.ply": {
     "path": "meshes_lod/sep2026/liver.ply",
-    "faces": 45944,
-    "full_faces": 229722,
-    "mb": 1.15,
-    "full_mb": 5.74,
-    "p95_mm": 0.06,
-    "max_mm": 2.47,
-    "dice": 0.9991,
+    "faces": 44906,
+    "full_faces": 224532,
+    "mb": 1.12,
+    "full_mb": 5.61,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9998,
     "dice_grid_mm": 3.0
    },
    "meshes/sep2026/seg1.ply": {
@@ -7964,13 +8167,13 @@
    },
    "meshes/sep2026/seg2.ply": {
     "path": "meshes_lod/sep2026/seg2.ply",
-    "faces": 14013,
-    "full_faces": 70074,
-    "mb": 0.35,
-    "full_mb": 1.75,
-    "p95_mm": 0.08,
-    "max_mm": 0.21,
-    "dice": 0.9986,
+    "faces": 13524,
+    "full_faces": 67620,
+    "mb": 0.34,
+    "full_mb": 1.69,
+    "p95_mm": 0.06,
+    "max_mm": 0.2,
+    "dice": 0.9993,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/seg3.ply": {
@@ -7997,35 +8200,35 @@
    },
    "meshes/sep2026/seg5.ply": {
     "path": "meshes_lod/sep2026/seg5.ply",
-    "faces": 15820,
-    "full_faces": 79100,
-    "mb": 0.4,
-    "full_mb": 1.98,
-    "p95_mm": 0.09,
-    "max_mm": 1.03,
-    "dice": 0.9989,
+    "faces": 15102,
+    "full_faces": 75516,
+    "mb": 0.38,
+    "full_mb": 1.89,
+    "p95_mm": 0.07,
+    "max_mm": 0.14,
+    "dice": 0.9991,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/seg6.ply": {
     "path": "meshes_lod/sep2026/seg6.ply",
-    "faces": 13404,
-    "full_faces": 67024,
-    "mb": 0.34,
-    "full_mb": 1.68,
-    "p95_mm": 0.09,
-    "max_mm": 1.2,
-    "dice": 0.9988,
+    "faces": 12822,
+    "full_faces": 64112,
+    "mb": 0.32,
+    "full_mb": 1.6,
+    "p95_mm": 0.07,
+    "max_mm": 0.15,
+    "dice": 0.9992,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/seg7.ply": {
     "path": "meshes_lod/sep2026/seg7.ply",
-    "faces": 19792,
-    "full_faces": 98968,
-    "mb": 0.5,
-    "full_mb": 2.47,
-    "p95_mm": 0.08,
-    "max_mm": 2.47,
-    "dice": 0.9989,
+    "faces": 18944,
+    "full_faces": 94724,
+    "mb": 0.47,
+    "full_mb": 2.37,
+    "p95_mm": 0.05,
+    "max_mm": 0.1,
+    "dice": 0.9997,
     "dice_grid_mm": 2.0
    },
    "meshes/sep2026/seg8.ply": {
@@ -8039,14 +8242,6 @@
     "dice": 0.9987,
     "dice_grid_mm": 2.0
    }
-  },
-  "excluded": {
-   "meshes/jun2026/active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
-   "meshes/jun2026/active_pet_only.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
-   "meshes/jun2026/lesion_L1_active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
-   "meshes/sep2026/active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
-   "meshes/sep2026/active_pet_only.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
-   "meshes/sep2026/lesion_R1_active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail"
   }
  },
  "qm": {
@@ -8199,21 +8394,21 @@
    },
    "meshes/growth/lesion/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 89047,
+    "bytes": 88973,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "5ea82f40"
+    "sha8": "1a829ba4"
    },
    "meshes/growth/lesion/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 177483,
-    "ply_bytes": 842754,
-    "verts": 15895,
-    "faces": 31786,
+    "bytes": 186802,
+    "ply_bytes": 837295,
+    "verts": 15792,
+    "faces": 31580,
     "max_quant_err_mm": 0.0004,
-    "sha8": "b0db45d6"
+    "sha8": "15a671ae"
    },
    "meshes/growth/lesion/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/L1_may2025__sep2026.ply.qm.gz",
@@ -8235,30 +8430,30 @@
    },
    "meshes/growth/lesion/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 600918,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "7faa3d7c"
+    "bytes": 615256,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "00555882"
    },
    "meshes/growth/lesion/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1821272,
-    "ply_bytes": 9129250,
-    "verts": 172241,
-    "faces": 344490,
+    "bytes": 1827744,
+    "ply_bytes": 8984669,
+    "verts": 169516,
+    "faces": 339028,
     "max_quant_err_mm": 0.0011,
-    "sha8": "35fcb2fd"
+    "sha8": "79b78f58"
    },
    "meshes/growth/lesion/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 602058,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "80e59512"
+    "bytes": 617266,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "39b6b6ab"
    },
    "meshes/growth/lesion/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S1_jun2026__sep2026.ply.qm.gz",
@@ -8298,30 +8493,30 @@
    },
    "meshes/growth/lesion/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 105514,
+    "bytes": 105484,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "fbee55db"
+    "sha8": "d2b7614c"
    },
    "meshes/growth/lesion/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 284476,
-    "ply_bytes": 1406356,
-    "verts": 26529,
-    "faces": 53054,
+    "bytes": 302126,
+    "ply_bytes": 1406727,
+    "verts": 26536,
+    "faces": 53068,
     "max_quant_err_mm": 0.0005,
-    "sha8": "a9a1a1d2"
+    "sha8": "3dc6749a"
    },
    "meshes/growth/lesion/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/lesion/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 106414,
+    "bytes": 106453,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "1672b6a5"
+    "sha8": "94a52dc8"
    },
    "meshes/growth/liver_refined/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/K_may2025__jun2026.ply.qm.gz",
@@ -8334,21 +8529,21 @@
    },
    "meshes/growth/liver_refined/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 89513,
+    "bytes": 89399,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "3dab17a9"
+    "sha8": "2e3a5285"
    },
    "meshes/growth/liver_refined/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 179533,
-    "ply_bytes": 842754,
-    "verts": 15895,
-    "faces": 31786,
+    "bytes": 188789,
+    "ply_bytes": 837295,
+    "verts": 15792,
+    "faces": 31580,
     "max_quant_err_mm": 0.0004,
-    "sha8": "94a56de9"
+    "sha8": "8744c0da"
    },
    "meshes/growth/liver_refined/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/L1_may2025__sep2026.ply.qm.gz",
@@ -8370,30 +8565,30 @@
    },
    "meshes/growth/liver_refined/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 601015,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "b4594630"
+    "bytes": 615345,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "73c6494c"
    },
    "meshes/growth/liver_refined/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1822258,
-    "ply_bytes": 9129250,
-    "verts": 172241,
-    "faces": 344490,
+    "bytes": 1828606,
+    "ply_bytes": 8984669,
+    "verts": 169516,
+    "faces": 339028,
     "max_quant_err_mm": 0.0011,
-    "sha8": "5f605e09"
+    "sha8": "88634708"
    },
    "meshes/growth/liver_refined/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 597520,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "060cd784"
+    "bytes": 612214,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "06f65620"
    },
    "meshes/growth/liver_refined/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S1_jun2026__sep2026.ply.qm.gz",
@@ -8433,30 +8628,30 @@
    },
    "meshes/growth/liver_refined/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 106835,
+    "bytes": 106869,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "8194421b"
+    "sha8": "bee53ca7"
    },
    "meshes/growth/liver_refined/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 288643,
-    "ply_bytes": 1406356,
-    "verts": 26529,
-    "faces": 53054,
+    "bytes": 306503,
+    "ply_bytes": 1406727,
+    "verts": 26536,
+    "faces": 53068,
     "max_quant_err_mm": 0.0005,
-    "sha8": "630434ca"
+    "sha8": "61e36d4e"
    },
    "meshes/growth/liver_refined/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/liver_refined/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 107364,
+    "bytes": 107310,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "85e3e0d8"
+    "sha8": "5c058042"
    },
    "meshes/growth/skeleton/K_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/K_may2025__jun2026.ply.qm.gz",
@@ -8469,21 +8664,21 @@
    },
    "meshes/growth/skeleton/L1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 89081,
+    "bytes": 89092,
     "ply_bytes": 401581,
     "verts": 7571,
     "faces": 15138,
     "max_quant_err_mm": 0.0005,
-    "sha8": "e4398ca9"
+    "sha8": "c4253544"
    },
    "meshes/growth/skeleton/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 179201,
-    "ply_bytes": 842754,
-    "verts": 15895,
-    "faces": 31786,
+    "bytes": 188815,
+    "ply_bytes": 837295,
+    "verts": 15792,
+    "faces": 31580,
     "max_quant_err_mm": 0.0004,
-    "sha8": "ce8889fc"
+    "sha8": "f09e6236"
    },
    "meshes/growth/skeleton/L1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/L1_may2025__sep2026.ply.qm.gz",
@@ -8505,30 +8700,30 @@
    },
    "meshes/growth/skeleton/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 594680,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "364b055b"
+    "bytes": 609107,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "0797bd88"
    },
    "meshes/growth/skeleton/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 1799515,
-    "ply_bytes": 9129250,
-    "verts": 172241,
-    "faces": 344490,
+    "bytes": 1808477,
+    "ply_bytes": 8984669,
+    "verts": 169516,
+    "faces": 339028,
     "max_quant_err_mm": 0.0011,
-    "sha8": "5f715dbf"
+    "sha8": "3179f792"
    },
    "meshes/growth/skeleton/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 596116,
-    "ply_bytes": 2949240,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "0c455519"
+    "bytes": 611237,
+    "ply_bytes": 2934718,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "f3c703f3"
    },
    "meshes/growth/skeleton/S1_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S1_jun2026__sep2026.ply.qm.gz",
@@ -8568,30 +8763,30 @@
    },
    "meshes/growth/skeleton/S8_jun2026__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_jun2026__sep2026.ply.qm.gz",
-    "bytes": 107919,
+    "bytes": 107854,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "5a1a0f4d"
+    "sha8": "e3325d24"
    },
    "meshes/growth/skeleton/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 287280,
-    "ply_bytes": 1406356,
-    "verts": 26529,
-    "faces": 53054,
+    "bytes": 305691,
+    "ply_bytes": 1406727,
+    "verts": 26536,
+    "faces": 53068,
     "max_quant_err_mm": 0.0005,
-    "sha8": "bb88a6ee"
+    "sha8": "ee703eda"
    },
    "meshes/growth/skeleton/S8_may2025__sep2026.ply": {
     "path": "meshes_qm/growth/skeleton/S8_may2025__sep2026.ply.qm.gz",
-    "bytes": 107600,
+    "bytes": 107566,
     "ply_bytes": 496610,
     "verts": 9364,
     "faces": 18724,
     "max_quant_err_mm": 0.0005,
-    "sha8": "197cdd10"
+    "sha8": "8aa5243e"
    },
    "meshes/jun2026/active.ply": {
     "path": "meshes_qm/jun2026/active.ply.qm.gz",
@@ -8685,12 +8880,12 @@
    },
    "meshes/jun2026/lesion_L1.ply": {
     "path": "meshes_qm/jun2026/lesion_L1.ply.qm.gz",
-    "bytes": 157782,
-    "ply_bytes": 795009,
-    "verts": 15895,
-    "faces": 31786,
+    "bytes": 167060,
+    "ply_bytes": 789859,
+    "verts": 15792,
+    "faces": 31580,
     "max_quant_err_mm": 0.0004,
-    "sha8": "7a05bf46"
+    "sha8": "5bb14e32"
    },
    "meshes/jun2026/lesion_L1_active.ply": {
     "path": "meshes_qm/jun2026/lesion_L1_active.ply.qm.gz",
@@ -8748,12 +8943,12 @@
    },
    "meshes/jun2026/lesion_R1.ply": {
     "path": "meshes_qm/jun2026/lesion_R1.ply.qm.gz",
-    "bytes": 1626508,
-    "ply_bytes": 8612467,
-    "verts": 172241,
-    "faces": 344490,
+    "bytes": 1647326,
+    "ply_bytes": 8476061,
+    "verts": 169516,
+    "faces": 339028,
     "max_quant_err_mm": 0.0011,
-    "sha8": "da2d36ee"
+    "sha8": "fc032f6a"
    },
    "meshes/jun2026/lesion_R1_active.ply": {
     "path": "meshes_qm/jun2026/lesion_R1_active.ply.qm.gz",
@@ -8776,7 +8971,7 @@
    "meshes/jun2026/lesion_R1_cores.ply": {
     "path": "meshes_qm/jun2026/lesion_R1_cores.ply.qm.gz",
     "bytes": 3389582,
-    "ply_bytes": 9991577,
+    "ply_bytes": 14954977,
     "verts": 298904,
     "faces": 598536,
     "max_quant_err_mm": 0.0011,
@@ -8785,7 +8980,7 @@
    "meshes/jun2026/lesion_R1_walls.ply": {
     "path": "meshes_qm/jun2026/lesion_R1_walls.ply.qm.gz",
     "bytes": 5346572,
-    "ply_bytes": 14943625,
+    "ply_bytes": 23644075,
     "verts": 471647,
     "faces": 948018,
     "max_quant_err_mm": 0.0011,
@@ -8847,12 +9042,12 @@
    },
    "meshes/jun2026/lesion_S8.ply": {
     "path": "meshes_qm/jun2026/lesion_S8.ply.qm.gz",
-    "bytes": 253491,
-    "ply_bytes": 1326709,
-    "verts": 26529,
-    "faces": 53054,
+    "bytes": 271935,
+    "ply_bytes": 1327059,
+    "verts": 26536,
+    "faces": 53068,
     "max_quant_err_mm": 0.0005,
-    "sha8": "baa15614"
+    "sha8": "9e690ae5"
    },
    "meshes/jun2026/lesion_S8_cores.ply": {
     "path": "meshes_qm/jun2026/lesion_S8_cores.ply.qm.gz",
@@ -8874,12 +9069,12 @@
    },
    "meshes/jun2026/liver.ply": {
     "path": "meshes_qm/jun2026/liver.ply.qm.gz",
-    "bytes": 3651111,
-    "ply_bytes": 9998679,
-    "verts": 378255,
-    "faces": 756642,
+    "bytes": 3580549,
+    "ply_bytes": 18114057,
+    "verts": 362278,
+    "faces": 724544,
     "max_quant_err_mm": 0.002,
-    "sha8": "0a854046"
+    "sha8": "be999ce1"
    },
    "meshes/jun2026/portal.ply": {
     "path": "meshes_qm/jun2026/portal.ply.qm.gz",
@@ -8901,17 +9096,17 @@
    },
    "meshes/jun2026/seg2.ply": {
     "path": "meshes_qm/jun2026/seg2.ply.qm.gz",
-    "bytes": 973088,
-    "ply_bytes": 3000168,
-    "verts": 100462,
-    "faces": 200936,
+    "bytes": 1000060,
+    "ply_bytes": 4831860,
+    "verts": 96632,
+    "faces": 193260,
     "max_quant_err_mm": 0.0009,
-    "sha8": "2f49142b"
+    "sha8": "16ff3340"
    },
    "meshes/jun2026/seg3.ply": {
     "path": "meshes_qm/jun2026/seg3.ply.qm.gz",
     "bytes": 653638,
-    "ply_bytes": 2999880,
+    "ply_bytes": 3310380,
     "verts": 66192,
     "faces": 132420,
     "max_quant_err_mm": 0.0007,
@@ -8919,48 +9114,48 @@
    },
    "meshes/jun2026/seg4.ply": {
     "path": "meshes_qm/jun2026/seg4.ply.qm.gz",
-    "bytes": 779526,
-    "ply_bytes": 3000408,
-    "verts": 78633,
-    "faces": 157258,
+    "bytes": 750900,
+    "ply_bytes": 3765460,
+    "verts": 75304,
+    "faces": 150604,
     "max_quant_err_mm": 0.0012,
-    "sha8": "12139470"
+    "sha8": "b04118ad"
    },
    "meshes/jun2026/seg5.ply": {
     "path": "meshes_qm/jun2026/seg5.ply.qm.gz",
-    "bytes": 1261808,
-    "ply_bytes": 2999064,
-    "verts": 125497,
-    "faces": 251098,
+    "bytes": 1194890,
+    "ply_bytes": 5890157,
+    "verts": 117800,
+    "faces": 235588,
     "max_quant_err_mm": 0.001,
-    "sha8": "029c444d"
+    "sha8": "97b0d068"
    },
    "meshes/jun2026/seg6.ply": {
     "path": "meshes_qm/jun2026/seg6.ply.qm.gz",
-    "bytes": 1352265,
-    "ply_bytes": 2999544,
-    "verts": 134283,
-    "faces": 268630,
+    "bytes": 1304456,
+    "ply_bytes": 6345913,
+    "verts": 126912,
+    "faces": 253824,
     "max_quant_err_mm": 0.001,
-    "sha8": "efba9a09"
+    "sha8": "9405ecaf"
    },
    "meshes/jun2026/seg7.ply": {
     "path": "meshes_qm/jun2026/seg7.ply.qm.gz",
-    "bytes": 1137791,
-    "ply_bytes": 3000120,
-    "verts": 115204,
-    "faces": 230424,
+    "bytes": 1110935,
+    "ply_bytes": 5446413,
+    "verts": 108922,
+    "faces": 217844,
     "max_quant_err_mm": 0.001,
-    "sha8": "a93ab8ef"
+    "sha8": "83e72520"
    },
    "meshes/jun2026/seg8.ply": {
     "path": "meshes_qm/jun2026/seg8.ply.qm.gz",
-    "bytes": 942335,
-    "ply_bytes": 3000264,
-    "verts": 92933,
-    "faces": 185870,
-    "max_quant_err_mm": 0.001,
-    "sha8": "d7a87643"
+    "bytes": 911842,
+    "ply_bytes": 4374808,
+    "verts": 87492,
+    "faces": 174976,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "c70b312d"
    },
    "meshes/may2025/contact_left_portal.ply": {
     "path": "meshes_qm/may2025/contact_left_portal.ply.qm.gz",
@@ -8991,12 +9186,12 @@
    },
    "meshes/may2025/ivc.ply": {
     "path": "meshes_qm/may2025/ivc.ply.qm.gz",
-    "bytes": 381854,
-    "ply_bytes": 1847059,
-    "verts": 36936,
-    "faces": 73868,
+    "bytes": 381142,
+    "ply_bytes": 1821259,
+    "verts": 36420,
+    "faces": 72836,
     "max_quant_err_mm": 0.0014,
-    "sha8": "d61abc10"
+    "sha8": "916fab3d"
    },
    "meshes/may2025/lesion_K.ply": {
     "path": "meshes_qm/may2025/lesion_K.ply.qm.gz",
@@ -9063,12 +9258,12 @@
    },
    "meshes/may2025/lesion_R1.ply": {
     "path": "meshes_qm/may2025/lesion_R1.ply.qm.gz",
-    "bytes": 1647663,
-    "ply_bytes": 8276575,
-    "verts": 165493,
-    "faces": 331110,
+    "bytes": 1555670,
+    "ply_bytes": 7693157,
+    "verts": 153860,
+    "faces": 307708,
     "max_quant_err_mm": 0.0011,
-    "sha8": "0f45fe11"
+    "sha8": "0072bf50"
    },
    "meshes/may2025/lesion_R1_calcifications.ply": {
     "path": "meshes_qm/may2025/lesion_R1_calcifications.ply.qm.gz",
@@ -9162,12 +9357,12 @@
    },
    "meshes/may2025/lesion_S8.ply": {
     "path": "meshes_qm/may2025/lesion_S8.ply.qm.gz",
-    "bytes": 269047,
-    "ply_bytes": 1295861,
-    "verts": 25911,
-    "faces": 51822,
+    "bytes": 264824,
+    "ply_bytes": 1233059,
+    "verts": 24656,
+    "faces": 49308,
     "max_quant_err_mm": 0.0005,
-    "sha8": "61e6d1a4"
+    "sha8": "b8f00b88"
    },
    "meshes/may2025/lesion_S8_cores.ply": {
     "path": "meshes_qm/may2025/lesion_S8_cores.ply.qm.gz",
@@ -9189,12 +9384,12 @@
    },
    "meshes/may2025/liver.ply": {
     "path": "meshes_qm/may2025/liver.ply.qm.gz",
-    "bytes": 3041461,
-    "ply_bytes": 9999927,
-    "verts": 316894,
-    "faces": 633816,
+    "bytes": 3027291,
+    "ply_bytes": 15375061,
+    "verts": 307496,
+    "faces": 614988,
     "max_quant_err_mm": 0.002,
-    "sha8": "abf92251"
+    "sha8": "656851d7"
    },
    "meshes/may2025/portal.ply": {
     "path": "meshes_qm/may2025/portal.ply.qm.gz",
@@ -9207,75 +9402,75 @@
    },
    "meshes/may2025/seg1.ply": {
     "path": "meshes_qm/may2025/seg1.ply.qm.gz",
-    "bytes": 419740,
-    "ply_bytes": 2086409,
-    "verts": 41723,
-    "faces": 83442,
+    "bytes": 410910,
+    "ply_bytes": 2007859,
+    "verts": 40152,
+    "faces": 80300,
     "max_quant_err_mm": 0.0006,
-    "sha8": "7fef445a"
+    "sha8": "418cde50"
    },
    "meshes/may2025/seg2.ply": {
     "path": "meshes_qm/may2025/seg2.ply.qm.gz",
-    "bytes": 548466,
-    "ply_bytes": 2876662,
-    "verts": 57527,
-    "faces": 115054,
+    "bytes": 565614,
+    "ply_bytes": 2787760,
+    "verts": 55750,
+    "faces": 111496,
     "max_quant_err_mm": 0.0009,
-    "sha8": "933131f7"
+    "sha8": "95949cbc"
    },
    "meshes/may2025/seg3.ply": {
     "path": "meshes_qm/may2025/seg3.ply.qm.gz",
-    "bytes": 722249,
-    "ply_bytes": 3000120,
-    "verts": 74202,
-    "faces": 148420,
+    "bytes": 720813,
+    "ply_bytes": 3588908,
+    "verts": 71774,
+    "faces": 143540,
     "max_quant_err_mm": 0.0009,
-    "sha8": "661e6573"
+    "sha8": "c74cc63f"
    },
    "meshes/may2025/seg4.ply": {
     "path": "meshes_qm/may2025/seg4.ply.qm.gz",
-    "bytes": 678046,
-    "ply_bytes": 3000310,
-    "verts": 70995,
-    "faces": 141986,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "f8b2f976"
+    "bytes": 660250,
+    "ply_bytes": 3444760,
+    "verts": 68890,
+    "faces": 137776,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "9ce4cbb5"
    },
    "meshes/may2025/seg5.ply": {
     "path": "meshes_qm/may2025/seg5.ply.qm.gz",
-    "bytes": 1061415,
-    "ply_bytes": 3000216,
-    "verts": 106115,
-    "faces": 212238,
+    "bytes": 1001635,
+    "ply_bytes": 5004861,
+    "verts": 100092,
+    "faces": 200180,
     "max_quant_err_mm": 0.0009,
-    "sha8": "9c8769e2"
+    "sha8": "73fa0ae8"
    },
    "meshes/may2025/seg6.ply": {
     "path": "meshes_qm/may2025/seg6.ply.qm.gz",
-    "bytes": 1051321,
-    "ply_bytes": 3000264,
-    "verts": 105930,
-    "faces": 211864,
+    "bytes": 1005134,
+    "ply_bytes": 4992960,
+    "verts": 99854,
+    "faces": 199704,
     "max_quant_err_mm": 0.0009,
-    "sha8": "24d7aced"
+    "sha8": "38eb7eba"
    },
    "meshes/may2025/seg7.ply": {
     "path": "meshes_qm/may2025/seg7.ply.qm.gz",
-    "bytes": 804216,
-    "ply_bytes": 3000504,
-    "verts": 84533,
-    "faces": 169050,
+    "bytes": 808372,
+    "ply_bytes": 4076360,
+    "verts": 81522,
+    "faces": 163040,
     "max_quant_err_mm": 0.0009,
-    "sha8": "b3175520"
+    "sha8": "2461ac4d"
    },
    "meshes/may2025/seg8.ply": {
     "path": "meshes_qm/may2025/seg8.ply.qm.gz",
-    "bytes": 830285,
-    "ply_bytes": 3000552,
-    "verts": 84316,
-    "faces": 168612,
+    "bytes": 813972,
+    "ply_bytes": 4017960,
+    "verts": 80354,
+    "faces": 160704,
     "max_quant_err_mm": 0.0009,
-    "sha8": "d88b0330"
+    "sha8": "3b01250e"
    },
    "meshes/sep2026/active.ply": {
     "path": "meshes_qm/sep2026/active.ply.qm.gz",
@@ -9378,12 +9573,12 @@
    },
    "meshes/sep2026/lesion_R1.ply": {
     "path": "meshes_qm/sep2026/lesion_R1.ply.qm.gz",
-    "bytes": 527560,
-    "ply_bytes": 2782260,
-    "verts": 55640,
-    "faces": 111276,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "f0ce2bfe"
+    "bytes": 544802,
+    "ply_bytes": 2768560,
+    "verts": 55366,
+    "faces": 110728,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "6957b144"
    },
    "meshes/sep2026/lesion_R1_active.ply": {
     "path": "meshes_qm/sep2026/lesion_R1_active.ply.qm.gz",
@@ -9504,12 +9699,12 @@
    },
    "meshes/sep2026/liver.ply": {
     "path": "meshes_qm/sep2026/liver.ply.qm.gz",
-    "bytes": 1111269,
-    "ply_bytes": 5743075,
-    "verts": 114849,
-    "faces": 229722,
+    "bytes": 1127008,
+    "ply_bytes": 5613661,
+    "verts": 112268,
+    "faces": 224532,
     "max_quant_err_mm": 0.0019,
-    "sha8": "aa339f3f"
+    "sha8": "4cde78e6"
    },
    "meshes/sep2026/portal.ply": {
     "path": "meshes_qm/sep2026/portal.ply.qm.gz",
@@ -9531,12 +9726,12 @@
    },
    "meshes/sep2026/seg2.ply": {
     "path": "meshes_qm/sep2026/seg2.ply.qm.gz",
-    "bytes": 349552,
-    "ply_bytes": 1752161,
-    "verts": 35037,
-    "faces": 70074,
+    "bytes": 356596,
+    "ply_bytes": 1690859,
+    "verts": 33812,
+    "faces": 67620,
     "max_quant_err_mm": 0.0011,
-    "sha8": "1cbd75ad"
+    "sha8": "3b41d621"
    },
    "meshes/sep2026/seg3.ply": {
     "path": "meshes_qm/sep2026/seg3.ply.qm.gz",
@@ -9558,30 +9753,30 @@
    },
    "meshes/sep2026/seg5.ply": {
     "path": "meshes_qm/sep2026/seg5.ply.qm.gz",
-    "bytes": 409049,
-    "ply_bytes": 1977859,
-    "verts": 39552,
-    "faces": 79100,
+    "bytes": 403425,
+    "ply_bytes": 1888259,
+    "verts": 37760,
+    "faces": 75516,
     "max_quant_err_mm": 0.0011,
-    "sha8": "b96837d4"
+    "sha8": "487bc036"
    },
    "meshes/sep2026/seg6.ply": {
     "path": "meshes_qm/sep2026/seg6.ply.qm.gz",
-    "bytes": 340456,
-    "ply_bytes": 1675959,
-    "verts": 33514,
-    "faces": 67024,
+    "bytes": 340805,
+    "ply_bytes": 1603159,
+    "verts": 32058,
+    "faces": 64112,
     "max_quant_err_mm": 0.0009,
-    "sha8": "e58496ad"
+    "sha8": "3dacd897"
    },
    "meshes/sep2026/seg7.ply": {
     "path": "meshes_qm/sep2026/seg7.ply.qm.gz",
-    "bytes": 495842,
-    "ply_bytes": 2474607,
-    "verts": 49488,
-    "faces": 98968,
+    "bytes": 485987,
+    "ply_bytes": 2368459,
+    "verts": 47364,
+    "faces": 94724,
     "max_quant_err_mm": 0.001,
-    "sha8": "ee256c52"
+    "sha8": "f0157463"
    },
    "meshes/sep2026/seg8.ply": {
     "path": "meshes_qm/sep2026/seg8.ply.qm.gz",
@@ -9639,138 +9834,138 @@
    },
    "meshes_lod/growth/lesion/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 61668,
+    "bytes": 60817,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "feb41236"
+    "sha8": "5847c92f"
    },
    "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 167632,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "3b99e5a4"
+    "bytes": 163767,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "3c8d2332"
    },
    "meshes_lod/growth/lesion/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 524303,
-    "ply_bytes": 1826087,
-    "verts": 34446,
-    "faces": 68898,
+    "bytes": 502973,
+    "ply_bytes": 1797231,
+    "verts": 33904,
+    "faces": 67804,
     "max_quant_err_mm": 0.0011,
-    "sha8": "0d349f14"
+    "sha8": "6d6b2017"
    },
    "meshes_lod/growth/lesion/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 167618,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "e212472f"
+    "bytes": 163814,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "2c6bce0e"
    },
    "meshes_lod/growth/lesion/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 80232,
-    "ply_bytes": 281589,
-    "verts": 5307,
-    "faces": 10610,
+    "bytes": 78685,
+    "ply_bytes": 281642,
+    "verts": 5308,
+    "faces": 10612,
     "max_quant_err_mm": 0.0005,
-    "sha8": "cda9cae6"
+    "sha8": "b550e568"
    },
    "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 62419,
+    "bytes": 61504,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "9497c674"
+    "sha8": "3194dbe8"
    },
    "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 167487,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "8244bea5"
+    "bytes": 163727,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "a5c994a7"
    },
    "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 524500,
-    "ply_bytes": 1826087,
-    "verts": 34446,
-    "faces": 68898,
+    "bytes": 503253,
+    "ply_bytes": 1797231,
+    "verts": 33904,
+    "faces": 67804,
     "max_quant_err_mm": 0.0011,
-    "sha8": "0b9ee2bd"
+    "sha8": "f4780356"
    },
    "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 166982,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "517a2347"
+    "bytes": 163396,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "8c40a94c"
    },
    "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 81513,
-    "ply_bytes": 281589,
-    "verts": 5307,
-    "faces": 10610,
+    "bytes": 79947,
+    "ply_bytes": 281642,
+    "verts": 5308,
+    "faces": 10612,
     "max_quant_err_mm": 0.0005,
-    "sha8": "c3949254"
+    "sha8": "d6c87c73"
    },
    "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
-    "bytes": 62474,
+    "bytes": 61723,
     "ply_bytes": 212423,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "b74e708f"
+    "sha8": "eebfd46d"
    },
    "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
-    "bytes": 166913,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "4ca95bca"
+    "bytes": 162973,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "e0958697"
    },
    "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
-    "bytes": 524697,
-    "ply_bytes": 1826087,
-    "verts": 34446,
-    "faces": 68898,
+    "bytes": 503308,
+    "ply_bytes": 1797231,
+    "verts": 33904,
+    "faces": 67804,
     "max_quant_err_mm": 0.0011,
-    "sha8": "749edf6f"
+    "sha8": "f1378523"
    },
    "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
-    "bytes": 166390,
-    "ply_bytes": 590156,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "bd27d17d"
+    "bytes": 162730,
+    "ply_bytes": 587241,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "5f9b8236"
    },
    "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply": {
     "path": "meshes_qm/lod/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
-    "bytes": 81744,
-    "ply_bytes": 281589,
-    "verts": 5307,
-    "faces": 10610,
+    "bytes": 80104,
+    "ply_bytes": 281642,
+    "verts": 5308,
+    "faces": 10612,
     "max_quant_err_mm": 0.0005,
-    "sha8": "fa26d848"
+    "sha8": "b2a43907"
    },
    "meshes_lod/jun2026/hepatic_veins.ply": {
     "path": "meshes_qm/lod/jun2026/hepatic_veins.ply.qm.gz",
@@ -9792,12 +9987,12 @@
    },
    "meshes_lod/jun2026/lesion_L1.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_L1.ply.qm.gz",
-    "bytes": 54775,
+    "bytes": 53943,
     "ply_bytes": 200357,
     "verts": 4002,
     "faces": 8000,
     "max_quant_err_mm": 0.0004,
-    "sha8": "fc9ff419"
+    "sha8": "1605eea5"
    },
    "meshes_lod/jun2026/lesion_L1_cores.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_L1_cores.ply.qm.gz",
@@ -9819,39 +10014,39 @@
    },
    "meshes_lod/jun2026/lesion_R1.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_R1.ply.qm.gz",
-    "bytes": 475003,
-    "ply_bytes": 1722689,
-    "verts": 34446,
-    "faces": 68898,
+    "bytes": 454390,
+    "ply_bytes": 1695459,
+    "verts": 33904,
+    "faces": 67804,
     "max_quant_err_mm": 0.0011,
-    "sha8": "9d53d96b"
+    "sha8": "9bfde057"
    },
    "meshes_lod/jun2026/lesion_R1_cores.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_R1_cores.ply.qm.gz",
-    "bytes": 578593,
-    "ply_bytes": 1989991,
-    "verts": 39570,
-    "faces": 80000,
+    "bytes": 855994,
+    "ply_bytes": 2982450,
+    "verts": 59415,
+    "faces": 119706,
     "max_quant_err_mm": 0.0011,
-    "sha8": "ecde69b1"
+    "sha8": "59120fb8"
    },
    "meshes_lod/jun2026/lesion_R1_walls.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_R1_walls.ply.qm.gz",
-    "bytes": 880159,
-    "ply_bytes": 2960856,
-    "verts": 58356,
-    "faces": 120000,
+    "bytes": 1370246,
+    "ply_bytes": 4692674,
+    "verts": 92814,
+    "faces": 189602,
     "max_quant_err_mm": 0.0011,
-    "sha8": "7b92c051"
+    "sha8": "6fa6285a"
    },
    "meshes_lod/jun2026/lesion_S8.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_S8.ply.qm.gz",
-    "bytes": 71642,
-    "ply_bytes": 265608,
-    "verts": 5307,
-    "faces": 10610,
+    "bytes": 70243,
+    "ply_bytes": 265658,
+    "verts": 5308,
+    "faces": 10612,
     "max_quant_err_mm": 0.0005,
-    "sha8": "cd60acf2"
+    "sha8": "81e20bbd"
    },
    "meshes_lod/jun2026/lesion_S8_cores.ply": {
     "path": "meshes_qm/lod/jun2026/lesion_S8_cores.ply.qm.gz",
@@ -9873,12 +10068,12 @@
    },
    "meshes_lod/jun2026/liver.ply": {
     "path": "meshes_qm/lod/jun2026/liver.ply.qm.gz",
-    "bytes": 562910,
-    "ply_bytes": 1998738,
-    "verts": 39935,
-    "faces": 79999,
+    "bytes": 980468,
+    "ply_bytes": 3623108,
+    "verts": 72458,
+    "faces": 144908,
     "max_quant_err_mm": 0.002,
-    "sha8": "ec8053f6"
+    "sha8": "a973e637"
    },
    "meshes_lod/jun2026/portal.ply": {
     "path": "meshes_qm/lod/jun2026/portal.ply.qm.gz",
@@ -9900,66 +10095,66 @@
    },
    "meshes_lod/jun2026/seg2.ply": {
     "path": "meshes_qm/lod/jun2026/seg2.ply.qm.gz",
-    "bytes": 168130,
-    "ply_bytes": 600239,
-    "verts": 11997,
-    "faces": 24000,
+    "bytes": 263159,
+    "ply_bytes": 966659,
+    "verts": 19328,
+    "faces": 38652,
     "max_quant_err_mm": 0.0009,
-    "sha8": "21c809be"
+    "sha8": "4cebe412"
    },
    "meshes_lod/jun2026/seg3.ply": {
     "path": "meshes_qm/lod/jun2026/seg3.ply.qm.gz",
-    "bytes": 168290,
-    "ply_bytes": 599962,
-    "verts": 11986,
-    "faces": 23999,
+    "bytes": 185510,
+    "ply_bytes": 662062,
+    "verts": 13228,
+    "faces": 26483,
     "max_quant_err_mm": 0.0007,
-    "sha8": "ae041123"
+    "sha8": "a063991b"
    },
    "meshes_lod/jun2026/seg4.ply": {
     "path": "meshes_qm/lod/jun2026/seg4.ply.qm.gz",
-    "bytes": 170714,
-    "ply_bytes": 600322,
-    "verts": 12001,
-    "faces": 23999,
+    "bytes": 206524,
+    "ply_bytes": 753359,
+    "verts": 15062,
+    "faces": 30120,
     "max_quant_err_mm": 0.0012,
-    "sha8": "1200f546"
+    "sha8": "e064aa20"
    },
    "meshes_lod/jun2026/seg5.ply": {
     "path": "meshes_qm/lod/jun2026/seg5.ply.qm.gz",
-    "bytes": 171256,
-    "ply_bytes": 599434,
-    "verts": 11964,
-    "faces": 23999,
+    "bytes": 322935,
+    "ply_bytes": 1178307,
+    "verts": 23562,
+    "faces": 47116,
     "max_quant_err_mm": 0.001,
-    "sha8": "44cbc91d"
+    "sha8": "f44e306a"
    },
    "meshes_lod/jun2026/seg6.ply": {
     "path": "meshes_qm/lod/jun2026/seg6.ply.qm.gz",
-    "bytes": 172138,
-    "ply_bytes": 599903,
-    "verts": 11983,
-    "faces": 24000,
+    "bytes": 347266,
+    "ply_bytes": 1269398,
+    "verts": 25382,
+    "faces": 50763,
     "max_quant_err_mm": 0.001,
-    "sha8": "27bc4536"
+    "sha8": "28f1bee8"
    },
    "meshes_lod/jun2026/seg7.ply": {
     "path": "meshes_qm/lod/jun2026/seg7.ply.qm.gz",
-    "bytes": 170733,
-    "ply_bytes": 600311,
-    "verts": 12000,
-    "faces": 24000,
+    "bytes": 296108,
+    "ply_bytes": 1089511,
+    "verts": 21784,
+    "faces": 43568,
     "max_quant_err_mm": 0.001,
-    "sha8": "5f369d52"
+    "sha8": "cb9cdb08"
    },
    "meshes_lod/jun2026/seg8.ply": {
     "path": "meshes_qm/lod/jun2026/seg8.ply.qm.gz",
-    "bytes": 168217,
-    "ply_bytes": 600335,
-    "verts": 12001,
-    "faces": 24000,
-    "max_quant_err_mm": 0.001,
-    "sha8": "f292735b"
+    "bytes": 238271,
+    "ply_bytes": 875257,
+    "verts": 17501,
+    "faces": 34994,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "02e9a796"
    },
    "meshes_lod/may2025/hepatic_veins.ply": {
     "path": "meshes_qm/lod/may2025/hepatic_veins.ply.qm.gz",
@@ -9972,12 +10167,12 @@
    },
    "meshes_lod/may2025/ivc.ply": {
     "path": "meshes_qm/lod/may2025/ivc.ply.qm.gz",
-    "bytes": 106116,
-    "ply_bytes": 369658,
-    "verts": 7388,
-    "faces": 14772,
+    "bytes": 102646,
+    "ply_bytes": 364508,
+    "verts": 7285,
+    "faces": 14566,
     "max_quant_err_mm": 0.0014,
-    "sha8": "0239d31b"
+    "sha8": "039213e9"
    },
    "meshes_lod/may2025/lesion_L1.ply": {
     "path": "meshes_qm/lod/may2025/lesion_L1.ply.qm.gz",
@@ -9999,12 +10194,12 @@
    },
    "meshes_lod/may2025/lesion_R1.ply": {
     "path": "meshes_qm/lod/may2025/lesion_R1.ply.qm.gz",
-    "bytes": 459103,
-    "ply_bytes": 1654613,
-    "verts": 33059,
-    "faces": 66222,
+    "bytes": 416987,
+    "ply_bytes": 1538859,
+    "verts": 30772,
+    "faces": 61540,
     "max_quant_err_mm": 0.0011,
-    "sha8": "c80f1a6e"
+    "sha8": "c0a8044c"
    },
    "meshes_lod/may2025/lesion_R1_cores.ply": {
     "path": "meshes_qm/lod/may2025/lesion_R1_cores.ply.qm.gz",
@@ -10026,12 +10221,12 @@
    },
    "meshes_lod/may2025/lesion_S8.ply": {
     "path": "meshes_qm/lod/may2025/lesion_S8.ply.qm.gz",
-    "bytes": 70774,
-    "ply_bytes": 259410,
-    "verts": 5182,
-    "faces": 10364,
+    "bytes": 65799,
+    "ply_bytes": 246857,
+    "verts": 4932,
+    "faces": 9860,
     "max_quant_err_mm": 0.0005,
-    "sha8": "87e5563d"
+    "sha8": "75e3bd4f"
    },
    "meshes_lod/may2025/lesion_S8_cores.ply": {
     "path": "meshes_qm/lod/may2025/lesion_S8_cores.ply.qm.gz",
@@ -10053,12 +10248,12 @@
    },
    "meshes_lod/may2025/liver.ply": {
     "path": "meshes_qm/lod/may2025/liver.ply.qm.gz",
-    "bytes": 558661,
-    "ply_bytes": 2000045,
-    "verts": 39990,
-    "faces": 79998,
+    "bytes": 830974,
+    "ply_bytes": 3075260,
+    "verts": 61500,
+    "faces": 122996,
     "max_quant_err_mm": 0.002,
-    "sha8": "ab6d3b83"
+    "sha8": "97028cd8"
    },
    "meshes_lod/may2025/portal.ply": {
     "path": "meshes_qm/lod/may2025/portal.ply.qm.gz",
@@ -10071,75 +10266,75 @@
    },
    "meshes_lod/may2025/seg1.ply": {
     "path": "meshes_qm/lod/may2025/seg1.ply.qm.gz",
-    "bytes": 113836,
-    "ply_bytes": 417545,
-    "verts": 8346,
-    "faces": 16687,
+    "bytes": 107643,
+    "ply_bytes": 401858,
+    "verts": 8032,
+    "faces": 16060,
     "max_quant_err_mm": 0.0006,
-    "sha8": "759c7129"
+    "sha8": "bc460946"
    },
    "meshes_lod/may2025/seg2.ply": {
     "path": "meshes_qm/lod/may2025/seg2.ply.qm.gz",
-    "bytes": 155672,
-    "ply_bytes": 575561,
-    "verts": 11505,
-    "faces": 23010,
+    "bytes": 149896,
+    "ply_bytes": 557809,
+    "verts": 11151,
+    "faces": 22298,
     "max_quant_err_mm": 0.0009,
-    "sha8": "36e9d6f8"
+    "sha8": "7094df79"
    },
    "meshes_lod/may2025/seg3.ply": {
     "path": "meshes_qm/lod/may2025/seg3.ply.qm.gz",
-    "bytes": 167494,
-    "ply_bytes": 600311,
-    "verts": 12000,
-    "faces": 24000,
+    "bytes": 194711,
+    "ply_bytes": 718094,
+    "verts": 14358,
+    "faces": 28707,
     "max_quant_err_mm": 0.0009,
-    "sha8": "7941f493"
+    "sha8": "ed519a71"
    },
    "meshes_lod/may2025/seg4.ply": {
     "path": "meshes_qm/lod/may2025/seg4.ply.qm.gz",
-    "bytes": 168391,
-    "ply_bytes": 600309,
-    "verts": 12001,
-    "faces": 23998,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "badd92eb"
+    "bytes": 185959,
+    "ply_bytes": 689209,
+    "verts": 13779,
+    "faces": 27554,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "5b5a1f18"
    },
    "meshes_lod/may2025/seg5.ply": {
     "path": "meshes_qm/lod/may2025/seg5.ply.qm.gz",
-    "bytes": 170555,
-    "ply_bytes": 600466,
-    "verts": 12007,
-    "faces": 23999,
+    "bytes": 272653,
+    "ply_bytes": 1001259,
+    "verts": 20020,
+    "faces": 40036,
     "max_quant_err_mm": 0.0009,
-    "sha8": "cec3d983"
+    "sha8": "ba2562a3"
    },
    "meshes_lod/may2025/seg6.ply": {
     "path": "meshes_qm/lod/may2025/seg6.ply.qm.gz",
-    "bytes": 289984,
-    "ply_bytes": 1050167,
-    "verts": 20994,
-    "faces": 42000,
+    "bytes": 267862,
+    "ply_bytes": 998859,
+    "verts": 19972,
+    "faces": 39940,
     "max_quant_err_mm": 0.0009,
-    "sha8": "bb34ba83"
+    "sha8": "848b94e8"
    },
    "meshes_lod/may2025/seg7.ply": {
     "path": "meshes_qm/lod/may2025/seg7.ply.qm.gz",
-    "bytes": 168191,
-    "ply_bytes": 600418,
-    "verts": 12005,
-    "faces": 23999,
+    "bytes": 219169,
+    "ply_bytes": 815559,
+    "verts": 16306,
+    "faces": 32608,
     "max_quant_err_mm": 0.0009,
-    "sha8": "ad61bd0c"
+    "sha8": "08c7191e"
    },
    "meshes_lod/may2025/seg8.ply": {
     "path": "meshes_qm/lod/may2025/seg8.ply.qm.gz",
-    "bytes": 168439,
-    "ply_bytes": 600479,
-    "verts": 12007,
-    "faces": 24000,
+    "bytes": 217100,
+    "ply_bytes": 803859,
+    "verts": 16072,
+    "faces": 32140,
     "max_quant_err_mm": 0.0009,
-    "sha8": "1d30aaee"
+    "sha8": "f7186270"
    },
    "meshes_lod/sep2026/ivc.ply": {
     "path": "meshes_qm/lod/sep2026/ivc.ply.qm.gz",
@@ -10152,12 +10347,12 @@
    },
    "meshes_lod/sep2026/lesion_R1.ply": {
     "path": "meshes_qm/lod/sep2026/lesion_R1.ply.qm.gz",
-    "bytes": 149038,
-    "ply_bytes": 556709,
-    "verts": 11129,
-    "faces": 22254,
-    "max_quant_err_mm": 0.0012,
-    "sha8": "46f1cbf8"
+    "bytes": 145127,
+    "ply_bytes": 553959,
+    "verts": 11074,
+    "faces": 22144,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "466bebae"
    },
    "meshes_lod/sep2026/lesion_R1_cores.ply": {
     "path": "meshes_qm/lod/sep2026/lesion_R1_cores.ply.qm.gz",
@@ -10197,12 +10392,12 @@
    },
    "meshes_lod/sep2026/liver.ply": {
     "path": "meshes_qm/lod/sep2026/liver.ply.qm.gz",
-    "bytes": 315934,
-    "ply_bytes": 1148863,
-    "verts": 22970,
-    "faces": 45944,
+    "bytes": 301985,
+    "ply_bytes": 1123009,
+    "verts": 22455,
+    "faces": 44906,
     "max_quant_err_mm": 0.0019,
-    "sha8": "37f9e80a"
+    "sha8": "a9623841"
    },
    "meshes_lod/sep2026/seg1.ply": {
     "path": "meshes_qm/lod/sep2026/seg1.ply.qm.gz",
@@ -10215,12 +10410,12 @@
    },
    "meshes_lod/sep2026/seg2.ply": {
     "path": "meshes_qm/lod/sep2026/seg2.ply.qm.gz",
-    "bytes": 96042,
-    "ply_bytes": 350647,
-    "verts": 7007,
-    "faces": 14013,
+    "bytes": 91529,
+    "ply_bytes": 338458,
+    "verts": 6764,
+    "faces": 13524,
     "max_quant_err_mm": 0.0011,
-    "sha8": "b105b0bd"
+    "sha8": "9619d415"
    },
    "meshes_lod/sep2026/seg3.ply": {
     "path": "meshes_qm/lod/sep2026/seg3.ply.qm.gz",
@@ -10242,30 +10437,30 @@
    },
    "meshes_lod/sep2026/seg5.ply": {
     "path": "meshes_qm/lod/sep2026/seg5.ply.qm.gz",
-    "bytes": 110176,
-    "ply_bytes": 395858,
-    "verts": 7912,
-    "faces": 15820,
+    "bytes": 104007,
+    "ply_bytes": 377908,
+    "verts": 7553,
+    "faces": 15102,
     "max_quant_err_mm": 0.0011,
-    "sha8": "7a67200f"
+    "sha8": "4cdb69e1"
    },
    "meshes_lod/sep2026/seg6.ply": {
     "path": "meshes_qm/lod/sep2026/seg6.ply.qm.gz",
-    "bytes": 92774,
-    "ply_bytes": 335458,
-    "verts": 6704,
-    "faces": 13404,
+    "bytes": 87709,
+    "ply_bytes": 320908,
+    "verts": 6413,
+    "faces": 12822,
     "max_quant_err_mm": 0.0009,
-    "sha8": "f81a2e72"
+    "sha8": "0a526ba8"
    },
    "meshes_lod/sep2026/seg7.ply": {
     "path": "meshes_qm/lod/sep2026/seg7.ply.qm.gz",
-    "bytes": 137381,
-    "ply_bytes": 495110,
-    "verts": 9896,
-    "faces": 19792,
+    "bytes": 128489,
+    "ply_bytes": 473958,
+    "verts": 9474,
+    "faces": 18944,
     "max_quant_err_mm": 0.001,
-    "sha8": "6e062154"
+    "sha8": "ea56c401"
    },
    "meshes_lod/sep2026/seg8.ply": {
     "path": "meshes_qm/lod/sep2026/seg8.ply.qm.gz",
@@ -10277,161 +10472,7 @@
     "sha8": "e3158790"
    }
   },
-  "uncapped": {
-   "meshes/jun2026/lesion_R1_cores.ply": {
-    "faces_before": 400000,
-    "cap_before": 400000,
-    "dice_before": 0.9956,
-    "faces": 598536,
-    "dice": 0.996,
-    "p95_mm": 0.37,
-    "source": "builder cache 180668f8a650 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/lesion_R1_walls.ply": {
-    "faces_before": 600000,
-    "cap_before": 600000,
-    "dice_before": 0.9825,
-    "faces": 948018,
-    "dice": 0.9841,
-    "p95_mm": 0.31,
-    "source": "builder cache c70dd305e191 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/liver.ply": {
-    "faces_before": 399998,
-    "cap_before": 400000,
-    "dice_before": 0.9977,
-    "faces": 756642,
-    "dice": 0.9978,
-    "p95_mm": 0.4,
-    "source": "builder cache c95497fee149 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg2.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9981,
-    "faces": 200936,
-    "dice": 0.9981,
-    "p95_mm": 0.34,
-    "source": "builder cache 08957149ee5b (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg3.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.998,
-    "faces": 132420,
-    "dice": 0.998,
-    "p95_mm": 0.33,
-    "source": "builder cache 50027426fcf1 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg4.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9984,
-    "faces": 157258,
-    "dice": 0.9984,
-    "p95_mm": 0.3,
-    "source": "builder cache 8573c84d2c49 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg5.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9979,
-    "faces": 251098,
-    "dice": 0.9981,
-    "p95_mm": 0.32,
-    "source": "builder cache babf0a4364ca (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg6.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9978,
-    "faces": 268630,
-    "dice": 0.998,
-    "p95_mm": 0.34,
-    "source": "builder cache b18bab40685a (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg7.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9977,
-    "faces": 230424,
-    "dice": 0.9978,
-    "p95_mm": 0.34,
-    "source": "builder cache 697e7e8ea2db (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/jun2026/seg8.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9975,
-    "faces": 185870,
-    "dice": 0.9976,
-    "p95_mm": 0.33,
-    "source": "builder cache 73a96fe2f2e4 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/liver.ply": {
-    "faces_before": 399998,
-    "cap_before": 400000,
-    "dice_before": 0.9979,
-    "faces": 633816,
-    "dice": 0.9979,
-    "p95_mm": 0.4,
-    "source": "builder cache 3c5fee49a761 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg3.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9989,
-    "faces": 148420,
-    "dice": 0.9989,
-    "p95_mm": 0.38,
-    "source": "builder cache 45bdfd778c72 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg4.ply": {
-    "faces_before": 119998,
-    "cap_before": 120000,
-    "dice_before": 0.9988,
-    "faces": 141986,
-    "dice": 0.9988,
-    "p95_mm": 0.3,
-    "source": "builder cache 52570bc89a82 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg5.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9981,
-    "faces": 212238,
-    "dice": 0.9982,
-    "p95_mm": 0.33,
-    "source": "builder cache 9a1268c2f070 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg6.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9981,
-    "faces": 211864,
-    "dice": 0.9982,
-    "p95_mm": 0.34,
-    "source": "builder cache 7fbab59a01b9 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg7.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9985,
-    "faces": 169050,
-    "dice": 0.9985,
-    "p95_mm": 0.34,
-    "source": "builder cache 39c39019f0c8 (same recipe, max_faces 4000000 = no decimation)"
-   },
-   "meshes/may2025/seg8.ply": {
-    "faces_before": 120000,
-    "cap_before": 120000,
-    "dice_before": 0.9986,
-    "faces": 168612,
-    "dice": 0.9986,
-    "p95_mm": 0.33,
-    "source": "builder cache feded00c9823 (same recipe, max_faces 4000000 = no decimation)"
-   }
-  },
+  "uncapped": {},
   "growth_recolored": [
    "meshes/growth/K_may2025__jun2026.ply",
    "meshes/growth/L1_jun2026__sep2026.ply",
@@ -10514,66 +10555,5 @@
    "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply",
    "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply"
   ]
- },
- "palette": {
-  "groups": {
-   "Anatomy": [
-    "liver",
-    "gallbladder",
-    "bile_ducts"
-   ],
-   "Tumour": [
-    "R1",
-    "L1",
-    "S8",
-    "S1",
-    "S7sat",
-    "K",
-    "N",
-    "P7"
-   ],
-   "Activity": [
-    "active",
-    "active_pet_only",
-    "active_inferred"
-   ],
-   "Vessels": [
-    "portal",
-    "hepatic_veins",
-    "ivc",
-    "hepatic_artery",
-    "contact_left_portal"
-   ],
-   "Internal structure": [
-    "walls",
-    "cores",
-    "nodules",
-    "calcifications"
-   ],
-   "Couinaud segments": [
-    "seg1",
-    "seg2",
-    "seg3",
-    "seg4",
-    "seg5",
-    "seg6",
-    "seg7",
-    "seg8"
-   ],
-   "Uncertainty": [
-    "uncertain"
-   ]
-  },
-  "emissive": {
-   "active": 0.45,
-   "active_pet_only": 0.3,
-   "active_inferred": 0.35
-  },
-  "growth_ramp": {
-   "shrink": "#1f78b4",
-   "zero": "#d9d9d9",
-   "grow": "#c2187e"
-  },
-  "about": "Semantic palette of the liver viewer (2026-10-11): hue = kind of tissue. Anatomy muted; vessels by convention (blues/teal); tumour one violet-magenta family separated by lightness; cores pale ice (fluid); FDG activity the only hot colours (yellow -> orange), emissive; calcifications ivory; nodules lime; segments soft pastels; growth map teal-blue <- grey -> magenta (never hot). Checked by tools/palette/cvd_check.py."
  }
 }

@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=b0459575b3';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=b0459575b3';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=b0459575b3';
-import { Reports } from './reports.js?v=b0459575b3';
-import { ClaimViz } from './claimviz.js?v=b0459575b3';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=b0459575b3';
+import * as F from './frame.js?v=a584f9404f';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=a584f9404f';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=a584f9404f';
+import { Reports } from './reports.js?v=a584f9404f';
+import { ClaimViz } from './claimviz.js?v=a584f9404f';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=a584f9404f';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -17,7 +17,7 @@ const resolve = p => new URL(p, SCENE_BASE).href;
 // embedded in a page (iframe on the case site): minimal chrome, light default layer set, low-detail meshes, no background prefetch
 const EMBED = params.get('embed') === '1' || /(^#|&)embed(=1)?(&|$)/.test(location.hash);
 const PREFETCH = params.get('prefetch') !== '0' && !EMBED;
-const EMBED_DEFAULT = new Set(['liver', 'les:R1', 'les:L1', 'les:S8', 'active', 'active_pet_only']);
+const EMBED_DEFAULT = new Set(['liver', 'les:R1', 'les:L1', 'les:S8', 'active', 'active_pet_only', 'portal', 'hepatic_veins', 'ivc', 'bile_ducts', 'gallbladder', 'contact_left_portal']);
 if (EMBED) document.body.classList.add('embed');
 const CLAIMS_URL = params.get('claims'); // optional override, relative to the page
 
@@ -58,7 +58,7 @@ let bounds = null;              // Sep-frame RAS bounds of the liver (clip slide
 const canvas = $('#c');
 const stage = $('#stage');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, stencil: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(EMBED ? 1.25 : 1.5, window.devicePixelRatio || 1));   // fill-rate: the 2x retina canvas was the main GPU cost
+renderer.setPixelRatio(Math.min(EMBED ? 1.5 : 2, window.devicePixelRatio || 1));   // sharp by default; lowered by autoSmooth() on slow GPUs
 renderer.localClippingEnabled = true;
 const scene3 = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(30, 1, 10, 6000);   // near 10 mm: 10x depth precision vs 1 mm (less z-fighting where surfaces touch)
@@ -243,7 +243,7 @@ function buildModel() {
   }
   for (const les of sc.lesions || []) {
     for (const date of Object.keys(les.parts || {})) for (const k of Object.keys(les.parts[date] || {})) {
-      if (!S.ctls.has(k)) ctl(k, { name: PART_DEF[k]?.name || k, group: 'Internal structure', color: PART_DEF[k]?.color || '#cccccc', defOpacity: PART_DEF[k]?.opacity ?? 1, defVisible: k === 'active' || k === 'nodules', notVisible: {}, kind: 'part', synthetic: true });
+      if (!S.ctls.has(k)) ctl(k, { name: PART_DEF[k]?.name || k, group: 'Internal structure', color: PART_DEF[k]?.color || '#cccccc', defOpacity: PART_DEF[k]?.opacity ?? 1, defVisible: true, notVisible: {}, kind: 'part', synthetic: true });
     }
   }
   for (const les of sc.lesions || []) {
@@ -391,7 +391,7 @@ function ensureMesh(it) {
   // FDG activity glows (emissive share of its own colour, scene.palette.emissive): the brightest thing in the scene
   const em = S.scene.palette?.emissive?.[it.kind === 'part' ? it.part : it.ctl] || 0;
   it.baseEmissive = em ? new THREE.Color(colorOf(it)).multiplyScalar(em) : new THREE.Color(0);
-  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.92, metalness: 0, side, emissive: it.baseEmissive.clone() }));
+  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.62, metalness: 0, side, emissive: it.baseEmissive.clone() }));
   const front = new THREE.Mesh(g, mk(THREE.DoubleSide));
   const back = new THREE.Mesh(g, mk(THREE.BackSide));
   for (const m of [front, back]) {
@@ -440,7 +440,7 @@ function applyMaterial(it) {
   // nearest surface of the mesh is blended. Without it, overlapping branches of the same mesh are blended in triangle order and the
   // triangles at the silhouettes flip between front- and back-facing as the camera turns: the 'blinking veins'. Lesion shells and the
   // liver keep their two-pass look (structures inside them must stay visible).
-  const wantPre = tr && it.kind !== 'lesion' && it.kind !== 'growth' && it.ctl !== 'liver';
+  const wantPre = tr && it.kind !== 'lesion' && it.kind !== 'growth' && it.ctl !== 'liver' && !/^seg\d$/.test(it.ctl);
   if (wantPre && !it.pre) {
     const pm = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true, side: THREE.FrontSide, clippingPlanes: clipAll });
     it.pre = new THREE.Mesh(it.mesh.geometry, pm); it.pre.matrixAutoUpdate = false; it.pre.userData.prepassOf = it;
@@ -457,6 +457,8 @@ function applyMaterial(it) {
   // distance to the camera, which made overlapping layers of the same rank (veins / portal / IVC, lesions) swap and blink on rotation
   it.back.renderOrder = 100 + (60 - it.rank) + it.sub;
   it.mesh.renderOrder = tr ? 200 + it.rank + it.sub : 0;
+  // Couinaud segments: faint pastel shells drawn BEFORE every other translucent layer, so lesions and walls read on top of them
+  if (tr && /^seg\d$/.test(it.ctl)) { it.back.renderOrder = 90 + it.sub; it.mesh.renderOrder = 95 + it.sub; }
 }
 
 function sync() {
@@ -1075,7 +1077,8 @@ function renderLayersPanel() {
   host.append(h('div.row-btns', null,
     h('button', { onclick: () => { for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: c.defVisible, o: c.defOpacity }); state.solo = null; refreshLayerRows(); ensureVisibleLoaded(); writeHash(); } }, 'Default layers'),
     h('button', { onclick: () => { state.solo = null; refreshLayerRows(); sync(); writeHash(); }, id: 'unsolo', hidden: true }, 'Show all (end solo)'),
-    h('button', { onclick: showInside, title: 'Lesion shells translucent, internal structure on' }, 'Look inside lesions')));
+    h('button', { onclick: showInside, title: 'Lesion shells translucent, internal structure on' }, 'Look inside lesions'),
+    h('button', { onclick: cleanView, title: 'Liver, the three main lesions, FDG-active tissue and the vessels only' }, 'Clean view')));
   for (const g of S.groups) {
     const ctls = [...S.ctls.values()].filter(c => c.group === g);
     if (!ctls.length) continue;
@@ -1096,7 +1099,7 @@ function renderLayersPanel() {
   }
   refreshLayerRows();
 }
-const SHORT = [['liver', ['liver']], ['les:R1', ['les:R1']], ['les:L1', ['les:L1']], ['les:S8', ['les:S8']], ['Active tissue (PET)', ['active', 'active_pet_only']], ['Cores / walls', ['cores', 'walls']]];
+const SHORT = [['liver', ['liver']], ['les:R1', ['les:R1']], ['les:L1', ['les:L1']], ['les:S8', ['les:S8']], ['Active tissue (PET)', ['active', 'active_pet_only']], ['Vessels (portal, hepatic veins, IVC)', ['portal', 'hepatic_veins', 'ivc']], ['Cores / walls', ['cores', 'walls']]];
 function renderShortLayers() {
   const host = $('#shortLayers'); if (!host) return; host.innerHTML = '';
   for (const [label, ids] of SHORT) {
@@ -1156,6 +1159,12 @@ function refreshLayerRows() {
     det.querySelector('[data-gcount]').textContent = `${avail.length}/${det._ctls.length} on ${dateShort(shown || state.date)}`;
   }
   const u = $('#unsolo'); if (u) u.hidden = !state.solo;
+}
+/** 'Clean view': liver + R1 / L1 / S8 + FDG-active tissue + vessels (scene.palette.clean_view); everything else off */
+function cleanView() {
+  const keep = new Set(S.scene.palette?.clean_view || [...EMBED_DEFAULT]);
+  for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: keep.has(c.id), o: c.defOpacity });
+  state.solo = null; refreshLayerRows(); ensureVisibleLoaded(); writeHash();
 }
 function showInside() {
   for (const c of S.ctls.values()) {
@@ -1371,6 +1380,7 @@ function autoSmooth() {
   for (let k = 0; k < 5; k++) { renderer.render(scene3, camera); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); }
   state.renderMs = (performance.now() - t0) / 5;
   setSmooth(state.renderMs > 33);
+  if (state.renderMs > 33 && renderer.getPixelRatio() > 1.25) { renderer.setPixelRatio(1.25); resize(); }   // slow GPU: fewer pixels
 }
 function setTab(t) {
   if (booted && !sideOpen) setSide(true);
@@ -1851,7 +1861,6 @@ async function boot() {
   state.reg = regModes()[sc.registration?.default] ? sc.registration.default : Object.keys(regModes())[0] || null;
   state.date = S.dates[S.dates.length - 1];
   { const ps = growthPairs(), last = state.date, pref = `${prevDate(last)}__${last}`; state.growthPair = ps.includes(pref) ? pref : (ps.find(p => p.endsWith('__' + last)) || ps[0] || null); }
-  if (EMBED) for (const c of S.ctls.values()) c.defVisible = EMBED_DEFAULT.has(c.id);
   for (const c of S.ctls.values()) state.ctl[c.id] = { v: c.defVisible, o: c.defOpacity };
   const cam = applyHash(location.hash);
   for (const d of S.dates) dateGroup[d].matrix.copy(regM(d));

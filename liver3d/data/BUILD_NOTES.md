@@ -332,3 +332,37 @@ see `tools/palette/report.txt`): S8 vs FDG-active 20.0 / 14.2 (normal / worse CV
 L1 vs active 19.1 / 7.4 → 47.7 / 33.4; FDG-active vs every other layer: min 10.0 / 6.7 → 19.8 / 10.1 (closest: nodules). Trade-off of the
 semantic scheme: lesions of one family are closer to each other (R1–L1 8.8 / 5.5, L1–S8 15.2 / 13.1, R1–S8 16.1 / 15.3) – they sit far
 apart and carry ID chips; P7 vs hepatic veins and S1 vs cores stay low under CVD (1.9) – small structures in different places.
+
+## Smoother surfaces (mesh recipe v2, 2026-10-11)
+**Diagnosis of "coarser than before".** Not the normals: the PLY and QM paths both draw indexed geometry with smooth, area-weighted
+vertex normals (no flat shading), and the light previews are always replaced (0 previews on screen at rest). The terraces come from the
+mesh recipe itself: v1 (x3 linear interpolation between the 2-3.3 mm slices, marching cubes, Taubin 30 / pass band 0.1) keeps the slice
+steps; the face caps made them worse on the published liver (decimation raised the terrace measure from 0.022 to 0.042), and the
+previous viewer changes made them more visible: matte material (roughness 0.62 -> 0.92), pixel ratio 2 -> 1.5, thinner liver shell.
+**Fix.** Recipe v2 (`build_viewer_data.mesh_smooth`): Gaussian on the x3-upsampled mask with sigma = k_xy x in-plane spacing and k_z x
+slice spacing, marching cubes at 0.5, Taubin (normalize_coordinates=True). Per mask the strongest level that passes **Dice >= 0.98,
+|volume change| < 1 % and p95 distance to the voxel boundary <= 0.7 in-plane voxel**: S3 (k_xy 0.9, k_z 1.1, Taubin 20) -> S2 (0.75 / 0.9,
+Taubin 20) -> v1 (unchanged recipe). Result: large organs and lesions get S3/S2 (liver all dates S3; R1 S3/S2; L1, S8 S2/S3; segments
+mostly S2/S3); thin vessels, small foci, nodules, calcifications and FDG-active tissue keep v1 automatically (smoothing would erode them).
+All meshes pass (min Dice 0.9838, portal June, v1); every v2 mesh |volume change| < 1 %. Material back to roughness 0.62, pixel ratio up to
+2 (1.25 on slow GPUs). LOD previews and QM files regenerated from the v2 meshes.
+Terrace measure (mean |vertex-normal z minus its 1-ring mean|; lower = smoother), previously published -> now:
+| mesh | before | now | level | Dice | volume ratio | p95 mm |
+|---|---|---|---|---|---|---|
+| June liver | 0.0418 (capped) | 0.0091 | S3 | 0.9969 | 0.9958 | 0.50 |
+| May liver | 0.0353 (capped) | 0.0091 | S3 | 0.9969 | 0.9957 | 0.50 |
+| Sep liver | 0.0206 | 0.0090 | S3 | 0.9961 | 0.9946 | 0.80 |
+| June R1 | 0.0211 | 0.0088 | S3 | 0.9973 | 0.9957 | 0.46 |
+| May R1 | 0.0319 | 0.0151 | S2 | 0.9962 | 0.9956 | 0.53 |
+| Sep R1 | 0.0176 | 0.0078 | S3 | 0.9971 | 0.9951 | 0.71 |
+| June L1 | 0.0253 | 0.0149 | S2 | 0.9954 | 0.9938 | 0.43 |
+| June S8 | 0.0223 | 0.0093 | S3 | 0.9962 | 0.9926 | 0.45 |
+| June portal / hepatic veins / IVC | 0.0436 / 0.0347 / 0.0197 | unchanged | v1 | 0.9838 / 0.9909 / 0.9956 | ~1.00 | 0.29-0.34 |
+
+## All layers on by default (2026-10-11)
+Every layer is visible by default (embed and full screen): small lesions, cores, walls, nodules, calcifications, hepatic artery where
+present, Couinaud segments (faint pastel shells at 0.08, drawn before every other translucent layer, no depth write), the uncertain band
+and the inferred activity; liver shell 0.18, lesion shells 0.45, walls 0.3, cores 0.5, vessels / nodules / calcifications / FDG-active
+tissue solid. 'Clean view' (Layers panel) = liver + R1 / L1 / S8 + FDG-active tissue + vessels (the previous default).
+Cost (June, all layers, full detail): 34 MB and 11.3 M triangles per frame (clean view ~11 MB); render 6 ms on the M3 Max test GPU; slow GPUs
+get 'Smooth orbit' and pixel ratio 1.25 automatically.

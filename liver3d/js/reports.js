@@ -1,6 +1,6 @@
 // Reports panel: the radiologists' own words next to the model. Quotes are shown verbatim (quote_orig);
 // the English gloss is labelled as a gloss. Nothing here rewrites a quote.
-import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=b0459575b3';
+import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=a584f9404f';
 
 const KIND_LABEL = { size: 'size', size_change: 'size change', activity: 'activity', location: 'location', vessel_relation: 'vessel', other: 'other' };
 
