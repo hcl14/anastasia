@@ -3,7 +3,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import * as F from './frame.js';
-import { loadGeometry, onProgress, peek, stats } from './meshload.js';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js';
 import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js';
 import { Reports } from './reports.js';
 import { ClaimViz } from './claimviz.js';
@@ -14,7 +14,11 @@ const params = new URLSearchParams(location.search);
 const SCENE_URL = params.get('scene') || 'data/scene.json';
 const SCENE_BASE = new URL(SCENE_URL, location.href);
 const resolve = p => new URL(p, SCENE_BASE).href;
-const PREFETCH = params.get('prefetch') !== '0';
+// embedded in a page (iframe on the case site): minimal chrome, light default layer set, low-detail meshes, no background prefetch
+const EMBED = params.get('embed') === '1' || /(^#|&)embed(=1)?(&|$)/.test(location.hash);
+const PREFETCH = params.get('prefetch') !== '0' && !EMBED;
+const EMBED_DEFAULT = new Set(['liver', 'les:R1', 'les:L1', 'les:S8', 'active', 'active_pet_only']);
+if (EMBED) document.body.classList.add('embed');
 const CLAIMS_URL = params.get('claims'); // optional override, relative to the page
 
 const GROUP_ORDER = ['Organ', 'Lesions', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty'];
@@ -40,11 +44,12 @@ const AXIS_INFO = {
 // ---------------------------------------------------------------- app state
 const S = { scene: null, dates: [], dateByKey: {}, ctls: new Map(), items: {}, groups: [] };
 const state = {
-  date: null, reg: null, regGhost: true, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
+  date: null, reg: null, regGhost: true, smooth: false, renderMs: null, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
   clip: { x: { on: false, pos: 0, flip: false }, y: { on: false, pos: 0, flip: false }, z: { on: false, pos: 0, flip: false } },
   caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'en', langExplicit: false,
 };
 let shown = null;               // date whose meshes are on screen
+let lowMotion = false;          // camera moving: draw the low-detail meshes (full mode)
 let defaults = null;            // snapshot of the default state (for reset and for the compact hash)
 let bounds = null;              // Sep-frame RAS bounds of the liver (clip slider ranges)
 
@@ -52,14 +57,14 @@ let bounds = null;              // Sep-frame RAS bounds of the liver (clip slide
 const canvas = $('#c');
 const stage = $('#stage');
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, stencil: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+renderer.setPixelRatio(Math.min(EMBED ? 1.25 : 1.5, window.devicePixelRatio || 1));   // fill-rate: the 2x retina canvas was the main GPU cost
 renderer.localClippingEnabled = true;
 const scene3 = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(30, 1, 1, 8000);
+const camera = new THREE.PerspectiveCamera(30, 1, 10, 6000);   // near 10 mm: 10x depth precision vs 1 mm (less z-fighting where surfaces touch)
 camera.position.set(0, 0, 900);
 scene3.add(camera);
 const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true; controls.dampingFactor = 0.14; controls.screenSpacePanning = true;
+controls.minDistance = 40; controls.enableDamping = true; controls.dampingFactor = 0.14; controls.screenSpacePanning = true;
 controls.autoRotateSpeed = 1.6; controls.zoomSpeed = 1.1;
 scene3.add(new THREE.HemisphereLight(0xffffff, 0x3a4255, 0.85));
 const headLight = new THREE.DirectionalLight(0xffffff, 1.25); headLight.position.set(0.35, 0.6, 1); camera.add(headLight);
@@ -278,10 +283,23 @@ function buildModel() {
         }
       }
     }
-    for (const it of list) { it.pickId = pick++; it.rank = rankOf(it); }
+    for (const [i, it] of list.entries()) { it.pickId = pick++; it.rank = rankOf(it); it.sub = (i + 1) / (list.length + 2); }
     S.items[date] = list;
   }
   S.byPick = new Map(); for (const d of S.dates) for (const it of S.items[d]) S.byPick.set(it.pickId, it);
+  // mesh files: the compact QM copies (scene.qm, tools/export_qm.py; full fidelity, same vertices) with a content-hash query for caching;
+  // low-detail previews (scene.lod) only as a TRANSIENT first frame and, if 'Smooth orbit' is on, while the camera moves.
+  const lod = sc.lod?.files || {}, qm = sc.qm?.files || {};
+  const qurl = rel => qm[rel] ? resolve(qm[rel].path) + '?v=' + qm[rel].sha8 : resolve(rel);
+  for (const d of S.dates) for (const it of S.items[d]) {
+    const rel = new URL(it.url).pathname.split('/data/').pop(); delete it.url;
+    it.urlFull = qurl(rel);
+    it.urlLod = lod[rel] ? qurl(lod[rel].path) : null;
+    // what is drawn: full detail as soon as it is there (low detail only while it streams in, or while moving with Smooth orbit on)
+    Object.defineProperty(it, 'url', { get() { return this.urlLod && ((lowMotion && peek(this.urlLod)) || (!peek(this.urlFull) && peek(this.urlLod))) ? this.urlLod : this.urlFull; }, enumerable: true });
+    // what to fetch first: the light preview when the full mesh is not cached yet
+    Object.defineProperty(it, 'loadUrl', { get() { return this.urlLod && !peek(this.urlFull) ? this.urlLod : this.urlFull; } });
+  }
 }
 
 function rankOf(it) {
@@ -353,8 +371,8 @@ function ghostWanted(it) {
 }
 function urlsFor(date) {
   const urls = new Set();
-  for (const it of S.items[date] || []) if (wants(it, date) || (it.kind === 'growth' && state.growth && state.growthPair === it.pair && growthItem(it.lesion.id, it.date, it.pair) === it && ctlState(it.ctl).v)) urls.add(it.url);
-  if (state.compare) { const p = prevDate(date); for (const it of S.items[p] || []) if ((it.kind === 'lesion' || it.ctl === 'liver') && ctlState(it.ctl).v) urls.add(it.url); }
+  for (const it of S.items[date] || []) if (wants(it, date) || (it.kind === 'growth' && state.growth && state.growthPair === it.pair && growthItem(it.lesion.id, it.date, it.pair) === it && ctlState(it.ctl).v)) urls.add(it.loadUrl);
+  if (state.compare) { const p = prevDate(date); for (const it of S.items[p] || []) if ((it.kind === 'lesion' || it.ctl === 'liver') && ctlState(it.ctl).v) urls.add(it.loadUrl); }
   return [...urls];
 }
 
@@ -369,7 +387,7 @@ function ensureMesh(it) {
   if (!g) return null;
   const vc = it.kind === 'growth' && !!g.getAttribute('color');
   if (it.kind === 'growth' && !vc) it.noColors = true;
-  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.62, metalness: 0, side, emissive: 0x000000 }));
+  const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.92, metalness: 0, side, emissive: 0x000000 }));
   const front = new THREE.Mesh(g, mk(THREE.DoubleSide));
   const back = new THREE.Mesh(g, mk(THREE.BackSide));
   for (const m of [front, back]) {
@@ -380,11 +398,16 @@ function ensureMesh(it) {
   it.mesh = front; it.back = back;
   return front;
 }
+/** put another level of detail of the same surface on every object drawing it (mesh, back faces, depth pre-pass, cut stencils) */
+function swapGeom(it, g) {
+  it.mesh.geometry = g; it.back.geometry = g; if (it.pre) it.pre.geometry = g;
+  for (const a of AXES) { const e = capPool.get(it.uid + '|' + a); if (e) { e.back.geometry = g; e.front.geometry = g; } }
+}
 function ensureGhost(it) {
   if (it.ghost) return it.ghost;
   const g = peek(it.url); if (!g) return null;
   const m = new THREE.Mesh(g, ghostMaterial(it.kind !== 'lesion'));
-  m.matrixAutoUpdate = false; m.renderOrder = 300; m.userData.ghostOf = it; m.visible = false;
+  m.matrixAutoUpdate = false; m.renderOrder = 300 + it.sub; m.userData.ghostOf = it; m.visible = false;
   dateGroup[it.date].add(m); it.ghost = m; return m;
 }
 
@@ -394,24 +417,49 @@ function dimmed(it) {
   if (state.sel && it.lesion?.id === state.sel) return false;
   return true;
 }
+const anyCut = () => AXES.some(a => state.clip[a].on);
+const MARKERS = new Set(['contact_left_portal', 'nodules', 'calcifications', 'active', 'active_pet_only', 'active_inferred']);
 function applyMaterial(it) {
   const o = opacityOf(it) * (dimmed(it) ? 0.28 : 1), tr = o < 0.999;
+  // depth bias against coincident surfaces (z-fighting flicker where structures touch: portal vein / left lesion / contact patch,
+  // vessels / liver capsule): small markers win (pulled forward), large shells yield (pushed back)
+  const bias = MARKERS.has(it.ctl) || it.kind === 'part' && it.part !== 'walls' && it.part !== 'cores' ? -1 : (it.kind === 'lesion' || it.ctl === 'liver' || it.kind === 'growth' || /^seg\d$/.test(it.ctl) ? 1 : 0);
   for (const [m, isBack] of [[it.mesh, false], [it.back, true]]) {
     const mat = m.material;
     mat.opacity = o; mat.transparent = tr; mat.depthWrite = !tr;
-    if (!isBack) mat.side = tr ? THREE.FrontSide : THREE.DoubleSide;
+    mat.polygonOffset = bias !== 0; mat.polygonOffsetFactor = bias; mat.polygonOffsetUnits = bias * 2;
+    // opaque closed surfaces: front faces only unless a cut opens them (DoubleSide made near-edge-on slivers on the slice terraces
+    // flip between the lit front and the darkened back shading as the camera turned: speckle 'blinking' on thin vessels)
+    if (!isBack) mat.side = tr || !anyCut() ? THREE.FrontSide : THREE.DoubleSide;
+  }
+  // translucent tubes and parts (vessels, segments, cores, walls ...): a depth-only pre-pass right before the front faces, so only the
+  // nearest surface of the mesh is blended. Without it, overlapping branches of the same mesh are blended in triangle order and the
+  // triangles at the silhouettes flip between front- and back-facing as the camera turns: the 'blinking veins'. Lesion shells and the
+  // liver keep their two-pass look (structures inside them must stay visible).
+  const wantPre = tr && it.kind !== 'lesion' && it.kind !== 'growth' && it.ctl !== 'liver';
+  if (wantPre && !it.pre) {
+    const pm = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true, side: THREE.FrontSide, clippingPlanes: clipAll });
+    it.pre = new THREE.Mesh(it.mesh.geometry, pm); it.pre.matrixAutoUpdate = false; it.pre.userData.prepassOf = it;
+    dateGroup[it.date].add(it.pre);
+  }
+  if (it.pre) {
+    it.pre.visible = it.mesh.visible && wantPre; it.pre.geometry = it.mesh.geometry;
+    it.pre.renderOrder = 200 + it.rank + it.sub - 1e-4;
+    Object.assign(it.pre.material, { polygonOffset: bias !== 0, polygonOffsetFactor: bias, polygonOffsetUnits: bias * 2 });
   }
   // transparent: all back faces outer->inner, then all front faces inner->outer (no popping, nested shells read correctly)
   it.back.visible = it.mesh.visible && tr;
-  it.back.renderOrder = 100 + (60 - it.rank);
-  it.mesh.renderOrder = tr ? 200 + it.rank : 0;
+  // a fixed order per object (rank, then a stable per-object fraction): three.js then never re-sorts transparent meshes by their
+  // distance to the camera, which made overlapping layers of the same rank (veins / portal / IVC, lesions) swap and blink on rotation
+  it.back.renderOrder = 100 + (60 - it.rank) + it.sub;
+  it.mesh.renderOrder = tr ? 200 + it.rank + it.sub : 0;
 }
 
 function sync() {
   if (!shown) return;
   const prev = prevDate(shown);
   for (const d of S.dates) for (const it of S.items[d]) {
-    if (it.mesh) { it.mesh.visible = wants(it); applyMaterial(it); }
+    if (it.mesh) { const g = peek(it.url); if (g && it.mesh.geometry !== g) swapGeom(it, g); it.mesh.visible = wants(it); applyMaterial(it); }
     if (state.compare && d === prev && ghostWanted(it)) ensureGhost(it);
     if (it.ghost) {
       let vis = ghostWanted(it);
@@ -509,16 +557,34 @@ function pulse(t) {
 let switchToken = 0;
 async function ensureDate(date) {
   const urls = urlsFor(date);
+  if (shown) {
+    const need = (S.items[date] || []).filter(it => urls.includes(it.loadUrl) && !peek(it.loadUrl) && !it.failed);
+    if (need.length) setProgressLabel(date !== shown ? `Loading ${dateLabel(date)}…` : `Loading ${[...new Set(need.map(it => S.ctls.get(it.ctl)?.name || it.ctl))].slice(0, 2).join(', ')}…`);
+  }
   const res = await Promise.allSettled(urls.map(u => loadGeometry(u)));
   res.forEach((r, i) => {
     if (r.status === 'rejected') {
-      for (const it of S.items[date].concat(S.items[prevDate(date)] || [])) if (it.url === urls[i]) it.failed = String(r.reason?.message || r.reason);
+      for (const it of S.items[date].concat(S.items[prevDate(date)] || [])) if (it.loadUrl === urls[i] || it.urlFull === urls[i]) it.failed = String(r.reason?.message || r.reason);
       console.warn('mesh failed', urls[i], r.reason);
     }
   });
-  for (const it of S.items[date]) if (urls.includes(it.url)) ensureMesh(it);
+  for (const it of S.items[date]) if (peek(it.url)) ensureMesh(it);
+  refineSoon(date);
   const fails = res.filter(r => r.status === 'rejected').length;
   if (fails) toast(`${fails} mesh file(s) could not be loaded for ${dateLabel(date)} (see the layer list).`, 5000);
+}
+/** progressive refinement: after the light previews are on screen, stream the full-detail meshes of what is shown and swap each in
+ *  when it arrives (same silhouette within ~0.1 mm, so no visible jump) */
+let refineToken = 0;
+function refineSoon(date) {
+  const tok = ++refineToken;
+  setTimeout(async () => {
+    const list = [...new Set([...(S.items[date] || []), ...(S.items[prevDate(date)] || [])].filter(it => it.urlLod && !peek(it.urlFull) && (it.mesh?.visible || it.ghost?.visible)).map(it => it.urlFull))];
+    if (!list.length || tok !== refineToken) return;
+    setProgressLabel('Loading full detail…');
+    await Promise.allSettled(list.map(u => loadGeometry(u).then(() => { if (!moving) sync(); })));
+    if (tok === refineToken) sync();
+  }, 30);
 }
 async function setDate(date, opts = {}) {
   if (!S.dateByKey[date]) return;
@@ -550,7 +616,7 @@ async function prefetchOthers() {
   const idle = window.requestIdleCallback || (f => setTimeout(f, 400));
   for (const d of S.dates) if (d !== shown) {
     await new Promise(r => idle(r));
-    await Promise.allSettled(urlsFor(d).map(u => loadGeometry(u)));
+    await Promise.allSettled(urlsFor(d).map(u => loadGeometry(u)));   // previews; full detail streams when the date is shown
     for (const it of S.items[d]) ensureMesh(it);
   }
 }
@@ -816,6 +882,10 @@ function renderRegButtons() {
     ` <span>${esc(S.scene.registration?.follow_note || '')}</span></span>`;
   ri.title = (m.note || '') + ' — click to expand / collapse';
   ri.append(glossary());
+  if (EMBED) {
+    let q = $('#optsQ'); if (!q) { q = h('div.small', { id: 'optsQ' }); $('#optsAlign').append(q); }
+    q.innerHTML = ''; q.append(h('div.muted', null, qualityText(qMode()) ? (state.regGhost ? 'Residual: ' : 'Mismatch without registration: ') + qualityText(qMode(), shown, false) : ''), glossary());
+  }
   ri.onclick = e => { if (!e.target.closest('.glossary')) ri.classList.toggle('open'); };
   measureTopbar();
 }
@@ -828,7 +898,7 @@ function setReg(k) {
 }
 function measureTopbar() {
   const hgt = $('#topbar').getBoundingClientRect().height;
-  stage.style.setProperty('--topbar-h', Math.round(hgt + 14) + 'px');
+  $('#app').style.setProperty('--topbar-h', Math.round(hgt + 14) + 'px');
   stage.style.setProperty('--viewtools-h', Math.round($('#viewtools').getBoundingClientRect().height + 10) + 'px');
 }
 
@@ -954,7 +1024,7 @@ function renderVolumeLegend(host) {
   const segc = (S.scene.layers || []).find(L => /^seg\d$/.test(L.id) && L.per_date?.[shown]?.confidence)?.per_date[shown].confidence;
   if (segc) rows.push({ sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', vol: null, conf: segc });
   if (!rows.length) return;
-  if (volLegendOpen === null) volLegendOpen = !matchMedia('(max-width: 760px)').matches;
+  if (volLegendOpen === null) volLegendOpen = false;   // a small chip by default; one click opens the table
   const src = S.scene.source === 'consensus' ? 'consensus' : (S.scene.source || '?');
   const det = h('details.vols', { open: volLegendOpen && !state.claim ? true : null },   // collapsed while a claim bar is shown
     h('summary', null, h('b', null, `Volumes · ${dateLabel(shown)}`), h('span.muted', null, ` (${src} masks)`)),
@@ -991,7 +1061,27 @@ function renderLayersPanel() {
     host.append(det);
   }
   host.append(h('p.small.muted', null, 'Click a name to solo it; S = solo. Opacity below ', String(CAP_MIN_OPACITY), ' draws no solid cut face (see Cut).'));
+  if (EMBED) {   // a short list first; the full layer panel under "More layers"
+    const more = h('details.more-layers', null, h('summary', null, 'More layers'));
+    while (host.firstChild) more.append(host.firstChild);
+    host.append(h('div.short-layers', { id: 'shortLayers' }), more);
+  }
   refreshLayerRows();
+}
+const SHORT = [['liver', ['liver']], ['les:R1', ['les:R1']], ['les:L1', ['les:L1']], ['les:S8', ['les:S8']], ['Active tissue (PET)', ['active', 'active_pet_only']], ['Cores / walls', ['cores', 'walls']]];
+function renderShortLayers() {
+  const host = $('#shortLayers'); if (!host) return; host.innerHTML = '';
+  for (const [label, ids] of SHORT) {
+    const cs = ids.map(id => S.ctls.get(id)).filter(Boolean); if (!cs.length) continue;
+    const c0 = cs[0], av = cs.some(c => available(c.id, shown));
+    let vol = null; for (const it of S.items[shown] || []) if (ids.includes(it.ctl) && it.kind !== 'growth' && it.kind !== 'part' && it.vol != null) vol = (vol || 0) + it.vol;
+    if (vol == null && ids[0] === 'active') for (const it of S.items[shown] || []) if (it.kind === 'part' && it.part === 'active' && it.vol != null) vol = (vol || 0) + it.vol;
+    const cb = h('input', { type: 'checkbox', disabled: !av || null });
+    cb.checked = cs.some(c => ctlState(c.id).v);
+    cb.addEventListener('change', () => { for (const c of cs) ctlState(c.id).v = cb.checked; refreshLayerRows(); ensureVisibleLoaded(); writeHash(); });
+    const name = c0.lesion ? `${c0.lesion.id} · ${c0.lesion.name || ''}` : (label.startsWith('les:') || label === 'liver' ? c0.name : label);
+    host.append(h('label', { title: av ? '' : notVisibleReason(c0.id, shown) }, cb, h('span.sw', { style: { background: c0.color } }), h('span', null, name), h('span.v', null, vol != null ? fmtVol(vol) : (av ? '' : '—'))));
+  }
 }
 function layerRow(c) {
   const cb = h('input', { type: 'checkbox', 'aria-label': `Show ${c.name}` });
@@ -1029,6 +1119,7 @@ function refreshLayerRow(id) {
 }
 function refreshLayerRows() {
   for (const c of S.ctls.values()) refreshLayerRow(c.id);
+  renderShortLayers();
   for (const det of $$('#p-layers details.group')) {
     const avail = det._ctls.filter(c => available(c.id, shown));
     const on = avail.filter(c => ctlState(c.id).v).length;
@@ -1216,7 +1307,45 @@ function applyTheme() {
 }
 
 // ---------------------------------------------------------------- tabs, panels
+let sideOpen = true;
+/** the side panel (Layers / Lesions / Reports / Cut / About): collapsed by default behind the top-left toggle; overlay in the embed */
+function setSide(open, opts = {}) {
+  sideOpen = !!open;
+  $('#app').classList.toggle('side-closed', !sideOpen);
+  $('#sideToggle').setAttribute('aria-expanded', String(sideOpen));
+  if (opts.store !== false && !EMBED) { try { localStorage.setItem('liver3d-side', sideOpen ? '1' : '0'); } catch (e) { } }
+  resize();
+}
+/** the Options menu (rarely used controls) and, in the embed, the alignment controls and the glossary */
+function initOptions() {
+  const btn = $('#optsBtn'), menu = $('#optsMenu'), wrap = btn.parentElement;
+  const set = o => { menu.hidden = !o; btn.setAttribute('aria-expanded', String(o)); };
+  btn.addEventListener('click', e => { e.stopPropagation(); set(menu.hidden); });
+  document.addEventListener('click', e => { if (!menu.hidden && !wrap.contains(e.target)) set(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus(); } });
+  $('#optsGrowth').append($('.growth-wrap'));
+  if (EMBED || matchMedia('(max-width: 560px)').matches) { $('#optsAlign').append($('#regButtons'), $('.regghost-wrap')); $('#optsAlign').hidden = false; }
+  $('#cutBtn').onclick = () => { set(false); setTab('cut'); };
+  $('#smoothBtn').onclick = () => setSmooth(!state.smooth, true);
+  $('#fullLink').href = new URL('./', location.href).href.split('?')[0] + location.hash.replace(/(^#|&)embed(=1)?/, '$1').replace(/^#&/, '#');
+}
+/** 'Smooth orbit (lower detail while moving)': off unless needed. Decided once from the measured render time of the full-detail scene
+ *  (> 33 ms per frame = below 30 fps) unless the user set it; the full meshes come back within ~150 ms of releasing the mouse. */
+function setSmooth(on, byUser) {
+  state.smooth = !!on; $('#smoothBtn').setAttribute('aria-pressed', String(state.smooth));
+  if (byUser) { try { localStorage.setItem('liver3d-smooth', state.smooth ? '1' : '0'); } catch (e) { } }
+}
+function autoSmooth() {
+  try { const v = localStorage.getItem('liver3d-smooth'); if (v === '0' || v === '1') return setSmooth(v === '1'); } catch (e) { }
+  const gl = renderer.getContext(), px = new Uint8Array(4);
+  renderer.render(scene3, camera); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+  const t0 = performance.now();
+  for (let k = 0; k < 5; k++) { renderer.render(scene3, camera); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); }
+  state.renderMs = (performance.now() - t0) / 5;
+  setSmooth(state.renderMs > 33);
+}
 function setTab(t) {
+  if (booted && !sideOpen) setSide(true);
   state.tab = t;
   for (const b of $$('.tabs [role=tab]')) { const on = b.dataset.tab === t; b.setAttribute('aria-selected', String(on)); b.tabIndex = on ? 0 : -1; }
   for (const p of $$('#tabpanels [role=tabpanel]')) p.hidden = p.id !== 'p-' + t;
@@ -1409,6 +1538,7 @@ canvas.addEventListener('dblclick', e => {
   if (it?.lesion) selectLesion(it.lesion.id);
 });
 function hover(e) {
+  if (moving) return;   // no GPU picking while the camera moves
   const r = canvas.getBoundingClientRect();
   const it = pickAt(e.clientX - r.left, e.clientY - r.top);
   if (!it) { tip.hidden = true; canvas.style.cursor = ''; return; }
@@ -1496,7 +1626,11 @@ function resize() {
 }
 new ResizeObserver(resize).observe(stage);
 controls.addEventListener('change', () => { requestRender(); writeHashSoon(); });
-controls.addEventListener('start', () => { tween = null; });
+controls.addEventListener('start', () => { tween = null; moving = true; if (state.smooth && !anyCut()) { lowMotion = true; sync(); } });
+let moving = false;
+const settle = debounce(() => { moving = false; if (lowMotion) { lowMotion = false; sync(); } }, 120);
+controls.addEventListener('change', () => { if (moving) settle(); });
+controls.addEventListener('end', () => settle());
 let lastT = performance.now();
 renderer.setAnimationLoop(t => {
   const dt = Math.min(0.1, (t - lastT) / 1000); lastT = t;
@@ -1525,7 +1659,8 @@ onProgress(p => {
   progEl.classList.toggle('corner', !!shown);
   const frac = p.bytesTotal ? Math.min(1, p.bytes / p.bytesTotal) : p.filesDone / Math.max(1, p.files);
   progEl.querySelector('i').style.width = (frac * 100).toFixed(1) + '%';
-  progEl.querySelector('span').textContent = `Loading meshes ${p.filesDone}/${p.files}` + (p.bytesTotal ? ` · ${fmtMB(Math.min(p.bytes, p.bytesTotal))} of ${fmtMB(p.bytesTotal)}` : '');
+  const lab = p.label || 'Loading…';
+  progEl.querySelector('span').textContent = T(lab.startsWith('Loading liver 3D') || !shown ? '{l} {p} %' : '{l} {a}/{b}', { l: tr(lab), p: Math.round(frac * 100), a: p.filesDone, b: p.files });
 });
 
 // ---------------------------------------------------------------- the app object handed to the report modules
@@ -1564,6 +1699,9 @@ function setUi(l, opts = {}) {
   if (S.scene) document.title = uiLang() === 'uk' ? 'Печінка в 3D: три дати' : 'Liver progression 3D';
   if (!opts.keepHash) writeHash();
 }
+let booted = false;
+// poster image (embed): shown under the progress bar until the first 3D frame (?poster=<url relative to the page>)
+if (params.get('poster')) { const im = h('img', { src: params.get('poster'), alt: '' }); $('#stage').prepend(h('div', { id: 'poster', 'aria-hidden': 'true' }, im)); }
 async function boot() {
   setUiLang(initialUiLang());
   for (const b of $$('#uiLang button')) { b.setAttribute('aria-pressed', String(b.dataset.ui === uiLang())); b.onclick = () => setUi(b.dataset.ui); }
@@ -1601,6 +1739,7 @@ async function boot() {
   state.reg = regModes()[sc.registration?.default] ? sc.registration.default : Object.keys(regModes())[0] || null;
   state.date = S.dates[S.dates.length - 1];
   { const ps = growthPairs(), last = state.date, pref = `${prevDate(last)}__${last}`; state.growthPair = ps.includes(pref) ? pref : (ps.find(p => p.endsWith('__' + last)) || ps[0] || null); }
+  if (EMBED) for (const c of S.ctls.values()) c.defVisible = EMBED_DEFAULT.has(c.id);
   for (const c of S.ctls.values()) state.ctl[c.id] = { v: c.defVisible, o: c.defOpacity };
   const cam = applyHash(location.hash);
   for (const d of S.dates) dateGroup[d].matrix.copy(regM(d));
@@ -1631,7 +1770,11 @@ async function boot() {
     const tabs = $$('.tabs [role=tab]'); const i = tabs.findIndex(t => t.getAttribute('aria-selected') === 'true');
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const j = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[j].focus(); setTab(tabs[j].dataset.tab); }
   });
-  $('#sheetToggle').onclick = () => { const app_ = $('#app'); const min = app_.classList.toggle('sheet-min'); $('#sheetToggle').textContent = min ? 'Show panel' : 'Hide panel'; $('#sheetToggle').setAttribute('aria-expanded', String(!min)); resize(); };
+  $('#sheetToggle').onclick = () => setSide(false);
+  $('#sideToggle').onclick = () => setSide(!sideOpen);
+  initOptions();
+  { let st = null; try { st = localStorage.getItem('liver3d-side'); } catch (e) { }
+    setSide(!EMBED && (st === '1' || /(^#|&)tab=/.test(location.hash) || /(^#|&)claim=/.test(location.hash)), { store: false }); }
   $('#compareBtn').setAttribute('aria-pressed', String(state.compare));
   $('#growthBtn').setAttribute('aria-pressed', String(state.growth));
   matchMedia('(prefers-color-scheme: light)').addEventListener?.('change', applyTheme);
@@ -1644,9 +1787,20 @@ async function boot() {
   await reports.load(CLAIMS_URL ? new URL(CLAIMS_URL, location.href) : SCENE_BASE, CLAIMS_URL ? CLAIMS_URL.split('/').pop() : sc.reports);
   setTab(state.tab);
   resize();
+  setProgressLabel('Loading liver 3D…');
   await setDate(state.date, { keepPair: true });
   afterStateChange(cam, true);
+  booted = true;
+  // after the full-detail meshes are in: measure the render time once and decide whether Smooth orbit is needed
+  setTimeout(() => { autoSmooth(); if (state.smooth) preloadLod(); }, 4000);
+  // first full frame: fade out the poster and tell the embedding page (it loads the next embed only after this one is ready)
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    const po = $('#poster'); if (po) { po.classList.add('gone'); setTimeout(() => po.remove(), 700); }
+    try { if (window.parent !== window) window.parent.postMessage({ liver3d: 'ready', date: shown }, '*'); } catch (e) { }
+  }));
 }
+/** full mode: fetch the low-detail versions of what is shown, so the camera can move on them */
+function preloadLod() { for (const it of S.items[shown] || []) if (it.urlLod && it.mesh?.visible) loadGeometry(it.urlLod).catch(() => { }); }
 function afterStateChange(cam, first) {
   for (const d of S.dates) dateGroup[d].matrix.copy(regM(d));
   renderRegButtons(); renderCutPanel(); updatePlanes();
@@ -1664,4 +1818,5 @@ function afterStateChange(cam, first) {
 }
 
 window.__liver = { app, S, state, renderer, scene3, camera, controls, pickAt, planes, stats };
+window.__lowMotion = on => { lowMotion = !!on && !anyCut(); sync(); };   // test hook: draw as while the camera moves
 boot().catch(err => { console.error(err); const f = $('#fatal'); f.hidden = false; f.textContent = 'Viewer error: ' + err.message; });

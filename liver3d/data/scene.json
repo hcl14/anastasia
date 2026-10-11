@@ -1180,16 +1180,17 @@
      "volume_mL": 2627.59,
      "verify": {
       "dice": 0.9979,
-      "p95_mm": 0.42,
+      "p95_mm": 0.4,
       "mean_mm": 0.17,
       "max_mm": 0.93,
       "mesh_mL": 2635.99,
       "slice_dice_min_ge20vox": 0.954,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 399998,
-      "max_faces": 400000,
-      "decimated": true
+      "faces": 633816,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -1203,17 +1204,18 @@
      "mesh": "meshes/jun2026/liver.ply",
      "volume_mL": 2837.48,
      "verify": {
-      "dice": 0.9977,
-      "p95_mm": 0.42,
+      "dice": 0.9978,
+      "p95_mm": 0.4,
       "mean_mm": 0.18,
       "max_mm": 0.91,
       "mesh_mL": 2846.92,
       "slice_dice_min_ge20vox": 0.978,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 399998,
-      "max_faces": 400000,
-      "decimated": true
+      "faces": 756642,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2082,16 +2084,17 @@
      "volume_mL": 378.95,
      "verify": {
       "dice": 0.9981,
-      "p95_mm": 0.37,
+      "p95_mm": 0.34,
       "mean_mm": 0.14,
       "max_mm": 0.8,
       "mesh_mL": 379.79,
       "slice_dice_min_ge20vox": 0.963,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 200936,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2142,16 +2145,17 @@
      "volume_mL": 290.64,
      "verify": {
       "dice": 0.9989,
-      "p95_mm": 0.39,
+      "p95_mm": 0.38,
       "mean_mm": 0.16,
       "max_mm": 0.91,
       "mesh_mL": 291.1,
       "slice_dice_min_ge20vox": 0.962,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 148420,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2167,16 +2171,17 @@
      "volume_mL": 182.8,
      "verify": {
       "dice": 0.998,
-      "p95_mm": 0.34,
+      "p95_mm": 0.33,
       "mean_mm": 0.13,
       "max_mm": 0.79,
       "mesh_mL": 183.06,
       "slice_dice_min_ge20vox": 0.931,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 132420,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2234,9 +2239,10 @@
       "slice_dice_min_ge20vox": 0.944,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 119998,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 141986,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2252,16 +2258,17 @@
      "volume_mL": 252.98,
      "verify": {
       "dice": 0.9984,
-      "p95_mm": 0.31,
+      "p95_mm": 0.3,
       "mean_mm": 0.12,
       "max_mm": 0.88,
       "mesh_mL": 253.39,
       "slice_dice_min_ge20vox": 0.954,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 157258,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2311,17 +2318,18 @@
      "mesh": "meshes/may2025/seg5.ply",
      "volume_mL": 504.8,
      "verify": {
-      "dice": 0.9981,
-      "p95_mm": 0.35,
+      "dice": 0.9982,
+      "p95_mm": 0.33,
       "mean_mm": 0.14,
       "max_mm": 0.87,
       "mesh_mL": 505.99,
       "slice_dice_min_ge20vox": 0.946,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 212238,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2336,17 +2344,18 @@
      "mesh": "meshes/jun2026/seg5.ply",
      "volume_mL": 515.43,
      "verify": {
-      "dice": 0.9979,
-      "p95_mm": 0.35,
+      "dice": 0.9981,
+      "p95_mm": 0.32,
       "mean_mm": 0.14,
       "max_mm": 0.91,
       "mesh_mL": 516.62,
       "slice_dice_min_ge20vox": 0.949,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 251098,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2396,17 +2405,18 @@
      "mesh": "meshes/may2025/seg6.ply",
      "volume_mL": 493.49,
      "verify": {
-      "dice": 0.9981,
-      "p95_mm": 0.37,
+      "dice": 0.9982,
+      "p95_mm": 0.34,
       "mean_mm": 0.14,
       "max_mm": 0.91,
       "mesh_mL": 494.61,
       "slice_dice_min_ge20vox": 0.968,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 211864,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2421,17 +2431,18 @@
      "mesh": "meshes/jun2026/seg6.ply",
      "volume_mL": 620.74,
      "verify": {
-      "dice": 0.9978,
-      "p95_mm": 0.38,
+      "dice": 0.998,
+      "p95_mm": 0.34,
       "mean_mm": 0.15,
       "max_mm": 0.85,
       "mesh_mL": 622.36,
       "slice_dice_min_ge20vox": 0.851,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 268630,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2482,16 +2493,17 @@
      "volume_mL": 412.77,
      "verify": {
       "dice": 0.9985,
-      "p95_mm": 0.36,
+      "p95_mm": 0.34,
       "mean_mm": 0.14,
       "max_mm": 0.85,
       "mesh_mL": 413.54,
       "slice_dice_min_ge20vox": 0.894,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 169050,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2506,17 +2518,18 @@
      "mesh": "meshes/jun2026/seg7.ply",
      "volume_mL": 477.99,
      "verify": {
-      "dice": 0.9977,
-      "p95_mm": 0.37,
+      "dice": 0.9978,
+      "p95_mm": 0.34,
       "mean_mm": 0.14,
       "max_mm": 0.83,
       "mesh_mL": 479.18,
       "slice_dice_min_ge20vox": 0.93,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 230424,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2567,16 +2580,17 @@
      "volume_mL": 396.18,
      "verify": {
       "dice": 0.9986,
-      "p95_mm": 0.35,
+      "p95_mm": 0.33,
       "mean_mm": 0.13,
       "max_mm": 0.91,
       "mesh_mL": 396.88,
       "slice_dice_min_ge20vox": 0.97,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 168612,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -2591,17 +2605,18 @@
      "mesh": "meshes/jun2026/seg8.ply",
      "volume_mL": 318.19,
      "verify": {
-      "dice": 0.9975,
-      "p95_mm": 0.36,
+      "dice": 0.9976,
+      "p95_mm": 0.33,
       "mean_mm": 0.14,
       "max_mm": 0.76,
       "mesh_mL": 318.89,
       "slice_dice_min_ge20vox": 0.875,
       "passed": true,
       "taubin_iter": 30,
-      "faces": 120000,
-      "max_faces": 120000,
-      "decimated": true
+      "faces": 185870,
+      "max_faces": 4000000,
+      "decimated": false,
+      "note": "uncapped (QM file); PLY in meshes/ was the face-capped copy"
      },
      "source": {
       "kind": "consensus",
@@ -7180,5 +7195,3242 @@
   "tool": "tools/build_viewer_data.py",
   "recipe": "meshes.py-v1:pad2,zup-auto,mc0.5,taubin30/20/10,pb0.1,norm,xycrop-equiv",
   "finished": "2026-10-09T01:58:33"
+ },
+ "lod": {
+  "note": "Low-detail PREVIEW meshes (quadric decimation to ~20 % of the faces, display only; the full meshes stay the reference). Used by the embedded viewer and while the camera moves in the full viewer; \"High detail\" loads the full meshes. Per file: p95 / max surface distance (mm) and Dice of both meshes voxelised (1-2 mm grid; for thin shells such as walls the grid Dice understates agreement, p95 is the meaningful number). Max distances of 2-10 mm come from isolated single-voxel islands (14-50 vertices, < 0.01 mL) that the decimation drops; the main surfaces stay within 0.2 mm (p95). FDG-active tissue, nodules and calcifications are never decimated.",
+  "ratio": 0.2,
+  "min_faces": 20000,
+  "script": "tools/build_lod.py",
+  "files": {
+   "meshes/growth/L1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/L1_may2025__jun2026.ply",
+    "faces": 8000,
+    "full_faces": 31786,
+    "mb": 0.21,
+    "full_mb": 0.84,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9992,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/R1_jun2026__sep2026.ply": {
+    "path": "meshes_lod/growth/R1_jun2026__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/R1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/R1_may2025__jun2026.ply",
+    "faces": 68898,
+    "full_faces": 344490,
+    "mb": 1.83,
+    "full_mb": 9.13,
+    "p95_mm": 0.03,
+    "max_mm": 0.7,
+    "dice": 0.9998,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/R1_may2025__sep2026.ply": {
+    "path": "meshes_lod/growth/R1_may2025__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/S8_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/S8_may2025__jun2026.ply",
+    "faces": 10610,
+    "full_faces": 53054,
+    "mb": 0.28,
+    "full_mb": 1.41,
+    "p95_mm": 0.03,
+    "max_mm": 0.2,
+    "dice": 0.9995,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/lesion/L1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/lesion/L1_may2025__jun2026.ply",
+    "faces": 8000,
+    "full_faces": 31786,
+    "mb": 0.21,
+    "full_mb": 0.84,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9992,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/lesion/R1_jun2026__sep2026.ply": {
+    "path": "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/lesion/R1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/lesion/R1_may2025__jun2026.ply",
+    "faces": 68898,
+    "full_faces": 344490,
+    "mb": 1.83,
+    "full_mb": 9.13,
+    "p95_mm": 0.03,
+    "max_mm": 0.7,
+    "dice": 0.9998,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/lesion/R1_may2025__sep2026.ply": {
+    "path": "meshes_lod/growth/lesion/R1_may2025__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/lesion/S8_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/lesion/S8_may2025__jun2026.ply",
+    "faces": 10610,
+    "full_faces": 53054,
+    "mb": 0.28,
+    "full_mb": 1.41,
+    "p95_mm": 0.03,
+    "max_mm": 0.2,
+    "dice": 0.9995,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/liver_refined/L1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply",
+    "faces": 8000,
+    "full_faces": 31786,
+    "mb": 0.21,
+    "full_mb": 0.84,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9992,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/liver_refined/R1_jun2026__sep2026.ply": {
+    "path": "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/liver_refined/R1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply",
+    "faces": 68898,
+    "full_faces": 344490,
+    "mb": 1.83,
+    "full_mb": 9.13,
+    "p95_mm": 0.03,
+    "max_mm": 0.7,
+    "dice": 0.9998,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/liver_refined/R1_may2025__sep2026.ply": {
+    "path": "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/liver_refined/S8_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply",
+    "faces": 10610,
+    "full_faces": 53054,
+    "mb": 0.28,
+    "full_mb": 1.41,
+    "p95_mm": 0.03,
+    "max_mm": 0.2,
+    "dice": 0.9995,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/skeleton/L1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply",
+    "faces": 8000,
+    "full_faces": 31786,
+    "mb": 0.21,
+    "full_mb": 0.84,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9992,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/growth/skeleton/R1_jun2026__sep2026.ply": {
+    "path": "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/skeleton/R1_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply",
+    "faces": 68898,
+    "full_faces": 344490,
+    "mb": 1.83,
+    "full_mb": 9.13,
+    "p95_mm": 0.03,
+    "max_mm": 0.7,
+    "dice": 0.9998,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/skeleton/R1_may2025__sep2026.ply": {
+    "path": "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.59,
+    "full_mb": 2.95,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/growth/skeleton/S8_may2025__jun2026.ply": {
+    "path": "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply",
+    "faces": 10610,
+    "full_faces": 53054,
+    "mb": 0.28,
+    "full_mb": 1.41,
+    "p95_mm": 0.03,
+    "max_mm": 0.2,
+    "dice": 0.9995,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/hepatic_veins.ply": {
+    "path": "meshes_lod/jun2026/hepatic_veins.ply",
+    "faces": 13505,
+    "full_faces": 67526,
+    "mb": 0.34,
+    "full_mb": 1.69,
+    "p95_mm": 0.07,
+    "max_mm": 1.56,
+    "dice": 0.9394,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/ivc.ply": {
+    "path": "meshes_lod/jun2026/ivc.ply",
+    "faces": 9296,
+    "full_faces": 46480,
+    "mb": 0.23,
+    "full_mb": 1.16,
+    "p95_mm": 0.04,
+    "max_mm": 1.63,
+    "dice": 0.9974,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_L1.ply": {
+    "path": "meshes_lod/jun2026/lesion_L1.ply",
+    "faces": 8000,
+    "full_faces": 31786,
+    "mb": 0.2,
+    "full_mb": 0.8,
+    "p95_mm": 0.04,
+    "max_mm": 0.09,
+    "dice": 0.9992,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_L1_cores.ply": {
+    "path": "meshes_lod/jun2026/lesion_L1_cores.ply",
+    "faces": 8000,
+    "full_faces": 33654,
+    "mb": 0.2,
+    "full_mb": 0.84,
+    "p95_mm": 0.07,
+    "max_mm": 1.19,
+    "dice": 0.9974,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_L1_walls.ply": {
+    "path": "meshes_lod/jun2026/lesion_L1_walls.ply",
+    "faces": 13137,
+    "full_faces": 65690,
+    "mb": 0.33,
+    "full_mb": 1.64,
+    "p95_mm": 0.07,
+    "max_mm": 1.75,
+    "dice": 0.9432,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_R1.ply": {
+    "path": "meshes_lod/jun2026/lesion_R1.ply",
+    "faces": 68898,
+    "full_faces": 344490,
+    "mb": 1.72,
+    "full_mb": 8.61,
+    "p95_mm": 0.03,
+    "max_mm": 0.7,
+    "dice": 0.9998,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/lesion_R1_cores.ply": {
+    "path": "meshes_lod/jun2026/lesion_R1_cores.ply",
+    "faces": 80000,
+    "full_faces": 400000,
+    "mb": 1.99,
+    "full_mb": 9.99,
+    "p95_mm": 0.15,
+    "max_mm": 3.22,
+    "dice": 0.5212,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/lesion_R1_walls.ply": {
+    "path": "meshes_lod/jun2026/lesion_R1_walls.ply",
+    "faces": 120000,
+    "full_faces": 600000,
+    "mb": 2.96,
+    "full_mb": 14.94,
+    "p95_mm": 0.15,
+    "max_mm": 2.87,
+    "dice": 0.5724,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/lesion_S8.ply": {
+    "path": "meshes_lod/jun2026/lesion_S8.ply",
+    "faces": 10610,
+    "full_faces": 53054,
+    "mb": 0.27,
+    "full_mb": 1.33,
+    "p95_mm": 0.03,
+    "max_mm": 0.2,
+    "dice": 0.9995,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_S8_cores.ply": {
+    "path": "meshes_lod/jun2026/lesion_S8_cores.ply",
+    "faces": 20549,
+    "full_faces": 102752,
+    "mb": 0.51,
+    "full_mb": 2.57,
+    "p95_mm": 0.11,
+    "max_mm": 2.63,
+    "dice": 0.9819,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/lesion_S8_walls.ply": {
+    "path": "meshes_lod/jun2026/lesion_S8_walls.ply",
+    "faces": 30839,
+    "full_faces": 154200,
+    "mb": 0.76,
+    "full_mb": 3.84,
+    "p95_mm": 0.1,
+    "max_mm": 1.97,
+    "dice": 0.8444,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/liver.ply": {
+    "path": "meshes_lod/jun2026/liver.ply",
+    "faces": 79999,
+    "full_faces": 399998,
+    "mb": 2.0,
+    "full_mb": 10.0,
+    "p95_mm": 0.07,
+    "max_mm": 3.6,
+    "dice": 0.9954,
+    "dice_grid_mm": 3.0
+   },
+   "meshes/jun2026/portal.ply": {
+    "path": "meshes_lod/jun2026/portal.ply",
+    "faces": 22526,
+    "full_faces": 112634,
+    "mb": 0.56,
+    "full_mb": 2.82,
+    "p95_mm": 0.08,
+    "max_mm": 4.25,
+    "dice": 0.9768,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg1.ply": {
+    "path": "meshes_lod/jun2026/seg1.ply",
+    "faces": 18611,
+    "full_faces": 93060,
+    "mb": 0.47,
+    "full_mb": 2.33,
+    "p95_mm": 0.04,
+    "max_mm": 0.89,
+    "dice": 0.9821,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/jun2026/seg2.ply": {
+    "path": "meshes_lod/jun2026/seg2.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.08,
+    "max_mm": 0.7,
+    "dice": 0.9978,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg3.ply": {
+    "path": "meshes_lod/jun2026/seg3.ply",
+    "faces": 23999,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.05,
+    "max_mm": 1.06,
+    "dice": 0.9987,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg4.ply": {
+    "path": "meshes_lod/jun2026/seg4.ply",
+    "faces": 23999,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.05,
+    "max_mm": 3.75,
+    "dice": 0.9946,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg5.ply": {
+    "path": "meshes_lod/jun2026/seg5.ply",
+    "faces": 23999,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.09,
+    "max_mm": 3.05,
+    "dice": 0.9922,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg6.ply": {
+    "path": "meshes_lod/jun2026/seg6.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.1,
+    "max_mm": 1.43,
+    "dice": 0.9944,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg7.ply": {
+    "path": "meshes_lod/jun2026/seg7.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.09,
+    "max_mm": 0.9,
+    "dice": 0.9963,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/jun2026/seg8.ply": {
+    "path": "meshes_lod/jun2026/seg8.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.08,
+    "max_mm": 1.52,
+    "dice": 0.9918,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/hepatic_veins.ply": {
+    "path": "meshes_lod/may2025/hepatic_veins.ply",
+    "faces": 10120,
+    "full_faces": 50608,
+    "mb": 0.25,
+    "full_mb": 1.27,
+    "p95_mm": 0.06,
+    "max_mm": 2.82,
+    "dice": 0.9927,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/ivc.ply": {
+    "path": "meshes_lod/may2025/ivc.ply",
+    "faces": 14772,
+    "full_faces": 73868,
+    "mb": 0.37,
+    "full_mb": 1.85,
+    "p95_mm": 0.04,
+    "max_mm": 0.25,
+    "dice": 0.9989,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/lesion_L1.ply": {
+    "path": "meshes_lod/may2025/lesion_L1.ply",
+    "faces": 7999,
+    "full_faces": 25018,
+    "mb": 0.2,
+    "full_mb": 0.63,
+    "p95_mm": 0.04,
+    "max_mm": 0.63,
+    "dice": 0.9958,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/lesion_L1_cores.ply": {
+    "path": "meshes_lod/may2025/lesion_L1_cores.ply",
+    "faces": 7999,
+    "full_faces": 25018,
+    "mb": 0.2,
+    "full_mb": 0.63,
+    "p95_mm": 0.04,
+    "max_mm": 0.63,
+    "dice": 0.9958,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/lesion_R1.ply": {
+    "path": "meshes_lod/may2025/lesion_R1.ply",
+    "faces": 66222,
+    "full_faces": 331110,
+    "mb": 1.65,
+    "full_mb": 8.28,
+    "p95_mm": 0.06,
+    "max_mm": 1.14,
+    "dice": 0.9995,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/lesion_R1_cores.ply": {
+    "path": "meshes_lod/may2025/lesion_R1_cores.ply",
+    "faces": 76194,
+    "full_faces": 380976,
+    "mb": 1.9,
+    "full_mb": 9.53,
+    "p95_mm": 0.07,
+    "max_mm": 7.92,
+    "dice": 0.9748,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/lesion_R1_walls.ply": {
+    "path": "meshes_lod/may2025/lesion_R1_walls.ply",
+    "faces": 114058,
+    "full_faces": 570292,
+    "mb": 2.8,
+    "full_mb": 14.19,
+    "p95_mm": 0.12,
+    "max_mm": 2.51,
+    "dice": 0.3136,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/lesion_S8.ply": {
+    "path": "meshes_lod/may2025/lesion_S8.ply",
+    "faces": 10364,
+    "full_faces": 51822,
+    "mb": 0.26,
+    "full_mb": 1.3,
+    "p95_mm": 0.06,
+    "max_mm": 0.92,
+    "dice": 0.9991,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/lesion_S8_cores.ply": {
+    "path": "meshes_lod/may2025/lesion_S8_cores.ply",
+    "faces": 13030,
+    "full_faces": 65156,
+    "mb": 0.32,
+    "full_mb": 1.63,
+    "p95_mm": 0.08,
+    "max_mm": 2.02,
+    "dice": 0.9857,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/lesion_S8_walls.ply": {
+    "path": "meshes_lod/may2025/lesion_S8_walls.ply",
+    "faces": 15353,
+    "full_faces": 76766,
+    "mb": 0.38,
+    "full_mb": 1.91,
+    "p95_mm": 0.12,
+    "max_mm": 2.73,
+    "dice": 0.7121,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/liver.ply": {
+    "path": "meshes_lod/may2025/liver.ply",
+    "faces": 79998,
+    "full_faces": 399998,
+    "mb": 2.0,
+    "full_mb": 10.0,
+    "p95_mm": 0.06,
+    "max_mm": 0.7,
+    "dice": 0.9918,
+    "dice_grid_mm": 3.0
+   },
+   "meshes/may2025/portal.ply": {
+    "path": "meshes_lod/may2025/portal.ply",
+    "faces": 8000,
+    "full_faces": 30300,
+    "mb": 0.2,
+    "full_mb": 0.76,
+    "p95_mm": 0.04,
+    "max_mm": 0.08,
+    "dice": 0.9983,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/seg1.ply": {
+    "path": "meshes_lod/may2025/seg1.ply",
+    "faces": 16687,
+    "full_faces": 83442,
+    "mb": 0.42,
+    "full_mb": 2.09,
+    "p95_mm": 0.04,
+    "max_mm": 0.21,
+    "dice": 0.9966,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/may2025/seg2.ply": {
+    "path": "meshes_lod/may2025/seg2.ply",
+    "faces": 23010,
+    "full_faces": 115054,
+    "mb": 0.58,
+    "full_mb": 2.88,
+    "p95_mm": 0.04,
+    "max_mm": 0.75,
+    "dice": 0.9991,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/seg3.ply": {
+    "path": "meshes_lod/may2025/seg3.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.04,
+    "max_mm": 1.35,
+    "dice": 0.9954,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/seg4.ply": {
+    "path": "meshes_lod/may2025/seg4.ply",
+    "faces": 23998,
+    "full_faces": 119998,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.04,
+    "max_mm": 0.85,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/seg5.ply": {
+    "path": "meshes_lod/may2025/seg5.ply",
+    "faces": 23999,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.08,
+    "max_mm": 1.09,
+    "dice": 0.9963,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/seg6.ply": {
+    "path": "meshes_lod/may2025/seg6.ply",
+    "faces": 42000,
+    "full_faces": 120000,
+    "mb": 1.05,
+    "full_mb": 3.0,
+    "p95_mm": 0.05,
+    "max_mm": 2.66,
+    "dice": 0.9926,
+    "dice_grid_mm": 2.0,
+    "ratio": 0.35
+   },
+   "meshes/may2025/seg7.ply": {
+    "path": "meshes_lod/may2025/seg7.ply",
+    "faces": 23999,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.06,
+    "max_mm": 1.51,
+    "dice": 0.9971,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/may2025/seg8.ply": {
+    "path": "meshes_lod/may2025/seg8.ply",
+    "faces": 24000,
+    "full_faces": 120000,
+    "mb": 0.6,
+    "full_mb": 3.0,
+    "p95_mm": 0.06,
+    "max_mm": 3.19,
+    "dice": 0.9935,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/ivc.ply": {
+    "path": "meshes_lod/sep2026/ivc.ply",
+    "faces": 8000,
+    "full_faces": 27998,
+    "mb": 0.2,
+    "full_mb": 0.7,
+    "p95_mm": 0.06,
+    "max_mm": 0.14,
+    "dice": 0.9981,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/sep2026/lesion_R1.ply": {
+    "path": "meshes_lod/sep2026/lesion_R1.ply",
+    "faces": 22254,
+    "full_faces": 111276,
+    "mb": 0.56,
+    "full_mb": 2.78,
+    "p95_mm": 0.05,
+    "max_mm": 0.19,
+    "dice": 0.9996,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/lesion_R1_cores.ply": {
+    "path": "meshes_lod/sep2026/lesion_R1_cores.ply",
+    "faces": 24335,
+    "full_faces": 121676,
+    "mb": 0.61,
+    "full_mb": 3.04,
+    "p95_mm": 0.11,
+    "max_mm": 9.44,
+    "dice": 0.9752,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/lesion_R1_walls.ply": {
+    "path": "meshes_lod/sep2026/lesion_R1_walls.ply",
+    "faces": 39049,
+    "full_faces": 195250,
+    "mb": 0.96,
+    "full_mb": 4.87,
+    "p95_mm": 0.17,
+    "max_mm": 15.01,
+    "dice": 0.6577,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/lesion_S8_cores.ply": {
+    "path": "meshes_lod/sep2026/lesion_S8_cores.ply",
+    "faces": 8000,
+    "full_faces": 20804,
+    "mb": 0.2,
+    "full_mb": 0.52,
+    "p95_mm": 0.06,
+    "max_mm": 0.24,
+    "dice": 0.9987,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/sep2026/lesion_S8_walls.ply": {
+    "path": "meshes_lod/sep2026/lesion_S8_walls.ply",
+    "faces": 7998,
+    "full_faces": 23772,
+    "mb": 0.2,
+    "full_mb": 0.59,
+    "p95_mm": 0.11,
+    "max_mm": 9.44,
+    "dice": 0.9101,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/sep2026/liver.ply": {
+    "path": "meshes_lod/sep2026/liver.ply",
+    "faces": 45944,
+    "full_faces": 229722,
+    "mb": 1.15,
+    "full_mb": 5.74,
+    "p95_mm": 0.06,
+    "max_mm": 2.47,
+    "dice": 0.9991,
+    "dice_grid_mm": 3.0
+   },
+   "meshes/sep2026/seg1.ply": {
+    "path": "meshes_lod/sep2026/seg1.ply",
+    "faces": 7999,
+    "full_faces": 25548,
+    "mb": 0.2,
+    "full_mb": 0.64,
+    "p95_mm": 0.07,
+    "max_mm": 4.18,
+    "dice": 0.9931,
+    "dice_grid_mm": 1.0
+   },
+   "meshes/sep2026/seg2.ply": {
+    "path": "meshes_lod/sep2026/seg2.ply",
+    "faces": 14013,
+    "full_faces": 70074,
+    "mb": 0.35,
+    "full_mb": 1.75,
+    "p95_mm": 0.08,
+    "max_mm": 0.21,
+    "dice": 0.9986,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg3.ply": {
+    "path": "meshes_lod/sep2026/seg3.ply",
+    "faces": 9394,
+    "full_faces": 46972,
+    "mb": 0.24,
+    "full_mb": 1.17,
+    "p95_mm": 0.09,
+    "max_mm": 1.03,
+    "dice": 0.9987,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg4.ply": {
+    "path": "meshes_lod/sep2026/seg4.ply",
+    "faces": 8106,
+    "full_faces": 40536,
+    "mb": 0.2,
+    "full_mb": 1.01,
+    "p95_mm": 0.09,
+    "max_mm": 0.24,
+    "dice": 0.9983,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg5.ply": {
+    "path": "meshes_lod/sep2026/seg5.ply",
+    "faces": 15820,
+    "full_faces": 79100,
+    "mb": 0.4,
+    "full_mb": 1.98,
+    "p95_mm": 0.09,
+    "max_mm": 1.03,
+    "dice": 0.9989,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg6.ply": {
+    "path": "meshes_lod/sep2026/seg6.ply",
+    "faces": 13404,
+    "full_faces": 67024,
+    "mb": 0.34,
+    "full_mb": 1.68,
+    "p95_mm": 0.09,
+    "max_mm": 1.2,
+    "dice": 0.9988,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg7.ply": {
+    "path": "meshes_lod/sep2026/seg7.ply",
+    "faces": 19792,
+    "full_faces": 98968,
+    "mb": 0.5,
+    "full_mb": 2.47,
+    "p95_mm": 0.08,
+    "max_mm": 2.47,
+    "dice": 0.9989,
+    "dice_grid_mm": 2.0
+   },
+   "meshes/sep2026/seg8.ply": {
+    "path": "meshes_lod/sep2026/seg8.ply",
+    "faces": 13398,
+    "full_faces": 66998,
+    "mb": 0.34,
+    "full_mb": 1.68,
+    "p95_mm": 0.09,
+    "max_mm": 1.12,
+    "dice": 0.9987,
+    "dice_grid_mm": 2.0
+   }
+  },
+  "excluded": {
+   "meshes/jun2026/active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
+   "meshes/jun2026/active_pet_only.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
+   "meshes/jun2026/lesion_L1_active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
+   "meshes/sep2026/active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
+   "meshes/sep2026/active_pet_only.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail",
+   "meshes/sep2026/lesion_R1_active.ply": "FDG-active tissue / nodules / calcifications are always drawn at full detail"
+  }
+ },
+ "qm": {
+  "note": "Compact copies of every mesh (quantized 16-bit positions on a ~3 micrometre step, zig-zag delta indices, gzip; same vertices and topology). The viewer loads these; the PLY files stay as the reference.",
+  "script": "tools/export_qm.py",
+  "files": {
+   "meshes/growth/K_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/K_may2025__jun2026.ply.qm.gz",
+    "bytes": 5041,
+    "ply_bytes": 18971,
+    "verts": 352,
+    "faces": 700,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "49b7abe2"
+   },
+   "meshes/growth/L1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/L1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 91749,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "a69dcfc0"
+   },
+   "meshes/growth/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 184060,
+    "ply_bytes": 842754,
+    "verts": 15895,
+    "faces": 31786,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "2c3aede6"
+   },
+   "meshes/growth/L1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/L1_may2025__sep2026.ply.qm.gz",
+    "bytes": 91728,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "7c349599"
+   },
+   "meshes/growth/N_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/N_may2025__jun2026.ply.qm.gz",
+    "bytes": 5629,
+    "ply_bytes": 21515,
+    "verts": 400,
+    "faces": 796,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "347a882c"
+   },
+   "meshes/growth/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 618101,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "9b297822"
+   },
+   "meshes/growth/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 1887058,
+    "ply_bytes": 9129250,
+    "verts": 172241,
+    "faces": 344490,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "a27320e5"
+   },
+   "meshes/growth/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 615498,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "4a22625e"
+   },
+   "meshes/growth/S1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/S1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 9573,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "f1c37fa8"
+   },
+   "meshes/growth/S1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/S1_may2025__jun2026.ply.qm.gz",
+    "bytes": 18227,
+    "ply_bytes": 71655,
+    "verts": 1346,
+    "faces": 2688,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "028254e4"
+   },
+   "meshes/growth/S1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/S1_may2025__sep2026.ply.qm.gz",
+    "bytes": 9543,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "9a3d034e"
+   },
+   "meshes/growth/S7sat_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/S7sat_may2025__jun2026.ply.qm.gz",
+    "bytes": 14044,
+    "ply_bytes": 57239,
+    "verts": 1074,
+    "faces": 2144,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "4d61b6bc"
+   },
+   "meshes/growth/S8_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/S8_jun2026__sep2026.ply.qm.gz",
+    "bytes": 108546,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "2688c826"
+   },
+   "meshes/growth/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 297760,
+    "ply_bytes": 1406356,
+    "verts": 26529,
+    "faces": 53054,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "647bb5a9"
+   },
+   "meshes/growth/S8_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/S8_may2025__sep2026.ply.qm.gz",
+    "bytes": 110646,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "1a8bf84a"
+   },
+   "meshes/growth/lesion/K_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/K_may2025__jun2026.ply.qm.gz",
+    "bytes": 5007,
+    "ply_bytes": 18971,
+    "verts": 352,
+    "faces": 700,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "882f8196"
+   },
+   "meshes/growth/lesion/L1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/L1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 91347,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "08bbd961"
+   },
+   "meshes/growth/lesion/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 181434,
+    "ply_bytes": 842754,
+    "verts": 15895,
+    "faces": 31786,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "235b6ed4"
+   },
+   "meshes/growth/lesion/L1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/L1_may2025__sep2026.ply.qm.gz",
+    "bytes": 90856,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "c2b2402b"
+   },
+   "meshes/growth/lesion/N_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/N_may2025__jun2026.ply.qm.gz",
+    "bytes": 5589,
+    "ply_bytes": 21515,
+    "verts": 400,
+    "faces": 796,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "24c453be"
+   },
+   "meshes/growth/lesion/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 618461,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "bee0270d"
+   },
+   "meshes/growth/lesion/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 1868086,
+    "ply_bytes": 9129250,
+    "verts": 172241,
+    "faces": 344490,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "ace3724b"
+   },
+   "meshes/growth/lesion/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 620328,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "baa5c5eb"
+   },
+   "meshes/growth/lesion/S1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/S1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 9537,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "44672f81"
+   },
+   "meshes/growth/lesion/S1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/S1_may2025__jun2026.ply.qm.gz",
+    "bytes": 18158,
+    "ply_bytes": 71655,
+    "verts": 1346,
+    "faces": 2688,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "60e958ee"
+   },
+   "meshes/growth/lesion/S1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/S1_may2025__sep2026.ply.qm.gz",
+    "bytes": 9536,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "d864205a"
+   },
+   "meshes/growth/lesion/S7sat_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/S7sat_may2025__jun2026.ply.qm.gz",
+    "bytes": 13813,
+    "ply_bytes": 57239,
+    "verts": 1074,
+    "faces": 2144,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "744764dd"
+   },
+   "meshes/growth/lesion/S8_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/S8_jun2026__sep2026.ply.qm.gz",
+    "bytes": 108048,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "adb8f22b"
+   },
+   "meshes/growth/lesion/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 291737,
+    "ply_bytes": 1406356,
+    "verts": 26529,
+    "faces": 53054,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "7c307de8"
+   },
+   "meshes/growth/lesion/S8_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/lesion/S8_may2025__sep2026.ply.qm.gz",
+    "bytes": 109003,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "4b32b973"
+   },
+   "meshes/growth/liver_refined/K_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/K_may2025__jun2026.ply.qm.gz",
+    "bytes": 5007,
+    "ply_bytes": 18971,
+    "verts": 352,
+    "faces": 700,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "882f8196"
+   },
+   "meshes/growth/liver_refined/L1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/L1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 91735,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "875be5d8"
+   },
+   "meshes/growth/liver_refined/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 183962,
+    "ply_bytes": 842754,
+    "verts": 15895,
+    "faces": 31786,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "e03e2a40"
+   },
+   "meshes/growth/liver_refined/L1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/L1_may2025__sep2026.ply.qm.gz",
+    "bytes": 91434,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "217ed44b"
+   },
+   "meshes/growth/liver_refined/N_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/N_may2025__jun2026.ply.qm.gz",
+    "bytes": 5589,
+    "ply_bytes": 21515,
+    "verts": 400,
+    "faces": 796,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "24c453be"
+   },
+   "meshes/growth/liver_refined/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 618885,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "b895a0bf"
+   },
+   "meshes/growth/liver_refined/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 1869275,
+    "ply_bytes": 9129250,
+    "verts": 172241,
+    "faces": 344490,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "5ed9d66c"
+   },
+   "meshes/growth/liver_refined/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 615047,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "d6f884b7"
+   },
+   "meshes/growth/liver_refined/S1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 9537,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "44672f81"
+   },
+   "meshes/growth/liver_refined/S1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S1_may2025__jun2026.ply.qm.gz",
+    "bytes": 18158,
+    "ply_bytes": 71655,
+    "verts": 1346,
+    "faces": 2688,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "60e958ee"
+   },
+   "meshes/growth/liver_refined/S1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S1_may2025__sep2026.ply.qm.gz",
+    "bytes": 9536,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "d864205a"
+   },
+   "meshes/growth/liver_refined/S7sat_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S7sat_may2025__jun2026.ply.qm.gz",
+    "bytes": 13813,
+    "ply_bytes": 57239,
+    "verts": 1074,
+    "faces": 2144,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "744764dd"
+   },
+   "meshes/growth/liver_refined/S8_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S8_jun2026__sep2026.ply.qm.gz",
+    "bytes": 109779,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "ea173003"
+   },
+   "meshes/growth/liver_refined/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 296769,
+    "ply_bytes": 1406356,
+    "verts": 26529,
+    "faces": 53054,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "76c27472"
+   },
+   "meshes/growth/liver_refined/S8_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/liver_refined/S8_may2025__sep2026.ply.qm.gz",
+    "bytes": 110145,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "8a1428d3"
+   },
+   "meshes/growth/skeleton/K_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/K_may2025__jun2026.ply.qm.gz",
+    "bytes": 5092,
+    "ply_bytes": 18971,
+    "verts": 352,
+    "faces": 700,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "a3ad55aa"
+   },
+   "meshes/growth/skeleton/L1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/L1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 91507,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "61e07db7"
+   },
+   "meshes/growth/skeleton/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 184202,
+    "ply_bytes": 842754,
+    "verts": 15895,
+    "faces": 31786,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "93bbb546"
+   },
+   "meshes/growth/skeleton/L1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/L1_may2025__sep2026.ply.qm.gz",
+    "bytes": 92013,
+    "ply_bytes": 401581,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "1e7245e2"
+   },
+   "meshes/growth/skeleton/N_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/N_may2025__jun2026.ply.qm.gz",
+    "bytes": 5656,
+    "ply_bytes": 21515,
+    "verts": 400,
+    "faces": 796,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "f3a9bed0"
+   },
+   "meshes/growth/skeleton/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 612027,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "55ba7860"
+   },
+   "meshes/growth/skeleton/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 1855761,
+    "ply_bytes": 9129250,
+    "verts": 172241,
+    "faces": 344490,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "4cb0c7d9"
+   },
+   "meshes/growth/skeleton/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 613627,
+    "ply_bytes": 2949240,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "d7cdd748"
+   },
+   "meshes/growth/skeleton/S1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 9624,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "6ab55736"
+   },
+   "meshes/growth/skeleton/S1_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S1_may2025__jun2026.ply.qm.gz",
+    "bytes": 18229,
+    "ply_bytes": 71655,
+    "verts": 1346,
+    "faces": 2688,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "4a4f7d72"
+   },
+   "meshes/growth/skeleton/S1_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S1_may2025__sep2026.ply.qm.gz",
+    "bytes": 9552,
+    "ply_bytes": 36780,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "e2361ea9"
+   },
+   "meshes/growth/skeleton/S7sat_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S7sat_may2025__jun2026.ply.qm.gz",
+    "bytes": 13700,
+    "ply_bytes": 57239,
+    "verts": 1074,
+    "faces": 2144,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "09d3e5d9"
+   },
+   "meshes/growth/skeleton/S8_jun2026__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S8_jun2026__sep2026.ply.qm.gz",
+    "bytes": 110486,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "788be7f8"
+   },
+   "meshes/growth/skeleton/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 295708,
+    "ply_bytes": 1406356,
+    "verts": 26529,
+    "faces": 53054,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "d4b579a3"
+   },
+   "meshes/growth/skeleton/S8_may2025__sep2026.ply": {
+    "path": "meshes_qm/growth/skeleton/S8_may2025__sep2026.ply.qm.gz",
+    "bytes": 110538,
+    "ply_bytes": 496610,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "759577a2"
+   },
+   "meshes/jun2026/active.ply": {
+    "path": "meshes_qm/jun2026/active.ply.qm.gz",
+    "bytes": 245066,
+    "ply_bytes": 1145955,
+    "verts": 22916,
+    "faces": 45820,
+    "max_quant_err_mm": 0.0013,
+    "sha8": "6c049e38"
+   },
+   "meshes/jun2026/active_inferred.ply": {
+    "path": "meshes_qm/jun2026/active_inferred.ply.qm.gz",
+    "bytes": 28092,
+    "ply_bytes": 129365,
+    "verts": 2578,
+    "faces": 5168,
+    "max_quant_err_mm": 0.0002,
+    "sha8": "e0164eb0"
+   },
+   "meshes/jun2026/active_pet_only.ply": {
+    "path": "meshes_qm/jun2026/active_pet_only.ply.qm.gz",
+    "bytes": 111697,
+    "ply_bytes": 514563,
+    "verts": 10284,
+    "faces": 20572,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "950cacb7"
+   },
+   "meshes/jun2026/contact_left_portal.ply": {
+    "path": "meshes_qm/jun2026/contact_left_portal.ply.qm.gz",
+    "bytes": 27141,
+    "ply_bytes": 119357,
+    "verts": 2434,
+    "faces": 4664,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "e36fb7b4"
+   },
+   "meshes/jun2026/gallbladder.ply": {
+    "path": "meshes_qm/jun2026/gallbladder.ply.qm.gz",
+    "bytes": 93315,
+    "ply_bytes": 411790,
+    "verts": 8214,
+    "faces": 16488,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "37b3459c"
+   },
+   "meshes/jun2026/hepatic_veins.ply": {
+    "path": "meshes_qm/jun2026/hepatic_veins.ply.qm.gz",
+    "bytes": 362018,
+    "ply_bytes": 1688461,
+    "verts": 33763,
+    "faces": 67526,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "1c57adaa"
+   },
+   "meshes/jun2026/ivc.ply": {
+    "path": "meshes_qm/jun2026/ivc.ply.qm.gz",
+    "bytes": 243804,
+    "ply_bytes": 1162359,
+    "verts": 23242,
+    "faces": 46480,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "a16c0f2d"
+   },
+   "meshes/jun2026/lesion_K.ply": {
+    "path": "meshes_qm/jun2026/lesion_K.ply.qm.gz",
+    "bytes": 4169,
+    "ply_bytes": 17855,
+    "verts": 352,
+    "faces": 700,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "f8a0e1f8"
+   },
+   "meshes/jun2026/lesion_K_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_K_cores.ply.qm.gz",
+    "bytes": 2198,
+    "ply_bytes": 9055,
+    "verts": 176,
+    "faces": 348,
+    "max_quant_err_mm": 0.0,
+    "sha8": "52018594"
+   },
+   "meshes/jun2026/lesion_K_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_K_walls.ply.qm.gz",
+    "bytes": 6421,
+    "ply_bytes": 25322,
+    "verts": 493,
+    "faces": 1014,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "9ef70c65"
+   },
+   "meshes/jun2026/lesion_L1.ply": {
+    "path": "meshes_qm/jun2026/lesion_L1.ply.qm.gz",
+    "bytes": 157782,
+    "ply_bytes": 795009,
+    "verts": 15895,
+    "faces": 31786,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "7a05bf46"
+   },
+   "meshes/jun2026/lesion_L1_active.ply": {
+    "path": "meshes_qm/jun2026/lesion_L1_active.ply.qm.gz",
+    "bytes": 145611,
+    "ply_bytes": 699659,
+    "verts": 13988,
+    "faces": 27972,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "07c240cc"
+   },
+   "meshes/jun2026/lesion_L1_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_L1_cores.ply.qm.gz",
+    "bytes": 186909,
+    "ply_bytes": 841421,
+    "verts": 16817,
+    "faces": 33654,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "7970ea2d"
+   },
+   "meshes/jun2026/lesion_L1_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_L1_walls.ply.qm.gz",
+    "bytes": 369087,
+    "ply_bytes": 1640161,
+    "verts": 32745,
+    "faces": 65690,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "e7483cc9"
+   },
+   "meshes/jun2026/lesion_N.ply": {
+    "path": "meshes_qm/jun2026/lesion_N.ply.qm.gz",
+    "bytes": 4653,
+    "ply_bytes": 20255,
+    "verts": 400,
+    "faces": 796,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "bcf208c2"
+   },
+   "meshes/jun2026/lesion_N_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_N_cores.ply.qm.gz",
+    "bytes": 400,
+    "ply_bytes": 1601,
+    "verts": 28,
+    "faces": 48,
+    "max_quant_err_mm": 0.0,
+    "sha8": "25b1b7f1"
+   },
+   "meshes/jun2026/lesion_N_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_N_walls.ply.qm.gz",
+    "bytes": 4997,
+    "ply_bytes": 21551,
+    "verts": 428,
+    "faces": 844,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "9ac6c7ff"
+   },
+   "meshes/jun2026/lesion_R1.ply": {
+    "path": "meshes_qm/jun2026/lesion_R1.ply.qm.gz",
+    "bytes": 1626508,
+    "ply_bytes": 8612467,
+    "verts": 172241,
+    "faces": 344490,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "da2d36ee"
+   },
+   "meshes/jun2026/lesion_R1_active.ply": {
+    "path": "meshes_qm/jun2026/lesion_R1_active.ply.qm.gz",
+    "bytes": 60140,
+    "ply_bytes": 251804,
+    "verts": 5033,
+    "faces": 10054,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "e899f0c2"
+   },
+   "meshes/jun2026/lesion_R1_calcifications.ply": {
+    "path": "meshes_qm/jun2026/lesion_R1_calcifications.ply.qm.gz",
+    "bytes": 9588,
+    "ply_bytes": 42352,
+    "verts": 844,
+    "faces": 1676,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "45b32fed"
+   },
+   "meshes/jun2026/lesion_R1_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_R1_cores.ply.qm.gz",
+    "bytes": 3389582,
+    "ply_bytes": 9991577,
+    "verts": 298904,
+    "faces": 598536,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "b598e4d8"
+   },
+   "meshes/jun2026/lesion_R1_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_R1_walls.ply.qm.gz",
+    "bytes": 5346572,
+    "ply_bytes": 14943625,
+    "verts": 471647,
+    "faces": 948018,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "59e3550d"
+   },
+   "meshes/jun2026/lesion_S1.ply": {
+    "path": "meshes_qm/jun2026/lesion_S1.ply.qm.gz",
+    "bytes": 15041,
+    "ply_bytes": 67557,
+    "verts": 1346,
+    "faces": 2688,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "08acf9ef"
+   },
+   "meshes/jun2026/lesion_S1_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_S1_cores.ply.qm.gz",
+    "bytes": 1092,
+    "ply_bytes": 4302,
+    "verts": 82,
+    "faces": 156,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "ba9bb448"
+   },
+   "meshes/jun2026/lesion_S1_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_S1_walls.ply.qm.gz",
+    "bytes": 16324,
+    "ply_bytes": 71605,
+    "verts": 1428,
+    "faces": 2848,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "58638f23"
+   },
+   "meshes/jun2026/lesion_S7sat.ply": {
+    "path": "meshes_qm/jun2026/lesion_S7sat.ply.qm.gz",
+    "bytes": 11518,
+    "ply_bytes": 53957,
+    "verts": 1074,
+    "faces": 2144,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "0258fb08"
+   },
+   "meshes/jun2026/lesion_S7sat_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_S7sat_cores.ply.qm.gz",
+    "bytes": 7924,
+    "ply_bytes": 35306,
+    "verts": 701,
+    "faces": 1398,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "acc4ad2c"
+   },
+   "meshes/jun2026/lesion_S7sat_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_S7sat_walls.ply.qm.gz",
+    "bytes": 20658,
+    "ply_bytes": 87631,
+    "verts": 1735,
+    "faces": 3514,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "1b613da4"
+   },
+   "meshes/jun2026/lesion_S8.ply": {
+    "path": "meshes_qm/jun2026/lesion_S8.ply.qm.gz",
+    "bytes": 253491,
+    "ply_bytes": 1326709,
+    "verts": 26529,
+    "faces": 53054,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "baa15614"
+   },
+   "meshes/jun2026/lesion_S8_cores.ply": {
+    "path": "meshes_qm/jun2026/lesion_S8_cores.ply.qm.gz",
+    "bytes": 593355,
+    "ply_bytes": 2565032,
+    "verts": 51206,
+    "faces": 102752,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "625acbb1"
+   },
+   "meshes/jun2026/lesion_S8_walls.ply": {
+    "path": "meshes_qm/jun2026/lesion_S8_walls.ply.qm.gz",
+    "bytes": 889338,
+    "ply_bytes": 3843552,
+    "verts": 76610,
+    "faces": 154200,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "b1f39d55"
+   },
+   "meshes/jun2026/liver.ply": {
+    "path": "meshes_qm/jun2026/liver.ply.qm.gz",
+    "bytes": 3651111,
+    "ply_bytes": 9998679,
+    "verts": 378255,
+    "faces": 756642,
+    "max_quant_err_mm": 0.002,
+    "sha8": "0a854046"
+   },
+   "meshes/jun2026/portal.ply": {
+    "path": "meshes_qm/jun2026/portal.ply.qm.gz",
+    "bytes": 631488,
+    "ply_bytes": 2815682,
+    "verts": 56297,
+    "faces": 112634,
+    "max_quant_err_mm": 0.001,
+    "sha8": "da9797bd"
+   },
+   "meshes/jun2026/seg1.ply": {
+    "path": "meshes_qm/jun2026/seg1.ply.qm.gz",
+    "bytes": 479547,
+    "ply_bytes": 2326715,
+    "verts": 46526,
+    "faces": 93060,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "27c9ac0a"
+   },
+   "meshes/jun2026/seg2.ply": {
+    "path": "meshes_qm/jun2026/seg2.ply.qm.gz",
+    "bytes": 973088,
+    "ply_bytes": 3000168,
+    "verts": 100462,
+    "faces": 200936,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "2f49142b"
+   },
+   "meshes/jun2026/seg3.ply": {
+    "path": "meshes_qm/jun2026/seg3.ply.qm.gz",
+    "bytes": 653638,
+    "ply_bytes": 2999880,
+    "verts": 66192,
+    "faces": 132420,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "709fe5a2"
+   },
+   "meshes/jun2026/seg4.ply": {
+    "path": "meshes_qm/jun2026/seg4.ply.qm.gz",
+    "bytes": 779526,
+    "ply_bytes": 3000408,
+    "verts": 78633,
+    "faces": 157258,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "12139470"
+   },
+   "meshes/jun2026/seg5.ply": {
+    "path": "meshes_qm/jun2026/seg5.ply.qm.gz",
+    "bytes": 1261808,
+    "ply_bytes": 2999064,
+    "verts": 125497,
+    "faces": 251098,
+    "max_quant_err_mm": 0.001,
+    "sha8": "029c444d"
+   },
+   "meshes/jun2026/seg6.ply": {
+    "path": "meshes_qm/jun2026/seg6.ply.qm.gz",
+    "bytes": 1352265,
+    "ply_bytes": 2999544,
+    "verts": 134283,
+    "faces": 268630,
+    "max_quant_err_mm": 0.001,
+    "sha8": "efba9a09"
+   },
+   "meshes/jun2026/seg7.ply": {
+    "path": "meshes_qm/jun2026/seg7.ply.qm.gz",
+    "bytes": 1137791,
+    "ply_bytes": 3000120,
+    "verts": 115204,
+    "faces": 230424,
+    "max_quant_err_mm": 0.001,
+    "sha8": "a93ab8ef"
+   },
+   "meshes/jun2026/seg8.ply": {
+    "path": "meshes_qm/jun2026/seg8.ply.qm.gz",
+    "bytes": 942335,
+    "ply_bytes": 3000264,
+    "verts": 92933,
+    "faces": 185870,
+    "max_quant_err_mm": 0.001,
+    "sha8": "d7a87643"
+   },
+   "meshes/may2025/contact_left_portal.ply": {
+    "path": "meshes_qm/may2025/contact_left_portal.ply.qm.gz",
+    "bytes": 18272,
+    "ply_bytes": 83393,
+    "verts": 1670,
+    "faces": 3308,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "cb0aa4df"
+   },
+   "meshes/may2025/gallbladder.ply": {
+    "path": "meshes_qm/may2025/gallbladder.ply.qm.gz",
+    "bytes": 69642,
+    "ply_bytes": 330258,
+    "verts": 6600,
+    "faces": 13196,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "5cd1f832"
+   },
+   "meshes/may2025/hepatic_veins.ply": {
+    "path": "meshes_qm/may2025/hepatic_veins.ply.qm.gz",
+    "bytes": 255439,
+    "ply_bytes": 1265703,
+    "verts": 25312,
+    "faces": 50608,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "6118c90d"
+   },
+   "meshes/may2025/ivc.ply": {
+    "path": "meshes_qm/may2025/ivc.ply.qm.gz",
+    "bytes": 381854,
+    "ply_bytes": 1847059,
+    "verts": 36936,
+    "faces": 73868,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "d61abc10"
+   },
+   "meshes/may2025/lesion_K.ply": {
+    "path": "meshes_qm/may2025/lesion_K.ply.qm.gz",
+    "bytes": 2830,
+    "ply_bytes": 12555,
+    "verts": 246,
+    "faces": 488,
+    "max_quant_err_mm": 0.0,
+    "sha8": "ff05be22"
+   },
+   "meshes/may2025/lesion_K_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_K_cores.ply.qm.gz",
+    "bytes": 1425,
+    "ply_bytes": 5955,
+    "verts": 114,
+    "faces": 224,
+    "max_quant_err_mm": 0.0,
+    "sha8": "3eff2726"
+   },
+   "meshes/may2025/lesion_K_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_K_walls.ply.qm.gz",
+    "bytes": 3918,
+    "ply_bytes": 16457,
+    "verts": 323,
+    "faces": 646,
+    "max_quant_err_mm": 0.0,
+    "sha8": "a52279c6"
+   },
+   "meshes/may2025/lesion_L1.ply": {
+    "path": "meshes_qm/may2025/lesion_L1.ply.qm.gz",
+    "bytes": 132497,
+    "ply_bytes": 625809,
+    "verts": 12511,
+    "faces": 25018,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "5b326e4e"
+   },
+   "meshes/may2025/lesion_L1_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_L1_cores.ply.qm.gz",
+    "bytes": 132497,
+    "ply_bytes": 625809,
+    "verts": 12511,
+    "faces": 25018,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "5b326e4e"
+   },
+   "meshes/may2025/lesion_N.ply": {
+    "path": "meshes_qm/may2025/lesion_N.ply.qm.gz",
+    "bytes": 2165,
+    "ply_bytes": 9455,
+    "verts": 184,
+    "faces": 364,
+    "max_quant_err_mm": 0.0,
+    "sha8": "b32c8672"
+   },
+   "meshes/may2025/lesion_N_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_N_walls.ply.qm.gz",
+    "bytes": 2165,
+    "ply_bytes": 9455,
+    "verts": 184,
+    "faces": 364,
+    "max_quant_err_mm": 0.0,
+    "sha8": "b32c8672"
+   },
+   "meshes/may2025/lesion_R1.ply": {
+    "path": "meshes_qm/may2025/lesion_R1.ply.qm.gz",
+    "bytes": 1647663,
+    "ply_bytes": 8276575,
+    "verts": 165493,
+    "faces": 331110,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "0f45fe11"
+   },
+   "meshes/may2025/lesion_R1_calcifications.ply": {
+    "path": "meshes_qm/may2025/lesion_R1_calcifications.ply.qm.gz",
+    "bytes": 17538,
+    "ply_bytes": 78347,
+    "verts": 1567,
+    "faces": 3110,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "d08eff3e"
+   },
+   "meshes/may2025/lesion_R1_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_R1_cores.ply.qm.gz",
+    "bytes": 1987866,
+    "ply_bytes": 9525481,
+    "verts": 190520,
+    "faces": 380976,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "6f309230"
+   },
+   "meshes/may2025/lesion_R1_nodules.ply": {
+    "path": "meshes_qm/may2025/lesion_R1_nodules.ply.qm.gz",
+    "bytes": 22607,
+    "ply_bytes": 103457,
+    "verts": 2064,
+    "faces": 4124,
+    "max_quant_err_mm": 0.0002,
+    "sha8": "87baf118"
+   },
+   "meshes/may2025/lesion_R1_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_R1_walls.ply.qm.gz",
+    "bytes": 3163041,
+    "ply_bytes": 14190749,
+    "verts": 282360,
+    "faces": 570292,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "2b601f03"
+   },
+   "meshes/may2025/lesion_S1.ply": {
+    "path": "meshes_qm/may2025/lesion_S1.ply.qm.gz",
+    "bytes": 11539,
+    "ply_bytes": 54957,
+    "verts": 1094,
+    "faces": 2184,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "a8975a3c"
+   },
+   "meshes/may2025/lesion_S1_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_S1_cores.ply.qm.gz",
+    "bytes": 2251,
+    "ply_bytes": 9199,
+    "verts": 182,
+    "faces": 348,
+    "max_quant_err_mm": 0.0,
+    "sha8": "70f62bb9"
+   },
+   "meshes/may2025/lesion_S1_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_S1_walls.ply.qm.gz",
+    "bytes": 14336,
+    "ply_bytes": 64053,
+    "verts": 1278,
+    "faces": 2544,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "c1cbbf36"
+   },
+   "meshes/may2025/lesion_S7sat.ply": {
+    "path": "meshes_qm/may2025/lesion_S7sat.ply.qm.gz",
+    "bytes": 12485,
+    "ply_bytes": 54805,
+    "verts": 1092,
+    "faces": 2176,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "de985111"
+   },
+   "meshes/may2025/lesion_S7sat_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_S7sat_cores.ply.qm.gz",
+    "bytes": 9899,
+    "ply_bytes": 42204,
+    "verts": 840,
+    "faces": 1672,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "932b0c0c"
+   },
+   "meshes/may2025/lesion_S7sat_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_S7sat_walls.ply.qm.gz",
+    "bytes": 16691,
+    "ply_bytes": 68575,
+    "verts": 1357,
+    "faces": 2746,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "24cc3fcd"
+   },
+   "meshes/may2025/lesion_S8.ply": {
+    "path": "meshes_qm/may2025/lesion_S8.ply.qm.gz",
+    "bytes": 269047,
+    "ply_bytes": 1295861,
+    "verts": 25911,
+    "faces": 51822,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "61e6d1a4"
+   },
+   "meshes/may2025/lesion_S8_cores.ply": {
+    "path": "meshes_qm/may2025/lesion_S8_cores.ply.qm.gz",
+    "bytes": 354966,
+    "ply_bytes": 1628299,
+    "verts": 32540,
+    "faces": 65156,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "46903a25"
+   },
+   "meshes/may2025/lesion_S8_walls.ply": {
+    "path": "meshes_qm/may2025/lesion_S8_walls.ply.qm.gz",
+    "bytes": 437026,
+    "ply_bytes": 1907797,
+    "verts": 37897,
+    "faces": 76766,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "a8fd37cd"
+   },
+   "meshes/may2025/liver.ply": {
+    "path": "meshes_qm/may2025/liver.ply.qm.gz",
+    "bytes": 3041461,
+    "ply_bytes": 9999927,
+    "verts": 316894,
+    "faces": 633816,
+    "max_quant_err_mm": 0.002,
+    "sha8": "abf92251"
+   },
+   "meshes/may2025/portal.ply": {
+    "path": "meshes_qm/may2025/portal.ply.qm.gz",
+    "bytes": 159188,
+    "ply_bytes": 757859,
+    "verts": 15152,
+    "faces": 30300,
+    "max_quant_err_mm": 0.0006,
+    "sha8": "478802af"
+   },
+   "meshes/may2025/seg1.ply": {
+    "path": "meshes_qm/may2025/seg1.ply.qm.gz",
+    "bytes": 419740,
+    "ply_bytes": 2086409,
+    "verts": 41723,
+    "faces": 83442,
+    "max_quant_err_mm": 0.0006,
+    "sha8": "7fef445a"
+   },
+   "meshes/may2025/seg2.ply": {
+    "path": "meshes_qm/may2025/seg2.ply.qm.gz",
+    "bytes": 548466,
+    "ply_bytes": 2876662,
+    "verts": 57527,
+    "faces": 115054,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "933131f7"
+   },
+   "meshes/may2025/seg3.ply": {
+    "path": "meshes_qm/may2025/seg3.ply.qm.gz",
+    "bytes": 722249,
+    "ply_bytes": 3000120,
+    "verts": 74202,
+    "faces": 148420,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "661e6573"
+   },
+   "meshes/may2025/seg4.ply": {
+    "path": "meshes_qm/may2025/seg4.ply.qm.gz",
+    "bytes": 678046,
+    "ply_bytes": 3000310,
+    "verts": 70995,
+    "faces": 141986,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "f8b2f976"
+   },
+   "meshes/may2025/seg5.ply": {
+    "path": "meshes_qm/may2025/seg5.ply.qm.gz",
+    "bytes": 1061415,
+    "ply_bytes": 3000216,
+    "verts": 106115,
+    "faces": 212238,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "9c8769e2"
+   },
+   "meshes/may2025/seg6.ply": {
+    "path": "meshes_qm/may2025/seg6.ply.qm.gz",
+    "bytes": 1051321,
+    "ply_bytes": 3000264,
+    "verts": 105930,
+    "faces": 211864,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "24d7aced"
+   },
+   "meshes/may2025/seg7.ply": {
+    "path": "meshes_qm/may2025/seg7.ply.qm.gz",
+    "bytes": 804216,
+    "ply_bytes": 3000504,
+    "verts": 84533,
+    "faces": 169050,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "b3175520"
+   },
+   "meshes/may2025/seg8.ply": {
+    "path": "meshes_qm/may2025/seg8.ply.qm.gz",
+    "bytes": 830285,
+    "ply_bytes": 3000552,
+    "verts": 84316,
+    "faces": 168612,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "d88b0330"
+   },
+   "meshes/sep2026/active.ply": {
+    "path": "meshes_qm/sep2026/active.ply.qm.gz",
+    "bytes": 317532,
+    "ply_bytes": 1463793,
+    "verts": 29279,
+    "faces": 58522,
+    "max_quant_err_mm": 0.0015,
+    "sha8": "74e8095d"
+   },
+   "meshes/sep2026/active_pet_only.ply": {
+    "path": "meshes_qm/sep2026/active_pet_only.ply.qm.gz",
+    "bytes": 124717,
+    "ply_bytes": 572359,
+    "verts": 11468,
+    "faces": 22832,
+    "max_quant_err_mm": 0.0013,
+    "sha8": "1024e1de"
+   },
+   "meshes/sep2026/hepatic_veins.ply": {
+    "path": "meshes_qm/sep2026/hepatic_veins.ply.qm.gz",
+    "bytes": 97534,
+    "ply_bytes": 447160,
+    "verts": 8937,
+    "faces": 17874,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "40e5b3e4"
+   },
+   "meshes/sep2026/ivc.ply": {
+    "path": "meshes_qm/sep2026/ivc.ply.qm.gz",
+    "bytes": 150236,
+    "ply_bytes": 700261,
+    "verts": 13999,
+    "faces": 27998,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "58828a14"
+   },
+   "meshes/sep2026/lesion_L1.ply": {
+    "path": "meshes_qm/sep2026/lesion_L1.ply.qm.gz",
+    "bytes": 77909,
+    "ply_bytes": 378808,
+    "verts": 7571,
+    "faces": 15138,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "a0d43c0b"
+   },
+   "meshes/sep2026/lesion_L1_active.ply": {
+    "path": "meshes_qm/sep2026/lesion_L1_active.ply.qm.gz",
+    "bytes": 80974,
+    "ply_bytes": 372462,
+    "verts": 7442,
+    "faces": 14888,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "e68216d2"
+   },
+   "meshes/sep2026/lesion_L1_cores.ply": {
+    "path": "meshes_qm/sep2026/lesion_L1_cores.ply.qm.gz",
+    "bytes": 20593,
+    "ply_bytes": 91705,
+    "verts": 1830,
+    "faces": 3652,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "a0037fb7"
+   },
+   "meshes/sep2026/lesion_L1_walls.ply": {
+    "path": "meshes_qm/sep2026/lesion_L1_walls.ply.qm.gz",
+    "bytes": 103109,
+    "ply_bytes": 466136,
+    "verts": 9303,
+    "faces": 18658,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "80bb06b6"
+   },
+   "meshes/sep2026/lesion_P7.ply": {
+    "path": "meshes_qm/sep2026/lesion_P7.ply.qm.gz",
+    "bytes": 2724,
+    "ply_bytes": 11755,
+    "verts": 230,
+    "faces": 456,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "6d4b4d22"
+   },
+   "meshes/sep2026/lesion_P7_active.ply": {
+    "path": "meshes_qm/sep2026/lesion_P7_active.ply.qm.gz",
+    "bytes": 2724,
+    "ply_bytes": 11755,
+    "verts": 230,
+    "faces": 456,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "6d4b4d22"
+   },
+   "meshes/sep2026/lesion_P7_walls.ply": {
+    "path": "meshes_qm/sep2026/lesion_P7_walls.ply.qm.gz",
+    "bytes": 2724,
+    "ply_bytes": 11755,
+    "verts": 230,
+    "faces": 456,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "6d4b4d22"
+   },
+   "meshes/sep2026/lesion_R1.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1.ply.qm.gz",
+    "bytes": 527560,
+    "ply_bytes": 2782260,
+    "verts": 55640,
+    "faces": 111276,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "f0ce2bfe"
+   },
+   "meshes/sep2026/lesion_R1_active.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1_active.ply.qm.gz",
+    "bytes": 173265,
+    "ply_bytes": 799983,
+    "verts": 16008,
+    "faces": 31960,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "ccc3d009"
+   },
+   "meshes/sep2026/lesion_R1_calcifications.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1_calcifications.ply.qm.gz",
+    "bytes": 5311,
+    "ply_bytes": 23149,
+    "verts": 461,
+    "faces": 906,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "25a2b54e"
+   },
+   "meshes/sep2026/lesion_R1_cores.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1_cores.ply.qm.gz",
+    "bytes": 646499,
+    "ply_bytes": 3042644,
+    "verts": 60856,
+    "faces": 121676,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "b7429dc9"
+   },
+   "meshes/sep2026/lesion_R1_nodules.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1_nodules.ply.qm.gz",
+    "bytes": 2629,
+    "ply_bytes": 11355,
+    "verts": 222,
+    "faces": 440,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "a8559f7f"
+   },
+   "meshes/sep2026/lesion_R1_walls.ply": {
+    "path": "meshes_qm/sep2026/lesion_R1_walls.ply.qm.gz",
+    "bytes": 1086994,
+    "ply_bytes": 4870042,
+    "verts": 97145,
+    "faces": 195250,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "b0e3fca4"
+   },
+   "meshes/sep2026/lesion_S1.ply": {
+    "path": "meshes_qm/sep2026/lesion_S1.ply.qm.gz",
+    "bytes": 7846,
+    "ply_bytes": 34656,
+    "verts": 688,
+    "faces": 1372,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "8cf9d568"
+   },
+   "meshes/sep2026/lesion_S1_cores.ply": {
+    "path": "meshes_qm/sep2026/lesion_S1_cores.ply.qm.gz",
+    "bytes": 4712,
+    "ply_bytes": 20155,
+    "verts": 398,
+    "faces": 792,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "c95073a1"
+   },
+   "meshes/sep2026/lesion_S1_walls.ply": {
+    "path": "meshes_qm/sep2026/lesion_S1_walls.ply.qm.gz",
+    "bytes": 11645,
+    "ply_bytes": 46966,
+    "verts": 929,
+    "faces": 1874,
+    "max_quant_err_mm": 0.0001,
+    "sha8": "da5021d2"
+   },
+   "meshes/sep2026/lesion_S8.ply": {
+    "path": "meshes_qm/sep2026/lesion_S8.ply.qm.gz",
+    "bytes": 92039,
+    "ply_bytes": 468458,
+    "verts": 9364,
+    "faces": 18724,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "ae074459"
+   },
+   "meshes/sep2026/lesion_S8_active.ply": {
+    "path": "meshes_qm/sep2026/lesion_S8_active.ply.qm.gz",
+    "bytes": 41778,
+    "ply_bytes": 188949,
+    "verts": 3778,
+    "faces": 7536,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "88edcfc1"
+   },
+   "meshes/sep2026/lesion_S8_cores.ply": {
+    "path": "meshes_qm/sep2026/lesion_S8_cores.ply.qm.gz",
+    "bytes": 113770,
+    "ply_bytes": 520411,
+    "verts": 10402,
+    "faces": 20804,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "d1a52742"
+   },
+   "meshes/sep2026/lesion_S8_nodules.ply": {
+    "path": "meshes_qm/sep2026/lesion_S8_nodules.ply.qm.gz",
+    "bytes": 12525,
+    "ply_bytes": 56757,
+    "verts": 1130,
+    "faces": 2256,
+    "max_quant_err_mm": 0.0002,
+    "sha8": "f311854d"
+   },
+   "meshes/sep2026/lesion_S8_walls.ply": {
+    "path": "meshes_qm/sep2026/lesion_S8_walls.ply.qm.gz",
+    "bytes": 133241,
+    "ply_bytes": 594803,
+    "verts": 11894,
+    "faces": 23772,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "c85c4007"
+   },
+   "meshes/sep2026/liver.ply": {
+    "path": "meshes_qm/sep2026/liver.ply.qm.gz",
+    "bytes": 1111269,
+    "ply_bytes": 5743075,
+    "verts": 114849,
+    "faces": 229722,
+    "max_quant_err_mm": 0.0019,
+    "sha8": "aa339f3f"
+   },
+   "meshes/sep2026/portal.ply": {
+    "path": "meshes_qm/sep2026/portal.ply.qm.gz",
+    "bytes": 41287,
+    "ply_bytes": 187257,
+    "verts": 3740,
+    "faces": 7476,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "2f653ff8"
+   },
+   "meshes/sep2026/seg1.ply": {
+    "path": "meshes_qm/sep2026/seg1.ply.qm.gz",
+    "bytes": 142659,
+    "ply_bytes": 638819,
+    "verts": 12766,
+    "faces": 25548,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "428d2c4c"
+   },
+   "meshes/sep2026/seg2.ply": {
+    "path": "meshes_qm/sep2026/seg2.ply.qm.gz",
+    "bytes": 349552,
+    "ply_bytes": 1752161,
+    "verts": 35037,
+    "faces": 70074,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "1cbd75ad"
+   },
+   "meshes/sep2026/seg3.ply": {
+    "path": "meshes_qm/sep2026/seg3.ply.qm.gz",
+    "bytes": 244094,
+    "ply_bytes": 1174611,
+    "verts": 23486,
+    "faces": 46972,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "1d01f65f"
+   },
+   "meshes/sep2026/seg4.ply": {
+    "path": "meshes_qm/sep2026/seg4.ply.qm.gz",
+    "bytes": 217682,
+    "ply_bytes": 1013759,
+    "verts": 20270,
+    "faces": 40536,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "9803e5d3"
+   },
+   "meshes/sep2026/seg5.ply": {
+    "path": "meshes_qm/sep2026/seg5.ply.qm.gz",
+    "bytes": 409049,
+    "ply_bytes": 1977859,
+    "verts": 39552,
+    "faces": 79100,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "b96837d4"
+   },
+   "meshes/sep2026/seg6.ply": {
+    "path": "meshes_qm/sep2026/seg6.ply.qm.gz",
+    "bytes": 340456,
+    "ply_bytes": 1675959,
+    "verts": 33514,
+    "faces": 67024,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "e58496ad"
+   },
+   "meshes/sep2026/seg7.ply": {
+    "path": "meshes_qm/sep2026/seg7.ply.qm.gz",
+    "bytes": 495842,
+    "ply_bytes": 2474607,
+    "verts": 49488,
+    "faces": 98968,
+    "max_quant_err_mm": 0.001,
+    "sha8": "ee256c52"
+   },
+   "meshes/sep2026/seg8.ply": {
+    "path": "meshes_qm/sep2026/seg8.ply.qm.gz",
+    "bytes": 345705,
+    "ply_bytes": 1675261,
+    "verts": 33499,
+    "faces": 66998,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "1d1260a5"
+   },
+   "meshes_lod/growth/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 63344,
+    "ply_bytes": 212423,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "ab0ac702"
+   },
+   "meshes_lod/growth/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 170377,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "33e33b87"
+   },
+   "meshes_lod/growth/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 538076,
+    "ply_bytes": 1826087,
+    "verts": 34446,
+    "faces": 68898,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "9979862b"
+   },
+   "meshes_lod/growth/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 170127,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "5545e962"
+   },
+   "meshes_lod/growth/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 83339,
+    "ply_bytes": 281589,
+    "verts": 5307,
+    "faces": 10610,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "36c3ae7a"
+   },
+   "meshes_lod/growth/lesion/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/lesion/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 62762,
+    "ply_bytes": 212423,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "f3cd0b31"
+   },
+   "meshes_lod/growth/lesion/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/lesion/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 170497,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "67ec19cf"
+   },
+   "meshes_lod/growth/lesion/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/lesion/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 533872,
+    "ply_bytes": 1826087,
+    "verts": 34446,
+    "faces": 68898,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "d80b7f40"
+   },
+   "meshes_lod/growth/lesion/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/lesion/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 170194,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "8c51b022"
+   },
+   "meshes_lod/growth/lesion/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/lesion/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 81755,
+    "ply_bytes": 281589,
+    "verts": 5307,
+    "faces": 10610,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "b894db83"
+   },
+   "meshes_lod/growth/liver_refined/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/liver_refined/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 63349,
+    "ply_bytes": 212423,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "01ad2b67"
+   },
+   "meshes_lod/growth/liver_refined/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/liver_refined/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 170469,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "6d01e6ae"
+   },
+   "meshes_lod/growth/liver_refined/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 534002,
+    "ply_bytes": 1826087,
+    "verts": 34446,
+    "faces": 68898,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "8a835ce7"
+   },
+   "meshes_lod/growth/liver_refined/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/liver_refined/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 170097,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "52be55d4"
+   },
+   "meshes_lod/growth/liver_refined/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/liver_refined/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 82825,
+    "ply_bytes": 281589,
+    "verts": 5307,
+    "faces": 10610,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "e7250849"
+   },
+   "meshes_lod/growth/skeleton/L1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/skeleton/L1_may2025__jun2026.ply.qm.gz",
+    "bytes": 63576,
+    "ply_bytes": 212423,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "e8021c8d"
+   },
+   "meshes_lod/growth/skeleton/R1_jun2026__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/skeleton/R1_jun2026__sep2026.ply.qm.gz",
+    "bytes": 169735,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "0e11925e"
+   },
+   "meshes_lod/growth/skeleton/R1_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/skeleton/R1_may2025__jun2026.ply.qm.gz",
+    "bytes": 534857,
+    "ply_bytes": 1826087,
+    "verts": 34446,
+    "faces": 68898,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "86be792b"
+   },
+   "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply": {
+    "path": "meshes_qm/lod/growth/skeleton/R1_may2025__sep2026.ply.qm.gz",
+    "bytes": 169392,
+    "ply_bytes": 590156,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "2120b2b9"
+   },
+   "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply": {
+    "path": "meshes_qm/lod/growth/skeleton/S8_may2025__jun2026.ply.qm.gz",
+    "bytes": 83116,
+    "ply_bytes": 281589,
+    "verts": 5307,
+    "faces": 10610,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "36812291"
+   },
+   "meshes_lod/jun2026/hepatic_veins.ply": {
+    "path": "meshes_qm/lod/jun2026/hepatic_veins.ply.qm.gz",
+    "bytes": 91253,
+    "ply_bytes": 337923,
+    "verts": 6752,
+    "faces": 13505,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "09776bae"
+   },
+   "meshes_lod/jun2026/ivc.ply": {
+    "path": "meshes_qm/lod/jun2026/ivc.ply.qm.gz",
+    "bytes": 65650,
+    "ply_bytes": 232757,
+    "verts": 4650,
+    "faces": 9296,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "2517977b"
+   },
+   "meshes_lod/jun2026/lesion_L1.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_L1.ply.qm.gz",
+    "bytes": 54775,
+    "ply_bytes": 200357,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "fc9ff419"
+   },
+   "meshes_lod/jun2026/lesion_L1_cores.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_L1_cores.ply.qm.gz",
+    "bytes": 55823,
+    "ply_bytes": 200021,
+    "verts": 3988,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "1db91134"
+   },
+   "meshes_lod/jun2026/lesion_L1_walls.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_L1_walls.ply.qm.gz",
+    "bytes": 94800,
+    "ply_bytes": 326419,
+    "verts": 6472,
+    "faces": 13137,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "c36d0c9c"
+   },
+   "meshes_lod/jun2026/lesion_R1.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_R1.ply.qm.gz",
+    "bytes": 475003,
+    "ply_bytes": 1722689,
+    "verts": 34446,
+    "faces": 68898,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "9d53d96b"
+   },
+   "meshes_lod/jun2026/lesion_R1_cores.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_R1_cores.ply.qm.gz",
+    "bytes": 578593,
+    "ply_bytes": 1989991,
+    "verts": 39570,
+    "faces": 80000,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "ecde69b1"
+   },
+   "meshes_lod/jun2026/lesion_R1_walls.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_R1_walls.ply.qm.gz",
+    "bytes": 880159,
+    "ply_bytes": 2960856,
+    "verts": 58356,
+    "faces": 120000,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "7b92c051"
+   },
+   "meshes_lod/jun2026/lesion_S8.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_S8.ply.qm.gz",
+    "bytes": 71642,
+    "ply_bytes": 265608,
+    "verts": 5307,
+    "faces": 10610,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "cd60acf2"
+   },
+   "meshes_lod/jun2026/lesion_S8_cores.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_S8_cores.ply.qm.gz",
+    "bytes": 146862,
+    "ply_bytes": 510496,
+    "verts": 10127,
+    "faces": 20549,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "e8dbd854"
+   },
+   "meshes_lod/jun2026/lesion_S8_walls.ply": {
+    "path": "meshes_qm/lod/jun2026/lesion_S8_walls.ply.qm.gz",
+    "bytes": 223127,
+    "ply_bytes": 761218,
+    "verts": 15000,
+    "faces": 30839,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "3f1f831c"
+   },
+   "meshes_lod/jun2026/liver.ply": {
+    "path": "meshes_qm/lod/jun2026/liver.ply.qm.gz",
+    "bytes": 562910,
+    "ply_bytes": 1998738,
+    "verts": 39935,
+    "faces": 79999,
+    "max_quant_err_mm": 0.002,
+    "sha8": "ec8053f6"
+   },
+   "meshes_lod/jun2026/portal.ply": {
+    "path": "meshes_qm/lod/jun2026/portal.ply.qm.gz",
+    "bytes": 155036,
+    "ply_bytes": 562909,
+    "verts": 11240,
+    "faces": 22526,
+    "max_quant_err_mm": 0.001,
+    "sha8": "87207db4"
+   },
+   "meshes_lod/jun2026/seg1.ply": {
+    "path": "meshes_qm/lod/jun2026/seg1.ply.qm.gz",
+    "bytes": 128577,
+    "ply_bytes": 465501,
+    "verts": 9302,
+    "faces": 18611,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "5d00ec1f"
+   },
+   "meshes_lod/jun2026/seg2.ply": {
+    "path": "meshes_qm/lod/jun2026/seg2.ply.qm.gz",
+    "bytes": 168130,
+    "ply_bytes": 600239,
+    "verts": 11997,
+    "faces": 24000,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "21c809be"
+   },
+   "meshes_lod/jun2026/seg3.ply": {
+    "path": "meshes_qm/lod/jun2026/seg3.ply.qm.gz",
+    "bytes": 168290,
+    "ply_bytes": 599962,
+    "verts": 11986,
+    "faces": 23999,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "ae041123"
+   },
+   "meshes_lod/jun2026/seg4.ply": {
+    "path": "meshes_qm/lod/jun2026/seg4.ply.qm.gz",
+    "bytes": 170714,
+    "ply_bytes": 600322,
+    "verts": 12001,
+    "faces": 23999,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "1200f546"
+   },
+   "meshes_lod/jun2026/seg5.ply": {
+    "path": "meshes_qm/lod/jun2026/seg5.ply.qm.gz",
+    "bytes": 171256,
+    "ply_bytes": 599434,
+    "verts": 11964,
+    "faces": 23999,
+    "max_quant_err_mm": 0.001,
+    "sha8": "44cbc91d"
+   },
+   "meshes_lod/jun2026/seg6.ply": {
+    "path": "meshes_qm/lod/jun2026/seg6.ply.qm.gz",
+    "bytes": 172138,
+    "ply_bytes": 599903,
+    "verts": 11983,
+    "faces": 24000,
+    "max_quant_err_mm": 0.001,
+    "sha8": "27bc4536"
+   },
+   "meshes_lod/jun2026/seg7.ply": {
+    "path": "meshes_qm/lod/jun2026/seg7.ply.qm.gz",
+    "bytes": 170733,
+    "ply_bytes": 600311,
+    "verts": 12000,
+    "faces": 24000,
+    "max_quant_err_mm": 0.001,
+    "sha8": "5f369d52"
+   },
+   "meshes_lod/jun2026/seg8.ply": {
+    "path": "meshes_qm/lod/jun2026/seg8.ply.qm.gz",
+    "bytes": 168217,
+    "ply_bytes": 600335,
+    "verts": 12001,
+    "faces": 24000,
+    "max_quant_err_mm": 0.001,
+    "sha8": "f292735b"
+   },
+   "meshes_lod/may2025/hepatic_veins.ply": {
+    "path": "meshes_qm/lod/may2025/hepatic_veins.ply.qm.gz",
+    "bytes": 66807,
+    "ply_bytes": 253454,
+    "verts": 5066,
+    "faces": 10120,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "8515de67"
+   },
+   "meshes_lod/may2025/ivc.ply": {
+    "path": "meshes_qm/lod/may2025/ivc.ply.qm.gz",
+    "bytes": 106116,
+    "ply_bytes": 369658,
+    "verts": 7388,
+    "faces": 14772,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "0239d31b"
+   },
+   "meshes_lod/may2025/lesion_L1.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_L1.ply.qm.gz",
+    "bytes": 53753,
+    "ply_bytes": 200344,
+    "verts": 4002,
+    "faces": 7999,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "d986b0ec"
+   },
+   "meshes_lod/may2025/lesion_L1_cores.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_L1_cores.ply.qm.gz",
+    "bytes": 53753,
+    "ply_bytes": 200344,
+    "verts": 4002,
+    "faces": 7999,
+    "max_quant_err_mm": 0.0003,
+    "sha8": "d986b0ec"
+   },
+   "meshes_lod/may2025/lesion_R1.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_R1.ply.qm.gz",
+    "bytes": 459103,
+    "ply_bytes": 1654613,
+    "verts": 33059,
+    "faces": 66222,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "c80f1a6e"
+   },
+   "meshes_lod/may2025/lesion_R1_cores.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_R1_cores.ply.qm.gz",
+    "bytes": 528612,
+    "ply_bytes": 1903073,
+    "verts": 38010,
+    "faces": 76194,
+    "max_quant_err_mm": 0.001,
+    "sha8": "e240be9c"
+   },
+   "meshes_lod/may2025/lesion_R1_walls.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_R1_walls.ply.qm.gz",
+    "bytes": 794759,
+    "ply_bytes": 2795986,
+    "verts": 54705,
+    "faces": 114058,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "addb6b4f"
+   },
+   "meshes_lod/may2025/lesion_S8.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_S8.ply.qm.gz",
+    "bytes": 70774,
+    "ply_bytes": 259410,
+    "verts": 5182,
+    "faces": 10364,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "87e5563d"
+   },
+   "meshes_lod/may2025/lesion_S8_cores.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_S8_cores.ply.qm.gz",
+    "bytes": 90349,
+    "ply_bytes": 324740,
+    "verts": 6460,
+    "faces": 13030,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "fe7f2494"
+   },
+   "meshes_lod/may2025/lesion_S8_walls.ply": {
+    "path": "meshes_qm/lod/may2025/lesion_S8_walls.ply.qm.gz",
+    "bytes": 105366,
+    "ply_bytes": 375027,
+    "verts": 7297,
+    "faces": 15353,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "f829f652"
+   },
+   "meshes_lod/may2025/liver.ply": {
+    "path": "meshes_qm/lod/may2025/liver.ply.qm.gz",
+    "bytes": 558661,
+    "ply_bytes": 2000045,
+    "verts": 39990,
+    "faces": 79998,
+    "max_quant_err_mm": 0.002,
+    "sha8": "ab6d3b83"
+   },
+   "meshes_lod/may2025/portal.ply": {
+    "path": "meshes_qm/lod/may2025/portal.ply.qm.gz",
+    "bytes": 53985,
+    "ply_bytes": 200357,
+    "verts": 4002,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0006,
+    "sha8": "ae3d53bc"
+   },
+   "meshes_lod/may2025/seg1.ply": {
+    "path": "meshes_qm/lod/may2025/seg1.ply.qm.gz",
+    "bytes": 113836,
+    "ply_bytes": 417545,
+    "verts": 8346,
+    "faces": 16687,
+    "max_quant_err_mm": 0.0006,
+    "sha8": "759c7129"
+   },
+   "meshes_lod/may2025/seg2.ply": {
+    "path": "meshes_qm/lod/may2025/seg2.ply.qm.gz",
+    "bytes": 155672,
+    "ply_bytes": 575561,
+    "verts": 11505,
+    "faces": 23010,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "36e9d6f8"
+   },
+   "meshes_lod/may2025/seg3.ply": {
+    "path": "meshes_qm/lod/may2025/seg3.ply.qm.gz",
+    "bytes": 167494,
+    "ply_bytes": 600311,
+    "verts": 12000,
+    "faces": 24000,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "7941f493"
+   },
+   "meshes_lod/may2025/seg4.ply": {
+    "path": "meshes_qm/lod/may2025/seg4.ply.qm.gz",
+    "bytes": 168391,
+    "ply_bytes": 600309,
+    "verts": 12001,
+    "faces": 23998,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "badd92eb"
+   },
+   "meshes_lod/may2025/seg5.ply": {
+    "path": "meshes_qm/lod/may2025/seg5.ply.qm.gz",
+    "bytes": 170555,
+    "ply_bytes": 600466,
+    "verts": 12007,
+    "faces": 23999,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "cec3d983"
+   },
+   "meshes_lod/may2025/seg6.ply": {
+    "path": "meshes_qm/lod/may2025/seg6.ply.qm.gz",
+    "bytes": 289984,
+    "ply_bytes": 1050167,
+    "verts": 20994,
+    "faces": 42000,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "bb34ba83"
+   },
+   "meshes_lod/may2025/seg7.ply": {
+    "path": "meshes_qm/lod/may2025/seg7.ply.qm.gz",
+    "bytes": 168191,
+    "ply_bytes": 600418,
+    "verts": 12005,
+    "faces": 23999,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "ad61bd0c"
+   },
+   "meshes_lod/may2025/seg8.ply": {
+    "path": "meshes_qm/lod/may2025/seg8.ply.qm.gz",
+    "bytes": 168439,
+    "ply_bytes": 600479,
+    "verts": 12007,
+    "faces": 24000,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "1d30aaee"
+   },
+   "meshes_lod/sep2026/ivc.ply": {
+    "path": "meshes_qm/lod/sep2026/ivc.ply.qm.gz",
+    "bytes": 56497,
+    "ply_bytes": 200309,
+    "verts": 4000,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "796567bc"
+   },
+   "meshes_lod/sep2026/lesion_R1.ply": {
+    "path": "meshes_qm/lod/sep2026/lesion_R1.ply.qm.gz",
+    "bytes": 149038,
+    "ply_bytes": 556709,
+    "verts": 11129,
+    "faces": 22254,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "46f1cbf8"
+   },
+   "meshes_lod/sep2026/lesion_R1_cores.ply": {
+    "path": "meshes_qm/lod/sep2026/lesion_R1_cores.ply.qm.gz",
+    "bytes": 173641,
+    "ply_bytes": 608530,
+    "verts": 12161,
+    "faces": 24335,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "8ebcdd39"
+   },
+   "meshes_lod/sep2026/lesion_R1_walls.ply": {
+    "path": "meshes_qm/lod/sep2026/lesion_R1_walls.ply.qm.gz",
+    "bytes": 277223,
+    "ply_bytes": 964260,
+    "verts": 19013,
+    "faces": 39049,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "1e738174"
+   },
+   "meshes_lod/sep2026/lesion_S8_cores.ply": {
+    "path": "meshes_qm/lod/sep2026/lesion_S8_cores.ply.qm.gz",
+    "bytes": 54591,
+    "ply_bytes": 200309,
+    "verts": 4000,
+    "faces": 8000,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "dddc446a"
+   },
+   "meshes_lod/sep2026/lesion_S8_walls.ply": {
+    "path": "meshes_qm/lod/sep2026/lesion_S8_walls.ply.qm.gz",
+    "bytes": 54709,
+    "ply_bytes": 200043,
+    "verts": 3990,
+    "faces": 7998,
+    "max_quant_err_mm": 0.0005,
+    "sha8": "07ec702e"
+   },
+   "meshes_lod/sep2026/liver.ply": {
+    "path": "meshes_qm/lod/sep2026/liver.ply.qm.gz",
+    "bytes": 315934,
+    "ply_bytes": 1148863,
+    "verts": 22970,
+    "faces": 45944,
+    "max_quant_err_mm": 0.0019,
+    "sha8": "37f9e80a"
+   },
+   "meshes_lod/sep2026/seg1.ply": {
+    "path": "meshes_qm/lod/sep2026/seg1.ply.qm.gz",
+    "bytes": 55330,
+    "ply_bytes": 200176,
+    "verts": 3995,
+    "faces": 7999,
+    "max_quant_err_mm": 0.0008,
+    "sha8": "7bf15776"
+   },
+   "meshes_lod/sep2026/seg2.ply": {
+    "path": "meshes_qm/lod/sep2026/seg2.ply.qm.gz",
+    "bytes": 96042,
+    "ply_bytes": 350647,
+    "verts": 7007,
+    "faces": 14013,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "b105b0bd"
+   },
+   "meshes_lod/sep2026/seg3.ply": {
+    "path": "meshes_qm/lod/sep2026/seg3.ply.qm.gz",
+    "bytes": 65054,
+    "ply_bytes": 235159,
+    "verts": 4697,
+    "faces": 9394,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "2a9cd60f"
+   },
+   "meshes_lod/sep2026/seg4.ply": {
+    "path": "meshes_qm/lod/sep2026/seg4.ply.qm.gz",
+    "bytes": 57501,
+    "ply_bytes": 203007,
+    "verts": 4055,
+    "faces": 8106,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "d59a36f2"
+   },
+   "meshes_lod/sep2026/seg5.ply": {
+    "path": "meshes_qm/lod/sep2026/seg5.ply.qm.gz",
+    "bytes": 110176,
+    "ply_bytes": 395858,
+    "verts": 7912,
+    "faces": 15820,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "7a67200f"
+   },
+   "meshes_lod/sep2026/seg6.ply": {
+    "path": "meshes_qm/lod/sep2026/seg6.ply.qm.gz",
+    "bytes": 92774,
+    "ply_bytes": 335458,
+    "verts": 6704,
+    "faces": 13404,
+    "max_quant_err_mm": 0.0009,
+    "sha8": "f81a2e72"
+   },
+   "meshes_lod/sep2026/seg7.ply": {
+    "path": "meshes_qm/lod/sep2026/seg7.ply.qm.gz",
+    "bytes": 137381,
+    "ply_bytes": 495110,
+    "verts": 9896,
+    "faces": 19792,
+    "max_quant_err_mm": 0.001,
+    "sha8": "6e062154"
+   },
+   "meshes_lod/sep2026/seg8.ply": {
+    "path": "meshes_qm/lod/sep2026/seg8.ply.qm.gz",
+    "bytes": 92229,
+    "ply_bytes": 335284,
+    "verts": 6700,
+    "faces": 13398,
+    "max_quant_err_mm": 0.0011,
+    "sha8": "e3158790"
+   }
+  },
+  "uncapped": {
+   "meshes/jun2026/lesion_R1_cores.ply": {
+    "faces_before": 400000,
+    "cap_before": 400000,
+    "dice_before": 0.9956,
+    "faces": 598536,
+    "dice": 0.996,
+    "p95_mm": 0.37,
+    "source": "builder cache 180668f8a650 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/lesion_R1_walls.ply": {
+    "faces_before": 600000,
+    "cap_before": 600000,
+    "dice_before": 0.9825,
+    "faces": 948018,
+    "dice": 0.9841,
+    "p95_mm": 0.31,
+    "source": "builder cache c70dd305e191 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/liver.ply": {
+    "faces_before": 399998,
+    "cap_before": 400000,
+    "dice_before": 0.9977,
+    "faces": 756642,
+    "dice": 0.9978,
+    "p95_mm": 0.4,
+    "source": "builder cache c95497fee149 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg2.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9981,
+    "faces": 200936,
+    "dice": 0.9981,
+    "p95_mm": 0.34,
+    "source": "builder cache 08957149ee5b (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg3.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.998,
+    "faces": 132420,
+    "dice": 0.998,
+    "p95_mm": 0.33,
+    "source": "builder cache 50027426fcf1 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg4.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9984,
+    "faces": 157258,
+    "dice": 0.9984,
+    "p95_mm": 0.3,
+    "source": "builder cache 8573c84d2c49 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg5.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9979,
+    "faces": 251098,
+    "dice": 0.9981,
+    "p95_mm": 0.32,
+    "source": "builder cache babf0a4364ca (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg6.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9978,
+    "faces": 268630,
+    "dice": 0.998,
+    "p95_mm": 0.34,
+    "source": "builder cache b18bab40685a (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg7.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9977,
+    "faces": 230424,
+    "dice": 0.9978,
+    "p95_mm": 0.34,
+    "source": "builder cache 697e7e8ea2db (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/jun2026/seg8.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9975,
+    "faces": 185870,
+    "dice": 0.9976,
+    "p95_mm": 0.33,
+    "source": "builder cache 73a96fe2f2e4 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/liver.ply": {
+    "faces_before": 399998,
+    "cap_before": 400000,
+    "dice_before": 0.9979,
+    "faces": 633816,
+    "dice": 0.9979,
+    "p95_mm": 0.4,
+    "source": "builder cache 3c5fee49a761 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg3.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9989,
+    "faces": 148420,
+    "dice": 0.9989,
+    "p95_mm": 0.38,
+    "source": "builder cache 45bdfd778c72 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg4.ply": {
+    "faces_before": 119998,
+    "cap_before": 120000,
+    "dice_before": 0.9988,
+    "faces": 141986,
+    "dice": 0.9988,
+    "p95_mm": 0.3,
+    "source": "builder cache 52570bc89a82 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg5.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9981,
+    "faces": 212238,
+    "dice": 0.9982,
+    "p95_mm": 0.33,
+    "source": "builder cache 9a1268c2f070 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg6.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9981,
+    "faces": 211864,
+    "dice": 0.9982,
+    "p95_mm": 0.34,
+    "source": "builder cache 7fbab59a01b9 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg7.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9985,
+    "faces": 169050,
+    "dice": 0.9985,
+    "p95_mm": 0.34,
+    "source": "builder cache 39c39019f0c8 (same recipe, max_faces 4000000 = no decimation)"
+   },
+   "meshes/may2025/seg8.ply": {
+    "faces_before": 120000,
+    "cap_before": 120000,
+    "dice_before": 0.9986,
+    "faces": 168612,
+    "dice": 0.9986,
+    "p95_mm": 0.33,
+    "source": "builder cache feded00c9823 (same recipe, max_faces 4000000 = no decimation)"
+   }
+  }
  }
 }

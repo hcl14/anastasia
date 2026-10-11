@@ -200,3 +200,9 @@ is now 22vh and the sheet grows while a claim is open.
   lists untranslated strings (0 after a crawl of all tabs, dates, compare, growth, claims and tooltips). Not translated on purpose
   (`translate="no"`): verbatim quotes, reader names, claim provenance lines and the claims engineer's notes, the Disagreements summaries,
   and the technical tails of "NOT VISIBLE: ..." reasons.
+
+## Performance and layout (2026-10-11)
+Meshes load from `data/meshes_qm/` (quantized + gzip, full fidelity, no face caps; `tools/export_qm.py`), light previews first
+(`tools/build_lod.py`, transient), full detail at rest. Side panel collapsed by default (`☰ Layers & lesions`); `?embed=1` for the
+embedded variant (drawer, Options menu, `?poster=<image>` shown until the first frame; posts `{liver3d:'ready'}` to the parent).
+Rebuild order after `build_viewer_data.py`: `build_lod.py` (cached by index) then `export_qm.py --uncap <map>`. Numbers: `data/BUILD_NOTES.md`.

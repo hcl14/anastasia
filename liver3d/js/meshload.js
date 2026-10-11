@@ -42,7 +42,7 @@ export function loadGeometry(url) {
       } else {
         buf = await res.arrayBuffer(); bytesSeen = buf.byteLength; prog.bytes += bytesSeen;
       }
-      const g = ply.parse(buf);
+      const g = /\.qm\.gz(\?|$)/.test(url) ? await parseQM(buf) : ply.parse(buf);
       if (!g.getAttribute('position') || g.getAttribute('position').count === 0) throw new Error('empty mesh ' + url);
       if (!g.getAttribute('normal')) g.computeVertexNormals();
       g.computeBoundingBox(); g.computeBoundingSphere();
@@ -51,13 +51,45 @@ export function loadGeometry(url) {
       return g;
     } finally {
       prog.pending--; prog.filesDone++;
-      if (prog.pending === 0) { prog.files = 0; prog.filesDone = 0; prog.bytes = 0; prog.bytesTotal = 0; }
+      if (prog.pending === 0) { prog.files = 0; prog.filesDone = 0; prog.bytes = 0; prog.bytesTotal = 0; prog.label = ''; }
       emit();
     }
   })();
   p.catch(() => { p.__done = true; p.__failed = true; });
   cache.set(url, p);
   return p;
+}
+
+// QM1 (tools/export_qm.py): gzip of a header, u16 quantized positions, zig-zag delta indices, optional RGB colours
+async function gunzip(buf) {
+  if (typeof DecompressionStream === 'function') {
+    const ds = new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip')));
+    return new Uint8Array(await ds.arrayBuffer());
+  }
+  const { gunzipSync } = await import('../vendor/fflate.esm.js');   // vendored fallback (MIT), older browsers only
+  return gunzipSync(new Uint8Array(buf));
+}
+async function parseQM(buf) {
+  const u8 = await gunzip(buf), dv = new DataView(u8.buffer, u8.byteOffset, u8.byteLength);
+  if (dv.getUint32(0, true) !== 0x00314d51) throw new Error('not a QM1 mesh');
+  const nv = dv.getUint32(4, true), nf = dv.getUint32(8, true), flags = dv.getUint32(12, true);
+  const o = [16, 20, 24].map(k => dv.getFloat32(k, true)), st = [28, 32, 36].map(k => dv.getFloat32(k, true));
+  let off = 40;
+  const pos = new Float32Array(nv * 3);
+  for (let i = 0; i < nv * 3; i++) pos[i] = o[i % 3] + dv.getUint16(off + 2 * i, true) * st[i % 3];
+  off += nv * 6;
+  const idx = new Uint32Array(nf * 3); let prev = 0;
+  for (let i = 0; i < nf * 3; i++) { const z = dv.getInt32(off + 4 * i, true); prev += (z >>> 1) ^ -(z & 1); idx[i] = prev; }
+  off += nf * 12;
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setIndex(new THREE.BufferAttribute(idx, 1));
+  if (flags & 1) {   // sRGB bytes -> linear, as PLYLoader does
+    const c = new Float32Array(nv * 3), col = new THREE.Color();
+    for (let i = 0; i < nv; i++) { col.setRGB(u8[off + 3 * i] / 255, u8[off + 3 * i + 1] / 255, u8[off + 3 * i + 2] / 255).convertSRGBToLinear(); c[3 * i] = col.r; c[3 * i + 1] = col.g; c[3 * i + 2] = col.b; }
+    g.setAttribute('color', new THREE.BufferAttribute(c, 3));
+  }
+  return g;
 }
 
 export function stats() {

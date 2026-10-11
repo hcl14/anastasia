@@ -262,3 +262,52 @@ lesions 13 / 5 / 1 of 19 (18 lesion-specific); calcifications 1 / 2 / 0 of 3 (3 
 walls 18 / 0 / 0 of 18 (3 specific); cores 17 / 0 / 0 of 17 (3 specific); FDG-active 9 / 0 / 0 of 9 (7 specific); liver 3 / 0 / 0;
 portal 2 / 3 / 0 of 5; hepatic veins 1 / 2 / 0 of 3; gallbladder 1 / 1 / 0 of 2; IVC 0 of 3; Couinaud segments 0 of 24 (no report
 statement about segments as structures).
+
+## Performance, full detail and compact layout (2026-10-11)
+**Mesh files.** The viewer now loads `data/meshes_qm/**.qm.gz` (`tools/export_qm.py`): the same vertices and triangles as the meshes,
+positions quantized to 16 bits per axis (step = extent / 65535; max quantization error 0.002 mm), zig-zag delta-coded indices, gzip.
+Decoded in the browser with DecompressionStream (vendored fflate 0.8.3, MIT, as fallback; no CDN). 171 full meshes: **68 MB** (the PLY set
+was 277 MB). The PLY files in `data/meshes/` stay as the reference.
+**Face caps removed: nothing is decimated any more.** The 17 meshes that were capped are now their uncapped builder-cache versions (same
+recipe: marching cubes on the native grid, Taubin 30 with normalize_coordinates=True; voxel-back verification from the build):
+| mesh | faces before (cap) → now | Dice | p95 mm |
+|---|---|---|---|
+| June liver | 399,998 (400k) → 756,642 | 0.9978 | 0.40 |
+| May liver | 399,998 (400k) → 633,816 | 0.9979 | 0.40 |
+| June R1 walls | 600,000 (600k) → 948,018 | 0.9841 | 0.31 |
+| June R1 cores | 400,000 (400k) → 598,536 | 0.9960 | 0.37 |
+| June segments II–VIII | 120,000 each (120k) → 132,420–268,630 | 0.9976–0.9984 | 0.30–0.34 |
+| May segments III–VIII | 120,000 each (120k) → 141,986–212,238 | 0.9982–0.9989 | 0.30–0.38 |
+Face cap per structure is now 4,000,000 (= none) for every structure; all meshes pass Dice ≥ 0.98.
+**Progressive loading.** Light preview meshes (`tools/build_lod.py`: quadric decimation to ~20 %; p95 distance to the full surface
+0.01–0.17 mm, median 0.06 mm; dropped single-voxel islands of 14–50 vertices are the only larger deviations) are fetched first for a fast
+first frame; the full-detail meshes stream right after and replace each preview as it arrives. At rest the viewer always shows full detail.
+FDG-active tissue, nodules and calcifications have no preview (always full). Previews are used while dragging only if 'Smooth orbit'
+is on (Options; switched on automatically only when the full scene renders slower than 30 fps on the device; full detail returns 120 ms
+after the camera stops).
+**Rendering.** Device-pixel-ratio cap 1.5 (embed 1.25; was 2), render on demand (unchanged), no GPU picking while the camera moves, near
+plane 10 mm (was 1; 10x depth precision), fixed draw order for every transparent object, depth-only pre-pass for translucent tubes and
+parts, polygon offset where surfaces touch.
+
+**Measurements** (headless Chromium, 900×620; GPU = Apple M3 Max/Metal, sw = SwiftShader CPU renderer as a weak-GPU proxy;
+"before" = the live viewer of 2026-10-10):
+| date, mode | first frame s | MB to first frame | MB total (full detail) | triangles drawn | sw ms/frame (orbit) |
+|---|---|---|---|---|---|
+| June, before (full) | 0.34 | 30.6 | 30.6 (capped) | 2.28 M | 744 |
+| June, after (full) | 0.22 | 4.1 | 11.0 (uncapped) | 3.30 M | 313 (smooth orbit) |
+| June, after (embed) | 0.18 | 3.6 | 9.3 | 2.55 M | 224 (smooth orbit) |
+| Sep, before (full) | 0.24 | 14.8 | 14.8 | 1.02 M | 316 |
+| Sep, after (full) | 0.20 | 3.4 | 5.2 | 1.16 M | 194 |
+| Sep, after (embed) | 0.19 | 3.2 | 4.8 | 0.98 M | 150 |
+| May, before (full) | 0.32 | 26.8 | 26.8 | 1.98 M | — |
+| May, after (full) | 0.20 | 3.7 | 9.5 | 2.62 M | — |
+On the M3 Max every variant runs at the 60 fps vsync cap (render 3–7 ms). The JS heap stays 20–55 MB.
+**Blinking veins.** Cause: transparent meshes of the same class (portal / hepatic veins / IVC, lesions, the Compare ghosts) had equal
+render order, so three.js re-sorted them by distance every frame and overlapping layers swapped as the camera turned. Measured over a
+360° orbit at three elevations (540 views, Compare on): the transparent draw order changed in **539** views before, **0** after (June and Sep).
+Per-pixel blink counts are dominated by edge aliasing of thin vessels and did not separate the builds.
+**Layout.** The side panel starts collapsed behind 'Layers & lesions' (remembered; opens itself for a report claim, a lesion row or a
+#tab= link); one row of controls on desktop; rarely used controls under 'Options'; Volumes legend collapsed to a chip; one bottom-right
+toolbar. Embed (`?embed=1`): dates, Compare, EN/УКР, Options (alignment, registration check box, glossary, growth map, cut, screenshot,
+link, reset), 'Open full screen'; the panel is an overlay drawer with a short layer list (Liver, R1, L1, S8, Active tissue (PET),
+Cores / walls) and 'More layers'; default layers liver + R1 + L1 + S8 + FDG-active tissue.
