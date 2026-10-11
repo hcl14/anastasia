@@ -418,6 +418,9 @@ body.has-claim #vols{display:none}
 #vols tr.gh td{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);padding-top:4px}
 
 /* hover linking between 3D objects and rows */
-#vols tr.lk td,.lrow.lk,#p-lesions tr.lk{background:color-mix(in srgb,var(--accent) 22%,transparent);font-weight:650}
-#vols tr.lk2 td,.lrow.lk2,#p-lesions tr.lk2{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+/* linked-row highlight: background + inset ring only, never a metric change (no bold, border or size) so nothing reflows */
+#vols tr.lk td,.lrow.lk,#p-lesions tr.lk td{background:color-mix(in srgb,var(--accent) 24%,transparent);box-shadow:inset 0 0 0 999px transparent}
+.lrow.lk{box-shadow:inset 2px 0 0 var(--accent)}
+#vols tr.lk td:first-child,#p-lesions tr.lk td:first-child{box-shadow:inset 2px 0 0 var(--accent)}
+#vols tr.lk2 td,.lrow.lk2,#p-lesions tr.lk2 td{background:color-mix(in srgb,var(--accent) 9%,transparent)}
 #vols tr[data-ctls]{cursor:default}

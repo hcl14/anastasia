@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=0273fbe6f3';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=0273fbe6f3';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=0273fbe6f3';
-import { Reports } from './reports.js?v=0273fbe6f3';
-import { ClaimViz } from './claimviz.js?v=0273fbe6f3';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=0273fbe6f3';
+import * as F from './frame.js?v=f748d4026c';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=f748d4026c';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=f748d4026c';
+import { Reports } from './reports.js?v=f748d4026c';
+import { ClaimViz } from './claimviz.js?v=f748d4026c';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=f748d4026c';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -854,7 +854,8 @@ function pickAt(x, y) {
   }
   for (const [o, vis, mat] of saved) { o.visible = vis; o.material = mat; }
   renderer.setRenderTarget(null); renderer.setClearColor(prevClear, prevAlpha);
-  applyViewShift();
+  // restore the framing exactly as it was (cached offsets); re-measuring the layout here made the model jump on hover
+  if (viewShift || viewShiftX) camera.setViewOffset(w, hgt, viewShiftX, viewShift, w, hgt); else camera.clearViewOffset();
   return hit;
 }
 
@@ -888,7 +889,8 @@ function applyViewShift() {
   if (viewShift || viewShiftX) camera.setViewOffset(w, hgt, viewShiftX, viewShift, w, hgt); else camera.clearViewOffset();
   requestRender();
 }
-new ResizeObserver(() => applyViewShift()).observe($('#claimbar'));
+let claimSz = '';
+new ResizeObserver(es => { const r = es[es.length - 1].contentRect, k = Math.round(r.width) + 'x' + Math.round(r.height); if (k === claimSz) return; claimSz = k; applyViewShift(); }).observe($('#claimbar'));
 
 // on narrow screens the claim bar lives in the panel under the canvas instead of covering the model
 const narrowMQ = matchMedia('(max-width: 820px)');
@@ -1117,7 +1119,12 @@ function markRows(ctls, parent) {
     el.classList.toggle('lk', on); el.classList.toggle('lk2', !!sub);
     if (on) el.setAttribute('aria-current', 'true'); else el.removeAttribute('aria-current');
   }
-  const v = $('#vols tr.lk'); if (v) { const box = $('#vols'); if (box.scrollHeight > box.clientHeight) v.scrollIntoView({ block: 'nearest' }); }
+  // bring the row into view by scrolling the legend box only (scrollIntoView would also scroll the page / the embedding page)
+  const v = $('#vols tr.lk'), box = $('#vols');
+  if (v && box.scrollHeight > box.clientHeight) {
+    const br = box.getBoundingClientRect(), r = v.getBoundingClientRect();
+    if (r.top < br.top) box.scrollTop -= br.top - r.top; else if (r.bottom > br.bottom) box.scrollTop += r.bottom - br.bottom;
+  }
 }
 /** pointer over a 3D object: mark its legend / layer / lesion row (part -> its class row, parent lesion row subtly) */
 function linkFromMesh(it) {
@@ -1506,7 +1513,7 @@ function autoSmooth() {
   for (let k = 0; k < 5; k++) { renderer.render(scene3, camera); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); }
   state.renderMs = (performance.now() - t0) / 5;
   setSmooth(state.renderMs > 33);
-  if (state.renderMs > 33 && renderer.getPixelRatio() > 1.25) { renderer.setPixelRatio(1.25); resize(); }   // slow GPU: fewer pixels
+  if (state.renderMs > 33 && renderer.getPixelRatio() > 1.25) { renderer.setPixelRatio(1.25); resize(true); }   // slow GPU: fewer pixels
 }
 function setTab(t) {
   if (booted && !sideOpen) setSide(true);
@@ -1783,13 +1790,15 @@ addEventListener('keydown', e => {
 });
 
 // ---------------------------------------------------------------- resize + loop
-function resize() {
+let stageSz = '';
+function resize(force) {
   const w = stage.clientWidth, hh = stage.clientHeight;
-  if (!w || !hh) return;
+  if (!w || !hh || (force !== true && w + 'x' + hh === stageSz)) return;   // ResizeObserver also fires on no-op notifications; only a real size change re-frames
+  stageSz = w + 'x' + hh;
   renderer.setSize(w, hh, false); camera.aspect = w / hh; camera.updateProjectionMatrix();
   measureTopbar(); applyViewShift();
 }
-new ResizeObserver(resize).observe(stage);
+new ResizeObserver(() => resize()).observe(stage);
 controls.addEventListener('change', () => { requestRender(); writeHashSoon(); });
 // ---------------------------------------------------------------- zoom: wheel / trackpad pinch / buttons / double tap
 // Exponential zoom proportional to the (normalised) wheel delta, toward the point under the pointer, eased over ~120 ms.
@@ -1836,7 +1845,7 @@ function stepZoom(now) {
 function adjustNear() {
   const d = camera.position.distanceTo(controls.target);
   const near = clamp(d * 0.05, 0.5, 10), far = Math.max(6000, d * 6);
-  if (Math.abs(camera.near - near) > 1e-3 || camera.far !== far) { camera.near = near; camera.far = far; camera.updateProjectionMatrix(); applyViewShift(); }
+  if (Math.abs(camera.near - near) > 1e-3 || camera.far !== far) { camera.near = near; camera.far = far; camera.updateProjectionMatrix(); requestRender(); }   // the view offset is kept by updateProjectionMatrix; framing is never recomputed here
 }
 function zoomHint() {
   if (hintShown) return; hintShown = true;
