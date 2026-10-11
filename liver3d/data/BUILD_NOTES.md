@@ -311,3 +311,5 @@ Per-pixel blink counts are dominated by edge aliasing of thin vessels and did no
 toolbar. Embed (`?embed=1`): dates, Compare, EN/УКР, Options (alignment, registration check box, glossary, growth map, cut, screenshot,
 link, reset), 'Open full screen'; the panel is an overlay drawer with a short layer list (Liver, R1, L1, S8, Active tissue (PET),
 Cores / walls) and 'More layers'; default layers liver + R1 + L1 + S8 + FDG-active tissue.
+
+**Volumes column (2026-10-11).** Open by default (closed on phones; state remembered), docked on the right edge of the canvas, short names (R1, L1, Liver, Active (FDG) ...; full name and confidence text in the tooltip, ⚠ marks a confidence note). The default camera framing leaves room for it: at 1440x900, 1024x700 and the 900x620 embed the liver box does not overlap it.

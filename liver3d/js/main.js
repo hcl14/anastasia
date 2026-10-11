@@ -649,7 +649,7 @@ function computeBounds() {
 // ---------------------------------------------------------------- camera
 function fitDist(r) {
   const f = freeBand();
-  if (f.H > 0) r *= clamp(f.H / Math.max(120, f.bottom - f.top), 1, 2.5);
+  if (f.H > 0) r *= Math.max(clamp(f.H / Math.max(120, f.bottom - f.top), 1, 2.5), f.right ? clamp(f.W / Math.max(160, f.W - f.right), 1, 2) : 1);
   const vf = camera.fov * Math.PI / 180, hf = 2 * Math.atan(Math.tan(vf / 2) * camera.aspect);
   return r / Math.sin(Math.min(vf, hf) / 2) * 1.04;
 }
@@ -750,7 +750,7 @@ function pickAt(x, y) {
   const saved = objs.map(o => [o, o.visible, o.material]);
   const prevClear = renderer.getClearColor(new THREE.Color()), prevAlpha = renderer.getClearAlpha();
   let hit = null;
-  camera.setViewOffset(w, hgt, x, y + viewShift, 1, 1);
+  camera.setViewOffset(w, hgt, x + viewShiftX, y + viewShift, 1, 1);
   for (const pass of [0, 1]) {
     for (const [o, vis] of saved) {
       if (!vis) continue;
@@ -774,7 +774,7 @@ function pickAt(x, y) {
 }
 
 // keep the model centred in the part of the canvas that the claim bar does not cover
-let viewShift = 0;
+let viewShift = 0, viewShiftX = 0;
 function freeBand() {
   // the vertical band of the canvas not covered by the top bar (and registration line) or by the claim bar
   const sr = stage.getBoundingClientRect(), H = sr.height;
@@ -790,14 +790,17 @@ function freeBand() {
     else top = Math.max(top, r.bottom - sr.top);
   }
   top = Math.min(top, H * 0.45); bottom = Math.max(bottom, top + H * 0.3);
-  return { top, bottom, H };
+  // the docked Volumes column on the right
+  const W = sr.width; let right = 0;
+  const v = $('#vols'); if (v && !v.hidden && v.offsetParent !== null && v.querySelector('details[open]')) { const r = v.getBoundingClientRect(); if (r.width) right = Math.min(W * 0.4, sr.right - r.left + 6); }
+  return { top, bottom, H, W, right };
 }
 function applyViewShift() {
   const w = canvas.clientWidth, hgt = canvas.clientHeight;
-  let sh = 0;
-  if (w && hgt) { const f = freeBand(); sh = hgt / 2 - (f.top + f.bottom) / 2; }
-  viewShift = Math.round(sh);
-  if (viewShift) camera.setViewOffset(w, hgt, 0, viewShift, w, hgt); else camera.clearViewOffset();
+  let sh = 0, sx = 0;
+  if (w && hgt) { const f = freeBand(); sh = hgt / 2 - (f.top + f.bottom) / 2; sx = f.right / 2; }
+  viewShift = Math.round(sh); viewShiftX = Math.round(sx);
+  if (viewShift || viewShiftX) camera.setViewOffset(w, hgt, viewShiftX, viewShift, w, hgt); else camera.clearViewOffset();
   requestRender();
 }
 new ResizeObserver(() => applyViewShift()).observe($('#claimbar'));
@@ -1019,23 +1022,29 @@ function renderVolumeLegend(host) {
   for (const L of S.scene.layers || []) {
     const pd = L.per_date?.[shown];
     if (!(pd?.mesh || pd?.shown_as) || pd.volume_mL == null || /^seg\d$/.test(L.id)) continue;
-    rows.push({ sw: L.color, name: L.name || L.id, vol: pd.volume_mL, conf: pd.confidence });
+    rows.push({ sw: L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
   }
   const segc = (S.scene.layers || []).find(L => /^seg\d$/.test(L.id) && L.per_date?.[shown]?.confidence)?.per_date[shown].confidence;
-  if (segc) rows.push({ sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', vol: null, conf: segc });
+  if (segc) rows.push({ sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', short: 'Segments', vol: null, conf: segc });
   if (!rows.length) return;
-  if (volLegendOpen === null) volLegendOpen = false;   // a small chip by default; one click opens the table
+  // a narrow column docked on the right edge of the canvas: open by default (closed on phones), state remembered
+  if (volLegendOpen === null) { let st = null; try { st = localStorage.getItem('liver3d-vols'); } catch (e) { } volLegendOpen = st ? st === '1' : !matchMedia('(max-width: 560px)').matches; }
   const src = S.scene.source === 'consensus' ? 'consensus' : (S.scene.source || '?');
+  const box = $('#vols'); box.innerHTML = ''; box.hidden = false;
   const det = h('details.vols', { open: volLegendOpen && !state.claim ? true : null },   // collapsed while a claim bar is shown
-    h('summary', null, h('b', null, `Volumes · ${dateLabel(shown)}`), h('span.muted', null, ` (${src} masks)`)),
-    h('table.vols', null, h('tbody', null, ...rows.map(r => h('tr', null,
+    h('summary', { title: `Volumes on ${dateLabel(shown)}, measured on the ${src} masks` }, h('b', null, 'Volumes'), h('span.muted', null, ' · ' + dateShort(shown))),
+    h('table.vols', null, h('tbody', null, ...rows.map(r => h('tr', { title: (r.title || r.full || r.name) + (r.conf ? ' — ' + tr(r.conf) : '') },
       h('td', null, h('span.sw', { style: { background: r.sw } })),
-      h('td.n', { title: r.title || r.name }, r.name),
+      h('td.n', null, r.short || r.name),
       h('td.v', null, r.vol != null ? fmtVol(r.vol) : ''),
-      h('td.c', { title: r.conf || '' }, r.conf ? '⚠ ' + shortConf(r.conf) : ''))))));
-  det.addEventListener('toggle', () => { if (!state.claim) volLegendOpen = det.open; });
-  host.append(det);
+      h('td.c', null, r.conf ? h('span.cdot', { 'aria-label': 'confidence note: ' + r.conf }, '⚠') : ''))))));
+  det.addEventListener('toggle', () => { if (!state.claim) { volLegendOpen = det.open; try { localStorage.setItem('liver3d-vols', det.open ? '1' : '0'); } catch (e) { } } applyViewShift(); });
+  box.append(det);
+  applyViewShift();
 }
+const VOL_SHORT = { liver: 'Liver', gallbladder: 'Gallbladder', active: 'Active (FDG)', active_pet_only: 'Active, PET only', active_inferred: 'Active, inferred',
+  cores: 'Cores', walls: 'Walls', nodules: 'Nodules', calcifications: 'Calcifications', portal: 'Portal vein', hepatic_veins: 'Hepatic veins', ivc: 'IVC',
+  contact_left_portal: 'L1–portal contact', hepatic_artery: 'Hepatic artery', bile_ducts: 'Bile ducts', uncertain: 'Uncertain band' };
 
 // ---------------------------------------------------------------- UI: layers panel
 function setCtl(id, patch, opts = {}) {
