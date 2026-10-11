@@ -568,20 +568,69 @@
    },
    "model": {
     "source": "consensus",
-    "lesion": null,
-    "lesion_mapping": null
+    "lesion": "GF",
+    "lesion_mapping": "mapped from structure=gastric_mass"
    },
    "viz": {
     "date_key": "may2025",
-    "verdict": "not comparable",
-    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+    "center_ras": [
+     -75.66,
+     126.94,
+     -1237.0
+    ],
+    "axes_ras": [
+     [
+      0.21693,
+      0.97619,
+      0.0
+     ],
+     [
+      -0.97619,
+      0.21693,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     33,
+     28,
+     null
+    ],
+    "model_mm": [
+     37.7,
+     30.9,
+     48.0
+    ],
+    "delta_pct": [
+     14.2,
+     10.4,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 230
    },
    "tags": {
-    "lesions": [],
+    "lesions": [
+     "GF"
+    ],
     "general": false,
-    "structures": [],
+    "structures": [
+     "active",
+     "cores",
+     "lesion",
+     "stomach"
+    ],
     "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
-    "keywords": []
+    "keywords": [
+     "active",
+     "cores",
+     "stomach"
+    ]
    }
   },
   {
@@ -2438,20 +2487,71 @@
    },
    "model": {
     "source": "consensus",
-    "lesion": null,
-    "lesion_mapping": null
+    "lesion": "GF",
+    "lesion_mapping": "mapped from structure=gastric_mass"
    },
    "viz": {
     "date_key": "jun2026",
-    "verdict": "not comparable",
-    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+    "center_ras": [
+     -76.89,
+     132.49,
+     -1245.0
+    ],
+    "axes_ras": [
+     [
+      0.86242,
+      0.5062,
+      0.0
+     ],
+     [
+      -0.5062,
+      0.86242,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     43,
+     33,
+     44
+    ],
+    "model_mm": [
+     40.6,
+     35.1,
+     44.0
+    ],
+    "delta_pct": [
+     -5.6,
+     6.4,
+     0.0
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 179
    },
    "tags": {
-    "lesions": [],
+    "lesions": [
+     "GF"
+    ],
     "general": false,
-    "structures": [],
+    "structures": [
+     "active",
+     "calcifications",
+     "cores",
+     "lesion",
+     "stomach"
+    ],
     "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
-    "keywords": []
+    "keywords": [
+     "active",
+     "calcifications",
+     "cores",
+     "stomach"
+    ]
    }
   },
   {
@@ -4355,20 +4455,69 @@
    },
    "model": {
     "source": "consensus",
-    "lesion": null,
-    "lesion_mapping": null
+    "lesion": "GF",
+    "lesion_mapping": "mapped from structure=gastric_mass"
    },
    "viz": {
     "date_key": "jun2026",
-    "verdict": "not comparable",
-    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+    "center_ras": [
+     -76.89,
+     132.49,
+     -1245.0
+    ],
+    "axes_ras": [
+     [
+      0.86242,
+      0.5062,
+      0.0
+     ],
+     [
+      -0.5062,
+      0.86242,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     37,
+     31,
+     null
+    ],
+    "model_mm": [
+     40.6,
+     35.1,
+     44.0
+    ],
+    "delta_pct": [
+     9.7,
+     13.2,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 179
    },
    "tags": {
-    "lesions": [],
+    "lesions": [
+     "GF"
+    ],
     "general": false,
-    "structures": [],
+    "structures": [
+     "calcifications",
+     "lesion",
+     "stomach",
+     "walls"
+    ],
     "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
-    "keywords": []
+    "keywords": [
+     "calcifications",
+     "stomach",
+     "walls"
+    ]
    }
   },
   {
@@ -6146,20 +6295,69 @@
    },
    "model": {
     "source": "consensus",
-    "lesion": null,
-    "lesion_mapping": null
+    "lesion": "GF",
+    "lesion_mapping": "mapped from structure=gastric_mass"
    },
    "viz": {
     "date_key": "sep2026",
-    "verdict": "not comparable",
-    "reason": "no model lesion matched to lesion_id=None / structure='gastric_mass'"
+    "center_ras": [
+     -67.94,
+     8.94,
+     -319.82
+    ],
+    "axes_ras": [
+     [
+      0.83205,
+      0.5547,
+      0.0
+     ],
+     [
+      -0.5547,
+      0.83205,
+      0.0
+     ],
+     [
+      0.0,
+      0.0,
+      1.0
+     ]
+    ],
+    "reported_mm": [
+     43,
+     32,
+     null
+    ],
+    "model_mm": [
+     44.4,
+     32.2,
+     52.3
+    ],
+    "delta_pct": [
+     3.3,
+     0.6,
+     null
+    ],
+    "verdict": "agrees (<=15 %)",
+    "how_measured": "axial max Feret (edge-to-edge on the voxel outline, best axial slice), perpendicular caliper width on that slice, craniocaudal extent (slice span x spacing)",
+    "max_slice": 110
    },
    "tags": {
-    "lesions": [],
+    "lesions": [
+     "GF"
+    ],
     "general": false,
-    "structures": [],
+    "structures": [
+     "active",
+     "calcifications",
+     "lesion",
+     "stomach"
+    ],
     "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
-    "keywords": []
+    "keywords": [
+     "active",
+     "calcifications",
+     "stomach"
+    ]
    }
   },
   {
@@ -6269,7 +6467,7 @@
     "jun_C_llesion_change"
    ],
    "summary": "Neither May report lists a left-lobe (S2/3) liver lesion: the primary lists only SVIII/SIV 6.2 x 4.0 cm and SV/SIV 13.5 x 10 cm (plus a 3.3 x 2.8 cm cystic formation under the gastric cardia, taken to be the gastric mass); LISOD speaks only of \"known masses ... no significant size change\". The Israeli revision (rank 1) says the 42 x 36 mm left-lobe lesion shows \"no significant change in size\" since 13.05.2025, i.e. it existed then at about that size. June primary: 4.5 x 3.6 cm.",
-   "model_verdict": "L1: May 2025: 45 x 33 x 38 mm, 21.4 mL; June 2026: 51 x 34 x 42 mm, 33.4 mL; mar2024: no L1 mask; change may2025->jun2026: long axis +13 %, volume +56 % | R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; mar2024: no R1 mask; change may2025->jun2026: long axis +1 %, volume +4 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; mar2024: no S8 mask; change may2025->jun2026: long axis -2 %, volume +4 %. Per-claim verdicts: may_A_s8_size: agrees (<=15 %); may_A_rmass_size: model larger; may_A_cardia_formation: not comparable; may_B_overall: not comparable; jun_A_llesion_size: agrees (<=15 %); jun_C_llesion_size: model larger; jun_C_llesion_change: model larger",
+   "model_verdict": "GF: May 2025: 38 x 31 x 48 mm, 29.6 mL; June 2026: 41 x 35 x 44 mm, 27.4 mL; mar2024: no GF mask; change may2025->jun2026: long axis +8 %, volume -7 % | L1: May 2025: 45 x 33 x 38 mm, 21.4 mL; June 2026: 51 x 34 x 42 mm, 33.4 mL; mar2024: no L1 mask; change may2025->jun2026: long axis +13 %, volume +56 % | R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; mar2024: no R1 mask; change may2025->jun2026: long axis +1 %, volume +4 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; mar2024: no S8 mask; change may2025->jun2026: long axis -2 %, volume +4 %. Per-claim verdicts: may_A_s8_size: agrees (<=15 %); may_A_rmass_size: model larger; may_A_cardia_formation: agrees (<=15 %); may_B_overall: not comparable; jun_A_llesion_size: agrees (<=15 %); jun_C_llesion_size: model larger; jun_C_llesion_change: model larger",
    "model_source": "consensus"
   },
   {
@@ -6386,10 +6584,10 @@
  ],
  "enriched": {
   "by": "tools/build_viewer_data.py",
-  "generated": "2026-10-11T13:29:31",
+  "generated": "2026-10-11T13:59:45",
   "source": "consensus",
   "n_claims": 67,
-  "n_with_model": 33,
+  "n_with_model": 37,
   "tolerance_pct": 15,
   "note": "viz boxes are in the claim date's own RAS mm frame (apply the scene registration matrix like the meshes)"
  },

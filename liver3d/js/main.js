@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=a584f9404f';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=a584f9404f';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=a584f9404f';
-import { Reports } from './reports.js?v=a584f9404f';
-import { ClaimViz } from './claimviz.js?v=a584f9404f';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=a584f9404f';
+import * as F from './frame.js?v=41bde41b27';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=41bde41b27';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=41bde41b27';
+import { Reports } from './reports.js?v=41bde41b27';
+import { ClaimViz } from './claimviz.js?v=41bde41b27';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=41bde41b27';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -22,7 +22,7 @@ if (EMBED) document.body.classList.add('embed');
 const CLAIMS_URL = params.get('claims'); // optional override, relative to the page
 
 // semantic groups (tools/palette/palette.json): hue = kind of tissue
-const GROUP_ORDER = ['Anatomy', 'Tumour', 'Activity', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty', 'Organ', 'Lesions'];
+const GROUP_ORDER = ['Anatomy', 'Tumour', 'Activity', 'Internal structure', 'Vessels', 'Stomach', 'Couinaud segments', 'Uncertainty', 'Organ', 'Lesions'];
 const PART_KINDS = ['cores', 'walls', 'nodules', 'calcifications', 'active'];
 const PART_DEF = {
   cores: { name: 'Necrotic / cystic cores', color: '#c3d7e4', opacity: 1 },
@@ -248,7 +248,7 @@ function buildModel() {
   }
   for (const les of sc.lesions || []) {
     ctl('les:' + les.id, {
-      name: `${les.id} · ${les.name || ''}`.trim(), short: les.id, group: 'Tumour', color: les.color || '#7a3aa8',
+      name: `${les.id} · ${les.name || ''}`.trim(), short: les.id, group: Object.entries(sc.palette?.groups || {}).find(([g, ks]) => g !== 'Tumour' && ks.includes(les.id))?.[0] || 'Tumour', color: les.color || '#7a3aa8',
       defOpacity: les.opacity ?? LESION_DEFAULT_OPACITY, defVisible: les.default_visible ?? true, lesion: les, notVisible: les.not_visible || {}, kind: 'lesion',
     });
   }
@@ -1035,7 +1035,7 @@ function renderVolumeLegend(host) {
   if (!rows.length) return;
   // order by meaning (Tumour, Activity, Anatomy, Internal structure, Vessels) with a thin group label
   const pg = S.scene.palette?.groups || {}, gOf = r => r.gid ? (Object.entries(pg).find(([, ks]) => ks.includes(r.gid))?.[0] || 'Other') : 'Other';
-  const GO = ['Tumour', 'Activity', 'Anatomy', 'Internal structure', 'Vessels', 'Couinaud segments', 'Uncertainty', 'Other'];
+  const GO = ['Tumour', 'Activity', 'Anatomy', 'Internal structure', 'Vessels', 'Stomach', 'Couinaud segments', 'Uncertainty', 'Other'];
   rows.sort((a, b) => GO.indexOf(gOf(a)) - GO.indexOf(gOf(b)));
   const rowsG = []; let lastG = null;
   for (const r of rows) { const g = gOf(r); if (g !== lastG && Object.keys(pg).length) { rowsG.push({ group: g }); lastG = g; } rowsG.push(r); }
@@ -1056,7 +1056,7 @@ function renderVolumeLegend(host) {
 }
 const VOL_SHORT = { liver: 'Liver', gallbladder: 'Gallbladder', active: 'Active (FDG)', active_pet_only: 'Active, PET only', active_inferred: 'Active, inferred',
   cores: 'Cores', walls: 'Walls', nodules: 'Nodules', calcifications: 'Calcifications', portal: 'Portal vein', hepatic_veins: 'Hepatic veins', ivc: 'IVC',
-  contact_left_portal: 'L1–portal contact', hepatic_artery: 'Hepatic artery', bile_ducts: 'Bile ducts', uncertain: 'Uncertain band' };
+  contact_left_portal: 'L1–portal contact', hepatic_artery: 'Hepatic artery', bile_ducts: 'Bile ducts', uncertain: 'Uncertain band', stomach: 'Stomach' };
 
 // ---------------------------------------------------------------- UI: layers panel
 function setCtl(id, patch, opts = {}) {
@@ -1067,7 +1067,7 @@ function setCtl(id, patch, opts = {}) {
 function colourKey() {
   const pg = S.scene.palette?.groups; if (!pg) return null;
   const col = id => (S.ctls.get(id) || S.ctls.get('les:' + id))?.color;
-  const show = { Anatomy: ['liver', 'gallbladder'], Tumour: ['R1', 'L1', 'S8', 'S1', 'P7'], Activity: ['active', 'active_pet_only'], Vessels: ['portal', 'hepatic_veins', 'ivc'], 'Internal structure': ['walls', 'cores', 'nodules', 'calcifications'] };
+  const show = { Anatomy: ['liver', 'gallbladder'], Tumour: ['R1', 'L1', 'S8', 'S1', 'P7'], Activity: ['active', 'active_pet_only'], Vessels: ['portal', 'hepatic_veins', 'ivc'], 'Internal structure': ['walls', 'cores', 'nodules', 'calcifications'], Stomach: ['stomach', 'GF'] };
   return h('div.ckey', { title: 'Colour key: the hue tells the kind of tissue' }, ...Object.entries(show).map(([g, ids]) =>
     h('span.ck', null, ...ids.map(id => col(id)).filter(Boolean).map(c => h('i', { style: { background: c } })), h('span', null, g))));
 }
@@ -1586,7 +1586,7 @@ function hover(e) {
 // what an object IS (clinical words) and where it sits; the doctors' statements about it (report_claims.json tags)
 const PART_NOUN = { calcifications: ['Calcification', 'in'], walls: ['Enhancing wall', 'of'], cores: ['Necrotic / cystic core', 'of'], nodules: ['Mural nodule', 'in'], active: ['FDG-active tissue', 'in'] };
 const LAYER_TYPE = { active: 'active', active_pet_only: 'active', active_inferred: 'active', cores: 'cores', walls: 'walls', nodules: 'nodules', calcifications: 'calcifications',
-  liver: 'liver', portal: 'portal', hepatic_veins: 'hepatic_veins', ivc: 'ivc', gallbladder: 'gallbladder', bile_ducts: 'bile_ducts', contact_left_portal: 'portal' };
+  liver: 'liver', portal: 'portal', hepatic_veins: 'hepatic_veins', ivc: 'ivc', gallbladder: 'gallbladder', bile_ducts: 'bile_ducts', contact_left_portal: 'portal', stomach: 'stomach' };
 const lcFirst = s => (s && /^[A-Z][a-z]/.test(s) ? s[0].toLowerCase() + s.slice(1) : s || '');
 function lesionLabel(les) { return `${les.name || les.id} (${les.id})`; }
 const PART_NOUN_UK = { calcifications: ['Кальцифікат', 'in'], walls: ['Контрастована стінка', 'of'], cores: ['Некротичний / кістозний вміст', 'of'], nodules: ['Пристінковий вузлик', 'in'], active: ['ПЕТ-активна тканина', 'in'] };
@@ -1601,7 +1601,7 @@ function describe(it) {
     const [noun, prep] = PART_NOUN[it.part] || [c.name, 'in'];
     return { title: noun, where: `${prep} the ${lcFirst(it.lesion.name || it.lesion.id)} (${it.lesion.id})`, type: it.part, lesion: it.lesion.id };
   }
-  if (it.kind === 'lesion' || it.kind === 'growth') return { title: lesionLabel(it.lesion), where: it.kind === 'growth' ? `growth map ${pairLabel(it.pair)}` : (it.lesion.segment ? 'segment ' + it.lesion.segment : ''), type: 'lesion', lesion: it.lesion.id };
+  if (it.kind === 'lesion' || it.kind === 'growth') return { title: lesionLabel(it.lesion), where: it.kind === 'growth' ? `growth map ${pairLabel(it.pair)}` : (it.lesion.segment ? (/^stomach/.test(it.lesion.segment) ? it.lesion.segment : 'segment ' + it.lesion.segment) : ''), type: 'lesion', lesion: it.lesion.id };
   if (it.ctl === 'contact_left_portal') return { title: c.name, where: '', type: 'portal', lesion: 'L1' };
   return { title: c.name, where: /^seg\d$/.test(it.ctl) ? 'Couinaud segment of the liver' : '', type: LAYER_TYPE[it.ctl] || (/^seg\d$/.test(it.ctl) ? 'segment' : it.ctl), lesion: null };
 }

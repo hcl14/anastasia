@@ -366,3 +366,13 @@ and the inferred activity; liver shell 0.18, lesion shells 0.45, walls 0.3, core
 tissue solid. 'Clean view' (Layers panel) = liver + R1 / L1 / S8 + FDG-active tissue + vessels (the previous default).
 Cost (June, all layers, full detail): 34 MB and 11.3 M triangles per frame (clean view ~11 MB); render 6 ms on the M3 Max test GPU; slow GPUs
 get 'Smooth orbit' and pixel ratio 1.25 automatically.
+
+## Stomach and gastric wall formation (2026-10-11)
+From `consensus_gastric/<date>/` (single reader, not adjudicated; see `consensus_gastric/report.md`): layer **Stomach (organ)** (neutral warm
+grey #a39a8c, 0.25) and lesion **GF – Gastric wall formation (mass)** (tumour family, dark wine #7c1d5c), group 'Stomach'. Same mesh recipe
+(v2 ladder; GF S2/S3, stomach as selected), voxel-back verification: GF Dice 0.9949 / 0.9970 / 0.9968, stomach 0.9898 / 0.9909 / 0.9966
+(May / June / Sep). Volumes: GF 29.6 / 27.4 / 36.5 mL (Sep upper half not separable from the pancreatic tail on the non-contrast CT,
++-25 %); stomach 210.6 / 243.2 / 223.5 mL. Placed with the same per-date transforms as the liver; the stomach does not move with the liver
+(GF centroid offset June -> Sep 18 mm in the liver alignment), so its growth maps mostly show misalignment. The four report statements about
+the gastric mass (May A, June A, Israeli revision, Sep) are now tagged to GF and the stomach layer (they were kept off the liver objects);
+all four size statements agree with the model within 15 %.

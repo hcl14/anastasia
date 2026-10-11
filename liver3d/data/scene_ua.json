@@ -24,7 +24,8 @@
   "seg7": "Сегмент VII",
   "seg8": "Сегмент VIII",
   "uncertain": "Невизначена смуга (арбітраж)",
-  "active_inferred": "FDG-активність, лише припущена (вилучена з активної тканини)"
+  "active_inferred": "FDG-активність, лише припущена (вилучена з активної тканини)",
+  "stomach": "Шлунок (орган)"
  },
  "lesions": {
   "R1": {
@@ -68,6 +69,12 @@
    "loc": "задньому сателіті S7",
    "gen": "заднього сателіта S7",
    "segment": "VII (червень: S6 за успадкованими сегментами)"
+  },
+  "GF": {
+   "name": "Утворення стінки шлунка (маса)",
+   "loc": "утворенні стінки шлунка",
+   "gen": "утворення стінки шлунка",
+   "segment": "шлунок: екзогастрально, задня стінка нижньої частини тіла шлунка, поруч із хвостом підшлункової залози"
   }
  },
  "confidence": {
@@ -86,7 +93,9 @@
   "partly inferred (labels inside tumour inferred; S2/S3 border by a geometric plane through the LHV)": "частково припущено (мітки всередині пухлини припущені; межа S2/S3 — геометрична площина через ліву печінкову вену)",
   "registered from another date; not observed on this CT": "перенесено з іншої дати; на цій КТ не спостерігається",
   "threshold-supported (SUV >= 2.12); 5.47 mL of it is PET-defined only (outside the CT lesions)": "підтверджено порогом (SUV ≥ 2.12); 5.47 mL з них — лише за ПЕТ (поза КТ-утвореннями)",
-  "width not visible at z200-218 (7.7 mL there)": "ширина не видна на z200–218 (там 7.7 mL)"
+  "width not visible at z200-218 (7.7 mL there)": "ширина не видна на z200–218 (там 7.7 mL)",
+  "single-reader, not adjudicated": "один читач, без арбітражу",
+  "single-reader, not adjudicated; upper half not separable from the pancreatic tail on the non-contrast CT (volume +-25 %)": "один читач, без арбітражу; верхню половину не відділити від хвоста підшлункової на безконтрастній КТ (об'єм ±25 %)"
  },
  "modes": {
   "skeleton": {

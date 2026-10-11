@@ -1,9 +1,9 @@
 // Visualises one report claim on the model: reported size box (orange, dashed) vs the model's
 // measured extents (teal), size-change morph between dates, activity markers, segment and vessel focus.
 import * as THREE from 'three';
-import * as F from './frame.js?v=a584f9404f';
-import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=a584f9404f';
-import { verdictClass, verdictText, changeVerdict, linkURL, shortReader } from './reports.js?v=a584f9404f';
+import * as F from './frame.js?v=41bde41b27';
+import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=41bde41b27';
+import { verdictClass, verdictText, changeVerdict, linkURL, shortReader } from './reports.js?v=41bde41b27';
 
 const ORANGE = new THREE.Color('#ff9f1c'), TEAL = new THREE.Color('#2ec4b6'), SUVY = new THREE.Color('#ffe14d');
 const cyl = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true); cyl.translate(0, 0.5, 0); cyl.rotateX(Math.PI / 2); // unit tube along +Z from 0..1
