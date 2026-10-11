@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=7ba98794f8';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=7ba98794f8';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=7ba98794f8';
-import { Reports } from './reports.js?v=7ba98794f8';
-import { ClaimViz } from './claimviz.js?v=7ba98794f8';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=7ba98794f8';
+import * as F from './frame.js?v=0273fbe6f3';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=0273fbe6f3';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=0273fbe6f3';
+import { Reports } from './reports.js?v=0273fbe6f3';
+import { ClaimViz } from './claimviz.js?v=0273fbe6f3';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=0273fbe6f3';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -480,17 +480,27 @@ function ensureGhost(it) {
   dateGroup[it.date].add(m); it.ghost = m; return m;
 }
 
+// ---- hover linking between 3D objects and the Volumes / Layers / Lesions rows
+let hoverFocus = null;   // Set of control ids highlighted from a row (mouse over / focus / sticky tap)
+let hoverSticky = false;
+const hoverHit = it => !!hoverFocus && hoverFocus.has(it.ctl);
 function dimmed(it) {
+  if (hoverFocus) return !hoverHit(it);
   if (!focus?.dim) return false;
   if (focus.ctls.has(it.ctl) || focus.keep?.has(it.ctl)) return false;
   if (state.sel && it.lesion?.id === state.sel) return false;
   return true;
 }
 const anyCut = () => AXES.some(a => state.clip[a].on);
+const HOVER_EM = new THREE.Color();
 const XRAY = new Set(['active', 'active_pet_only', 'active_inferred', 'nodules', 'calcifications']);
 const MARKERS = new Set(['contact_left_portal', 'nodules', 'calcifications', 'active', 'active_pet_only', 'active_inferred']);
 function applyMaterial(it) {
-  const o = opacityOf(it) * (dimmed(it) ? 0.28 : 1), tr = o < 0.999;
+  const hh = hoverHit(it) && it.date === shown;
+  const o = hh ? Math.max(opacityOf(it), 0.85) : opacityOf(it) * (dimmed(it) ? (hoverFocus ? 0.35 : 0.28) : 1), tr = o < 0.999;
+  // highlighted from a row: brighter (emissive share of its own colour); otherwise back to the base emissive unless the pulse owns it
+  if (hh) { HOVER_EM.set(colorOf(it)).multiplyScalar(0.35); it.mesh.material.emissive.copy(HOVER_EM); it.back.material.emissive.copy(HOVER_EM); it._hoverLit = true; }
+  else if (it._hoverLit) { it._hoverLit = false; if (!it.hl) { it.mesh.material.emissive.copy(it.baseEmissive || HOVER_EM.set(0)); it.back.material.emissive.copy(it.mesh.material.emissive); } }
   // depth bias against coincident surfaces (z-fighting flicker where structures touch: portal vein / left lesion / contact patch,
   // vessels / liver capsule): small markers win (pulled forward), large shells yield (pushed back)
   const bias = MARKERS.has(it.ctl) || it.kind === 'part' && it.part !== 'walls' && it.part !== 'cores' ? -1 : (it.kind === 'lesion' || it.ctl === 'liver' || it.kind === 'growth' || /^seg\d$/.test(it.ctl) ? 1 : 0);
@@ -616,7 +626,7 @@ function updateHighlights() {
     const on = it.mesh.visible && ((state.sel && it.lesion?.id === state.sel && it.kind !== 'part') ||
       (focus && focus.ctls.has(it.ctl) && (!focus.lesion || !it.lesion || it.lesion.id === focus.lesion)));
     it.hl = !!on; any = any || on;
-    if (!on) { const b0 = it.baseEmissive || new THREE.Color(0); it.mesh.material.emissive.copy(b0); it.back.material.emissive.copy(b0); }
+    if (!on && !it._hoverLit) { const b0 = it.baseEmissive || HOVER_EM.set(0); it.mesh.material.emissive.copy(b0); it.back.material.emissive.copy(b0); }
   }
   pulseUntil = any ? Infinity : 0;
 }
@@ -1085,6 +1095,51 @@ function renderLegend() {
 }
 
 /** first clause of a confidence label (full text in the tooltip and in the Layers panel) */
+/** controls a row stands for (Volumes rows carry data-ctls; Layers rows data-ctl; lesion table / chart rows data-les) */
+function rowCtls(el) {
+  if (el.dataset.ctls) return el.dataset.ctls.split(',');
+  if (el.dataset.ctl) return [el.dataset.ctl];
+  if (el.dataset.les) return ['les:' + el.dataset.les];
+  return null;
+}
+function setHoverFocus(ctls, sticky = false) {
+  const next = ctls && ctls.length ? new Set(ctls) : null;
+  if (!next && hoverSticky && !sticky) return;   // a sticky (tapped) highlight stays until tapped again
+  hoverSticky = !!(next && sticky);
+  hoverFocus = next; sync();
+  markRows(next ? [...next] : [], null);
+}
+/** mark the rows of these controls (aria-current); 'parent' = the lesion of a part, marked subtly */
+function markRows(ctls, parent) {
+  const want = new Set(ctls);
+  for (const el of $$('#vols tr[data-ctls], #p-layers .lrow[data-ctl], #p-lesions tr[data-les]')) {
+    const cs = rowCtls(el) || [], on = cs.some(c => want.has(c)), sub = !on && parent && cs.includes(parent);
+    el.classList.toggle('lk', on); el.classList.toggle('lk2', !!sub);
+    if (on) el.setAttribute('aria-current', 'true'); else el.removeAttribute('aria-current');
+  }
+  const v = $('#vols tr.lk'); if (v) { const box = $('#vols'); if (box.scrollHeight > box.clientHeight) v.scrollIntoView({ block: 'nearest' }); }
+}
+/** pointer over a 3D object: mark its legend / layer / lesion row (part -> its class row, parent lesion row subtly) */
+function linkFromMesh(it) {
+  if (hoverFocus) return;
+  if (!it) { markRows([], null); return; }
+  const ctl = /^seg\d$/.test(it.ctl) ? 'seg1' : it.ctl;
+  markRows([ctl, it.ctl], it.kind === 'part' ? 'les:' + it.lesion.id : null);
+}
+function initRowLinking() {
+  const sel = '#vols tr[data-ctls], #p-layers .lrow[data-ctl], #p-lesions tr[data-les]';
+  const over = e => { const r = e.target.closest?.(sel); if (r && !hoverSticky) setHoverFocus(rowCtls(r)); };
+  const out = e => { const r = e.target.closest?.(sel); if (r && !hoverSticky && !(e.relatedTarget && r.contains(e.relatedTarget))) setHoverFocus(null); };
+  for (const host of [$('#vols'), $('#p-layers'), $('#p-lesions')]) {
+    host.addEventListener('mouseover', over); host.addEventListener('mouseout', out);
+    host.addEventListener('focusin', over); host.addEventListener('focusout', out);
+    host.addEventListener('pointerup', e => {   // touch: tap toggles a sticky highlight
+      if (e.pointerType !== 'touch') return; const r = e.target.closest?.(sel); if (!r || e.target.closest('input,button,select')) return;
+      const cs = rowCtls(r); const same = hoverSticky && hoverFocus && cs.every(c => hoverFocus.has(c));
+      hoverSticky = false; setHoverFocus(same ? null : cs, !same);
+    });
+  }
+}
 function shortConf(t) { t = tr(String(t)); let m = t.split(/\s\(|;\s|\.\s/)[0]; if (!/\s/.test(m) && t.includes(')')) m = t.slice(0, t.indexOf(')') + 1); return m.length > 40 ? m.slice(0, 38) + '…' : m; }
 /** compact table of the current date's volumes (scene source) with the confidence labels */
 let volLegendOpen = null;
@@ -1093,15 +1148,15 @@ function renderVolumeLegend(host) {
   const rows = [];
   for (const les of S.scene.lesions || []) {
     const pd = les.per_date?.[shown];
-    if (pd?.volume_mL != null && pd.mesh) rows.push({ gid: les.id, sw: les.color, name: les.id, title: les.name, vol: pd.volume_mL, conf: pd.confidence });
+    if (pd?.volume_mL != null && pd.mesh) rows.push({ ctls: 'les:' + les.id, gid: les.id, sw: S.ctls.get('les:' + les.id)?.color || les.color, name: les.id, title: les.name, vol: pd.volume_mL, conf: pd.confidence });
   }
   for (const L of S.scene.layers || []) {
     const pd = L.per_date?.[shown];
     if (!(pd?.mesh || pd?.shown_as) || pd.volume_mL == null || /^seg\d$/.test(L.id)) continue;
-    rows.push({ gid: L.id, sw: L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
+    rows.push({ ctls: L.id, gid: L.id, sw: S.ctls.get(L.id)?.color || L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
   }
   const segc = (S.scene.layers || []).find(L => /^seg\d$/.test(L.id) && L.per_date?.[shown]?.confidence)?.per_date[shown].confidence;
-  if (segc) rows.push({ gid: 'seg1', sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', short: 'Segments', vol: null, conf: segc });
+  if (segc) rows.push({ ctls: 'seg1,seg2,seg3,seg4,seg5,seg6,seg7,seg8', gid: 'seg1', sw: 'linear-gradient(90deg,#8dd3c7,#fb8072,#fccde5)', name: 'Couinaud segments', short: 'Segments', vol: null, conf: segc });
   if (!rows.length) return;
   // order by meaning (Tumour, Activity, Anatomy, Internal structure, Vessels) with a thin group label
   const pg = S.scene.palette?.groups || {}, gOf = r => r.gid ? (Object.entries(pg).find(([, ks]) => ks.includes(r.gid))?.[0] || 'Other') : 'Other';
@@ -1115,7 +1170,7 @@ function renderVolumeLegend(host) {
   const box = $('#vols'); box.innerHTML = ''; box.hidden = false;
   const det = h('details.vols', { open: volLegendOpen && !state.claim ? true : null },   // collapsed while a claim bar is shown
     h('summary', { title: `Volumes on ${dateLabel(shown)}, measured on the ${src} masks` }, h('b', null, 'Volumes'), h('span.muted', null, ' · ' + dateShort(shown))),
-    h('table.vols', null, h('tbody', null, ...rowsG.map(r => r.group ? h('tr.gh', null, h('td', { colspan: 4 }, r.group)) : h('tr', { title: (r.title || r.full || r.name) + (r.conf ? ' — ' + tr(r.conf) : '') },
+    h('table.vols', null, h('tbody', null, ...rowsG.map(r => r.group ? h('tr.gh', null, h('td', { colspan: 4 }, r.group)) : h('tr', { 'data-ctls': r.ctls || '', tabindex: 0, title: (r.title || r.full || r.name) + (r.conf ? ' — ' + tr(r.conf) : '') },
       h('td', null, h('span.sw', { style: { background: r.sw } })),
       h('td.n', null, r.short || r.name),
       h('td.v', null, r.vol != null ? fmtVol(r.vol) : ''),
@@ -1256,7 +1311,7 @@ function renderLesions() {
   const tb = h('tbody');
   for (const l of les) {
     const vols = ds.map(d => l.per_date?.[d]?.volume_mL);
-    const tr = h('tr', { class: l.id === state.sel ? 'sel' : '', tabindex: 0, 'aria-selected': String(l.id === state.sel), title: `${l.name || ''} — segment ${l.segment || '?'}` },
+    const tr = h('tr', { class: l.id === state.sel ? 'sel' : '', 'data-les': l.id, tabindex: 0, 'aria-selected': String(l.id === state.sel), title: `${l.name || ''} — segment ${l.segment || '?'}` },
       h('td.l', null, h('span.sw', { style: { background: l.color } })),
       h('td.l', null, h('b', null, l.id), h('div.small.muted.lname', null, l.name || '')),
       ...ds.map((d, i) => vols[i] != null ? h('td', { style: d === shown ? { fontWeight: 650 } : null }, fmtVol(vols[i]).replace(' mL', '')) : h('td.na', { title: l.per_date?.[d]?.not_visible || 'not present / not traced' }, '—')),
@@ -1628,7 +1683,7 @@ canvas.addEventListener('pointermove', e => {
   if (e.buttons || e.pointerType === 'touch') { if (!tip.classList.contains('pinned')) tip.hidden = true; return; }
   clearTimeout(hoverT); hoverT = setTimeout(() => hover(e), 70);
 });
-canvas.addEventListener('pointerleave', () => { clearTimeout(hoverT); if (!tip.classList.contains('pinned')) tip.hidden = true; });
+canvas.addEventListener('pointerleave', () => { clearTimeout(hoverT); if (!tip.classList.contains('pinned')) tip.hidden = true; linkFromMesh(null); });
 canvas.addEventListener('pointerup', e => {
   if (!downAt) return;
   const moved = Math.hypot(e.clientX - downAt[0], e.clientY - downAt[1]); downAt = null;
@@ -1636,7 +1691,7 @@ canvas.addEventListener('pointerup', e => {
   const r = canvas.getBoundingClientRect();
   const it = pickAt(e.clientX - r.left, e.clientY - r.top);
   // touch: the tap shows the tooltip pinned (its quotes are tappable); mouse: a click opens the top doctor's statement in Reports
-  if (e.pointerType === 'touch') { if (it?.lesion) selectLesion(it.lesion.id, { fly: false }); if (it) showTip(it, e, r, true); return; }
+  if (e.pointerType === 'touch') { if (!it && hoverSticky) { hoverSticky = false; setHoverFocus(null); } if (it?.lesion) selectLesion(it.lesion.id, { fly: false }); if (it) showTip(it, e, r, true); return; }
   const top = it && tipClaims(it).list[0];
   if (top) { tip.hidden = true; reports.open(top.c.id); }
   else if (it?.lesion) selectLesion(it.lesion.id, { fly: false });
@@ -1650,6 +1705,7 @@ function hover(e) {
   if (moving) return;   // no GPU picking while the camera moves
   const r = canvas.getBoundingClientRect();
   const it = pickAt(e.clientX - r.left, e.clientY - r.top);
+  linkFromMesh(it);
   if (!it) { tip.hidden = true; canvas.style.cursor = ''; return; }
   canvas.style.cursor = it.lesion ? 'pointer' : '';
   showTip(it, e, r);
@@ -1858,7 +1914,7 @@ onProgress(p => {
 
 // ---------------------------------------------------------------- the app object handed to the report modules
 const app = {
-  get scene() { return S.scene; }, setReg, get ghostPending() { return warpPending; }, ghostLocal, regQuality, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
+  get scene() { return S.scene; }, setReg, setHoverFocus, linkFromMesh, get hoverFocus() { return hoverFocus; }, get ghostPending() { return warpPending; }, ghostLocal, regQuality, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
   scene3, root, camera, controls, dateLabel, dateShort, regM, regMFor, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
   setDate, selectLesion, flyToLesion, flyTo, fitDist, addLabel, requestRender, toast, writeHash, peek, ctlState, available,
   setCtls(patches) { for (const [id, p] of Object.entries(patches)) if (S.ctls.has(id)) Object.assign(ctlState(id), p); refreshLayerRows(); const done = ensureVisibleLoaded(); writeHash(); return done; },
@@ -1968,7 +2024,7 @@ async function boot() {
   });
   $('#sheetToggle').onclick = () => setSide(false);
   $('#sideToggle').onclick = () => setSide(!sideOpen);
-  initOptions();
+  initOptions(); initRowLinking();
   { let st = null; try { st = localStorage.getItem('liver3d-side'); } catch (e) { }
     setSide(!EMBED && (st === '1' || /(^#|&)tab=/.test(location.hash) || /(^#|&)claim=/.test(location.hash)), { store: false }); }
   $('#compareBtn').setAttribute('aria-pressed', String(state.compare));

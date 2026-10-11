@@ -416,3 +416,8 @@ body.has-claim #vols{display:none}
 .ckey i{display:inline-block;width:9px;height:9px;border-radius:2px;border:1px solid rgba(128,128,128,.5)}
 .ckey .ck span{margin-left:3px}
 #vols tr.gh td{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);padding-top:4px}
+
+/* hover linking between 3D objects and rows */
+#vols tr.lk td,.lrow.lk,#p-lesions tr.lk{background:color-mix(in srgb,var(--accent) 22%,transparent);font-weight:650}
+#vols tr.lk2 td,.lrow.lk2,#p-lesions tr.lk2{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+#vols tr[data-ctls]{cursor:default}
