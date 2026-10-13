@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=65fe734eeb';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=65fe734eeb';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=65fe734eeb';
-import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=65fe734eeb';
-import { ClaimViz } from './claimviz.js?v=65fe734eeb';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=65fe734eeb';
+import * as F from './frame.js?v=877b70c4d1';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=877b70c4d1';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=877b70c4d1';
+import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=877b70c4d1';
+import { ClaimViz } from './claimviz.js?v=877b70c4d1';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=877b70c4d1';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -1748,6 +1748,7 @@ function showTip(it, e, r, pinned = false) {
   const cf = it.kind === 'part' ? confOf(it.ctl, it.date) : (it.pd?.confidence || null);
   if (cf) lines.push('confidence: ' + cf);
   if (it.pd?.registered_from) lines.push(`registered from ${dateLabel(it.pd.registered_from)}, not seen on this CT`);
+  const bsite = (it.kind === 'lesion') && reports.data?.biopsy_sites?.[d.lesion]; if (bsite) lines.push(bsite.label);   // tooltip text only, no marker coordinates
   const m = tipClaims(it);
   let qh = '';
   if (m.list.length) {

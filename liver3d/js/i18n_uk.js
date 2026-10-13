@@ -121,7 +121,9 @@ export const UK = {
   'consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)': 'мітка утворення в погоджених масках (той самий номер на всіх датах; LesionLocator травень→червень Dice 0.96 / 0.91 / 0.87)', 'Obl': 'Кос.', 'liver': 'печінка', 'vessel': 'судина', 'nodules': 'вузлики', 'lesions': 'утворення',
   'calcifications': 'кальцифікати', 'portal': 'ворітна вена', 'Model: ': 'Модель: ', 'Model:': 'Модель:', 'Unknown reader': 'Невідомий автор',
   'Pathology': 'Патоморфологія', 'pathology': 'патоморфологія', 'pathology (histology), not an imaging reading': 'патоморфологія (гістологія), не висновок за зображеннями',
-  'matched to this lesion by location': 'зіставлено з цим утворенням за розташуванням', 'matched by location': 'зіставлено за розташуванням', 'Segment': 'Сегмент', 'The report names the segment (Sg II–III) only; the match with this lesion is by location': 'У висновку названо лише сегмент (Sg II–III); зіставлення з цим утворенням - за розташуванням',
+  'matched to this lesion by location': 'зіставлено з цим утворенням за розташуванням', 'matched by location': 'зіставлено за розташуванням',
+  'Biopsy 05.10.2026: ultrasound-guided trepan biopsy of the focal lesion Sg II–III (location from the referral, not from images)': 'Біопсія 05.10.2026: трепан-біопсія вогнищевого утворення Sg II–III під УЗ-контролем (місце - за направленням, не за зображеннями)',
+  'Biopsy 05.10.2026: incisional biopsy at laparoscopy (location from the referral, not from images)': 'Біопсія 05.10.2026: інцизійна біопсія під час лапароскопії (місце - за направленням, не за зображеннями)', 'Segment': 'Сегмент', 'The report names the segment (Sg II–III) only; the match with this lesion is by location': 'У висновку названо лише сегмент (Sg II–III); зіставлення з цим утворенням - за розташуванням',
 };
 
 const MON = { May: 'трав.', Jun: 'черв.', June: 'червень', Sep: 'вер.', Sept: 'вер.' };
