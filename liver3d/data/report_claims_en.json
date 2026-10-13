@@ -2,7 +2,7 @@
  "meta": {
   "label": "English gloss - not verbatim",
   "generated_by": "tools/i18n/build_gloss_files.py",
-  "claims": 67
+  "claims": 71
  },
  "glosses": {
   "may_A_ref_suv": {
@@ -553,6 +553,41 @@
    "highlight": [
     "increase in metabolic activity",
     "progression of the underlying disease"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "oct_P_gastric_hyalinised": {
+   "text": "The fragment of the gastric lesion consists of hyalinised tissue, without viable tumour cells, which may be a consequence of the therapy given.",
+   "highlight": [
+    "without viable tumour cells",
+    "hyalinised tissue"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "oct_P_l1_metastasis": {
+   "text": "In the liver trepan-biopsy material: metastasis of gastrointestinal stromal tumour (GIST), spindle-cell variant, Low Grade.",
+   "highlight": [
+    "Low Grade",
+    "metastasis of gastrointestinal stromal tumour (GIST)"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "oct_P_l1_ihc": {
+   "text": "CD117/c-kit (RM359): positive reaction in the tumour cells; DOG-1 (DOG1.1): positive reaction in the tumour cells; Ki-67 (MIB-1): 2 %.",
+   "highlight": [
+    "Ki-67 (MIB-1): 2 %"
+   ],
+   "gloss_source": "provided",
+   "from_": "report_claims.json quote_en (claims engineer)"
+  },
+  "oct_P_l1_procedure": {
+   "text": "Trepan biopsy of the focal lesion Sg II–III of the liver under ultrasound guidance.",
+   "highlight": [
+    "Sg II–III",
+    "Sg II–III"
    ],
    "gloss_source": "provided",
    "from_": "report_claims.json quote_en (claims engineer)"

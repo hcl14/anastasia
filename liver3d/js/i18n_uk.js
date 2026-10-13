@@ -120,6 +120,8 @@ export const UK = {
   "model_change_pct = change of the maximal axial diameter (long axis) between the two dates' lesion masks, each measured in its own frame (no registration)": 'зміна максимального аксіального діаметра (довгої осі) між масками утворення двох дат, кожну виміряно у власній системі (без суміщення)',
   'consensus lesion_ids label (same number on all dates; LesionLocator May->Jun Dice 0.96 / 0.91 / 0.87)': 'мітка утворення в погоджених масках (той самий номер на всіх датах; LesionLocator травень→червень Dice 0.96 / 0.91 / 0.87)', 'Obl': 'Кос.', 'liver': 'печінка', 'vessel': 'судина', 'nodules': 'вузлики', 'lesions': 'утворення',
   'calcifications': 'кальцифікати', 'portal': 'ворітна вена', 'Model: ': 'Модель: ', 'Model:': 'Модель:', 'Unknown reader': 'Невідомий автор',
+  'Pathology': 'Патоморфологія', 'pathology': 'патоморфологія', 'pathology (histology), not an imaging reading': 'патоморфологія (гістологія), не висновок за зображеннями',
+  'matched to this lesion by location': 'зіставлено з цим утворенням за розташуванням', 'matched by location': 'зіставлено за розташуванням', 'Segment': 'Сегмент', 'The report names the segment (Sg II–III) only; the match with this lesion is by location': 'У висновку названо лише сегмент (Sg II–III); зіставлення з цим утворенням - за розташуванням',
 };
 
 const MON = { May: 'трав.', Jun: 'черв.', June: 'червень', Sep: 'вер.', Sept: 'вер.' };
@@ -129,6 +131,10 @@ const CT = s => s.replace('portal-venous CT', 'портально-венозна
 const verdict = s => s.replace(/^agrees/, 'збігається').replace(/^model larger/, 'модель більша').replace(/^model smaller/, 'модель менша').replace('not comparable', 'непорівнянно');
 
 export const UK_PATTERNS = [
+  [/^Segment ([IVX]+) \(report: (.+)\)$/, m => `Сегмент ${m[1]} (у висновку: ${m[2]})`],
+  [/^(.+) → highlighted: (.+)$/, m => `${m[1]} → виділено: ${m[2]}`],
+  [/^biopsy (\d\d\.\d\d\.\d{4}), after this scan$/, m => `біопсія ${m[1]}, після цього сканування`],
+  [/^after the (\d\d\.\d\d\.\d{4}) scan$/, m => `після сканування ${m[1]}`],
   [/^Loading meshes (\d+)\/(\d+)(?: · (.+) of (.+))?$/, m => `Завантаження поверхонь ${m[1]}/${m[2]}` + (m[3] ? ` · ${m[3]} з ${m[4]}` : '')],
   [/^(\d+)\/(\d+) on (.+)$/, m => `${m[1]}/${m[2]} на ${d(m[3])}`],
   [/^(May 2025|June 2026|Sep 2026|Jun 2026)$/, m => d(m[1])],

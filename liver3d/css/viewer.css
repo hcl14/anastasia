@@ -218,6 +218,7 @@ table.les .lname{max-width:118px;white-space:normal;overflow:hidden;display:-web
 .rank.r2{background:#1565c0;color:#fff;border-color:#1565c0}
 .rank.r3{background:#5d4037;color:#fff;border-color:#5d4037}
 .rank.r4{background:#616161;color:#fff;border-color:#616161}
+.rank.rP{background:#6a3d9a;color:#fff;border-color:#6a3d9a}
 .les-h{font-size:12px;color:var(--muted);margin:6px 0 3px;display:flex;gap:6px;align-items:center}
 .claim{border:1px solid var(--border);border-radius:var(--radius);background:var(--card);padding:7px 9px;margin:0 0 6px;cursor:pointer;position:relative}
 .claim:hover{border-color:var(--border-2)}

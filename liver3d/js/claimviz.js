@@ -1,9 +1,9 @@
 // Visualises one report claim on the model: reported size box (orange, dashed) vs the model's
 // measured extents (teal), size-change morph between dates, activity markers, segment and vessel focus.
 import * as THREE from 'three';
-import * as F from './frame.js?v=f748d4026c';
-import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=f748d4026c';
-import { verdictClass, verdictText, changeVerdict, linkURL, shortReader } from './reports.js?v=f748d4026c';
+import * as F from './frame.js?v=65fe734eeb';
+import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=65fe734eeb';
+import { verdictClass, verdictText, changeVerdict, linkURL, shortReader, eventLabel } from './reports.js?v=65fe734eeb';
 
 const ORANGE = new THREE.Color('#ff9f1c'), TEAL = new THREE.Color('#2ec4b6'), SUVY = new THREE.Color('#ffe14d');
 const cyl = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true); cyl.translate(0, 0.5, 0); cyl.rotateX(Math.PI / 2); // unit tube along +Z from 0..1
@@ -333,7 +333,7 @@ export class ClaimViz {
     const close = h('button.cb-close', { 'aria-label': 'Close claim', title: 'Close (Esc)', onclick: () => this.clear() }, '×');
     bar.append(h('div.cb-head', null,
       h('div.small', null, h('span.kind', null, c.kind), ' ', les ? h('span.lchip', { style: { background: les.color } }, lid) : (c.lesion_id || ''), ' ',
-        h('b', { translate: 'no' }, shortReader(c.reader)), h('span.muted', null, ` · on the ${app.dateLabel(c.date_key)} scan`)), close));
+        h('b', { translate: 'no' }, shortReader(c.reader)), c.event ? h('span.muted', null, ' · ', h('span', null, eventLabel(c, app.shown, app.dateDmy?.(c.event.nearest_scan)))) : h('span.muted', null, ` · on the ${app.dateLabel(c.date_key)} scan`)), close));
     bar.append(...app.reports.quoteEls(c));
     const cmp = h('div.cmp');
     const row = (k, v) => cmp.append(h('span.k', null, k), v instanceof Node ? v : h('span', null, v));

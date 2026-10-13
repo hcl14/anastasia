@@ -6,7 +6,8 @@
   "1": "Israeli revision (Dr. Kulikova, 08.09.2026, reading the 19.06.2026 study)",
   "2": "LISOD rereads (Dr. Novikov, 19.05.2025 and 08.07.2026)",
   "3": "primary reports (Feofaniya 13.05.2025 and 19.06.2026; KMKOC 23.09.2026, the only reading of that date)",
-  "4": "surgeon, verbal (Dr Fedorov 18.09.2026; hypotheses, not readings)"
+  "4": "surgeon, verbal (Dr Fedorov 18.09.2026; hypotheses, not readings)",
+  "0": "pathology (histology of the 05.10.2026 biopsies, report 13.10.2026; shown as P, outside the imaging hierarchy)"
  },
  "conventions": {
   "size_mm": "[axial_max, axial_perp, craniocaudal]; numbers as reported, converted to mm; two-axis sizes without a stated plane are placed as the first two",
@@ -6435,6 +6436,268 @@
      "active"
     ]
    }
+  },
+  {
+   "id": "oct_P_gastric_hyalinised",
+   "date_key": "sep2026",
+   "reader": "Pathology (Shalimov NSCST, 13.10.2026)",
+   "reader_rank": 0,
+   "source": {
+    "title": "Referral and pathology report (form 014/o) of the 05.10.2026 laparoscopic gastric and liver biopsies, Shalimov National Scientific Center of Surgery and Transplantology, Kyiv; report 13.10.2026",
+    "report_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "original_page": "orig/2026_new_Zherlitsyna_biopsy_9577_05_10_2026_pdf.html",
+    "document_ref": "[195]",
+    "drive": "https://drive.google.com/file/d/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/view",
+    "original_file": "files/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/Жерліцина_А_С_26_9577_біопсія_пухлини_шлунку,_печінки_від_05_10.pdf",
+    "translation_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "drive_translation": "https://drive.google.com/file/d/1hQvR9kTN2OOg8gTVQTifA5geFhQ_Yuq4/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Фрагмент утворення шлунку представлений гіалінізованою тканиною, без вітальних клітин пухлини, що може бути наслідком проведеної терапії.",
+   "quote_en": "The fragment of the gastric lesion consists of hyalinised tissue, without viable tumour cells, which may be a consequence of the therapy given.",
+   "highlight": [
+    "без вітальних клітин пухлини",
+    "гіалінізованою тканиною",
+    "without viable tumour cells",
+    "hyalinised tissue"
+   ],
+   "lesion_id": null,
+   "structure": "gastric_mass",
+   "kind": "pathology",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": null,
+   "vessel": null,
+   "confidence": "clear",
+   "typo_note": null,
+   "notes": "Pathology, not an imaging reading: one incisional fragment (1.5 × 1 × 1.5 cm) of the gastric lesion (GF); no IHC reported on it. Biopsy 05.10.2026, after the 23.09.2026 scan.",
+   "event": {
+    "kind": "pathology",
+    "procedure": "diagnostic laparoscopy; incisional gastric biopsy; ultrasound-guided trepan biopsy of liver Sg II–III",
+    "procedure_date": "2026-10-05",
+    "report_date": "2026-10-13",
+    "nearest_scan": "sep2026",
+    "nearest_scan_date": "2026-09-23"
+   },
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/oct2026_shalimov_pathology_uk.txt"
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "GF",
+    "lesion_mapping": "mapped from structure=gastric_mass"
+   },
+   "tags": {
+    "lesions": [
+     "GF"
+    ],
+    "general": false,
+    "structures": [
+     "lesion",
+     "stomach"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": [
+     "stomach"
+    ]
+   }
+  },
+  {
+   "id": "oct_P_l1_metastasis",
+   "date_key": "sep2026",
+   "reader": "Pathology (Shalimov NSCST, 13.10.2026)",
+   "reader_rank": 0,
+   "source": {
+    "title": "Referral and pathology report (form 014/o) of the 05.10.2026 laparoscopic gastric and liver biopsies, Shalimov National Scientific Center of Surgery and Transplantology, Kyiv; report 13.10.2026",
+    "report_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "original_page": "orig/2026_new_Zherlitsyna_biopsy_9577_05_10_2026_pdf.html",
+    "document_ref": "[195]",
+    "drive": "https://drive.google.com/file/d/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/view",
+    "original_file": "files/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/Жерліцина_А_С_26_9577_біопсія_пухлини_шлунку,_печінки_від_05_10.pdf",
+    "translation_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "drive_translation": "https://drive.google.com/file/d/1hQvR9kTN2OOg8gTVQTifA5geFhQ_Yuq4/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "У матеріалі трепан-біопсії печінки – метастаз гастроінтестинальної стромальної пухлини (GIST), веретеноклітинний варіант, Low Grade.",
+   "quote_en": "In the liver trepan-biopsy material: metastasis of gastrointestinal stromal tumour (GIST), spindle-cell variant, Low Grade.",
+   "highlight": [
+    "метастаз гастроінтестинальної стромальної пухлини (GIST)",
+    "Low Grade",
+    "metastasis of gastrointestinal stromal tumour (GIST)"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "pathology",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "II–III",
+   "vessel": null,
+   "confidence": "by location",
+   "typo_note": null,
+   "notes": "Pathology, not an imaging reading. \"Focal lesion Sg II–III\" corresponds by location to L1 (the left-lobe S2/3 lesion); the report gives no size or image reference, so the match is by segment only. Biopsy 05.10.2026, after the 23.09.2026 scan.",
+   "event": {
+    "kind": "pathology",
+    "procedure": "diagnostic laparoscopy; incisional gastric biopsy; ultrasound-guided trepan biopsy of liver Sg II–III",
+    "procedure_date": "2026-10-05",
+    "report_date": "2026-10-13",
+    "nearest_scan": "sep2026",
+    "nearest_scan_date": "2026-09-23"
+   },
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/oct2026_shalimov_pathology_uk.txt"
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": "pathology claim mapped by location"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "oct_P_l1_ihc",
+   "date_key": "sep2026",
+   "reader": "Pathology (Shalimov NSCST, 13.10.2026)",
+   "reader_rank": 0,
+   "source": {
+    "title": "Referral and pathology report (form 014/o) of the 05.10.2026 laparoscopic gastric and liver biopsies, Shalimov National Scientific Center of Surgery and Transplantology, Kyiv; report 13.10.2026",
+    "report_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "original_page": "orig/2026_new_Zherlitsyna_biopsy_9577_05_10_2026_pdf.html",
+    "document_ref": "[195]",
+    "drive": "https://drive.google.com/file/d/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/view",
+    "original_file": "files/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/Жерліцина_А_С_26_9577_біопсія_пухлини_шлунку,_печінки_від_05_10.pdf",
+    "translation_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "drive_translation": "https://drive.google.com/file/d/1hQvR9kTN2OOg8gTVQTifA5geFhQ_Yuq4/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "CD117/c-kit (RM359) – позитивна реакція в клітинах пухлини; DOG-1 (DOG1.1) – позитивна реакція в клітинах пухлини; Ki-67 (MIB-1) – 2%.",
+   "quote_en": "CD117/c-kit (RM359): positive reaction in the tumour cells; DOG-1 (DOG1.1): positive reaction in the tumour cells; Ki-67 (MIB-1): 2 %.",
+   "highlight": [
+    "Ki-67 (MIB-1) – 2%",
+    "Ki-67 (MIB-1): 2 %"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "pathology",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "II–III",
+   "vessel": null,
+   "confidence": "by location",
+   "typo_note": null,
+   "notes": "Pathology, not an imaging reading. \"Focal lesion Sg II–III\" corresponds by location to L1 (the left-lobe S2/3 lesion); the report gives no size or image reference, so the match is by segment only. Biopsy 05.10.2026, after the 23.09.2026 scan. Immunohistochemistry was done on the liver material only.",
+   "event": {
+    "kind": "pathology",
+    "procedure": "diagnostic laparoscopy; incisional gastric biopsy; ultrasound-guided trepan biopsy of liver Sg II–III",
+    "procedure_date": "2026-10-05",
+    "report_date": "2026-10-13",
+    "nearest_scan": "sep2026",
+    "nearest_scan_date": "2026-09-23"
+   },
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/oct2026_shalimov_pathology_uk.txt"
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": "pathology claim mapped by location"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
+  },
+  {
+   "id": "oct_P_l1_procedure",
+   "date_key": "sep2026",
+   "reader": "Pathology (Shalimov NSCST, 13.10.2026)",
+   "reader_rank": 0,
+   "source": {
+    "title": "Referral and pathology report (form 014/o) of the 05.10.2026 laparoscopic gastric and liver biopsies, Shalimov National Scientific Center of Surgery and Transplantology, Kyiv; report 13.10.2026",
+    "report_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "original_page": "orig/2026_new_Zherlitsyna_biopsy_9577_05_10_2026_pdf.html",
+    "document_ref": "[195]",
+    "drive": "https://drive.google.com/file/d/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/view",
+    "original_file": "files/1YNd4eqTNF-BhLEQPHyEyNGSnPWT0L6uu/Жерліцина_А_С_26_9577_біопсія_пухлини_шлунку,_печінки_від_05_10.pdf",
+    "translation_page": "reports/2026_new_Pathology_biopsy_05_10_2026_Shalimov_EN.html",
+    "drive_translation": "https://drive.google.com/file/d/1hQvR9kTN2OOg8gTVQTifA5geFhQ_Yuq4/view",
+    "site_base": "https://hcl14.github.io/anastasia/",
+    "original_page_no": 1
+   },
+   "lang": "uk",
+   "quote_orig": "Трепан-біопсія вогнищевого утворення Sg II–III печінки під УЗ-контролем.",
+   "quote_en": "Trepan biopsy of the focal lesion Sg II–III of the liver under ultrasound guidance.",
+   "highlight": [
+    "Sg II–III",
+    "Sg II–III"
+   ],
+   "lesion_id": "L1",
+   "structure": "llesion",
+   "kind": "pathology",
+   "size_mm": null,
+   "change": null,
+   "suv": null,
+   "segment": "II–III",
+   "vessel": null,
+   "confidence": "by location",
+   "typo_note": null,
+   "notes": "Pathology, not an imaging reading. \"Focal lesion Sg II–III\" corresponds by location to L1 (the left-lobe S2/3 lesion); the report gives no size or image reference, so the match is by segment only. Biopsy 05.10.2026, after the 23.09.2026 scan.",
+   "event": {
+    "kind": "pathology",
+    "procedure": "diagnostic laparoscopy; incisional gastric biopsy; ultrasound-guided trepan biopsy of liver Sg II–III",
+    "procedure_date": "2026-10-05",
+    "report_date": "2026-10-13",
+    "nearest_scan": "sep2026",
+    "nearest_scan_date": "2026-09-23"
+   },
+   "verified": {
+    "quote_orig_found": true,
+    "in": "viewer/report_sources/oct2026_shalimov_pathology_uk.txt"
+   },
+   "model": {
+    "source": "consensus",
+    "lesion": "L1",
+    "lesion_mapping": "pathology claim mapped by location"
+   },
+   "tags": {
+    "lesions": [
+     "L1"
+    ],
+    "general": false,
+    "structures": [
+     "lesion"
+    ],
+    "how": "claims engineer structure field + keyword tagger (tools/tag_report_claims.py)",
+    "keywords": []
+   }
   }
  ],
  "contradictions": [
@@ -6586,7 +6849,7 @@
   "by": "tools/build_viewer_data.py",
   "generated": "2026-10-11T13:59:45",
   "source": "consensus",
-  "n_claims": 67,
+  "n_claims": 71,
   "n_with_model": 37,
   "tolerance_pct": 15,
   "note": "viz boxes are in the claim date's own RAS mm frame (apply the scene registration matrix like the meshes)"

@@ -2,7 +2,7 @@
  "meta": {
   "label": "український переклад - не дослівно",
   "generated_by": "tools/i18n/build_gloss_files.py",
-  "claims": 67
+  "claims": 71
  },
  "glosses": {
   "may_A_ref_suv": {
@@ -367,6 +367,26 @@
    "note": "the original is Ukrainian: shown verbatim"
   },
   "sep_K_conclusion": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "oct_P_gastric_hyalinised": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "oct_P_l1_metastasis": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "oct_P_l1_ihc": {
+   "verbatim": true,
+   "gloss_source": "original",
+   "note": "the original is Ukrainian: shown verbatim"
+  },
+  "oct_P_l1_procedure": {
    "verbatim": true,
    "gloss_source": "original",
    "note": "the original is Ukrainian: shown verbatim"

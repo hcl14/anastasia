@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=f748d4026c';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=f748d4026c';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=f748d4026c';
-import { Reports } from './reports.js?v=f748d4026c';
-import { ClaimViz } from './claimviz.js?v=f748d4026c';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=f748d4026c';
+import * as F from './frame.js?v=65fe734eeb';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=65fe734eeb';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=65fe734eeb';
+import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=65fe734eeb';
+import { ClaimViz } from './claimviz.js?v=65fe734eeb';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=65fe734eeb';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -1751,11 +1751,13 @@ function showTip(it, e, r, pinned = false) {
   const m = tipClaims(it);
   let qh = '';
   if (m.list.length) {
-    qh = `<div class="tq-h">Doctors' statements${m.otherDate ? ` <span class="muted">(none on this date; on ${esc(dmy(m.date))}:)</span>` : ''}</div>` +
-      m.list.map(({ c, general }) => { const x = reports.stmt(c), o = reports.stmt(c, 'orig');
+    const btn = ({ c, general }) => { const x = reports.stmt(c), o = reports.stmt(c, 'orig'), ev = eventLabel(c, it.date, dmy(c.event?.nearest_scan));
         return `<button type="button" class="tq" data-claim="${esc(c.id)}"><span class="tq-q" translate="no" lang="${esc(x.lang)}">“${reports.snippetHTML(c, 160, x)}”</span>` +
         (x.verbatim ? '' : `<span class="tq-o"><span class="tq-ol">${esc(x.lang === 'uk' ? 'український переклад - не дослівно' : 'English gloss - not verbatim')}; original (verbatim):</span> <span translate="no" lang="${esc(o.lang)}">${reports.snippetHTML(c, 110, o)}</span></span>`) +
-        `<span class="tq-r"><span class="rank r${Math.min(4, c.reader_rank ?? 4)}">${esc(String(c.reader_rank ?? '?'))}</span> <span translate="no">${esc(shortReaderName(c.reader))}</span>${general ? ' · about the liver lesions in general' : ''} <span class="more">${pinned ? 'tap for more ›' : 'click for more ›'}</span></span></button>`; }).join('');
+        `<span class="tq-r"><span class="${rankClass(c.reader_rank)}">${esc(rankText(c.reader_rank))}</span> <span translate="no">${esc(shortReaderName(c.reader))}</span>${general ? ' · about the liver lesions in general' : ''}${ev ? ` · <span class="tq-ev">${esc(ev)}</span>` : ''}${c.event && c.confidence === 'by location' ? ` · <span class="tq-ev">matched to this lesion by location</span>` : ''} <span class="more">${pinned ? 'tap for more ›' : 'click for more ›'}</span></span></button>`; };
+    const evs = m.list.filter(x => x.event), img = m.list.filter(x => !x.event);
+    qh = (evs.length ? `<div class="tq-h">Pathology</div>` + evs.map(btn).join('') : '') +
+      (img.length ? `<div class="tq-h">Doctors' statements${m.otherDate ? ` <span class="muted">(none on this date; on ${esc(dmy(m.date))}:)</span>` : ''}</div>` + img.map(btn).join('') : '');
   } else qh = `<div class="tq-none">No doctor's statement about this structure on this date</div>`;
   const qa = [];
   const v = it.pd?.verify; if (v?.dice != null) qa.push(`mesh vs mask: Dice ${fmtNum(v.dice, 3)}${v.p95_mm != null ? `, p95 ${fmtNum(v.p95_mm, 1)} mm` : ''}`);
@@ -1924,7 +1926,7 @@ onProgress(p => {
 // ---------------------------------------------------------------- the app object handed to the report modules
 const app = {
   get scene() { return S.scene; }, setReg, setHoverFocus, linkFromMesh, get hoverFocus() { return hoverFocus; }, get ghostPending() { return warpPending; }, ghostLocal, regQuality, get state() { return state; }, get shown() { return shown; }, get dates() { return S.dates; },
-  scene3, root, camera, controls, dateLabel, dateShort, regM, regMFor, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
+  scene3, root, camera, controls, dateLabel, dateShort, dateDmy: k => dmy(k), regM, regMFor, lesionById, lesionCenterRAS, lesionSphere, ctls: S.ctls, items: S.items,
   setDate, selectLesion, flyToLesion, flyTo, fitDist, addLabel, requestRender, toast, writeHash, peek, ctlState, available,
   setCtls(patches) { for (const [id, p] of Object.entries(patches)) if (S.ctls.has(id)) Object.assign(ctlState(id), p); refreshLayerRows(); const done = ensureVisibleLoaded(); writeHash(); return done; },
   loadVisible() { return ensureVisibleLoaded(); },

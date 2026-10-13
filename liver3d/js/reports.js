@@ -1,8 +1,17 @@
 // Reports panel: the radiologists' own words next to the model. Quotes are shown verbatim (quote_orig);
 // the English gloss is labelled as a gloss. Nothing here rewrites a quote.
-import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=f748d4026c';
+import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=65fe734eeb';
 
-const KIND_LABEL = { size: 'size', size_change: 'size change', activity: 'activity', location: 'location', vessel_relation: 'vessel', other: 'other' };
+const KIND_LABEL = { size: 'size', size_change: 'size change', activity: 'activity', location: 'location', vessel_relation: 'vessel', other: 'other', pathology: 'pathology' };
+/** reader-rank badge: 1-4 = imaging readers by authority; 0 = pathology (histology), shown as P */
+export const rankText = r => (r === 0 ? 'P' : String(r ?? '?'));
+export const rankClass = r => 'rank ' + (r === 0 ? 'rP' : 'r' + Math.min(4, r ?? 4));
+const dmyIso = s => String(s || '').split('-').reverse().join('.');
+/** when a claim is a later event (e.g. a biopsy after the last scan): its label relative to the date being shown */
+export function eventLabel(c, dateKey, scanDmy) {
+  const e = c?.event; if (!e) return null;
+  return dateKey === c.date_key ? `biopsy ${dmyIso(e.procedure_date)}, after this scan` : `after the ${scanDmy || dmyIso(e.nearest_scan_date)} scan`;
+}
 
 export function verdictClass(v) {
   const s = String(v || '').toLowerCase();
@@ -77,9 +86,13 @@ export class Reports {
     };
     const FIELD = { lesion: ['rmass', 'llesion', 'lesions_other'] };   // the claims engineer's own structure field agrees: small bonus
     const bonus = c => ((FIELD[type] || [type]).includes(c.structure) ? 0.5 : 0);
+    const rank = arr => arr.map(c => ({ c, s: score(c) })).filter(x => x.s >= 0).map(x => ({ ...x, s: x.s + bonus(x.c) }))
+      .sort((a, b) => b.s - a.s || (a.c.reader_rank ?? 9) - (b.c.reader_rank ?? 9));
+    // later events (pathology of the 05.10.2026 biopsies): shown for their object on every date, before the imaging statements
+    const events = rank(cl.filter(c => c.event)).slice(0, 2).map(x => ({ c: x.c, general: false, event: true }));
+    const withEvents = r => ({ ...r, list: [...events, ...r.list] });
     const best = d => {
-      const ranked = cl.filter(c => this.claimDates(c).has(d)).map(c => ({ c, s: score(c) })).filter(x => x.s >= 0).map(x => ({ ...x, s: x.s + bonus(x.c) }))
-        .sort((a, b) => b.s - a.s || (a.c.reader_rank ?? 9) - (b.c.reader_rank ?? 9));
+      const ranked = rank(cl.filter(c => !c.event && this.claimDates(c).has(d)));
       const out = [];
       for (const x of ranked) {   // the same sentence split into two claims: keep the better-matching one only
         const q = x.c.quote_orig || '';
@@ -89,12 +102,12 @@ export class Reports {
       return out.map(x => ({ c: x.c, general: !!lesionId && !x.c.tags.lesions.includes(lesionId) }));
     };
     let list = best(date);
-    if (list.length) return { list, date, otherDate: false };
+    if (list.length) return withEvents({ list, date, otherDate: false });
     const ds = this.app.dates, i = ds.indexOf(date);
     for (const d of [...ds].filter(k => k !== date).sort((a, b) => Math.abs(ds.indexOf(a) - i) - Math.abs(ds.indexOf(b) - i) || ds.indexOf(b) - ds.indexOf(a))) {
-      list = best(d); if (list.length) return { list, date: d, otherDate: true };
+      list = best(d); if (list.length) return withEvents({ list, date: d, otherDate: true });
     }
-    return { list: [], date, otherDate: false };
+    return withEvents({ list: [], date, otherDate: false });
   }
   /** short verbatim snippet (<= max chars) of a claim around its key phrase, as highlighted HTML */
   snippetHTML(c, max = 160, x = this.stmt(c)) {
@@ -150,7 +163,7 @@ export class Reports {
   visibleClaims() {
     const st = this.app.state, d = this.app.shown;
     return (this.data?.claims || []).filter(c =>
-      (this.allDates || this.claimDates(c).has(d)) && !this.hiddenReaders.has(c.reader) && (!this.onlySel || !st.sel || c.lesion_id === st.sel));
+      (this.allDates || this.claimDates(c).has(d) || c.event) && !this.hiddenReaders.has(c.reader) && (!this.onlySel || !st.sel || c.lesion_id === st.sel));
   }
 
   render() {
@@ -162,7 +175,7 @@ export class Reports {
       return;
     }
     const app = this.app, st = app.state;
-    const nDate = (this.data.claims || []).filter(c => this.claimDates(c).has(app.shown)).length;
+    const nDate = (this.data.claims || []).filter(c => this.claimDates(c).has(app.shown) || c.event).length;
     tab.innerHTML = `Reports <span class="count">${nDate}</span>`;
 
     const seg = h('div.seg', { role: 'group', 'aria-label': 'Reports view' },
@@ -180,9 +193,9 @@ export class Reports {
     const chips = h('div.chips', { role: 'group', 'aria-label': 'Filter by reader' });
     for (const [r, rank] of this.readers) {
       chips.append(h('button.chip', {
-        'aria-pressed': String(!this.hiddenReaders.has(r)), title: `rank ${rank}`,
+        'aria-pressed': String(!this.hiddenReaders.has(r)), title: rank === 0 ? 'pathology (histology), not an imaging reading' : `rank ${rank}`,
         onclick: () => { this.hiddenReaders.has(r) ? this.hiddenReaders.delete(r) : this.hiddenReaders.add(r); this.render(); },
-      }, h('span', { class: 'rank r' + Math.min(4, rank) }, rank), ' ', h('span', { translate: 'no' }, shortReader(r))));
+      }, h('span', { class: rankClass(rank) }, rankText(rank)), ' ', h('span', { translate: 'no' }, shortReader(r))));
     }
     if (st.sel) chips.append(h('button.chip', { 'aria-pressed': String(this.onlySel), onclick: () => { this.onlySel = !this.onlySel; this.render(); } }, `only ${st.sel}`));
     host.append(chips);
@@ -200,7 +213,7 @@ export class Reports {
     const readers = [...byReader.keys()].sort((a, b) => (byReader.get(a)[0].reader_rank ?? 9) - (byReader.get(b)[0].reader_rank ?? 9) || String(a).localeCompare(String(b)));
     for (const r of readers) {
       const cs = byReader.get(r);
-      host.append(h('div.reader-h', null, h('span', { class: 'rank r' + Math.min(4, cs[0].reader_rank ?? 4) }, cs[0].reader_rank ?? '?'), h('span', { translate: 'no' }, r || 'Unknown reader')));
+      host.append(h('div.reader-h', null, h('span', { class: rankClass(cs[0].reader_rank) }, rankText(cs[0].reader_rank)), h('span', { translate: 'no' }, r || 'Unknown reader')));
       const byLes = new Map();
       for (const c of cs) { const k = c.lesion_id || ''; if (!byLes.has(k)) byLes.set(k, []); byLes.get(k).push(c); }
       const keys = [...byLes.keys()].sort((a, b) => (a === '') - (b === '') || a.localeCompare(b));
@@ -250,11 +263,12 @@ export class Reports {
     const meta = h('div.meta', null,
       h('span.kind', null, KIND_LABEL[c.kind] || c.kind || 'claim'),
       les ? h('span.lchip', { style: { background: les.color } }, c.lesion_id) : (c.lesion_id ? h('span.kind', null, c.lesion_id) : null),
-      h('span', null, `${app.dateLabel(c.date_key)} scan`),
+      c.event ? h('span', null, eventLabel(c, app.shown, app.dateDmy?.(c.event.nearest_scan))) : h('span', null, `${app.dateLabel(c.date_key)} scan`),
       opts.compact || opts.showDate ? h('span', { translate: 'no' }, '· ' + shortReader(c.reader)) : null,
       cv ? h('span', { class: 'verdict ' + cv.cls, title: cv.title }, cv.text) : null,
       vt ? h('span', { class: 'verdict ' + verdictClass(viz.verdict), title: viz.how_measured || '' }, vt) : null,
-      c.confidence === 'ambiguous' ? h('span.verdict.nc', { title: 'The claims engineer marked this mapping or reading as ambiguous' }, 'ambiguous') : null);
+      c.confidence === 'ambiguous' ? h('span.verdict.nc', { title: 'The claims engineer marked this mapping or reading as ambiguous' }, 'ambiguous') : null,
+      c.event && c.confidence === 'by location' ? h('span.verdict.nc', { title: 'The report names the segment (Sg II–III) only; the match with this lesion is by location' }, 'matched by location') : null);
     const qs = this.quoteEls(c);
     const src = c.source || {};
     const links = [];
