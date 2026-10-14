@@ -122,6 +122,7 @@ export const UK = {
   'calcifications': 'кальцифікати', 'portal': 'ворітна вена', 'Model: ': 'Модель: ', 'Model:': 'Модель:', 'Unknown reader': 'Невідомий автор',
   'Pathology': 'Патоморфологія', 'pathology': 'патоморфологія', 'pathology (histology), not an imaging reading': 'патоморфологія (гістологія), не висновок за зображеннями',
   'matched to this lesion by location': 'зіставлено з цим утворенням за розташуванням', 'matched by location': 'зіставлено за розташуванням',
+  'English translation': 'Переклад англійською', 'Report page': 'Сторінка висновку', 'Original · UA': 'Оригінал · UA', 'Original · RU': 'Оригінал · RU', 'Original · EN': 'Оригінал · EN',
   'What you are looking at': 'Що ви бачите',
   'A 3D reconstruction of the liver and its tumours from three CT scans (13.05.2025, 19.06.2026, 23.09.2026), made with AI-assisted outlining and checked against the written reports. It is not a radiology report; the reports are authoritative.': '3D-реконструкція печінки та пухлин за трьома КТ (13.05.2025, 19.06.2026, 23.09.2026): контури окреслено за допомогою ШІ та звірено з письмовими висновками. Це не радіологічний висновок; вирішальними є висновки.',
   'What to click: the date buttons switch scans; Compare shows the earlier scan as an outline; hover or tap a part to see what the reports say about it; the Lesions tab lists the volumes.': 'Що натискати: кнопки дат перемикають обстеження; «Порівняти» показує попереднє обстеження контуром; наведіть або торкніться частини — побачите, що про неї кажуть висновки; вкладка «Утворення» містить об\'єми.',

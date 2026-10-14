@@ -1,9 +1,9 @@
 // Visualises one report claim on the model: reported size box (orange, dashed) vs the model's
 // measured extents (teal), size-change morph between dates, activity markers, segment and vessel focus.
 import * as THREE from 'three';
-import * as F from './frame.js?v=7a466fa763';
-import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=7a466fa763';
-import { verdictClass, verdictText, changeVerdict, linkURL, shortReader, eventLabel } from './reports.js?v=7a466fa763';
+import * as F from './frame.js?v=b7b174ce96';
+import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=b7b174ce96';
+import { verdictClass, verdictText, changeVerdict, linkURL, shortReader, eventLabel } from './reports.js?v=b7b174ce96';
 
 const ORANGE = new THREE.Color('#ff9f1c'), TEAL = new THREE.Color('#2ec4b6'), SUVY = new THREE.Color('#ffe14d');
 const cyl = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true); cyl.translate(0, 0.5, 0); cyl.rotateX(Math.PI / 2); // unit tube along +Z from 0..1
@@ -387,9 +387,10 @@ export class ClaimViz {
     if (les) actions.append(h('button', { onclick: () => app.flyToLesion(lid) }, 'Fly to'), h('button', { onclick: () => app.sliceLesion(lid) }, 'Slice through'));
     const src = c.source || {};
     const rp = linkURL(src, src.report_page), op = linkURL(src, src.original_page);
-    if (rp) actions.append(h('a', { href: rp, target: '_blank', rel: 'noopener noreferrer', class: 'small', style: { alignSelf: 'center', color: 'var(--accent)' } }, 'report page ↗'));
     const of = !op && src.original_file ? linkURL(src, src.original_file) : null;
-    if (op || of) actions.append(h('a', { href: op || of, target: '_blank', rel: 'noopener noreferrer', class: 'small', style: { alignSelf: 'center', color: 'var(--accent)' } }, op ? 'original ↗' : 'original document ↗'));
+    const LANG = { uk: 'UA', ru: 'RU', de: 'DE', en: 'EN', he: 'HE' }[c.lang] || (c.lang || '').toUpperCase();
+    if (op || of) actions.append(h('a.chip.o', { href: op || of, target: '_blank', rel: 'noopener noreferrer', style: { alignSelf: 'center' } }, `Original · ${LANG}`));
+    if (rp) actions.append(h('a.chip.t', { href: rp, target: '_blank', rel: 'noopener noreferrer', style: { alignSelf: 'center' } }, c.lang === 'en' ? 'Report page' : 'English translation'));
     const dim = h('input', { type: 'checkbox', checked: this.dimOthers || null });
     dim.addEventListener('change', () => { this.dimOthers = dim.checked; this.applyFocus(c, true); });
     actions.append(h('label.small', { style: { display: 'flex', gap: '5px', alignItems: 'center' } }, dim, 'dim other structures'));

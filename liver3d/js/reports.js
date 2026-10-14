@@ -1,6 +1,6 @@
 // Reports panel: the radiologists' own words next to the model. Quotes are shown verbatim (quote_orig);
 // the English gloss is labelled as a gloss. Nothing here rewrites a quote.
-import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=7a466fa763';
+import { $, $$, h, esc, highlightHTML, fmtPct } from './util.js?v=b7b174ce96';
 
 const KIND_LABEL = { size: 'size', size_change: 'size change', activity: 'activity', location: 'location', vessel_relation: 'vessel', other: 'other', pathology: 'pathology' };
 /** reader-rank badge: 1-4 = imaging readers by authority; 0 = pathology (histology), shown as P */
@@ -273,10 +273,11 @@ export class Reports {
     const src = c.source || {};
     const links = [];
     const rp = linkURL(src, src.report_page), op = linkURL(src, src.original_page);
-    if (rp) links.push(h('a', { href: rp, target: '_blank', rel: 'noopener noreferrer' }, 'report page ↗'));
-    if (op) links.push(h('a', { href: op, target: '_blank', rel: 'noopener noreferrer' }, 'original scan ↗'));
-    else if (src.original_file) links.push(h('a', { href: linkURL(src, src.original_file), target: '_blank', rel: 'noopener noreferrer', title: 'the original document (no transcribed original page exists)' }, 'original document ↗'));
-    if (src.drive) links.push(h('a', { href: src.drive, target: '_blank', rel: 'noopener noreferrer' }, 'Drive ↗'));
+    const LANG = { uk: 'UA', ru: 'RU', de: 'DE', en: 'EN', he: 'HE' }[c.lang] || (c.lang || '').toUpperCase();
+    if (op) links.push(h('a.chip.o', { href: op, target: '_blank', rel: 'noopener noreferrer' }, `Original · ${LANG}`));
+    else if (src.original_file) links.push(h('a.chip.o', { href: linkURL(src, src.original_file), target: '_blank', rel: 'noopener noreferrer', title: 'the original document (no transcribed original page exists)' }, `Original · ${LANG}`));
+    if (rp) links.push(h('a.chip.t', { href: rp, target: '_blank', rel: 'noopener noreferrer' }, c.lang === 'en' ? 'Report page' : 'English translation'));
+    if (src.drive) links.push(h('a.more', { href: src.drive, target: '_blank', rel: 'noopener noreferrer' }, 'Drive ↗'));
     for (const a of links) a.addEventListener('click', e => e.stopPropagation());
     const el = h('article.claim', { 'data-id': c.id, tabindex: 0, role: 'button', 'aria-label': `Show on the model: ${c.kind} claim by ${c.reader}` },
       meta,

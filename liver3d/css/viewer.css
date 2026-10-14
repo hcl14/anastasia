@@ -425,3 +425,9 @@ body.has-claim #vols{display:none}
 #vols tr.lk td:first-child,#p-lesions tr.lk td:first-child{box-shadow:inset 2px 0 0 var(--accent)}
 #vols tr.lk2 td,.lrow.lk2,#p-lesions tr.lk2 td{background:color-mix(in srgb,var(--accent) 9%,transparent)}
 #vols tr[data-ctls]{cursor:default}
+
+.claim a.chip,.cb a.chip{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:12px;text-decoration:none;white-space:nowrap;margin:2px 3px 2px 0}
+.claim a.chip.o,a.chip.o{background:#e8f0e3;color:#24481a;border:1px solid #9cbf8c}
+.claim a.chip.t,a.chip.t{background:#e6eef8;color:#13406e;border:1px solid #9bb7d8}
+a.more{font-size:11px;opacity:.8}
+@media (max-width:640px){a.chip{padding-top:7px;padding-bottom:7px}}
