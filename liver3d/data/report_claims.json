@@ -6,7 +6,7 @@
   "1": "Israeli revision (Dr. Kulikova, 08.09.2026, reading the 19.06.2026 study)",
   "2": "LISOD rereads (Dr. Novikov, 19.05.2025 and 08.07.2026)",
   "3": "primary reports (Feofaniya 13.05.2025 and 19.06.2026; KMKOC 23.09.2026, the only reading of that date)",
-  "4": "surgeon, verbal (Dr Fedorov 18.09.2026; hypotheses, not readings)",
+  "4": "surgeon, opinion (Dr Fedorov 18.09.2026; hypotheses, not readings)",
   "0": "pathology (histology of the 05.10.2026 biopsies, report 13.10.2026; shown as P, outside the imaging hierarchy)"
  },
  "conventions": {
@@ -4809,10 +4809,10 @@
   {
    "id": "fed_llesion_between_veins",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -4842,7 +4842,7 @@
    "vessel": "left hepatic vein and left portal vein",
    "confidence": "ambiguous",
    "typo_note": null,
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #009.",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #009.",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -4917,10 +4917,10 @@
   {
    "id": "fed_llesion_lhv",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -4950,7 +4950,7 @@
    "vessel": "left hepatic vein",
    "confidence": "ambiguous",
    "typo_note": null,
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #059. Only this reader mentions the left hepatic vein.",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #059. Only this reader mentions the left hepatic vein.",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -5023,10 +5023,10 @@
   {
    "id": "fed_llesion_lpv",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -5056,7 +5056,7 @@
    "vessel": "left portal vein (left lateral section, S2/S3 branches)",
    "confidence": "ambiguous",
    "typo_note": null,
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #060.",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #060.",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -5128,10 +5128,10 @@
   {
    "id": "fed_llesion_s3_branches",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -5161,7 +5161,7 @@
    "vessel": "left hepatic vein; segment III branches",
    "confidence": "ambiguous",
    "typo_note": null,
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #021; the start of the sentence (growth of the process into these veins) was lost in the recording.",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #021; the start of the sentence (growth of the process into these veins) was lost in the recording.",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -5234,10 +5234,10 @@
   {
    "id": "fed_s1_not_left",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -5267,7 +5267,7 @@
    "vessel": null,
    "confidence": "ambiguous",
    "typo_note": "\"сегелієвої\" is a speech-recognition rendering of \"спігелієвої\" (Spiegel lobe).",
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #013. Which radiologist and which lesion he means is not stated: the June primary lists Sg1 1.3 x 1.3 cm separately from the Sg2/3 lesion. Asked whether it is the mural component of the large mass, he answered \"Ну мабуть, що так\" (\"well, probably yes\", #017).",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #013. Which radiologist and which lesion he means is not stated: the June primary lists Sg1 1.3 x 1.3 cm separately from the Sg2/3 lesion. Asked whether it is the mural component of the large mass, he answered \"Ну мабуть, що так\" (\"well, probably yes\", #017).",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -5337,10 +5337,10 @@
   {
    "id": "fed_dark_on_ct",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -5372,7 +5372,7 @@
    "vessel": null,
    "confidence": "ambiguous",
    "typo_note": "\"гіпервоскулярна\" is the transcript spelling of \"гіперваскулярна\".",
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #056; said about embolisation in general (which lesion is not specified).",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #056; said about embolisation in general (which lesion is not specified).",
    "topic": "enhancement",
    "verified": {
     "quote_orig_found": true,
@@ -5402,10 +5402,10 @@
   {
    "id": "fed_rmass_volume",
    "date_key": "jun2026",
-   "reader": "Surgeon (verbal): Dr Denys Fedorov, video consultation 18.09.2026",
+   "reader": "Surgeon (opinion): Dr Denys Fedorov, video consultation 18.09.2026",
    "reader_rank": 4,
    "source": {
-    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; verbal, not a radiology report",
+    "title": "Dr Denys Fedorov (surgeon) video consultation, 18.09.2026 - he reviewed the 19.06.2026 images; an opinion, not a radiology report",
     "report_page": "fedorov-2026-09-18-full-transcript-0ce1e837e259.html",
     "original_page": null,
     "document_ref": null,
@@ -5439,7 +5439,7 @@
    "vessel": null,
    "confidence": "ambiguous",
    "typo_note": "Unfinished utterance; the unit is not said (13 cm assumed); \"займáв\" is a garbled transcript word.",
-   "notes": "Verbal remark of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #031 (radiointervention discussion).",
+   "notes": "Opinion of a surgeon in a video call (automatic speech transcript, Ukrainian), not a written radiology reading. A hypothesis to test on the images. Transcript #031 (radiointervention discussion).",
    "verified": {
     "quote_orig_found": true,
     "in": "/Users/egorbeliaev/Documents/med/Fedorov_18_09.txt",
@@ -6743,7 +6743,7 @@
     "sep_K_s8_active",
     "fed_s1_not_left"
    ],
-   "summary": "LISOD May body text: new 11 mm mural nodule \"in the nodule in segment 8\"; the conclusion of the same report: \"in the dominant liver mass\". June LISOD: new enhancing mural elements \"in particular in the largest\" (R1). Sep KMKOC: active 15 x 24 mm \"within the ametabolic area in S8\". No report states these are the same focus. The surgeon (verbal) agreed with \"probably yes\" that a lesion he places in segment I is \"the mural component of the large mass\".",
+   "summary": "LISOD May body text: new 11 mm mural nodule \"in the nodule in segment 8\"; the conclusion of the same report: \"in the dominant liver mass\". June LISOD: new enhancing mural elements \"in particular in the largest\" (R1). Sep KMKOC: active 15 x 24 mm \"within the ametabolic area in S8\". No report states these are the same focus. The surgeon (opinion) agreed with \"probably yes\" that a lesion he places in segment I is \"the mural component of the large mass\".",
    "model_verdict": "R1: May 2025: 145 x 120 x 140 mm, 1205.5 mL; June 2026: 147 x 112 x 148 mm, 1258.4 mL; Sep 2026: 150 x 119 x 154 mm, 1202.5 mL; change may2025->sep2026: long axis +3 %, volume -0 % | S1: May 2025: 14 x 12 x 10 mm, 0.9 mL; June 2026: 15 x 12 x 12 mm, 0.8 mL; Sep 2026: 18 x 13 x 16 mm, 1.6 mL; change may2025->sep2026: long axis +31 %, volume +79 % | S8: May 2025: 68 x 40 x 50 mm, 68.0 mL; June 2026: 66 x 42 x 50 mm, 70.8 mL; Sep 2026: 70 x 47 x 46 mm, 78.8 mL; change may2025->sep2026: long axis +4 %, volume +16 %. Per-claim verdicts: may_B_nodule_s8: not comparable; may_B_nodule_conclusion: not comparable; jun_B_mural_enhancing: not comparable; fed_s1_not_left: not comparable; sep_K_s8_active: model larger",
    "model_source": "consensus"
   },
@@ -6804,13 +6804,13 @@
   },
   {
    "id": "c8",
-   "topic": "Segment I lesion vs \"left-lobe\" lesion (surgeon, verbal)",
+   "topic": "Segment I lesion vs \"left-lobe\" lesion (surgeon, opinion)",
    "claims": [
     "fed_s1_not_left",
     "jun_A_s1",
     "jun_A_llesion_size"
    ],
-   "summary": "Surgeon Fedorov (verbal): a lesion \"your radiologist describes as being in the left lobe\" is really in segment I (Spiegel lobe). The June primary lists both a Sg1 1.3 x 1.3 cm lesion and a separate Sg2/3 4.5 x 3.6 cm lesion along the left portal vein; which lesion he meant is not clear.",
+   "summary": "Surgeon Fedorov (opinion): a lesion \"your radiologist describes as being in the left lobe\" is really in segment I (Spiegel lobe). The June primary lists both a Sg1 1.3 x 1.3 cm lesion and a separate Sg2/3 4.5 x 3.6 cm lesion along the left portal vein; which lesion he meant is not clear.",
    "model_verdict": "L1: June 2026: 51 x 34 x 42 mm, 33.4 mL | S1: June 2026: 15 x 12 x 12 mm, 0.8 mL. Per-claim verdicts: jun_A_llesion_size: agrees (<=15 %); jun_A_s1: model larger; fed_s1_not_left: not comparable",
    "model_source": "consensus"
   },
@@ -6836,7 +6836,7 @@
     "fed_llesion_lpv",
     "fed_llesion_s3_branches"
    ],
-   "summary": "June primary: along the left portal vein. Israeli: portal vein patent (no lesion relation stated). Surgeon (verbal): between the left hepatic vein and the left portal vein, partly encircling the left hepatic vein, intimately against the S2/S3 portal branch, possibly growing into the left hepatic vein and segment III branches. Only the surgeon mentions the left hepatic vein.",
+   "summary": "June primary: along the left portal vein. Israeli: portal vein patent (no lesion relation stated). Surgeon (opinion): between the left hepatic vein and the left portal vein, partly encircling the left hepatic vein, intimately against the S2/S3 portal branch, possibly growing into the left hepatic vein and segment III branches. Only the surgeon mentions the left hepatic vein.",
    "model_verdict": "Model (June consensus, challenge C01): the left lesion touches a low-confidence left hepatic vein candidate; encirclement is not established either way (the vein outline was built with a lesion exclusion band). | L1: June 2026: 51 x 34 x 42 mm, 33.4 mL. Per-claim verdicts: jun_A_llesion_portal: not comparable; jun_C_ducts_portal: not comparable; fed_llesion_between_veins: not comparable; fed_llesion_lhv: not comparable; fed_llesion_lpv: not comparable; fed_llesion_s3_branches: not comparable",
    "model_source": "consensus"
   }
