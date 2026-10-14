@@ -1,9 +1,9 @@
 // Visualises one report claim on the model: reported size box (orange, dashed) vs the model's
 // measured extents (teal), size-change morph between dates, activity markers, segment and vessel focus.
 import * as THREE from 'three';
-import * as F from './frame.js?v=6a7ddacd9c';
-import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=6a7ddacd9c';
-import { verdictClass, verdictText, changeVerdict, linkURL, shortReader, eventLabel } from './reports.js?v=6a7ddacd9c';
+import * as F from './frame.js?v=7e87671453';
+import { h, esc, highlightHTML, fmtPct, fmtDims, fmtVol, fmtNum, pctChange, parseSegments, ease, clamp } from './util.js?v=7e87671453';
+import { verdictClass, verdictText, changeVerdict, linkURL, shortReader, eventLabel } from './reports.js?v=7e87671453';
 
 const ORANGE = new THREE.Color('#ff9f1c'), TEAL = new THREE.Color('#2ec4b6'), SUVY = new THREE.Color('#ffe14d');
 const cyl = new THREE.CylinderGeometry(1, 1, 1, 8, 1, true); cyl.translate(0, 0.5, 0); cyl.rotateX(Math.PI / 2); // unit tube along +Z from 0..1
@@ -389,7 +389,7 @@ export class ClaimViz {
     const rp = linkURL(src, src.report_page), op = linkURL(src, src.original_page);
     const of = !op && src.original_file ? linkURL(src, src.original_file) : null;
     const LANG = { uk: 'UA', ru: 'RU', de: 'DE', en: 'EN', he: 'HE' }[c.lang] || (c.lang || '').toUpperCase();
-    if (op || of) actions.append(h('a.chip.o', { href: op || of, target: '_blank', rel: 'noopener noreferrer', style: { alignSelf: 'center' } }, `Original · ${LANG}`));
+    if (op || of) actions.append(h('a.chip.o', { href: op || of, target: '_blank', rel: 'noopener noreferrer', style: { alignSelf: 'center' } }, `${LANG} original`));
     if (rp) actions.append(h('a.chip.t', { href: rp, target: '_blank', rel: 'noopener noreferrer', style: { alignSelf: 'center' } }, c.lang === 'en' ? 'Report page' : 'English translation'));
     const dim = h('input', { type: 'checkbox', checked: this.dimOthers || null });
     dim.addEventListener('change', () => { this.dimOthers = dim.checked; this.applyFocus(c, true); });

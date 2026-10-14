@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=6a7ddacd9c';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=6a7ddacd9c';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=6a7ddacd9c';
-import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=6a7ddacd9c';
-import { ClaimViz } from './claimviz.js?v=6a7ddacd9c';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=6a7ddacd9c';
+import * as F from './frame.js?v=7e87671453';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=7e87671453';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=7e87671453';
+import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=7e87671453';
+import { ClaimViz } from './claimviz.js?v=7e87671453';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=7e87671453';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
