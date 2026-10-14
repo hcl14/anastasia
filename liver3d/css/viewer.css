@@ -373,6 +373,8 @@ body.embed #app.side-closed #side{display:none}
 body.embed #app{grid-template-rows:100%}
 body.embed #stage{grid-column:1 / -1;grid-row:1}
 body.embed .icon-btn#play{display:none}
+/* embed with the drawer open: the claim card sits to the right of the drawer so its links (Original / translation) are not covered */
+@media (min-width: 821px){ body.embed #app:not(.side-closed) #claimbar{left:calc(min(380px,92vw) + 10px);width:min(640px,calc(100% - min(380px,92vw) - 20px))} }
 @media (max-width: 560px){
   body.embed .full-link{font-size:0;width:34px;padding:0;text-align:center}
   body.embed .full-link::after{content:"↗";font-size:15px}
