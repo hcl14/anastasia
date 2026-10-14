@@ -32,7 +32,7 @@ html{background:#e9ecf2}
 // version-stamped URLs (stale CSS/JS cannot be served), drives the progress bar through 'viewer code' -> 'liver 3D' -> 'scene',
 // and reloads once when this page itself is an older build than version.json. Written by tools/stamp_version.py (MARKUP).
 (function () {
-  var MARKUP = 'c63d398791';
+  var MARKUP = 'cc3b2a251f';
   var uk = false; try { uk = /(^#|&)ui=uk/.test(location.hash) || (!/(^#|&)ui=en/.test(location.hash) && (localStorage.getItem('liver3d-ui') === 'uk' || (!localStorage.getItem('liver3d-ui') && /^uk\b/i.test(navigator.language || '')))); } catch (e) { }
   var TX = uk ? { code: 'Завантаження переглядача…', mesh: 'Завантаження 3D-печінки…', prep: 'Підготовка сцени…' } : { code: 'Loading viewer…', mesh: 'Loading liver 3D…', prep: 'Preparing scene…' };
   var box = document.getElementById('boot'), bar = box.querySelector('i'), lab = box.querySelector('span');
@@ -70,8 +70,8 @@ html{background:#e9ecf2}
   <aside id="side" aria-label="Viewer panels">
     <header class="side-head">
       <h1>Liver across three dates</h1>
-      <div class="muted small" data-lang="en"><b>For doctors.</b> AI-assisted 3D reconstruction of three CTs (13.05.2025, 19.06.2026, 23.09.2026), not a radiology report; the written reports are authoritative. <a href="../index.html#liver3d">Back to the case summary</a></div>
-      <div class="muted small" data-lang="uk" translate="no"><b>Для лікарів.</b> 3D-реконструкція трьох КТ (13.05.2025, 19.06.2026, 23.09.2026), виконана за допомогою ШІ; це не радіологічний висновок, вирішальними є письмові висновки. <a href="../index.html#liver3d">Назад до огляду випадку</a></div>
+      <div class="muted small" data-lang="en"><b>What this is:</b> 3D reconstruction of the liver and its tumours from three CT scans (13.05.2025, 19.06.2026, 23.09.2026), made with AI and checked against the reports — not a radiology report. <b>Click</b> a date to switch scans, <b>Compare</b> to see the earlier scan as an outline, hover a part for the doctors' statements. <b>Less certain:</b> segments and veins on 23.09.2026 (no contrast). <a href="../index.html#liver3d">Back to the case summary</a></div>
+      <div class="muted small" data-lang="uk" translate="no"><b>Що це:</b> 3D-реконструкція печінки та пухлин за трьома КТ (13.05.2025, 19.06.2026, 23.09.2026), виконана за допомогою ШІ та звірена з висновками — це не радіологічний висновок. <b>Натисніть</b> дату, щоб перемкнути обстеження, <b>Порівняти</b> — щоб побачити попереднє обстеження контуром, наведіть на частину — побачите висновки лікарів. <b>Менш надійно:</b> сегменти та вени 23.09.2026 (без контрасту). <a href="../index.html#liver3d">Назад до огляду випадку</a></div>
       <div class="muted small" data-lang="en"><b>Later findings (after the 23.09.2026 scan).</b> Laparoscopy 05.10.2026, Shalimov Centre: trepan biopsy of the liver lesion in segments II–III (by location L1) — GIST metastasis, low grade, Ki-67 2 %; gastric lesion (GF) — hyalinised tissue without viable tumour cells; ascitic fluid cytology: category V (Shalimov, 06.10) not reproduced on review of the same slides (CSD LAB, 14.10: AUS) — malignancy not established. Ascites and peritoneum are not modelled here. <a href="../index.html#biopsy-2026-10-05">Pathology and cytology</a></div>
       <div class="muted small" data-lang="uk" translate="no"><b>Пізніші знахідки (після сканування 23.09.2026).</b> Лапароскопія 05.10.2026, Центр Шалімова: трепан-біопсія утворення печінки в сегментах II–III (за розташуванням L1) — метастаз GIST, low grade, Ki-67 2 %; утворення шлунка (GF) — гіалінізована тканина без вітальних клітин пухлини; цитологія асцитичної рідини: категорію V (Центр Шалімова, 06.10) не відтворено при перегляді тих самих препаратів (CSD LAB, 14.10: AUS) — злоякісність не встановлена. Асцит і очеревина тут не моделюються. <a href="../index.html#biopsy-2026-10-05">Патологія і цитологія</a></div>
       <div id="sceneMeta" class="muted small"></div>

@@ -91,4 +91,5 @@ addEventListener('resize',resize);resize();frontView(C,sceneRadius);
 function computeBounds(){const box=new THREE.Box3();for(const k in meshes)if(meshes[k].visible)box.expandByObject(meshes[k]);if(box.isEmpty())return;const sph=box.getBoundingSphere(new THREE.Sphere());sceneRadius=sph.radius;C.copy(sph.center);if(meshes.llesion){const b2=new THREE.Box3().expandByObject(meshes.llesion);if(meshes.fdg_left)b2.expandByObject(meshes.fdg_left);lesionRadius=b2.getBoundingSphere(new THREE.Sphere()).radius*1.6;}frontView(C,sceneRadius);}
 window.dbg={camera,controls,meshes,get C(){return C},get r(){return sceneRadius}};
 renderer.setAnimationLoop(()=>{controls.update();renderer.render(scene,camera);});
-</script></body></html>
+</script><div style="position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff6e5;color:#5a3d00;border-top:2px solid #e0a020;font:13px/1.4 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;padding:6px 12px"><b>Older single-scan model</b> — fewer structures, colours differ (green = right-lobe mass, cyan = left-lobe lesion, yellow = active tissue); do not use for measurements. Dotted orange line = guessed bile-duct path (not measured); red ball = where the left lesion touched a portal-vein branch on the June scan. <a href="liver3d/" target="_top"><b>Use the three-date liver model instead</b></a>.</div>
+</body></html>

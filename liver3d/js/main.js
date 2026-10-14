@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=877b70c4d1';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=877b70c4d1';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=877b70c4d1';
-import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=877b70c4d1';
-import { ClaimViz } from './claimviz.js?v=877b70c4d1';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=877b70c4d1';
+import * as F from './frame.js?v=7a466fa763';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=7a466fa763';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=7a466fa763';
+import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=7a466fa763';
+import { ClaimViz } from './claimviz.js?v=7a466fa763';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=7a466fa763';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -1445,6 +1445,10 @@ function renderAbout() {
   for (const l of sc.lesions || []) for (const pd of Object.values(l.per_date || {})) if (pd?.verify?.dice != null) ver.push(pd.verify.dice);
   const st = stats();
   host.append(h('div.about', null,
+    h('h2', null, 'What you are looking at'),
+    h('p', null, 'A 3D reconstruction of the liver and its tumours from three CT scans (13.05.2025, 19.06.2026, 23.09.2026), made with AI-assisted outlining and checked against the written reports. It is not a radiology report; the reports are authoritative.'),
+    h('p', null, 'What to click: the date buttons switch scans; Compare shows the earlier scan as an outline; hover or tap a part to see what the reports say about it; the Lesions tab lists the volumes.'),
+    h('p', null, 'Certain and uncertain: outlines on the contrast scans (May 2025, June 2026) are the most reliable. On 23.09.2026 (no contrast) the liver segments, veins and portal vein are estimated, and the stomach and gastric tumour were outlined by one reader. Parts labelled inferred or PET-defined only are estimates.'),
     h('h2', null, 'About this model'),
     h('p', null, consensus
       ? 'The surfaces are exact reproductions of the reviewed slice-by-slice masks (consensus). They were not smoothed into shape, simplified or decimated; every mesh was voxelised back and compared with its mask.'
