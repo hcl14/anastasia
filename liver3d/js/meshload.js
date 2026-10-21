@@ -66,7 +66,7 @@ async function gunzip(buf) {
     const ds = new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip')));
     return new Uint8Array(await ds.arrayBuffer());
   }
-  const { gunzipSync } = await import('../vendor/fflate.esm.js?v=7e87671453');   // vendored fallback (MIT), older browsers only
+  const { gunzipSync } = await import('../vendor/fflate.esm.js?v=4443db0744');   // vendored fallback (MIT), older browsers only
   return gunzipSync(new Uint8Array(buf));
 }
 async function parseQM(buf) {

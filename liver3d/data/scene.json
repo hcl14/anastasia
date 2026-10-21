@@ -4244,6 +4244,234 @@
      }
     }
    }
+  },
+  {
+   "id": "op_resected",
+   "name": "Resected right hemiliver (segments V–VIII, approximate)",
+   "group": "Operation 21.10.2026",
+   "color": "#e8212b",
+   "opacity": 0.32,
+   "default_visible": false,
+   "operation": true,
+   "replaces": null,
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/op_resected.ply",
+     "volume_mL": 1951.36,
+     "verify": {
+      "dice": 0.9955,
+      "p95_mm": 0.84,
+      "mean_mm": 0.32,
+      "max_mm": 11.95,
+      "mesh_mL": 1940.9,
+      "slice_dice_min_ge20vox": 0.979,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 165052,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S3",
+      "vol_ratio": 0.9946
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true,
+      "limitation": "derived: segments.npy labels 5-8 (automatic Couinaud map, inferred, not vessel-guided); resection extent from the surgeon's verbal report"
+     },
+     "confidence": "approximate: automatic segment map (inferred, not vessel-guided); surgeon's verbal report"
+    }
+   },
+   "not_visible": {
+    "may2025": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)",
+    "jun2026": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)"
+   }
+  },
+  {
+   "id": "op_liver_remnant",
+   "name": "Remaining liver after the operation (segments I–IV, approximate)",
+   "group": "Operation 21.10.2026",
+   "color": "#b9a596",
+   "opacity": 0.18,
+   "default_visible": false,
+   "operation": true,
+   "replaces": "liver",
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/op_liver_remnant.ply",
+     "volume_mL": 792.59,
+     "verify": {
+      "dice": 0.9935,
+      "p95_mm": 0.81,
+      "mean_mm": 0.3,
+      "max_mm": 9.84,
+      "mesh_mL": 786.19,
+      "slice_dice_min_ge20vox": 0.86,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 118274,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "S2",
+      "vol_ratio": 0.9919
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/liver.npy",
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true,
+      "limitation": "derived: liver minus segments.npy labels 5-8 (= segments I-IV); caudate / segment I not stated in the report"
+     },
+     "confidence": "approximate: automatic segment map (inferred, not vessel-guided); surgeon's verbal report"
+    }
+   },
+   "not_visible": {
+    "may2025": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)",
+    "jun2026": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)"
+   }
+  },
+  {
+   "id": "op_hepatic_veins_remnant",
+   "name": "Hepatic veins, remaining part (approximate)",
+   "group": "Operation 21.10.2026",
+   "color": "#2aa8b5",
+   "opacity": 1.0,
+   "default_visible": false,
+   "operation": true,
+   "replaces": "hepatic_veins",
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/op_hepatic_veins_remnant.ply",
+     "volume_mL": 11.35,
+     "verify": {
+      "dice": 0.9851,
+      "p95_mm": 0.59,
+      "mean_mm": 0.23,
+      "max_mm": 1.45,
+      "mesh_mL": 11.27,
+      "slice_dice_min_ge20vox": 0.954,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 9710,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.993
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/hepatic_veins.npy",
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true,
+      "limitation": "derived: hepatic_veins minus segments.npy labels 5-8; middle hepatic vein course not stated in the report"
+     },
+     "confidence": "approximate: automatic segment map (inferred, not vessel-guided); surgeon's verbal report; low confidence (non-contrast CT; proximal channels only; 1.67 mL lies outside liver and IVC, C03)"
+    }
+   },
+   "not_visible": {
+    "may2025": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)",
+    "jun2026": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)"
+   }
+  },
+  {
+   "id": "op_portal_remnant",
+   "name": "Portal vein, remaining part (approximate)",
+   "group": "Operation 21.10.2026",
+   "color": "#5a93f5",
+   "opacity": 1.0,
+   "default_visible": false,
+   "operation": true,
+   "replaces": "portal",
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/op_portal_remnant.ply",
+     "volume_mL": 9.94,
+     "verify": {
+      "dice": 0.9886,
+      "p95_mm": 0.59,
+      "mean_mm": 0.23,
+      "max_mm": 1.18,
+      "mesh_mL": 9.91,
+      "slice_dice_min_ge20vox": 0.953,
+      "passed": true,
+      "taubin_iter": 30,
+      "faces": 6718,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9969
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/portal_registered.npy",
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true,
+      "limitation": "derived: portal_registered (registered from June, not observed on this CT) minus segments.npy labels 5-8"
+     },
+     "confidence": "approximate: automatic segment map (inferred, not vessel-guided); surgeon's verbal report; registered from another date; not observed on this CT",
+     "note": "registered from another date (supplementary), not observed on this study"
+    }
+   },
+   "not_visible": {
+    "may2025": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)",
+    "jun2026": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)"
+   }
+  },
+  {
+   "id": "op_active_pet_only_remnant",
+   "name": "FDG-active tissue outside the CT lesions, remaining part (approximate)",
+   "group": "Operation 21.10.2026",
+   "color": "#ffe680",
+   "opacity": 0.8,
+   "default_visible": false,
+   "operation": true,
+   "replaces": "active_pet_only",
+   "per_date": {
+    "sep2026": {
+     "mesh": "meshes/sep2026/op_active_pet_only_remnant.ply",
+     "volume_mL": 17.99,
+     "verify": {
+      "dice": 0.9937,
+      "p95_mm": 0.47,
+      "mean_mm": 0.18,
+      "max_mm": 0.96,
+      "mesh_mL": 17.91,
+      "slice_dice_min_ge20vox": 0.954,
+      "passed": true,
+      "taubin_iter": 20,
+      "faces": 21452,
+      "max_faces": 4000000,
+      "decimated": false,
+      "smooth": "v1",
+      "vol_ratio": 0.9956
+     },
+     "source": {
+      "kind": "derived from consensus",
+      "files": [
+       "consensus/sep2026/masks/active.npy",
+       "consensus/sep2026/masks/rmass.npy",
+       "consensus/sep2026/masks/llesion.npy",
+       "consensus/sep2026/masks/lesions_other.npy",
+       "consensus/sep2026/masks/segments.npy"
+      ],
+      "reviewed": true,
+      "limitation": "derived: active minus rmass, llesion, lesions_other (the PET-only display layer) minus segments.npy labels 5-8"
+     },
+     "confidence": "approximate: automatic segment map (inferred, not vessel-guided); surgeon's verbal report; PET-defined only (isodense on CT, no CT boundary)"
+    }
+   },
+   "not_visible": {
+    "may2025": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)",
+    "jun2026": "operation marking: Sep 2026 model only (23.09.2026, the last scan before the operation of 21.10.2026)"
+   }
   }
  ],
  "lesions": [
@@ -12738,6 +12966,51 @@
     "faces": 9754,
     "max_quant_err_mm": 0.0011,
     "sha8": "54946cbd"
+   },
+   "meshes/sep2026/op_resected.ply": {
+    "path": "meshes_qm/sep2026/op_resected.ply.qm.gz",
+    "bytes": 841426,
+    "ply_bytes": 4126660,
+    "verts": 82528,
+    "faces": 165052,
+    "max_quant_err_mm": 0.0014,
+    "sha8": "c2a5bf78"
+   },
+   "meshes/sep2026/op_liver_remnant.ply": {
+    "path": "meshes_qm/sep2026/op_liver_remnant.ply.qm.gz",
+    "bytes": 637987,
+    "ply_bytes": 2957162,
+    "verts": 59137,
+    "faces": 118274,
+    "max_quant_err_mm": 0.0012,
+    "sha8": "78087f0e"
+   },
+   "meshes/sep2026/op_hepatic_veins_remnant.ply": {
+    "path": "meshes_qm/sep2026/op_hepatic_veins_remnant.ply.qm.gz",
+    "bytes": 53824,
+    "ply_bytes": 243203,
+    "verts": 4861,
+    "faces": 9710,
+    "max_quant_err_mm": 0.0006,
+    "sha8": "9407ef03"
+   },
+   "meshes/sep2026/op_portal_remnant.ply": {
+    "path": "meshes_qm/sep2026/op_portal_remnant.ply.qm.gz",
+    "bytes": 37565,
+    "ply_bytes": 168307,
+    "verts": 3361,
+    "faces": 6718,
+    "max_quant_err_mm": 0.0004,
+    "sha8": "a85d7265"
+   },
+   "meshes/sep2026/op_active_pet_only_remnant.ply": {
+    "path": "meshes_qm/sep2026/op_active_pet_only_remnant.ply.qm.gz",
+    "bytes": 117765,
+    "ply_bytes": 537235,
+    "verts": 10752,
+    "faces": 21452,
+    "max_quant_err_mm": 0.0007,
+    "sha8": "5c2c2f67"
    }
   },
   "uncapped": {},
@@ -12839,5 +13112,78 @@
    "meshes_lod/growth/skeleton/R1_may2025__sep2026.ply",
    "meshes_lod/growth/skeleton/S8_may2025__jun2026.ply"
   ]
+ },
+ "operation": {
+  "id": "op_2026-10-21",
+  "date": "2026-10-21",
+  "on_date": "sep2026",
+  "label": "Operation 21.10.2026 (surgeon's verbal report)",
+  "procedure": "Right hemihepatectomy (Couinaud segments V–VIII) with a marginal (edge) resection of the stomach removing the primary gastric focus",
+  "source": "surgeon's verbal telephone report, 21.10.2026 (no operation protocol or histology yet)",
+  "caveat": "surgeon's verbal report; operation protocol and histology pending; resection boundary approximate (automatic segment map)",
+  "link": "../fedorov-2026-10-21.html",
+  "resected": "op_resected",
+  "replace": {
+   "liver": "op_liver_remnant",
+   "hepatic_veins": "op_hepatic_veins_remnant",
+   "portal": "op_portal_remnant",
+   "active_pet_only": "op_active_pet_only_remnant"
+  },
+  "hide": [
+   "seg5",
+   "seg6",
+   "seg7",
+   "seg8"
+  ],
+  "lesions": {
+   "R1": {
+    "status": "removed",
+    "note": "fluid-containing right-lobe tumour; removed without rupture",
+    "in_resected_pct": 98.4
+   },
+   "S8": {
+    "status": "removed",
+    "note": "segments VII/VIII, inside the removed side",
+    "in_resected_pct": 100.0
+   },
+   "P7": {
+    "status": "removed",
+    "note": "segment VII, inside the removed side",
+    "in_resected_pct": 100.0
+   },
+   "S7sat": {
+    "status": "removed",
+    "note": "segment VII, inside the removed side; not on the Sep 2026 model (possibly P7, unproven)"
+   },
+   "GF": {
+    "status": "removed",
+    "note": "primary gastric focus; marginal (edge) resection of the stomach; exact margin unknown"
+   },
+   "K": {
+    "status": "uncertain",
+    "note": "IVb/V border (low confidence); not on the Sep 2026 model"
+   },
+   "N": {
+    "status": "uncertain",
+    "note": "IVa/VIII border (low confidence); not on the Sep 2026 model"
+   },
+   "S1": {
+    "status": "not_stated",
+    "note": "caudate lobe (segment I): not stated whether removed",
+    "in_resected_pct": 47.1
+   },
+   "L1": {
+    "status": "remains",
+    "note": "left lobe (II/III) remains; second stage planned after liver regeneration",
+    "in_resected_pct": 0.0
+   }
+  },
+  "not_on_model": [
+   "Two additional foci removed (lesser omentum, anterior abdominal wall): not on the CT model"
+  ],
+  "not_stated": [
+   "Segment I (caudate) and the course of the middle hepatic vein are not stated"
+  ],
+  "stomach_note": "Remaining stomach: the marginal resection margin is unknown and not modelled (stomach drawn as on 23.09.2026, without the formation GF)"
  }
 }

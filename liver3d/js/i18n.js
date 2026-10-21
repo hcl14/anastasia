@@ -3,7 +3,7 @@
 // the separators " · ", " — ", " → ", "; "). A MutationObserver translates whatever the viewer renders later, so render code stays
 // English. Never translated: anything inside [translate="no"] (doctors' verbatim quotes and their glosses, lesion ID chips).
 // window.__i18nMissing collects strings that had no translation (for the test).
-import { UK, UK_PATTERNS } from './i18n_uk.js?v=7e87671453';
+import { UK, UK_PATTERNS } from './i18n_uk.js?v=4443db0744';
 export { UK };
 
 export const UI_LANGS = ['en', 'uk'];

@@ -2,12 +2,12 @@
 // Data contract: README.md ("Scene contract"). Coordinates: js/frame.js. Report claims: js/reports.js + js/claimviz.js.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import * as F from './frame.js?v=7e87671453';
-import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=7e87671453';
-import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=7e87671453';
-import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=7e87671453';
-import { ClaimViz } from './claimviz.js?v=7e87671453';
-import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=7e87671453';
+import * as F from './frame.js?v=4443db0744';
+import { loadGeometry, onProgress, peek, stats, setProgressLabel } from './meshload.js?v=4443db0744';
+import { $, $$, h, esc, fmtVol, fmtPct, pctChange, fmtMB, fmtNum, debounce, clamp, ease } from './util.js?v=4443db0744';
+import { Reports, rankText, rankClass, eventLabel } from './reports.js?v=4443db0744';
+import { ClaimViz } from './claimviz.js?v=4443db0744';
+import { setUiLang, uiLang, initialUiLang, rememberUiLang, addStrings, T, tr } from './i18n.js?v=4443db0744';
 
 // ---------------------------------------------------------------- constants
 const params = new URLSearchParams(location.search);
@@ -47,7 +47,7 @@ const S = { scene: null, dates: [], dateByKey: {}, ctls: new Map(), items: {}, g
 const state = {
   date: null, reg: null, regGhost: true, smooth: false, renderMs: null, ctl: {}, solo: null, sel: null, compare: false, growth: false, growthPair: null,
   clip: { x: { on: false, pos: 0, flip: false }, y: { on: false, pos: 0, flip: false }, z: { on: false, pos: 0, flip: false } },
-  caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'en', langExplicit: false,
+  caps: true, capAll: false, tab: 'layers', orbit: false, claim: null, lang: 'en', langExplicit: false, op: null,
 };
 let shown = null;               // date whose meshes are on screen
 let lowMotion = false;          // camera moving: draw the low-detail meshes (full mode)
@@ -267,6 +267,27 @@ function ghostGeometry(it) {
 const ctlState = id => state.ctl[id] || (state.ctl[id] = { v: false, o: 1 });
 const lesionById = id => S.scene.lesions?.find(l => l.id === id);
 const partFile = p => (typeof p === 'string' ? p : p?.mesh);
+// ---- Operation 21.10.2026 (scene.operation, tools/build_operation_layers.py; surgeon's verbal report), on the Sep 2026 model only.
+// state.op: null | 'mark' (resected right hemiliver in red, lesions outlined by status) | 'post' (post-operative view: resected parts
+// hidden, the remnant meshes of liver / hepatic veins / portal vein drawn in place of the whole ones). Layer states are never changed.
+const OP = () => S.scene?.operation || null;
+const opOn = (date = shown) => !!(state.op && OP() && date === OP().on_date);
+const OP_COLOR = { removed: '#ff2d2d', uncertain: '#ffb020', not_stated: '#ffb020', remains: '#3ecf8e' };
+const OP_WORD = { removed: 'removed', uncertain: 'uncertain', not_stated: 'not stated', remains: 'remains' };
+const opStatus = it => (it.lesion && OP()?.lesions?.[it.lesion.id]?.status) || null;
+const baseCtl = id => S.ctls.get(id)?.replaces || id;   // a remnant layer looks and ranks like the layer it replaces
+/** whether the operation view decides that an item is drawn (true / false), or null when it does not */
+function opWants(it) {
+  const c = S.ctls.get(it.ctl), O = OP();
+  if (c?.operation) {
+    if (!opOn(it.date)) return false;
+    const b = baseCtl(it.ctl), s = ctlState(b);
+    if (it.ctl === O.resected) return state.op === 'mark' && s.o > 0.001 && (!state.solo || state.solo === b);
+    return state.op === 'post' && s.v && s.o > 0.001 && (!state.solo || state.solo === b);
+  }
+  if (state.op !== 'post' || !opOn(it.date)) return null;
+  return O.replace?.[it.ctl] || O.hide?.includes(it.ctl) || opStatus(it) === 'removed' ? false : null;
+}
 
 function buildModel() {
   const sc = S.scene;
@@ -281,6 +302,7 @@ function buildModel() {
       name: L.name || PART_DEF[L.id]?.name || L.id, group: L.group || (isPart ? 'Internal structure' : 'Other'),
       color: L.color || PART_DEF[L.id]?.color || '#bbbbbb', defOpacity: L.opacity ?? PART_DEF[L.id]?.opacity ?? 1,
       defVisible: L.default_visible ?? false, layer: L, notVisible: L.not_visible || {}, kind: isPart ? 'part' : 'layer',
+      operation: !!L.operation, replaces: L.replaces || null,
     });
   }
   for (const les of sc.lesions || []) {
@@ -295,7 +317,7 @@ function buildModel() {
     });
   }
   // groups in the agreed order, then anything else the scene brings
-  const gs = new Set([...S.ctls.values()].map(c => c.group));
+  const gs = new Set([...S.ctls.values()].filter(c => !c.operation).map(c => c.group));   // operation layers: own control (opBox)
   S.groups = [...GROUP_ORDER.filter(g => gs.has(g)), ...[...gs].filter(g => !GROUP_ORDER.includes(g))];
 
   let pick = 1;
@@ -348,12 +370,12 @@ function buildModel() {
 function rankOf(it) {
   if (it.kind === 'part') return { calcifications: 10, nodules: 11, active: 12, cores: 13, walls: 14 }[it.part] ?? 15;
   if (it.kind === 'lesion' || it.kind === 'growth') return 20;
-  const c = S.ctls.get(it.ctl);
+  const c = S.ctls.get(baseCtl(it.ctl));
   if (PART_KINDS.includes(it.ctl)) return { calcifications: 10, nodules: 11, active: 12, cores: 13, walls: 14 }[it.ctl];
   if (c.group === 'Uncertainty') return 25;
   if (c.group === 'Vessels') return 30;
   if (c.group === 'Couinaud segments') return 40;
-  if (it.ctl === 'liver') return 55;
+  if (c.id === 'liver') return 55;
   if (c.group === 'Organ' || c.group === 'Anatomy') return 50;
   return 35;
 }
@@ -393,9 +415,10 @@ function confOf(ctlId, date) {
 }
 
 // ---------------------------------------------------------------- what is shown
-function opacityOf(it) { const o = ctlState(it.ctl).o; return it.kind === 'growth' ? Math.max(o, 0.85) : o; }
+function opacityOf(it) { const o = ctlState(baseCtl(it.ctl)).o; return it.kind === 'growth' ? Math.max(o, 0.85) : o; }
 function wants(it, date = shown) {
   if (it.date !== date) return false;
+  const ow = opWants(it); if (ow !== null) return ow;
   const c = ctlState(it.ctl);
   if (!c.v || c.o <= 0.001) return false;
   if (state.solo && state.solo !== it.ctl) return false;
@@ -440,7 +463,7 @@ function ensureMesh(it) {
   const vc = it.kind === 'growth' && !!g.getAttribute('color');
   if (it.kind === 'growth' && !vc) it.noColors = true;
   // FDG activity glows (emissive share of its own colour, scene.palette.emissive): the brightest thing in the scene
-  const em = S.scene.palette?.emissive?.[it.kind === 'part' ? it.part : it.ctl] || 0;
+  const em = S.scene.palette?.emissive?.[it.kind === 'part' ? it.part : baseCtl(it.ctl)] || 0;
   it.baseEmissive = em ? new THREE.Color(colorOf(it)).multiplyScalar(em) : new THREE.Color(0);
   const sopts = { rim: it.kind === 'lesion', inset: it.kind === 'part' && it.part === 'walls' ? 0.4 : 0 };
   const mk = side => shade(new THREE.MeshStandardMaterial({ color: vc ? 0xffffff : colorOf(it), vertexColors: vc, roughness: 0.62, metalness: 0, side, emissive: it.baseEmissive.clone() }), sopts);
@@ -454,7 +477,7 @@ function ensureMesh(it) {
   it.mesh = front; it.back = back;
   // X-RAY pass for what must never be hidden by shells: FDG-active tissue, nodules, calcifications. Drawn after every translucent
   // layer without depth test at ~0.6 opacity in its own colour, so it shows through R1 / L1 / S8, walls and the liver from any angle.
-  if (XRAY.has(it.kind === 'part' ? it.part : it.ctl)) {
+  if (XRAY.has(it.kind === 'part' ? it.part : baseCtl(it.ctl))) {
     const xm = new THREE.MeshBasicMaterial({ color: colorOf(it), transparent: true, opacity: 0.6, depthTest: false, depthWrite: false, side: THREE.FrontSide, clippingPlanes: clipAll });
     it.xray = new THREE.Mesh(g, xm); it.xray.matrixAutoUpdate = false; it.xray.renderOrder = 290 + it.sub; it.xray.visible = false; it.xray.userData.xrayOf = it;
     dateGroup[it.date].add(it.xray);
@@ -469,7 +492,7 @@ function swapGeom(it, g) {
 /** separately registered items (stomach group) carry their own local matrix on every object that draws them */
 function placeItem(it) {
   const L = itemLocal(it);
-  const objs = [it.mesh, it.back, it.pre, it.xray, ...AXES.flatMap(a => { const e = capPool.get(it.uid + '|' + a); return e ? [e.back, e.front] : []; })].filter(Boolean);
+  const objs = [it.mesh, it.back, it.pre, it.xray, it.opMark, ...AXES.flatMap(a => { const e = capPool.get(it.uid + '|' + a); return e ? [e.back, e.front] : []; })].filter(Boolean);
   for (const o of objs) { if (L) o.matrix.copy(L); else o.matrix.identity(); o.matrixWorldNeedsUpdate = true; }
 }
 function ensureGhost(it) {
@@ -503,7 +526,8 @@ function applyMaterial(it) {
   else if (it._hoverLit) { it._hoverLit = false; if (!it.hl) { it.mesh.material.emissive.copy(it.baseEmissive || HOVER_EM.set(0)); it.back.material.emissive.copy(it.mesh.material.emissive); } }
   // depth bias against coincident surfaces (z-fighting flicker where structures touch: portal vein / left lesion / contact patch,
   // vessels / liver capsule): small markers win (pulled forward), large shells yield (pushed back)
-  const bias = MARKERS.has(it.ctl) || it.kind === 'part' && it.part !== 'walls' && it.part !== 'cores' ? -1 : (it.kind === 'lesion' || it.ctl === 'liver' || it.kind === 'growth' || /^seg\d$/.test(it.ctl) ? 1 : 0);
+  const bc = baseCtl(it.ctl);
+  const bias = MARKERS.has(bc) || it.kind === 'part' && it.part !== 'walls' && it.part !== 'cores' ? -1 : (it.kind === 'lesion' || bc === 'liver' || it.kind === 'growth' || /^seg\d$/.test(bc) || bc === OP()?.resected ? 1 : 0);
   for (const [m, isBack] of [[it.mesh, false], [it.back, true]]) {
     const mat = m.material;
     mat.opacity = o; mat.transparent = tr; mat.depthWrite = !tr;
@@ -518,7 +542,7 @@ function applyMaterial(it) {
   // liver keep their two-pass look (structures inside them must stay visible).
   // only for vessels: a pre-pass on walls / cores wrote depth exactly on the lesion surface (the wall's outer surface IS the lesion
   // surface) and, with the lesion's depth bias, hid the lesion shell (R1 'lost' when all layers are on)
-  const wantPre = tr && S.ctls.get(it.ctl)?.group === 'Vessels';
+  const wantPre = tr && S.ctls.get(bc)?.group === 'Vessels';
   if (wantPre && !it.pre) {
     const pm = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: true, side: THREE.FrontSide, clippingPlanes: clipAll });
     it.pre = new THREE.Mesh(it.mesh.geometry, pm); it.pre.matrixAutoUpdate = false; it.pre.userData.prepassOf = it;
@@ -544,7 +568,16 @@ function sync() {
   if (!shown) return;
   const prev = prevDate(shown);
   for (const d of S.dates) for (const it of S.items[d]) {
-    if (it.mesh) { const g = peek(it.url); if (g && it.mesh.geometry !== g) swapGeom(it, g); it.mesh.visible = wants(it); applyMaterial(it); placeItem(it); }
+    if (it.mesh) {
+      const g = peek(it.url); if (g && it.mesh.geometry !== g) swapGeom(it, g); it.mesh.visible = wants(it); applyMaterial(it);
+      // operation view: a fresnel outline in the lesion's status colour (removed / uncertain or not stated / remains), drawn on top
+      if (!it.opMark && it.kind === 'lesion' && opOn(it.date) && opStatus(it)) {
+        const m = new THREE.Mesh(it.mesh.geometry, ghostMaterial(false)); m.material.uniforms.color.value.set(OP_COLOR[opStatus(it)]);
+        m.matrixAutoUpdate = false; m.renderOrder = 310 + it.sub; m.visible = false; dateGroup[it.date].add(m); it.opMark = m;
+      }
+      if (it.opMark) { it.opMark.visible = it.mesh.visible && opOn(it.date); it.opMark.geometry = it.mesh.geometry; }
+      placeItem(it);
+    }
     if (state.compare && d === prev && ghostWanted(it)) ensureGhost(it);
     if (it.ghost) {
       let vis = ghostWanted(it);
@@ -558,6 +591,7 @@ function sync() {
   }
   rebuildCaps();
   updateHighlights();
+  updateOpLabels();
   requestRender();
 }
 
@@ -911,6 +945,21 @@ function addLabel(text, worldPos, cls = 'info') {
   const L = { el, pos: worldPos.clone(), remove() { el.remove(); labels.delete(L); } };
   labels.add(L); requestRender(); return L;
 }
+/** operation view: a status label at each shown lesion of at least 1 mL ("R1 · removed", "S1 · not stated", "L1 · remains") */
+let opLabels = [], opLabelKey = '';
+function updateOpLabels() {
+  const O = OP(), want = [];
+  if (opOn()) for (const it of S.items[shown] || []) if (it.kind === 'lesion' && it.mesh?.visible && opStatus(it) && !(it.vol < 1)) want.push(it.lesion.id);
+  const key = want.join(',') + '|' + state.reg + '|' + state.op;
+  if (key === opLabelKey) return;
+  opLabelKey = key;
+  for (const L of opLabels) L.remove();
+  opLabels = [];
+  for (const id of want) {
+    const c = lesionCenterRAS(id, shown), st = O.lesions[id].status;
+    if (c) opLabels.push(addLabel(`${id} · ${OP_WORD[st]}`, F.rasToWorld(c), 'op-' + st));
+  }
+}
 const _v = new THREE.Vector3();
 function updateLabels() {
   const w = canvas.clientWidth, hgt = canvas.clientHeight;
@@ -1086,6 +1135,7 @@ function renderLegend() {
       if (miss.length) host.append(h('p', null, `No growth map for: ${miss.join(', ')} (plain colour).`));
     }
   }
+  if (state.op && OP()) host.append(opLegend());
   renderVolumeLegend(host);
   if (state.compare) {
     const p = prevDate(shown);
@@ -1159,7 +1209,7 @@ function renderVolumeLegend(host) {
   }
   for (const L of S.scene.layers || []) {
     const pd = L.per_date?.[shown];
-    if (!(pd?.mesh || pd?.shown_as) || pd.volume_mL == null || /^seg\d$/.test(L.id)) continue;
+    if (!(pd?.mesh || pd?.shown_as) || pd.volume_mL == null || /^seg\d$/.test(L.id) || L.operation) continue;
     rows.push({ ctls: L.id, gid: L.id, sw: S.ctls.get(L.id)?.color || L.color, name: L.name || L.id, short: VOL_SHORT[L.id], vol: pd.volume_mL, conf: pd.confidence });
   }
   const segc = (S.scene.layers || []).find(L => /^seg\d$/.test(L.id) && L.per_date?.[shown]?.confidence)?.per_date[shown].confidence;
@@ -1190,6 +1240,75 @@ const VOL_SHORT = { liver: 'Liver', gallbladder: 'Gallbladder', active: 'Active 
   cores: 'Cores', walls: 'Walls', nodules: 'Nodules', calcifications: 'Calcifications', portal: 'Portal vein', hepatic_veins: 'Hepatic veins', ivc: 'IVC',
   contact_left_portal: 'L1–portal contact', hepatic_artery: 'Hepatic artery', bile_ducts: 'Bile ducts', uncertain: 'Uncertain band', stomach: 'Stomach' };
 
+// ---------------------------------------------------------------- UI: operation 21.10.2026 (legend, Layers box, top-bar button)
+function setOp(mode) {
+  const O = OP(); if (!O) return;
+  state.op = mode === 'mark' || mode === 'post' ? mode : null;
+  if (state.op && state.date !== O.on_date) setDate(O.on_date);
+  renderOpControls(); renderLegend(); ensureVisibleLoaded(); writeHash();
+}
+/** lesion ids by operation status, the ones without a mesh on the operation date marked '*' (not on the Sep 2026 model) */
+function opIds(sts) {
+  const O = OP(), on = id => !!lesionById(id)?.per_date?.[O.on_date]?.mesh;
+  const ids = Object.keys(O.lesions || {}).filter(id => sts.includes(O.lesions[id].status));
+  return [...ids.filter(on), ...ids.filter(id => !on(id)).map(id => id + '*')].join(', ');
+}
+const opVol = id => (S.scene.layers || []).find(L => L.id === id)?.per_date?.[OP().on_date]?.volume_mL;
+function opStatusRows() {
+  return [['removed', ['removed'], 'Removed:'], ['uncertain', ['uncertain', 'not_stated'], 'Uncertain / not stated:'], ['remains', ['remains'], 'Remains:']].map(([k, sts, lab]) =>
+    h('div.op-row', null, h('span.op-ring', { style: { borderColor: OP_COLOR[k] } }), h('span', null, lab), ' ', h('span.op-ids', { translate: 'no' }, opIds(sts))));
+}
+function opDetails() {
+  const O = OP();
+  return [h('p', null, O.procedure, '.'),
+    h('ul.op-les', null, ...Object.entries(O.lesions || {}).map(([id, l]) => h('li', null, h('b', { translate: 'no' }, id), ' ', h('span', { style: { color: OP_COLOR[l.status] } }, OP_WORD[l.status]), ' — ', h('span', null, l.note),
+      l.in_resected_pct != null ? h('span.muted', null, ' (', h('span', null, 'model:'), ` ${fmtNum(l.in_resected_pct)} % `, h('span', null, 'inside segments V–VIII'), ')') : null))),
+    ...[...(O.not_on_model || []), ...(O.not_stated || []), O.stomach_note, O.uncut_note].filter(Boolean).map(t => h('p', null, t)),
+    h('p', null, h('span', null, 'Source:'), ' ', h('span', null, O.source))];
+}
+function opLegend() {
+  const O = OP(), post = state.op === 'post';
+  const cb = h('input', { type: 'checkbox', 'aria-label': 'Post-operative view: hide resected parts' }); cb.checked = post;
+  cb.addEventListener('change', () => setOp(cb.checked ? 'post' : 'mark'));
+  const sw = post ? S.ctls.get('liver')?.color : S.ctls.get(O.resected)?.color;
+  // the key rows fold away (closed by default on phones, where the legend sits over the model); toggle and caveat always show
+  if (opLegOpen === null) opLegOpen = !matchMedia('(max-width: 560px)').matches;
+  const key = h('details.op-key', { open: opLegOpen || null }, h('summary', { class: 'small' }, 'Key'),
+    h('div.op-row', null, h('span.op-sw', { style: { background: sw } }), h('span', null, post ? 'Remaining liver (segments I–IV, approx.)' : 'Resected right hemiliver (segments V–VIII, approx.)'),
+      ' ', h('span.muted', null, fmtVol(opVol(post ? O.replace.liver : O.resected)))),
+    ...opStatusRows(),
+    h('div.small.muted', null, '* not on the Sep 2026 model'),
+    h('details', null, h('summary', { class: 'small' }, 'Details'), ...opDetails()));
+  key.addEventListener('toggle', () => { opLegOpen = key.open; });
+  return h('div.op-leg', null,
+    h('div.op-t', null, h('b', null, O.label)),
+    opOn() ? null : h('p', null, h('span', null, 'Shown on the Sep 2026 model only (the last scan before the operation).'), ' ', h('button', { onclick: () => setDate(O.on_date) }, 'Show Sep 2026')),
+    h('label.op-post', null, cb, h('span', null, 'Post-operative view: hide resected parts')),
+    key,
+    h('p.op-cav', null, '⚠ ', h('span', null, O.caveat)));
+}
+let opLegOpen = null;
+/** Layers tab: the operation box (mark / post-operative view / opacity of the resected region / what was removed) */
+function renderOpBox() {
+  const host = $('#opBox'), O = OP(); if (!host || !O) return;
+  host.innerHTML = '';
+  const mk = h('input', { type: 'checkbox' }); mk.checked = !!state.op; mk.addEventListener('change', () => setOp(mk.checked ? 'mark' : null));
+  const po = h('input', { type: 'checkbox' }); po.checked = state.op === 'post'; po.addEventListener('change', () => setOp(po.checked ? 'post' : (state.op ? 'mark' : null)));
+  const rng = h('input', { type: 'range', min: 0, max: 1, step: 0.01, 'aria-label': 'Opacity of the resected region' }); rng.value = ctlState(O.resected).o;
+  rng.addEventListener('input', () => { ctlState(O.resected).o = +rng.value; sync(); writeHashSoon(); });
+  host.append(h('div.op-h', null, h('b', null, O.label)),
+    h('label.op-post', null, mk, h('span', null, 'Mark what was removed (Sep 2026 model)')),
+    h('label.op-post', null, po, h('span', null, 'Post-operative view: hide resected parts')),
+    h('label.op-post', null, h('span.op-sw', { style: { background: S.ctls.get(O.resected)?.color } }), h('span', null, 'Opacity of the resected region'), rng),
+    ...opStatusRows(), h('div.small.muted', null, '* not on the Sep 2026 model'),
+    h('details.op-det', null, h('summary', null, 'What was removed'), ...opDetails(), O.link ? h('p', null, h('a', { href: O.link, target: '_top' }, "Summary of the surgeon's call (21.10.2026)")) : null),
+    h('p.op-cav', null, '⚠ ', h('span', null, O.caveat)));
+}
+function renderOpControls() {
+  const b = $('#opBtn'); if (b) b.setAttribute('aria-pressed', String(!!state.op));
+  renderOpBox();
+}
+
 // ---------------------------------------------------------------- UI: layers panel
 function setCtl(id, patch, opts = {}) {
   Object.assign(ctlState(id), patch);
@@ -1205,6 +1324,7 @@ function colourKey() {
 }
 function renderLayersPanel() {
   const host = $('#p-layers'); host.innerHTML = '';
+  if (OP()) { host.append(h('div.op-box', { id: 'opBox' })); renderOpBox(); }
   const ck = colourKey(); if (ck) host.append(ck);
   host.append(h('div.row-btns', null,
     h('button', { onclick: () => { for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: c.defVisible, o: c.defOpacity }); state.solo = null; refreshLayerRows(); ensureVisibleLoaded(); writeHash(); } }, 'Default layers'),
@@ -1437,7 +1557,7 @@ function renderAbout() {
   const sc = S.scene, host = $('#p-about'); host.innerHTML = '';
   const consensus = sc.source === 'consensus';
   const nv = [];
-  for (const c of S.ctls.values()) for (const [d, r] of Object.entries(c.notVisible || {})) nv.push(`${c.lesion ? c.lesion.id : c.name} — ${dateLabel(d)}: ${r}`);
+  for (const c of S.ctls.values()) if (!c.operation) for (const [d, r] of Object.entries(c.notVisible || {})) nv.push(`${c.lesion ? c.lesion.id : c.name} — ${dateLabel(d)}: ${r}`);
   const registered = [];
   for (const L of sc.layers || []) for (const [d, pd] of Object.entries(L.per_date || {})) if (pd?.registered_from || pd?.inferred || pd?.provenance) registered.push(`${L.name} — ${dateLabel(d)}: ${pd.registered_from ? 'registered from ' + dateLabel(pd.registered_from) : ''}${pd.inferred ? ' inferred' : ''}${pd.provenance ? ' ' + pd.provenance : ''}`);
   const ver = [];
@@ -1450,6 +1570,7 @@ function renderAbout() {
     h('p', null, h('a', { href: '../index.html#cytology-2026-10-05', target: '_top' }, 'Ascitic fluid cytology (05.10.2026; two readings): see the case page')),
     h('p', null, 'What to click: the date buttons switch scans; Compare shows the earlier scan as an outline; hover or tap a part to see what the reports say about it; the Lesions tab lists the volumes.'),
     h('p', null, 'Certain and uncertain: outlines on the contrast scans (May 2025, June 2026) are the most reliable. On 23.09.2026 (no contrast) the liver segments, veins and portal vein are estimated, and the stomach and gastric tumour were outlined by one reader. Parts labelled inferred or PET-defined only are estimates.'),
+    OP() ? h('p', null, h('b', null, OP().label + ':'), ' ', h('span', null, 'the button "Operation 21.10" (or the box at the top of the Layers tab) marks on the Sep 2026 model what was removed: the right hemiliver as the union of the automatic segments V–VIII (red), the lesions by status, and a post-operative view without the resected parts.'), ' ', h('span', null, OP().caveat), '.') : null,
     h('h2', null, 'About this model'),
     h('p', null, consensus
       ? 'The surfaces are exact reproductions of the reviewed slice-by-slice masks (consensus). They were not smoothed into shape, simplified or decimated; every mesh was voxelised back and compared with its mask.'
@@ -1544,7 +1665,7 @@ function hashString() {
   const v = [], o = [];
   for (const c of S.ctls.values()) {
     const st = ctlState(c.id);
-    if (st.v !== c.defVisible) v.push((st.v ? '+' : '-') + c.id);
+    if (st.v !== c.defVisible && !c.operation) v.push((st.v ? '+' : '-') + c.id);   // operation layers follow op=
     if (Math.abs(st.o - c.defOpacity) > 0.004) o.push(c.id + ':' + (+st.o).toFixed(2));
   }
   if (v.length) p.push('v=' + v.map(encodeURIComponent).join(','));
@@ -1554,6 +1675,7 @@ function hashString() {
   if (state.compare) p.push('cmp=1');
   if (!state.regGhost) p.push('nr=1');
   if (state.growth) p.push('g=' + state.growthPair);
+  if (state.op) p.push('op=' + (state.op === 'post' ? 'post' : '1'));
   const cl = AXES.filter(a => state.clip[a].on).map(a => `${a}:${(+state.clip[a].pos).toFixed(1)}:${state.clip[a].flip ? 1 : 0}`);
   if (cl.length) p.push('clip=' + cl.join(','));
   if (!state.caps) p.push('caps=0');
@@ -1601,6 +1723,9 @@ function applyHash(hs, { camera: doCam = true } = {}) {
   if (q.ui && q.ui !== uiLang()) setUi(q.ui, { keepHash: true });
   state.orbit = q.orbit === '1';
   if (q.d && S.dateByKey[q.d]) state.date = q.d;
+  // op=1 (what was removed marked) | op=post (post-operative view); without d= the operation date is shown
+  state.op = OP() ? (q.op === 'post' ? 'post' : q.op === '1' ? 'mark' : null) : null;
+  if (state.op && !q.d && S.dateByKey[OP().on_date]) state.date = OP().on_date;
   let cam = null;
   if (doCam && q.cam) { const a = q.cam.split(',').map(Number); if (a.length === 6 && a.every(isFinite)) cam = a; }
   return cam;
@@ -1621,8 +1746,8 @@ function resetAll() {
   stopPlay(); claimViz.clear();
   history.replaceState(null, '', location.pathname + location.search);
   for (const c of S.ctls.values()) Object.assign(ctlState(c.id), { v: c.defVisible, o: c.defOpacity });
-  Object.assign(state, { solo: null, sel: null, compare: false, regGhost: true, growth: false, orbit: false, claim: null });
-  $('#regGhost').checked = true;
+  Object.assign(state, { solo: null, sel: null, compare: false, regGhost: true, growth: false, orbit: false, claim: null, op: null });
+  $('#regGhost').checked = true; renderOpControls(); renderLegend();
   controls.autoRotate = false;
   for (const a of AXES) state.clip[a].on = false, state.clip[a].flip = false;
   state.caps = true; state.capAll = false;
@@ -1649,6 +1774,7 @@ function screenshot() {
   const regL = regModes()[state.reg]?.label || state.reg;
   const extra = [state.compare ? `ghost = ${dateLabel(prevDate(shown)) || '—'}` : '', state.growth ? `growth ${pairLabel(state.growthPair)}` : '', AXES.some(a => state.clip[a].on) ? 'cut' : ''].filter(Boolean).join(' · ');
   let lines = wrap(`${dateLabel(shown)} · ${regL} · source: ${S.scene.source || '?'}${extra ? ' · ' + extra : ''}`, w - 20 * dpr);
+  if (opOn()) lines.push(...wrap(`${OP().label}${state.op === 'post' ? ' · post-operative view (resected parts hidden)' : ' · red = resected right hemiliver (segments V–VIII)'} — ${OP().caveat}`, w - 20 * dpr));
   const cl = state.claim && reports.byId(state.claim);
   if (cl) {
     lines.push(...wrap(`${cl.reader} (${cl.id}): “${cl.quote_orig}”`, w - 20 * dpr));
@@ -1742,6 +1868,7 @@ function describe(it) {
   }
   if (it.kind === 'lesion' || it.kind === 'growth') return { title: lesionLabel(it.lesion), where: it.kind === 'growth' ? `growth map ${pairLabel(it.pair)}` : (it.lesion.segment ? (/^stomach/.test(it.lesion.segment) ? it.lesion.segment : 'segment ' + it.lesion.segment) : ''), type: 'lesion', lesion: it.lesion.id };
   if (it.ctl === 'contact_left_portal') return { title: c.name, where: '', type: 'portal', lesion: 'L1' };
+  if (c.operation) return { title: c.name, where: OP()?.label || '', type: 'operation', lesion: null };
   return { title: c.name, where: /^seg\d$/.test(it.ctl) ? 'Couinaud segment of the liver' : '', type: LAYER_TYPE[it.ctl] || (/^seg\d$/.test(it.ctl) ? 'segment' : it.ctl), lesion: null };
 }
 function tipClaims(it) { const d = describe(it); return reports.claimsFor(d.type, d.lesion, it.date); }
@@ -1753,6 +1880,9 @@ function showTip(it, e, r, pinned = false) {
   const cf = it.kind === 'part' ? confOf(it.ctl, it.date) : (it.pd?.confidence || null);
   if (cf) lines.push('confidence: ' + cf);
   if (it.pd?.registered_from) lines.push(`registered from ${dateLabel(it.pd.registered_from)}, not seen on this CT`);
+  const ol = opOn(it.date) && it.kind === 'lesion' && OP().lesions?.[it.lesion.id];
+  if (ol) lines.push(OP().label, `${OP_WORD[ol.status]} — ${ol.note}`);
+  if (opOn(it.date) && S.ctls.get(it.ctl)?.operation) lines.push(OP().caveat);
   const bsite = (it.kind === 'lesion') && reports.data?.biopsy_sites?.[d.lesion]; if (bsite) lines.push(bsite.label);   // tooltip text only, no marker coordinates
   const m = tipClaims(it);
   let qh = '';
@@ -2029,6 +2159,7 @@ async function boot() {
   initRegPopover();
   $('#growthBtn').onclick = () => setGrowth(!state.growth);
   $('#growthPair').onchange = e => setGrowth(true, e.target.value);
+  if (OP()) $('.toggles').append(h('button.tog', { id: 'opBtn', 'aria-pressed': String(!!state.op), title: `${OP().label}: mark what was removed on the Sep 2026 model`, onclick: () => setOp(state.op ? null : 'mark') }, 'Operation 21.10'));
   $('#orbitBtn').onclick = () => setOrbit(!state.orbit);
   $('#orbitBtn').disabled = !state.sel;
   $('#shotBtn').onclick = screenshot;
@@ -2077,6 +2208,7 @@ function afterStateChange(cam, first) {
   $('#growthBtn').setAttribute('aria-pressed', String(state.growth)); $('#growthPair').value = state.growthPair || '';
   $('#orbitBtn').setAttribute('aria-pressed', String(state.orbit)); $('#orbitBtn').disabled = !state.sel;
   controls.autoRotate = state.orbit;
+  renderOpControls();
   setTab(state.tab);
   if (state.date !== shown) setDate(state.date, { keepPair: true }); else ensureVisibleLoaded();
   refreshPanels(); reports.setLang(state.lang); claimViz.renderBar();

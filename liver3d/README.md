@@ -125,6 +125,7 @@ The view is kept in the hash (`history.replaceState`, no history spam); paste a 
 &claim=<claim id>                 claim shown on the model
 &lang=en                          English glosses in the cards
 &orbit=1
+&op=1 | &op=post                  operation 21.10.2026 marked | post-operative view (without d= the Sep 2026 model is shown)
 ```
 
 ## Scene contract (as implemented)
@@ -213,3 +214,24 @@ Publishing: run `python3 tools/stamp_version.py <viewer dir> --site-index <site 
 Semantic palette in `tools/palette/palette.json` (applied by `tools/palette/apply_palette.py <data dir>`, also called by
 build_viewer_data.py; it re-maps the growth-map colours inside the QM files). Hue = kind of tissue (Anatomy / Tumour / Activity /
 Internal structure / Vessels), lightness separates members of a family; CVD check: `tools/palette/report.py`. Details: BUILD_NOTES.
+
+## Operation 21.10.2026 (2026-10-21)
+What was removed at the operation of 21.10.2026, on the Sep 2026 model (the last scan before surgery). Source: the surgeon's VERBAL
+telephone report (right hemihepatectomy + marginal gastric resection removing the primary gastric focus); operation protocol and
+histology pending. Data: `tools/build_operation_layers.py` (run after `build_viewer_data.py`; idempotent, cached) adds `scene.operation`
+(lesion status, wording, caveat) and five layers flagged `operation: true` (group "Operation 21.10.2026", default hidden, Sep only):
+`op_resected` = union of the automatic segments V–VIII (one mesh, 1951 mL, Dice 0.996), and the remnants (`replaces`: liver,
+hepatic_veins, portal, active_pet_only minus V–VIII). Same mesh recipe and voxel-back check as every other mesh; QM copies in `meshes_qm/`.
+* **Operation 21.10** (top bar) or the box at the top of the Layers tab: the resected right hemiliver in red (translucent, opacity slider),
+  lesion outlines and labels by status (red removed: R1, S8, P7, GF; amber uncertain / not stated: S1, and K, N not on the Sep model;
+  green remains: L1; S7sat removed but not on the Sep model), legend with the caveat "surgeon's verbal report; operation protocol and
+  histology pending; resection boundary approximate (automatic segment map)", and a Details list (per-lesion notes, share of each lesion
+  inside segments V–VIII on the model: R1 98 %, S8 / P7 100 %, S1 47 %, L1 0 %).
+* **Post-operative view: hide resected parts** (legend / Layers box; hash `op=post`): removed lesions with their parts and growth maps,
+  segments V–VIII and the whole liver / hepatic veins / portal vein / PET-only activity are hidden; their remnant meshes are drawn instead,
+  with the replaced layer's visibility, opacity and colour. The stomach stays (margin of the gastric resection unknown, not modelled).
+* Layer and lesion states are never changed by the feature (switching it off restores the view exactly); the meshes load only when
+  it is used. Other dates show a note and a "Show Sep 2026" button. Ukrainian strings in `js/i18n_uk.js`.
+* Test (chrome-headless-shell 148 via Playwright 1.63, 1440×900 and 375×812, EN and UK): no console errors or failed requests; with the
+  feature off the May / June / Sep renders are pixel-identical to the previous build; `__i18nMissing` empty. Playwright WebKit / Firefox
+  builds were not installed on this machine on 21.10, so Safari/WebKit was not re-tested. Screenshots: `test_shots/resection_2026-10-21/`.
