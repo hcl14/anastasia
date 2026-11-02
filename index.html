@@ -62,6 +62,9 @@ nav.toc li a{display:block;padding:3px 8px;border-left:3px solid transparent;bor
 nav.toc li a:hover{background:#f2f5f9}
 nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600} nav.toc li a b,nav.toc li a strong{color:inherit}
 #render-sep2026,#render-jun2026,#liver3d{scroll-margin-top:60px}
+nav.toc details{border:0;background:none;margin:0;padding:0;border-radius:0}
+@media (min-width:761px){nav.toc summary{list-style:none;pointer-events:none}nav.toc summary::-webkit-details-marker{display:none}}
+@media (max-width:760px){html{scroll-padding-top:58px}nav.toc{position:sticky;top:0;z-index:15;padding:0;margin:10px 0;box-shadow:0 2px 6px rgba(0,0,0,.14)}nav.toc summary{padding:12px 14px;cursor:pointer;font-size:16px}nav.toc ul{columns:1!important;max-height:68vh;overflow:auto;margin:0;padding:0 8px 10px;list-style:none;-webkit-overflow-scrolling:touch}nav.toc li a{display:block;padding:8px 8px}}
 </style>
 <script>
 (function(){
@@ -118,8 +121,7 @@ nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600
   if(location.hash) window.addEventListener('load',function(){openFor(location.hash.slice(1));});
 })();
 </script>
-<nav class="toc card">
-<b>Contents</b>
+<nav class="toc card"><details id="tocd" open><summary><b>Contents</b></summary>
 <ul style="columns:2">
 <li><a href="#diagnosis">Formulated diagnosis</a></li>
 <li><a href="#situation">Current situation</a></li>
@@ -164,8 +166,8 @@ nav.toc li a.active{border-left-color:#0b5fa5;background:#eef3fa;font-weight:600
 <li><a href="#labs">Laboratory tests and originals</a></li>
 <li><a href="#excluded">Documents not included</a></li>
 <li><a href="documents.html">Document references (numbered) <span class="meta">(separate page)</span></a></li>
-</ul>
-</nav>
+</ul></details>
+</nav><script>(function(){var d=document.getElementById('tocd');if(!d)return;var m=window.matchMedia('(max-width:760px)');function s(){d.open=!m.matches}s();if(m.addEventListener)m.addEventListener('change',s);else m.addListener(s);d.addEventListener('click',function(e){if(m.matches&&e.target.closest&&e.target.closest('a'))d.open=false});document.addEventListener('click',function(e){if(m.matches&&d.open&&!d.contains(e.target))d.open=false})})();</script>
 <h2 id="diagnosis" style="margin-top:8px">Formulated diagnosis</h2>
 <div class="card key" id="dxblock">
 <p><b>ICD-10:</b> C16.9 (malignant neoplasm of stomach, unspecified); ICD-O morphology 8936/3, gastrointestinal stromal tumour.</p>

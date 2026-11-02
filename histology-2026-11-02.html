@@ -26,6 +26,9 @@ main{max-width:980px;margin:0 auto;padding:24px;overflow-wrap:anywhere}h2{border
 .bdg.v{background:#fff;color:#8a4b00;border:1.5px solid #c26a00}
 .bdg.i{background:#f1f1f1;color:#444;border:1.5px dashed #777}
 table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px solid var(--rule);padding:8px 9px;text-align:left;vertical-align:top}th{background:var(--head)}
+nav.toc{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;margin:14px 0}nav.toc ul{margin:6px 0 0;padding-left:18px}
+@media (max-width:760px){html{scroll-padding-top:58px}nav.top{position:static}nav.toc{position:sticky;top:0;z-index:15;padding:0;box-shadow:0 2px 6px rgba(0,0,0,.14)}nav.toc summary{padding:12px 14px;cursor:pointer;font-size:16px}nav.toc ul{max-height:68vh;overflow:auto;margin:0;padding:0 8px 10px;list-style:none}nav.toc li a{display:block;padding:8px}
+table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}table.stack tr:first-child{display:none}table.stack tr{border-bottom:2px solid var(--rule);padding:8px 0}table.stack td{border:0;padding:3px 4px}table.stack td:empty{display:none}table.stack td[data-label]::before{content:attr(data-label) ": ";font-weight:600;color:var(--muted);font-size:13px}.tablewrap{overflow:visible}}
 </style>
 </head>
 <body>
@@ -36,7 +39,10 @@ table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px
 <nav class="top"><a href="index.html">Case summary</a><a href="documents.html#d203">Documents</a><a href="files/local_histology_4488_02112026/Histology_4488-26_Shalimov_02.11.2026_UA.pdf">Ukrainian original (PDF)</a><a href="fedorov-2026-10-28.html">28 Oct consultation</a><a href="specimen-photos-2026-10-21.html">Specimen photographs</a><a href="#slide">Slide scan</a><a href="#papers">Cited papers</a></nav>
 <main>
 <p class="meta"><b>FOR DOCTORS.</b> English working translation of the written report, followed by this site's reading of it, kept separate. The Ukrainian original governs. The signature lines in the PDF received are blank. Genetic results are not part of this report.</p>
-<section class="card key">
+<nav class="toc"><details id="tocd" open><summary><b>Contents</b></summary><ul>
+<li><a href="#key">Key points</a></li><li><a href="#report">The report (translation)</a></li><li><a href="#slide">Slide scan</a></li><li><a href="#papers">Papers cited by the pathologists</a></li><li><a href="#compared">Compared with the verbal result</a></li><li><a href="#clarify">Items to clarify</a></li><li><a href="#reading">Site reading</a></li>
+</ul></details></nav><script>(function(){var d=document.getElementById('tocd');if(!d)return;var m=window.matchMedia('(max-width:760px)');function s(){d.open=!m.matches}s();if(m.addEventListener)m.addEventListener('change',s);else m.addListener(s);d.addEventListener('click',function(e){if(m.matches&&e.target.closest&&e.target.closest('a'))d.open=false});document.addEventListener('click',function(e){if(m.matches&&d.open&&!d.contains(e.target))d.open=false})})();</script>
+<section class="card key" id="key">
 <h2 style="margin-top:0">Key points</h2>
 <ul>
 <li><span class="bdg f" title="What a document or official written conclusion states">FACT</span> <b>Liver metastases: GIST, High Grade</b> (mitotic index &gt;5/50 HPF), two adjacent lesions, with foci of preserved tumour growth among wide hyalinosis; treatment effect grade II–III; <b>Ki-67 focally 15 %</b> in one preserved focus.</li>
@@ -47,7 +53,7 @@ table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px
 <li><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> R0 applies to what was removed. The left-lobe lesion is still in place, so this is not a statement that no disease remains.</li>
 </ul>
 </section>
-<h2>The report (translation)</h2>
+<h2 id="report">The report (translation)</h2>
 <div class="card">
 <h3>Referral</h3>
 <p><span class="bdg f" title="What a document or official written conclusion states">FACT</span> Form 014/o, No 4488/26, 21.10.2026. Operation: right hemihepatectomy, cholecystectomy. Material: 1) liver with metastases; 2) gallbladder; 3) gastric neoplasm; 4) local recurrence? Clinical diagnosis: gastric GIST, liver metastases, status after imatinib. 30 pieces, 20 blocks; haematoxylin-eosin, IHC.</p>
@@ -61,17 +67,17 @@ table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px
 <h3>Blocks</h3>
 <p>No 1 tumour + gastric margin; 2–5 gastric tumour; 6 lesser-omentum fat next to the gastric wall; 7–8 fat with induration; 9 gallbladder; 10–14 preserved tumour foci in the cyst wall; 15–17 additional liver focus; 18 margin of the main tumour; 19 loose masses in the cyst lumen; 20 liver without tumour; cito 699–700/26 node from the peritoneum, liver focus after express histology.</p>
 <h3>Immunohistochemistry</h3>
-<table>
+<table class="stack">
 <tr><th>Material (block)</th><th>Marker</th><th>Result</th></tr>
-<tr><td>Gastric tumour (4488-1)</td><td>CD117/c-kit (RM359)</td><td>Weak reaction in isolated cell groups (up to 1 %)</td></tr>
-<tr><td></td><td>DOG-1 (DOG1.1)</td><td>Negative</td></tr>
-<tr><td></td><td>Ki-67 (MIB-1)</td><td>0 %</td></tr>
-<tr><td>Preserved tumour focus in the liver (4488-14)</td><td>Ki-67 (MIB-1)</td><td><b>Focally 15 %</b></td></tr>
-<tr><td>Node in omental fat next to the gastric wall (4488-6)</td><td>β-catenin (β-catenin-1)</td><td>Positive nuclear reaction in fibroblasts</td></tr>
-<tr><td>Node in the separately submitted fat (4488-7)</td><td>β-catenin (β-catenin-1)</td><td>Positive nuclear reaction in fibroblasts</td></tr>
-<tr><td>Express-histology material (cito 699)</td><td>β-catenin (β-catenin-1)</td><td>Positive nuclear reaction in part of the fibroblasts <b>in one field of view</b></td></tr>
-<tr><td></td><td>DOG-1 (DOG1.1)</td><td>Negative</td></tr>
-<tr><td></td><td>CD68 (KP-1)</td><td>Positive in clusters of macrophages</td></tr>
+<tr><td data-label="Material (block)">Gastric tumour (4488-1)</td><td data-label="Marker">CD117/c-kit (RM359)</td><td data-label="Result">Weak reaction in isolated cell groups (up to 1 %)</td></tr>
+<tr><td data-label="Material (block)"></td><td data-label="Marker">DOG-1 (DOG1.1)</td><td data-label="Result">Negative</td></tr>
+<tr><td data-label="Material (block)"></td><td data-label="Marker">Ki-67 (MIB-1)</td><td data-label="Result">0 %</td></tr>
+<tr><td data-label="Material (block)">Preserved tumour focus in the liver (4488-14)</td><td data-label="Marker">Ki-67 (MIB-1)</td><td data-label="Result"><b>Focally 15 %</b></td></tr>
+<tr><td data-label="Material (block)">Node in omental fat next to the gastric wall (4488-6)</td><td data-label="Marker">β-catenin (β-catenin-1)</td><td data-label="Result">Positive nuclear reaction in fibroblasts</td></tr>
+<tr><td data-label="Material (block)">Node in the separately submitted fat (4488-7)</td><td data-label="Marker">β-catenin (β-catenin-1)</td><td data-label="Result">Positive nuclear reaction in fibroblasts</td></tr>
+<tr><td data-label="Material (block)">Express-histology material (cito 699)</td><td data-label="Marker">β-catenin (β-catenin-1)</td><td data-label="Result">Positive nuclear reaction in part of the fibroblasts <b>in one field of view</b></td></tr>
+<tr><td data-label="Material (block)"></td><td data-label="Marker">DOG-1 (DOG1.1)</td><td data-label="Result">Negative</td></tr>
+<tr><td data-label="Material (block)"></td><td data-label="Marker">CD68 (KP-1)</td><td data-label="Result">Positive in clusters of macrophages</td></tr>
 </table>
 <h3>Pathological conclusion</h3>
 <ol>
@@ -97,32 +103,32 @@ table{border-collapse:collapse;width:100%;font-size:15px}td,th{border-bottom:1px
 </div>
 <h2 id="papers">Papers cited by the pathologists</h2>
 <div class="card">
-<p class="meta"><span class="bdg f" title="What a document or official written conclusion states">FACT</span> applies to what each paper states; read in full except where marked. All are small: one case series, two case reports, two conference abstracts. None tests a treatment. The notes on this patient are this site's reading.</p>
-<div class="tablewrap"><table>
+<p class="meta"><span class="bdg f" title="What a document or official written conclusion states">FACT</span> applies to what each paper states; read in full except where marked. All are small: one case series, two case reports, two conference abstracts. None tests a treatment. Open-licensed papers have a PDF hosted here; the others are linked at the publisher or PMC because of their copyright. The notes on this patient are this site's reading.</p>
+<div class="tablewrap"><table class="stack">
 <tr><th>Paper</th><th>Type</th><th>What it found</th><th>Bearing and limits</th></tr>
-<tr><td><b>Dumont et al., Ann Oncol 2012;23:1335–40</b><br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3493136/" target="_blank" rel="noopener">Dumont 2012, full text (PMC)</a></td><td>Retrospective series, 28 patients, 10 centres</td><td>Desmoid after GIST 75 %, concurrent 21 %. Primary gastric in 60 %. SIR 82 (95 % CI 44–133). CTNNB1 exon 3 mutated in about half of those tested. KIT activating mutations not found in the desmoids. No family history of FAP. 5- and 10-year survival 86 % and 64 %.</td><td>Main source for the association. The mutation count differs between text (5/10) and table (4/9). Selection bias acknowledged; mostly men, unlike this patient. Several deaths were from GIST, none attributed to desmoid in the table.</td></tr>
-<tr><td><b>Dumont et al., J Clin Oncol 2009;27(15 suppl):10568</b><br><a href="https://doi.org/10.1200/jco.2009.27.15_suppl.10568" target="_blank" rel="noopener">Dumont 2009, abstract</a></td><td>Conference abstract</td><td>Earlier report of the same work. <b>Not read:</b> no copy in the downloaded set.</td><td>Superseded by the 2012 paper.</td></tr>
-<tr><td><b>Murshid &amp; Al-Maghraby, Case Rep Pathol 2018;1082956</b><br><a href="https://doi.org/10.1155/2018/1082956" target="_blank" rel="noopener">Murshid 2018, publisher</a> · <a href="files/local_papers/Murshid_2018_Case_Rep_Pathol_CC-BY.pdf">hosted copy (CC BY)</a></td><td>Case report, 1 patient</td><td>Small-bowel GIST 2013, imatinib until 2015; 3 × 2 × 1.5 cm mesenteric mass 2016, clinically taken for recurrence. CD117 and CD34 negative, nuclear β-catenin and SMA positive, Ki-67 &lt;5 %. Surveillance; no recurrence on CT of April 2017.</td><td>Shows the IHC panel used to separate the two. Calls β-catenin sensitive but not specific. Includes a five-case comparison table.</td></tr>
-<tr><td><b>Wu et al., J Clin Oncol 2024;42(16 suppl):e23516</b><br><a href="https://doi.org/10.1200/JCO.2024.42.16_suppl.e23516" target="_blank" rel="noopener">Wu 2024, abstract</a></td><td>Conference abstract, 24 patients (12 desmoid, 12 GIST), retrospective</td><td>FAPI-42 SUVmax 8.8 vs 1.9 (P&lt;0.001). <b>No significant FDG difference.</b> SUV FAPI/FDG ratio 3.3 vs 0.5. FAP expressed in all desmoids examined.</td><td>Supports FAPI PET as a promising discriminator, not an established one. The later full paper (<a href="https://pubmed.ncbi.nlm.nih.gov/41483308/" target="_blank" rel="noopener">PMID 41483308</a>) gives different GIST values and a significant FDG difference.</td></tr>
-<tr><td><b>Wang et al., Int Med Case Rep J 2024;17:965–9</b><br><a href="https://doi.org/10.2147/IMCRJ.S488459" target="_blank" rel="noopener">Wang 2024, full text (open access)</a></td><td>Case report, 2 patients</td><td>Both high-risk KIT exon 11 GIST on imatinib, new mesenteric mass removed, CD117, CD34 and DOG-1 negative, β-catenin positive. No GIST recurrence reported at follow-up. One had GIST with liver metastases, 6/50 HPF, imatinib 400 mg/day. One lesion had increased FDG uptake.</td><td>Closest to this patient, but in those cases the mass was a new isolated lesion. The paper's text is loose in places: it says the first case was "diffuse fibrosis" before calling it desmoid, and its comments on imatinib resistance are speculation.</td></tr>
+<tr><td data-label="Paper"><b>Dumont et al., Ann Oncol 2012;23:1335–40</b><br><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3493136/" target="_blank" rel="noopener">Dumont 2012, full text (PMC)</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3493136/pdf/" target="_blank" rel="noopener">PDF at PMC</a></td><td data-label="Type">Retrospective series, 28 patients, 10 centres</td><td data-label="What it found">Desmoid after GIST 75 %, concurrent 21 %. Primary gastric in 60 %. SIR 82 (95 % CI 44–133). CTNNB1 exon 3 mutated in about half of those tested. KIT activating mutations not found in the desmoids. No family history of FAP. 5- and 10-year survival 86 % and 64 %.</td><td data-label="Bearing and limits">Main source for the association. The mutation count differs between text (5/10) and table (4/9). Selection bias acknowledged; mostly men, unlike this patient. Several deaths were from GIST, none attributed to desmoid in the table.</td></tr>
+<tr><td data-label="Paper"><b>Dumont et al., J Clin Oncol 2009;27(15 suppl):10568</b><br><a href="https://doi.org/10.1200/jco.2009.27.15_suppl.10568" target="_blank" rel="noopener">Dumont 2009, abstract</a></td><td data-label="Type">Conference abstract</td><td data-label="What it found">Earlier report of the same work. <b>Not read:</b> no copy in the downloaded set.</td><td data-label="Bearing and limits">Superseded by the 2012 paper.</td></tr>
+<tr><td data-label="Paper"><b>Murshid &amp; Al-Maghraby, Case Rep Pathol 2018;1082956</b><br><a href="https://doi.org/10.1155/2018/1082956" target="_blank" rel="noopener">Murshid 2018, publisher</a> · <a href="files/local_papers/Murshid_2018_Case_Rep_Pathol_CC-BY.pdf">PDF (CC BY)</a></td><td data-label="Type">Case report, 1 patient</td><td data-label="What it found">Small-bowel GIST 2013, imatinib until 2015; 3 × 2 × 1.5 cm mesenteric mass 2016, clinically taken for recurrence. CD117 and CD34 negative, nuclear β-catenin and SMA positive, Ki-67 &lt;5 %. Surveillance; no recurrence on CT of April 2017.</td><td data-label="Bearing and limits">Shows the IHC panel used to separate the two. Calls β-catenin sensitive but not specific. Includes a five-case comparison table.</td></tr>
+<tr><td data-label="Paper"><b>Wu et al., J Clin Oncol 2024;42(16 suppl):e23516</b><br><a href="https://doi.org/10.1200/JCO.2024.42.16_suppl.e23516" target="_blank" rel="noopener">Wu 2024, abstract</a></td><td data-label="Type">Conference abstract, 24 patients (12 desmoid, 12 GIST), retrospective</td><td data-label="What it found">FAPI-42 SUVmax 8.8 vs 1.9 (P&lt;0.001). <b>No significant FDG difference.</b> SUV FAPI/FDG ratio 3.3 vs 0.5. FAP expressed in all desmoids examined.</td><td data-label="Bearing and limits">Supports FAPI PET as a promising discriminator, not an established one. The later full paper (<a href="https://pubmed.ncbi.nlm.nih.gov/41483308/" target="_blank" rel="noopener">PMID 41483308</a>) gives different GIST values and a significant FDG difference.</td></tr>
+<tr><td data-label="Paper"><b>Wang et al., Int Med Case Rep J 2024;17:965–9</b><br><a href="https://doi.org/10.2147/IMCRJ.S488459" target="_blank" rel="noopener">Wang 2024, full text (open access)</a> · <a href="files/local_papers/Wang_2024_Int_Med_Case_Rep_J_CC-BY-NC.pdf">PDF (CC BY-NC)</a></td><td data-label="Type">Case report, 2 patients</td><td data-label="What it found">Both high-risk KIT exon 11 GIST on imatinib, new mesenteric mass removed, CD117, CD34 and DOG-1 negative, β-catenin positive. No GIST recurrence reported at follow-up. One had GIST with liver metastases, 6/50 HPF, imatinib 400 mg/day. One lesion had increased FDG uptake.</td><td data-label="Bearing and limits">Closest to this patient, but in those cases the mass was a new isolated lesion. The paper's text is loose in places: it says the first case was "diffuse fibrosis" before calling it desmoid, and its comments on imatinib resistance are speculation.</td></tr>
 </table></div>
 </div>
-<h2>Compared with the verbal preliminary result of 27.10.2026</h2>
-<div class="card"><table>
+<h2 id="compared">Compared with the verbal preliminary result of 27.10.2026</h2>
+<div class="card"><table class="stack">
 <tr><th>Item</th><th>Verbal, 27.10.2026</th><th>Written, 02.11.2026</th></tr>
-<tr><td>Abdominal nodule</td><td>"Fibrosis, not tumour"</td><td>Desmoid fibromatosis, in three samples</td></tr>
-<tr><td>Viable foci in the liver</td><td>Six</td><td>Gross: up to 10 in the cyst wall, plus foci in the additional node. Microscopy: preserved foci in both lesions; no total count</td></tr>
-<tr><td>Stomach</td><td>99.9 % hyalinosis; 0.1 % suspicious area under IHC</td><td>Isolated CD117-positive cell groups, up to 1 % of the volume; Ki-67 0 %</td></tr>
-<tr><td>Grade</td><td>Not stated</td><td>High Grade (the 05.10.2026 biopsy was Low Grade)</td></tr>
+<tr><td data-label="Item">Abdominal nodule</td><td data-label="Verbal, 27.10.2026">"Fibrosis, not tumour"</td><td data-label="Written, 02.11.2026">Desmoid fibromatosis, in three samples</td></tr>
+<tr><td data-label="Item">Viable foci in the liver</td><td data-label="Verbal, 27.10.2026">Six</td><td data-label="Written, 02.11.2026">Gross: up to 10 in the cyst wall, plus foci in the additional node. Microscopy: preserved foci in both lesions; no total count</td></tr>
+<tr><td data-label="Item">Stomach</td><td data-label="Verbal, 27.10.2026">99.9 % hyalinosis; 0.1 % suspicious area under IHC</td><td data-label="Written, 02.11.2026">Isolated CD117-positive cell groups, up to 1 % of the volume; Ki-67 0 %</td></tr>
+<tr><td data-label="Item">Grade</td><td data-label="Verbal, 27.10.2026">Not stated</td><td data-label="Written, 02.11.2026">High Grade (the 05.10.2026 biopsy was Low Grade)</td></tr>
 </table></div>
-<h2>Items in the document to clarify</h2>
+<h2 id="clarify">Items in the document to clarify</h2>
 <div class="card"><ul>
 <li><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> Age is written as 56; the date of birth 25.04.1976 gives 50.</li>
 <li><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> Material receipt date is written as 22.09.26, before the operation; 22.10.2026 is presumably meant.</li>
 <li><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> The operation line omits the gastric resection, though the stomach was examined and the certificate of 26.10.2026 lists it. The referral is marked "primary biopsy".</li>
 <li><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> The signature lines are blank in this PDF; a signed and stamped copy is needed for use abroad.</li>
 </ul></div>
-<h2>Site reading</h2>
+<h2 id="reading">Site reading</h2>
 <div class="card">
 <p class="meta"><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> Everything in this block is this site's inference for discussion with the treating doctors; none of it is in the report and none of it is a treatment recommendation.</p>
 <p><span class="bdg v" title="A doctor's informal view: chat, teleconsultation, call; not a signed document">OPINION</span> Pathologist, chat, 02.11.2026: two tumour processes, GIST and desmoid fibromatosis growing multicentrically; GIST is the leading problem. How soon the left lesion should be removed is hard to say: the patient must recover and the liver regenerate; to be reviewed with the mutational profile.</p>
