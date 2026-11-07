@@ -1,398 +1,1046 @@
 {
 "4488-1_Intern": {
-"d": "1iWxiKW48rKW1-3wcRoAn-3k4D3OX7KUO",
 "svs": "1OB-F7LnMzFPrWuQnM4D0BpXOPSFSVDqP",
+"label": "4488-1 · H&E",
+"block": "Block 1: gastric tumour with the gastric margin",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1iWxiKW48rKW1-3wcRoAn-3k4D3OX7KUO",
 "w": 16384,
 "h": 12288,
 "um": 1.5033,
-"ratio": 6.0,
-"bytes": 24290132,
-"label": "4488-1 · H&E",
-"block": "Block 1: gastric tumour with the gastric margin"
+"bytes": 24290132
+},
+"m": {
+"d": "12Szz3CGigpb0JbSyP86lbaV64dfMKyMf",
+"w": 8192,
+"h": 6144,
+"um": 3.0066,
+"bytes": 7080834
+},
+"l": {
+"d": "1FWrsmFJW0bbGfeVwifE2cUYBCf6XMOcL",
+"w": 4096,
+"h": 3072,
+"um": 6.0132,
+"bytes": 1769219
+}
+}
 },
 "4488-1_CD117": {
-"d": "1RE6Qe2jzte2FEJOAHxqA5giw5zGAWYth",
 "svs": "1byB8lxxeCkdde1weBaj7epTtNfZAtk6S",
+"label": "4488-1 · CD117",
+"block": "Block 1: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1RE6Qe2jzte2FEJOAHxqA5giw5zGAWYth",
 "w": 16384,
 "h": 14746,
 "um": 1.2528,
-"ratio": 5.0,
-"bytes": 19170341,
-"label": "4488-1 · CD117",
-"block": "Block 1: gastric tumour"
+"bytes": 19170341
+},
+"m": {
+"d": "1A33PpgmAo092vhSsxp0P5EOBIIh6D6-g",
+"w": 8192,
+"h": 7373,
+"um": 2.5055,
+"bytes": 5744429
+},
+"l": {
+"d": "1K3MwXOichRVMlrtMG9Z2c686s2kV1vmK",
+"w": 4096,
+"h": 3686,
+"um": 5.011,
+"bytes": 1403361
+}
+}
 },
 "4488-1_DOG-1": {
-"d": "1SdlBD3huhnFHt8liePMAWKmCKf_t9qAQ",
 "svs": "1MUhkQl7asEFh7nERVMTgDqm7Zuh0K7y9",
+"label": "4488-1 · DOG-1",
+"block": "Block 1: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1SdlBD3huhnFHt8liePMAWKmCKf_t9qAQ",
 "w": 11916,
 "h": 16384,
 "um": 1.378,
-"ratio": 5.5,
-"bytes": 20669044,
-"label": "4488-1 · DOG-1",
-"block": "Block 1: gastric tumour"
+"bytes": 20669044
+},
+"m": {
+"d": "112B78pXAPzbXBes0XTe894Fn331GEa8e",
+"w": 5958,
+"h": 8192,
+"um": 2.7561,
+"bytes": 6005512
+},
+"l": {
+"d": "1TiabcqtsGHphq1HQg5F1G8imIX3LsnVD",
+"w": 2979,
+"h": 4096,
+"um": 5.5121,
+"bytes": 1392161
+}
+}
 },
 "4488-1_Ki67": {
-"d": "1DLNDbVRLzfrzk_TocG8YculnVqaSsore",
 "svs": "16K5O8sgxQmxGbovnn0dkYZ1AAtMmxxWV",
+"label": "4488-1 · Ki-67",
+"block": "Block 1: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1DLNDbVRLzfrzk_TocG8YculnVqaSsore",
 "w": 11916,
 "h": 16384,
 "um": 1.378,
-"ratio": 5.5,
-"bytes": 20029110,
-"label": "4488-1 · Ki-67",
-"block": "Block 1: gastric tumour"
+"bytes": 20029110
+},
+"m": {
+"d": "1WWlcdzUZCuCLQEmQMwiktxJ8DKEqAVUw",
+"w": 5958,
+"h": 8192,
+"um": 2.7561,
+"bytes": 5597173
+},
+"l": {
+"d": "1SYpuyVixICv6M1fv19Lz7nUyGXsxqMSP",
+"w": 2979,
+"h": 4096,
+"um": 5.5121,
+"bytes": 1225108
+}
+}
 },
 "4488-2_Intern": {
-"d": "1NT6EZ2vuSf0SbrDepBFLZ4SZfReV93P1",
 "svs": "1xyG1e3xW5CxpJ5agkafAQyvl711oPq0f",
+"label": "4488-2 · H&E",
+"block": "Blocks 2–5: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1NT6EZ2vuSf0SbrDepBFLZ4SZfReV93P1",
 "w": 16384,
 "h": 13653,
 "um": 1.5033,
-"ratio": 6.0,
-"bytes": 25041892,
-"label": "4488-2 · H&E",
-"block": "Blocks 2–5: gastric tumour"
+"bytes": 25041892
+},
+"m": {
+"d": "1G3lwDhOSKdrCaL9JKs5fVPH8-XpszQEe",
+"w": 8192,
+"h": 6826,
+"um": 3.0066,
+"bytes": 7184851
+},
+"l": {
+"d": "1F2mz-BkB0L9oThn-BXt66Xi_CyfBGoex",
+"w": 4096,
+"h": 3413,
+"um": 6.0132,
+"bytes": 1719790
+}
+}
 },
 "4488-3_Intern": {
-"d": "1o97sel-EJSNsYj7hZq0MFw2I8cRDooZX",
 "svs": "1ePc2BLMqfa1X0k9QMiDcLdDgQYrqdMO5",
+"label": "4488-3 · H&E",
+"block": "Blocks 2–5: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1o97sel-EJSNsYj7hZq0MFw2I8cRDooZX",
 "w": 16384,
 "h": 16384,
 "um": 1.5033,
-"ratio": 6.0,
-"bytes": 28786197,
-"label": "4488-3 · H&E",
-"block": "Blocks 2–5: gastric tumour"
+"bytes": 28786197
+},
+"m": {
+"d": "1q2HKLKd61Osn8ArTzuHdTNCfdg5nkS9M",
+"w": 8192,
+"h": 8192,
+"um": 3.0066,
+"bytes": 8858548
+},
+"l": {
+"d": "1usuModCnOKz6IJ3zQkVAc82RkmNJjzwj",
+"w": 4096,
+"h": 4096,
+"um": 6.0132,
+"bytes": 2327849
+}
+}
 },
 "4488-4_Intern": {
-"d": "1YVNYVLm8aHwoWTqhTc6PEA4A7oYp9cRu",
 "svs": "1XC11cjGBjiugAgbxrSwtj0_vKGGSgmPA",
+"label": "4488-4 · H&E",
+"block": "Blocks 2–5: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1YVNYVLm8aHwoWTqhTc6PEA4A7oYp9cRu",
 "w": 16384,
 "h": 16384,
 "um": 1.6286,
-"ratio": 6.5,
-"bytes": 23091432,
-"label": "4488-4 · H&E",
-"block": "Blocks 2–5: gastric tumour"
+"bytes": 23091432
+},
+"m": {
+"d": "16RIJd8RPXp_j3RGpgccsRkAd2MCtVGll",
+"w": 8192,
+"h": 8192,
+"um": 3.2572,
+"bytes": 6941523
+},
+"l": {
+"d": "1hoiu_eQFrti7_fLwUGWEiSWjyiynIE5t",
+"w": 4096,
+"h": 4096,
+"um": 6.5144,
+"bytes": 1747415
+}
+}
 },
 "4488-5_Intern": {
-"d": "1YzezyKLAMQw3b5EXXJwOgFlo6AvQB2ML",
 "svs": "1vuDa6RRU9UBnEmrXqK9EFhAH6dt-AA7v",
+"label": "4488-5 · H&E",
+"block": "Blocks 2–5: gastric tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1YzezyKLAMQw3b5EXXJwOgFlo6AvQB2ML",
 "w": 16384,
 "h": 15124,
 "um": 1.6286,
-"ratio": 6.5,
-"bytes": 25357196,
-"label": "4488-5 · H&E",
-"block": "Blocks 2–5: gastric tumour"
+"bytes": 25357196
+},
+"m": {
+"d": "1KBKMUt7imai0MsyGCtayYvYLr7LPicJ2",
+"w": 8192,
+"h": 7562,
+"um": 3.2572,
+"bytes": 7122571
+},
+"l": {
+"d": "179lDqIu0RDX_ctqg4OViIMAu-iXhzUul",
+"w": 4096,
+"h": 3781,
+"um": 6.5144,
+"bytes": 1709992
+}
+}
 },
 "4488-6_Intern": {
-"d": "18C6JQivOQd4Kv5xAkUbRIhgUC2jSid8X",
 "svs": "1bQVeZOlZX9DpWDt8hiYnex_1evKn85-k",
+"label": "4488-6 · H&E",
+"block": "Block 6: lesser-omentum fat next to the gastric wall (desmoid fibromatosis in the report)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "18C6JQivOQd4Kv5xAkUbRIhgUC2jSid8X",
 "w": 14043,
 "h": 16384,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 22390347,
-"label": "4488-6 · H&E",
-"block": "Block 6: lesser-omentum fat next to the gastric wall (desmoid fibromatosis in the report)"
+"bytes": 22390347
+},
+"m": {
+"d": "1HqrGhmF57b35kUih3MRtBY63wRkXIid_",
+"w": 7022,
+"h": 8192,
+"um": 1.7537,
+"bytes": 6861122
+},
+"l": {
+"d": "1NzgSsmdFHiIzskKsepyezDH4j8XhxyeN",
+"w": 3511,
+"h": 4096,
+"um": 3.5075,
+"bytes": 1860436
+}
+}
 },
 "4488-6_B-catenin": {
-"d": "1v80tAK_Nin9DMEsdswN2a_D7895fygEL",
 "svs": "1FudPV61kic8MWl60-Nuhb2u3_OSiGqYB",
+"label": "4488-6 · β-catenin",
+"block": "Block 6: lesser-omentum fat next to the gastric wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1v80tAK_Nin9DMEsdswN2a_D7895fygEL",
 "w": 16384,
 "h": 14043,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 20694805,
-"label": "4488-6 · β-catenin",
-"block": "Block 6: lesser-omentum fat next to the gastric wall"
+"bytes": 20694805
+},
+"m": {
+"d": "1bArNnca0-FnlMoRyaxCOZtAhFULLQEMt",
+"w": 8192,
+"h": 7022,
+"um": 1.7539,
+"bytes": 6439768
+},
+"l": {
+"d": "1zW80_HfYHNR-1DEmwyQt88XeBtACkJz-",
+"w": 4096,
+"h": 3511,
+"um": 3.5077,
+"bytes": 1710710
+}
+}
 },
 "4488-7_Intern": {
-"d": "1wKPL4gUTlYIhDj52BnsQH7wBqASNo4Cw",
 "svs": "1z11TAOsSCpNwxtlTNFYtQ1b7gCJffKs2",
+"label": "4488-7 · H&E",
+"block": "Blocks 7–8: separately submitted fat with an induration (desmoid fibromatosis in the report)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1wKPL4gUTlYIhDj52BnsQH7wBqASNo4Cw",
 "w": 16384,
 "h": 10240,
 "um": 1.0022,
-"ratio": 4.0,
-"bytes": 14766785,
-"label": "4488-7 · H&E",
-"block": "Blocks 7–8: separately submitted fat with an induration (desmoid fibromatosis in the report)"
+"bytes": 14766785
+},
+"m": {
+"d": "1UG3-paGO8Uy_aqR52J_rFQIqvDxo5FjZ",
+"w": 8192,
+"h": 5120,
+"um": 2.0044,
+"bytes": 4874113
+},
+"l": {
+"d": "1YElpQQyeaikX_eZw1EER3QEeLBdT8EFV",
+"w": 4096,
+"h": 2560,
+"um": 4.0088,
+"bytes": 1350466
+}
+}
 },
 "4488-7_B-catenin": {
-"d": "1x1tUX3eEKEbeLtFfS3vLNMgpAT96liYt",
 "svs": "1WSzCeovEC9Pn2XbguhV_ojv8G3v24S4x",
+"label": "4488-7 · β-catenin",
+"block": "Blocks 7–8: separately submitted fat with an induration",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1x1tUX3eEKEbeLtFfS3vLNMgpAT96liYt",
 "w": 11703,
 "h": 16384,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 13448679,
-"label": "4488-7 · β-catenin",
-"block": "Blocks 7–8: separately submitted fat with an induration"
+"bytes": 13448679
+},
+"m": {
+"d": "19fxttMgA4ddjmkyJzjKUJ8EizylUnuD-",
+"w": 5852,
+"h": 8192,
+"um": 1.7537,
+"bytes": 4421913
+},
+"l": {
+"d": "1UxaY1alrs8Zi9e7BNEw-2URagICqUiDD",
+"w": 2926,
+"h": 4096,
+"um": 3.5074,
+"bytes": 1242110
+}
+}
 },
 "4488-8_Intern": {
-"d": "1yZ6B9Dj6gPDwdNpy9Xc-DWDYy49PSqQP",
 "svs": "1L9Zensq30z54gP_ENtatxmycSFjjMp6H",
+"label": "4488-8 · H&E",
+"block": "Blocks 7–8: separately submitted fat with an induration",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1yZ6B9Dj6gPDwdNpy9Xc-DWDYy49PSqQP",
 "w": 16384,
 "h": 14895,
 "um": 1.378,
-"ratio": 5.5,
-"bytes": 12888819,
-"label": "4488-8 · H&E",
-"block": "Blocks 7–8: separately submitted fat with an induration"
+"bytes": 12888819
+},
+"m": {
+"d": "1Xghp6DIhvTUto-8qync3nQWTPTsM1N2q",
+"w": 8192,
+"h": 7448,
+"um": 2.7561,
+"bytes": 4490446
+},
+"l": {
+"d": "126NIVrWkRmx21RvZka77EcUXikLhaif3",
+"w": 4096,
+"h": 3724,
+"um": 5.5121,
+"bytes": 1343987
+}
+}
 },
 "4488-9": {
-"d": "1-uSYmNHGwNTeTHcvuLaF2N1oEoHc7Wxd",
 "svs": "1aID9LTHMhkZbWkwTz-apIXwifICVZJbt",
+"label": "4488-9 · H&E",
+"block": "Block 9: gallbladder",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1-uSYmNHGwNTeTHcvuLaF2N1oEoHc7Wxd",
 "w": 12743,
 "h": 16384,
 "um": 1.1275,
-"ratio": 4.5,
-"bytes": 16474839,
-"label": "4488-9 · H&E",
-"block": "Block 9: gallbladder"
+"bytes": 16474839
+},
+"m": {
+"d": "1o4y_ewiNAuLkYGVEC7vVHhP5phdcfieJ",
+"w": 6372,
+"h": 8192,
+"um": 2.2548,
+"bytes": 5428533
+},
+"l": {
+"d": "1ifh68pDkVFGfX9Lg9Z8TxmZ8YgWYEbBO",
+"w": 3186,
+"h": 4096,
+"um": 4.5096,
+"bytes": 1574572
+}
+}
 },
 "4488-10_26": {
-"d": "1N9QJuumPIbxn8gI_MvV9twVjBJmNkwca",
 "svs": "1XcgkctBzB1ivgFdzrhqqHE5DNhyzNGCV",
+"label": "4488-10 · H&E",
+"block": "Blocks 10–14: preserved tumour foci in the wall of the cystic tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1N9QJuumPIbxn8gI_MvV9twVjBJmNkwca",
 "w": 16384,
 "h": 12603,
 "um": 1.6286,
-"ratio": 6.5,
-"bytes": 30409504,
-"label": "4488-10 · H&E",
-"block": "Blocks 10–14: preserved tumour foci in the wall of the cystic tumour"
+"bytes": 30409504
+},
+"m": {
+"d": "1GRK8biMJkYxc-vblLQTT4PvvMoMEB69_",
+"w": 8192,
+"h": 6302,
+"um": 3.2572,
+"bytes": 8779621
+},
+"l": {
+"d": "15lCFNNE8tUjgcQgcItnMMztyCI9cuKGZ",
+"w": 4096,
+"h": 3151,
+"um": 6.5144,
+"bytes": 2069302
+}
+}
 },
 "4488-11": {
-"d": "1nucVCbc4LeZuAyliyvFQGpsJlvyrafQ_",
 "svs": "1HnVWgZ9Gw2u1u4uVeq0WxcHWgAsFebWA",
+"label": "4488-11 · H&E",
+"block": "Blocks 10–14: preserved tumour foci in the cyst wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1nucVCbc4LeZuAyliyvFQGpsJlvyrafQ_",
 "w": 16384,
 "h": 16384,
 "um": 1.1275,
-"ratio": 4.5,
-"bytes": 37807683,
-"label": "4488-11 · H&E",
-"block": "Blocks 10–14: preserved tumour foci in the cyst wall"
+"bytes": 37807683
+},
+"m": {
+"d": "1x5jn1_YFAiSWFuhdcm9WE-aV-WDMGc_f",
+"w": 8192,
+"h": 8192,
+"um": 2.255,
+"bytes": 11650252
+},
+"l": {
+"d": "1zWwvDyrtUeflQ4Y7kyPGbpm6204C-ou5",
+"w": 4096,
+"h": 4096,
+"um": 4.5099,
+"bytes": 3096784
+}
+}
 },
 "4488-12": {
-"d": "1qv5GSHZx0EV4-NyKGjIjkzBAoE0Db69Y",
 "svs": "1ssL9eg0Hf7-xv7C-s6sGIWQRMA5GyAte",
+"label": "4488-12 · H&E",
+"block": "Blocks 10–14: preserved tumour foci in the cyst wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1qv5GSHZx0EV4-NyKGjIjkzBAoE0Db69Y",
 "w": 14336,
 "h": 16384,
 "um": 1.0022,
-"ratio": 4.0,
-"bytes": 36996647,
-"label": "4488-12 · H&E",
-"block": "Blocks 10–14: preserved tumour foci in the cyst wall"
+"bytes": 36996647
+},
+"m": {
+"d": "1uHTJ5Nxp0exXK4gaQENm5TVp7wRp2J41",
+"w": 7168,
+"h": 8192,
+"um": 2.0044,
+"bytes": 11660785
+},
+"l": {
+"d": "1M8XhlN4gbvF4XFwaIdaIHpuHjr4tGBmh",
+"w": 3584,
+"h": 4096,
+"um": 4.0088,
+"bytes": 2971764
+}
+}
 },
 "4488-13": {
-"d": "1_rD6aJc8SvBRv1E037Te_uPYaKkFLBww",
 "svs": "1RSfdqsf66PY4dIZSaUI5F5EHePhL0Nja",
+"label": "4488-13 · H&E",
+"block": "Blocks 10–14: preserved tumour foci in the cyst wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1_rD6aJc8SvBRv1E037Te_uPYaKkFLBww",
 "w": 16384,
 "h": 16384,
 "um": 1.2528,
-"ratio": 5.0,
-"bytes": 31478713,
-"label": "4488-13 · H&E",
-"block": "Blocks 10–14: preserved tumour foci in the cyst wall"
+"bytes": 31478713
+},
+"m": {
+"d": "1gAvLUwaVSFpwIpAUDEaa6ELuCe1f0OOA",
+"w": 8192,
+"h": 8192,
+"um": 2.5055,
+"bytes": 9450837
+},
+"l": {
+"d": "1UQONJh3kmK20oBRHeoApKnFaToCPIrkS",
+"w": 4096,
+"h": 4096,
+"um": 5.011,
+"bytes": 2400346
+}
+}
 },
 "4488-14": {
-"d": "1Ebor_ztP1qvIf1Y9RyZMPt8sPZQVBbFv",
 "svs": "10Oqz6DpEdV83LJ5gZHPBmd3dtSl5Zkrk",
+"label": "4488-14 · H&E",
+"block": "Blocks 10–14: preserved tumour foci in the cyst wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1Ebor_ztP1qvIf1Y9RyZMPt8sPZQVBbFv",
 "w": 16384,
 "h": 13863,
 "um": 1.6286,
-"ratio": 6.5,
-"bytes": 31900178,
-"label": "4488-14 · H&E",
-"block": "Blocks 10–14: preserved tumour foci in the cyst wall"
+"bytes": 31900178
+},
+"m": {
+"d": "1nnR6Da0gvlMdMKufq4isahqmFbdLZwCP",
+"w": 8192,
+"h": 6932,
+"um": 3.2572,
+"bytes": 9714558
+},
+"l": {
+"d": "1vpVpfw9VbSVD04SoQgezPD8PDNFESyRX",
+"w": 4096,
+"h": 3466,
+"um": 6.5144,
+"bytes": 2470172
+}
+}
 },
 "4488-14_Ki67": {
-"d": "1SkmxV0OAW2aXaxU-v415E6XUocIqrfps",
 "svs": "1I35nlmAommCZkYjfL7O5NZbp5vCbIxPl",
+"label": "4488-14 · Ki-67",
+"block": "Blocks 10–14: preserved tumour focus in the cyst wall",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1SkmxV0OAW2aXaxU-v415E6XUocIqrfps",
 "w": 16384,
 "h": 16384,
 "um": 1.378,
-"ratio": 5.5,
-"bytes": 28254071,
-"label": "4488-14 · Ki-67",
-"block": "Blocks 10–14: preserved tumour focus in the cyst wall"
+"bytes": 28254071
+},
+"m": {
+"d": "1bHjjaTh_-Hkw7opcV7tTQcVlPUNPNT6O",
+"w": 8192,
+"h": 8192,
+"um": 2.7561,
+"bytes": 8741981
+},
+"l": {
+"d": "1Sz35HOSlHf2gfsrJZG9f73cDAbt7ouwL",
+"w": 4096,
+"h": 4096,
+"um": 5.5121,
+"bytes": 2184759
+}
+}
 },
 "4488-15": {
-"d": "1D1IqRn74GG67SJEFLcacoWFyFj2D2dej",
 "svs": "15CyvjiEl2L0ayFpC9aKOHB1JcTCP-JCj",
+"label": "4488-15 · H&E",
+"block": "Blocks 15–17: the additional solid liver focus (6 × 4 × 4 cm)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1D1IqRn74GG67SJEFLcacoWFyFj2D2dej",
 "w": 16384,
 "h": 16384,
 "um": 1.2528,
-"ratio": 5.0,
-"bytes": 45256055,
-"label": "4488-15 · H&E",
-"block": "Blocks 15–17: the additional solid liver focus (6 × 4 × 4 cm)"
+"bytes": 45256055
+},
+"m": {
+"d": "1128ci8syTlItNTEXMBLPe5bJaRGq7lDr",
+"w": 8192,
+"h": 8192,
+"um": 2.5055,
+"bytes": 13699388
+},
+"l": {
+"d": "1qglSr1Cb3Sm38o4T88Z5_UNvVJavgf97",
+"w": 4096,
+"h": 4096,
+"um": 5.011,
+"bytes": 3514937
+}
+}
 },
 "4488-16": {
-"d": "1p_EUy-WxPTLBsXK9bt-xVXe4nFWxTDk6",
 "svs": "1v0XpjyrbtFFMXmgdpAjHBVN8t2UvUAQg",
+"label": "4488-16 · H&E",
+"block": "Blocks 15–17: the additional solid liver focus",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1p_EUy-WxPTLBsXK9bt-xVXe4nFWxTDk6",
 "w": 16384,
 "h": 13653,
 "um": 1.5033,
-"ratio": 6.0,
-"bytes": 37685816,
-"label": "4488-16 · H&E",
-"block": "Blocks 15–17: the additional solid liver focus"
+"bytes": 37685816
+},
+"m": {
+"d": "15PMvkGWEuefnS4m1HQLHCKrbD1VJC1OI",
+"w": 8192,
+"h": 6826,
+"um": 3.0066,
+"bytes": 10568829
+},
+"l": {
+"d": "1l_GnIdmbjV83yYaeVT3FguvJFtl5rMgG",
+"w": 4096,
+"h": 3413,
+"um": 6.0132,
+"bytes": 2503182
+}
+}
 },
 "4488-17": {
-"d": "1wuos3L4FAXRYp9mpR3KF3tQSYPEiMsZX",
 "svs": "1AAg2VxtQibG_ZezlIwY54--hUnvQNo-N",
+"label": "4488-17 · H&E",
+"block": "Blocks 15–17: the additional solid liver focus",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1wuos3L4FAXRYp9mpR3KF3tQSYPEiMsZX",
 "w": 16384,
 "h": 13653,
 "um": 1.5033,
-"ratio": 6.0,
-"bytes": 30468450,
-"label": "4488-17 · H&E",
-"block": "Blocks 15–17: the additional solid liver focus"
+"bytes": 30468450
+},
+"m": {
+"d": "167k9uCBBXy8EG6-m4a3V-yTFpofLQG2Y",
+"w": 8192,
+"h": 6826,
+"um": 3.0066,
+"bytes": 8774351
+},
+"l": {
+"d": "1AYaEbPjbf2T9xpVzlHUBYV93WhfIQple",
+"w": 4096,
+"h": 3413,
+"um": 6.0132,
+"bytes": 2126286
+}
+}
 },
 "4488-18": {
-"d": "16IoaHTIckLW2YtlVnCqKgcAKsUFAmzur",
 "svs": "17cJHF1Nxpj-t6C2MVgY2-XW3H8hhwpAI",
+"label": "4488-18 · H&E",
+"block": "Block 18: margin of the main tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "16IoaHTIckLW2YtlVnCqKgcAKsUFAmzur",
 "w": 16384,
 "h": 16384,
 "um": 1.2528,
-"ratio": 5.0,
-"bytes": 44117908,
-"label": "4488-18 · H&E",
-"block": "Block 18: margin of the main tumour"
+"bytes": 44117908
+},
+"m": {
+"d": "1ZRLoXDOrC6O0xPHHNtE6dyqmbjCJVp5z",
+"w": 8192,
+"h": 8192,
+"um": 2.5055,
+"bytes": 13326406
+},
+"l": {
+"d": "1kvOgjo0EJGLpkQxVplr15eIfkga2Vzxj",
+"w": 4096,
+"h": 4096,
+"um": 5.011,
+"bytes": 3432443
+}
+}
 },
 "4488-19": {
-"d": "1hzgTB5XEKeERoT-1q39WKL3lkWsU-950",
 "svs": "19zbTZuM6OkZNabH6hjoNML2XAJn7Z4hU",
+"label": "4488-19 · H&E",
+"block": "Block 19: loose masses from the cyst lumen",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1hzgTB5XEKeERoT-1q39WKL3lkWsU-950",
 "w": 10923,
 "h": 16384,
 "um": 1.1275,
-"ratio": 4.5,
-"bytes": 12684079,
-"label": "4488-19 · H&E",
-"block": "Block 19: loose masses from the cyst lumen"
+"bytes": 12684079
+},
+"m": {
+"d": "1RuEH7hDoQ4jk3wemOCB09BP8-s6nmtev",
+"w": 5462,
+"h": 8192,
+"um": 2.2548,
+"bytes": 4242560
+},
+"l": {
+"d": "1hsC4AVsl7HQTBHlFnu_aWogNAGibFbhF",
+"w": 2731,
+"h": 4096,
+"um": 4.5095,
+"bytes": 1238254
+}
+}
 },
 "4488-20": {
-"d": "1dhq3JVZwE2vluwrkOjQ5V2bV-8TQwDH7",
 "svs": "1dUOMCHTZJ5GTKkM6CjxcCY8Z-3zvN3Ml",
+"label": "4488-20 · H&E",
+"block": "Block 20: liver without tumour",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1dhq3JVZwE2vluwrkOjQ5V2bV-8TQwDH7",
 "w": 16384,
 "h": 14895,
 "um": 1.378,
-"ratio": 5.5,
-"bytes": 32210811,
-"label": "4488-20 · H&E",
-"block": "Block 20: liver without tumour"
+"bytes": 32210811
+},
+"m": {
+"d": "1YQAXknIM80tkD_ElWrxFRYIb4XvamR8v",
+"w": 8192,
+"h": 7448,
+"um": 2.7561,
+"bytes": 8907952
+},
+"l": {
+"d": "1KfFHA8na5pdfH9xpevVzXiKYmnzy6_wt",
+"w": 4096,
+"h": 3724,
+"um": 5.5121,
+"bytes": 2109934
+}
+}
 },
 "cito699_Intern": {
-"d": "1_8bDtUJXDHE4GuXYwBhfrE_PhY13rU0e",
 "svs": "1HWvSOoHgByCL4cFhD5EEyi9vxsFK_rOI",
+"label": "cito 699 · H&E",
+"block": "cito 699–700: express-histology material (report: node from the peritoneum; liver focus)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1_8bDtUJXDHE4GuXYwBhfrE_PhY13rU0e",
 "w": 7022,
 "h": 16384,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 9191654,
-"label": "cito 699 · H&E",
-"block": "cito 699–700: express-histology material (report: node from the peritoneum; liver focus)"
+"bytes": 9191654
+},
+"m": {
+"d": "1NU1Lgl7lt35gJBx4NRH1OB49CVqrsabB",
+"w": 3511,
+"h": 8192,
+"um": 1.7539,
+"bytes": 3215048
+},
+"l": {
+"d": "1j3XhJ8VFiodHNQO5gPseDrWUoQYvOrb3",
+"w": 1756,
+"h": 4096,
+"um": 3.5067,
+"bytes": 1017184
+}
+}
 },
 "cito699_B-catenin": {
-"d": "1z3BX-3_j12InsS_Zo-5HIEQpgFHN8KAc",
 "svs": "1WLwmIEb0x1mmel1r9Jyo_1W1BxlTlWdZ",
+"label": "cito 699 · β-catenin",
+"block": "cito 699: express-histology material",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1z3BX-3_j12InsS_Zo-5HIEQpgFHN8KAc",
 "w": 16384,
 "h": 16384,
 "um": 0.6264,
-"ratio": 2.5,
-"bytes": 17684282,
-"label": "cito 699 · β-catenin",
-"block": "cito 699: express-histology material"
+"bytes": 17684282
+},
+"m": {
+"d": "1pZomEXVj8TFGgXpkLWlHjGqU9YMoAESb",
+"w": 8192,
+"h": 8192,
+"um": 1.2528,
+"bytes": 6129508
+},
+"l": {
+"d": "1t0ALMdpJFOc6lkPBXgr8zX-wYdzmHQ0P",
+"w": 4096,
+"h": 4096,
+"um": 2.5055,
+"bytes": 1953128
+}
+}
 },
 "cito699_Dog-1": {
-"d": "1jx1P9FvVzcJHjy89LLNVbOiPprkKdb2N",
 "svs": "1ALcp-JRLXH9rjYZd4Cda0Ec83NT8BGw9",
+"label": "cito 699 · DOG-1",
+"block": "cito 699: express-histology material",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1jx1P9FvVzcJHjy89LLNVbOiPprkKdb2N",
 "w": 16384,
 "h": 9362,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 11002119,
-"label": "cito 699 · DOG-1",
-"block": "cito 699: express-histology material"
+"bytes": 11002119
+},
+"m": {
+"d": "1MQI9FaopnTYkMFbigYS-TAdGpB6srxOg",
+"w": 8192,
+"h": 4681,
+"um": 1.7539,
+"bytes": 3758544
+},
+"l": {
+"d": "1LCGpI7lk30u2BjyWp-Ge-TwTdFiYW2hK",
+"w": 4096,
+"h": 2340,
+"um": 3.5077,
+"bytes": 1089170
+}
+}
 },
 "cito699_Cd68": {
-"d": "1TJWcVdCHjQx96moB95sX2HiJu5FbalhY",
 "svs": "1Ywo-qWGcOiozzDRxQ5r1WPK9b9WKGx1O",
+"label": "cito 699 · CD68",
+"block": "cito 699: express-histology material",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1TJWcVdCHjQx96moB95sX2HiJu5FbalhY",
 "w": 16384,
 "h": 9362,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 10364291,
-"label": "cito 699 · CD68",
-"block": "cito 699: express-histology material"
+"bytes": 10364291
+},
+"m": {
+"d": "1JY2ZEmw8wuAhj58GST06lX18F9Jw_0Qn",
+"w": 8192,
+"h": 4681,
+"um": 1.7539,
+"bytes": 3566616
+},
+"l": {
+"d": "1Tex0Eftnfy2mYJbxUqYGyX_s4WMfSBsw",
+"w": 4096,
+"h": 2340,
+"um": 3.5077,
+"bytes": 1070266
+}
+}
 },
 "cito700_Intern": {
-"d": "1ctPwJ29AaO3secsPpU2rnYmv6-UM3o36",
 "svs": "1wPzAeWP87r9aCM0poayoPHBrwcYySvN-",
+"label": "cito 700 · H&E",
+"block": "cito 699–700: express-histology material",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1ctPwJ29AaO3secsPpU2rnYmv6-UM3o36",
 "w": 14336,
 "h": 16384,
 "um": 0.2506,
-"ratio": 1.0,
-"bytes": 9966802,
-"label": "cito 700 · H&E",
-"block": "cito 699–700: express-histology material"
+"bytes": 9966802
+},
+"m": {
+"d": "1sZ8zH-R3_tSnyRe5QhgMUE_mXhEjonFa",
+"w": 7168,
+"h": 8192,
+"um": 0.5011,
+"bytes": 2136289
+},
+"l": {
+"d": "1Ttwd16WFpUElnQFFsJ3N_-cP8ajVcZsF",
+"w": 3584,
+"h": 4096,
+"um": 1.0022,
+"bytes": 508567
+}
+}
 },
 "4222-1": {
-"d": "1dywoBwv7bhw9-6bNbyMKTfa_g7gDV-Oi",
 "svs": "1cQV_s2EMOxyy7036QdeBDKU89edahN2L",
+"label": "4222-1 · H&E",
+"block": "Biopsy 05.10.2026: gastric fragment, 1.5 × 1 × 1.5 cm (by shape; the report gives hyalinised tissue without viable tumour cells)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1dywoBwv7bhw9-6bNbyMKTfa_g7gDV-Oi",
 "w": 16384,
 "h": 11703,
 "um": 0.8769,
-"ratio": 3.5,
-"bytes": 16414374,
-"label": "4222-1 · H&E",
-"block": "Biopsy 05.10.2026: gastric fragment, 1.5 × 1 × 1.5 cm (by shape; the report gives hyalinised tissue without viable tumour cells)"
+"bytes": 16414374
+},
+"m": {
+"d": "1-G9zUMWiWa95TkSZ2kKlV5UZLuJAzdV2",
+"w": 8192,
+"h": 5852,
+"um": 1.7539,
+"bytes": 4783567
+},
+"l": {
+"d": "1svYN7se2SDb-FjOHw5sjT0saI4nr-9h_",
+"w": 4096,
+"h": 2926,
+"um": 3.5077,
+"bytes": 1210965
+}
+}
 },
 "4222-2": {
-"d": "1200zJ6tsJlPOS9ePL35vUBJpKdfQ1IqT",
 "svs": "1cHS2ZnrKMZzxwSuqyCNHMPsqWCdptJhE",
+"label": "4222-2 · H&E",
+"block": "Biopsy 05.10.2026: liver trepan core, segments II–III (by shape and IHC)",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1200zJ6tsJlPOS9ePL35vUBJpKdfQ1IqT",
 "w": 16384,
 "h": 16384,
 "um": 0.3758,
-"ratio": 1.5,
-"bytes": 11198089,
-"label": "4222-2 · H&E",
-"block": "Biopsy 05.10.2026: liver trepan core, segments II–III (by shape and IHC)"
+"bytes": 11198089
+},
+"m": {
+"d": "1q-vDOQzeib0CCqXcRGHD84C9B-vrfyHC",
+"w": 8192,
+"h": 8192,
+"um": 0.7517,
+"bytes": 3323278
+},
+"l": {
+"d": "1QLatY4S8CPqFkoUE25PtCHeNOBhcjNEM",
+"w": 4096,
+"h": 4096,
+"um": 1.5033,
+"bytes": 927399
+}
+}
 },
 "4222-2_Cd117": {
-"d": "1fobAezsB3ZGFHH2kC1KfDg2fX7XihllL",
 "svs": "1U4rJA_5SyddFb4oIuJCD_qpln54tFviq",
+"label": "4222-2 · CD117",
+"block": "Liver trepan core",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1fobAezsB3ZGFHH2kC1KfDg2fX7XihllL",
 "w": 10240,
 "h": 16384,
 "um": 0.5011,
-"ratio": 2.0,
-"bytes": 7595600,
-"label": "4222-2 · CD117",
-"block": "Liver trepan core"
+"bytes": 7595600
+},
+"m": {
+"d": "1fONB1WZwa77pt9Dwy9u4CQl3AurecHPR",
+"w": 5120,
+"h": 8192,
+"um": 1.0022,
+"bytes": 2203360
+},
+"l": {
+"d": "1SdONqeoZuZ4BK0u38KtP87MHgPztabPh",
+"w": 2560,
+"h": 4096,
+"um": 2.0044,
+"bytes": 584945
+}
+}
 },
 "4222-2_Dog1": {
-"d": "1U3hSDnoNL6xAK7feqlmezgGD0aQw6Hfq",
 "svs": "1Jjp_DXCCX3CM8rlzEPCS8F7WGO-XKC8n",
+"label": "4222-2 · DOG-1",
+"block": "Liver trepan core",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1U3hSDnoNL6xAK7feqlmezgGD0aQw6Hfq",
 "w": 10240,
 "h": 16384,
 "um": 0.5011,
-"ratio": 2.0,
-"bytes": 3610260,
-"label": "4222-2 · DOG-1",
-"block": "Liver trepan core"
+"bytes": 3610260
+},
+"m": {
+"d": "1e53z2MdBX-SN3fKjuSioWMZgH3DhQwac",
+"w": 5120,
+"h": 8192,
+"um": 1.0022,
+"bytes": 859828
+},
+"l": {
+"d": "1S6IXv3o6AIjXT22druhNw_8tde2TMzTf",
+"w": 2560,
+"h": 4096,
+"um": 2.0044,
+"bytes": 197461
+}
+}
 },
 "4222-2_Ki67": {
-"d": "1-SXQMF0COSt_WdZjGkyzUqw6S_u431GD",
 "svs": "1VIh05H4uhaMoqDtDGp8vjVcfDsNSh01n",
+"label": "4222-2 · Ki-67",
+"block": "Liver trepan core",
+"native_um": 0.250552,
+"sizes": {
+"h": {
+"d": "1-SXQMF0COSt_WdZjGkyzUqw6S_u431GD",
 "w": 11469,
 "h": 16384,
 "um": 0.3132,
-"ratio": 1.25,
-"bytes": 12647891,
-"label": "4222-2 · Ki-67",
-"block": "Liver trepan core"
+"bytes": 12647891
+},
+"m": {
+"d": "1-bkcfdO2HXHCMxgDd6q4v2v6VnE2UZ_1",
+"w": 5734,
+"h": 8192,
+"um": 0.6264,
+"bytes": 3753301
+},
+"l": {
+"d": "1Y1vW_asW8Y9wP3qzpo6Jw9yd9Pp2PGTh",
+"w": 2867,
+"h": 4096,
+"um": 1.2529,
+"bytes": 1044350
+}
+}
 }
 }
