@@ -44,7 +44,7 @@ header a{color:var(--accent);font-size:13.5px}
 <div id="pick" class="ov"><div class="box"><h2>Choose image size</h2><p id="pickp">Larger sizes show more detail when zoomed in, but take longer to load and need more memory.</p><div id="opts"></div>
 <p style="margin-top:10px">You can switch size later from the bar at the top.</p></div></div>
 <div id="load" class="ov" style="display:none"><div class="box"><div class="t" id="lt">Preparing…</div><div class="track"><div class="fill" id="lf"></div></div><div class="s" id="ls"></div></div></div>
-<div id="scale"><span id="sl"></span><div class="b" id="sb"></div></div></div>
+<div id="notice" style="display:none;position:absolute;left:10px;bottom:44px;right:10px;max-width:640px;background:rgba(40,30,0,.92);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px;z-index:5"></div><div id="scale"><span id="sl"></span><div class="b" id="sb"></div></div></div>
 <div id="info">Scroll or pinch to zoom, drag to move. This image is a reduced copy of the scan for viewing in the browser; for cell detail at full 40× open the original SVS in QuPath, ImageScope or ASAP.</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
 <script>
@@ -58,7 +58,7 @@ const meta=all&&all[sid];
 if(!meta){show('pick',0);fail('Unknown slide. <a href="slides-2026-11.html" style="color:#7fb2ff">Back to the slide list</a>.');return}
 document.title=meta.label+' · slide viewer';$('title').textContent=meta.label;
 $('svs').href='https://drive.google.com/file/d/'+meta.svs+'/view';$('back').href='slides-2026-11.html#s-'+sid;
-// Drive API key: restricted to the Drive API and to https://hcl14.github.io/* (plain Drive links are blocked for cross-site loading)
+// Drive API key (intentionally public browser key; GitHub flags it): restricted to the Drive API and to https://hcl14.github.io/* (plain Drive links are blocked for cross-site loading)
 const KEY='AIzaSyB0kAbntnLSG_wOMeTPxayaW5MsYl7RPH0';
 // device guess: phones and small tablets get "low", other touch devices or low memory get "medium", computers "high"
 const coarse=matchMedia('(pointer:coarse)').matches,small=Math.min(screen.width,screen.height)<600,mem=navigator.deviceMemory||8;
@@ -80,27 +80,39 @@ async function start(k){
   $('dl').href='https://drive.google.com/file/d/'+z.d+'/view';
   try{history.replaceState(null,'','?s='+encodeURIComponent(sid)+'&q='+k)}catch(e){}
   if(viewer){viewer.destroy();viewer=null;$('osd').innerHTML='';}
-  const url='https://www.googleapis.com/drive/v3/files/'+z.d+'?alt=media&key='+KEY;
-  $('lt').textContent='Downloading image ('+NAMES[k].toLowerCase()+' size)';$('ls').textContent='';$('lf').classList.remove('ind');$('lf').style.width='0';
-  let blob;
-  try{
-    const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);
-    const total=+r.headers.get('content-length')||z.bytes||0;
-    if(r.body&&r.body.getReader){
-      const rd=r.body.getReader(),chunks=[];let got=0,t0=performance.now();
-      for(;;){const {done,value}=await rd.read();if(done)break;chunks.push(value);got+=value.length;
-        const p=total?Math.min(100,got/total*100):0,sp=got/1e6/((performance.now()-t0)/1000+1e-3);
-        $('lf').style.width=p.toFixed(1)+'%';
-        $('ls').textContent=(got/1e6).toFixed(1)+' of '+(total/1e6).toFixed(1)+' MB · '+p.toFixed(0)+' % · '+sp.toFixed(1)+' MB/s'+(total&&sp>0?' · about '+Math.max(0,Math.round((total-got)/1e6/sp))+' s left':'');}
-      blob=new Blob(chunks,{type:'image/jpeg'});
-    }else{$('lf').classList.add('ind');blob=await r.blob();}
-  }catch(e){busy=false;fail('Download failed ('+e.message+'). Try a smaller size from the bar at the top, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}
-  $('lt').textContent='Decoding image';$('ls').textContent=z.w+' × '+z.h+' px; this takes a few seconds';$('lf').style.width='0';$('lf').classList.add('ind');
+  const driveUrl='https://www.googleapis.com/drive/v3/files/'+z.d+'?alt=media&key='+KEY;
+  const localUrl='img/slides_2026-11/zoom_l/'+encodeURIComponent(sid)+'.jpg';
+  // Low is served from this site (no key needed); Medium/High come from Drive, and fall back to Low here if Drive refuses
+  let blob,note='';
+  try{blob=await grab(k==='l'?localUrl:driveUrl,z.bytes,k);}
+  catch(e){
+    if(k==='l'){try{blob=await grab(driveUrl,z.bytes,k);}catch(e2){busy=false;fail('Download failed ('+e2.message+'). Please reload the page, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}}
+    else{const zl=meta.sizes.l;
+      try{blob=await grab(localUrl,zl.bytes,'l');}catch(e2){busy=false;fail('Download failed ('+e.message+'). Please reload the page, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}
+      note=NAMES[k]+' size is not available right now ('+e.message+'); showing Low size instead. <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">Open the '+NAMES[k].toLowerCase()+' JPEG on Google Drive</a>.';
+      k='l';cur='l';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==='l'));
+      $('sub').textContent=meta.block+' · Low size: '+res('l');}
+  }
+  const zz=meta.sizes[k];
+  $('notice').innerHTML=note;$('notice').style.display=note?'block':'none';
+  $('lt').textContent='Decoding image';$('ls').textContent=zz.w+' × '+zz.h+' px; this takes a few seconds';$('lf').style.width='0';$('lf').classList.add('ind');
   await new Promise(r=>setTimeout(r,30));
   let src;
   try{if(window.createImageBitmap)src=await createImageBitmap(blob);else{src=new Image();src.src=URL.createObjectURL(blob);await src.decode();}}
-  catch(e){busy=false;fail('This device could not decode an image of '+z.w+' × '+z.h+' px.'+(k!=='l'?' <b>Please choose a smaller size</b> from the bar at the top.':' You can <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.'));return}
-  open(src,z);busy=false;
+  catch(e){busy=false;fail('This device could not decode an image of '+zz.w+' × '+zz.h+' px.'+(k!=='l'?' <b>Please choose a smaller size</b> from the bar at the top.':' You can <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+zz.d+'/view">open the JPEG on Google Drive</a>.'));return}
+  open(src,zz);busy=false;
+}
+async function grab(url,expect,k){
+  $('lt').textContent='Downloading image ('+NAMES[k].toLowerCase()+' size)';$('ls').textContent='';$('lf').classList.remove('ind');$('lf').style.width='0';
+  const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);
+  const total=+r.headers.get('content-length')||expect||0;
+  if(!(r.body&&r.body.getReader)){$('lf').classList.add('ind');return await r.blob();}
+  const rd=r.body.getReader(),chunks=[];let got=0,t0=performance.now();
+  for(;;){const {done,value}=await rd.read();if(done)break;chunks.push(value);got+=value.length;
+    const p=total?Math.min(100,got/total*100):0,sp=got/1e6/((performance.now()-t0)/1000+1e-3);
+    $('lf').style.width=p.toFixed(1)+'%';
+    $('ls').textContent=(got/1e6).toFixed(1)+' of '+(total/1e6).toFixed(1)+' MB · '+p.toFixed(0)+' % · '+sp.toFixed(1)+' MB/s'+(total&&sp>0?' · about '+Math.max(0,Math.round((total-got)/1e6/sp))+' s left':'');}
+  return new Blob(chunks,{type:'image/jpeg'});
 }
 function open(src,z){
   const W=z.w,H=z.h,TS=512,mips=[src];
