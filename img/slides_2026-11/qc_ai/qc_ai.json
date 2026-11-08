@@ -1,0 +1,232 @@
+{
+ "tool": "GrandQC (Weng et al., Nat Commun 2024), artifact model 1.0 \u00b5m/px, run 2026-11-08 on the original scans",
+ "classes": {
+  "2": "fold",
+  "3": "dark_spot_foreign",
+  "4": "pen",
+  "5": "bubble_edge",
+  "6": "out_of_focus"
+ },
+ "slides": {
+  "4222-1": {
+   "tissue_mm2": 70.5,
+   "fold_pct": 1.2,
+   "dark_spot_foreign_pct": 1.8,
+   "pen_pct": 2.4,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 15.1,
+   "w_frac": 1.00002,
+   "h_frac_of_w": 0.71438
+  },
+  "4222-2": {
+   "tissue_mm2": 4.7,
+   "fold_pct": 0.0,
+   "dark_spot_foreign_pct": 0.2,
+   "pen_pct": 0.0,
+   "bubble_edge_pct": 0.0,
+   "out_of_focus_pct": 0.0,
+   "w_frac": 1.00007,
+   "h_frac_of_w": 1.00007
+  },
+  "4488-10_26": {
+   "tissue_mm2": 320.0,
+   "fold_pct": 0.1,
+   "dark_spot_foreign_pct": 1.2,
+   "pen_pct": 0.5,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 2.0,
+   "w_frac": 1.00005,
+   "h_frac_of_w": 0.76919
+  },
+  "4488-11": {
+   "tissue_mm2": 170.1,
+   "fold_pct": 0.6,
+   "dark_spot_foreign_pct": 0.1,
+   "pen_pct": 0.9,
+   "bubble_edge_pct": 2.0,
+   "out_of_focus_pct": 0.3,
+   "w_frac": 1.00012,
+   "h_frac_of_w": 1.00012
+  },
+  "4488-12": {
+   "tissue_mm2": 126.2,
+   "fold_pct": 1.9,
+   "dark_spot_foreign_pct": 0.2,
+   "pen_pct": 0.9,
+   "bubble_edge_pct": 0.5,
+   "out_of_focus_pct": 7.8,
+   "w_frac": 1.00016,
+   "h_frac_of_w": 1.14284
+  },
+  "4488-13": {
+   "tissue_mm2": 171.6,
+   "fold_pct": 4.2,
+   "dark_spot_foreign_pct": 0.3,
+   "pen_pct": 1.2,
+   "bubble_edge_pct": 8.5,
+   "out_of_focus_pct": 1.2,
+   "w_frac": 1.00004,
+   "h_frac_of_w": 1.00004
+  },
+  "4488-14": {
+   "tissue_mm2": 281.3,
+   "fold_pct": 0.7,
+   "dark_spot_foreign_pct": 0.3,
+   "pen_pct": 1.0,
+   "bubble_edge_pct": 3.4,
+   "out_of_focus_pct": 10.1,
+   "w_frac": 1.00005,
+   "h_frac_of_w": 0.84631
+  },
+  "4488-15": {
+   "tissue_mm2": 227.8,
+   "fold_pct": 4.4,
+   "dark_spot_foreign_pct": 0.2,
+   "pen_pct": 0.4,
+   "bubble_edge_pct": 1.1,
+   "out_of_focus_pct": 3.7,
+   "w_frac": 1.00004,
+   "h_frac_of_w": 1.00004
+  },
+  "4488-16": {
+   "tissue_mm2": 244.5,
+   "fold_pct": 1.3,
+   "dark_spot_foreign_pct": 0.3,
+   "pen_pct": 0.8,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 0.2,
+   "w_frac": 1.00011,
+   "h_frac_of_w": 0.83328
+  },
+  "4488-17": {
+   "tissue_mm2": 246.4,
+   "fold_pct": 1.9,
+   "dark_spot_foreign_pct": 0.6,
+   "pen_pct": 0.4,
+   "bubble_edge_pct": 0.4,
+   "out_of_focus_pct": 0.3,
+   "w_frac": 1.00011,
+   "h_frac_of_w": 0.83328
+  },
+  "4488-18": {
+   "tissue_mm2": 215.0,
+   "fold_pct": 0.9,
+   "dark_spot_foreign_pct": 0.0,
+   "pen_pct": 0.3,
+   "bubble_edge_pct": 2.5,
+   "out_of_focus_pct": 4.4,
+   "w_frac": 1.00004,
+   "h_frac_of_w": 1.00004
+  },
+  "4488-19": {
+   "tissue_mm2": 57.2,
+   "fold_pct": 0.4,
+   "dark_spot_foreign_pct": 0.5,
+   "pen_pct": 0.0,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 52.4,
+   "w_frac": 0.99999,
+   "h_frac_of_w": 1.50019
+  },
+  "4488-1_Intern": {
+   "tissue_mm2": 245.4,
+   "fold_pct": 0.9,
+   "dark_spot_foreign_pct": 2.9,
+   "pen_pct": 0.8,
+   "bubble_edge_pct": 0.0,
+   "out_of_focus_pct": 10.7,
+   "w_frac": 1.00011,
+   "h_frac_of_w": 0.75001
+  },
+  "4488-20": {
+   "tissue_mm2": 171.2,
+   "fold_pct": 0.1,
+   "dark_spot_foreign_pct": 0.2,
+   "pen_pct": 0.0,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 2.1,
+   "w_frac": 1.00001,
+   "h_frac_of_w": 0.90913
+  },
+  "4488-2_Intern": {
+   "tissue_mm2": 314.6,
+   "fold_pct": 1.4,
+   "dark_spot_foreign_pct": 2.4,
+   "pen_pct": 1.2,
+   "bubble_edge_pct": 0.1,
+   "out_of_focus_pct": 20.4,
+   "w_frac": 1.00011,
+   "h_frac_of_w": 0.83328
+  },
+  "4488-3_Intern": {
+   "tissue_mm2": 399.5,
+   "fold_pct": 2.7,
+   "dark_spot_foreign_pct": 5.3,
+   "pen_pct": 2.2,
+   "bubble_edge_pct": 0.5,
+   "out_of_focus_pct": 41.2,
+   "w_frac": 1.00011,
+   "h_frac_of_w": 1.00011
+  },
+  "4488-4_Intern": {
+   "tissue_mm2": 361.2,
+   "fold_pct": 0.4,
+   "dark_spot_foreign_pct": 5.5,
+   "pen_pct": 3.4,
+   "bubble_edge_pct": 0.6,
+   "out_of_focus_pct": 20.8,
+   "w_frac": 1.00005,
+   "h_frac_of_w": 1.00005
+  },
+  "4488-5_Intern": {
+   "tissue_mm2": 330.4,
+   "fold_pct": 2.7,
+   "dark_spot_foreign_pct": 4.8,
+   "pen_pct": 3.9,
+   "bubble_edge_pct": 0.6,
+   "out_of_focus_pct": 10.4,
+   "w_frac": 1.00005,
+   "h_frac_of_w": 0.92318
+  },
+  "4488-6_Intern": {
+   "tissue_mm2": 54.4,
+   "fold_pct": 0.0,
+   "dark_spot_foreign_pct": 0.3,
+   "pen_pct": 0.1,
+   "bubble_edge_pct": 9.4,
+   "out_of_focus_pct": 0.6,
+   "w_frac": 1.00007,
+   "h_frac_of_w": 1.16669
+  },
+  "4488-7_Intern": {
+   "tissue_mm2": 53.0,
+   "fold_pct": 0.0,
+   "dark_spot_foreign_pct": 0.1,
+   "pen_pct": 0.1,
+   "bubble_edge_pct": 0.5,
+   "out_of_focus_pct": 3.6,
+   "w_frac": 0.99999,
+   "h_frac_of_w": 0.62515
+  },
+  "4488-8_Intern": {
+   "tissue_mm2": 107.7,
+   "fold_pct": 0.1,
+   "dark_spot_foreign_pct": 5.0,
+   "pen_pct": 0.0,
+   "bubble_edge_pct": 0.4,
+   "out_of_focus_pct": 66.1,
+   "w_frac": 1.00001,
+   "h_frac_of_w": 0.90913
+  },
+  "4488-9": {
+   "tissue_mm2": 75.5,
+   "fold_pct": 6.3,
+   "dark_spot_foreign_pct": 0.7,
+   "pen_pct": 0.1,
+   "bubble_edge_pct": 0.5,
+   "out_of_focus_pct": 0.3,
+   "w_frac": 1.00016,
+   "h_frac_of_w": 1.28587
+  }
+ }
+}
