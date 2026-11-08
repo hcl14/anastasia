@@ -33,6 +33,10 @@ header a{color:var(--accent);font-size:13.5px}
 .warn{display:inline-block;margin-left:8px;font-size:12px;font-weight:600;color:#ffcf7a}
 #scale{position:absolute;left:12px;bottom:12px;z-index:5;background:rgba(255,255,255,.88);color:#111;padding:3px 8px 5px;border-radius:4px;font-size:12.5px;pointer-events:none;display:none}
 #scale .b{height:5px;background:#111;margin-top:3px}
+#scale .zr{color:#555;margin-left:6px}
+#scale.over{background:rgba(255,214,120,.95)}#scale.over .zr{color:#7a3d00;font-weight:700}
+#over{position:absolute;left:12px;top:56px;z-index:6;display:none;max-width:min(520px,calc(100% - 24px));background:rgba(122,61,0,.94);color:#fff;padding:6px 10px;border-radius:6px;font-size:13.5px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
+#over b{color:#ffd678}#over button{font:inherit;font-size:12.5px;margin-left:6px;padding:1px 8px;border-radius:4px;border:1px solid #ffd678;background:transparent;color:#ffd678;cursor:pointer}
 #info{color:var(--muted);font-size:12.5px;padding:6px 14px;background:#14213d}
 </style>
 </head>
@@ -44,8 +48,8 @@ header a{color:var(--accent);font-size:13.5px}
 <div id="pick" class="ov"><div class="box"><h2>Choose image size</h2><p id="pickp">Larger sizes show more detail when zoomed in, but take longer to load and need more memory.</p><div id="opts"></div>
 <p style="margin-top:10px">You can switch size later from the bar at the top.</p></div></div>
 <div id="load" class="ov" style="display:none"><div class="box"><div class="t" id="lt">Preparing…</div><div class="track"><div class="fill" id="lf"></div></div><div class="s" id="ls"></div></div></div>
-<div id="notice" style="display:none;position:absolute;left:10px;bottom:44px;right:10px;max-width:640px;background:rgba(40,30,0,.92);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px;z-index:5"></div><div id="scale"><span id="sl"></span><div class="b" id="sb"></div></div></div>
-<div id="info">Scroll or pinch to zoom, drag to move. This image is a reduced copy of the scan for viewing in the browser; for cell detail at full 40× open the original SVS in QuPath, ImageScope or ASAP.</div>
+<div id="notice" style="display:none;position:absolute;left:10px;bottom:44px;right:10px;max-width:640px;background:rgba(40,30,0,.92);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px;z-index:5"></div><div id="over"></div><div id="scale"><span id="sl"></span><span class="zr" id="zr"></span><div class="b" id="sb"></div></div></div>
+<div id="info">Scroll or pinch to zoom, drag to move. The number next to the scale bar is the magnification relative to the image's own pixels (1× = one image pixel per screen pixel); above 1× the image is only enlarged and looks blurred. This image is a reduced copy of the scan for viewing in the browser; for cell detail at full 40× open the original SVS in QuPath, ImageScope or ASAP.</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
 <script>
 (async function(){
@@ -74,7 +78,7 @@ $('opts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickSize(b.dataset.k
 $('szsw').querySelectorAll('button').forEach(b=>b.onclick=()=>pickSize(b.dataset.k));
 const q=qs.get('q');if(q&&meta.sizes[q])start(q);
 async function start(k){
-  busy=true;cur=k;const z=meta.sizes[k];show('pick',0);show('load',1);$('scale').style.display='none';
+  busy=true;cur=k;const z=meta.sizes[k];show('pick',0);show('load',1);$('scale').style.display='none';$('over').style.display='none';
   $('szsw').style.display='inline';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
   $('sub').textContent=meta.block+' · '+NAMES[k]+' size: '+res(k);
   $('dl').href='https://drive.google.com/file/d/'+z.d+'/view';
@@ -135,7 +139,18 @@ function open(src,z){
     gestureSettingsMouse:{clickToZoom:false},crossOriginPolicy:false});
   const nice=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000];
   const upd=()=>{if(!viewer||!viewer.world.getItemCount())return;const zz=viewer.world.getItemAt(0).viewportToImageZoom(viewer.viewport.getZoom(true)),u=z.um/zz;
-    let L=nice[0];for(const n of nice){if(n/u<=150)L=n;}$('sb').style.width=(L/u).toFixed(0)+'px';$('sl').textContent=L>=1000?(L/1000)+' mm':L+' µm';};
+    let L=nice[0];for(const n of nice){if(n/u<=150)L=n;}$('sb').style.width=(L/u).toFixed(0)+'px';$('sl').textContent=L>=1000?(L/1000)+' mm':L+' µm';
+    // past 1:1 (one image pixel per device pixel) the picture is only enlarged, so it blurs
+    const r=zz*(window.devicePixelRatio||1),past=r>1.05;
+    $('zr').textContent=(r<0.095?r.toFixed(2):r<9.95?r.toFixed(1):r.toFixed(0))+'×'+(past?' · past 1:1':'');
+    $('scale').classList.toggle('over',past);
+    if(past!==wasOver){wasOver=past;
+      const bigger=cur==='l'?'m':cur==='m'?'h':null;
+      $('over').innerHTML=past?'<b>Past 1:1</b>: zoomed beyond the pixels of this '+NAMES[cur].toLowerCase()+' image, so it looks blurred.'+(bigger?' <button data-k="'+bigger+'">Load '+NAMES[bigger]+' size</button>':' For finer detail open the original SVS.'):'';
+      $('over').style.display=past?'block':'none';
+      const b=$('over').querySelector('button');if(b)b.onclick=()=>pickSize(b.dataset.k);}
+  };
+  let wasOver=null;
   viewer.addHandler('open',()=>{show('load',0);$('scale').style.display='block';upd();});
   viewer.addHandler('open-failed',e=>fail('Viewer error: '+(e.message||'unknown')));
   viewer.addHandler('animation',upd);viewer.addHandler('resize',upd);
