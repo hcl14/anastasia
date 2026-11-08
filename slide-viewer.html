@@ -36,21 +36,25 @@ header a{color:var(--accent);font-size:13.5px}
 #scale .zr{color:#555;margin-left:6px}
 #scale.over{background:rgba(255,214,120,.95)}#scale.over .zr{color:#7a3d00;font-weight:700}
 #over{position:absolute;left:12px;top:56px;z-index:6;display:none;max-width:min(520px,calc(100% - 24px));background:rgba(122,61,0,.94);color:#fff;padding:6px 10px;border-radius:6px;font-size:13.5px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
-#over b{color:#ffd678}#over button{font:inherit;font-size:12.5px;margin-left:6px;padding:1px 8px;border-radius:4px;border:1px solid #ffd678;background:transparent;color:#ffd678;cursor:pointer}
+#over b{color:#ffd678}
+#qcbtn{display:none;font:inherit;font-size:12.5px;padding:2px 9px;border-radius:4px;border:1px solid #4a5874;background:#1d2b4f;color:var(--fg);cursor:pointer}#qcbtn.on{background:#6e28c8;border-color:#6e28c8;color:#fff}
+#qcleg{display:none;position:absolute;right:12px;bottom:12px;z-index:6;background:rgba(255,255,255,.93);color:#111;padding:7px 10px;border-radius:6px;font-size:12.5px;max-width:300px;line-height:1.5}#qcleg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}#qcleg .n{color:#555;font-size:11.5px;margin-top:4px}#qcleg input{width:100%}#over button{font:inherit;font-size:12.5px;margin-left:6px;padding:1px 8px;border-radius:4px;border:1px solid #ffd678;background:transparent;color:#ffd678;cursor:pointer}
 #info{color:var(--muted);font-size:12.5px;padding:6px 14px;background:#14213d}
 </style>
 </head>
 <body>
 <header><h1 id="title">Slide viewer</h1><span class="meta" id="sub"></span>
-<span id="szsw">Size:<button data-k="l">Low</button><button data-k="m">Medium</button><button data-k="h">High</button></span>
-<a href="slides-2026-11.html" id="back">← all slide scans</a><a id="svs" href="#" target="_blank">original SVS on Drive</a><a id="dl" href="#" target="_blank">this JPEG on Drive</a></header>
+<span id="szsw">Size:<button data-k="o">Original</button><button data-k="l">Low</button><button data-k="m">Medium</button><button data-k="h">High</button></span>
+<button id="qcbtn" title="Automatic quality-control map computed by GrandQC">AI quality map</button><a href="slides-2026-11.html" id="back">← all slide scans</a><a id="svs" href="#" target="_blank">original SVS on Drive</a><a id="dl" href="#" target="_blank">this JPEG on Drive</a></header>
 <div id="wrap"><div id="osd"></div>
-<div id="pick" class="ov"><div class="box"><h2>Choose image size</h2><p id="pickp">Larger sizes show more detail when zoomed in, but take longer to load and need more memory.</p><div id="opts"></div>
+<div id="pick" class="ov"><div class="box"><h2>Choose image size</h2><p id="pickp">The original scan has full 40× detail and loads only what is on screen. The three reduced sizes are single images: larger ones show more detail but take longer to load and need more memory.</p><div id="opts"></div>
 <p style="margin-top:10px">You can switch size later from the bar at the top.</p></div></div>
 <div id="load" class="ov" style="display:none"><div class="box"><div class="t" id="lt">Preparing…</div><div class="track"><div class="fill" id="lf"></div></div><div class="s" id="ls"></div></div></div>
-<div id="notice" style="display:none;position:absolute;left:10px;bottom:44px;right:10px;max-width:640px;background:rgba(40,30,0,.92);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px;z-index:5"></div><div id="over"></div><div id="scale"><span id="sl"></span><span class="zr" id="zr"></span><div class="b" id="sb"></div></div></div>
-<div id="info">Scroll or pinch to zoom, drag to move. The number next to the scale bar is the magnification relative to the image's own pixels (1× = one image pixel per screen pixel); above 1× the image is only enlarged and looks blurred. This image is a reduced copy of the scan for viewing in the browser; for cell detail at full 40× open the original SVS in QuPath, ImageScope or ASAP.</div>
+<div id="notice" style="display:none;position:absolute;left:10px;bottom:44px;right:10px;max-width:640px;background:rgba(40,30,0,.92);color:#fff;padding:8px 12px;border-radius:6px;font-size:14px;z-index:5"></div><div id="over"></div><div id="qcleg"></div><div id="scale"><span id="sl"></span><span class="zr" id="zr"></span><div class="b" id="sb"></div></div></div>
+<div id="info">Scroll or pinch to zoom, drag to move. The number next to the scale bar is the magnification relative to the image's own pixels (1× = one image pixel per screen pixel); above 1× the image is only enlarged and looks blurred. Original size shows the scan at full 40× resolution; Low, Medium and High are reduced copies. The SVS file also opens in QuPath, ImageScope or ASAP.</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
+<!-- GeoTIFFTileSource (MIT, github.com/pearcetm/GeoTIFFTileSource): reads only the visible tiles of the original SVS with HTTP range requests -->
+<script src="https://cdn.jsdelivr.net/npm/geotiff-tilesource@2.3.2/dist/geotiff-tilesource.min.js"></script>
 <script>
 (async function(){
 const $=id=>document.getElementById(id);
@@ -64,20 +68,36 @@ document.title=meta.label+' · slide viewer';$('title').textContent=meta.label;
 $('svs').href='https://drive.google.com/file/d/'+meta.svs+'/view';$('back').href='slides-2026-11.html#s-'+sid;
 // Drive API key (intentionally public browser key; GitHub flags it): restricted to the Drive API and to https://hcl14.github.io/* (plain Drive links are blocked for cross-site loading)
 const KEY='AIzaSyB0kAbntnLSG_wOMeTPxayaW5MsYl7RPH0';
-// device guess: phones and small tablets get "low", other touch devices or low memory get "medium", computers "high"
-const coarse=matchMedia('(pointer:coarse)').matches,small=Math.min(screen.width,screen.height)<600,mem=navigator.deviceMemory||8;
-const rec=(coarse&&small)||mem<=2?'l':(coarse||mem<=4?'m':'h');
-const deviceName={l:'phone',m:'tablet or low-memory device',h:'computer'}[rec];
-const NAMES={l:'Low',m:'Medium',h:'High'},DESC={l:'quick to load; best for phones',m:'for tablets or slow connections',h:'most detail; for a computer'};
+// "Original" streams only the visible tiles of the SVS, so it suits every device; the JPEG sizes stay as alternatives and fallback
+const coarse=matchMedia('(pointer:coarse)').matches,small=Math.min(screen.width,screen.height)<600;
+const rec='o';
+const NAMES={o:'Original',l:'Low',m:'Medium',h:'High'},DESC={l:'one reduced JPEG; quick to load',m:'one reduced JPEG; for tablets or slow connections',h:'one reduced JPEG; for a computer'};
+const nat=meta.sizes.h,natW=Math.round(nat.w*nat.um/meta.native_um),natH=Math.round(nat.h*nat.um/meta.native_um);
 const fmt=b=>b>=1e7?(b/1e6).toFixed(0)+' MB':(b/1e6).toFixed(1)+' MB';
 const res=k=>{const z=meta.sizes[k],r=meta.native_um?z.um/meta.native_um:1;return z.w+' × '+z.h+' px · '+z.um.toFixed(2)+' µm per pixel'+(r>1.05?' (1:'+r.toFixed(1)+' of the scan)':' (full scan resolution)');};
-$('opts').innerHTML=['l','m','h'].map(k=>'<button class="opt'+(k===rec?' rec':'')+'" data-k="'+k+'"><b>'+NAMES[k]+'</b> · '+fmt(meta.sizes[k].bytes)+(k===rec?'<span class="tag">Recommended for this '+deviceName+'</span>':'')+(rec==='l'&&k==='h'?'<span class="warn">may not open on a phone</span>':'')+'<span class="d">'+DESC[k]+' · '+res(k)+'</span></button>').join('');
+$('opts').innerHTML='<button class="opt rec" data-k="o"><b>Original scan</b> · full 40× detail<span class="tag">Recommended</span><span class="d">streamed: only the part on screen is loaded · '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel (full scan resolution)</span></button>'+
+  ['l','m','h'].map(k=>'<button class="opt" data-k="'+k+'"><b>'+NAMES[k]+'</b> · '+fmt(meta.sizes[k].bytes)+(coarse&&small&&k==='h'?'<span class="warn">may not open on a phone</span>':'')+'<span class="d">'+DESC[k]+' · '+res(k)+'</span></button>').join('');
 let viewer=null,cur=null,busy=false;
+// automatic quality-control overlay (GrandQC), precomputed per slide: img/slides_2026-11/qc_ai/<id>.png + qc_ai.json
+let qc=null,qcOn=false,qcItem=null,qcOpacity=.65;
+fetch('img/slides_2026-11/qc_ai/qc_ai.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.slides&&j.slides[sid]){qc=j;$('qcbtn').style.display='inline-block';}}).catch(()=>{});
+$('qcbtn').onclick=()=>{qcOn=!qcOn;$('qcbtn').classList.toggle('on',qcOn);showQC();};
+function showQC(){
+  if(qcItem&&viewer){viewer.world.removeItem(qcItem);qcItem=null;}
+  $('qcleg').style.display=qcOn&&qc?'block':'none';
+  if(!qcOn||!qc||!viewer||!viewer.world.getItemCount())return;
+  const st=qc.slides[sid],L=[['out_of_focus','#6e28c8','Out of focus'],['fold','#ff8c00','Tissue fold'],['bubble_edge','#ff00ff','Air bubble or slide edge'],['dark_spot_foreign','#00c800','Dark spot or foreign object'],['pen','#e60000','Pen mark']];
+  $('qcleg').innerHTML='<b>Automatic quality map</b> · % of '+st.tissue_mm2+' mm² tissue<br>'+L.map(([k,c,t])=>'<i style="background:'+c+'"></i>'+t+': '+st[k+'_pct']+' %').join('<br>')+'<br><input type="range" min="0" max="100" value="'+Math.round(qcOpacity*100)+'" id="qcop" aria-label="Overlay opacity"><div class="n">Computed by GrandQC (open-source research tool). Not a diagnosis; marks scan and slide-preparation problems only. It can mislabel tissue edges and pale tissue.</div>';
+  $('qcop').oninput=e=>{qcOpacity=e.target.value/100;if(qcItem)qcItem.setOpacity(qcOpacity);};
+  viewer.addTiledImage({tileSource:{type:'image',url:'img/slides_2026-11/qc_ai/'+encodeURIComponent(sid)+'.png',buildPyramid:false},x:0,y:0,width:st.w_frac,opacity:qcOpacity,
+    success:e=>{qcItem=e.item;}});
+}
 const pickSize=k=>{if(busy||k===cur)return;start(k)};
 $('opts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickSize(b.dataset.k));
 $('szsw').querySelectorAll('button').forEach(b=>b.onclick=()=>pickSize(b.dataset.k));
-const q=qs.get('q');if(q&&meta.sizes[q])start(q);
+const q=qs.get('q');if(q&&(q==='o'||meta.sizes[q]))start(q);
 async function start(k){
+  if(k==='o')return startOriginal();
   busy=true;cur=k;const z=meta.sizes[k];show('pick',0);show('load',1);$('scale').style.display='none';$('over').style.display='none';
   $('szsw').style.display='inline';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
   $('sub').textContent=meta.block+' · '+NAMES[k]+' size: '+res(k);
@@ -105,6 +125,28 @@ async function start(k){
   try{if(window.createImageBitmap)src=await createImageBitmap(blob);else{src=new Image();src.src=URL.createObjectURL(blob);await src.decode();}}
   catch(e){busy=false;fail('This device could not decode an image of '+zz.w+' × '+zz.h+' px.'+(k!=='l'?' <b>Please choose a smaller size</b> from the bar at the top.':' You can <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+zz.d+'/view">open the JPEG on Google Drive</a>.'));return}
   open(src,zz);busy=false;
+}
+async function startOriginal(){
+  busy=true;cur='o';show('pick',0);show('load',1);$('scale').style.display='none';$('over').style.display='none';$('notice').style.display='none';
+  $('szsw').style.display='inline';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==='o'));
+  $('sub').textContent=meta.block+' · Original scan: '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel';
+  $('dl').href='https://drive.google.com/file/d/'+meta.svs+'/view';
+  try{history.replaceState(null,'','?s='+encodeURIComponent(sid)+'&q=o')}catch(e){}
+  if(viewer){viewer.destroy();viewer=null;$('osd').innerHTML='';}
+  $('lt').textContent='Opening the original scan';$('ls').textContent='reading the file index; this takes a few seconds';$('lf').style.width='0';$('lf').classList.add('ind');
+  // the original SVS files are copied to a public Cloud Storage bucket (Frankfurt), which serves byte ranges to this site
+  const url='https://storage.googleapis.com/case-scans-84f618ae/'+encodeURIComponent(sid)+'.svs';
+  let ts;
+  try{if(!OpenSeadragon.GeoTIFFTileSource)throw new Error('streaming component did not load');
+    const all=await OpenSeadragon.GeoTIFFTileSource.getAllTileSources(url,{GeoTiffOptions:{blockSize:131072,cacheSize:300}});
+    ts=all.reduce((a,b)=>b.width>a.width?b:a);}
+  catch(e){busy=false;cur=null;
+    const msg='The original scan could not be opened right now ('+String(e&&e.message||e).slice(0,80)+'); showing Low size instead. <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+meta.svs+'/view">Download the SVS from Drive</a>.';
+    await start('l');$('notice').innerHTML=msg;$('notice').style.display='block';return}
+  let fails=0;
+  mkViewer(ts,{um:meta.native_um},{imageLoaderLimit:8,crossOriginPolicy:'Anonymous',tileRetryMax:3,tileRetryDelay:1000});
+  viewer.addHandler('tile-load-failed',()=>{if(++fails===6){$('notice').innerHTML='Some parts of the scan could not be loaded; empty areas may stay blurred. Move again in a moment, or choose High size from the bar at the top.';$('notice').style.display='block';}});
+  busy=false;
 }
 async function grab(url,expect,k){
   $('lt').textContent='Downloading image ('+NAMES[k].toLowerCase()+' size)';$('ls').textContent='';$('lf').classList.remove('ind');$('lf').style.width='0';
@@ -134,9 +176,13 @@ function open(src,z){
       g.drawImage(mp,x*TS/s*ms,y*TS/s*ms,tw/s*ms,th/s*ms,0,0,tw,th);ctx.finish(c);
     }catch(e){ctx.finish(null,null,String(e));}};
   ts.downloadTileAbort=function(){};
-  viewer=OpenSeadragon({element:$('osd'),tileSources:ts,prefixUrl:'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
-    showNavigator:true,navigatorPosition:'TOP_RIGHT',maxZoomPixelRatio:2,visibilityRatio:.5,immediateRender:true,imageLoaderLimit:8,
-    gestureSettingsMouse:{clickToZoom:false},crossOriginPolicy:false});
+  mkViewer(ts,z,{imageLoaderLimit:8,crossOriginPolicy:false});
+}
+function mkViewer(ts,z,extra){
+  viewer=OpenSeadragon(Object.assign({element:$('osd'),tileSources:ts,prefixUrl:'https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/images/',
+    showNavigator:true,navigatorPosition:'TOP_RIGHT',maxZoomPixelRatio:2,visibilityRatio:.5,immediateRender:true,
+    gestureSettingsMouse:{clickToZoom:false}},extra));
+  window.osdViewer=viewer; // for automated tests
   const nice=[1,2,5,10,20,50,100,200,500,1000,2000,5000,10000];
   const upd=()=>{if(!viewer||!viewer.world.getItemCount())return;const zz=viewer.world.getItemAt(0).viewportToImageZoom(viewer.viewport.getZoom(true)),u=z.um/zz;
     let L=nice[0];for(const n of nice){if(n/u<=150)L=n;}$('sb').style.width=(L/u).toFixed(0)+'px';$('sl').textContent=L>=1000?(L/1000)+' mm':L+' µm';
@@ -145,13 +191,13 @@ function open(src,z){
     $('zr').textContent=(r<0.095?r.toFixed(2):r<9.95?r.toFixed(1):r.toFixed(0))+'×'+(past?' · past 1:1':'');
     $('scale').classList.toggle('over',past);
     if(past!==wasOver){wasOver=past;
-      const bigger=cur==='l'?'m':cur==='m'?'h':null;
-      $('over').innerHTML=past?'<b>Past 1:1</b>: zoomed beyond the pixels of this '+NAMES[cur].toLowerCase()+' image, so it looks blurred.'+(bigger?' <button data-k="'+bigger+'">Load '+NAMES[bigger]+' size</button>':' For finer detail open the original SVS.'):'';
+      const bigger={l:'m',m:'h',h:'o'}[cur];
+      $('over').innerHTML=!past?'':cur==='o'?'<b>Past 1:1</b>: zoomed beyond the resolution of the scan itself ('+meta.native_um.toFixed(2)+' µm per pixel), so it looks blurred.':'<b>Past 1:1</b>: zoomed beyond the pixels of this '+NAMES[cur].toLowerCase()+' image, so it looks blurred. <button data-k="'+bigger+'">Load '+(bigger==='o'?'the original scan':NAMES[bigger]+' size')+'</button>';
       $('over').style.display=past?'block':'none';
       const b=$('over').querySelector('button');if(b)b.onclick=()=>pickSize(b.dataset.k);}
   };
   let wasOver=null;
-  viewer.addHandler('open',()=>{show('load',0);$('scale').style.display='block';upd();});
+  viewer.addHandler('open',()=>{show('load',0);$('scale').style.display='block';upd();qcItem=null;if(qcOn)showQC();});
   viewer.addHandler('open-failed',e=>fail('Viewer error: '+(e.message||'unknown')));
   viewer.addHandler('animation',upd);viewer.addHandler('resize',upd);
 }
