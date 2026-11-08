@@ -92,7 +92,9 @@ function legend(k){
     return '<section><b>Quality map (GrandQC)</b> · % of '+st.tissue_mm2+' mm² tissue<br>'+C.map(([c,col,t])=>'<i style="background:'+col+'"></i>'+t+': '+st[c+'_pct']+' %').join('<br>')+sl+'<div class="n">Marks scan and slide-preparation problems only. It can mislabel tissue edges and pale tissue.</div></section>';}
   return '<section><b>Nucleus density (TIAToolbox)</b><br>'+fmtN(st.nuclei)+' nuclei in '+st.tissue_mm2+' mm² tissue<br>median '+fmtN(st.median_per_mm2)+' /mm² · busiest 0.5 mm square '+fmtN(st.hotspot_per_mm2)+' /mm²<div class="bar"></div><div class="ax"><span>0</span><span>'+fmtN(L.data.vmax_per_mm2/2)+'</span><span>≥ '+fmtN(L.data.vmax_per_mm2)+' nuclei/mm²</span></div>'+sl+'<div class="n">Counts every detected nucleus in '+L.data.bin_um+' µm squares (MapDe model). Counts are approximate (some points fall between nuclei, most often in liver tissue). It does not tell tumour from normal cells and is not a mitotic count.</div></section>';
 }
+let aiGen=0;
 function showAI(){
+  const gen=++aiGen;  // a newer call makes older pending layer loads obsolete
   Object.values(LAY).forEach(L=>{if(L.item&&viewer){viewer.world.removeItem(L.item);}L.item=null;});
   const on=Object.keys(LAY).filter(k=>LAY[k].on&&LAY[k].data);
   $('qcleg').style.display=on.length?'block':'none';
@@ -100,7 +102,7 @@ function showAI(){
   $('qcleg').innerHTML=on.map(legend).join('')+'<div class="n">Computed automatically with open-source research tools; not a diagnosis.</div>';
   $('qcleg').querySelectorAll('input[data-op]').forEach(r=>r.oninput=e=>{const L=LAY[r.dataset.op];L.op=e.target.value/100;if(L.item)L.item.setOpacity(L.op);});
   on.forEach(k=>{const L=LAY[k],st=L.data.slides[sid];
-    viewer.addTiledImage({tileSource:{type:'image',url:'img/slides_2026-11/'+L.dir+'/'+encodeURIComponent(sid)+'.png',buildPyramid:false},x:0,y:0,width:st.w_frac,opacity:L.op,success:e=>{L.item=e.item;}});});
+    viewer.addTiledImage({tileSource:{type:'image',url:'img/slides_2026-11/'+L.dir+'/'+encodeURIComponent(sid)+'.png',buildPyramid:false},x:0,y:0,width:st.w_frac,opacity:L.op,success:e=>{if(gen!==aiGen||!L.on){viewer.world.removeItem(e.item);return;}L.item=e.item;}});});
 }
 const pickSize=k=>{if(busy||k===cur)return;start(k)};
 $('opts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickSize(b.dataset.k));
