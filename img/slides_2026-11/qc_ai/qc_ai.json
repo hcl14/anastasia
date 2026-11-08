@@ -237,16 +237,6 @@
    "out_of_focus_pct": 5.9,
    "w_frac": 0.99975,
    "h_frac_of_w": 2.33339
-  },
-  "cito700_Intern": {
-   "tissue_mm2": 0.3,
-   "fold_pct": 6.7,
-   "dark_spot_foreign_pct": 0.1,
-   "pen_pct": 27.4,
-   "bubble_edge_pct": 0.0,
-   "out_of_focus_pct": 1.9,
-   "w_frac": 1.00002,
-   "h_frac_of_w": 1.14312
   }
  }
 }
