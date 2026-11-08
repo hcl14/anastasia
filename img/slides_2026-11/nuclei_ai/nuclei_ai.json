@@ -3,12 +3,44 @@
  "bin_um": 50.0,
  "vmax_per_mm2": 8000.0,
  "slides": {
+  "4222-1": {
+   "nuclei": 10740,
+   "tissue_mm2": 73.3,
+   "median_per_mm2": 0,
+   "p90_per_mm2": 399,
+   "hotspot_per_mm2": 771,
+   "w_frac": 1.00225
+  },
   "4222-2": {
    "nuclei": 14507,
    "tissue_mm2": 5.1,
    "median_per_mm2": 2799,
    "p90_per_mm2": 4799,
    "hotspot_per_mm2": 4555,
+   "w_frac": 1.00689
+  },
+  "4488-6_Intern": {
+   "nuclei": 73179,
+   "tissue_mm2": 58.5,
+   "median_per_mm2": 1199,
+   "p90_per_mm2": 2799,
+   "hotspot_per_mm2": 4132,
+   "w_frac": 1.00283
+  },
+  "4488-7_Intern": {
+   "nuclei": 57646,
+   "tissue_mm2": 63.6,
+   "median_per_mm2": 799,
+   "p90_per_mm2": 2399,
+   "hotspot_per_mm2": 2620,
+   "w_frac": 1.00182
+  },
+  "cito699_Intern": {
+   "nuclei": 25089,
+   "tissue_mm2": 44.5,
+   "median_per_mm2": 399,
+   "p90_per_mm2": 1199,
+   "hotspot_per_mm2": 2959,
    "w_frac": 1.00689
   }
  }
