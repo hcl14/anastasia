@@ -19,6 +19,14 @@
    "hotspot_per_mm2": 4555,
    "w_frac": 1.00689
   },
+  "4488-11": {
+   "nuclei": 547399,
+   "tissue_mm2": 196.7,
+   "median_per_mm2": 2399,
+   "p90_per_mm2": 6399,
+   "hotspot_per_mm2": 7580,
+   "w_frac": 1.00148
+  },
   "4488-12": {
    "nuclei": 387775,
    "tissue_mm2": 140.6,
@@ -42,6 +50,14 @@
    "p90_per_mm2": 0,
    "hotspot_per_mm2": 888,
    "w_frac": 1.00283
+  },
+  "4488-20": {
+   "nuclei": 382893,
+   "tissue_mm2": 182.4,
+   "median_per_mm2": 1999,
+   "p90_per_mm2": 3599,
+   "hotspot_per_mm2": 3863,
+   "w_frac": 1.00099
   },
   "4488-6_Intern": {
    "nuclei": 73179,
