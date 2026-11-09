@@ -19,6 +19,22 @@
    "hotspot_per_mm2": 4555,
    "w_frac": 1.00689
   },
+  "4488-12": {
+   "nuclei": 387775,
+   "tissue_mm2": 140.6,
+   "median_per_mm2": 2399,
+   "p90_per_mm2": 5999,
+   "hotspot_per_mm2": 8568,
+   "w_frac": 1.00225
+  },
+  "4488-13": {
+   "nuclei": 91169,
+   "tissue_mm2": 176.5,
+   "median_per_mm2": 0,
+   "p90_per_mm2": 1599,
+   "hotspot_per_mm2": 8110,
+   "w_frac": 1.00121
+  },
   "4488-19": {
    "nuclei": 4951,
    "tissue_mm2": 88.1,
