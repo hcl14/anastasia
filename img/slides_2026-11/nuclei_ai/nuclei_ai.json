@@ -123,6 +123,14 @@
    "hotspot_per_mm2": 3754,
    "w_frac": 1.0008
   },
+  "4488-4_Intern": {
+   "nuclei": 244913,
+   "tissue_mm2": 375.6,
+   "median_per_mm2": 399,
+   "p90_per_mm2": 1599,
+   "hotspot_per_mm2": 4016,
+   "w_frac": 1.00065
+  },
   "4488-5_Intern": {
    "nuclei": 63031,
    "tissue_mm2": 359.6,
