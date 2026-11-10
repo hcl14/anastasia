@@ -37,7 +37,7 @@ header a{color:var(--accent);font-size:13.5px}
 #scale.over{background:rgba(255,214,120,.95)}#scale.over .zr{color:#7a3d00;font-weight:700}
 #over{position:absolute;left:12px;top:56px;z-index:6;display:none;max-width:min(520px,calc(100% - 24px));background:rgba(122,61,0,.94);color:#fff;padding:6px 10px;border-radius:6px;font-size:13.5px;box-shadow:0 1px 6px rgba(0,0,0,.35)}
 #over b{color:#ffd678}
-#ai{display:none;font-size:13px;color:var(--muted)}.aib{font:inherit;font-size:12.5px;margin-left:4px;font-size:12.5px;padding:2px 9px;border-radius:4px;border:1px solid #4a5874;background:#1d2b4f;color:var(--fg);cursor:pointer}.aib.on{background:#6e28c8;border-color:#6e28c8;color:#fff}
+#hvc{position:absolute;left:0;top:0;width:100%;height:100%;z-index:3;pointer-events:none}#hvnote{color:#7a3d00;font-weight:600}#ai{display:none;font-size:13px;color:var(--muted)}.aib{font:inherit;font-size:12.5px;margin-left:4px;font-size:12.5px;padding:2px 9px;border-radius:4px;border:1px solid #4a5874;background:#1d2b4f;color:var(--fg);cursor:pointer}.aib.on{background:#6e28c8;border-color:#6e28c8;color:#fff}
 #qcleg{display:none;position:absolute;right:12px;bottom:12px;max-height:calc(100% - 24px);overflow:auto;z-index:6;background:rgba(255,255,255,.93);color:#111;padding:7px 10px;border-radius:6px;font-size:12.5px;max-width:300px;line-height:1.5}#qcleg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}#qcleg .n{color:#555;font-size:11.5px;margin-top:4px}#qcleg input{width:100%}#qcleg .bar{height:10px;border-radius:3px;margin:3px 0 1px;background:linear-gradient(90deg,#440154,#3b528b,#21918c,#5ec962,#fde725)}#qcleg .ax{display:flex;justify-content:space-between;color:#555;font-size:11px}#qcleg section+section{border-top:1px solid #ccc;margin-top:6px;padding-top:6px}#over button{font:inherit;font-size:12.5px;margin-left:6px;padding:1px 8px;border-radius:4px;border:1px solid #ffd678;background:transparent;color:#ffd678;cursor:pointer}
 #info{color:var(--muted);font-size:12.5px;padding:6px 14px;background:#14213d}
 </style>
@@ -45,8 +45,8 @@ header a{color:var(--accent);font-size:13.5px}
 <body>
 <header><h1 id="title">Slide viewer</h1><span class="meta" id="sub"></span>
 <span id="szsw">Size:<button data-k="o">Original</button><button data-k="l">Low</button><button data-k="m">Medium</button><button data-k="h">High</button></span>
-<span id="ai">AI layers:<button class="aib" data-l="qc" title="Automatic quality-control map (GrandQC)">Quality (GrandQC)</button><button class="aib" data-l="nuc" title="Nucleus density map (TIAToolbox)">Nuclei (TIAToolbox)</button></span><a href="slides-2026-11.html" id="back">← all slide scans</a><a id="svs" href="#" target="_blank">original SVS on Drive</a><a id="dl" href="#" target="_blank">this JPEG on Drive</a></header>
-<div id="wrap"><div id="osd"></div>
+<span id="ai">AI layers:<button class="aib" data-l="qc" title="Automatic quality-control map (GrandQC)">Quality (GrandQC)</button><button class="aib" data-l="nuc" title="Nucleus density map (TIAToolbox)">Nuclei (TIAToolbox)</button><button class="aib" data-l="hv" title="Outlines of individual nuclei at high zoom (HoVer-Net)">Outlines (HoVer-Net)</button></span><a href="slides-2026-11.html" id="back">← all slide scans</a><a id="svs" href="#" target="_blank">original SVS on Drive</a><a id="dl" href="#" target="_blank">this JPEG on Drive</a></header>
+<div id="wrap"><div id="osd"></div><canvas id="hvc"></canvas>
 <div id="pick" class="ov"><div class="box"><h2>Choose image size</h2><p id="pickp">The original scan has full 40× detail and loads only what is on screen. The three reduced sizes are single images: larger ones show more detail but take longer to load and need more memory.</p><div id="opts"></div>
 <p style="margin-top:10px">You can switch size later from the bar at the top.</p></div></div>
 <div id="load" class="ov" style="display:none"><div class="box"><div class="t" id="lt">Preparing…</div><div class="track"><div class="fill" id="lf"></div></div><div class="s" id="ls"></div></div></div>
@@ -81,12 +81,35 @@ let viewer=null,cur=null,busy=false;
 // switchable AI layers, precomputed per slide (H&E slides only):
 //   qc  = GrandQC artifact map         img/slides_2026-11/qc_ai/<id>.png      + qc_ai.json
 //   nuc = TIAToolbox nucleus density   img/slides_2026-11/nuclei_ai/<id>.png  + nuclei_ai.json
-const LAY={qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65},nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6}};
+const LAY={qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65},nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6},hv:{dir:'hover_ai',json:'hover_ai.json',data:null,on:false,item:null,op:.9}};
 Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{
   if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';document.querySelector('.aib[data-l="'+k+'"]').style.display='inline-block';}}).catch(()=>{}));
 document.querySelectorAll('.aib').forEach(b=>{b.style.display='none';b.onclick=()=>{const L=LAY[b.dataset.l];L.on=!L.on;b.classList.toggle('on',L.on);showAI();};});
 const fmtN=n=>n.toLocaleString('en-US');
+// HoVer-Net outlines: per-slide binary in the bucket, read one 4096-px cell at a time with range requests, drawn on a canvas over the viewer
+const HVC=['#9aa0a6','#e60000','#00a000','#0060e0','#c9a400','#ff7a00'],HVN=['Unclassified','Neoplastic','Inflammatory','Connective','Dead','Non-neoplastic epithelial'],HVZOOM=0.08;
+let hvIdx=null,hvLoading=false,hvByType=false,hvBusy=0,hvFail=0;const hvCells=new Map(),hvQ=[],hvFlight=new Set(),hvBad=new Set();
+function hvLoad(){if(hvIdx||hvLoading)return;hvLoading=true;fetch(LAY.hv.data.base+encodeURIComponent(sid)+'.json').then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{hvIdx=j;drawHV();}).catch(()=>{hvFail++;hvNote();}).finally(()=>{hvLoading=false});}
+function hvParse(buf,cx,cy){const v=new DataView(buf),n=buf.byteLength,paths=[0,1,2,3,4,5].map(()=>new Path2D());let p=0;
+  while(p+6<=n){const t=v.getUint8(p),m=v.getUint8(p+1);let x=v.getInt16(p+2,true)+cx,y=v.getInt16(p+4,true)+cy;p+=6;const P=paths[t>5?0:t];P.moveTo(x,y);
+    for(let i=1;i<m;i++){x+=v.getInt8(p);y+=v.getInt8(p+1);p+=2;P.lineTo(x,y);}P.closePath();}
+  const all=new Path2D();paths.forEach(q=>all.addPath(q));return{paths,all};}
+function hvPump(){while(hvBusy<8&&hvQ.length){const i=hvQ.pop(),a=hvIdx.offs[i],b=hvIdx.offs[i+1];hvBusy++;hvFlight.add(i);
+    fetch(LAY.hv.data.base+encodeURIComponent(sid)+'.bin',{headers:{Range:'bytes='+a+'-'+(b-1)}}).then(r=>{if(!r.ok)throw 0;return r.arrayBuffer()}).then(buf=>{hvCells.set(i,hvParse(buf,(i%hvIdx.cols)*hvIdx.cell,Math.floor(i/hvIdx.cols)*hvIdx.cell));}).catch(()=>{hvFail++;hvBad.add(i);}).finally(()=>{hvBusy--;hvFlight.delete(i);hvPump();drawHV();});}}
+function hvNote(msg){const e=$('hvnote');if(e)e.textContent=hvFail?'Some outlines could not be loaded.':(msg||'');}
+function drawHV(){const c=$('hvc'),g=c.getContext('2d'),d=window.devicePixelRatio||1,cw=Math.round(c.clientWidth*d),ch=Math.round(c.clientHeight*d);
+  if(c.width!==cw||c.height!==ch){c.width=cw;c.height=ch;}g.setTransform(1,0,0,1,0,0);g.clearRect(0,0,cw,ch);
+  const L=LAY.hv;if(!L.on||!L.data||!viewer||!viewer.world.getItemCount())return;if(!hvIdx){hvLoad();return;}
+  const it=viewer.world.getItemAt(0),f=it.source.dimensions.x/hvIdx.W,O=new OpenSeadragon.Point(0,0),p0=it.imageToViewerElementCoordinates(O),p1=it.imageToViewerElementCoordinates(new OpenSeadragon.Point(1000,0)),z=(p1.x-p0.x)/1000*f;
+  if(z<HVZOOM){hvNote('Zoom in to see the outlines.');return;}
+  const C=hvIdx.cell,x0=Math.max(0,Math.floor((-p0.x/z)/C)-1),x1=Math.min(hvIdx.cols-1,Math.floor(((c.clientWidth-p0.x)/z)/C)+1),y0=Math.max(0,Math.floor((-p0.y/z)/C)-1),y1=Math.min(hvIdx.rows-1,Math.floor(((c.clientHeight-p0.y)/z)/C)+1);
+  g.setTransform(z*d,0,0,z*d,p0.x*d,p0.y*d);g.lineWidth=Math.max(1.3/z,1);g.globalAlpha=L.op;let missing=0;
+  for(let r=y0;r<=y1;r++)for(let q=x0;q<=x1;q++){const i=r*hvIdx.cols+q;if(hvIdx.offs[i+1]<=hvIdx.offs[i])continue;const cell=hvCells.get(i);
+    if(!cell){if(hvBad.has(i))continue;missing++;if(!hvFlight.has(i)&&!hvQ.includes(i))hvQ.push(i);continue;}
+    if(hvByType){cell.paths.forEach((P,t)=>{g.strokeStyle=HVC[t];g.stroke(P);});}else{g.strokeStyle='#00e0ff';g.stroke(cell.all);}}
+  hvPump();hvNote(missing?'Loading outlines…':'');}
 function legend(k){
+  if(k==='hv'){const st=LAY.hv.data.slides[sid],sum=Math.max(1,st.types.reduce((a,b)=>a+b,0));return '<section><b>Nucleus outlines (HoVer-Net)</b><br>'+fmtN(st.nuclei)+' nuclei outlined<div id="hvnote"></div><label style="display:block;margin-top:3px"><input type="checkbox" id="hvt" style="width:auto;vertical-align:-1px"'+(hvByType?' checked':'')+'> Colour by predicted type</label>'+(hvByType?HVN.map((n,t)=>'<i style="background:'+HVC[t]+'"></i>'+n+': '+(100*st.types[t]/sum).toFixed(1)+' %').join('<br>'):'')+'<input type="range" min="0" max="100" value="'+Math.round(LAY.hv.op*100)+'" data-op="hv" aria-label="Layer opacity"><div class="n">Outlines are visible when zoomed in. The cell types are a rough hint only and have not been checked on this tumour: it labelled most cells on the liver biopsy "neoplastic".</div></section>';}
   const L=LAY[k],st=L.data.slides[sid],sl='<input type="range" min="0" max="100" value="'+Math.round(L.op*100)+'" data-op="'+k+'" aria-label="Layer opacity">';
   if(k==='qc'){const C=[['out_of_focus','#6e28c8','Out of focus'],['fold','#ff8c00','Tissue fold'],['bubble_edge','#ff00ff','Air bubble or slide edge'],['dark_spot_foreign','#00c800','Dark spot or foreign object'],['pen','#e60000','Pen mark']];
     return '<section><b>Quality map (GrandQC)</b> · % of '+st.tissue_mm2+' mm² tissue<br>'+C.map(([c,col,t])=>'<i style="background:'+col+'"></i>'+t+': '+st[c+'_pct']+' %').join('<br>')+sl+'<div class="n">Marks scan and slide-preparation problems only. It can mislabel tissue edges and pale tissue.</div></section>';}
@@ -98,10 +121,12 @@ function showAI(){
   Object.values(LAY).forEach(L=>{if(L.item&&viewer){viewer.world.removeItem(L.item);}L.item=null;});
   const on=Object.keys(LAY).filter(k=>LAY[k].on&&LAY[k].data);
   $('qcleg').style.display=on.length?'block':'none';
-  if(!on.length||!viewer||!viewer.world.getItemCount())return;
+  if(!on.length||!viewer||!viewer.world.getItemCount()){drawHV();return;}
   $('qcleg').innerHTML=on.map(legend).join('')+'<div class="n">Computed automatically with open-source research tools; not a diagnosis.</div>';
-  $('qcleg').querySelectorAll('input[data-op]').forEach(r=>r.oninput=e=>{const L=LAY[r.dataset.op];L.op=e.target.value/100;if(L.item)L.item.setOpacity(L.op);});
-  on.forEach(k=>{const L=LAY[k],st=L.data.slides[sid];
+  $('qcleg').querySelectorAll('input[data-op]').forEach(r=>r.oninput=e=>{const L=LAY[r.dataset.op];L.op=e.target.value/100;if(L.item)L.item.setOpacity(L.op);if(r.dataset.op==='hv')drawHV();});
+  const ht=$('hvt');if(ht)ht.onchange=()=>{hvByType=ht.checked;showAI();};
+  drawHV();
+  on.filter(k=>k!=='hv').forEach(k=>{const L=LAY[k],st=L.data.slides[sid];
     viewer.addTiledImage({tileSource:{type:'image',url:'img/slides_2026-11/'+L.dir+'/'+encodeURIComponent(sid)+'.png',buildPyramid:false},x:0,y:0,width:st.w_frac,opacity:L.op,success:e=>{if(gen!==aiGen||!L.on){viewer.world.removeItem(e.item);return;}L.item=e.item;}});});
 }
 const pickSize=k=>{if(busy||k===cur)return;start(k)};
@@ -210,6 +235,7 @@ function mkViewer(ts,z,extra){
   };
   let wasOver=null;
   viewer.addHandler('open',()=>{show('load',0);$('scale').style.display='block';upd();Object.values(LAY).forEach(L=>L.item=null);showAI();});
+  viewer.addHandler('update-viewport',drawHV);
   viewer.addHandler('open-failed',e=>fail('Viewer error: '+(e.message||'unknown')));
   viewer.addHandler('animation',upd);viewer.addHandler('resize',upd);
 }
