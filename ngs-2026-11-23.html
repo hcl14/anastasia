@@ -33,14 +33,14 @@ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:
 <h1>Tissue NGS (3 paraffin blocks) — report of 23 November 2026</h1>
 <p>Genetic study No ГД056-058/26 · Shalimov National Scientific Center of Surgery and Transplantology, Kyiv (Department of Pathomorphology and Oncogenetics) · Head of department V. O. Kropelnytskyi · ordered 27.10.2026</p>
 </header>
-<nav class="top"><a href="index.html">Case summary</a><a href="documents.html#d213">Documents</a><a href="files/local_ngs_056_23112026/NGS_GD056-058-26_Shalimov_23.11.2026_UA.pdf">Ukrainian original (PDF)</a><a href="histology-2026-11-02.html">Resection histology 02.11</a><a href="slides-2026-11.html">All 36 slide scans</a><a href="index.html#genomics">All genomic findings</a><a href="index.html#drugs">Drug coverage</a></nav>
+<nav class="top"><a href="index.html">Case summary</a><a href="documents.html#d213">Documents</a><a href="files/local_ngs_056_23112026/NGS_GD056-058-26_Shalimov_23.11.2026_UA.pdf">Ukrainian original (PDF)</a><a href="https://drive.google.com/drive/folders/18BRUyweUzr91rxOOuWcVSE8AnLUHB_MP" target="_blank">Raw BAM files (Drive)</a><a href="histology-2026-11-02.html">Resection histology 02.11</a><a href="slides-2026-11.html">All 36 slide scans</a><a href="index.html#genomics">All genomic findings</a><a href="index.html#drugs">Drug coverage</a></nav>
 <main>
 <p class="meta"><b>FOR DOCTORS.</b> English working translation of the written molecular report, followed by cross-test comparison, independent raw-BAM read verification, technical caveats and this site's reading kept separate. The Ukrainian original governs (corrected PDF issued 23.11.2026 fixing the patient sex/birth-year line; carries a typed department-head name without a handwritten signature or stamp). <span class="bdg v" title="A doctor's informal view: chat, teleconsultation, call; not a signed document">OPINION</span> Pathologist (Telegram, 23.11.2026): "Interesting results. Double-checked twice." («цікаві результати. Перепровіряли двічі.»); subsequently shared the raw BAM files (independently verified 23.11.2026: 0 / 9,965 reads for <i>A829P</i> across all 3 blocks) and confirmed that rescanned histology slides are ready for upload.</p>
 <nav class="toc"><details id="tocd" open><summary><b>Contents</b></summary><ul>
 <li><a href="#key">Key points</a></li>
 <li><a href="#report">The report (translation)</a></li>
 <li><a href="#comparison">Spatial mapping across all genetic tests (2022–2026)</a></li>
-<li><a href="#bam-verification">Raw BAM read verification (23.11.2026)</a></li>
+<li><a href="#bam-verification">Raw BAM files &amp; independent read verification (23.11.2026)</a></li>
 <li><a href="#clarify">Technical caveats and items to clarify</a></li>
 <li><a href="#reading">Site reading and open questions</a></li>
 </ul></details></nav><script>(function(){var d=document.getElementById('tocd');if(!d)return;var m=window.matchMedia('(max-width:760px)');function s(){d.open=!m.matches}s();if(m.addEventListener)m.addEventListener('change',s);else m.addListener(s);d.addEventListener('click',function(e){if(m.matches&&e.target.closest&&e.target.closest('a'))d.open=false});document.addEventListener('click',function(e){if(m.matches&&d.open&&!d.contains(e.target))d.open=false})})();</script>
@@ -103,8 +103,17 @@ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:
 </table></div>
 </div>
 
-<h2 id="bam-verification">Raw BAM read verification (23.11.2026)</h2>
+<h2 id="bam-verification">Raw BAM files &amp; independent read verification (23.11.2026)</h2>
 <div class="card">
+<p style="margin-top:0"><b>Downloadable raw sequencing archives (Google Drive, ~1.91 GiB total, not hosted on this site):</b> <a href="https://drive.google.com/drive/folders/18BRUyweUzr91rxOOuWcVSE8AnLUHB_MP" target="_blank"><b>Open <code>ngs_bam_2026-11-23</code> folder on Google Drive</b></a> (<a href="documents.html#d214">[214]</a>). All three ZIP archives (from Ion Torrent Genexus™ run <code>Her-HS-run11</code>, reference <code>hg19</code>) passed integrity testing (<code>unzip -tq</code> and <code>samtools quickcheck -v</code> on all 6 aligned BAMs). Each archive contains raw aligned reads (<code>merged.bam</code>), primer-trimmed reads (<code>merged.bam.ptrim.bam</code>) and <code>.bai</code> indices (plus variant/coverage files in <code>Zherlitsyna_2</code>):</p>
+<ul>
+<li><code>Zherlitsyna_2_3.0_Her-HS-run11_Result_200 - Vladyslav Kropelnytskyi.zip</code> (<b>1.05 GB</b>) — <b>Block №4222-2/26</b> (unresected left-lobe liver trepan biopsy, segments II–III, 40 % tumour nuclei; carries <i>KIT</i> exon 11 del + exon 13 <b>V654A</b>).</li>
+<li><code>Zherlitsyna_14_3.0_Her-HS-run11_Result_202 - Vladyslav Kropelnytskyi.zip</code> (<b>380 MB</b>) — <b>Block №4488-14/26</b> (resected right-lobe cystic-wall focus, 95 % tumour nuclei; carries <i>KIT</i> exon 11 del + exon 17 <b>N822K</b>).</li>
+<li><code>Zherlitsyna_17_3.0_Her-HS-run11_Result_201 - Vladyslav Kropelnytskyi.zip</code> (<b>619 MB</b>) — <b>Block №4488-17/26</b> (resected right-lobe solid lesion, 95 % tumour nuclei; carries <i>KIT</i> exon 11 del + exon 17 <b>N822K</b>).</li>
+<li><code>BAM_PILEUP_SUMMARY.md</code> — plain-text summary of the independent <code>samtools mpileup -Q 13</code> read counts below.</li>
+</ul>
+<p class="meta">For comparison, the baseline December 2022 Oncomine raw BAM files (~25 GB) are archived in a separate Drive folder: <a href="https://drive.google.com/drive/folders/1SfbEu6DClrcHVmJUdBPo2CMR5gC20uuv" target="_blank">2022 Oncomine BAM files on Drive</a> (<a href="reports/extra_Genetic_bam_files_commentary_docx.html">note</a>, <a href="documents.html#d186">[186]</a>).</p>
+<h3>Independent pileup verification across <i>KIT</i> resistance hotspots</h3>
 <p class="meta"><span class="bdg i" title="Inference by this site or a doctor; not an official conclusion">INTERPRETATION</span> Independent pileup verification (<code>samtools mpileup -Q 13</code>, reference <code>hg19</code>, primer-trimmed <code>merged.bam.ptrim.bam</code> from Ion Torrent Genexus run <code>Her-HS-run11</code>) of the three raw BAM archives shared by the Shalimov oncogenetics lab on 23.11.2026.</p>
 <div class="tablewrap"><table class="stack">
 <tr><th><i>KIT</i> locus (hg19)</th><th>Block №4222-2/26<br><span class="meta">(unresected left lobe)</span></th><th>Block №4488-14/26<br><span class="meta">(resected R-lobe cyst wall)</span></th><th>Block №4488-17/26<br><span class="meta">(resected R-lobe solid)</span></th><th>Verification conclusion</th></tr>
@@ -114,6 +123,7 @@ table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:
 <tr><td data-label="KIT locus"><b>Exon 14 T670I</b><br><code>chr4:55595519</code></td><td data-label="№4222-2/26" colspan="3">0.02 % – 0.13 % across all 3 blocks</td><td data-label="Conclusion"><b>Negative</b> (background noise).</td></tr>
 <tr><td data-label="KIT locus"><b>Exon 17 D816V</b><br><code>chr4:55599321</code></td><td data-label="№4222-2/26" colspan="3"><b>0 / 12,894</b> (0.000 %) combined across all 3 blocks</td><td data-label="Conclusion"><b>Negative.</b></td></tr>
 </table></div>
+<p class="meta" style="margin-bottom:0"><b>Anatomical attribution audit (verified 23.11.2026):</b> sample-to-lesion mapping was cross-checked across four independent records — the 05.10.2026 laparoscopy biopsy report (<a href="documents.html#d195">[195]</a>, block 4222/26 = ultrasound-guided trepan biopsy of segments II–III), the 02.11.2026 resection histology (<a href="documents.html#d203">[203]</a>, blocks 4488-14/26 &amp; 4488-17/26 = right hemihepatectomy specimen), the written NGS report №ГД056-058/26 (<a href="documents.html#d213">[213]</a>), and pathologist confirmation on 23.11.2026 («Жерліцина-2 - це трепан-біопсія 4222/26; Жерліцина 14 та 17 - це пухлини з матеріалу операції»). All four records agree without contradiction: <b>4222-2/26 = unresected left lobe (V654A)</b>; <b>4488-14/26 &amp; 4488-17/26 = resected right lobe (N822K)</b>.</p>
 </div>
 
 <h2 id="clarify">Technical caveats and items to clarify</h2>
