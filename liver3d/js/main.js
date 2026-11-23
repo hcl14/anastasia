@@ -1724,8 +1724,8 @@ function applyHash(hs, { camera: doCam = true } = {}) {
   if (q.ui && q.ui !== uiLang()) setUi(q.ui, { keepHash: true });
   state.orbit = q.orbit === '1';
   if (q.d && S.dateByKey[q.d]) state.date = q.d;
-  // Default to post-operative view ('post') on Sep 2026 unless op=0 (off) or op=1 (mark resected)
-  const defaultOp = OP() && (!q.d || q.d === OP().on_date) ? 'post' : null;
+  // Default to red-marked resected view ('mark', op=1) on Sep 2026 unless op=0 (off) or op=post (hide resected)
+  const defaultOp = OP() && (!q.d || q.d === OP().on_date) ? 'mark' : null;
   state.op = OP() ? (q.op === '0' ? null : q.op === 'post' ? 'post' : q.op === '1' ? 'mark' : defaultOp) : null;
   if (state.op && !q.d && S.dateByKey[OP().on_date]) state.date = OP().on_date;
   let cam = null;
