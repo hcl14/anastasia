@@ -1271,8 +1271,8 @@ function opLegend() {
   const cb = h('input', { type: 'checkbox', 'aria-label': 'Post-operative view: hide resected parts' }); cb.checked = post;
   cb.addEventListener('change', () => setOp(cb.checked ? 'post' : 'mark'));
   const sw = post ? S.ctls.get('liver')?.color : S.ctls.get(O.resected)?.color;
-  // the key rows fold away (closed by default on phones, where the legend sits over the model); toggle and caveat always show
-  if (opLegOpen === null) opLegOpen = !matchMedia('(max-width: 560px)').matches;
+  // collapse key rows by default so the legend stays compact and does not overlap the 3D liver
+  if (opLegOpen === null) opLegOpen = false;
   const key = h('details.op-key', { open: opLegOpen || null }, h('summary', { class: 'small' }, 'Key'),
     h('div.op-row', null, h('span.op-sw', { style: { background: sw } }), h('span', null, post ? 'Remaining liver (segments I–IV, approx.)' : 'Resected right hemiliver (segments V–VIII, approx.)'),
       ' ', h('span.muted', null, fmtVol(opVol(post ? O.replace.liver : O.resected)))),
@@ -1676,6 +1676,7 @@ function hashString() {
   if (!state.regGhost) p.push('nr=1');
   if (state.growth) p.push('g=' + state.growthPair);
   if (state.op) p.push('op=' + (state.op === 'post' ? 'post' : '1'));
+  else if (OP() && state.date === OP().on_date) p.push('op=0');
   const cl = AXES.filter(a => state.clip[a].on).map(a => `${a}:${(+state.clip[a].pos).toFixed(1)}:${state.clip[a].flip ? 1 : 0}`);
   if (cl.length) p.push('clip=' + cl.join(','));
   if (!state.caps) p.push('caps=0');
@@ -1723,8 +1724,9 @@ function applyHash(hs, { camera: doCam = true } = {}) {
   if (q.ui && q.ui !== uiLang()) setUi(q.ui, { keepHash: true });
   state.orbit = q.orbit === '1';
   if (q.d && S.dateByKey[q.d]) state.date = q.d;
-  // op=1 (what was removed marked) | op=post (post-operative view); without d= the operation date is shown
-  state.op = OP() ? (q.op === 'post' ? 'post' : q.op === '1' ? 'mark' : null) : null;
+  // Default to post-operative view ('post') on Sep 2026 unless op=0 (off) or op=1 (mark resected)
+  const defaultOp = OP() && (!q.d || q.d === OP().on_date) ? 'post' : null;
+  state.op = OP() ? (q.op === '0' ? null : q.op === 'post' ? 'post' : q.op === '1' ? 'mark' : defaultOp) : null;
   if (state.op && !q.d && S.dateByKey[OP().on_date]) state.date = OP().on_date;
   let cam = null;
   if (doCam && q.cam) { const a = q.cam.split(',').map(Number); if (a.length === 6 && a.every(isFinite)) cam = a; }
