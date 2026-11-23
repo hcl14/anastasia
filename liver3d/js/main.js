@@ -2107,7 +2107,7 @@ async function boot() {
   try { const t = localStorage.getItem('liver3d-theme'); if (t && t !== 'auto') { document.documentElement.dataset.theme = t; applyTheme(); } } catch (e) { }
   let sc;
   try {
-    const res = await fetch(SCENE_URL, { cache: 'no-cache' });
+    const res = await fetch(SCENE_URL, { cache: 'no-store' });
     if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
     sc = await res.json();
   } catch (err) {
@@ -2120,7 +2120,7 @@ async function boot() {
   S.scene = sc;
   // Ukrainian strings of the scene (side file; scene.json unchanged): English scene text -> Ukrainian, for the interface translator
   try {
-    const r = await fetch(new URL('scene_ua.json', SCENE_BASE).href, { cache: 'no-cache' });
+    const r = await fetch(new URL('scene_ua.json', SCENE_BASE).href, { cache: 'no-store' });
     if (r.ok) {
       const u = S.ua = await r.json(), m = {};
       for (const L of sc.layers || []) if (u.layers?.[L.id]) m[L.name] = u.layers[L.id];

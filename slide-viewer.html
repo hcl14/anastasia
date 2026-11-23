@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -41,6 +41,7 @@ header a{color:var(--accent);font-size:13.5px}
 #qcleg{display:none;position:absolute;right:12px;bottom:12px;max-height:calc(100% - 24px);overflow:auto;z-index:6;background:rgba(255,255,255,.93);color:#111;padding:7px 10px;border-radius:6px;font-size:12.5px;max-width:340px;line-height:1.5}#qcleg i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}#qcleg .n{color:#555;font-size:11.5px;margin-top:4px}#qcleg .mlk{margin-top:4px;font-size:11.5px;line-height:1.45;color:#333}#qcleg .mlk a{color:#0b5fa5;text-decoration:none;font-weight:600}#qcleg .mlk a:hover{text-decoration:underline}#qcleg input{width:100%}#qcleg .bar{height:10px;border-radius:3px;margin:3px 0 1px;background:linear-gradient(90deg,#440154,#3b528b,#21918c,#5ec962,#fde725)}#qcleg .ax{display:flex;justify-content:space-between;color:#555;font-size:11px}#qcleg section+section{border-top:1px solid #ccc;margin-top:6px;padding-top:6px}#over button{font:inherit;font-size:12.5px;margin-left:6px;padding:1px 8px;border-radius:4px;border:1px solid #ffd678;background:transparent;color:#ffd678;cursor:pointer}
 #info{color:var(--muted);font-size:12.5px;padding:6px 14px;background:#14213d}
 </style>
+<script>(function(){var V="20261123-2225";window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});fetch("site_version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.v&&d.v!==V&&sessionStorage.getItem("sv_reloaded")!==d.v){sessionStorage.setItem("sv_reloaded",d.v);location.reload(true);}}).catch(function(){});})();</script>
 </head>
 <body>
 <header><h1 id="title">Slide viewer</h1><span class="meta" id="sub"></span>
@@ -61,7 +62,7 @@ const $=id=>document.getElementById(id);
 const show=(id,on)=>{$(id).style.display=on?'flex':'none'};
 const fail=(msg)=>{show('load',1);$('lt').textContent='Could not open the image';$('ls').innerHTML=msg;$('lf').classList.remove('ind');$('lf').style.width='0'};
 const qs=new URLSearchParams(location.search),sid=qs.get('s');
-let all;try{all=await (await fetch('img/slides_2026-11/zoom.json',{cache:'no-cache'})).json();}catch(e){}
+let all;try{all=await (await fetch('img/slides_2026-11/zoom.json',{cache:'no-store'})).json();}catch(e){}
 const meta=all&&all[sid];
 if(!meta){show('pick',0);fail('Unknown slide. <a href="slides-2026-11.html" style="color:#7fb2ff">Back to the slide list</a>.');return}
 document.title=meta.label+' · slide viewer';$('title').textContent=meta.label;
@@ -79,18 +80,17 @@ const NAMES={o:'Original',l:'Low',m:'Medium',h:'High'},DESC={l:'one reduced JPEG
 const nat=meta.sizes.h,natW=meta.native_w||(nat?Math.round(nat.w*nat.um/meta.native_um):0),natH=meta.native_h||(nat?Math.round(nat.h*nat.um/meta.native_um):0);
 const fmt=b=>b>=1e7?(b/1e6).toFixed(0)+' MB':(b/1e6).toFixed(1)+' MB';
 const res=k=>{const z=meta.sizes[k],r=meta.native_um?z.um/meta.native_um:1;return z.w+' × '+z.h+' px · '+z.um.toFixed(2)+' µm per pixel'+(r>1.05?' (1:'+r.toFixed(1)+' of the scan)':' (full scan resolution)');};
-if(meta.rescan){$('pickp').textContent='Rescan of '+meta.rescan+' (kept alongside the original 04.11.2026 scan). Original streams full 40× tiles from Cloud Storage; Low is a local 4,096 px fallback. AI overlays (GrandQC/TIAToolbox/HoVer-Net) are available on the 1st scan only.';}
+if(meta.rescan){$('pickp').textContent='Rescan of '+meta.rescan+' (kept alongside the original 04.11.2026 scan). Original streams full 40× tiles from Cloud Storage; Low is a local 4,096 px fallback. AI overlays (GrandQC/TIAToolbox/HoVer-Net) run on this scan too.';}
 $('opts').innerHTML='<button class="opt rec" data-k="o"><b>Original scan</b> · full 40× detail<span class="tag">Recommended</span><span class="d">streamed: only the part on screen is loaded · '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel (full scan resolution)</span></button>'+
   ['l','m','h'].filter(k=>meta.sizes[k]).map(k=>'<button class="opt" data-k="'+k+'"><b>'+NAMES[k]+'</b> · '+fmt(meta.sizes[k].bytes)+(coarse&&small&&k==='h'?'<span class="warn">may not open on a phone</span>':'')+'<span class="d">'+DESC[k]+' · '+res(k)+'</span></button>').join('');
 $('szsw').querySelectorAll('button').forEach(b=>{if(b.dataset.k!=='o'&&!meta.sizes[b.dataset.k])b.style.display='none';});
 let viewer=null,cur=null,busy=false;
-// switchable AI layers, precomputed per slide (H&E 1st-scan slides only):
+// switchable AI layers, precomputed per slide (H&E slides, including 23.11 rescans):
 //   qc  = GrandQC artifact map         img/slides_2026-11/qc_ai/<id>.png      + qc_ai.json
 //   nuc = TIAToolbox nucleus density   img/slides_2026-11/nuclei_ai/<id>.png  + nuclei_ai.json
 const LAY={qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65},nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6},hv:{dir:'hover_ai',json:'hover_ai.json',data:null,on:false,item:null,op:.9}};
-if(meta.rescan){$('ai').style.display='inline';$('ai').innerHTML='<span style="color:#ffcf7a">Rescan '+meta.rescan+' · AI layers on 1st scan only</span>';}
-else{Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{
-  if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';document.querySelector('.aib[data-l="'+k+'"]').style.display='inline-block';}}).catch(()=>{}));}
+Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+  if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';document.querySelector('.aib[data-l="'+k+'"]').style.display='inline-block';}}).catch(()=>{}));
 document.querySelectorAll('.aib').forEach(b=>{b.style.display='none';b.onclick=()=>{const L=LAY[b.dataset.l];L.on=!L.on;b.classList.toggle('on',L.on);showAI();};});
 const fmtN=n=>n.toLocaleString('en-US');
 // HoVer-Net outlines: per-slide binary in the bucket, read one 4096-px cell at a time with range requests, drawn on a canvas over the viewer
