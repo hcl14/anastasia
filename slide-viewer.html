@@ -65,25 +65,32 @@ let all;try{all=await (await fetch('img/slides_2026-11/zoom.json',{cache:'no-cac
 const meta=all&&all[sid];
 if(!meta){show('pick',0);fail('Unknown slide. <a href="slides-2026-11.html" style="color:#7fb2ff">Back to the slide list</a>.');return}
 document.title=meta.label+' · slide viewer';$('title').textContent=meta.label;
-$('svs').href='https://drive.google.com/file/d/'+meta.svs+'/view';$('back').href='slides-2026-11.html#s-'+sid;
+const gcsUrl='https://storage.googleapis.com/case-scans-84f618ae/'+encodeURIComponent(sid)+'.svs';
+if(meta.rescan){$('svs').href=gcsUrl;$('svs').textContent='download 2nd-scan SVS';}else{$('svs').href='https://drive.google.com/file/d/'+meta.svs+'/view';}
+$('back').href='slides-2026-11.html#s-'+sid;
+if(meta.orig_id){const a=document.createElement('a');a.href='slide-viewer.html?s='+encodeURIComponent(meta.orig_id);a.textContent='← compare 1st scan (04.11)';$('back').after(a);}
+else if(meta.rescan_id){const a=document.createElement('a');a.href='slide-viewer.html?s='+encodeURIComponent(meta.rescan_id);a.textContent='open Rescan 23.11 →';a.style.fontWeight='600';$('back').after(a);}
 // Drive API key (intentionally public browser key; GitHub flags it): restricted to the Drive API and to https://hcl14.github.io/* (plain Drive links are blocked for cross-site loading)
 const KEY='AIzaSyB0kAbntnLSG_wOMeTPxayaW5MsYl7RPH0';
 // "Original" streams only the visible tiles of the SVS, so it suits every device; the JPEG sizes stay as alternatives and fallback
 const coarse=matchMedia('(pointer:coarse)').matches,small=Math.min(screen.width,screen.height)<600;
 const rec='o';
 const NAMES={o:'Original',l:'Low',m:'Medium',h:'High'},DESC={l:'one reduced JPEG; quick to load',m:'one reduced JPEG; for tablets or slow connections',h:'one reduced JPEG; for a computer'};
-const nat=meta.sizes.h,natW=Math.round(nat.w*nat.um/meta.native_um),natH=Math.round(nat.h*nat.um/meta.native_um);
+const nat=meta.sizes.h,natW=meta.native_w||(nat?Math.round(nat.w*nat.um/meta.native_um):0),natH=meta.native_h||(nat?Math.round(nat.h*nat.um/meta.native_um):0);
 const fmt=b=>b>=1e7?(b/1e6).toFixed(0)+' MB':(b/1e6).toFixed(1)+' MB';
 const res=k=>{const z=meta.sizes[k],r=meta.native_um?z.um/meta.native_um:1;return z.w+' × '+z.h+' px · '+z.um.toFixed(2)+' µm per pixel'+(r>1.05?' (1:'+r.toFixed(1)+' of the scan)':' (full scan resolution)');};
+if(meta.rescan){$('pickp').textContent='Rescan of '+meta.rescan+' (kept alongside the original 04.11.2026 scan). Original streams full 40× tiles from Cloud Storage; Low is a local 4,096 px fallback. AI overlays (GrandQC/TIAToolbox/HoVer-Net) are available on the 1st scan only.';}
 $('opts').innerHTML='<button class="opt rec" data-k="o"><b>Original scan</b> · full 40× detail<span class="tag">Recommended</span><span class="d">streamed: only the part on screen is loaded · '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel (full scan resolution)</span></button>'+
-  ['l','m','h'].map(k=>'<button class="opt" data-k="'+k+'"><b>'+NAMES[k]+'</b> · '+fmt(meta.sizes[k].bytes)+(coarse&&small&&k==='h'?'<span class="warn">may not open on a phone</span>':'')+'<span class="d">'+DESC[k]+' · '+res(k)+'</span></button>').join('');
+  ['l','m','h'].filter(k=>meta.sizes[k]).map(k=>'<button class="opt" data-k="'+k+'"><b>'+NAMES[k]+'</b> · '+fmt(meta.sizes[k].bytes)+(coarse&&small&&k==='h'?'<span class="warn">may not open on a phone</span>':'')+'<span class="d">'+DESC[k]+' · '+res(k)+'</span></button>').join('');
+$('szsw').querySelectorAll('button').forEach(b=>{if(b.dataset.k!=='o'&&!meta.sizes[b.dataset.k])b.style.display='none';});
 let viewer=null,cur=null,busy=false;
-// switchable AI layers, precomputed per slide (H&E slides only):
+// switchable AI layers, precomputed per slide (H&E 1st-scan slides only):
 //   qc  = GrandQC artifact map         img/slides_2026-11/qc_ai/<id>.png      + qc_ai.json
 //   nuc = TIAToolbox nucleus density   img/slides_2026-11/nuclei_ai/<id>.png  + nuclei_ai.json
 const LAY={qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65},nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6},hv:{dir:'hover_ai',json:'hover_ai.json',data:null,on:false,item:null,op:.9}};
-Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{
-  if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';document.querySelector('.aib[data-l="'+k+'"]').style.display='inline-block';}}).catch(()=>{}));
+if(meta.rescan){$('ai').style.display='inline';$('ai').innerHTML='<span style="color:#ffcf7a">Rescan '+meta.rescan+' · AI layers on 1st scan only</span>';}
+else{Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{
+  if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';document.querySelector('.aib[data-l="'+k+'"]').style.display='inline-block';}}).catch(()=>{}));}
 document.querySelectorAll('.aib').forEach(b=>{b.style.display='none';b.onclick=()=>{const L=LAY[b.dataset.l];L.on=!L.on;b.classList.toggle('on',L.on);showAI();};});
 const fmtN=n=>n.toLocaleString('en-US');
 // HoVer-Net outlines: per-slide binary in the bucket, read one 4096-px cell at a time with range requests, drawn on a canvas over the viewer
@@ -138,16 +145,16 @@ async function start(k){
   busy=true;cur=k;const z=meta.sizes[k];show('pick',0);show('load',1);$('scale').style.display='none';$('over').style.display='none';
   $('szsw').style.display='inline';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k===k));
   $('sub').textContent=meta.block+' · '+NAMES[k]+' size: '+res(k);
-  $('dl').href='https://drive.google.com/file/d/'+z.d+'/view';
+  const localUrl='img/slides_2026-11/zoom_l/'+encodeURIComponent(sid)+'.jpg';
+  if(z.d){$('dl').href='https://drive.google.com/file/d/'+z.d+'/view';$('dl').textContent='this JPEG on Drive';}else{$('dl').href=localUrl;$('dl').textContent='this JPEG';}
   try{history.replaceState(null,'','?s='+encodeURIComponent(sid)+'&q='+k)}catch(e){}
   if(viewer){viewer.destroy();viewer=null;$('osd').innerHTML='';}
-  const driveUrl='https://www.googleapis.com/drive/v3/files/'+z.d+'?alt=media&key='+KEY;
-  const localUrl='img/slides_2026-11/zoom_l/'+encodeURIComponent(sid)+'.jpg';
+  const driveUrl=z.d?'https://www.googleapis.com/drive/v3/files/'+z.d+'?alt=media&key='+KEY:null;
   // Low is served from this site (no key needed); Medium/High come from Drive, and fall back to Low here if Drive refuses
   let blob,note='';
   try{blob=await grab(k==='l'?localUrl:driveUrl,z.bytes,k);}
   catch(e){
-    if(k==='l'){try{blob=await grab(driveUrl,z.bytes,k);}catch(e2){busy=false;fail('Download failed ('+e2.message+'). Please reload the page, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}}
+    if(k==='l'){if(!driveUrl){busy=false;fail('Download failed ('+e.message+'). Please reload the page.');return}try{blob=await grab(driveUrl,z.bytes,k);}catch(e2){busy=false;fail('Download failed ('+e2.message+'). Please reload the page, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}}
     else{const zl=meta.sizes.l;
       try{blob=await grab(localUrl,zl.bytes,'l');}catch(e2){busy=false;fail('Download failed ('+e.message+'). Please reload the page, or <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">open the JPEG on Google Drive</a>.');return}
       note=NAMES[k]+' size is not available right now ('+e.message+'); showing Low size instead. <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+z.d+'/view">Open the '+NAMES[k].toLowerCase()+' JPEG on Google Drive</a>.';
@@ -166,19 +173,20 @@ async function start(k){
 async function startOriginal(){
   busy=true;cur='o';show('pick',0);show('load',1);$('scale').style.display='none';$('over').style.display='none';$('notice').style.display='none';
   $('szsw').style.display='inline';$('szsw').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.k==='o'));
-  $('sub').textContent=meta.block+' · Original scan: '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel';
-  $('dl').href='https://drive.google.com/file/d/'+meta.svs+'/view';
+  $('sub').textContent=meta.block+' · Original'+(meta.rescan?' (Rescan '+meta.rescan+')':'')+' scan: '+natW+' × '+natH+' px · '+meta.native_um.toFixed(2)+' µm per pixel';
+  $('dl').href=meta.rescan?gcsUrl:'https://drive.google.com/file/d/'+meta.svs+'/view';$('dl').textContent=meta.rescan?'download 2nd-scan SVS':'original SVS on Drive';
   try{history.replaceState(null,'','?s='+encodeURIComponent(sid)+'&q=o')}catch(e){}
   if(viewer){viewer.destroy();viewer=null;$('osd').innerHTML='';}
   $('lt').textContent='Opening the original scan';$('ls').textContent='reading the file index; this takes a few seconds';$('lf').style.width='0';$('lf').classList.add('ind');
   // the original SVS files are copied to a public Cloud Storage bucket (Frankfurt), which serves byte ranges to this site
-  const url='https://storage.googleapis.com/case-scans-84f618ae/'+encodeURIComponent(sid)+'.svs';
+  const url=gcsUrl;
   let ts;
   try{if(!OpenSeadragon.GeoTIFFTileSource)throw new Error('streaming component did not load');
     const all=await OpenSeadragon.GeoTIFFTileSource.getAllTileSources(url,{GeoTiffOptions:{blockSize:131072,cacheSize:300}});
     ts=all.reduce((a,b)=>b.width>a.width?b:a);}
   catch(e){busy=false;cur=null;
-    const msg='The original scan could not be opened right now ('+String(e&&e.message||e).slice(0,80)+'); showing Low size instead. <a style="color:#7fb2ff" href="https://drive.google.com/file/d/'+meta.svs+'/view">Download the SVS from Drive</a>.';
+    const dlHref=meta.rescan?gcsUrl:'https://drive.google.com/file/d/'+meta.svs+'/view';
+    const msg='The original scan could not be opened right now ('+String(e&&e.message||e).slice(0,80)+'); showing Low size instead. <a style="color:#7fb2ff" href="'+dlHref+'">Download the SVS</a>.';
     await start('l');$('notice').innerHTML=msg;$('notice').style.display='block';return}
   let fails=0;
   mkViewer(ts,{um:meta.native_um},{imageLoaderLimit:8,crossOriginPolicy:'Anonymous',tileRetryMax:3,tileRetryDelay:1000});
@@ -228,7 +236,7 @@ function mkViewer(ts,z,extra){
     $('zr').textContent=(r<0.095?r.toFixed(2):r<9.95?r.toFixed(1):r.toFixed(0))+'×'+(past?' · past 1:1':'');
     $('scale').classList.toggle('over',past);
     if(past!==wasOver){wasOver=past;
-      const bigger={l:'m',m:'h',h:'o'}[cur];
+      const bigger={l:meta.sizes.m?'m':'o',m:'h',h:'o'}[cur];
       $('over').innerHTML=!past?'':cur==='o'?'<b>Past 1:1</b>: zoomed beyond the resolution of the scan itself ('+meta.native_um.toFixed(2)+' µm per pixel), so it looks blurred.':'<b>Past 1:1</b>: zoomed beyond the pixels of this '+NAMES[cur].toLowerCase()+' image, so it looks blurred. <button data-k="'+bigger+'">Load '+(bigger==='o'?'the original scan':NAMES[bigger]+' size')+'</button>';
       $('over').style.display=past?'block':'none';
       const b=$('over').querySelector('button');if(b)b.onclick=()=>pickSize(b.dataset.k);}

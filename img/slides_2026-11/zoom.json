@@ -200,6 +200,24 @@
 "um": 6.5144,
 "bytes": 1747415
 }
+},
+"rescan_id": "4488-4_Intern_rescan2"
+},
+"4488-4_Intern_rescan2": {
+"orig_id": "4488-4_Intern",
+"rescan": "23.11.2026",
+"label": "4488-4 · H&E · Rescan 23.11.2026",
+"block": "Blocks 2–5: gastric tumour",
+"native_w": 114688,
+"native_h": 106496,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3803,
+"um": 7.0155,
+"bytes": 2055428
+}
 }
 },
 "4488-5_Intern": {
@@ -258,6 +276,24 @@
 "um": 3.5075,
 "bytes": 1860436
 }
+},
+"rescan_id": "4488-6_Intern_rescan2"
+},
+"4488-6_Intern_rescan2": {
+"orig_id": "4488-6_Intern",
+"rescan": "23.11.2026",
+"label": "4488-6 · H&E · Rescan 23.11.2026",
+"block": "Block 6: lesser-omentum fat next to the gastric wall (desmoid fibromatosis in the report)",
+"native_w": 98304,
+"native_h": 98304,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 4096,
+"um": 6.0132,
+"bytes": 2420829
+}
 }
 },
 "4488-6_B-catenin": {
@@ -286,6 +322,24 @@
 "h": 3511,
 "um": 3.5077,
 "bytes": 1710710
+}
+},
+"rescan_id": "4488-6_B-catenin_rescan2"
+},
+"4488-6_B-catenin_rescan2": {
+"orig_id": "4488-6_B-catenin",
+"rescan": "23.11.2026",
+"label": "4488-6 · β-catenin · Rescan 23.11.2026",
+"block": "Block 6: lesser-omentum fat next to the gastric wall",
+"native_w": 106496,
+"native_h": 81920,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3151,
+"um": 6.5144,
+"bytes": 1638503
 }
 }
 },
@@ -374,6 +428,24 @@
 "um": 5.5121,
 "bytes": 1343987
 }
+},
+"rescan_id": "4488-8_Intern_rescan2"
+},
+"4488-8_Intern_rescan2": {
+"orig_id": "4488-8_Intern",
+"rescan": "23.11.2026",
+"label": "4488-8 · H&E · Rescan 23.11.2026",
+"block": "Blocks 7–8: separately submitted fat with an induration",
+"native_w": 98304,
+"native_h": 90112,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3755,
+"um": 6.0132,
+"bytes": 1148662
+}
 }
 },
 "4488-9": {
@@ -402,6 +474,24 @@
 "h": 4096,
 "um": 4.5096,
 "bytes": 1574572
+}
+},
+"rescan_id": "4488-9_rescan2"
+},
+"4488-9_rescan2": {
+"orig_id": "4488-9",
+"rescan": "23.11.2026",
+"label": "4488-9 · H&E · Rescan 23.11.2026",
+"block": "Block 9: gallbladder",
+"native_w": 114688,
+"native_h": 98304,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3511,
+"um": 7.0155,
+"bytes": 2258413
 }
 }
 },
@@ -460,6 +550,24 @@
 "h": 4096,
 "um": 4.5099,
 "bytes": 3096784
+}
+},
+"rescan_id": "4488-11_rescan2"
+},
+"4488-11_rescan2": {
+"orig_id": "4488-11",
+"rescan": "23.11.2026",
+"label": "4488-11 · H&E · Rescan 23.11.2026",
+"block": "Blocks 10–14: preserved tumour foci in the cyst wall",
+"native_w": 106496,
+"native_h": 73728,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 2836,
+"um": 6.5144,
+"bytes": 2380283
 }
 }
 },
@@ -576,6 +684,24 @@
 "h": 4096,
 "um": 5.5121,
 "bytes": 2184759
+}
+},
+"rescan_id": "4488-14_Ki67_rescan2"
+},
+"4488-14_Ki67_rescan2": {
+"orig_id": "4488-14_Ki67",
+"rescan": "23.11.2026",
+"label": "4488-14 · Ki-67 · Rescan 23.11.2026",
+"block": "Blocks 10–14: preserved tumour focus in the cyst wall",
+"native_w": 106496,
+"native_h": 90112,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3466,
+"um": 6.5144,
+"bytes": 1954725
 }
 }
 },
@@ -721,6 +847,24 @@
 "h": 4096,
 "um": 4.5095,
 "bytes": 1238254
+}
+},
+"rescan_id": "4488-19_rescan2"
+},
+"4488-19_rescan2": {
+"orig_id": "4488-19",
+"rescan": "23.11.2026",
+"label": "4488-19 · H&E · Rescan 23.11.2026",
+"block": "Block 19: loose masses from the cyst lumen",
+"native_w": 106496,
+"native_h": 98304,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 3781,
+"um": 6.5144,
+"bytes": 2128568
 }
 }
 },
@@ -895,6 +1039,24 @@
 "h": 4096,
 "um": 1.0022,
 "bytes": 508567
+}
+},
+"rescan_id": "cito700_Intern_rescan2"
+},
+"cito700_Intern_rescan2": {
+"orig_id": "cito700_Intern",
+"rescan": "23.11.2026",
+"label": "cito 700 · H&E · Rescan 23.11.2026",
+"block": "cito 699–700: express-histology material",
+"native_w": 98304,
+"native_h": 40960,
+"native_um": 0.250552,
+"sizes": {
+"l": {
+"w": 4096,
+"h": 1707,
+"um": 6.0132,
+"bytes": 323816
 }
 }
 },
