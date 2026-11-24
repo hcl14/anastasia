@@ -1,0 +1,40 @@
+{
+  "note": "GIST vs leiomyoma vs schwannoma classifier (gastric spindle cell tumour); our slides are gastric adenocarcinoma/desmoid/liver \u2014 'other' behaviour expected",
+  "slides": {
+    "4488-4_Intern_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-4_Intern_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-4_Intern_rescan2.txt"
+    },
+    "4488-6_Intern_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-6_Intern_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-6_Intern_rescan2.txt"
+    },
+    "4488-8_Intern_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-8_Intern_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-8_Intern_rescan2.txt"
+    },
+    "4488-9_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-9_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-9_rescan2.txt"
+    },
+    "4488-11_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-11_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-11_rescan2.txt"
+    },
+    "4488-19_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_4488-19_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_4488-19_rescan2.txt"
+    },
+    "cito700_Intern_rescan2": {
+      "predicted": "GIST",
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_gist_cito700_Intern_rescan2.jpg",
+      "txt_url": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/gist_cito700_Intern_rescan2.txt"
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "slides": {
+    "4488-4_Intern_rescan2": {
+      "region_xy": [
+        58368,
+        9216
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 1251,
+      "median_area_um2": 15.8,
+      "area_p10_um2": 8.0,
+      "area_p90_um2": 37.0,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-4_Intern_rescan2.jpg"
+    },
+    "4488-1_Intern": {
+      "region_xy": [
+        25600,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 894,
+      "median_area_um2": 23.5,
+      "area_p10_um2": 4.9,
+      "area_p90_um2": 55.8,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-1_Intern.jpg"
+    },
+    "4488-20": {
+      "region_xy": [
+        56320,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 8532,
+      "median_area_um2": 33.5,
+      "area_p10_um2": 15.5,
+      "area_p90_um2": 58.2,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-20.jpg"
+    },
+    "4222-2": {
+      "region_xy": [
+        15360,
+        3072
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 3240,
+      "median_area_um2": 27.5,
+      "area_p10_um2": 16.8,
+      "area_p90_um2": 44.8,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4222-2_HE.jpg"
+    },
+    "4488-10_26": {
+      "region_xy": [
+        54272,
+        7168
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 12404,
+      "median_area_um2": 31.8,
+      "area_p10_um2": 13.5,
+      "area_p90_um2": 61.5,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-10_26.jpg"
+    },
+    "4488-6_Intern_rescan2": {
+      "region_xy": [
+        41984,
+        13312
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 5278,
+      "median_area_um2": 26.5,
+      "area_p10_um2": 12.8,
+      "area_p90_um2": 53.2,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-6_Intern_rescan2.jpg"
+    },
+    "4488-8_Intern_rescan2": {
+      "region_xy": [
+        66560,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 0,
+      "median_area_um2": null,
+      "area_p10_um2": null,
+      "area_p90_um2": null,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-8_Intern_rescan2.jpg"
+    },
+    "4488-9_rescan2": {
+      "region_xy": [
+        60416,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 6130,
+      "median_area_um2": 23.8,
+      "area_p10_um2": 11.5,
+      "area_p90_um2": 48.8,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-9_rescan2.jpg"
+    },
+    "4488-11_rescan2": {
+      "region_xy": [
+        17408,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 1926,
+      "median_area_um2": 20.8,
+      "area_p10_um2": 10.4,
+      "area_p90_um2": 47.0,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-11_rescan2.jpg"
+    },
+    "4488-19_rescan2": {
+      "region_xy": [
+        60416,
+        5120
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 831,
+      "median_area_um2": 25.0,
+      "area_p10_um2": 10.5,
+      "area_p90_um2": 52.2,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-19_rescan2.jpg"
+    },
+    "cito700_Intern_rescan2": {
+      "region_xy": [
+        66560,
+        23552
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 1262,
+      "median_area_um2": 21.0,
+      "area_p10_um2": 11.2,
+      "area_p90_um2": 42.8,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_cito700_Intern_rescan2.jpg"
+    },
+    "4222-2_Ki67": {
+      "region_xy": [
+        5120,
+        12288
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 9216,
+      "median_area_um2": 23.0,
+      "area_p10_um2": 11.5,
+      "area_p90_um2": 45.0,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4222-2_Ki67.jpg"
+    },
+    "4488-14_Ki67_rescan2": {
+      "region_xy": [
+        29696,
+        7168
+      ],
+      "size_px": 4096,
+      "mpp": 0.5,
+      "nuclei_count": 5558,
+      "median_area_um2": 22.2,
+      "area_p10_um2": 10.5,
+      "area_p90_um2": 48.8,
+      "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-14_Ki67_rescan2.jpg"
+    }
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "models": [
+    "UNI2-h",
+    "Virchow2",
+    "H-optimus-0",
+    "gigapath",
+    "midnight",
+    "phikon-v2",
+    "plip"
+  ],
+  "slides": {
+    "4222-2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4222-2_HE.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4222-2_HE.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4222-2_HE.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4222-2_HE.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4222-2_HE.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4222-2_HE.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4222-2_HE.npy"
+      }
+    },
+    "4222-2_Ki67": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4222-2_Ki67.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4222-2_Ki67.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4222-2_Ki67.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4222-2_Ki67.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4222-2_Ki67.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4222-2_Ki67.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4222-2_Ki67.npy"
+      }
+    },
+    "4488-10_26": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-10_26.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-10_26.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-10_26.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-10_26.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-10_26.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-10_26.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-10_26.npy"
+      }
+    },
+    "4488-11_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-11_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-11_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-11_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-11_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-11_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-11_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-11_rescan2.npy"
+      }
+    },
+    "4488-14_Ki67_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-14_Ki67_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-14_Ki67_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-14_Ki67_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-14_Ki67_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-14_Ki67_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-14_Ki67_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-14_Ki67_rescan2.npy"
+      }
+    },
+    "4488-19_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-19_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-19_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-19_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-19_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-19_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-19_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-19_rescan2.npy"
+      }
+    },
+    "4488-1_Intern": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-1_Intern.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-1_Intern.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-1_Intern.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-1_Intern.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-1_Intern.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-1_Intern.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-1_Intern.npy"
+      }
+    },
+    "4488-1_Ki67": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-1_Ki67.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-1_Ki67.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-1_Ki67.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-1_Ki67.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-1_Ki67.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-1_Ki67.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-1_Ki67.npy"
+      }
+    },
+    "4488-20": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-20.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-20.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-20.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-20.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-20.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-20.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-20.npy"
+      }
+    },
+    "4488-4_Intern_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-4_Intern_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-4_Intern_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-4_Intern_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-4_Intern_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-4_Intern_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-4_Intern_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-4_Intern_rescan2.npy"
+      }
+    },
+    "4488-6_Intern_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-6_Intern_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-6_Intern_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-6_Intern_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-6_Intern_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-6_Intern_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-6_Intern_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-6_Intern_rescan2.npy"
+      }
+    },
+    "4488-8_Intern_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-8_Intern_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-8_Intern_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-8_Intern_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-8_Intern_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-8_Intern_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-8_Intern_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-8_Intern_rescan2.npy"
+      }
+    },
+    "4488-9_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/4488-9_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/4488-9_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/4488-9_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/4488-9_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/4488-9_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/4488-9_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/4488-9_rescan2.npy"
+      }
+    },
+    "cito700_Intern_rescan2": {
+      "models": [
+        "UNI2-h",
+        "Virchow2",
+        "H-optimus-0",
+        "gigapath",
+        "midnight",
+        "phikon-v2",
+        "plip"
+      ],
+      "npy": {
+        "UNI2-h": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/UNI2-h/cito700_Intern_rescan2.npy",
+        "Virchow2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/Virchow2/cito700_Intern_rescan2.npy",
+        "H-optimus-0": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/H-optimus-0/cito700_Intern_rescan2.npy",
+        "gigapath": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/gigapath/cito700_Intern_rescan2.npy",
+        "midnight": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/midnight/cito700_Intern_rescan2.npy",
+        "phikon-v2": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/phikon-v2/cito700_Intern_rescan2.npy",
+        "plip": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/embeddings/plip/cito700_Intern_rescan2.npy"
+      }
+    }
+  }
+}
