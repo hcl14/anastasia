@@ -1,0 +1,191 @@
+{
+  "series_used": "S30 (Standard/Full, IV contrast portal-venous, 3.75mm, Kernel=STANDARD) + S40 (FDG PET)",
+  "liver_env_cm3": 917.5,
+  "liver_parenchyma_hu_mean": 106.6,
+  "bg_suv": {
+    "mean": 1.96,
+    "std": 0.34,
+    "thr_percist": 3.62
+  },
+  "ct_hypodense_lesion": {
+    "vol_cm3": 14.44,
+    "ct_hu_mean": 65.6,
+    "suv_max": 7.77,
+    "min_dist_contrast_pv_mm": 1.4,
+    "min_dist_contrast_ivc_mm": 1.4,
+    "min_dist_contrast_hv_mm": 1.4,
+    "vessel_contact_raw": {
+      "portal_vein": {
+        "raw_overlap_vox_before_excl": 0,
+        "contact_area_mm2": 49.2,
+        "max_circumferential_angle_deg": 36.0,
+        "contact_z_range": [
+          166,
+          170
+        ],
+        "abuts_narrowest_ivc_z167": true
+      },
+      "ivc": {
+        "raw_overlap_vox_before_excl": 1,
+        "contact_area_mm2": 44.7,
+        "max_circumferential_angle_deg": 36.0,
+        "contact_z_range": [
+          166,
+          170
+        ],
+        "abuts_narrowest_ivc_z167": true
+      },
+      "hepatic_veins": {
+        "raw_overlap_vox_before_excl": 0,
+        "contact_area_mm2": 13.4,
+        "max_circumferential_angle_deg": 12.0,
+        "contact_z_range": [
+          168,
+          169
+        ],
+        "abuts_narrowest_ivc_z167": false
+      }
+    },
+    "dice_with_fdg_percist": 0.395
+  },
+  "fdg_percist_lesion": {
+    "vol_cm3": 45.54,
+    "iso41_vol_cm3": 36.77,
+    "min_dist_contrast_pv_mm": 1.4,
+    "min_dist_contrast_ivc_mm": 1.4,
+    "min_dist_contrast_hv_mm": 1.4,
+    "vessel_contact_raw": {
+      "portal_vein": {
+        "raw_overlap_vox_before_excl": 119,
+        "contact_area_mm2": 643.8,
+        "max_circumferential_angle_deg": 48.0,
+        "contact_z_range": [
+          165,
+          170
+        ],
+        "abuts_narrowest_ivc_z167": true
+      },
+      "ivc": {
+        "raw_overlap_vox_before_excl": 2,
+        "contact_area_mm2": 40.2,
+        "max_circumferential_angle_deg": 24.0,
+        "contact_z_range": [
+          167,
+          170
+        ],
+        "abuts_narrowest_ivc_z167": true
+      },
+      "hepatic_veins": {
+        "raw_overlap_vox_before_excl": 30,
+        "contact_area_mm2": 312.9,
+        "max_circumferential_angle_deg": 84.0,
+        "contact_z_range": [
+          168,
+          175
+        ],
+        "abuts_narrowest_ivc_z167": false
+      }
+    }
+  },
+  "contrast_vessels": {
+    "portal_vein_cm3": 18.55,
+    "portal_vein_cc_count": 1,
+    "portal_vein_hu_mean": 167.6,
+    "hepatic_veins_cm3": 8.54,
+    "hepatic_veins_hu_mean": 136.9,
+    "ivc_cm3": 26.72,
+    "ivc_hu_mean": 103.3,
+    "ivc_z_profile": {
+      "z=155": {
+        "diam_mm": 20.4,
+        "ct_hu_mean": 99.0
+      },
+      "z=156": {
+        "diam_mm": 20.2,
+        "ct_hu_mean": 96.6
+      },
+      "z=157": {
+        "diam_mm": 21.0,
+        "ct_hu_mean": 98.3
+      },
+      "z=158": {
+        "diam_mm": 22.0,
+        "ct_hu_mean": 104.4
+      },
+      "z=159": {
+        "diam_mm": 22.1,
+        "ct_hu_mean": 102.3
+      },
+      "z=160": {
+        "diam_mm": 22.2,
+        "ct_hu_mean": 104.8
+      },
+      "z=161": {
+        "diam_mm": 21.5,
+        "ct_hu_mean": 116.7
+      },
+      "z=162": {
+        "diam_mm": 20.1,
+        "ct_hu_mean": 116.3
+      },
+      "z=163": {
+        "diam_mm": 18.8,
+        "ct_hu_mean": 105.1
+      },
+      "z=164": {
+        "diam_mm": 16.8,
+        "ct_hu_mean": 97.7
+      },
+      "z=165": {
+        "diam_mm": 14.3,
+        "ct_hu_mean": 95.8
+      },
+      "z=166": {
+        "diam_mm": 14.7,
+        "ct_hu_mean": 95.8
+      },
+      "z=167": {
+        "diam_mm": 11.9,
+        "ct_hu_mean": 93.2
+      },
+      "z=168": {
+        "diam_mm": 17.5,
+        "ct_hu_mean": 95.4
+      },
+      "z=169": {
+        "diam_mm": 19.9,
+        "ct_hu_mean": 105.7
+      },
+      "z=170": {
+        "diam_mm": 22.1,
+        "ct_hu_mean": 126.5
+      },
+      "z=171": {
+        "diam_mm": 21.7,
+        "ct_hu_mean": 122.2
+      },
+      "z=172": {
+        "diam_mm": 22.2,
+        "ct_hu_mean": 99.5
+      },
+      "z=173": {
+        "diam_mm": 24.0,
+        "ct_hu_mean": 91.5
+      },
+      "z=174": {
+        "diam_mm": 24.9,
+        "ct_hu_mean": 99.7
+      },
+      "z=175": {
+        "diam_mm": 22.4,
+        "ct_hu_mean": 96.5
+      },
+      "z=176": {
+        "diam_mm": 14.8,
+        "ct_hu_mean": 98.4
+      }
+    }
+  },
+  "surgical_clips_halo_vox": 305,
+  "surgical_clips_halo_cm3": 1.86
+}

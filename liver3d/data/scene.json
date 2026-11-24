@@ -53,7 +53,7 @@
    "key": "nov2026",
    "label": "Nov 2026",
    "scan": "2026-11-24",
-   "ct": "post-op low-dose CT 1.37x1.37x3.27 mm, 512x512x299",
+   "ct": "post-op portal-venous IV contrast CT (S30 Standard/Full, 3.75 mm, 512x512x299)",
    "spacing_mm": [
     1.3672,
     1.3672,
@@ -2905,7 +2905,7 @@
     },
     "nov2026": {
      "mesh": "meshes/nov2026/nov2026_fdg_percist.ply",
-     "volume_mL": 40.7,
+     "volume_mL": 45.54,
      "verify": {
       "passed": true,
       "cc_count": 1
@@ -3254,7 +3254,7 @@
     },
     "nov2026": {
      "mesh": "meshes/nov2026/nov2026_portal.ply",
-     "volume_mL": 9.49,
+     "volume_mL": 18.55,
      "verify": {
       "passed": true,
       "cc_count": 1
@@ -3350,6 +3350,14 @@
       "reviewed": true
      },
      "confidence": "low confidence (non-contrast CT; proximal channels only; 1.67 mL lies outside liver and IVC, C03)"
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_hepatic_veins.ply",
+     "volume_mL": 8.54,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
+     }
     }
    }
   },
@@ -3442,7 +3450,7 @@
     },
     "nov2026": {
      "mesh": "meshes/nov2026/nov2026_ivc.ply",
-     "volume_mL": 16.56,
+     "volume_mL": 26.72,
      "verify": {
       "passed": true,
       "cc_count": 1
@@ -5874,13 +5882,12 @@
      }
     },
     "nov2026": {
-     "mesh": "meshes/nov2026/nov2026_fdg_percist.ply",
-     "volume_mL": 40.7,
-     "suv_max": 8.99,
-     "suv_mean": 4.51,
-     "active_mL": 40.7,
+     "mesh": "meshes/nov2026/nov2026_ct_lesion.ply",
+     "volume_mL": 14.44,
+     "suv_max": 7.77,
+     "active_mL": 45.54,
      "radiological": {
-      "note": "Post-op 24.11.2026 contiguous hepatic/hilar FDG-avid lesion (19.72 mL intrahepatic + 20.97 mL hilar; SUVmax 8.99, SUVpeak 6.12). Official KMKOC report & contrast CT pending."
+      "note": "S30 IV portal-venous contrast CT hypodense core (14.44 mL, 65.6 HU) + FDG PERCIST (45.54 mL); PV/IVC/HV abutment (36\u00b0 PV, 36\u00b0 IVC at z=167 11.9 mm)."
      }
     }
    },

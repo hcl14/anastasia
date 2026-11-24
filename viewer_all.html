@@ -33,24 +33,23 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {PLYLoader} from 'three/addons/loaders/PLYLoader.js';
 const LAYERS=[
- ['skeleton','skeleton (ghost)',0xd8d2c4,0.16,true],
- ['liver','liver (ghost)',0xf3d6c8,0.12,true],
- ['stomach','stomach (ghost)',0xe9c7e9,0.18,true],
+ ['skeleton','skeleton (ghost, Sep baseline)',0xd8d2c4,0.14,true],
+ ['nov2026_liver','remnant liver (24.11, 841–918 mL)',0xf3d6c8,0.16,true],
+ ['nov2026_stomach','stomach (24.11, 88 mL)',0xe9c7e9,0.18,true],
  ['kidneys','kidneys (ghost)',0xc9b8a8,0.15,true],
  ['spleen','spleen (ghost)',0xc9a0a0,0.15,true],
  ['bladder','bladder (ghost)',0xfff2b0,0.18,true],
- ['mass','right-lobe liver mass 1200 mL (mostly cystic)',0x7fb069,0.35,true],
- ['lesion','left-lobe liver lesion (CT), 35 mL',0x00e5ff,0.4,true],
- ['focus','FDG-active tissue, left lobe, 36 mL',0xffd400,1.0,false],
- ['focus_s8','FDG-active focus, segment S8, 4 mL (new)',0xffd400,1.0,false],
- ['rim','FDG-active wall of the right-lobe mass, 10 mL',0xffd400,1.0,false],
- ['portal_tree_jun','portal vein + branches (from the 19.06 contrast CT, registered)',0x3a8dff,1.0,false],
- ['duct_jun','possible bile duct course (dotted, assumed)',0xffb070,1.0,false],
- ['gastric','gastric-wall GIST residue 42 × 31 mm (calcified, FDG-negative)',0xff7f50,0.9,false],
- ['uterus','uterus / pelvic complex (ghosted)',0xc77dff,0.35,true],
- ['uterus_lesion','anterior uterine lesion 66 × 51 mm',0xc77dff,0.8,false],
- ['pelvic_node','upper-margin pelvic node, not FDG-active',0x9d4edd,0.9,false]];
-const META={"skeleton": {"center": [0.21627043613236197, -3.374665312127476, -265.92129877478214]}, "lesion": {"center": [-51.54287142452896, 50.02434664702134, -272.83987448823797]}, "focus": {"center": [-47.34379970100087, 40.80625995588102, -264.2501806144824]}};
+ ['nov2026_ct_lesion','hepatic/hilar CT hypodense core (24.11, 14.4 mL, 65.6 HU)',0x00e5ff,0.55,true],
+ ['nov2026_fdg_percist','hepatic/hilar FDG-active tissue (24.11, 45.5 mL, SUVmax 8.99)',0xffd400,0.85,true],
+ ['nov2026_portal','portal vein (24.11 contrast CT, 18.6 mL, 167.6 HU)',0xfb923c,0.95,false],
+ ['nov2026_hepatic_veins','hepatic veins (24.11 contrast CT, 8.5 mL, 136.9 HU)',0x22c55e,0.95,false],
+ ['nov2026_ivc','IVC (24.11 contrast CT, 26.7 mL, 103.3 HU)',0x3b82f6,0.85,true],
+ ['nov2026_d3_mesenteric_root','non-liver candidate: D3 / mesenteric-root nodule (z=145.6, 2.05 mL, 45.8 HU, SUVmax 2.18)',0xff2d55,0.95,false],
+ ['nov2026_gastrocolic_band','non-liver candidate: gastrocolic / transverse-colon FDG band (z=144, 9.55 mL, SUVmax 4.73)',0xff9f0a,0.75,true],
+ ['uterus','uterus / pelvic complex (ghosted)',0xc77dff,0.28,true],
+ ['uterus_lesion','anterior uterine lesion 66 × 51 mm (Sep baseline)',0xc77dff,0.75,false],
+ ['pelvic_node','upper-margin pelvic node, not FDG-active (Sep baseline)',0x9d4edd,0.85,false]];
+const META={"skeleton": {"center": [0.21627043613236197, -3.374665312127476, -265.92129877478214]}, "lesion": {"center": [-35.1, 42.8, -253.4]}, "focus": {"center": [-35.1, 42.8, -253.4]}};
 document.getElementById('legend').innerHTML='<b>Colours</b><br>'+LAYERS.filter(l=>!/ghost/.test(l[1])).map(([k,label,col])=>`<span class="it"><span class="sw" style="background:#${col.toString(16).padStart(6,'0')}"></span>${label.replace(/ — .*$/,'').replace(/ \(.*$/,'')}</span>`).join(' ');
 const canvas=document.getElementById('c');
 const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});renderer.setPixelRatio(Math.min(2,devicePixelRatio));renderer.setClearColor(0x050508);
@@ -65,7 +64,7 @@ const C=new THREE.Vector3(...META.skeleton.center), CL=new THREE.Vector3(...META
 const meshes={};const CTS=new THREE.Mesh(new THREE.SphereGeometry(3,24,24),new THREE.MeshStandardMaterial({color:0xff3030}));CTS.position.set(...[-31.38845897613067, 39.15571379569596, -267.5948933339106]);scene.add(CTS);const loader=new PLYLoader();const panel=document.getElementById('layers');
 let pending=LAYERS.length;
 for(const [k,label,col,op,trans] of LAYERS){
-  loader.load('assets/meshes_all/'+k+'.ply?v=202609272302',g=>{
+  loader.load('assets/meshes_all/'+k+'.ply?v=202611241900',g=>{
     g.computeVertexNormals();
     const m=new THREE.Mesh(g,new THREE.MeshPhysicalMaterial({color:col,transparent:trans,opacity:op,depthWrite:!trans,roughness:0.55,metalness:0.0,side:THREE.DoubleSide}));
     m.renderOrder=trans?(k==='liver'?3:2):1;meshes[k]=m;scene.add(m);
