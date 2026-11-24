@@ -80,15 +80,15 @@
     },
     "4488-8_Intern_rescan2": {
       "region_xy": [
-        66560,
-        5120
+        49044,
+        40870
       ],
       "size_px": 4096,
       "mpp": 0.5,
-      "nuclei_count": 0,
-      "median_area_um2": null,
-      "area_p10_um2": null,
-      "area_p90_um2": null,
+      "nuclei_count": 1276,
+      "median_area_um2": 61.0,
+      "area_p10_um2": 31.2,
+      "area_p90_um2": 107.9,
       "qa_img": "https://storage.googleapis.com/case-scans-84f618ae/phase2_gpu_2026-11-23/qa_instanseg_4488-8_Intern_rescan2.jpg"
     },
     "4488-9_rescan2": {
