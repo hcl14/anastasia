@@ -1,0 +1,29 @@
+{
+  "tool": "Quantitative nuclear beta-catenin H-DAB stain deconvolution (30 sampled regions/slide), run 23\u201324.11.2026 on RTX 4090",
+  "slides": {
+    "4488-6_B-catenin_rescan2": {
+      "regions": 30,
+      "nuclei": 1363,
+      "nuclear_pos_pct": 69.99,
+      "membranous_only": 0,
+      "mean_nuclear_dab_od": 0.467,
+      "w_frac": 1.0
+    },
+    "4488-7_B-catenin": {
+      "regions": 30,
+      "nuclei": 928,
+      "nuclear_pos_pct": 68.86,
+      "membranous_only": 0,
+      "mean_nuclear_dab_od": 0.43,
+      "w_frac": 1.0
+    },
+    "cito699_B-catenin": {
+      "regions": 30,
+      "nuclei": 3623,
+      "nuclear_pos_pct": 84.82,
+      "membranous_only": 0,
+      "mean_nuclear_dab_od": 0.462,
+      "w_frac": 1.0
+    }
+  }
+}

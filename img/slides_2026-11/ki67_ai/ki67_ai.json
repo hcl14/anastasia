@@ -1,0 +1,32 @@
+{
+ "tool": "HistoForge DeepLIIF Ki-67 (histoforge/deepliif-ki67-nuclei, DINOv3 ViT-L/16 + Cellpose), run 23\u201324.11.2026 on RTX 4090",
+ "slides": {
+  "4488-14_Ki67_rescan2": {
+   "nuclei": 80752,
+   "positive": 4272,
+   "negative": 76480,
+   "ki67_index": 5.29,
+   "hotspot_500": 6.38,
+   "hotspot_2000": 6.56,
+   "w_frac": 1.0
+  },
+  "4222-2_Ki67": {
+   "nuclei": 5580,
+   "positive": 150,
+   "negative": 5430,
+   "ki67_index": 2.69,
+   "hotspot_500": 2.18,
+   "hotspot_2000": 1.53,
+   "w_frac": 1.0
+  },
+  "4488-1_Ki67": {
+   "nuclei": 13946,
+   "positive": 584,
+   "negative": 13362,
+   "ki67_index": 4.19,
+   "hotspot_500": 7.52,
+   "hotspot_2000": 7.52,
+   "w_frac": 1.0
+  }
+ }
+}
