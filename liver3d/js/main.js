@@ -1992,19 +1992,29 @@ function zoomHint() {
   if (hintShown) return; hintShown = true;
   toast(T(EMBED ? 'Click the model (or hold the pointer on it) to zoom with the wheel; Ctrl + wheel always zooms.' : 'Zoom: wheel or pinch, toward the pointer.'), 2600);
 }
+let lastCtrlWheelAt = 0, gestureScale = 1;
 stage.addEventListener('wheel', e => {
-  if (e.target !== canvas) return;
+  if (e.target !== canvas && !(e.ctrlKey && !e.target.closest?.('#panel,#drawer,#claim'))) return;
   // in the embed the wheel scrolls the page until the model is clicked or hovered for 300 ms; pinch (ctrl+wheel) always zooms
   if (!wheelArmed && !e.ctrlKey && !e.metaKey) { zoomHint(); return; }
   e.preventDefault(); e.stopPropagation();
+  if (e.ctrlKey) lastCtrlWheelAt = performance.now();
   const dy = wheelDelta(e);
   zoomBy(Math.exp(dy * (e.ctrlKey ? ZOOM.kPinch : ZOOM.k)), anchorAt(e.clientX, e.clientY));
 }, { capture: true, passive: false });
 canvas.addEventListener('pointerenter', () => { if (EMBED && !wheelArmed) armT = setTimeout(() => { wheelArmed = true; }, 300); });
 canvas.addEventListener('pointerleave', () => { clearTimeout(armT); if (EMBED) wheelArmed = false; });
 canvas.addEventListener('pointerdown', () => { wheelArmed = true; });
-// Safari trackpad / iOS: no page zoom inside the canvas
-for (const ev of ['gesturestart', 'gesturechange', 'gestureend']) canvas.addEventListener(ev, e => e.preventDefault(), { passive: false });
+// Safari trackpad / iOS: prevent page zoom and route pinch gesture to 3D zoom
+stage.addEventListener('gesturestart', e => { e.preventDefault(); gestureScale = e.scale || 1; }, { passive: false });
+stage.addEventListener('gesturechange', e => {
+  e.preventDefault();
+  if (performance.now() - lastCtrlWheelAt < 80 || !(e.scale > 0)) return;
+  const s = gestureScale / e.scale;
+  gestureScale = e.scale;
+  zoomBy(s, anchorAt(e.clientX, e.clientY));
+}, { passive: false });
+stage.addEventListener('gestureend', e => { e.preventDefault(); gestureScale = 1; }, { passive: false });
 // touch: double tap zooms 2x toward the tapped point; a double tap after zooming far in resets the view
 let lastTap = 0, lastTapXY = null;
 canvas.addEventListener('pointerup', e => {
