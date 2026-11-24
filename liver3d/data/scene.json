@@ -48,6 +48,22 @@
     512,
     263
    ]
+  },
+  {
+   "key": "nov2026",
+   "label": "Nov 2026",
+   "scan": "2026-11-24",
+   "ct": "post-op low-dose CT 1.37x1.37x3.27 mm, 512x512x299",
+   "spacing_mm": [
+    1.3672,
+    1.3672,
+    3.27
+   ],
+   "shape": [
+    512,
+    512,
+    299
+   ]
   }
  ],
  "registration": {
@@ -106,6 +122,24 @@
       0.0,
       1.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
       0.0,
       0.0,
       0.0,
@@ -283,6 +317,24 @@
       0.0,
       1.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
       0.0,
       0.0,
       0.0,
@@ -663,6 +715,24 @@
       0.0,
       0.0,
       1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
+      0.0,
+      0.0,
+      0.0,
+      1.0
      ]
     },
     "pair_matrix": {
@@ -1035,6 +1105,24 @@
       0.0,
       1.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
       0.0,
       0.0,
       0.0,
@@ -1429,6 +1517,24 @@
       0.0,
       0.0,
       1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
+      0.0,
+      0.0,
+      0.0,
+      1.0
      ]
     },
     "pair_matrix": {
@@ -1815,6 +1921,24 @@
       0.0,
       1.0,
       0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
       0.0,
       0.0,
       0.0,
@@ -2208,6 +2332,24 @@
       0,
       0,
       0,
+      1.0
+     ],
+     "nov2026": [
+      0.99044769,
+      -0.13204201,
+      0.03972754,
+      1.54243617,
+      0.13188621,
+      0.99124336,
+      0.00652876,
+      24.32928927,
+      -0.04024173,
+      -0.00122688,
+      0.99918922,
+      -11.06728811,
+      0.0,
+      0.0,
+      0.0,
       1.0
      ]
     },
@@ -2623,6 +2765,14 @@
       ],
       "reviewed": true
      }
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_liver.ply",
+     "volume_mL": 841.22,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
+     }
     }
    }
   },
@@ -2752,6 +2902,14 @@
       "reviewed": true
      },
      "confidence": "SUV >= 2.54 (background + 2 SD); 18.5 mL of it is PET-defined only (outside the CT lesions)"
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_fdg_percist.ply",
+     "volume_mL": 40.7,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
+     }
     }
    },
    "not_visible": {
@@ -3093,6 +3251,14 @@
      },
      "note": "registered from another date (supplementary), not observed on this study",
      "confidence": "registered from another date; not observed on this CT"
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_portal.ply",
+     "volume_mL": 9.49,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
+     }
     }
    }
   },
@@ -3272,6 +3438,14 @@
        "consensus/sep2026/masks/ivc.npy"
       ],
       "reviewed": true
+     }
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_ivc.ply",
+     "volume_mL": 16.56,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
      }
     }
    }
@@ -4242,15 +4416,23 @@
       "reviewed": true,
       "limitation": "stomach wall and lumen (TotalSegmentator seed minus liver and the formation, hole-filled); single-reader (Opus), not adjudicated; consensus_gastric/report.md"
      }
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_stomach.ply",
+     "volume_mL": 88.21,
+     "verify": {
+      "passed": true,
+      "cc_count": 1
+     }
     }
    }
   },
   {
    "id": "op_resected",
-   "name": "Resected right hemiliver (segments V–VIII, approximate)",
+   "name": "Resected right hemiliver (segments V\u2013VIII, approximate)",
    "group": "Operation 21.10.2026",
    "color": "#e8212b",
-   "opacity": 0.32,
+   "opacity": 0.06,
    "default_visible": false,
    "operation": true,
    "replaces": null,
@@ -4291,7 +4473,7 @@
   },
   {
    "id": "op_liver_remnant",
-   "name": "Remaining liver after the operation (segments I–IV, approximate)",
+   "name": "Remaining liver after the operation (segments I\u2013IV, approximate)",
    "group": "Operation 21.10.2026",
    "color": "#b9a596",
    "opacity": 0.18,
@@ -5917,6 +6099,16 @@
       "segment": "II",
       "fraction": 0.75,
       "from_": "TotalSegmentator segments seed near the lesion (hint only)"
+     }
+    },
+    "nov2026": {
+     "mesh": "meshes/nov2026/nov2026_fdg_percist.ply",
+     "volume_mL": 40.7,
+     "suv_max": 8.99,
+     "suv_mean": 4.51,
+     "active_mL": 40.7,
+     "radiological": {
+      "note": "Post-op 24.11.2026 contiguous hepatic/hilar FDG-avid lesion (19.72 mL intrahepatic + 20.97 mL hilar; SUVmax 8.99, SUVpeak 6.12). Official KMKOC report & contrast CT pending."
      }
     }
    },
@@ -13118,7 +13310,7 @@
   "date": "2026-10-21",
   "on_date": "sep2026",
   "label": "Operation 21.10.2026 (surgeon's verbal report)",
-  "procedure": "Right hemihepatectomy (Couinaud segments V–VIII) with a marginal (edge) resection of the stomach removing the primary gastric focus",
+  "procedure": "Right hemihepatectomy (Couinaud segments V\u2013VIII) with a marginal (edge) resection of the stomach removing the primary gastric focus",
   "source": "surgeon's verbal telephone report, 21.10.2026 (no operation protocol or histology yet)",
   "caveat": "surgeon's verbal report; operation protocol and histology pending; resection boundary approximate (automatic segment map)",
   "link": "../fedorov-2026-10-21.html",

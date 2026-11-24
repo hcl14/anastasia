@@ -520,7 +520,7 @@ const XRAY = new Set(['active', 'active_pet_only', 'active_inferred', 'nodules',
 const MARKERS = new Set(['contact_left_portal', 'nodules', 'calcifications', 'active', 'active_pet_only', 'active_inferred']);
 function applyMaterial(it) {
   const hh = hoverHit(it) && it.date === shown;
-  const o = hh ? Math.max(opacityOf(it), 0.85) : opacityOf(it) * (dimmed(it) ? (hoverFocus ? 0.35 : 0.28) : 1), tr = o < 0.999;
+  const o = hh ? Math.max(opacityOf(it), 0.85) : opacityOf(it) * (dimmed(it) ? (hoverFocus ? 0.35 : 0.28) : 1) * (opOn(it.date) && state.op === 'mark' && opStatus(it) === 'removed' ? 0.12 : 1), tr = o < 0.999;
   // highlighted from a row: brighter (emissive share of its own colour); otherwise back to the base emissive unless the pulse owns it
   if (hh) { HOVER_EM.set(colorOf(it)).multiplyScalar(0.35); it.mesh.material.emissive.copy(HOVER_EM); it.back.material.emissive.copy(HOVER_EM); it._hoverLit = true; }
   else if (it._hoverLit) { it._hoverLit = false; if (!it.hl) { it.mesh.material.emissive.copy(it.baseEmissive || HOVER_EM.set(0)); it.back.material.emissive.copy(it.mesh.material.emissive); } }
@@ -573,6 +573,7 @@ function sync() {
       // operation view: a fresnel outline in the lesion's status colour (removed / uncertain or not stated / remains), drawn on top
       if (!it.opMark && it.kind === 'lesion' && opOn(it.date) && opStatus(it)) {
         const m = new THREE.Mesh(it.mesh.geometry, ghostMaterial(false)); m.material.uniforms.color.value.set(OP_COLOR[opStatus(it)]);
+        if (opStatus(it) === 'removed') { m.material.uniforms.base.value = 0.02; m.material.uniforms.rim.value = 0.20; }
         m.matrixAutoUpdate = false; m.renderOrder = 310 + it.sub; m.visible = false; dateGroup[it.date].add(m); it.opMark = m;
       }
       if (it.opMark) { it.opMark.visible = it.mesh.visible && opOn(it.date); it.opMark.geometry = it.mesh.geometry; }
