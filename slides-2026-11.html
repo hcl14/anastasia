@@ -25,7 +25,7 @@ figure img{width:100%;height:150px;object-fit:cover;border:1px solid var(--rule)
 .toc a{margin-right:10px;white-space:nowrap}a.zoom{display:inline-block;background:#0b5fa5;color:#fff;text-decoration:none;padding:3px 10px;border-radius:5px;font-weight:600}a.zoom:hover{background:#084a82}
 @media (max-width:760px){main{padding:18px 16px}header{padding:22px 16px}nav.top{padding:8px 16px}figure{width:calc(50% - 5px);min-width:0;flex:1 1 calc(50% - 5px)}figure img{height:120px}table{font-size:13px}td,th{padding:6px 4px}}
 </style>
-<script>(function(){var V="20261123-2225";window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});fetch("site_version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.v&&d.v!==V&&sessionStorage.getItem("sv_reloaded")!==d.v){sessionStorage.setItem("sv_reloaded",d.v);location.reload(true);}}).catch(function(){});})();</script>
+<script>(function(){var V="20261124-1120";window.addEventListener("pageshow",function(e){if(e.persisted)location.reload();});fetch("site_version.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){if(d&&d.v&&d.v!==V&&sessionStorage.getItem("sv_reloaded")!==d.v){sessionStorage.setItem("sv_reloaded",d.v);location.reload(true);}}).catch(function(){});})();</script>
 </head>
 <body>
 <header><h1>Slide scans: resection 4488/26 and biopsy 4222/26</h1>
@@ -41,7 +41,24 @@ figure img{width:100%;height:150px;object-fit:cover;border:1px solid var(--rule)
 <li><span class="bdg f" title="What a document or official written conclusion states">FACT</span> <b>Update 23.11.2026 (45 scans total):</b> <b>9 rescanned slides</b> (<code>4488-4</code>, <code>4488-6 H&amp;E</code>, <code>4488-6 β-catenin</code>, <code>4488-8</code>, <code>4488-9</code>, <code>4488-11</code>, <code>4488-14 Ki-67</code>, <code>4488-19</code>, <code>cito 700</code>; 40× Grundium Ocus, 0.25 µm/px, 10.49 GB total) were received and added <b>alongside all 36 original 04.11.2026 scans</b> (all 45 files verified complete; 1st scans &amp; AI layers preserved untouched so doctors can compare 1st scan vs Rescan 23.11 directly).</li>
 <li><b>Effective technical quality across the 36 glass slides (re-checked 23.11.2026 after 9 rescans; 45 scans total):</b> <b>20</b> good (12 original + 8 resolved by 23.11 rescan), <b>12</b> usable with a minor note, <b>2</b> limited (<code>4488-14 H&amp;E</code>, <code>4488-16 H&amp;E</code> — not rescanned), <b>2</b> with a problem (<code>4488-8 H&amp;E</code> — still defocused on the 23.11 rescan; <code>4222-2 DOG-1</code> — physical tissue depletion on the glass, not a scan error). Originally on 04.11.2026: 12 good, 12 usable, 9 limited, 3 problem (<a href="scan-quality-2026-11-05.html">1st-scan quality review, Ukrainian</a>).</li>
 <li><b>View in the browser:</b> each card has <i>Open zoomable whole section</i>, which streams the <b>original 40× SVS scan</b> directly from Cloud Storage (loading only visible tiles) plus a local <b>low</b> (4,096 px) fallback (and Drive medium/high JPEGs on the 36 original scans). On paired slides, the viewer header includes a one-click link to switch between the 1st scan (04.11, with AI overlays) and the Rescan (23.11).</li>
-<li><b>Open the scans:</b> <a href="https://drive.google.com/drive/folders/1GWc-hgLPFv0euhmvskWGWUxTd9QQQAPa" target="_blank">Google Drive folder, view access for anyone with the link</a>. Google Drive cannot preview SVS: download the file and open it in QuPath (free), Aperio ImageScope or ASAP.</li>
+<li><b>Open the scans:</b> <a href="https://drive.google.com/drive/folders/1GWc-hgLPFv0euhmvskWGWUxTd9QQQAPa" target="_blank">Google Drive folder, view access for anyone with the link</a> · <a href="https://storage.googleapis.com/case-scans-84f618ae/all_slides.html" target="_blank">Public GCS high-res SVS folder (all 45 files, 39.34 GB + wget/gcloud batch scripts)</a>. Google Drive cannot preview SVS: download the file and open it in QuPath (free), Aperio ImageScope or ASAP.</li>
+<li><span class="bdg i" title="Automated open-source AI model output; research only, not a diagnosis">INTERPRETATION</span> <b>Computed AI metrics (research only — all overlays &amp; model links selectable in the viewer):</b>
+  <ul>
+    <li><b>Ki-67 proliferation index (HistoForge DeepLIIF, whole-slide):</b>
+      <code>4488-14 · Ki-67 (Rescan)</code>: <b>5.29%</b> (4,272 / 80,752 nuclei · 500-cell hotspot <b>6.38%</b>, 2,000-cell <b>6.56%</b> · <a href="slide-viewer.html?s=4488-14_Ki67_rescan2&amp;ai=ki67" target="_blank">view mask</a>);
+      <code>4488-1 · Ki-67</code>: <b>4.19%</b> (584 / 13,946 nuclei · 500/2,000-cell hotspots <b>7.52%</b> · <a href="slide-viewer.html?s=4488-1_Ki67&amp;ai=ki67" target="_blank">view mask</a>);
+      <code>4222-2 · Ki-67 (biopsy)</code>: <b>2.69%</b> (150 / 5,580 nuclei · 500-cell hotspot <b>2.18%</b>, 2,000-cell <b>1.53%</b> · <a href="slide-viewer.html?s=4222-2_Ki67&amp;ai=ki67" target="_blank">view mask</a>).</li>
+    <li><b>Nuclear β-catenin (H-DAB deconvolution, 30 regions/slide):</b>
+      <code>4488-6 (Rescan)</code>: <b>69.99%</b> nuclear+ (1,363 nuclei · 0% membranous-only · DAB OD 0.467 · <a href="slide-viewer.html?s=4488-6_B-catenin_rescan2&amp;ai=bcat" target="_blank">view mask</a>);
+      <code>4488-7</code>: <b>68.86%</b> nuclear+ (928 nuclei · 0% membranous-only · DAB OD 0.430 · <a href="slide-viewer.html?s=4488-7_B-catenin&amp;ai=bcat" target="_blank">view mask</a>);
+      <code>cito 699</code>: <b>84.82%</b> nuclear+ (3,623 nuclei · 0% membranous-only · DAB OD 0.462 · <a href="slide-viewer.html?s=cito699_B-catenin&amp;ai=bcat" target="_blank">view mask</a>).</li>
+    <li><b>Nuclear segmentation &amp; scan QC (GrandQC · MapDe · HoVer-Net · InstanSeg):</b>
+      <b>InstanSeg</b> (13 slides, 4096×4096 ROI @ 0.5 µm/px): 831–12,404 nuclei/ROI (0 on defocused <code>4488-8</code>), median nuclear area 15.8–33.5 µm² (<code>4488-4</code> 15.8 µm², <code>4488-1</code> 23.5 µm², <code>4488-10</code> 31.8 µm², <code>4488-20</code> 33.5 µm², <code>4222-2</code> 27.5 µm²).
+      <b>GrandQC</b>, <b>MapDe</b> density, and <b>HoVer-Net</b> outlines are selectable in the viewer across H&amp;E slides.</li>
+    <li><b>Foundation encoders &amp; classifiers (Phase 2 GPU):</b>
+      7 encoders (<code>UNI2-h</code>, <code>Virchow2</code>, <code>H-optimus-0</code>, <code>Prov-GigaPath</code>, <code>Midnight-12k</code>, <code>Phikon-v2</code>, <code>PLIP</code>) across 14 slides (200 tiles/slide; top cosine similarity <code>4488-1</code> ↔ <code>4488-4</code>: 0.854 UNI2-h / 0.865 Virchow2) + <b>PathfinderLab GIST</b> on 7 rescans — all accessible via <i>All AI models &amp; masks</i> in the viewer.</li>
+  </ul>
+</li>
 </ul>
 </section>
 

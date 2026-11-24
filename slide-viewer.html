@@ -102,18 +102,19 @@ let viewer=null,cur=null,busy=false;
 // switchable AI layers, precomputed per slide (H&E slides, including 23.11 rescans):
 //   qc  = GrandQC artifact map         img/slides_2026-11/qc_ai/<id>.png      + qc_ai.json
 //   nuc = TIAToolbox nucleus density   img/slides_2026-11/nuclei_ai/<id>.png  + nuclei_ai.json
+const GCS_OV='https://storage.googleapis.com/case-scans-84f618ae/overlays/';
 const LAY={
-  qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65},
-  nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6},
+  qc:{dir:'qc_ai',json:'qc_ai.json',data:null,on:false,item:null,op:.65,gcs:true},
+  nuc:{dir:'nuclei_ai',json:'nuclei_ai.json',data:null,on:false,item:null,op:.6,gcs:true},
   hv:{dir:'hover_ai',json:'hover_ai.json',data:null,on:false,item:null,op:.9,noImg:true},
-  ki67:{dir:'ki67_ai',json:'ki67_ai.json',data:null,on:false,item:null,op:.85},
-  bcat:{dir:'bcat_ai',json:'bcat_ai.json',data:null,on:false,item:null,op:.85},
-  instanseg:{dir:'phase2_ai',json:'instanseg_ai.json',data:null,on:false,item:null,op:.85,noImg:true},
-  gist:{dir:'phase2_ai',json:'gist_ai.json',data:null,on:false,item:null,op:.85,noImg:true},
-  emb:{dir:'phase2_ai',json:'emb_ai.json',data:null,on:false,item:null,op:1,noImg:true}
+  ki67:{dir:'ki67_ai',json:'ki67_ai.json',data:null,on:false,item:null,op:.85,gcs:true},
+  bcat:{dir:'bcat_ai',json:'bcat_ai.json',data:null,on:false,item:null,op:.85,gcs:true},
+  instanseg:{dir:'phase2_ai',json:'instanseg_ai.json',data:null,on:false,item:null,op:.85,noImg:true,gcs:true},
+  gist:{dir:'phase2_ai',json:'gist_ai.json',data:null,on:false,item:null,op:.85,noImg:true,gcs:true},
+  emb:{dir:'phase2_ai',json:'emb_ai.json',data:null,on:false,item:null,op:1,noImg:true,gcs:true}
 };
 const wantAI=new Set((qs.get('ai')||'').split(',').filter(Boolean));
-Object.entries(LAY).forEach(([k,L])=>fetch('img/slides_2026-11/'+L.dir+'/'+L.json,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+Object.entries(LAY).forEach(([k,L])=>fetch((L.gcs?GCS_OV:'img/slides_2026-11/')+L.dir+'/'+L.json,{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
   if(j&&j.slides&&j.slides[sid]){L.data=j;$('ai').style.display='inline';const b=document.querySelector('.aib[data-l="'+k+'"]');if(b){b.style.display='inline-block';if(wantAI.has(k)){L.on=true;b.classList.add('on');showAI();}}}}).catch(()=>{}));
 document.querySelectorAll('.aib').forEach(b=>{b.style.display='none';b.onclick=()=>{const L=LAY[b.dataset.l];L.on=!L.on;b.classList.toggle('on',L.on);showAI();};});
 const fmtN=n=>n.toLocaleString('en-US');
@@ -221,7 +222,7 @@ function showAI(){
   const ht=$('hvt');if(ht)ht.onchange=()=>{hvByType=ht.checked;showAI();};
   drawHV();
   on.filter(k=>!LAY[k].noImg).forEach(k=>{const L=LAY[k],st=L.data.slides[sid];
-    viewer.addTiledImage({tileSource:{type:'image',url:'img/slides_2026-11/'+L.dir+'/'+encodeURIComponent(sid)+'.png',buildPyramid:false},x:0,y:0,width:st.w_frac,opacity:L.op,success:e=>{if(gen!==aiGen||!L.on){viewer.world.removeItem(e.item);return;}L.item=e.item;}});});
+    viewer.addTiledImage({tileSource:{type:'image',url:(L.gcs?GCS_OV:'img/slides_2026-11/')+L.dir+'/'+encodeURIComponent(sid)+'.png',buildPyramid:false,crossOriginPolicy:'Anonymous'},x:0,y:0,width:st.w_frac,opacity:L.op,success:e=>{if(gen!==aiGen||!L.on){viewer.world.removeItem(e.item);return;}L.item=e.item;}});});
 }
 const pickSize=k=>{if(busy||k===cur)return;start(k)};
 $('opts').querySelectorAll('.opt').forEach(b=>b.onclick=()=>pickSize(b.dataset.k));
