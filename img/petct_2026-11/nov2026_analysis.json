@@ -1,0 +1,503 @@
+{
+  "liver_raw_cm3": 1083.5,
+  "liver_iter9_cm3": 841.2,
+  "lower_tip_z_le_152": {
+    "vox_count": 10764,
+    "vol_cm3": 65.8,
+    "mean_hu": 106.9,
+    "median_hu": 109.0,
+    "bowel_overlap_pct": 0.0,
+    "single_3d_cc_with_remnant": true,
+    "tip_suv_mean": 2.0,
+    "main_liver_suv_mean": 2.05,
+    "neck_area_at_z153_cm2": 53.18
+  },
+  "hu_bounds": [
+    85.8,
+    130.2
+  ],
+  "bg_sphere_suv": {
+    "mean": 2.09,
+    "std": 0.22,
+    "cov_pct": 10.8
+  },
+  "thr_percist": 3.58,
+  "thr_2sd": 2.53,
+  "foci_percist": [
+    {
+      "id": 1,
+      "percist_vol_cm3": 40.7,
+      "intrahepatic_vol_cm3": 19.72,
+      "hilar_extrahepatic_vol_cm3": 20.97,
+      "iso41_vol_cm3": 37.52,
+      "suv_max": 8.99,
+      "suv_peak": 6.12,
+      "suv_mean": 4.51,
+      "intrahepatic_ct_hu_mean": 100.1,
+      "hilar_ct_hu_mean": 65.9,
+      "pct_inside_liver_strict": 48.5,
+      "pct_inside_liver_raw": 98.2,
+      "min_dist_pv_mm": 0.0,
+      "min_dist_ivc_mm": 1.9,
+      "min_dist_stomach_mm": 17.0,
+      "near_bowel_5mm_pct": 0.0,
+      "ras_mm": [
+        -23.4,
+        23.4,
+        -243.5
+      ],
+      "voxel_zyx": [
+        168.5,
+        238.9,
+        273.1
+      ]
+    }
+  ],
+  "ivc_stage1_mean_mm": 9.61,
+  "deformed_sep_pct_inside_liver_iter9": {
+    "L1": 79.6,
+    "S8_resected_right_lobe": 22.1,
+    "P7_resected_right_lobe": 0.0
+  },
+  "s8_p7_min_dist_to_remnant_mm": {
+    "S8": 0.2,
+    "P7": 15.5
+  },
+  "l1_vs_percist_focus": {
+    "centroid_dist_mm": 41.5,
+    "hd95_mm": 42.3,
+    "note": "Do not infer L1 persistence vs new hilar lesion from registration alone (post-hepatectomy remnant hypertrophy/rotation)."
+  },
+  "pelvis_bladder_stats_uncapped": {
+    "bladder_ct_vol_cm3": 107.1,
+    "bladder_suv_max_uncapped": 28.42,
+    "spill_halo_le12mm_suv_max_uncapped": 24.86
+  },
+  "pelvis_extra_vesical_foci_gt12mm": [
+    {
+      "volume_cm3": 0.5,
+      "suv_max": 5.05,
+      "min_dist_bladder_mm": 12.1,
+      "ct_hu_mean": -66.3,
+      "min_dist_bowel_gas_mm": 0.0,
+      "voxel_zyx": [
+        80.0,
+        280.0,
+        235.6
+      ]
+    }
+  ],
+  "extra_hepatic_fdg_foci_z55_195": [
+    {
+      "vol_cm3": 0.79,
+      "suv_max": 5.05,
+      "suv_mean": 3.81,
+      "ct_hu_mean": -61.7,
+      "min_dist_main_focus_mm": 266.6,
+      "min_dist_liver_mm": 215.5,
+      "min_dist_clip_mm": 45.2,
+      "min_dist_bowel_gas_mm": 0.0,
+      "organ_overlap_pct": {
+        "colon": 59.2,
+        "small_bowel": 0.0,
+        "duodenum": 0.0,
+        "stomach": 0.0,
+        "pancreas": "unavailable",
+        "unassigned_pct": 40.8
+      },
+      "hint": "physiologic_gi_confirmed_by_organ_mask",
+      "voxel_zyx": [
+        79.8,
+        280.2,
+        235.7
+      ],
+      "ras_mm": [
+        27.8,
+        -33.1,
+        -533.6
+      ]
+    },
+    {
+      "vol_cm3": 1.69,
+      "suv_max": 4.75,
+      "suv_mean": 3.5,
+      "ct_hu_mean": 110.1,
+      "min_dist_main_focus_mm": 39.2,
+      "min_dist_liver_mm": 4.3,
+      "min_dist_clip_mm": 60.7,
+      "min_dist_bowel_gas_mm": 0.0,
+      "organ_overlap_pct": {
+        "colon": 0.0,
+        "small_bowel": 0.0,
+        "duodenum": 0.0,
+        "stomach": 98.9,
+        "pancreas": "unavailable",
+        "unassigned_pct": 1.1
+      },
+      "hint": "physiologic_gi_confirmed_by_organ_mask",
+      "voxel_zyx": [
+        153.2,
+        247.7,
+        300.8
+      ],
+      "ras_mm": [
+        -61.3,
+        11.3,
+        -293.4
+      ]
+    },
+    {
+      "vol_cm3": 9.55,
+      "suv_max": 4.73,
+      "suv_mean": 3.49,
+      "ct_hu_mean": 69.7,
+      "min_dist_main_focus_mm": 45.4,
+      "min_dist_liver_mm": 3.1,
+      "min_dist_clip_mm": 65.2,
+      "min_dist_bowel_gas_mm": 0.0,
+      "organ_overlap_pct": {
+        "colon": 0.0,
+        "small_bowel": 0.6,
+        "duodenum": 0.0,
+        "stomach": 25.7,
+        "pancreas": "unavailable",
+        "unassigned_pct": 73.7
+      },
+      "hint": "indeterminate_gastrocolic_or_transverse_colon_band",
+      "voxel_zyx": [
+        143.9,
+        231.6,
+        272.5
+      ],
+      "ras_mm": [
+        -22.5,
+        33.4,
+        -324.0
+      ]
+    },
+    {
+      "vol_cm3": 0.41,
+      "suv_max": 3.85,
+      "suv_mean": 3.39,
+      "ct_hu_mean": 44.9,
+      "min_dist_main_focus_mm": 208.6,
+      "min_dist_liver_mm": 161.0,
+      "min_dist_clip_mm": 47.8,
+      "min_dist_bowel_gas_mm": 0.0,
+      "organ_overlap_pct": {
+        "colon": 13.4,
+        "small_bowel": 0.0,
+        "duodenum": 0.0,
+        "stomach": 0.0,
+        "pancreas": "unavailable",
+        "unassigned_pct": 86.6
+      },
+      "hint": "indeterminate_pelvic_sigmoid_or_ureter",
+      "voxel_zyx": [
+        99.5,
+        285.5,
+        265.4
+      ],
+      "ras_mm": [
+        -12.8,
+        -40.3,
+        -469.2
+      ]
+    },
+    {
+      "vol_cm3": 2.72,
+      "suv_max": 3.58,
+      "suv_mean": 3.38,
+      "ct_hu_mean": 48.4,
+      "min_dist_main_focus_mm": 1.4,
+      "min_dist_liver_mm": 3.1,
+      "min_dist_clip_mm": 75.9,
+      "min_dist_bowel_gas_mm": 26.0,
+      "organ_overlap_pct": {
+        "colon": 0.0,
+        "small_bowel": 0.0,
+        "duodenum": 0.0,
+        "stomach": 0.0,
+        "pancreas": "unavailable",
+        "unassigned_pct": 100.0
+      },
+      "hint": "sub_percist_halo_adjacent_to_hilar_lesion",
+      "voxel_zyx": [
+        165.0,
+        232.0,
+        278.9
+      ],
+      "ras_mm": [
+        -31.3,
+        32.8,
+        -254.8
+      ]
+    }
+  ],
+  "liver_removal_breakdown_cm3": {
+    "liver_raw_cm3": 1083.5,
+    "liver_final_cm3": 841.2,
+    "total_removed_cm3": 242.2,
+    "step1_hu_fat_gas_bone_cm3": 130.5,
+    "step2_heart_lung_dome_cm3": 61.5,
+    "step3_gi_spleen_bowel_cm3": 32.0,
+    "step4_morph_opening_cc_cm3": 18.2
+  },
+  "ivc_heart_proj_overlap_vox": 0,
+  "ivc_z_diameter_profile_mm": {
+    "z=148": {
+      "clean_diam_mm": 6.9,
+      "raw_ts_diam_mm": 6.9,
+      "ct_hu_mean": 82.3
+    },
+    "z=149": {
+      "clean_diam_mm": 10.7,
+      "raw_ts_diam_mm": 10.7,
+      "ct_hu_mean": 78.2
+    },
+    "z=150": {
+      "clean_diam_mm": 12.8,
+      "raw_ts_diam_mm": 12.8,
+      "ct_hu_mean": 82.9
+    },
+    "z=151": {
+      "clean_diam_mm": 14.3,
+      "raw_ts_diam_mm": 14.3,
+      "ct_hu_mean": 92.2
+    },
+    "z=152": {
+      "clean_diam_mm": 15.3,
+      "raw_ts_diam_mm": 15.3,
+      "ct_hu_mean": 86.1
+    },
+    "z=153": {
+      "clean_diam_mm": 18.4,
+      "raw_ts_diam_mm": 18.3,
+      "ct_hu_mean": 88.7
+    },
+    "z=154": {
+      "clean_diam_mm": 20.8,
+      "raw_ts_diam_mm": 20.6,
+      "ct_hu_mean": 87.8
+    },
+    "z=155": {
+      "clean_diam_mm": 21.2,
+      "raw_ts_diam_mm": 21.2,
+      "ct_hu_mean": 86.6
+    },
+    "z=156": {
+      "clean_diam_mm": 22.0,
+      "raw_ts_diam_mm": 22.0,
+      "ct_hu_mean": 84.3
+    },
+    "z=157": {
+      "clean_diam_mm": 22.5,
+      "raw_ts_diam_mm": 22.3,
+      "ct_hu_mean": 87.9
+    },
+    "z=158": {
+      "clean_diam_mm": 22.6,
+      "raw_ts_diam_mm": 22.2,
+      "ct_hu_mean": 92.4
+    },
+    "z=159": {
+      "clean_diam_mm": 22.1,
+      "raw_ts_diam_mm": 21.5,
+      "ct_hu_mean": 91.1
+    },
+    "z=160": {
+      "clean_diam_mm": 21.3,
+      "raw_ts_diam_mm": 20.8,
+      "ct_hu_mean": 94.8
+    },
+    "z=161": {
+      "clean_diam_mm": 19.9,
+      "raw_ts_diam_mm": 19.9,
+      "ct_hu_mean": 104.4
+    },
+    "z=162": {
+      "clean_diam_mm": 18.8,
+      "raw_ts_diam_mm": 18.7,
+      "ct_hu_mean": 106.0
+    },
+    "z=163": {
+      "clean_diam_mm": 15.3,
+      "raw_ts_diam_mm": 15.2,
+      "ct_hu_mean": 93.7
+    },
+    "z=164": {
+      "clean_diam_mm": 13.9,
+      "raw_ts_diam_mm": 13.9,
+      "ct_hu_mean": 85.1
+    },
+    "z=165": {
+      "clean_diam_mm": 14.0,
+      "raw_ts_diam_mm": 14.0,
+      "ct_hu_mean": 87.8
+    },
+    "z=166": {
+      "clean_diam_mm": 13.4,
+      "raw_ts_diam_mm": 13.4,
+      "ct_hu_mean": 90.4
+    },
+    "z=167": {
+      "clean_diam_mm": 12.0,
+      "raw_ts_diam_mm": 12.0,
+      "ct_hu_mean": 81.6
+    },
+    "z=168": {
+      "clean_diam_mm": 10.9,
+      "raw_ts_diam_mm": 10.9,
+      "ct_hu_mean": 78.2
+    },
+    "z=169": {
+      "clean_diam_mm": 9.6,
+      "raw_ts_diam_mm": 9.6,
+      "ct_hu_mean": 83.6
+    },
+    "z=170": {
+      "clean_diam_mm": 7.9,
+      "raw_ts_diam_mm": 7.9,
+      "ct_hu_mean": 91.8
+    },
+    "z=171": {
+      "clean_diam_mm": 6.2,
+      "raw_ts_diam_mm": 6.2,
+      "ct_hu_mean": 89.8
+    },
+    "z=172": {
+      "clean_diam_mm": 3.4,
+      "raw_ts_diam_mm": 3.4,
+      "ct_hu_mean": 86.6
+    }
+  },
+  "liver_slice_area_profile_cm2": {
+    "z=145": 8.9,
+    "z=146": 14.4,
+    "z=147": 17.7,
+    "z=148": 22.2,
+    "z=149": 26.1,
+    "z=150": 30.0,
+    "z=151": 36.4,
+    "z=152": 43.3,
+    "z=153": 53.2,
+    "z=154": 62.9,
+    "z=155": 71.0,
+    "z=156": 76.5,
+    "z=157": 80.6,
+    "z=158": 84.9,
+    "z=159": 89.3,
+    "z=160": 93.4,
+    "z=161": 92.5,
+    "z=162": 89.4,
+    "z=163": 89.2,
+    "z=164": 88.0,
+    "z=165": 89.2,
+    "z=166": 90.3,
+    "z=167": 91.7,
+    "z=168": 91.7,
+    "z=169": 93.4,
+    "z=170": 97.3,
+    "z=171": 102.1,
+    "z=172": 103.0,
+    "z=173": 101.7,
+    "z=174": 99.0,
+    "z=175": 92.8,
+    "z=176": 87.2,
+    "z=177": 77.9,
+    "z=178": 61.5,
+    "z=179": 45.1,
+    "z=180": 34.5,
+    "z=181": 22.1,
+    "z=182": 11.8,
+    "z=183": 5.7,
+    "z=184": 2.4
+  },
+  "desmoid_survey_audit": {
+    "arm_voxels_excluded": 182127,
+    "y_spine_front_median": 290,
+    "posterior_retroperitoneal_voxels_excluded": 2216353,
+    "stage1_voxels": 186959,
+    "stage2_voxels": 8209,
+    "stage3_voxels": 2066,
+    "stage1_blobs": 48,
+    "stage2_blobs_split_by_fat_intersection": 110,
+    "stage3_opened_blobs": 80,
+    "candidates_ge_1_5cm3": 1,
+    "synthetic_2cm3_positive_control": {
+      "injected_cm3": 2.06,
+      "recovered_cm3": 1.72,
+      "dice": 0.909,
+      "detected": true
+    }
+  },
+  "ct_peritoneal_nodule_candidates_torso_only": [
+    {
+      "vol_cm3": 2.05,
+      "principal_axes_mm": [
+        20.8,
+        17.4,
+        15.8
+      ],
+      "lambda1_over_lambda2": 1.2,
+      "lambda2_over_lambda3": 1.1,
+      "shape_class": "nodular_compact",
+      "min_dist_aorta_mm": 3.1,
+      "min_dist_ivc_mm": 17.7,
+      "min_dist_pancreas_mm": "unavailable",
+      "min_dist_duodenum_mm": 18.4,
+      "suv_max": 2.18,
+      "ct_hu_mean": 45.8,
+      "adjudication": "indeterminate_nodular_compact_mesenteric_root_review_on_contrast_ct",
+      "voxel_zyx": [
+        145.6,
+        246.8,
+        263.2
+      ],
+      "ras_mm": [
+        -9.9,
+        12.5,
+        -318.2
+      ]
+    }
+  ],
+  "mesh_stats": {
+    "nov2026_liver": {
+      "faces": 77378,
+      "cc_count": 1,
+      "vol_mask_cm3": 841.22,
+      "vol_mesh_cm3": 839.2,
+      "mean_x_ras": -25.0
+    },
+    "nov2026_fdg_percist": {
+      "faces": 7862,
+      "cc_count": 1,
+      "vol_mask_cm3": 40.7,
+      "vol_mesh_cm3": 39.81,
+      "mean_x_ras": -24.0
+    },
+    "nov2026_stomach": {
+      "faces": 12864,
+      "cc_count": 1,
+      "vol_mask_cm3": 88.21,
+      "vol_mesh_cm3": 87.16,
+      "mean_x_ras": -68.5
+    },
+    "nov2026_portal": {
+      "faces": 2928,
+      "cc_count": 1,
+      "vol_mask_cm3": 9.49,
+      "vol_mesh_cm3": 9.04,
+      "mean_x_ras": 9.3
+    },
+    "nov2026_ivc": {
+      "faces": 3904,
+      "cc_count": 1,
+      "vol_mask_cm3": 16.56,
+      "vol_mesh_cm3": 16.09,
+      "mean_x_ras": 16.8
+    }
+  },
+  "pancreas_mask_status": "unavailable (RunPod pod terminated before pancreas-only pass; not imputed as 0 or 999)",
+  "gi_adjudication_rule": "gi_overlap_pct >= 50.0% -> physiologic_gi_confirmed_by_organ_mask; 10.0% <= gi_overlap_pct < 50.0% -> indeterminate (region-specific)"
+}
